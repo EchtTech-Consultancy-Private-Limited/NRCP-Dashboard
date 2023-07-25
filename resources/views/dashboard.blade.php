@@ -1,4 +1,12 @@
 @include('includes.header')
+<script src="https://code.highcharts.com/maps/highmaps.js"></script>
+<script src="https://code.highcharts.com/maps/modules/exporting.js"></script>
+<style>
+    #container{
+        width: 100%;
+        height: 100%
+    }
+</style>
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
 <div class="wrapper">
 
@@ -65,203 +73,22 @@
     <section class="content">
       <div class="container-fluid">
         <!-- Info boxes -->
-        <div class="row">
-          <div class="col-12 col-sm-6 col-md-3">
-            <div class="info-box">
-              <span class="info-box-icon bg-info elevation-1"><i class="fas fa-cog"></i></span>
-
-              <div class="info-box-content">
-                <span class="info-box-text">CPU Traffic</span>
-                <span class="info-box-number">
-                  10
-                  <small>%</small>
-                </span>
-              </div>
-              <!-- /.info-box-content -->
-            </div>
-            <!-- /.info-box -->
-          </div>
-          <!-- /.col -->
-          <div class="col-12 col-sm-6 col-md-3">
-            <div class="info-box mb-3">
-              <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-thumbs-up"></i></span>
-
-              <div class="info-box-content">
-                <span class="info-box-text">Likes</span>
-                <span class="info-box-number">41,410</span>
-              </div>
-              <!-- /.info-box-content -->
-            </div>
-            <!-- /.info-box -->
-          </div>
-          <!-- /.col -->
-
-          <!-- fix for small devices only -->
-          <div class="clearfix hidden-md-up"></div>
-
-          <div class="col-12 col-sm-6 col-md-3">
-            <div class="info-box mb-3">
-              <span class="info-box-icon bg-success elevation-1"><i class="fas fa-shopping-cart"></i></span>
-
-              <div class="info-box-content">
-                <span class="info-box-text">Sales</span>
-                <span class="info-box-number">760</span>
-              </div>
-              <!-- /.info-box-content -->
-            </div>
-            <!-- /.info-box -->
-          </div>
-          <!-- /.col -->
-          <div class="col-12 col-sm-6 col-md-3">
-            <div class="info-box mb-3">
-              <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-users"></i></span>
-
-              <div class="info-box-content">
-                <span class="info-box-text">New Members</span>
-                <span class="info-box-number">2,000</span>
-              </div>
-              <!-- /.info-box-content -->
-            </div>
-            <!-- /.info-box -->
-          </div>
-          <!-- /.col -->
-        </div>
+        
         <!-- /.row -->
-
-        <div class="row">
-          <div class="col-md-12">
-            <div class="card">
-              <div class="card-header">
-                <h5 class="card-title">Monthly Recap Report</h5>
-
-                <div class="card-tools">
-                  <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                    <i class="fas fa-minus"></i>
-                  </button>
-                  <div class="btn-group">
-                    <button type="button" class="btn btn-tool dropdown-toggle" data-toggle="dropdown">
-                      <i class="fas fa-wrench"></i>
-                    </button>
-                    <div class="dropdown-menu dropdown-menu-right" role="menu">
-                      <a href="#" class="dropdown-item">Action</a>
-                      <a href="#" class="dropdown-item">Another action</a>
-                      <a href="#" class="dropdown-item">Something else here</a>
-                      <a class="dropdown-divider"></a>
-                      <a href="#" class="dropdown-item">Separated link</a>
-                    </div>
-                  </div>
-                  <button type="button" class="btn btn-tool" data-card-widget="remove">
-                    <i class="fas fa-times"></i>
-                  </button>
-                </div>
-              </div>
-              <!-- /.card-header -->
-              <div class="card-body">
-                <div class="row">
-                  <div class="col-md-8">
-                    <p class="text-center">
-                      <strong>Sales: 1 Jan, 2014 - 30 Jul, 2014</strong>
-                    </p>
-
-                    <div class="chart">
-                      <!-- Sales Chart Canvas -->
-                      <canvas id="salesChart" height="180" style="height: 180px;"></canvas>
-                    </div>
-                    <!-- /.chart-responsive -->
-                  </div>
-                  <!-- /.col -->
-                  <div class="col-md-4">
-                    <p class="text-center">
-                      <strong>Goal Completion</strong>
-                    </p>
-
-                    <div class="progress-group">
-                      Add Products to Cart
-                      <span class="float-right"><b>160</b>/200</span>
-                      <div class="progress progress-sm">
-                        <div class="progress-bar bg-primary" style="width: 80%"></div>
-                      </div>
-                    </div>
-                    <!-- /.progress-group -->
-
-                    <div class="progress-group">
-                      Complete Purchase
-                      <span class="float-right"><b>310</b>/400</span>
-                      <div class="progress progress-sm">
-                        <div class="progress-bar bg-danger" style="width: 75%"></div>
-                      </div>
-                    </div>
-
-                    <!-- /.progress-group -->
-                    <div class="progress-group">
-                      <span class="progress-text">Visit Premium Page</span>
-                      <span class="float-right"><b>480</b>/800</span>
-                      <div class="progress progress-sm">
-                        <div class="progress-bar bg-success" style="width: 60%"></div>
-                      </div>
-                    </div>
-
-                    <!-- /.progress-group -->
-                    <div class="progress-group">
-                      Send Inquiries
-                      <span class="float-right"><b>250</b>/500</span>
-                      <div class="progress progress-sm">
-                        <div class="progress-bar bg-warning" style="width: 50%"></div>
-                      </div>
-                    </div>
-                    <!-- /.progress-group -->
-                  </div>
-                  <!-- /.col -->
-                </div>
-                <!-- /.row -->
-              </div>
-              <!-- ./card-body -->
-              <div class="card-footer">
-                <div class="row">
-                  <div class="col-sm-3 col-6">
-                    <div class="description-block border-right">
-                      <span class="description-percentage text-success"><i class="fas fa-caret-up"></i> 17%</span>
-                      <h5 class="description-header">$35,210.43</h5>
-                      <span class="description-text">TOTAL REVENUE</span>
-                    </div>
-                    <!-- /.description-block -->
-                  </div>
-                  <!-- /.col -->
-                  <div class="col-sm-3 col-6">
-                    <div class="description-block border-right">
-                      <span class="description-percentage text-warning"><i class="fas fa-caret-left"></i> 0%</span>
-                      <h5 class="description-header">$10,390.90</h5>
-                      <span class="description-text">TOTAL COST</span>
-                    </div>
-                    <!-- /.description-block -->
-                  </div>
-                  <!-- /.col -->
-                  <div class="col-sm-3 col-6">
-                    <div class="description-block border-right">
-                      <span class="description-percentage text-success"><i class="fas fa-caret-up"></i> 20%</span>
-                      <h5 class="description-header">$24,813.53</h5>
-                      <span class="description-text">TOTAL PROFIT</span>
-                    </div>
-                    <!-- /.description-block -->
-                  </div>
-                  <!-- /.col -->
-                  <div class="col-sm-3 col-6">
-                    <div class="description-block">
-                      <span class="description-percentage text-danger"><i class="fas fa-caret-down"></i> 18%</span>
-                      <h5 class="description-header">1200</h5>
-                      <span class="description-text">GOAL COMPLETIONS</span>
-                    </div>
-                    <!-- /.description-block -->
-                  </div>
-                </div>
-                <!-- /.row -->
-              </div>
-              <!-- /.card-footer -->
-            </div>
+<div class="card-body">
+    <div class="row bg-white">
+          <div class="col-md-9">
+           <div style="height: 700px;" id="container"></div>
+                  
+            <!-- /.card -->
+          </div>
+            <div class="col-md-3">
+            <div style="padding:15px; border: 1px solid grey; border-radius:5px; background: white; color: black; height: 100%" id="detailsData"></div>
             <!-- /.card -->
           </div>
           <!-- /.col -->
         </div>
+    </div>
         <!-- /.row -->
 
        
@@ -279,3 +106,132 @@
 
   <!-- Main Footer -->
   @include('includes.footer')
+  <script>
+  $("#detailsData").hide();    
+  (async () => {
+
+    const topology = await fetch(
+        'https://code.highcharts.com/mapdata/countries/in/in-all.topo.json'
+    ).then(response => response.json());
+
+    // Prepare demo data. The data is joined to map using value of 'hc-key'
+    // property by default. See API docs for 'joinBy' for more info on linking
+    // data and map.
+    const data = [
+        ['in-py', 10], 
+        ['in-ld', 11], 
+        ['in-wb', 12], 
+        ['in-or', 13],
+        ['in-br', 14], 
+        ['in-sk', 15], 
+        ['in-ct', 16], 
+        ['in-tn', 17],
+        ['in-mp', 45],
+        ['in-2984', 19],
+        ['in-ga', 20],
+        ['in-nl', 21],
+        ['in-mn', 22], 
+        ['in-ar', 23],
+        ['in-mz', 24],
+        ['in-tr', 25],
+        ['in-3464', 26],
+        ['in-dl', 27],
+        ['in-hr', 28],
+        ['in-ch', 29],
+        ['in-hp', 30],
+        ['in-jk', 31],
+        ['in-kl', 32],
+        ['in-ka', 33],
+        ['in-dn', 34],
+        ['in-mh', 35],
+        ['in-as', 36],
+        ['in-ap', 37],
+        ['in-ml', 38],
+        ['in-pb', 39],
+        ['in-rj', 40],
+        ['in-up', 41],
+        ['in-ut', 42], 
+        ['in-jh', 43]
+    ];
+
+    // Create the chart
+    Highcharts.mapChart('container', {
+        chart: {
+            map: topology
+        },
+				
+        title: {
+            text: ''
+        },
+
+        subtitle: {
+            text: ''
+        },
+
+        mapNavigation: {
+            enabled: true,
+            buttonOptions: {
+                verticalAlign: 'bottom'
+            }
+        },
+
+        colorAxis: {
+            min: 0
+        },
+   plotOptions: {
+              series: {
+                  events: {
+                      click: function (e) {
+                          
+                          $("#detailsData").show();
+                          
+                          var StateContent = "Fetching the data for "+ e.point.name + "...";
+                          
+                          $("#detailsData").html(StateContent);
+                          
+//                          var text = '<b>Clicked</b><br>Series: ' + this.name +
+//                                  '<br>Point: ' + e.point.name + ' (' + e.point.value + '/km²)';
+//                          if (!this.chart.clickLabel) {
+//                              this.chart.clickLabel = this.chart.renderer.label(text, 0, 250)
+//                                  .css({
+//                                      width: '280px'
+//                                  })
+//                                  .add();
+//                          } else {
+//                              this.chart.clickLabel.attr({
+//                                  text: text
+//                              });
+//                          }
+                      }
+                  }
+              }
+          },
+  
+   /*  mapNavigation: {
+        enabled: true,
+        buttonOptions: {
+            verticalAlign: 'bottom'
+        }
+    }, */
+
+    series: [{
+        data: data,
+        name: '',
+         allowPointSelect: true,
+         cursor: 'pointer',
+         color: "#fff",
+        states: {
+            select: {
+              color: 'blue'
+            }
+        },
+        dataLabels: {
+            enabled: false,
+            format: '{point.name}'
+        }
+    }]
+
+    });
+
+})();
+  </script>
