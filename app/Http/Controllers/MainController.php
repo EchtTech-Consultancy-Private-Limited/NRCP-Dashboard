@@ -12,9 +12,9 @@ class MainController extends Controller
 {
     public function dashboard(Request $request)
     {
-        $type = $request->type;
+        $usertype = $request->usertype;
         //dd($type);
-        return view("dashboard")->with('type',$type);
+        return view("dashboard")->with('usertype',$usertype);
     }
     
     public function pformview()

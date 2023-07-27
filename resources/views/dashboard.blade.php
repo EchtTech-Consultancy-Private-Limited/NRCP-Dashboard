@@ -57,14 +57,14 @@
         <div class="row mb-2">
           <div class="col-sm-6">
             <h1 class="m-0"><?php 
-      if($_REQUEST['type']=="central") 
+      if($_REQUEST['usertype'] == 1) 
       { echo "Central"; } 
-      elseif($_REQUEST['type']=="state") 
+      else if($_REQUEST['usertype'] == 2) 
       { echo "State"; }
-      elseif($_REQUEST['type']=="district") 
+      else if($_REQUEST['usertype'] == 3) 
       { echo "District"; }
       else 
-      { echo "Health Professional"; }
+      { echo "Health Facilities"; }
       ?> Dashboard</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
@@ -86,7 +86,7 @@
         <!-- /.row -->
 <div class="card-body">
     <div class="row bg-white">
-        <?php if($type == "central"){ ?>   
+        <?php if($usertype == "1"){ ?>   
           <div class="col-md-9">
            <div style="height: 700px;" id="container"></div>
           </div>

@@ -14,7 +14,7 @@ use App\Http\Controllers\MainController;
 */
 
 Route::get('/', function () {
-    return view('landing');
+    return view('login');
 });
 
 //Admin Routes Start
@@ -22,4 +22,4 @@ Route::get('dashboard', [MainController::class, 'dashboard']);
 
 Route::get('pform', [MainController::class, 'pformview']);
 
-Route::get('login', [MainController::class, 'login'])->name('login');
+//Route::get('login', [MainController::class, 'login'])->name('login');
