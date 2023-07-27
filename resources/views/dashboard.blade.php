@@ -56,7 +56,16 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Dashboard</h1>
+            <h1 class="m-0"><?php 
+      if($_REQUEST['type']=="central") 
+      { echo "Central"; } 
+      elseif($_REQUEST['type']=="state") 
+      { echo "State"; }
+      elseif($_REQUEST['type']=="district") 
+      { echo "District"; }
+      else 
+      { echo "Health Professional"; }
+      ?> Dashboard</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -77,17 +86,15 @@
         <!-- /.row -->
 <div class="card-body">
     <div class="row bg-white">
+        <?php if($type == "central"){ ?>   
           <div class="col-md-9">
            <div style="height: 700px;" id="container"></div>
-                  
-            <!-- /.card -->
           </div>
             <div class="col-md-3">
             <div style="padding:15px; border: 1px solid grey; border-radius:5px; background: white; color: black; height: 100%" id="detailsData"></div>
-            <!-- /.card -->
-          </div>
-          <!-- /.col -->
-        </div>
+            </div>
+        <?php } ?>
+    </div>
     </div>
         <!-- /.row -->
 
@@ -111,47 +118,25 @@
   (async () => {
 
     const topology = await fetch(
-        'https://code.highcharts.com/mapdata/countries/in/in-all.topo.json'
+        'https://code.highcharts.com/mapdata/countries/in/custom/in-all-disputed.topo.json'
     ).then(response => response.json());
 
     // Prepare demo data. The data is joined to map using value of 'hc-key'
     // property by default. See API docs for 'joinBy' for more info on linking
     // data and map.
     const data = [
-        ['in-py', 10], 
-        ['in-ld', 11], 
-        ['in-wb', 12], 
-        ['in-or', 13],
-        ['in-br', 14], 
-        ['in-sk', 15], 
-        ['in-ct', 16], 
-        ['in-tn', 17],
-        ['in-mp', 45],
-        ['in-2984', 19],
-        ['in-ga', 20],
-        ['in-nl', 21],
-        ['in-mn', 22], 
-        ['in-ar', 23],
-        ['in-mz', 24],
-        ['in-tr', 25],
-        ['in-3464', 26],
-        ['in-dl', 27],
-        ['in-hr', 28],
-        ['in-ch', 29],
-        ['in-hp', 30],
-        ['in-jk', 31],
-        ['in-kl', 32],
-        ['in-ka', 33],
-        ['in-dn', 34],
-        ['in-mh', 35],
-        ['in-as', 36],
-        ['in-ap', 37],
-        ['in-ml', 38],
-        ['in-pb', 39],
-        ['in-rj', 40],
-        ['in-up', 41],
-        ['in-ut', 42], 
-        ['in-jh', 43]
+        ['madhya pradesh', 10], ['uttar pradesh', 11], ['karnataka', 12],
+        ['nagaland', 13], ['bihar', 14], ['lakshadweep', 15],
+        ['andaman and nicobar', 16], ['assam', 17], ['west bengal', 18],
+        ['puducherry', 19], ['daman and diu', 20], ['gujarat', 21],
+        ['rajasthan', 22], ['dadara and nagar havelli', 23],
+        ['chhattisgarh', 24], ['tamil nadu', 25], ['chandigarh', 26],
+        ['punjab', 27], ['haryana', 28], ['andhra pradesh', 29],
+        ['maharashtra', 30], ['himachal pradesh', 31], ['meghalaya', 32],
+        ['kerala', 33], ['telangana', 34], ['mizoram', 35], ['tripura', 36],
+        ['manipur', 37], ['arunanchal pradesh', 38], ['jharkhand', 39],
+        ['goa', 40], ['nct of delhi', 41], ['odisha', 42],
+        ['jammu and kashmir', 43], ['sikkim', 44], ['uttarakhand', 45]
     ];
 
     // Create the chart
