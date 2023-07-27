@@ -4,12 +4,20 @@
   <!-- /.login-logo -->
   <div class="card card-outline card-primary">
     <div class="card-header text-center">
-      <a href="../../index2.html" class="h1"><b> Dashboard Login</b></a>
+      <a href="../../index2.html" class="h1"><b> Rabies Data Portal</b></a>
     </div>
     <div class="card-body">
       <p class="login-box-msg">Sign in to start your session</p>
 
       <form action="{{url('dashboard')}}" method="get">
+        <div class="input-group mb-3">
+            <select name="section" id="section" class="form-control">
+                <option value="0">Select Section</option>
+                <option value="1">Animal Health</option>
+                <option value="2">Human Health Rabies</option>
+            </select>
+          
+        </div> 
         <div class="input-group mb-3">
             <select name="usertype" id="usertype" class="form-control">
                 <option value="0">Select User Type</option>
