@@ -17,4 +17,5 @@
   <link rel="stylesheet" href="{{ asset('assets/login/dist/css/tempusdominus-bootstrap-4.css') }}">
 
   <link rel="stylesheet" href="{{ asset('assets/login/dist/css/tempusdominus-bootstrap-4.min.css') }}">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>

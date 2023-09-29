@@ -18,7 +18,7 @@ class MainController extends Controller
         return view("dashboard")->with('usertype',$usertype);
     }
 
-    public function pformview()
+    public function pformView()
     {
         return view("pform");
     }
@@ -28,7 +28,7 @@ class MainController extends Controller
         return view("login");
     }
 
-    public function patient_recordAdd(Request $request){
+    public function patientAdd(Request $request){
 
          //dd($request->all());
         $data=new patient_record;
