@@ -20,7 +20,7 @@ return new class extends Migration
             $table->integer('gender')->length(10)->unsigned()->nullable();
             $table->integer('id_type')->length(10)->unsigned()->nullable();
               $table->integer('permanent_address')->default(0)->nullable();
-            $table->integer('identification_number')->length(10)->unsigned()->nullable();
+            $table->integer('identification_number')->length(12)->unsigned()->nullable();
             $table->integer('citizenship')->length(10)->unsigned()->nullable();
             $table->integer('state')->length(10)->unsigned()->nullable();
             $table->integer('district')->length(10)->unsigned()->nullable();
@@ -35,6 +35,7 @@ return new class extends Migration
             $table->date('date_of_onset')->nullable();
             $table->integer('opd_ipd')->length(10)->unsigned()->nullable();
             $table->timestamps();
+
         });
     }
 

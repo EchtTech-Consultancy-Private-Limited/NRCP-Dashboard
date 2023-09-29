@@ -24,4 +24,5 @@ Route::get('pform', [MainController::class, 'pformview']);
 
 //Route::get('login', [MainController::class, 'login'])->name('login');
 
-Route::post('patient-Record',[MainController::class,'patient_recordAdd']);
+Route::post('patient-Record',[MainController::class,'patientAdd']);
+
