@@ -6,11 +6,11 @@
         width: 100%;
         height: 100%
     }
-    
+
     img.das-icon {
     width: 50px;
 }
-    
+
 </style>
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
 <div class="wrapper">
@@ -34,7 +34,7 @@
 
     <!-- Sidebar -->
     <div class="sidebar">
-      
+
       <!-- SidebarSearch Form -->
       <div class="form-inline">
         <div class="input-group" data-widget="sidebar-search">
@@ -61,19 +61,20 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0"><?php 
-      if($_REQUEST['usertype'] == 1) 
-      { echo "Central"; } 
-      else if($_REQUEST['usertype'] == 2) 
+            <h1 class="m-0">
+    <?php
+      if($_REQUEST['usertype'] == 1)
+      { echo "Central"; }
+      else if($_REQUEST['usertype'] == 2)
       { echo "State"; }
-      else if($_REQUEST['usertype'] == 3) 
+      else if($_REQUEST['usertype'] == 3)
       { echo "District"; }
-      else 
+      else
       { echo "Health Facilities"; }
-      ?> Dashboard - (<?php 
-      if($_REQUEST['section'] == 1) 
-      { echo "Animal Health"; } 
-      else 
+      ?> Dashboard - (<?php
+      if($_REQUEST['section'] == 1)
+      { echo "Animal Health"; }
+      else
       { echo "Human Health Rabies"; }
       ?>)</h1>
           </div><!-- /.col -->
@@ -92,8 +93,8 @@
     <section class="content">
       <div class="container-fluid">
         <!-- Info boxes -->
-        
-  <?php if($_REQUEST['section'] == 1){ ?>      
+
+  <?php if($_REQUEST['section'] == 1){ ?>
   <div class="row">
           <div class="col-12 col-sm-6 col-md-3">
             <div class="info-box">
@@ -166,12 +167,12 @@
             <!-- /.info-box -->
           </div>
           <!-- /.col -->
-        </div> 
-  <?php } ?>    
+        </div>
+  <?php } ?>
         <!-- /.row -->
 <div class="card-body">
     <div class="row bg-white">
-        <?php if($usertype == "1"){ ?>   
+        <?php if($usertype == "1"){ ?>
           <div class="col-md-9">
            <div style="height: 700px;" id="container"></div>
           </div>
@@ -183,7 +184,7 @@
     </div>
         <!-- /.row -->
 
-       
+
       </div><!--/. container-fluid -->
     </section>
     <!-- /.content -->
@@ -199,7 +200,7 @@
   <!-- Main Footer -->
   @include('includes.footer')
   <script>
-  $("#detailsData").hide();    
+  $("#detailsData").hide();
   (async () => {
 
     const topology = await fetch(
@@ -229,7 +230,7 @@
         chart: {
             map: topology
         },
-				
+
         title: {
             text: ''
         },
@@ -252,13 +253,13 @@
               series: {
                   events: {
                       click: function (e) {
-                          
+
                           $("#detailsData").show();
-                          
+
                           var StateContent = "Fetching the data for "+ e.point.name + "...";
-                          
+
                           $("#detailsData").html(StateContent);
-                          
+
 //                          var text = '<b>Clicked</b><br>Series: ' + this.name +
 //                                  '<br>Point: ' + e.point.name + ' (' + e.point.value + '/km²)';
 //                          if (!this.chart.clickLabel) {
@@ -276,7 +277,7 @@
                   }
               }
           },
-  
+
    /*  mapNavigation: {
         enabled: true,
         buttonOptions: {

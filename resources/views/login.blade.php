@@ -16,8 +16,8 @@
                 <option value="1">Animal Health</option>
                 <option value="2">Human Health Rabies</option>
             </select>
-          
-        </div> 
+
+        </div>
         <div class="input-group mb-3">
             <select name="usertype" id="usertype" class="form-control">
                 <option value="0">Select User Type</option>
@@ -26,8 +26,8 @@
                 <option value="3">District Login</option>
                 <option value="4">Health Facilities</option>
             </select>
-          
-        </div>  
+
+        </div>
         <div class="input-group mb-3">
           <input type="email" class="form-control" placeholder="Email">
           <div class="input-group-append">
@@ -61,7 +61,7 @@
         </div>
       </form>
 
-      
+
       <!-- /.social-auth-links -->
 
       <p class="mb-1">
