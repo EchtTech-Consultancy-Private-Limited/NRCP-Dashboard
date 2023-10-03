@@ -64,6 +64,8 @@ font-family: 'Roboto Slab', serif;
         font-size: 13px;
         margin: 5px 0px;
         box-shadow: inset 0 0px 8px 0px #e3e0e0;
+        width: 100%;
+        padding: 7px 2.25rem 7px 0.75rem !important;
         &::placeholder{
             color: #97999b;
         }
@@ -76,6 +78,7 @@ font-family: 'Roboto Slab', serif;
         box-shadow: inset 0 0px 8px 0px #e3e0e0;
         border: 1px solid #acadaf;
         border-radius: 0.25rem; 
+        width: 100%;
         
         option:not(:first-of-type) {
             color: #000;
@@ -146,7 +149,7 @@ input[type="date"]::-webkit-datetime-edit-year-field {
 }
 .myForm {
     background: #f9f9f9;
-    padding: 10px 41px;
+    padding: 10px 0px;
 }
 
 .form-control:focus {
@@ -172,8 +175,28 @@ input[type="date"]::-webkit-datetime-edit-year-field {
     transition: .3s ease-out;
 }
 
+.nav-sidebar .nav-item {
+    .nav-link.active{
+        background: #fff;
+        color: #000;
+      
+            &:hover{
+                background-color: #bad9fb !important;
+                color: #000 !important;
+            }
+    }
+  
 
+}
+.nav-sidebar .nav-item{
+    .nav-link{
+        background: #fff;
+        color: #000;
+       
+    }
+  
 
+}
 
 
 
@@ -207,4 +230,28 @@ input.valid, textarea.valid{
 
 .panel-body {
     padding: 0 35px;
+}
+
+
+.form-compact {
+    .form-group{
+        padding-right: 10px;
+    }
+}
+
+.sform{
+    .form-group:not(:last-child){
+        padding-right: 10px;
+    }
+
+    .form-group{
+       span.span-text{
+       height: 100%;
+       }
+    }
+}
+
+
+.error{
+    color: #ff0000;
 }

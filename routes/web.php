@@ -20,11 +20,11 @@ Route::get('/', function () {
 });
 
 //Admin Routes Start
-Route::get('dashboard', [MainController::class, 'dashboard']);
-Route::get('pform', [MainController::class, 'pformview']);
+Route::get('dashboard', [MainController::class, 'dashboard'])->name('dashboard');
+Route::get('pform', [MainController::class, 'pformview'])->name('pform');
 Route::get('sform', [MainController::class, 'sformview']); 
 
-Route::get('sform', [MainController::class, 'sformview']);
+Route::get('sform', [MainController::class, 'sformview'])->name('sform');
 
 //Route::get('login', [MainController::class, 'login'])->name('login');
 
