@@ -23,6 +23,14 @@ class MainController extends Controller
         return view("pform");
     }
 
+
+    
+    public function sformView()
+    {
+        return view("sform");
+    }
+
+
     public function login()
     {
         return view("login");

@@ -9,13 +9,21 @@
                     Dashboard
                     <i class="right fas fa-angle-left"></i>
                 </p>
-            </a>
+            </a> 
             <ul class="nav nav-treeview">
 
                 <li class="nav-item">
                     <a href="{{ url('pform') }}" class="nav-link active">
                         <i class="far fa-circle nav-icon"></i>
                         <p>pform</p>
+                    </a>
+                </li>
+
+                 
+                <li class="nav-item">
+                    <a href="{{ url('sform') }}" class="nav-link active">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>sform</p>
                     </a>
                 </li>
 

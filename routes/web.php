@@ -22,6 +22,8 @@ Route::get('/', function () {
 Route::get('dashboard', [MainController::class, 'dashboard']);
 Route::get('pform', [MainController::class, 'pformview']);
 
+Route::get('sform', [MainController::class, 'sformview']);
+
 //Route::get('login', [MainController::class, 'login'])->name('login');
 
 Route::post('patient-Record',[MainController::class,'patientAdd']);
