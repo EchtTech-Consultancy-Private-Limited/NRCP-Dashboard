@@ -52,15 +52,15 @@ body {
 .form-group {
   margin: 10px 0;
 }
-.form-group input {
+.form-group input, .form-group select {
   font-size: 13px;
   margin: 5px 0px;
   box-shadow: inset 0 0px 8px 0px #e3e0e0;
 }
-.form-group input::-moz-placeholder {
+.form-group input::-moz-placeholder, .form-group select::-moz-placeholder {
   color: #97999b;
 }
-.form-group input::placeholder {
+.form-group input::placeholder, .form-group select::placeholder {
   color: #97999b;
 }
 .form-group select {
@@ -179,4 +179,8 @@ input.valid, textarea.valid {
 
 .form-text {
   color: #ff0000 !important;
+}
+
+.panel-body {
+  padding: 0 35px;
 }/*# sourceMappingURL=style.css.map */
