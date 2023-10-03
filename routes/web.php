@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MainController;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,6 +22,7 @@ Route::get('/', function () {
 //Admin Routes Start
 Route::get('dashboard', [MainController::class, 'dashboard']);
 Route::get('pform', [MainController::class, 'pformview']);
+Route::get('sform', [MainController::class, 'sformview']); 
 
 Route::get('sform', [MainController::class, 'sformview']);
 

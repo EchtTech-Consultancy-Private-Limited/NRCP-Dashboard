@@ -14,18 +14,16 @@ class MainController extends Controller
     public function dashboard(Request $request)
     {
         $usertype = $request->usertype;
-        //dd($type);
+        
         return view("dashboard")->with('usertype',$usertype);
     }
 
     public function pformView()
     {
         return view("pform");
-    }
-
-
-    
+    }    
     public function sformView()
+    
     {
         return view("sform");
     }
