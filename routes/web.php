@@ -25,6 +25,7 @@ Route::get('pform', [MainController::class, 'pformview'])->name('pform');
 Route::get('sform', [MainController::class, 'sformview']); 
 
 Route::get('sform', [MainController::class, 'sformview'])->name('sform');
+Route::get('pform2', [MainController::class, 'pform2view'])->name('pform2');
 
 //Route::get('login', [MainController::class, 'login'])->name('login');
 

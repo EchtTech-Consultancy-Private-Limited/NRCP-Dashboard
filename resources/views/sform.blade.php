@@ -130,9 +130,8 @@
                                             ng-options="v as v.wardname for v in wardSubcenterList  | orderBy:'wardname'">
                                             <option value="" class="" selected="selected">-----Select-----</option>
                                         </select>
-                                        <div class="error  "
-                                            ng-show="aggform.ward.$dirty &amp;&amp; aggform.ward.$invalid">
-                                            <small class="error  " ng-show="aggform.ward.$error.required">
+                                        <div class="error  ">
+                                            <small class="error  " >
                                                 Please
                                                 Select Ward</small>
                                         </div>

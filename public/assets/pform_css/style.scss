@@ -240,6 +240,7 @@ input.valid, textarea.valid{
 }
 
 .sform{
+   
     .panel-title{
         padding: 14px 0 3px;
     }
@@ -273,4 +274,33 @@ input.valid, textarea.valid{
 
 .error{
     color: #ff0000;
+}
+
+.pform2{
+    .apply-filter{
+        button.search-patient-btn{
+            margin: 21px 0 0;
+        }
+    }
+}
+
+
+@media(max-width:768px){
+    .pform2{
+        .myForm {
+            background: #f9f9f9;
+            padding: 10px 10px;
+        }
+        .search-patient-btn{
+            width: auto !important;
+        }
+        .form-group label {
+            padding: 0 0px;
+            font-size: 14px;
+        }
+         .apply-filter button.search-patient-btn {
+            margin:0;
+        }
+    }
+ 
 }
