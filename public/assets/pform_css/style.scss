@@ -240,6 +240,14 @@ input.valid, textarea.valid{
 }
 
 .sform{
+    .panel-title{
+        padding: 14px 0 3px;
+    }
+    .label-title {
+        font-weight: 500;
+        padding: 10px 0;
+        font-size: 17px;
+    }
     .form-group:not(:last-child){
         padding-right: 10px;
     }
@@ -255,6 +263,10 @@ input.valid, textarea.valid{
         margin-top: 5px;
         border-radius: 4px;
       
+       }
+
+       .form-control{
+        border: 1px solid #ced4da;
        }
 }
 
