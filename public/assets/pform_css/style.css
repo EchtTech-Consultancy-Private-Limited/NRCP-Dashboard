@@ -235,6 +235,11 @@ input.valid, textarea.valid {
   color: #ff0000;
 }
 
+.pform2 .form-group span.calender {
+  position: absolute;
+  top: 53%;
+  right: 10%;
+}
 .pform2 .apply-filter button.search-patient-btn {
   margin: 21px 0 0;
 }

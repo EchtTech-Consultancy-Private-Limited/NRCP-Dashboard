@@ -277,6 +277,14 @@ input.valid, textarea.valid{
 }
 
 .pform2{
+    .form-group{
+        span.calender {
+            position: absolute;
+            top: 53%;
+            right: 10%;
+        }
+    }
+   
     .apply-filter{
         button.search-patient-btn{
             margin: 21px 0 0;

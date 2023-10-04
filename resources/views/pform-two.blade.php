@@ -103,8 +103,8 @@
 
                                         <div class="tab-content" id="myTabContent">
 
-                                            <div class="" id="nav-add-patient-record"
-                                                role="tabpanel" aria-labelledby="home-tab">
+                                            <div class="" id="nav-add-patient-record" role="tabpanel"
+                                                aria-labelledby="home-tab">
 
 
 
@@ -115,38 +115,38 @@
 
                                                         <div class="col-lg-3 col-md-3 col-6">
                                                             <div class="form-group">
-                                                                <label for="state">State<span class="star">*</span></label>
+                                                                <label for="state">State<span
+                                                                        class="star">*</span></label>
                                                                 <select class="form-select"
                                                                     aria-label="Default select example"
-                                                                    name="provisinal_diagnosis"
-                                                                    id="state" required>
+                                                                    name="provisinal_diagnosis" id="state" required>
                                                                     <option value=""> Select Your State
                                                                     </option>
                                                                     <option value="1"> UP</option>
                                                                     <option value="2"> MP</option>
                                                                     <option value="3"> DL</option>
                                                                 </select>
-                                                                <small id="state-error"
-                                                                    class="form-text text-muted"> </small>
+                                                                <small id="state-error" class="form-text text-muted">
+                                                                </small>
                                                             </div>
                                                         </div>
 
 
                                                         <div class="col-lg-3 col-md-3 col-6">
                                                             <div class="form-group">
-                                                                <label for="district">District<span class="star">*</span></label>
+                                                                <label for="district">District<span
+                                                                        class="star">*</span></label>
                                                                 <select class="form-select"
                                                                     aria-label="Default select example"
-                                                                    name="provisinal_diagnosis"
-                                                                    id="district" required>
+                                                                    name="provisinal_diagnosis" id="district" required>
                                                                     <option value=""> Select Your District
                                                                     </option>
                                                                     <option value="1"> UP</option>
                                                                     <option value="2"> MP</option>
                                                                     <option value="3"> DL</option>
                                                                 </select>
-                                                                <small id="district-error"
-                                                                    class="form-text text-muted"> </small>
+                                                                <small id="district-error" class="form-text text-muted">
+                                                                </small>
                                                             </div>
                                                         </div>
 
@@ -154,12 +154,20 @@
                                                             <div class="form-group">
                                                                 <label for="fromYear">From Year<span
                                                                         class="star">*</span></label>
-                                                                <input type="date" name="date_of_onset"
-                                                                    class="form-control" id="fromYear"
-                                                                    aria-describedby="Date of Onset"
-                                                                    placeholder="From Year" required>
-                                                                <small id="fromYear-error"
-                                                                    class="form-text text-muted"> </small>
+                                                                <select class="form-select"
+                                                                    aria-label="Default select example"
+                                                                    name="provisinal_diagnosis" id="district" required>
+                                                                    <option value=""> yyyy </option>
+                                                                    <option value="1"> 2000</option>
+                                                                    <option value="2"> 2001</option>
+                                                                    <option value="3"> 2002</option>
+                                                                </select>
+
+
+                                                                <span class="calender"><i class="fa fa-calendar"
+                                                                        aria-hidden="true"></i> </span>
+                                                                <small id="fromYear-error" class="form-text text-muted">
+                                                                </small>
                                                             </div>
                                                         </div>
 
@@ -168,67 +176,75 @@
                                                             <div class="form-group">
                                                                 <label for="toYear">To Year<span
                                                                         class="star">*</span></label>
-                                                                <input type="date" name="date_of_onset"
-                                                                    class="form-control" id="toYear"
-                                                                    aria-describedby="toYear"
-                                                                    placeholder="To Year" required>
-                                                                <small id="toYear-error"
-                                                                    class="form-text text-muted"> </small>
+                                                                        <select class="form-select"
+                                                                    aria-label="Default select example"
+                                                                    name="provisinal_diagnosis" id="district" required>
+                                                                    <option value=""> yyyy </option>
+                                                                    <option value="1"> 2000</option>
+                                                                    <option value="2"> 2001</option>
+                                                                    <option value="3"> 2002</option>
+                                                                </select>
+                                                                <span class="calender"><i class="fa fa-calendar"
+                                                                        aria-hidden="true"></i> </span>
+
+                                                                <small id="toYear-error" class="form-text text-muted">
+                                                                </small>
                                                             </div>
                                                         </div>
 
 
                                                         <div class="col-lg-3 col-md-3 col-6">
                                                             <div class="form-group">
-                                                                <label for="formType">Form Type<span class="star">*</span></label>
+                                                                <label for="formType">Form Type<span
+                                                                        class="star">*</span></label>
                                                                 <select class="form-select"
                                                                     aria-label="Default select example"
-                                                                    name="provisinal_diagnosis"
-                                                                    id="formType" required>
+                                                                    name="provisinal_diagnosis" id="formType" required>
                                                                     <option value=""> Select Form Type
                                                                     </option>
                                                                     <option value="1"> L Form</option>
                                                                     <option value="2">P Form</option>
                                                                     <option value="3">S Form</option>
                                                                 </select>
-                                                                <small id="formType-error"
-                                                                    class="form-text text-muted"> </small>
+                                                                <small id="formType-error" class="form-text text-muted">
+                                                                </small>
                                                             </div>
                                                         </div>
 
 
                                                         <div class="col-lg-3 col-md-3 col-6">
                                                             <div class="form-group">
-                                                                <label for="diseasesSyndromes">Diseases Syndromes<span class="star">*</span></label>
+                                                                <label for="diseasesSyndromes">Diseases Syndromes<span
+                                                                        class="star">*</span></label>
                                                                 <select class="form-select"
                                                                     aria-label="Default select example"
-                                                                    name="provisinal_diagnosis"
-                                                                    id="diseasesSyndromes" required>
+                                                                    name="provisinal_diagnosis" id="diseasesSyndromes"
+                                                                    required>
                                                                     <option value=""> Select Diseases Syndromes
                                                                     </option>
-                                                                    <option value="1">L Form</option>
-                                                                    <option value="2">P Form</option>
-                                                                    <option value="3">S Form</option>
+                                                                    <option value="1">Diseases 1</option>
+                                                                    <option value="2">Diseases 2</option>
+                                                                    <option value="3">Diseases 3</option>
                                                                 </select>
                                                                 <small id="diseasesSyndromes-error"
                                                                     class="form-text text-muted"> </small>
                                                             </div>
                                                         </div>
 
-                                                    
+
                                                         <div class="col-lg-3 col-md-3 col-6">
-                                                        <div class="button apply-filter">
-                                                        <label for=""><span
-                                                                        class="star"></span></label>
-                                                        <button
-                                                            class="btn search-patient-btn bg-primary text-light">Apply Filter</button>
-                                                      
-                                                    </div>
+                                                            <div class="button apply-filter">
+                                                                <label for=""><span class="star"></span></label>
+                                                                <button
+                                                                    class="btn search-patient-btn bg-primary text-light">Apply
+                                                                    Filter</button>
+
+                                                            </div>
 
                                                         </div>
                                                     </div>
 
-                                                   
+
                                                 </form>
                                             </div>
 
@@ -514,7 +530,7 @@
                     input.val('http://www.' + input.val().substring(4));
                 }
                 var re =
-                /(http|ftp|https):\/\/[\w-]+(\.[\w-]+)+([\w.,@?^=%&:\/~+#-]*[\w@?^=%&\/~+#-])?/;
+                    /(http|ftp|https):\/\/[\w-]+(\.[\w-]+)+([\w.,@?^=%&:\/~+#-]*[\w@?^=%&\/~+#-])?/;
                 var is_url = re.test(input.val());
                 if (is_url) {
                     input.removeClass("invalid").addClass("valid");
