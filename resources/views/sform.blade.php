@@ -92,7 +92,7 @@
                                                         style="color: red">*</span></span></label>
                                             <select
                                                 class="form-control ng-not-empty ng-dirty ng-valid-parse ng-valid ng-valid-required ng-touched"
-                                                id="village"                                            ng-required="
+                                                id="village" ng-required="
                                                 facilityinfo.health_facility_urban_rural !=2" name="village"
                                                 ng-change="getSformUnsubmittedData();getDocumentId();"
                                                 ng-options="v as v.villagename for v in villageSubcenterList  | orderBy:'villagename'"
@@ -169,7 +169,7 @@
                                                 <td rowspan="3"></td>
                                                 <td colspan="7" style="text-align: center; font-size: 14px;"><b>Number
                                                         of cases of illness</b></td>
-                                                <td colspan="3" rowspan="2" style="text-align: center; width: 20px"><b
+                                                <td colspan="3" rowspan="2" style="text-align: center; width: 20px"><b>
                                                         Number of cases of deaths <br> <a href=""
                                                             ng-click="scrollTo('deathPatientDetailsForm')"
                                                             class="printhide">[click here
@@ -2194,89 +2194,90 @@
                                                 helpdesk.</div>
                                         </div>
                                     </div> -->
-                                    <div class="row">
-                                        <!-- <div class="form-group col-xs-3">
+                                            <div class="row">
+                                                <!-- <div class="form-group col-xs-3">
 									<p style="padding-left: 3px">
 										<span style="color: red">*</span> = Mandatory Values
 									</p>
 								</div> -->
-                                        <div class="form-group col-xs-6" style="padding-left: 6px;">
-                                            <button class="btn btn-primary"
-                                                ng-click="save_Patient_Details_of_deathCases()"
-                                                ng-disabled="deathcaseform.$invalid || showDateError || showdoberror || showdoberror ||showDobAgeError || iderror"
-                                                disabled="disabled">
-                                                <span class="tooltipid tooltipstered"
-                                                    data-placement="right">Save</span></button>
-                                            <button class="btn btn-primary" ng-click="restReportingForm()">
-                                                <span class="tooltipid tooltipstered"
-                                                    data-placement="right">Reset</span></button>
+                                                <div class="form-group col-xs-6" style="padding-left: 6px;">
+                                                    <button class="btn btn-primary"
+                                                        ng-click="save_Patient_Details_of_deathCases()"
+                                                        ng-disabled="deathcaseform.$invalid || showDateError || showdoberror || showdoberror ||showDobAgeError || iderror"
+                                                        disabled="disabled">
+                                                        <span class="tooltipid tooltipstered"
+                                                            data-placement="right">Save</span></button>
+                                                    <button class="btn btn-primary" ng-click="restReportingForm()">
+                                                        <span class="tooltipid tooltipstered"
+                                                            data-placement="right">Reset</span></button>
+                                                </div>
+                                            </div>
+
+
+
+                                            </form>
                                         </div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <div class="row">
+                                    <div class="col-xs-12" style="padding-left: 0px">
+                                        <b style="font-size: 15px; font-weight: bold;" class="tooltipid tooltipstered"
+                                            data-placement="right">4.
+                                            List of
+                                            Reported Deaths</b>
                                     </div>
-
-
-
-                                    </form>
                                 </div>
+                                <table class="table table-sm table-bordered" id="tableId">
+                                    <thead>
+                                        <tr style="background: #D3D3D3">
+                                            <th>Sl#</th>
+                                            <th class="printhide">Action</th>
+                                            <th>2.2. Person Name<span><a ng-click="showCols = !showCols"
+                                                        style="cursor: pointer"> <span
+                                                            class="glyphicon glyphicon-arrow-right printhide"
+                                                            ng-show="!showCols"></span>
+                                                        <span class="glyphicon glyphicon-arrow-left printhide ng-hide"
+                                                            ng-show="showCols"></span>
+                                                    </a></span></th>
+                                            <th ng-show="showCols" class="ng-hide">2.5. Age</th>
+                                            <th ng-show="showCols" class="ng-hide">2.7. Gender</th>
+                                            <th ng-show="showCols" class="ng-hide">2.8. ID Type/Id No</th>
+                                            <!-- <th ng-show="showCols">Phone No</th> -->
+                                            <th ng-show="showCols" class="ng-hide">2.11. State</th>
+                                            <th ng-show="showCols" class="ng-hide">2.12. District</th>
+                                            <th ng-show="showCols" class="ng-hide">2.13. Sub District</th>
+                                            <th ng-show="showCols" class="ng-hide">2.14. Village</th>
+                                            <th ng-show="showCols" class="ng-hide">2.15. Address</th>
+                                            <th>3.1. Probable Cause Of Death</th>
+                                            <th>3.3. Date of Death</th>
+                                            <th>3.4. Remarks</th>
+
+
+
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+                                        <!-- ngRepeat: p in patientList -->
+                                    </tbody>
+                                </table>
+
+                                <div class="alert alert-success ng-binding ng-hide" ng-show="finalsubmitsaved"
+                                    role="alert">
+                                    Data
+                                    Successfully
+                                    submitted on 2023-10-03 14:27:22</div>
+                                <button class="btn btn-primary printhide" ng-click="openSubmissionAlertModal()"
+                                    style="margin: 5px;"><span class="tooltipid tooltipstered"
+                                        data-placement="right">Submit</span></button>
+
                             </div>
-                        </div>
 
-                        <div>
-                            <div class="row">
-                                <div class="col-xs-12" style="padding-left: 0px">
-                                    <b style="font-size: 15px; font-weight: bold;" class="tooltipid tooltipstered"
-                                        data-placement="right">4.
-                                        List of
-                                        Reported Deaths</b>
-                                </div>
-                            </div>
-                            <table class="table table-sm table-bordered" id="tableId">
-                                <thead>
-                                    <tr style="background: #D3D3D3">
-                                        <th>Sl#</th>
-                                        <th class="printhide">Action</th>
-                                        <th>2.2. Person Name<span><a ng-click="showCols = !showCols"
-                                                    style="cursor: pointer"> <span
-                                                        class="glyphicon glyphicon-arrow-right printhide"
-                                                        ng-show="!showCols"></span>
-                                                    <span class="glyphicon glyphicon-arrow-left printhide ng-hide"
-                                                        ng-show="showCols"></span>
-                                                </a></span></th>
-                                        <th ng-show="showCols" class="ng-hide">2.5. Age</th>
-                                        <th ng-show="showCols" class="ng-hide">2.7. Gender</th>
-                                        <th ng-show="showCols" class="ng-hide">2.8. ID Type/Id No</th>
-                                        <!-- <th ng-show="showCols">Phone No</th> -->
-                                        <th ng-show="showCols" class="ng-hide">2.11. State</th>
-                                        <th ng-show="showCols" class="ng-hide">2.12. District</th>
-                                        <th ng-show="showCols" class="ng-hide">2.13. Sub District</th>
-                                        <th ng-show="showCols" class="ng-hide">2.14. Village</th>
-                                        <th ng-show="showCols" class="ng-hide">2.15. Address</th>
-                                        <th>3.1. Probable Cause Of Death</th>
-                                        <th>3.3. Date of Death</th>
-                                        <th>3.4. Remarks</th>
-
-
-
-                                    </tr>
-                                </thead>
-
-                                <tbody>
-                                    <!-- ngRepeat: p in patientList -->
-                                </tbody>
-                            </table>
-
-                            <div class="alert alert-success ng-binding ng-hide" ng-show="finalsubmitsaved" role="alert">
-                                Data
-                                Successfully
-                                submitted on 2023-10-03 14:27:22</div>
-                            <button class="btn btn-primary printhide" ng-click="openSubmissionAlertModal()"
-                                style="margin: 5px;"><span class="tooltipid tooltipstered"
-                                    data-placement="right">Submit</span></button>
 
                         </div>
-
-
                     </div>
-                </div>
 
             </section>
 
