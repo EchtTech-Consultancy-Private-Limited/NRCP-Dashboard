@@ -6,6 +6,15 @@
     integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
+    <style>
+.form-control {
+    border: 1px solid #acadaf;
+    padding: 4px 5px;
+    height: inherit;
+    width: 40px;
+}
+        </style>
+
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
 
 
@@ -204,44 +213,45 @@
                                                 <td style="width: 470px;" id="tt32" class="ng-binding">2.1.1
                                                     Only Fever &gt;= 7 days</td>
 
-                                                <td><input name="pformcountmale" type="text" class="form-control  ">
+                                                <td><input type="text" id="onlyfevergreaterthanequal7days_form_count_male_age_less_5" name="onlyfevergreaterthanequal7days_form_count_male_age_less_5" value="" class="form-control">
                                                 </td>
 
-                                                <td><input name="pformcountfemale" type="text" class="form-control  ">
+                                                <td><input name="onlyfevergreaterthanequal7days_form_count_male_age_greater_5" id="onlyfevergreaterthanequal7days_form_count_male_age_greater_5"  type="text" value="" class="form-control">
                                                 </td>
 
-                                                <td><input name="pformdeathcountmale" type="text"
-                                                        class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
+                                                <td><input name="" id="onlyfevergreaterthanequal7days_form_count_male_total" type="text" value=""
+                                                        class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input id="onlyfevergreaterthanequal7days_form_count_female_age_less_5"     name="onlyfevergreaterthanequal7days_form_count_female_age_less_5" type="text" value=""
                                                         class="form-control  "
-                                                        ng-value="(( s.name == 'Unknown')&amp;&amp;(s.casesfemalelt5yr == 0)  ?'':s.casesfemalelt5yr)">
+                                                       >
                                                 </td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="onlyfevergreaterthanequal7days_form_count_female_age_greater_5" id="onlyfevergreaterthanequal7days_form_count_female_age_greater_5"  type="text" value=""
                                                         class="form-control  ">
                                                 </td>
 
 
-                                                <td><input name="pformdeathcountfemale" type="text"
-                                                        class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
+                                                <td><input name=""
+                                                     type="text" value="" id="onlyfevergreaterthanequal7days_form_count_female_total"
+                                                    class="form-control"
+                                                    readonly="readonly" tabindex="-1"></td>
+
+                                                <td><input name="onlyfevergreaterthanequal7days_form_count_grand_total" id="onlyfevergreaterthanequal7days_form_count_grand_total" type="text" value=""
+                                                        class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
-                                                        class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
+                                                        class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
-                                                        class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
+                                                        class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
-                                                        class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
-                                                        readonly="readonly" tabindex="-1"></td>
-
-                                                <td><input name="pformdeathcountfemale" type="text"
-                                                        class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
+                                                        class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
                                             </tr>
 
@@ -249,43 +259,43 @@
                                                 <td style="width: 470px;" id="tt33" class="ng-binding">2.1.2
                                                     Only Fever &lt; 7 days</td>
 
-                                                <td><input name="pformcountmale" type="text" class="form-control  ">
+                                                <td><input id="onlyfeverlessthan7days_form_count_male_age_less_5"  name="onlyfeverlessthan7days_form_count_male_age_less_5" type="text" value="" class="form-control  ">
                                                 </td>
 
-                                                <td><input name="pformcountfemale" type="text" class="form-control  ">
+                                                <td><input id="onlyfeverlessthan7days_form_count_male_age_greater_5" name="onlyfeverlessthan7days_form_count_male_age_greater_5" type="text" value="" class="form-control  ">
                                                 </td>
 
-                                                <td><input name="pformdeathcountmale" type="text"
-                                                        class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
+                                                <td><input name="" type="text" value=""
+                                                        class="form-control" id="onlyfeverlessthan7days_form_count_male_total"
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
-                                                        class="form-control  "
-                                                        ng-value="(( s.name == 'Unknown')&amp;&amp;(s.casesfemalelt5yr == 0)  ?'':s.casesfemalelt5yr)">
+                                                <td><input name="onlyfeverlessthan7days_form_count_female_age_less_5" type="text" value=""
+                                                        class="form-control"
+                                                        id="onlyfeverlessthan7days_form_count_female_age_less_5">
                                                 </td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
-                                                        class="form-control  ">
+                                                <td><input id="onlyfeverlessthan7days_form_count_female_age_greater_5" name="onlyfeverlessthan7days_form_count_female_age_greater_5" type="text" value=""
+                                                        class="form-control ">
                                                 </td>
 
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
+                                                        class="form-control" id="onlyfeverlessthan7days_form_count_female_total"
+                                                        readonly="readonly" tabindex="-1"></td>
+
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
+                                                        class="form-control" id="onlyfeverlessthan7days_form_count_grand_total"
+                                                        readonly="readonly" tabindex="-1"></td>
+
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
+                                                        class="form-control"
+                                                        readonly="readonly" tabindex="-1"></td>
+
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
-                                                        class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
-                                                        readonly="readonly" tabindex="-1"></td>
-
-                                                <td><input name="pformdeathcountfemale" type="text"
-                                                        class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
-                                                        readonly="readonly" tabindex="-1"></td>
-
-                                                <td><input name="pformdeathcountfemale" type="text"
-                                                        class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
-                                                        readonly="readonly" tabindex="-1"></td>
-
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
                                                         readonly="readonly" tabindex="-1"></td>
                                             </tr>
@@ -295,43 +305,43 @@
                                                 <td style="width: 470px;" id="tt20" class="ng-binding">2.1.3
                                                     Fever with Rash</td>
 
-                                                <td><input name="pformcountmale" type="text" class="form-control  ">
+                                                <td><input name="pformcountmale" type="text" value="" class="form-control  ">
                                                 </td>
 
-                                                <td><input name="pformcountfemale" type="text" class="form-control  ">
+                                                <td><input name="pformcountfemale" type="text" value="" class="form-control  ">
                                                 </td>
 
-                                                <td><input name="pformdeathcountmale" type="text"
+                                                <td><input name="pformdeathcountmale" type="text" value=""
                                                         class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control  "
                                                         ng-value="(( s.name == 'Unknown')&amp;&amp;(s.casesfemalelt5yr == 0)  ?'':s.casesfemalelt5yr)">
                                                 </td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control  ">
                                                 </td>
 
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
                                                         readonly="readonly" tabindex="-1"></td>
                                             </tr>
@@ -340,43 +350,43 @@
                                                 <td style="width: 470px;" id="tt18" class="ng-binding">2.1.4
                                                     Fever with Bleeding</td>
 
-                                                <td><input name="pformcountmale" type="text" class="form-control  ">
+                                                <td><input name="pformcountmale" type="text" value="" class="form-control  ">
                                                 </td>
 
-                                                <td><input name="pformcountfemale" type="text" class="form-control  ">
+                                                <td><input name="pformcountfemale" type="text" value="" class="form-control  ">
                                                 </td>
 
-                                                <td><input name="pformdeathcountmale" type="text"
+                                                <td><input name="pformdeathcountmale" type="text" value=""
                                                         class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control  "
                                                         ng-value="(( s.name == 'Unknown')&amp;&amp;(s.casesfemalelt5yr == 0)  ?'':s.casesfemalelt5yr)">
                                                 </td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control  ">
                                                 </td>
 
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
                                                         readonly="readonly" tabindex="-1"></td>
                                             </tr>
@@ -385,43 +395,43 @@
                                                 <td style="width: 470px;" id="tt19" class="ng-binding">2.1.5
                                                     Fever with Altered sensorium</td>
 
-                                                <td><input name="pformcountmale" type="text" class="form-control  ">
+                                                <td><input name="pformcountmale" type="text" value="" class="form-control  ">
                                                 </td>
 
-                                                <td><input name="pformcountfemale" type="text" class="form-control  ">
+                                                <td><input name="pformcountfemale" type="text" value="" class="form-control  ">
                                                 </td>
 
-                                                <td><input name="pformdeathcountmale" type="text"
+                                                <td><input name="pformdeathcountmale" type="text" value=""
                                                         class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control  "
                                                         ng-value="(( s.name == 'Unknown')&amp;&amp;(s.casesfemalelt5yr == 0)  ?'':s.casesfemalelt5yr)">
                                                 </td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control  ">
                                                 </td>
 
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
                                                         readonly="readonly" tabindex="-1"></td>
                                             </tr>
@@ -429,43 +439,43 @@
                                                 <td style="width: 470px;" id="tt50" class="ng-binding">2.2.1
                                                     Cough &lt;= 2 weeks with fever</td>
 
-                                                <td><input name="pformcountmale" type="text" class="form-control  ">
+                                                <td><input name="pformcountmale" type="text" value="" class="form-control  ">
                                                 </td>
 
-                                                <td><input name="pformcountfemale" type="text" class="form-control  ">
+                                                <td><input name="pformcountfemale" type="text" value="" class="form-control  ">
                                                 </td>
 
-                                                <td><input name="pformdeathcountmale" type="text"
+                                                <td><input name="pformdeathcountmale" type="text" value=""
                                                         class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control  "
                                                         ng-value="(( s.name == 'Unknown')&amp;&amp;(s.casesfemalelt5yr == 0)  ?'':s.casesfemalelt5yr)">
                                                 </td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control  ">
                                                 </td>
 
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
                                                         readonly="readonly" tabindex="-1"></td>
                                             </tr>
@@ -474,43 +484,43 @@
                                                 <td style="width: 470px;" id="tt51" class="ng-binding">2.2.2
                                                     Cough &lt;= 2 weeks without fever</td>
 
-                                                <td><input name="pformcountmale" type="text" class="form-control  ">
+                                                <td><input name="pformcountmale" type="text" value="" class="form-control  ">
                                                 </td>
 
-                                                <td><input name="pformcountfemale" type="text" class="form-control  ">
+                                                <td><input name="pformcountfemale" type="text" value="" class="form-control  ">
                                                 </td>
 
-                                                <td><input name="pformdeathcountmale" type="text"
+                                                <td><input name="pformdeathcountmale" type="text" value=""
                                                         class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control  "
                                                         ng-value="(( s.name == 'Unknown')&amp;&amp;(s.casesfemalelt5yr == 0)  ?'':s.casesfemalelt5yr)">
                                                 </td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control  ">
                                                 </td>
 
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
                                                         readonly="readonly" tabindex="-1"></td>
                                             </tr>
@@ -519,43 +529,43 @@
                                                 <td style="width: 470px;" id="tt14" class="ng-binding">2.2.3
                                                     Cough &gt; 2 weeks with fever</td>
 
-                                                <td><input name="pformcountmale" type="text" class="form-control  ">
+                                                <td><input name="pformcountmale" type="text" value="" class="form-control  ">
                                                 </td>
 
-                                                <td><input name="pformcountfemale" type="text" class="form-control  ">
+                                                <td><input name="pformcountfemale" type="text" value="" class="form-control  ">
                                                 </td>
 
-                                                <td><input name="pformdeathcountmale" type="text"
+                                                <td><input name="pformdeathcountmale" type="text" value=""
                                                         class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control  "
                                                         ng-value="(( s.name == 'Unknown')&amp;&amp;(s.casesfemalelt5yr == 0)  ?'':s.casesfemalelt5yr)">
                                                 </td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control  ">
                                                 </td>
 
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
                                                         readonly="readonly" tabindex="-1"></td>
                                             </tr>
@@ -563,43 +573,43 @@
                                                 <td style="width: 470px;" id="tt13" class="ng-binding">2.2.4
                                                     Cough &gt; 2 weeks without fever</td>
 
-                                                <td><input name="pformcountmale" type="text" class="form-control  ">
+                                                <td><input name="pformcountmale" type="text" value="" class="form-control  ">
                                                 </td>
 
-                                                <td><input name="pformcountfemale" type="text" class="form-control  ">
+                                                <td><input name="pformcountfemale" type="text" value="" class="form-control  ">
                                                 </td>
 
-                                                <td><input name="pformdeathcountmale" type="text"
+                                                <td><input name="pformdeathcountmale" type="text" value=""
                                                         class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control  "
                                                         ng-value="(( s.name == 'Unknown')&amp;&amp;(s.casesfemalelt5yr == 0)  ?'':s.casesfemalelt5yr)">
                                                 </td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control  ">
                                                 </td>
 
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
                                                         readonly="readonly" tabindex="-1"></td>
                                             </tr>
@@ -608,43 +618,43 @@
                                                 <td style="width: 470px;" id="tt46" class="ng-binding">2.3.1
                                                     Loose watery stools with blood &lt; 2 weeks</td>
 
-                                                <td><input name="pformcountmale" type="text" class="form-control  ">
+                                                <td><input name="pformcountmale" type="text" value="" class="form-control  ">
                                                 </td>
 
-                                                <td><input name="pformcountfemale" type="text" class="form-control  ">
+                                                <td><input name="pformcountfemale" type="text" value="" class="form-control  ">
                                                 </td>
 
-                                                <td><input name="pformdeathcountmale" type="text"
+                                                <td><input name="pformdeathcountmale" type="text" value=""
                                                         class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control  "
                                                         ng-value="(( s.name == 'Unknown')&amp;&amp;(s.casesfemalelt5yr == 0)  ?'':s.casesfemalelt5yr)">
                                                 </td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control  ">
                                                 </td>
 
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
                                                         readonly="readonly" tabindex="-1"></td>
                                             </tr>
@@ -653,43 +663,43 @@
                                                 <td style="width: 470px;" id="tt58" class="ng-binding">2.3.2
                                                     Loose watery stools without blood &lt; 2 weeks</td>
 
-                                                <td><input name="pformcountmale" type="text" class="form-control  ">
+                                                <td><input name="pformcountmale" type="text" value="" class="form-control  ">
                                                 </td>
 
-                                                <td><input name="pformcountfemale" type="text" class="form-control  ">
+                                                <td><input name="pformcountfemale" type="text" value="" class="form-control  ">
                                                 </td>
 
-                                                <td><input name="pformdeathcountmale" type="text"
+                                                <td><input name="pformdeathcountmale" type="text" value=""
                                                         class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control  "
                                                         ng-value="(( s.name == 'Unknown')&amp;&amp;(s.casesfemalelt5yr == 0)  ?'':s.casesfemalelt5yr)">
                                                 </td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control  ">
                                                 </td>
 
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
                                                         readonly="readonly" tabindex="-1"></td>
                                             </tr>
@@ -698,43 +708,43 @@
                                                 <td style="width: 470px;" id="tt52" class="ng-binding">2.4.1
                                                     Jaundice of &lt; 4 weeks</td>
 
-                                                <td><input name="pformcountmale" type="text" class="form-control  ">
+                                                <td><input name="pformcountmale" type="text" value="" class="form-control  ">
                                                 </td>
 
-                                                <td><input name="pformcountfemale" type="text" class="form-control  ">
+                                                <td><input name="pformcountfemale" type="text" value="" class="form-control  ">
                                                 </td>
 
-                                                <td><input name="pformdeathcountmale" type="text"
+                                                <td><input name="pformdeathcountmale" type="text" value=""
                                                         class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control  "
                                                         ng-value="(( s.name == 'Unknown')&amp;&amp;(s.casesfemalelt5yr == 0)  ?'':s.casesfemalelt5yr)">
                                                 </td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control  ">
                                                 </td>
 
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
                                                         readonly="readonly" tabindex="-1"></td>
                                             </tr>
@@ -743,43 +753,43 @@
                                                 <td style="width: 470px;" id="tt3" class="ng-binding">2.5.1
                                                     Acute Flaccid Paralysis</td>
 
-                                                <td><input name="pformcountmale" type="text" class="form-control  ">
+                                                <td><input name="pformcountmale" type="text" value="" class="form-control  ">
                                                 </td>
 
-                                                <td><input name="pformcountfemale" type="text" class="form-control  ">
+                                                <td><input name="pformcountfemale" type="text" value="" class="form-control  ">
                                                 </td>
 
-                                                <td><input name="pformdeathcountmale" type="text"
+                                                <td><input name="pformdeathcountmale" type="text" value=""
                                                         class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control  "
                                                         ng-value="(( s.name == 'Unknown')&amp;&amp;(s.casesfemalelt5yr == 0)  ?'':s.casesfemalelt5yr)">
                                                 </td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control  ">
                                                 </td>
 
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
                                                         readonly="readonly" tabindex="-1"></td>
                                             </tr>
@@ -788,43 +798,43 @@
                                                 <td style="width: 470px;" id="tt53" class="ng-binding">2.6.1
                                                     Malaria Vivax RDT</td>
 
-                                                <td><input name="pformcountmale" type="text" class="form-control  ">
+                                                <td><input name="pformcountmale" type="text" value="" class="form-control  ">
                                                 </td>
 
-                                                <td><input name="pformcountfemale" type="text" class="form-control  ">
+                                                <td><input name="pformcountfemale" type="text" value="" class="form-control  ">
                                                 </td>
 
-                                                <td><input name="pformdeathcountmale" type="text"
+                                                <td><input name="pformdeathcountmale" type="text" value=""
                                                         class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control  "
                                                         ng-value="(( s.name == 'Unknown')&amp;&amp;(s.casesfemalelt5yr == 0)  ?'':s.casesfemalelt5yr)">
                                                 </td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control  ">
                                                 </td>
 
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
                                                         readonly="readonly" tabindex="-1"></td>
                                             </tr>
@@ -833,43 +843,43 @@
                                                 <td style="width: 470px;" id="tt54" class="ng-binding">2.6.2
                                                     Malaria Falciparum RDT</td>
 
-                                                <td><input name="pformcountmale" type="text" class="form-control  ">
+                                                <td><input name="pformcountmale" type="text" value="" class="form-control  ">
                                                 </td>
 
-                                                <td><input name="pformcountfemale" type="text" class="form-control  ">
+                                                <td><input name="pformcountfemale" type="text" value="" class="form-control  ">
                                                 </td>
 
-                                                <td><input name="pformdeathcountmale" type="text"
+                                                <td><input name="pformdeathcountmale" type="text" value=""
                                                         class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control  "
                                                         ng-value="(( s.name == 'Unknown')&amp;&amp;(s.casesfemalelt5yr == 0)  ?'':s.casesfemalelt5yr)">
                                                 </td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control  ">
                                                 </td>
 
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
                                                         readonly="readonly" tabindex="-1"></td>
                                             </tr>
@@ -878,43 +888,43 @@
                                                 <td style="width: 470px;" id="tt55" class="ng-binding">2.6.3
                                                     Malaria Mixed RDT</td>
 
-                                                <td><input name="pformcountmale" type="text" class="form-control  ">
+                                                <td><input name="pformcountmale" type="text" value="" class="form-control  ">
                                                 </td>
 
-                                                <td><input name="pformcountfemale" type="text" class="form-control  ">
+                                                <td><input name="pformcountfemale" type="text" value="" class="form-control  ">
                                                 </td>
 
-                                                <td><input name="pformdeathcountmale" type="text"
+                                                <td><input name="pformdeathcountmale" type="text" value=""
                                                         class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control  "
                                                         ng-value="(( s.name == 'Unknown')&amp;&amp;(s.casesfemalelt5yr == 0)  ?'':s.casesfemalelt5yr)">
                                                 </td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control  ">
                                                 </td>
 
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
                                                         readonly="readonly" tabindex="-1"></td>
                                             </tr>
@@ -922,43 +932,43 @@
                                                 <td style="width: 470px;" id="tt48" class="ng-binding">2.7.1
                                                     Animal Bite - Snake Bite</td>
 
-                                                <td><input name="pformcountmale" type="text" class="form-control  ">
+                                                <td><input name="pformcountmale" type="text" value="" class="form-control  ">
                                                 </td>
 
-                                                <td><input name="pformcountfemale" type="text" class="form-control  ">
+                                                <td><input name="pformcountfemale" type="text" value="" class="form-control  ">
                                                 </td>
 
-                                                <td><input name="pformdeathcountmale" type="text"
+                                                <td><input name="pformdeathcountmale" type="text" value=""
                                                         class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control  "
                                                         ng-value="(( s.name == 'Unknown')&amp;&amp;(s.casesfemalelt5yr == 0)  ?'':s.casesfemalelt5yr)">
                                                 </td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control  ">
                                                 </td>
 
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
                                                         readonly="readonly" tabindex="-1"></td>
                                             </tr>
@@ -967,43 +977,43 @@
                                                 <td style="width: 470px;" id="tt61" class="ng-binding">2.7.2
                                                     Animal Bite - Dog Bite</td>
 
-                                                <td><input name="pformcountmale" type="text" class="form-control  ">
+                                                <td><input name="pformcountmale" type="text" value="" class="form-control  ">
                                                 </td>
 
-                                                <td><input name="pformcountfemale" type="text" class="form-control  ">
+                                                <td><input name="pformcountfemale" type="text" value="" class="form-control  ">
                                                 </td>
 
-                                                <td><input name="pformdeathcountmale" type="text"
+                                                <td><input name="pformdeathcountmale" type="text" value=""
                                                         class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control  "
                                                         ng-value="(( s.name == 'Unknown')&amp;&amp;(s.casesfemalelt5yr == 0)  ?'':s.casesfemalelt5yr)">
                                                 </td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control  ">
                                                 </td>
 
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
                                                         readonly="readonly" tabindex="-1"></td>
                                             </tr>
@@ -1011,43 +1021,43 @@
                                                 <td style="width: 470px;" id="tt5" class="ng-binding">2.7.4
                                                     Animal Bite - Others</td>
 
-                                                <td><input name="pformcountmale" type="text" class="form-control  ">
+                                                <td><input name="pformcountmale" type="text" value="" class="form-control  ">
                                                 </td>
 
-                                                <td><input name="pformcountfemale" type="text" class="form-control  ">
+                                                <td><input name="pformcountfemale" type="text" value="" class="form-control  ">
                                                 </td>
 
-                                                <td><input name="pformdeathcountmale" type="text"
+                                                <td><input name="pformdeathcountmale" type="text" value=""
                                                         class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control  "
                                                         ng-value="(( s.name == 'Unknown')&amp;&amp;(s.casesfemalelt5yr == 0)  ?'':s.casesfemalelt5yr)">
                                                 </td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control  ">
                                                 </td>
 
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
                                                         readonly="readonly" tabindex="-1"></td>
                                             </tr>
@@ -1055,43 +1065,43 @@
                                                 <td style="width: 470px;" id="tt84" class="ng-binding">2.7.5
                                                     Leptospirosis RDT</td>
 
-                                                <td><input name="pformcountmale" type="text" class="form-control  ">
+                                                <td><input name="pformcountmale" type="text" value="" class="form-control  ">
                                                 </td>
 
-                                                <td><input name="pformcountfemale" type="text" class="form-control  ">
+                                                <td><input name="pformcountfemale" type="text" value="" class="form-control  ">
                                                 </td>
 
-                                                <td><input name="pformdeathcountmale" type="text"
+                                                <td><input name="pformdeathcountmale" type="text" value=""
                                                         class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control  "
                                                         ng-value="(( s.name == 'Unknown')&amp;&amp;(s.casesfemalelt5yr == 0)  ?'':s.casesfemalelt5yr)">
                                                 </td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control  ">
                                                 </td>
 
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
                                                         readonly="readonly" tabindex="-1"></td>
                                             </tr>
@@ -1099,43 +1109,43 @@
                                                 <td style="width: 470px;" id="tt56" class="ng-binding">2.14.1
                                                     Others</td>
 
-                                                <td><input name="pformcountmale" type="text" class="form-control  ">
+                                                <td><input name="pformcountmale" type="text" value="" class="form-control  ">
                                                 </td>
 
-                                                <td><input name="pformcountfemale" type="text" class="form-control  ">
+                                                <td><input name="pformcountfemale" type="text" value="" class="form-control  ">
                                                 </td>
 
-                                                <td><input name="pformdeathcountmale" type="text"
+                                                <td><input name="pformdeathcountmale" type="text" value=""
                                                         class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control  "
                                                         ng-value="(( s.name == 'Unknown')&amp;&amp;(s.casesfemalelt5yr == 0)  ?'':s.casesfemalelt5yr)">
                                                 </td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control  ">
                                                 </td>
 
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
                                                         readonly="readonly" tabindex="-1"></td>
                                             </tr>
@@ -1143,12 +1153,12 @@
                                     </table>
                                 </div>
 
-                                <div class="alert alert-success ng-hide" style="margin-top: 5px" ng-show="surDataSaved"
+                                <div class="alert alert-success " style="margin-top: 5px" ng-show="surDataSaved"
                                     role="alert">
                                     Data Saved
                                     Successfully</div>
-                                <button ng-disabled="aggform.$invalid" class="btn btn-primary printhide"
-                                    ng-click="SurviellanceDataSave()" style="margin: 5px;">
+                                <button id="submitformdata" class="btn btn-primary printhide"
+                                    style="margin: 5px;">
                                     <span class="tooltipid tooltipstered" data-placement="right">Save</span></button>
                             </form>
                         </div>
@@ -1314,14 +1324,14 @@
                                                     </table>
                                                 </div>
 
-                                                <div class="alert alert-success ng-hide" style="margin-top: 5px"
-                                                    ng-show="surDataSaved" role="alert">Data Saved
+                                                <div class="alert alert-success" style="margin-top: 5px"
+                                                   role="alert">Data Saved
                                                     Successfully</div>
-                                                <button ng-disabled="aggform.$invalid" class="btn btn-primary printhide"
-                                                    ng-click="SurviellanceDataSave()" style="margin: 5px;"
-                                                    disabled="disabled">
+                                                <button  class="btn btn-primary "
+                                                    style="margin: 5px;" 
+                                                   >
                                                     <span class="tooltipid tooltipstered"
-                                                        data-placement="right">Save</span></button>
+                                                        data-placement="right" >Save</span></button>
                                             </form>
                                         </div>
                                     </div>
@@ -1375,7 +1385,7 @@
                                                                 Name<span style="color: red">*</span>
                                                             </label> <input
                                                                 class="form-control ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required ng-valid-pattern"
-                                                                id="firstname" name="firstname" type="text"
+                                                                id="firstname" name="firstname" type="text" value=""
                                                                 ng-required="true" ng-pattern="/^[a-zA-Z'.,-]{0,150}$/"
                                                                 required="required">
                                                             <div class="error ng-hide"
@@ -1394,7 +1404,7 @@
                                                                 Name</label> <input
                                                                 class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
                                                                 id="middlename" name="middlename"
-                                                                ng-pattern="/^[a-zA-Z'.,-]{0,150}$/" type="text">
+                                                                ng-pattern="/^[a-zA-Z'.,-]{0,150}$/" type="text" value="">
                                                             <div class="error ng-hide"
                                                                 ng-show=" deathcaseform.middlename.$dirty &amp;&amp;  deathcaseform.middlename.$invalid">
                                                                 <small class="error ng-hide"
@@ -1407,7 +1417,7 @@
                                                                 Name</label> <input
                                                                 class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
                                                                 id="lastname" name="lastname"
-                                                                ng-pattern="/^[a-zA-Z'.,-]{0,150}$/" type="text">
+                                                                ng-pattern="/^[a-zA-Z'.,-]{0,150}$/" type="text" value="">
                                                             <div class="error ng-hide"
                                                                 ng-show=" deathcaseform.lastname.$dirty &amp;&amp;  deathcaseform.lastname.$invalid">
                                                                 <small class="error ng-hide"
@@ -1442,7 +1452,7 @@
 
                                                             <div class="input-group input-append date ageclass"
                                                                 data-provide="datepicker">
-                                                                <input type="text"
+                                                                <input type="text" value=""
                                                                     class="form-control ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required ng-valid-pattern"
                                                                     name="dateofbirth" placeholder="dd/mm/yyyy"
                                                                     required="required"> <span
@@ -1663,7 +1673,7 @@
                                                 Id
                                                 type<span style="color: red">*</span></label> <input
                                                 class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-required"
-                                                style="min-width: 140px" id="other" type="text"
+                                                style="min-width: 140px" id="other" type="text" value=""
                                                 ng-required="patient.identityType.patientidtype === 'Others'"
                                                 name="other">
                                             <div class="error ng-hide"
@@ -1681,7 +1691,7 @@
                                                     2.10. Identification Number</span><span
                                                     style="color: red">*</span></label> <input
                                                 class="form-control ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required"
-                                                id="patientidnumber" type="text" style="min-width: 140px"
+                                                id="patientidnumber" type="text" value="" style="min-width: 140px"
                                                 ng-required="patient.identityType.patientidtype !== 'Not Available'"
                                                 ng-blur="getPDbyIdType(patient,'main')" name="patientidnumber"
                                                 required="required">
@@ -2047,7 +2057,7 @@
                                                 <span class="tooltipid tooltipstered" data-placement="right">2.15. House
                                                     No</span></label> <input
                                                 class="form-control ng-pristine ng-untouched ng-valid ng-empty"
-                                                id="houseno" type="text">
+                                                id="houseno" type="text" value="">
                                         </div>
 
 
@@ -2056,7 +2066,7 @@
                                                 <span class="tooltipid tooltipstered" data-placement="right">2.16.
                                                     Street Name</span></label> <input
                                                 class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-maxlength"
-                                                id="streetname" type="text" name="streetname" ng-maxlength="100">
+                                                id="streetname" type="text" value="" name="streetname" ng-maxlength="100">
                                             <div class="error ng-hide"
                                                 ng-show=" deathcaseform.streetname.$dirty &amp;&amp; deathcaseform.streetname.$invalid">
                                                 <small class="error ng-hide"
@@ -2069,7 +2079,7 @@
                                                 <span class="tooltipid tooltipstered" data-placement="right">2.17.
                                                     Landmark</span></label> <input
                                                 class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-maxlength"
-                                                id="streetname" type="text" name="landmark" ng-maxlength="100">
+                                                id="streetname" type="text" value="" name="landmark" ng-maxlength="100">
                                             <div class="error ng-hide"
                                                 ng-show=" deathcaseform.landmark.$dirty &amp;&amp; deathcaseform.landmark.$invalid">
                                                 <small class="error ng-hide"
@@ -2107,7 +2117,7 @@
                                                 Death
                                                 Cause<span style="color: red">*</span></label> <input
                                                 class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-maxlength"
-                                                style="min-width: 140px" id="otherdc" type="text" max="128"
+                                                style="min-width: 140px" id="otherdc" type="text" value="" max="128"
                                                 ng-maxlength="128" name="otherdc">
                                             <div class="error ng-hide"
                                                 ng-show="deathcaseform.otherdc.$dirty &amp;&amp; deathcaseform.otherdc.$invalid">
@@ -2127,7 +2137,7 @@
                                             </label>
                                             <div class="input-group input-append date dateclass"
                                                 data-provide="datepicker">
-                                                <input type="text"
+                                                <input type="text" value=""
                                                     class="form-control ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required ng-valid-pattern"
                                                     id="dateofdeath" name="dateofdeath" ng-required="true"
                                                     placeholder="dd/mm/yyyy" style="min-width: 80px;"
@@ -2173,7 +2183,7 @@
                                                         Remarks</span></label>
                                                 <input
                                                     class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-maxlength"
-                                                    id="remarks" type="text" name="remarks" ng-maxlength="500">
+                                                    id="remarks" type="text" value="" name="remarks" ng-maxlength="500">
                                                 <div class="error ng-hide"
                                                     ng-show=" deathcaseform.remarks.$dirty &amp;&amp; deathcaseform.remarks.$invalid">
                                                     <small class="error ng-hide"
@@ -2202,9 +2212,7 @@
 								</div> -->
                                                 <div class="form-group col-xs-6" style="padding-left: 6px;">
                                                     <button class="btn btn-primary"
-                                                        ng-click="save_Patient_Details_of_deathCases()"
-                                                        ng-disabled="deathcaseform.$invalid || showDateError || showdoberror || showdoberror ||showDobAgeError || iderror"
-                                                        disabled="disabled">
+                                                       >
                                                         <span class="tooltipid tooltipstered"
                                                             data-placement="right">Save</span></button>
                                                     <button class="btn btn-primary" ng-click="restReportingForm()">
@@ -2271,7 +2279,7 @@
                                     submitted on 2023-10-03 14:27:22</div>
                                 <button class="btn btn-primary printhide" ng-click="openSubmissionAlertModal()"
                                     style="margin: 5px;"><span class="tooltipid tooltipstered"
-                                        data-placement="right">Submit</span></button>
+                                        data-placement="right" >Submit</span></button>
 
                             </div>
 
@@ -2298,284 +2306,412 @@
 
 
         <script>
+
+
         $(document).ready(function() {
-            // $("#first-name-error").text("New word");
-            // console.log(fname);
-            //Detect that a user has started entering their name itno the name input
-            // Name can't be blank
-            $('#first-name').on('input', function() {
-                var input = $(this);
 
-                var is_name = input.val();
-                var regex = /^[A-Za-z\s]{1,}[\.]{0,1}[A-Za-z\s]{0,}$/;
-                var name = regex.test(is_name);
-                if (name) {
-                    $("#first-name-error").text("");
-                    // input.removeClass("invalid").addClass("valid");
-                } else {
-                    $("#first-name-error").text("Please enter valid name");
+
+            $('input[type=text]').each(function(){
+                $(this).on('keyup',function(e){
+                    let formId=e.target.id;
+                    let arrayId=formId.split("_");
+
+                    
+              
+                    $(`#${arrayId[0]}_form_count_male_total`).val(Number($(`#${arrayId[0]}_form_count_male_age_less_5`).val()) + Number($(`#${arrayId[0]}_form_count_male_age_greater_5`).val()));
+
+                    if($(`#${arrayId[0]}_form_count_male_total`).val()==0){
+                    $(`#${arrayId[0]}_form_count_male_total`).val("");
+
+                    }
+                    
+                    $(`#${arrayId[0]}_form_count_female_total`).val(Number($(`#${arrayId[0]}_form_count_female_age_less_5`).val()) + Number($(`#${arrayId[0]}_form_count_female_age_greater_5`).val()));
+                    if($(`#${arrayId[0]}_form_count_female_total`).val()==0){
+                    $(`#${arrayId[0]}_form_count_female_total`).val("");
+
+                    }
+
+                    $(`#${arrayId[0]}_form_count_grand_total`).val(Number($(`#${arrayId[0]}_form_count_male_total`).val()) + Number($(`#${arrayId[0]}_form_count_female_total`).val()));
+                
+
+
+
+
+
+
+                })
+            })
+
+
+
+
+
+
+
+
+
+            $('#submitformdata').on('click',function(e){
+            e.preventDefault();
+
+            let data={};
+
+            $('input[type=text]').each(function() { 
+             
+                if($(this).val()){
+                    data[$(this).attr("id")]=$(this).val();
                 }
+        //         $(this).on('keyup',function(e){
+        // //      if(e.target.id=='only_fever_greater_7_days_form_count_male'){
+               
+        // //            console.log(e.target.value);
+        // //      }
+            
+        //   });
+
             });
 
-            $('#last-name').on('input', function() {
-                var input = $(this);
+            data['_token']= $('meta[name="csrf-token"]').attr('content')
 
-                var is_name = input.val();
-                var regex = /^[A-Za-z\s]{1,}[\.]{0,1}[A-Za-z\s]{0,}$/;
-                var name = regex.test(is_name);
-                if (name) {
-                    $("#last-name-error").text("");
-                    // input.removeClass("invalid").addClass("valid");
-                } else {
-                    $("#last-name-error").text("Please enter valid last name");
-                }
-            });
+            console.log(data);
+            
 
+        //         let onlyfevergreaterthanequal7days_form_count_male_age_less_5 = $('#onlyfevergreaterthanequal7days_form_count_male_age_less_5').val();
+        //    let onlyfevergreaterthanequal7days_form_count_male_age_greater_5 = $('#onlyfevergreaterthanequal7days_form_count_male_age_greater_5').val();
+        //    let onlyfevergreaterthanequal7days_form_count_female_age_less_5 = $('#onlyfevergreaterthanequal7days_form_count_female_age_less_5').val();
+        //    let onlyfevergreaterthanequal7days_form_count_female_age_greater_5 = $('#onlyfevergreaterthanequal7days_form_count_female_age_greater_5').val();
 
-
-            $('#dob').on('click', function() {
-                var input = $(this);
-
-                var is_name = input.val();
-                if (is_name == "") {
-                    $("#dob-error").text("Dob is required");
-                    // input.removeClass("invalid").addClass("valid");
-                } else {
-                    $("#dob-error").text("");
-                }
-            });
+        // {
+            
+        //     onlyfevergreaterthanequal7days_form_count_male_age_less_5 : onlyfevergreaterthanequal7days_form_count_male_age_less_5,
+        //     onlyfevergreaterthanequal7days_form_count_male_age_greater_5 : onlyfevergreaterthanequal7days_form_count_male_age_greater_5,
+        //     onlyfevergreaterthanequal7days_form_count_female_age_less_5 : onlyfevergreaterthanequal7days_form_count_female_age_less_5,
+        //     onlyfevergreaterthanequal7days_form_count_female_age_greater_5 : onlyfevergreaterthanequal7days_form_count_female_age_greater_5,
+        //     _token: $('meta[name="csrf-token"]').attr('content')
+        // },
 
 
-            $('#gander').on('click', function() {
-                var input = $(this);
-
-                var is_name = input.val();
-                if (is_name == "Select Your Gender") {
-                    $("#gander-error").text("Gander  is required");
-                    // input.removeClass("invalid").addClass("valid");
-                } else {
-                    $("#gander-error").text("");
-                }
-            });
-
-            $('#id-type').on('click', function() {
-                var input = $(this);
-
-                var is_name = input.val();
-                if (is_name == "Select Your id-type") {
-                    $("#id-type-error").text("Id Type  is required");
-                    // input.removeClass("invalid").addClass("valid");
-                } else {
-                    $("#gander-error").text("");
-                }
-            });
-
-            $('#identification').on('input', function() {
-                var input = $(this);
-
-                var is_name = input.val();
-                var regex = /^[0-9]+$/;
-                var name = regex.test(is_name);
 
 
-                if (name) {
-                    $("#identification-error").text("");
-                    // input.removeClass("invalid").addClass("valid");
-                } else {
-                    $("#identification-error").text("Please enter valid identity no");
-                }
-            });
+
+           $.ajax({ 
+                    type: "POST",
+                    url: "{{ url('addpatient') }}", 
+                    data:data, 
+                    dataType: 'json',
+                    success: function(res) {
+                        console.log(res);
+                      
+                    }
 
 
-            $('#citizenship').on('click', function() {
-                var input = $(this);
 
-                var is_name = input.val();
-                if (is_name == "Select Your Citizenship") {
-                    $("#citizenship-error").text("citizenship   is required");
-                    // input.removeClass("invalid").addClass("valid");
-                } else {
-                    $("#citizenship-error").text("");
-                }
-            });
+                });
 
 
-            $('#house-no').on('input', function() {
-                var input = $(this);
-
-                var is_name = input.val();
-                if (is_name == "") {
-                    $("#house-no-error").text("House no is required");
-                    // input.removeClass("invalid").addClass("valid");
-                } else {
-                    $("#house-no-error").text("");
-                }
-            });
-
-            $('#state').on('click', function() {
-                var input = $(this);
-
-                var is_name = input.val();
-                if (is_name == "Select Your state") {
-                    $("#state-error").text("state number  is required");
-                    // input.removeClass("invalid").addClass("valid");
-                } else {
-                    $("#gander-error").text("");
-                }
-            });
-
-            $('#district').on('click', function() {
-                var input = $(this);
-
-                var is_name = input.val();
-                if (is_name == "Select Your district") {
-                    $("#district-error").text("district number  is required");
-                    // input.removeClass("invalid").addClass("valid");
-                } else {
-                    $("#gander-error").text("");
-                }
-            });
-
-            $('#taluka').on('click', function() {
-                var input = $(this);
-
-                var is_name = input.val();
-                if (is_name == "Select Your taluka") {
-                    $("#taluka-error").text("taluka number  is required");
-                    // input.removeClass("invalid").addClass("valid");
-                } else {
-                    $("#gander-error").text("");
-                }
-            });
-
-            $('#village').on('click', function() {
-                var input = $(this);
-
-                var is_name = input.val();
-                if (is_name == "Select Your village") {
-                    $("#village-error").text("Village number  is required");
-                    // input.removeClass("invalid").addClass("valid");
-                } else {
-                    $("#gander-error").text("");
-                }
-            });
-
-            $('#street-name').on('input', function() {
-                var input = $(this);
-
-                var is_name = input.val();
-                if (is_name == "") {
-                    $("#street-name-error").text("Street-name  is required");
-                    // input.removeClass("invalid").addClass("valid");
-                } else {
-                    $("#street-name-error").text("");
-                }
-            });
-
-            $('#landmark').on('input', function() {
-                var input = $(this);
-
-                var is_name = input.val();
-                if (is_name == "") {
-                    $("#landmark-error").text("Landmark  is required");
-                    // input.removeClass("invalid").addClass("valid");
-                } else {
-                    $("#landmark-error").text("");
-                }
-            });
-
-            $('#pin-code').on('input', function() {
-                var input = $(this);
-
-                var is_name = input.val();
-                var regex = /^[0-9]+$/;
-                var name = regex.test(is_name);
-
-                if (name) {
-                    $("#pin-code-error").text("");
-                    // input.removeClass("invalid").addClass("valid");
-                } else {
-                    $("#pin-code-error").text("Please enter valid pin code");
-                }
-            });
-
-            $('#provisinal-diagnosis').on('click', function() {
-                var input = $(this);
-
-                var is_name = input.val();
-                if (is_name == "Select Your Diagnosis") {
-                    $("#provisinal-diagnosis-error").text("Diagnosis number  is required");
-                    // input.removeClass("invalid").addClass("valid");
-                } else {
-                    $("#gander-error").text("");
-                }
-            });
-
-            $('#date-of-onset').on('input', function() {
-                var input = $(this);
-
-                var is_name = input.val();
-                if (is_name == "") {
-                    $("#date-of-onset-error").text("date-of-onset  is required");
-                    // input.removeClass("invalid").addClass("valid");
-                } else {
-                    $("#pin-code-error").text("");
-                }
-            });
+           
 
 
-            $('#OPD-IPD').on('click', function() {
-                var input = $(this);
-
-                var is_name = input.val();
-                if (is_name == "Select Your OPD-IPD") {
-                    $("#opd-ipd-error").text("OPD/IPD is required");
-                    // input.removeClass("invalid").addClass("valid");
-                } else {
-                    $("#opd-ipd-error").text("");
-                }
-            });
-
-            // Email must be an email
-            $('#contact_email').on('input', function() {
-                var input = $(this);
-                var re = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-                var is_email = re.test(input.val());
-                if (is_email) {
-                    input.removeClass("invalid").addClass("valid");
-                } else {
-                    input.removeClass("valid").addClass("invalid");
-                }
-            });
-            // Website must be a website
-            $('#contact_website').on('input', function() {
-                var input = $(this);
-                if (input.val().substring(0, 4) == 'www.') {
-                    input.val('http://www.' + input.val().substring(4));
-                }
-                var re =
-                    /(http|ftp|https):\/\/[\w-]+(\.[\w-]+)+([\w.,@?^=%&:\/~+#-]*[\w@?^=%&\/~+#-])?/;
-                var is_url = re.test(input.val());
-                if (is_url) {
-                    input.removeClass("invalid").addClass("valid");
-                } else {
-                    input.removeClass("valid").addClass("invalid");
-                }
-            });
-            // Message can't be blank
-            $('#contact_message').keyup(function(event) {
-                var input = $(this);
-                var message = $(this).val();
-                console.log(message);
-                if (message) {
-                    input.removeClass("invalid").addClass("valid");
-                } else {
-                    input.removeClass("valid").addClass("invalid");
-                }
-            });
-            // After Form Submitted Validation
-
+            })
+         
+           
         });
+
+
+        //    //   $('input[type=text]').each(function() { 
+            
+
+
+
+
+
+        //     //  $(this).on('keyup',function(e){
+        //     //     if(e.target.id=='only_fever_greater_7_days_form_count_male'){
+               
+        //     //      console.log(e.target.value);
+        //     //     }
+            
+        //     // });
+                
+        //     //   });
+        //     // // $("#first-name-error").text("New word");
+        //     // console.log(fname);
+        //     //Detect that a user has started entering their name itno the name input
+        //     // Name can't be blank
+        //     $('#first-name').on('input', function() {
+        //         var input = $(this);
+
+        //         var is_name = input.val();
+        //         var regex = /^[A-Za-z\s]{1,}[\.]{0,1}[A-Za-z\s]{0,}$/;
+        //         var name = regex.test(is_name);
+        //         if (name) {
+        //             $("#first-name-error").text("");
+        //             // input.removeClass("invalid").addClass("valid");
+        //         } else {
+        //             $("#first-name-error").text("Please enter valid name");
+        //         }
+        //     });
+
+        //     $('#last-name').on('input', function() {
+        //         var input = $(this);
+
+        //         var is_name = input.val();
+        //         var regex = /^[A-Za-z\s]{1,}[\.]{0,1}[A-Za-z\s]{0,}$/;
+        //         var name = regex.test(is_name);
+        //         if (name) {
+        //             $("#last-name-error").text("");
+        //             // input.removeClass("invalid").addClass("valid");
+        //         } else {
+        //             $("#last-name-error").text("Please enter valid last name");
+        //         }
+        //     });
+
+
+
+        //     $('#dob').on('click', function() {
+        //         var input = $(this);
+
+        //         var is_name = input.val();
+        //         if (is_name == "") {
+        //             $("#dob-error").text("Dob is required");
+        //             // input.removeClass("invalid").addClass("valid");
+        //         } else {
+        //             $("#dob-error").text("");
+        //         }
+        //     });
+
+
+        //     $('#gander').on('click', function() {
+        //         var input = $(this);
+
+        //         var is_name = input.val();
+        //         if (is_name == "Select Your Gender") {
+        //             $("#gander-error").text("Gander  is required");
+        //             // input.removeClass("invalid").addClass("valid");
+        //         } else {
+        //             $("#gander-error").text("");
+        //         }
+        //     });
+
+        //     $('#id-type').on('click', function() {
+        //         var input = $(this);
+
+        //         var is_name = input.val();
+        //         if (is_name == "Select Your id-type") {
+        //             $("#id-type-error").text("Id Type  is required");
+        //             // input.removeClass("invalid").addClass("valid");
+        //         } else {
+        //             $("#gander-error").text("");
+        //         }
+        //     });
+
+        //     $('#identification').on('input', function() {
+        //         var input = $(this);
+
+        //         var is_name = input.val();
+        //         var regex = /^[0-9]+$/;
+        //         var name = regex.test(is_name);
+
+
+        //         if (name) {
+        //             $("#identification-error").text("");
+        //             // input.removeClass("invalid").addClass("valid");
+        //         } else {
+        //             $("#identification-error").text("Please enter valid identity no");
+        //         }
+        //     });
+
+
+        //     $('#citizenship').on('click', function() {
+        //         var input = $(this);
+
+        //         var is_name = input.val();
+        //         if (is_name == "Select Your Citizenship") {
+        //             $("#citizenship-error").text("citizenship   is required");
+        //             // input.removeClass("invalid").addClass("valid");
+        //         } else {
+        //             $("#citizenship-error").text("");
+        //         }
+        //     });
+
+
+        //     $('#house-no').on('input', function() {
+        //         var input = $(this);
+
+        //         var is_name = input.val();
+        //         if (is_name == "") {
+        //             $("#house-no-error").text("House no is required");
+        //             // input.removeClass("invalid").addClass("valid");
+        //         } else {
+        //             $("#house-no-error").text("");
+        //         }
+        //     });
+
+        //     $('#state').on('click', function() {
+        //         var input = $(this);
+
+        //         var is_name = input.val();
+        //         if (is_name == "Select Your state") {
+        //             $("#state-error").text("state number  is required");
+        //             // input.removeClass("invalid").addClass("valid");
+        //         } else {
+        //             $("#gander-error").text("");
+        //         }
+        //     });
+
+        //     $('#district').on('click', function() {
+        //         var input = $(this);
+
+        //         var is_name = input.val();
+        //         if (is_name == "Select Your district") {
+        //             $("#district-error").text("district number  is required");
+        //             // input.removeClass("invalid").addClass("valid");
+        //         } else {
+        //             $("#gander-error").text("");
+        //         }
+        //     });
+
+        //     $('#taluka').on('click', function() {
+        //         var input = $(this);
+
+        //         var is_name = input.val();
+        //         if (is_name == "Select Your taluka") {
+        //             $("#taluka-error").text("taluka number  is required");
+        //             // input.removeClass("invalid").addClass("valid");
+        //         } else {
+        //             $("#gander-error").text("");
+        //         }
+        //     });
+
+        //     $('#village').on('click', function() {
+        //         var input = $(this);
+
+        //         var is_name = input.val();
+        //         if (is_name == "Select Your village") {
+        //             $("#village-error").text("Village number  is required");
+        //             // input.removeClass("invalid").addClass("valid");
+        //         } else {
+        //             $("#gander-error").text("");
+        //         }
+        //     });
+
+        //     $('#street-name').on('input', function() {
+        //         var input = $(this);
+
+        //         var is_name = input.val();
+        //         if (is_name == "") {
+        //             $("#street-name-error").text("Street-name  is required");
+        //             // input.removeClass("invalid").addClass("valid");
+        //         } else {
+        //             $("#street-name-error").text("");
+        //         }
+        //     });
+
+        //     $('#landmark').on('input', function() {
+        //         var input = $(this);
+
+        //         var is_name = input.val();
+        //         if (is_name == "") {
+        //             $("#landmark-error").text("Landmark  is required");
+        //             // input.removeClass("invalid").addClass("valid");
+        //         } else {
+        //             $("#landmark-error").text("");
+        //         }
+        //     });
+
+        //     $('#pin-code').on('input', function() {
+        //         var input = $(this);
+
+        //         var is_name = input.val();
+        //         var regex = /^[0-9]+$/;
+        //         var name = regex.test(is_name);
+
+        //         if (name) {
+        //             $("#pin-code-error").text("");
+        //             // input.removeClass("invalid").addClass("valid");
+        //         } else {
+        //             $("#pin-code-error").text("Please enter valid pin code");
+        //         }
+        //     });
+
+        //     $('#provisinal-diagnosis').on('click', function() {
+        //         var input = $(this);
+
+        //         var is_name = input.val();
+        //         if (is_name == "Select Your Diagnosis") {
+        //             $("#provisinal-diagnosis-error").text("Diagnosis number  is required");
+        //             // input.removeClass("invalid").addClass("valid");
+        //         } else {
+        //             $("#gander-error").text("");
+        //         }
+        //     });
+
+        //     $('#date-of-onset').on('input', function() {
+        //         var input = $(this);
+
+        //         var is_name = input.val();
+        //         if (is_name == "") {
+        //             $("#date-of-onset-error").text("date-of-onset  is required");
+        //             // input.removeClass("invalid").addClass("valid");
+        //         } else {
+        //             $("#pin-code-error").text("");
+        //         }
+        //     });
+
+
+        //     $('#OPD-IPD').on('click', function() {
+        //         var input = $(this);
+
+        //         var is_name = input.val();
+        //         if (is_name == "Select Your OPD-IPD") {
+        //             $("#opd-ipd-error").text("OPD/IPD is required");
+        //             // input.removeClass("invalid").addClass("valid");
+        //         } else {
+        //             $("#opd-ipd-error").text("");
+        //         }
+        //     });
+
+        //     // Email must be an email
+        //     $('#contact_email').on('input', function() {
+        //         var input = $(this);
+        //         var re = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+        //         var is_email = re.test(input.val());
+        //         if (is_email) {
+        //             input.removeClass("invalid").addClass("valid");
+        //         } else {
+        //             input.removeClass("valid").addClass("invalid");
+        //         }
+        //     });
+        //     // Website must be a website
+        //     $('#contact_website').on('input', function() {
+        //         var input = $(this);
+        //         if (input.val().substring(0, 4) == 'www.') {
+        //             input.val('http://www.' + input.val().substring(4));
+        //         }
+        //         var re =
+        //             /(http|ftp|https):\/\/[\w-]+(\.[\w-]+)+([\w.,@?^=%&:\/~+#-]*[\w@?^=%&\/~+#-])?/;
+        //         var is_url = re.test(input.val());
+        //         if (is_url) {
+        //             input.removeClass("invalid").addClass("valid");
+        //         } else {
+        //             input.removeClass("valid").addClass("invalid");
+        //         }
+        //     });
+        //     // Message can't be blank
+        //     $('#contact_message').keyup(function(event) {
+        //         var input = $(this);
+        //         var message = $(this).val();
+        //         console.log(message);
+        //         if (message) {
+        //             input.removeClass("invalid").addClass("valid");
+        //         } else {
+        //             input.removeClass("valid").addClass("invalid");
+        //         }
+        //     });
+        //     // After Form Submitted Validation
+
+        // });
+
+
         </script>
 
 
