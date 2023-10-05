@@ -1,3 +1,5 @@
+
+<link rel="stylesheet" src="https://netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"></link>
 <style>
     
 h1 {
@@ -12,7 +14,10 @@ h1 a {
   color: #c12c42;
   font-size: 16px;
 }
-
+ul {
+    list-style: none;
+    padding: 0;
+}
 .accordion {
   width: 100%;
   max-width: 360px;
@@ -135,6 +140,7 @@ h1 a {
 </nav> -->
 
 
+
 <ul id="accordion" class="accordion">
   <li>
     <div class="link bg-primary text-white"> <i class="nav-icon fas fa-tachometer-alt text-light"></i> <a href="#">Dashboard</a> </i></div>
@@ -162,7 +168,7 @@ h1 a {
 </ul>
 
 
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 
 <script>
     $(function() {
