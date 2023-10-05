@@ -126,6 +126,7 @@ class MainController extends Controller
     //p form
     public function humanRabiesMap(Request $request)
     {
+
         $states = DB::table('states')->get();
         $human_rabiess = DB::table('pform_human_rabies')->get();
         $currentYear = date('Y');
@@ -135,10 +136,12 @@ class MainController extends Controller
         $total_human_rabies = 0; // Initialize a variable to hold the total
         $array = [];
         foreach ($states as $value) {
-            if ($request->setyear != '')
+            if ($request->setyear != ''){
                 $human_rabies = DB::table('pform_human_rabies')->where('state_id', $value->id)->where('year', $request->setyear)->sum('cases');
-            else {
+                //dd($human_rabies);
+            }else {
                 $human_rabies = DB::table('pform_human_rabies')->where('state_id', $value->id)->where('year', $previousYear)->sum('cases');
+
             }
 
             $total_human_rabies += $human_rabies; // Accumulate the sum
@@ -150,6 +153,7 @@ class MainController extends Controller
 
     public function humanRabiesDeath(Request $request)
     {
+        //dd($request->all());
         $states = DB::table('states')->get();
         $statess = DB::table('states')->where('state_name', '=', $request->name)->first();
         //dd($statess);

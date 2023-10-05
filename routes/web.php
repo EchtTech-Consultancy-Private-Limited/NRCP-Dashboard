@@ -22,7 +22,7 @@ Route::get('/', function () {
 //Admin Routes Start
 Route::get('dashboard', [MainController::class, 'dashboard'])->name('dashboard');
 Route::get('pform', [MainController::class, 'pformview'])->name('pform');
-Route::get('sform', [MainController::class, 'sformview']); 
+Route::get('sform', [MainController::class, 'sformview']);
 
 Route::get('sform', [MainController::class, 'sformview'])->name('sform');
 Route::get('pform2', [MainController::class, 'pform2view'])->name('pform2');
