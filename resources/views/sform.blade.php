@@ -1772,7 +1772,7 @@
 
 
                                     </div>
-                                    <div class="row">
+                                    <div class="row m-0">
                                         <label class="col-xs-2 control-label" style="max-width: 123px;"></label>
 
                                         <div class="form-group col-xs-2">
@@ -1821,7 +1821,7 @@
                                                     Details:</span></b>
                                         </legend>
 
-                                        <div class="row">
+                                        <div class="row m-0">
                                         <div class="form-group col-xs-4">
                                             <label for="deathcause" class="labelchange">
                                                 <span class="tooltipid tooltipstered" data-placement="right">3.1.

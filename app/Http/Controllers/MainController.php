@@ -28,9 +28,9 @@ class MainController extends Controller
         return view("sform");
     }
 
-    public function pform2view()
+    public function pformDashboardview()
     {
-        return view('pform-two');
+        return view('pformDashboard');
     }
 
 
