@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MainController;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,8 +20,12 @@ Route::get('/', function () {
 });
 
 //Admin Routes Start
-Route::get('dashboard', [MainController::class, 'dashboard']);
-Route::get('pform', [MainController::class, 'pformview']);
+Route::get('dashboard', [MainController::class, 'dashboard'])->name('dashboard');
+Route::get('pform', [MainController::class, 'pformview'])->name('pform');
+Route::get('sform', [MainController::class, 'sformview']); 
+
+Route::get('sform', [MainController::class, 'sformview'])->name('sform');
+Route::get('pform2', [MainController::class, 'pform2view'])->name('pform2');
 
 //Route::get('login', [MainController::class, 'login'])->name('login');
 

@@ -76,6 +76,17 @@ class MainController extends Controller
     {
         return view("pform");
     }
+    public function sformView()
+
+    {
+        return view("sform");
+    }
+
+    public function pform2view()
+    {
+        return view('pform-two');
+    }
+
 
     public function login()
     {
