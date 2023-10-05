@@ -26,3 +26,10 @@ Route::get('pform', [MainController::class, 'pformview']);
 
 Route::post('patient-Record',[MainController::class,'patientAdd']);
 
+
+//human rabies
+Route::get('human-rabies',[MainController::class,'humanRabiesMap']);
+Route::get('human-rabies-death',[MainController::class,'humanRabiesDeath']);
+Route::get('human-rabies-death-default',[MainController::class,'humanRabiesDeathdefault']);
+
+
