@@ -97,8 +97,8 @@
                                         <div class="form-group "
                                             ng-show="facilityinfo.health_facility_urban_rural != 2">
                                             <label for="village" class="labelchange"><span
-                                                    class="tooltipid tooltipstered" data-placement="right">Village<span
-                                                        style="color: red">*</span></span></label>
+                                                    class="tooltipid tooltipstered"
+                                                    data-placement="right">Village<span>*</span></span></label>
                                             <select
                                                 class="form-control ng-not-empty ng-dirty ng-valid-parse ng-valid ng-valid-required ng-touched"
                                                 id="village" ng-required="
@@ -118,9 +118,9 @@
                                                 <option label="Hirehalli" value="object:167">Hirehalli</option>
                                                 <option label="Kenchenahalli" value="object:168">Kenchenahalli</option>
                                             </select>
-                                            <div class="error ng-hide"
+                                            <div class="error  "
                                                 ng-show="aggform.village.$dirty &amp;&amp; aggform.village.$invalid">
-                                                <small class="error ng-hide" ng-show="aggform.village.$error.required">
+                                                <small class="error  " ng-show="aggform.village.$error.required">
                                                     Please
                                                     Select Village</small>
                                             </div>
@@ -128,10 +128,9 @@
                                     </div>
 
 
-                                    <div class="form-group col-xs-2 ng-hide"
+                                    <div class="form-group col-xs-2  "
                                         ng-show="facilityinfo.health_facility_urban_rural === 2">
-                                        <label for="village" class="labelchange">Ward<span
-                                                style="color: red">*</span></label>
+                                        <label for="village" class="labelchange">Ward<span>*</span></label>
 
                                         <select
                                             class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-required"
@@ -141,9 +140,8 @@
                                             ng-options="v as v.wardname for v in wardSubcenterList  | orderBy:'wardname'">
                                             <option value="" class="" selected="selected">-----Select-----</option>
                                         </select>
-                                        <div class="error ng-hide"
-                                            ng-show="aggform.ward.$dirty &amp;&amp; aggform.ward.$invalid">
-                                            <small class="error ng-hide" ng-show="aggform.ward.$error.required">
+                                        <div class="error  ">
+                                            <small class="error  ">
                                                 Please
                                                 Select Ward</small>
                                         </div>
@@ -158,7 +156,7 @@
                                         </label><br> <span style="font-size: medium; color: #FF5733;" class="span-text">
                                             29-548-5537-295485537001-162758-03102023-S-1</span>
                                     </div>
-                                    <!-- <div class="row ng-hide" ng-show="facilitynp">
+                                    <!-- <div class="row  " ng-show="facilitynp">
                                         <div class="col-xs-12">
                                             <div class="alert alert-danger" role="alert">There
                                                 seems to be some server issue. Please login again or contact
@@ -176,9 +174,9 @@
                                         <tbody>
                                             <tr>
                                                 <td rowspan="3"></td>
-                                                <td colspan="7" style="text-align: center; font-size: 14px;"><b>Number
+                                                <td colspan="7"><b>Number
                                                         of cases of illness</b></td>
-                                                <td colspan="3" rowspan="2" style="text-align: center; width: 20px"><b>
+                                                <td colspan="3" rowspan="2"><b>
                                                         Number of cases of deaths <br> <a href=""
                                                             ng-click="scrollTo('deathPatientDetailsForm')"
                                                             class="printhide">[click here
@@ -186,12 +184,12 @@
 
                                             </tr>
                                             <tr>
-                                                <td colspan="3" style="text-align: center; font-size: 14px;"><b>Male</b>
+                                                <td colspan="3"><b>Male</b>
                                                 </td>
-                                                <td colspan="3" style="text-align: center; font-size: 14px;">
+                                                <td colspan="3">
                                                     <b>Female</b>
                                                 </td>
-                                                <td rowspan="2" style="text-align: center;"><b>Grand<br>
+                                                <td rowspan="2"><b>Grand<br>
                                                         Total
                                                     </b></td>
 
@@ -210,7 +208,7 @@
                                             </tr>
 
                                             <tr>
-                                                <td style="width: 470px;" id="tt32" class="ng-binding">2.1.1
+                                                <td id="tt32">2.1.1
                                                     Only Fever &gt;= 7 days</td>
 
                                                 <td><input type="text" id="onlyfevergreaterthanequal7days_form_count_male_age_less_5" name="onlyfevergreaterthanequal7days_form_count_male_age_less_5" value="" class="form-control">
@@ -226,6 +224,11 @@
                                                 <td><input id="onlyfevergreaterthanequal7days_form_count_female_age_less_5"     name="onlyfevergreaterthanequal7days_form_count_female_age_less_5" type="text" value=""
                                                         class="form-control  "
                                                        >
+                                                <td><input name="pformdeathcountmale" type="text" class="form-control"
+                                                        readonly="readonly" tabindex="-1"></td>
+
+                                                <td><input name="pformdeathcountfemale" type="text"
+                                                        class="form-control  ">
                                                 </td>
 
                                                 <td><input name="onlyfevergreaterthanequal7days_form_count_female_age_greater_5" id="onlyfevergreaterthanequal7days_form_count_female_age_greater_5"  type="text" value=""
@@ -251,12 +254,25 @@
                                                         readonly="readonly" tabindex="-1"></td>
 
                                                 <td><input name="pformdeathcountfemale" type="text" value=""
-                                                        class="form-control"
+                                                        class="form-control">
+                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                        readonly="readonly" tabindex="-1"></td>
+
+                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                        readonly="readonly" tabindex="-1"></td>
+
+                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                        readonly="readonly" tabindex="-1"></td>
+
+                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                        readonly="readonly" tabindex="-1"></td>
+
+                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
                                             </tr>
 
                                             <tr>
-                                                <td style="width: 470px;" id="tt33" class="ng-binding">2.1.2
+                                                <td id="tt33">2.1.2
                                                     Only Fever &lt; 7 days</td>
 
                                                 <td><input id="onlyfeverlessthan7days_form_count_male_age_less_5"  name="onlyfeverlessthan7days_form_count_male_age_less_5" type="text" value="" class="form-control  ">
@@ -272,6 +288,11 @@
                                                 <td><input name="onlyfeverlessthan7days_form_count_female_age_less_5" type="text" value=""
                                                         class="form-control"
                                                         id="onlyfeverlessthan7days_form_count_female_age_less_5">
+                                                <td><input name="pformdeathcountmale" type="text" class="form-control"
+                                                        readonly="readonly" tabindex="-1"></td>
+
+                                                <td><input name="pformdeathcountfemale" type="text"
+                                                        class="form-control  ">
                                                 </td>
 
                                                 <td><input id="onlyfeverlessthan7days_form_count_female_age_greater_5" name="onlyfeverlessthan7days_form_count_female_age_greater_5" type="text" value=""
@@ -296,13 +317,26 @@
                                                         readonly="readonly" tabindex="-1"></td>
 
                                                 <td><input name="pformdeathcountfemale" type="text" value=""
-                                                        class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
+                                                        class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern">
+                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                        readonly="readonly" tabindex="-1"></td>
+
+                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                        readonly="readonly" tabindex="-1"></td>
+
+                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                        readonly="readonly" tabindex="-1"></td>
+
+                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                        readonly="readonly" tabindex="-1"></td>
+
+                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
                                             </tr>
 
 
                                             <tr>
-                                                <td style="width: 470px;" id="tt20" class="ng-binding">2.1.3
+                                                <td id="tt20">2.1.3
                                                     Fever with Rash</td>
 
                                                 <td><input name="pformcountmale" type="text" value="" class="form-control  ">
@@ -318,6 +352,11 @@
                                                 <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control  "
                                                         ng-value="(( s.name == 'Unknown')&amp;&amp;(s.casesfemalelt5yr == 0)  ?'':s.casesfemalelt5yr)">
+                                                <td><input name="pformdeathcountmale" type="text" class="form-control"
+                                                        readonly="readonly" tabindex="-1"></td>
+
+                                                <td><input name="pformdeathcountfemale" type="text"
+                                                        class="form-control  ">
                                                 </td>
 
                                                 <td><input name="pformdeathcountfemale" type="text" value=""
@@ -342,12 +381,25 @@
                                                         readonly="readonly" tabindex="-1"></td>
 
                                                 <td><input name="pformdeathcountfemale" type="text" value=""
-                                                        class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
+                                                        class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern">
+                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                        readonly="readonly" tabindex="-1"></td>
+
+                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                        readonly="readonly" tabindex="-1"></td>
+
+                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                        readonly="readonly" tabindex="-1"></td>
+
+                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                        readonly="readonly" tabindex="-1"></td>
+
+                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
                                             </tr>
 
                                             <tr>
-                                                <td style="width: 470px;" id="tt18" class="ng-binding">2.1.4
+                                                <td id="tt18">2.1.4
                                                     Fever with Bleeding</td>
 
                                                 <td><input name="pformcountmale" type="text" value="" class="form-control  ">
@@ -363,6 +415,11 @@
                                                 <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control  "
                                                         ng-value="(( s.name == 'Unknown')&amp;&amp;(s.casesfemalelt5yr == 0)  ?'':s.casesfemalelt5yr)">
+                                                <td><input name="pformdeathcountmale" type="text" class="form-control"
+                                                        readonly="readonly" tabindex="-1"></td>
+
+                                                <td><input name="pformdeathcountfemale" type="text"
+                                                        class="form-control  ">
                                                 </td>
 
                                                 <td><input name="pformdeathcountfemale" type="text" value=""
@@ -387,12 +444,25 @@
                                                         readonly="readonly" tabindex="-1"></td>
 
                                                 <td><input name="pformdeathcountfemale" type="text" value=""
-                                                        class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
+                                                        class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern">
+                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                        readonly="readonly" tabindex="-1"></td>
+
+                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                        readonly="readonly" tabindex="-1"></td>
+
+                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                        readonly="readonly" tabindex="-1"></td>
+
+                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                        readonly="readonly" tabindex="-1"></td>
+
+                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
                                             </tr>
 
                                             <tr>
-                                                <td style="width: 470px;" id="tt19" class="ng-binding">2.1.5
+                                                <td id="tt19">2.1.5
                                                     Fever with Altered sensorium</td>
 
                                                 <td><input name="pformcountmale" type="text" value="" class="form-control  ">
@@ -408,6 +478,11 @@
                                                 <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control  "
                                                         ng-value="(( s.name == 'Unknown')&amp;&amp;(s.casesfemalelt5yr == 0)  ?'':s.casesfemalelt5yr)">
+                                                <td><input name="pformdeathcountmale" type="text" class="form-control"
+                                                        readonly="readonly" tabindex="-1"></td>
+
+                                                <td><input name="pformdeathcountfemale" type="text"
+                                                        class="form-control  ">
                                                 </td>
 
                                                 <td><input name="pformdeathcountfemale" type="text" value=""
@@ -432,11 +507,24 @@
                                                         readonly="readonly" tabindex="-1"></td>
 
                                                 <td><input name="pformdeathcountfemale" type="text" value=""
-                                                        class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
+                                                        class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern">
+                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                        readonly="readonly" tabindex="-1"></td>
+
+                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                        readonly="readonly" tabindex="-1"></td>
+
+                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                        readonly="readonly" tabindex="-1"></td>
+
+                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                        readonly="readonly" tabindex="-1"></td>
+
+                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
                                             </tr>
                                             <tr>
-                                                <td style="width: 470px;" id="tt50" class="ng-binding">2.2.1
+                                                <td id="tt50">2.2.1
                                                     Cough &lt;= 2 weeks with fever</td>
 
                                                 <td><input name="pformcountmale" type="text" value="" class="form-control  ">
@@ -452,6 +540,11 @@
                                                 <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control  "
                                                         ng-value="(( s.name == 'Unknown')&amp;&amp;(s.casesfemalelt5yr == 0)  ?'':s.casesfemalelt5yr)">
+                                                <td><input name="pformdeathcountmale" type="text" class="form-control"
+                                                        readonly="readonly" tabindex="-1"></td>
+
+                                                <td><input name="pformdeathcountfemale" type="text"
+                                                        class="form-control  ">
                                                 </td>
 
                                                 <td><input name="pformdeathcountfemale" type="text" value=""
@@ -476,12 +569,25 @@
                                                         readonly="readonly" tabindex="-1"></td>
 
                                                 <td><input name="pformdeathcountfemale" type="text" value=""
-                                                        class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
+                                                        class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern">
+                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                        readonly="readonly" tabindex="-1"></td>
+
+                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                        readonly="readonly" tabindex="-1"></td>
+
+                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                        readonly="readonly" tabindex="-1"></td>
+
+                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                        readonly="readonly" tabindex="-1"></td>
+
+                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
                                             </tr>
 
                                             <tr>
-                                                <td style="width: 470px;" id="tt51" class="ng-binding">2.2.2
+                                                <td id="tt51">2.2.2
                                                     Cough &lt;= 2 weeks without fever</td>
 
                                                 <td><input name="pformcountmale" type="text" value="" class="form-control  ">
@@ -497,6 +603,11 @@
                                                 <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control  "
                                                         ng-value="(( s.name == 'Unknown')&amp;&amp;(s.casesfemalelt5yr == 0)  ?'':s.casesfemalelt5yr)">
+                                                <td><input name="pformdeathcountmale" type="text" class="form-control"
+                                                        readonly="readonly" tabindex="-1"></td>
+
+                                                <td><input name="pformdeathcountfemale" type="text"
+                                                        class="form-control  ">
                                                 </td>
 
                                                 <td><input name="pformdeathcountfemale" type="text" value=""
@@ -521,12 +632,25 @@
                                                         readonly="readonly" tabindex="-1"></td>
 
                                                 <td><input name="pformdeathcountfemale" type="text" value=""
-                                                        class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
+                                                        class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern">
+                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                        readonly="readonly" tabindex="-1"></td>
+
+                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                        readonly="readonly" tabindex="-1"></td>
+
+                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                        readonly="readonly" tabindex="-1"></td>
+
+                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                        readonly="readonly" tabindex="-1"></td>
+
+                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
                                             </tr>
 
                                             <tr>
-                                                <td style="width: 470px;" id="tt14" class="ng-binding">2.2.3
+                                                <td id="tt14">2.2.3
                                                     Cough &gt; 2 weeks with fever</td>
 
                                                 <td><input name="pformcountmale" type="text" value="" class="form-control  ">
@@ -542,6 +666,11 @@
                                                 <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control  "
                                                         ng-value="(( s.name == 'Unknown')&amp;&amp;(s.casesfemalelt5yr == 0)  ?'':s.casesfemalelt5yr)">
+                                                <td><input name="pformdeathcountmale" type="text" class="form-control"
+                                                        readonly="readonly" tabindex="-1"></td>
+
+                                                <td><input name="pformdeathcountfemale" type="text"
+                                                        class="form-control  ">
                                                 </td>
 
                                                 <td><input name="pformdeathcountfemale" type="text" value=""
@@ -566,11 +695,24 @@
                                                         readonly="readonly" tabindex="-1"></td>
 
                                                 <td><input name="pformdeathcountfemale" type="text" value=""
-                                                        class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
+                                                        class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern">
+                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                        readonly="readonly" tabindex="-1"></td>
+
+                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                        readonly="readonly" tabindex="-1"></td>
+
+                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                        readonly="readonly" tabindex="-1"></td>
+
+                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                        readonly="readonly" tabindex="-1"></td>
+
+                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
                                             </tr>
                                             <tr>
-                                                <td style="width: 470px;" id="tt13" class="ng-binding">2.2.4
+                                                <td id="tt13">2.2.4
                                                     Cough &gt; 2 weeks without fever</td>
 
                                                 <td><input name="pformcountmale" type="text" value="" class="form-control  ">
@@ -586,6 +728,11 @@
                                                 <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control  "
                                                         ng-value="(( s.name == 'Unknown')&amp;&amp;(s.casesfemalelt5yr == 0)  ?'':s.casesfemalelt5yr)">
+                                                <td><input name="pformdeathcountmale" type="text" class="form-control"
+                                                        readonly="readonly" tabindex="-1"></td>
+
+                                                <td><input name="pformdeathcountfemale" type="text"
+                                                        class="form-control  ">
                                                 </td>
 
                                                 <td><input name="pformdeathcountfemale" type="text" value=""
@@ -610,12 +757,25 @@
                                                         readonly="readonly" tabindex="-1"></td>
 
                                                 <td><input name="pformdeathcountfemale" type="text" value=""
-                                                        class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
+                                                        class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern">
+                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                        readonly="readonly" tabindex="-1"></td>
+
+                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                        readonly="readonly" tabindex="-1"></td>
+
+                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                        readonly="readonly" tabindex="-1"></td>
+
+                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                        readonly="readonly" tabindex="-1"></td>
+
+                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
                                             </tr>
 
                                             <tr>
-                                                <td style="width: 470px;" id="tt46" class="ng-binding">2.3.1
+                                                <td id="tt46">2.3.1
                                                     Loose watery stools with blood &lt; 2 weeks</td>
 
                                                 <td><input name="pformcountmale" type="text" value="" class="form-control  ">
@@ -631,6 +791,11 @@
                                                 <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control  "
                                                         ng-value="(( s.name == 'Unknown')&amp;&amp;(s.casesfemalelt5yr == 0)  ?'':s.casesfemalelt5yr)">
+                                                <td><input name="pformdeathcountmale" type="text" class="form-control"
+                                                        readonly="readonly" tabindex="-1"></td>
+
+                                                <td><input name="pformdeathcountfemale" type="text"
+                                                        class="form-control  ">
                                                 </td>
 
                                                 <td><input name="pformdeathcountfemale" type="text" value=""
@@ -655,12 +820,25 @@
                                                         readonly="readonly" tabindex="-1"></td>
 
                                                 <td><input name="pformdeathcountfemale" type="text" value=""
-                                                        class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
+                                                        class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern">
+                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                        readonly="readonly" tabindex="-1"></td>
+
+                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                        readonly="readonly" tabindex="-1"></td>
+
+                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                        readonly="readonly" tabindex="-1"></td>
+
+                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                        readonly="readonly" tabindex="-1"></td>
+
+                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
                                             </tr>
 
                                             <tr>
-                                                <td style="width: 470px;" id="tt58" class="ng-binding">2.3.2
+                                                <td id="tt58">2.3.2
                                                     Loose watery stools without blood &lt; 2 weeks</td>
 
                                                 <td><input name="pformcountmale" type="text" value="" class="form-control  ">
@@ -676,6 +854,11 @@
                                                 <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control  "
                                                         ng-value="(( s.name == 'Unknown')&amp;&amp;(s.casesfemalelt5yr == 0)  ?'':s.casesfemalelt5yr)">
+                                                <td><input name="pformdeathcountmale" type="text" class="form-control"
+                                                        readonly="readonly" tabindex="-1"></td>
+
+                                                <td><input name="pformdeathcountfemale" type="text"
+                                                        class="form-control  ">
                                                 </td>
 
                                                 <td><input name="pformdeathcountfemale" type="text" value=""
@@ -700,12 +883,25 @@
                                                         readonly="readonly" tabindex="-1"></td>
 
                                                 <td><input name="pformdeathcountfemale" type="text" value=""
-                                                        class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
+                                                        class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern">
+                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                        readonly="readonly" tabindex="-1"></td>
+
+                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                        readonly="readonly" tabindex="-1"></td>
+
+                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                        readonly="readonly" tabindex="-1"></td>
+
+                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                        readonly="readonly" tabindex="-1"></td>
+
+                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
                                             </tr>
 
                                             <tr>
-                                                <td style="width: 470px;" id="tt52" class="ng-binding">2.4.1
+                                                <td id="tt52">2.4.1
                                                     Jaundice of &lt; 4 weeks</td>
 
                                                 <td><input name="pformcountmale" type="text" value="" class="form-control  ">
@@ -721,6 +917,11 @@
                                                 <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control  "
                                                         ng-value="(( s.name == 'Unknown')&amp;&amp;(s.casesfemalelt5yr == 0)  ?'':s.casesfemalelt5yr)">
+                                                <td><input name="pformdeathcountmale" type="text" class="form-control"
+                                                        readonly="readonly" tabindex="-1"></td>
+
+                                                <td><input name="pformdeathcountfemale" type="text"
+                                                        class="form-control  ">
                                                 </td>
 
                                                 <td><input name="pformdeathcountfemale" type="text" value=""
@@ -745,12 +946,25 @@
                                                         readonly="readonly" tabindex="-1"></td>
 
                                                 <td><input name="pformdeathcountfemale" type="text" value=""
-                                                        class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
+                                                        class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern">
+                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                        readonly="readonly" tabindex="-1"></td>
+
+                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                        readonly="readonly" tabindex="-1"></td>
+
+                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                        readonly="readonly" tabindex="-1"></td>
+
+                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                        readonly="readonly" tabindex="-1"></td>
+
+                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
                                             </tr>
 
                                             <tr>
-                                                <td style="width: 470px;" id="tt3" class="ng-binding">2.5.1
+                                                <td id="tt3">2.5.1
                                                     Acute Flaccid Paralysis</td>
 
                                                 <td><input name="pformcountmale" type="text" value="" class="form-control  ">
@@ -766,6 +980,11 @@
                                                 <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control  "
                                                         ng-value="(( s.name == 'Unknown')&amp;&amp;(s.casesfemalelt5yr == 0)  ?'':s.casesfemalelt5yr)">
+                                                <td><input name="pformdeathcountmale" type="text" class="form-control"
+                                                        readonly="readonly" tabindex="-1"></td>
+
+                                                <td><input name="pformdeathcountfemale" type="text"
+                                                        class="form-control  ">
                                                 </td>
 
                                                 <td><input name="pformdeathcountfemale" type="text" value=""
@@ -790,12 +1009,25 @@
                                                         readonly="readonly" tabindex="-1"></td>
 
                                                 <td><input name="pformdeathcountfemale" type="text" value=""
-                                                        class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
+                                                        class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern">
+                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                        readonly="readonly" tabindex="-1"></td>
+
+                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                        readonly="readonly" tabindex="-1"></td>
+
+                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                        readonly="readonly" tabindex="-1"></td>
+
+                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                        readonly="readonly" tabindex="-1"></td>
+
+                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
                                             </tr>
 
                                             <tr>
-                                                <td style="width: 470px;" id="tt53" class="ng-binding">2.6.1
+                                                <td id="tt53">2.6.1
                                                     Malaria Vivax RDT</td>
 
                                                 <td><input name="pformcountmale" type="text" value="" class="form-control  ">
@@ -811,6 +1043,11 @@
                                                 <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control  "
                                                         ng-value="(( s.name == 'Unknown')&amp;&amp;(s.casesfemalelt5yr == 0)  ?'':s.casesfemalelt5yr)">
+                                                <td><input name="pformdeathcountmale" type="text" class="form-control"
+                                                        readonly="readonly" tabindex="-1"></td>
+
+                                                <td><input name="pformdeathcountfemale" type="text"
+                                                        class="form-control  ">
                                                 </td>
 
                                                 <td><input name="pformdeathcountfemale" type="text" value=""
@@ -835,12 +1072,25 @@
                                                         readonly="readonly" tabindex="-1"></td>
 
                                                 <td><input name="pformdeathcountfemale" type="text" value=""
-                                                        class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
+                                                        class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern">
+                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                        readonly="readonly" tabindex="-1"></td>
+
+                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                        readonly="readonly" tabindex="-1"></td>
+
+                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                        readonly="readonly" tabindex="-1"></td>
+
+                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                        readonly="readonly" tabindex="-1"></td>
+
+                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
                                             </tr>
 
                                             <tr>
-                                                <td style="width: 470px;" id="tt54" class="ng-binding">2.6.2
+                                                <td id="tt54">2.6.2
                                                     Malaria Falciparum RDT</td>
 
                                                 <td><input name="pformcountmale" type="text" value="" class="form-control  ">
@@ -856,6 +1106,11 @@
                                                 <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control  "
                                                         ng-value="(( s.name == 'Unknown')&amp;&amp;(s.casesfemalelt5yr == 0)  ?'':s.casesfemalelt5yr)">
+                                                <td><input name="pformdeathcountmale" type="text" class="form-control"
+                                                        readonly="readonly" tabindex="-1"></td>
+
+                                                <td><input name="pformdeathcountfemale" type="text"
+                                                        class="form-control  ">
                                                 </td>
 
                                                 <td><input name="pformdeathcountfemale" type="text" value=""
@@ -880,12 +1135,25 @@
                                                         readonly="readonly" tabindex="-1"></td>
 
                                                 <td><input name="pformdeathcountfemale" type="text" value=""
-                                                        class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
+                                                        class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern">
+                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                        readonly="readonly" tabindex="-1"></td>
+
+                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                        readonly="readonly" tabindex="-1"></td>
+
+                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                        readonly="readonly" tabindex="-1"></td>
+
+                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                        readonly="readonly" tabindex="-1"></td>
+
+                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
                                             </tr>
 
                                             <tr>
-                                                <td style="width: 470px;" id="tt55" class="ng-binding">2.6.3
+                                                <td id="tt55">2.6.3
                                                     Malaria Mixed RDT</td>
 
                                                 <td><input name="pformcountmale" type="text" value="" class="form-control  ">
@@ -901,6 +1169,11 @@
                                                 <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control  "
                                                         ng-value="(( s.name == 'Unknown')&amp;&amp;(s.casesfemalelt5yr == 0)  ?'':s.casesfemalelt5yr)">
+                                                <td><input name="pformdeathcountmale" type="text" class="form-control"
+                                                        readonly="readonly" tabindex="-1"></td>
+
+                                                <td><input name="pformdeathcountfemale" type="text"
+                                                        class="form-control  ">
                                                 </td>
 
                                                 <td><input name="pformdeathcountfemale" type="text" value=""
@@ -925,11 +1198,24 @@
                                                         readonly="readonly" tabindex="-1"></td>
 
                                                 <td><input name="pformdeathcountfemale" type="text" value=""
-                                                        class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
+                                                        class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern">
+                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                        readonly="readonly" tabindex="-1"></td>
+
+                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                        readonly="readonly" tabindex="-1"></td>
+
+                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                        readonly="readonly" tabindex="-1"></td>
+
+                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                        readonly="readonly" tabindex="-1"></td>
+
+                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
                                             </tr>
                                             <tr>
-                                                <td style="width: 470px;" id="tt48" class="ng-binding">2.7.1
+                                                <td id="tt48">2.7.1
                                                     Animal Bite - Snake Bite</td>
 
                                                 <td><input name="pformcountmale" type="text" value="" class="form-control  ">
@@ -974,7 +1260,7 @@
                                             </tr>
 
                                             <tr>
-                                                <td style="width: 470px;" id="tt61" class="ng-binding">2.7.2
+                                                <td id="tt61">2.7.2
                                                     Animal Bite - Dog Bite</td>
 
                                                 <td><input name="pformcountmale" type="text" value="" class="form-control  ">
@@ -990,6 +1276,11 @@
                                                 <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control  "
                                                         ng-value="(( s.name == 'Unknown')&amp;&amp;(s.casesfemalelt5yr == 0)  ?'':s.casesfemalelt5yr)">
+                                                <td><input name="pformdeathcountmale" type="text" class="form-control"
+                                                        readonly="readonly" tabindex="-1"></td>
+
+                                                <td><input name="pformdeathcountfemale" type="text"
+                                                        class="form-control  ">
                                                 </td>
 
                                                 <td><input name="pformdeathcountfemale" type="text" value=""
@@ -1014,11 +1305,24 @@
                                                         readonly="readonly" tabindex="-1"></td>
 
                                                 <td><input name="pformdeathcountfemale" type="text" value=""
-                                                        class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
+                                                        class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern">
+                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                        readonly="readonly" tabindex="-1"></td>
+
+                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                        readonly="readonly" tabindex="-1"></td>
+
+                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                        readonly="readonly" tabindex="-1"></td>
+
+                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                        readonly="readonly" tabindex="-1"></td>
+
+                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
                                             </tr>
                                             <tr>
-                                                <td style="width: 470px;" id="tt5" class="ng-binding">2.7.4
+                                                <td id="tt5">2.7.4
                                                     Animal Bite - Others</td>
 
                                                 <td><input name="pformcountmale" type="text" value="" class="form-control  ">
@@ -1034,6 +1338,11 @@
                                                 <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control  "
                                                         ng-value="(( s.name == 'Unknown')&amp;&amp;(s.casesfemalelt5yr == 0)  ?'':s.casesfemalelt5yr)">
+                                                <td><input name="pformdeathcountmale" type="text" class="form-control"
+                                                        readonly="readonly" tabindex="-1"></td>
+
+                                                <td><input name="pformdeathcountfemale" type="text"
+                                                        class="form-control  ">
                                                 </td>
 
                                                 <td><input name="pformdeathcountfemale" type="text" value=""
@@ -1058,11 +1367,24 @@
                                                         readonly="readonly" tabindex="-1"></td>
 
                                                 <td><input name="pformdeathcountfemale" type="text" value=""
-                                                        class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
+                                                        class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern">
+                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                        readonly="readonly" tabindex="-1"></td>
+
+                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                        readonly="readonly" tabindex="-1"></td>
+
+                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                        readonly="readonly" tabindex="-1"></td>
+
+                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                        readonly="readonly" tabindex="-1"></td>
+
+                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
                                             </tr>
                                             <tr>
-                                                <td style="width: 470px;" id="tt84" class="ng-binding">2.7.5
+                                                <td id="tt84">2.7.5
                                                     Leptospirosis RDT</td>
 
                                                 <td><input name="pformcountmale" type="text" value="" class="form-control  ">
@@ -1078,6 +1400,11 @@
                                                 <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control  "
                                                         ng-value="(( s.name == 'Unknown')&amp;&amp;(s.casesfemalelt5yr == 0)  ?'':s.casesfemalelt5yr)">
+                                                <td><input name="pformdeathcountmale" type="text" class="form-control"
+                                                        readonly="readonly" tabindex="-1"></td>
+
+                                                <td><input name="pformdeathcountfemale" type="text"
+                                                        class="form-control  ">
                                                 </td>
 
                                                 <td><input name="pformdeathcountfemale" type="text" value=""
@@ -1102,11 +1429,24 @@
                                                         readonly="readonly" tabindex="-1"></td>
 
                                                 <td><input name="pformdeathcountfemale" type="text" value=""
-                                                        class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
+                                                        class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern">
+                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                        readonly="readonly" tabindex="-1"></td>
+
+                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                        readonly="readonly" tabindex="-1"></td>
+
+                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                        readonly="readonly" tabindex="-1"></td>
+
+                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                        readonly="readonly" tabindex="-1"></td>
+
+                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
                                             </tr>
                                             <tr>
-                                                <td style="width: 470px;" id="tt56" class="ng-binding">2.14.1
+                                                <td id="tt56">2.14.1
                                                     Others</td>
 
                                                 <td><input name="pformcountmale" type="text" value="" class="form-control  ">
@@ -1122,6 +1462,11 @@
                                                 <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control  "
                                                         ng-value="(( s.name == 'Unknown')&amp;&amp;(s.casesfemalelt5yr == 0)  ?'':s.casesfemalelt5yr)">
+                                                <td><input name="pformdeathcountmale" type="text" class="form-control"
+                                                        readonly="readonly" tabindex="-1"></td>
+
+                                                <td><input name="pformdeathcountfemale" type="text"
+                                                        class="form-control  ">
                                                 </td>
 
                                                 <td><input name="pformdeathcountfemale" type="text" value=""
@@ -1146,7 +1491,20 @@
                                                         readonly="readonly" tabindex="-1"></td>
 
                                                 <td><input name="pformdeathcountfemale" type="text" value=""
-                                                        class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
+                                                        class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern">
+                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                        readonly="readonly" tabindex="-1"></td>
+
+                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                        readonly="readonly" tabindex="-1"></td>
+
+                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                        readonly="readonly" tabindex="-1"></td>
+
+                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                        readonly="readonly" tabindex="-1"></td>
+
+                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
                                             </tr>
                                         </tbody>
@@ -1159,6 +1517,8 @@
                                     Successfully</div>
                                 <button id="submitformdata" class="btn btn-primary printhide"
                                     style="margin: 5px;">
+                                <div class="alert alert-success  " role="alert"> Data Saved Successfully</div>
+                                <button ng-disabled="aggform.$invalid" class="btn btn-primary printhide">
                                     <span class="tooltipid tooltipstered" data-placement="right">Save</span></button>
                             </form>
                         </div>
@@ -1173,9 +1533,9 @@
                                             <a role="button" data-toggle="collapse" data-parent="#accordion"
                                                 data-target="#aggregationSummary" aria-expanded="true"
                                                 aria-controls="collapseOne"> <span
-                                                    style="margin-top: 0px; font-size: 13px; font-weight: bold; opacity: 1;"
-                                                    class="tooltipid tooltipstered" data-placement="right">
-                                                    1. S Form (Suspected Cases Form) <span class="printhide">(Click
+                                                    class="tooltipid tooltipstered label-title" data-placement="right">
+                                                    1. S Form (Suspected Cases Form) <span
+                                                        class="printhide text-danger">(Click
                                                         to View)</span>
                                                 </span>
                                             </a>
@@ -1193,10 +1553,9 @@
                                                         ng-show="facilityinfo.health_facility_urban_rural != 2">
                                                         <label for="village" class="labelchange"><span
                                                                 class="tooltipid tooltipstered"
-                                                                data-placement="right">Village<span
-                                                                    style="color: red">*</span></span></label>
+                                                                data-placement="right">Village<span>*</span></span></label>
                                                         <select
-                                                            class="form-control ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required"
+                                                            class="form-control  "
                                                             id="village " ng-required="
                                                             facilityinfo.health_facility_urban_rural !=2"
                                                             name="village"
@@ -1223,7 +1582,7 @@
                                                                 Kenchenahalli
                                                             </option>
                                                         </select>
-                                                        <div class="error ng-hide"
+                                                        <div class="error  "
                                                             ng-show="aggform.village.$dirty &amp;&amp; aggform.village.$invalid">
                                                             <small class="error"
                                                                 ng-show="aggform.village.$error.required"> Please
@@ -1231,10 +1590,10 @@
                                                         </div>
                                                     </div>
 
-                                                    <div class="form-group col-xs-2 ng-hide"
+                                                    <div class="form-group col-xs-2  "
                                                         ng-show="facilityinfo.health_facility_urban_rural === 2">
-                                                        <label for="village" class="labelchange">Ward<span
-                                                                style="color: red">*</span></label>
+                                                        <label for="village"
+                                                            class="labelchange">Ward<span>*</span></label>
 
                                                         <select
                                                             class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-required"
@@ -1246,9 +1605,9 @@
                                                                 -----Select-----
                                                             </option>
                                                         </select>
-                                                        <div class="error ng-hide"
+                                                        <div class="error  "
                                                             ng-show="aggform.ward.$dirty &amp;&amp; aggform.ward.$invalid">
-                                                            <small class="error ng-hide"
+                                                            <small class="error  "
                                                                 ng-show="aggform.ward.$error.required"> Please
                                                                 Select Ward</small>
                                                         </div>
@@ -1256,7 +1615,7 @@
                                                     </div>
 
 
-                                                    <div class="form-group col-xs-8 ng-hide "
+                                                    <div class="form-group col-xs-8   "
                                                         ng-show="villageSubcenter || wardSubcenter">
                                                         <label class="labelchange"><span class="tooltipid tooltipstered"
                                                                 data-placement="right">
@@ -1272,18 +1631,16 @@
 
 
 
-                                                <div class="table-responsive ng-hide">
+                                                <div class="table-responsive  ">
                                                     <table class="table table-condensed table-bordered" id="tableId">
                                                         <tbody>
                                                             <tr>
                                                                 <td rowspan="3"></td>
-                                                                <td colspan="7"
-                                                                    style="text-align: center; font-size: 14px;">
+                                                                <td colspan="7">
                                                                     <b>Number
                                                                         of cases of illness</b>
                                                                 </td>
-                                                                <td colspan="3" rowspan="2"
-                                                                    style="text-align: center; width: 20px"><b>
+                                                                <td colspan="3" rowspan="2"><b>
                                                                         Number of cases of deaths
                                                                         <br>
                                                                         <a href=""
@@ -1294,15 +1651,13 @@
 
                                                             </tr>
                                                             <tr>
-                                                                <td colspan="3"
-                                                                    style="text-align: center; font-size: 14px;">
+                                                                <td colspan="3">
                                                                     <b>Male</b>
                                                                 </td>
-                                                                <td colspan="3"
-                                                                    style="text-align: center; font-size: 14px;">
+                                                                <td colspan="3">
                                                                     <b>Female</b>
                                                                 </td>
-                                                                <td rowspan="2" style="text-align: center;"><b>Grand<br>
+                                                                <td rowspan="2"><b>Grand<br>
                                                                         Total
                                                                     </b></td>
 
@@ -1330,6 +1685,10 @@
                                                 <button  class="btn btn-primary "
                                                     style="margin: 5px;" 
                                                    >
+                                                <div class="alert alert-success  " role="alert">Data Saved
+                                                    Successfully</div>
+                                                <button ng-disabled="aggform.$invalid" class="btn btn-primary printhide"
+                                                    disabled="disabled">
                                                     <span class="tooltipid tooltipstered"
                                                         data-placement="right" >Save</span></button>
                                             </form>
@@ -1350,35 +1709,36 @@
                                             <a role="button" data-toggle="collapse" data-parent="#accordion"
                                                 data-target="#DeathPatientformId" aria-expanded="true"
                                                 aria-controls="collapseOne"> <span
-                                                    style="font-size: 13px; font-weight: bold;"
-                                                    class="tooltipid tooltipstered" data-placement="right">2. Reporting
-                                                    Deaths (Click to View)</span>
+                                                    class="tooltipid tooltipstered label-title"
+                                                    data-placement="right">2. Reporting
+                                                    Deaths</span> <span class="text-danger label-title">(Click to
+                                                    View)</span>
                                             </a>
                                         </h4>
                                     </div>
                                     <div id="DeathPatientformId" class="panel-collapse collapse in" role="tabpanel"
                                         aria-labelledby="DeathPatientformId1" aria-expanded="true" style="">
                                         <div class="panel-body">
-                                            <div class="row"
-                                                style="margin-left: px; padding-left: 8px; padding-right: 2px;">
+                                            <div class="row">
                                                 <div class="col-xs-12">
-                                                    <div font-weight: bold;">
-                                                        <span
-                                                            class="glyphicon glyphicon-hand-right"></span>&nbsp;&nbsp;&nbsp;Enter
-                                                        data accurately and completely
+                                                    <div>
+                                                        <span class="text-danger"><i class="fa fa-hand-o-right"
+                                                                aria-hidden="true"></i> Enter data accurately and
+                                                            completely</span>
                                                     </div>
                                                 </div>
                                             </div>
 
                                             <form name="deathcaseform" novalidate=""
-                                                class="form-compact ng-pristine ng-invalid ng-invalid-required ng-valid-pattern ng-valid-maxlength"
+                                                class="form-compact deathcaseform"
                                                 autocomplete="off">
-                                                <fieldset style="background-color: aliceblue;">
+                                                <fieldset>
                                                     <div class="row">
-                                                        <label for="mobileno" class="col-xs-2 control-label"
-                                                            style="margin-top: 5px; max-width: 123px;"><span
-                                                                class="tooltipid tooltipstered"
-                                                                data-placement="right">Name:</span> </label>
+                                                        <div class="col-md-12">
+                                                            <span class="label-title">
+                                                                Name:
+                                                            </span>
+                                                        </div>
 
                                                         <div class="form-group col-xs-2">
                                                             <label for="firstname" class="labelchange">2.2. First
@@ -1386,14 +1746,17 @@
                                                             </label> <input
                                                                 class="form-control ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required ng-valid-pattern"
                                                                 id="firstname" name="firstname" type="text" value=""
-                                                                ng-required="true" ng-pattern="/^[a-zA-Z'.,-]{0,150}$/"
+                                                                 >
+                                                                Name <span>*</span>
+                                                            </label> <input class="form-control  " id="firstname"
+                                                                name="firstname" type="text"  
+                                                                ng-pattern="/^[a-zA-Z'.,-]{0,150}$/"
                                                                 required="required">
-                                                            <div class="error ng-hide"
+                                                            <div class="error  "
                                                                 ng-show=" deathcaseform.firstname.$dirty &amp;&amp;  deathcaseform.firstname.$invalid">
                                                                 <small
                                                                     ng-show=" deathcaseform.firstname.$error.required">
-                                                                    Please Enter Name. </small> <small
-                                                                    class="error ng-hide"
+                                                                    Please Enter Name. </small> <small class="error  "
                                                                     ng-show=" deathcaseform.firstname.$error.pattern">
                                                                     Please Enter Valid First Name. </small>
                                                             </div>
@@ -1405,50 +1768,30 @@
                                                                 class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
                                                                 id="middlename" name="middlename"
                                                                 ng-pattern="/^[a-zA-Z'.,-]{0,150}$/" type="text" value="">
-                                                            <div class="error ng-hide"
+                                                            <div class="error ng-hide">
+                                                                Name</label> <input class="form-control" id="middlename"
+                                                                name="middlename" ng-pattern="/^[a-zA-Z'.,-]{0,150}$/"
+                                                                type="text">
+                                                            <div class="error  "
                                                                 ng-show=" deathcaseform.middlename.$dirty &amp;&amp;  deathcaseform.middlename.$invalid">
-                                                                <small class="error ng-hide"
+                                                                <small class="error  "
                                                                     ng-show=" deathcaseform.middlename.$error.pattern">
                                                                     Please Enter Valid Middle Name. </small>
                                                             </div>
                                                         </div>
-                                                        <div class="form-group col-xs-2">
-                                                            <label for="lastname" class="labelchange">2.4. Last
-                                                                Name</label> <input
-                                                                class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
-                                                                id="lastname" name="lastname"
-                                                                ng-pattern="/^[a-zA-Z'.,-]{0,150}$/" type="text" value="">
-                                                            <div class="error ng-hide"
-                                                                ng-show=" deathcaseform.lastname.$dirty &amp;&amp;  deathcaseform.lastname.$invalid">
-                                                                <small class="error ng-hide"
-                                                                    ng-show=" deathcaseform.lastname.$error.pattern">
-                                                                    Please Enter Valid Last Name. </small>
-                                                            </div>
-                                                        </div>
+                                                        
 
-                                                        <div class="form-group col-xs-4" style="margin-bottom: 0px;">
-                                                            <label class="radio-inline" style="font-weight: 700;">
-                                                                <input type="name=" agedob" id="inlineRadio2"
-                                                                    value="dob" ng-click="clearfield('dob')"
-                                                                    class="ng-pristine ng-untouched ng-valid ng-not-empty">
+                                                        <div class="form-group ">
+                                                            <label class="radio-inline">
+
                                                                 <span class="tooltipid tooltipstered"
                                                                     data-placement="right">
-                                                                    2.5. Date Of Birth</span><span
-                                                                    ng-show="agedob=='dob'" span>
-                                                            </label> <label class="radio-inline"
-                                                                style="font-weight: 700;">
-                                                                <input type="radio"
-                                                                    name="agedob                                                                    id="
-                                                                    inlineRadio1" value="age"
-                                                                    ng-click="clearfield('age')"
-                                                                    class="ng-pristine ng-untouched ng-valid ng-not-empty">
-                                                                <span class="tooltipid tooltipstered"
-                                                                    data-placement="right">
-                                                                    2.6. Age</span> <span ng-show="agedob=='age'"
-                                                                    class="ng-hide">*</span>
+                                                                    2.5. Date Of Birth</span><span span>
                                                             </label>
-                                                        </div>
-                                                        <div class="form-group col-xs-2" ng-show="agedob=='dob'">
+                                                            <input type="radio" name="agedob" id="inlineRadio2"
+                                                                value="dob">
+                                                            <div class="form-group m-0 d-inline-block pl-2">
+                                                                <label class="radio-inline">
 
                                                             <div class="input-group input-append date ageclass"
                                                                 data-provide="datepicker">
@@ -1460,141 +1803,100 @@
                                                                     style="padding: 2px 12px;"> <span
                                                                         class="glyphicon glyphicon-calendar"></span>
                                                                 </span>
+                                                                    <span class="tooltipid tooltipstered"
+                                                                        data-placement="right">
+                                                                        2.6. Age</span> <span>*</span>
+                                                                </label>
+                                                                <input type="radio" name="agedob" id="inlineRadio1"
+                                                                    value="age">
                                                             </div>
-                                                            <div class="error ng-hide"
-                                                                ng-show="deathcaseform.dateofbirth.$dirty &amp;&amp; deathcaseform.dateofbirth.$invalid">
-                                                                <small class="error" required>
-                                                                    Please Enter Date of Birth.</small> <small
-                                                                    class="error ng-hide">
-                                                                    Please enter valid date in dd/mm/yyyy format
-                                                                    .</small>
-                                                            </div>
-                                                            <div ng-show="showdoberror" class="ng-hide">
-                                                                <small class="error"> Date of Birth can not be
-                                                                    earlier than 01/01/1900 and can not beyond todays
-                                                                    date.
-                                                                </small>
+                                                            <div class="form-group m-0">
+
+                                                                <div class="input-group " data-provide="datepicker">
+                                                                    <input type="text" class="form-control  "
+                                                                        name="dateofbirth" placeholder="dd/mm/yyyy"
+                                                                        required="required"> <span
+                                                                        class="input-group-addon "> <span
+                                                                            class="glyphicon glyphicon-calendar"></span>
+                                                                    </span>
+                                                                </div>
+                                                                <div class="error  "
+                                                                    ng-show="deathcaseform.dateofbirth.$dirty &amp;&amp; deathcaseform.dateofbirth.$invalid">
+                                                                    <small class="error" required>
+                                                                        Please Enter Date of Birth.</small> <small
+                                                                        class="error  ">
+                                                                        Please enter valid date in dd/mm/yyyy format
+                                                                        .</small>
+                                                                </div>
+                                                                <div ng-show="showdoberror">
+                                                                    <small class="error"> Date of Birth can not be
+                                                                        earlier than 01/01/1900 and can not beyond
+                                                                        todays
+                                                                        date.
+                                                                    </small>
+                                                                </div>
+
                                                             </div>
 
                                                         </div>
+
+
+
                                                         <!-- ngIf: agedob=='age' -->
                                                     </div>
 
-
-                                                    <!-- <div class="form-group col-xs-2">
-											<label for="dateofbirth" class="labelchange">Date of
-												Birth<span style="color: red">*</span>
-											</label>
-											<div class='input-group input-append date ageclass'
-												data-provide="datepicker">
-												<input type='text' class="form-control" name="dateofbirth"
-													 ng-required="true"
-													placeholder="dd/mm/yyyy" style="min-width: 80px;"
-													ng-blur="checkDateValidation(patient.dateofdeath,patient.dateofbirth,'insert'); validate_DOB_DOD(patient.dateofbirth,'dobmain');"
-													ng-change="checkDateValidation(patient.dateofdeath,patient.dateofbirth,'insert'); validate_DOB_DOD(patient.dateofbirth,'dobmain');"
-													ng-pattern='/^(31[ \/ ](0[13578]|1[02])[ \/ ](18|19|20)[0-9]{2})|((29|30)[\/](01|0[3-9]|1[1-2])[\/](18|19|20)[0-9]{2})|((0[1-9]|1[0-9]|2[0-8])[\/](0[1-9]|1[0-2])[\/](18|19|20)[0-9]{2})|(29[\/](02)[\/](((18|19|20)(04|08|[2468][048]|[13579][26]))|2000))$/'>
-												<span class="input-group-addon datepicker"
-													style="padding: 2px 12px;"> <span
-													class="glyphicon glyphicon-calendar"></span>
-												</span>
-											</div>
-											<div class="error"
-												ng-show="deathcaseform.dateofbirth.$dirty &amp;&amp; deathcaseform.dateofbirth.$invalid">
-												<small class="error" 
-													 required">
-													Please Select Date of Birth.</small> <small class="error"
-													
-													 pattern">
-													Please Enter valid date in dd/mm/yyyy format.</small>
-											</div>
-											<small class="error" 
-												ng-show="showDateError"> Date Of Birth should be
-												smaller than Date Of death.</small>
-
-											<div ng-show="showdoberror">
-												<small class="error"> Date of Birth can not be
-													earlier than 01/01/1900 and can not beyond todays date. </small>
-											</div>
-										</div> -->
-
-
-                                                    <!-- <div class="form-group col-xs-2">
-		
-
-
-
-                                                <div class="row">
-                                                    <label class="col-xs-2 control-label"
-                                                        style="margin-top: 5px; max-width: 123px;">
-                                                        <span class="tooltipid tooltipstered" data-placement="right">
-                                                            2.7.
-                                                            Gender:</span><span style="color: red">*</span>
-                                                    </label>
-
-
-                                                    <div class="form-group col-xs-5">
-                                                        ngRepeat: g in genderlist -->
-                                                    <div ng-repeat="g in genderlist" class="ng-scope">
-                                                        <div class="form-group col-xs-3">
+                                                        <div class="col-md-12">
+                                                            <label for="gander">Gander:</label>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                        <div class="form-group d-inline-block">
                                                             <div class="radio">
-                                                                <label class="ng-binding"><input ng-required="true"
-                                                                        type="radio" name="optradio" ng-value="g"
-                                                                        class="ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required"
-                                                                        value="[object Object]"
-                                                                        required="required">Male</label>
+                                                                <label for="male">Male</label><input id="male"  type="radio" name="optradio" class=" " value=" " required="required">
                                                             </div>
-                                                            <div class="error ng-hide"
-                                                                ng-show="ncaseform.sex.$dirty &amp;&amp; ncaseform.sex.$invalid">
-                                                                <small class="error ng-hide"
-                                                                    ng-show="ncaseform.age.$error.required"> Please
+                                                            <div class="error  ">
+                                                                <small class="error  "
+                                                                     > Please
                                                                     Enter Sex. </small>
                                                             </div>
                                                         </div>
-                                                    </div><!-- end ngRepeat: g in genderlist -->
-                                                    <div ng-repeat="g in genderlist" class="ng-scope">
-                                                        <div class="form-group col-xs-3">
+                                                        <div class="form-group d-inline-block">
                                                             <div class="radio">
-                                                                <label class="ng-binding"><input ng-required="true"
-                                                                        type="radio" name="optradio" ng-value="g"
-                                                                        class="ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required"
-                                                                        value="[object Object]"
-                                                                        required="required">Female</label>
+                                                                <label for="female">Female</label>
+                                                                <input id="female"  type="radio" name="optradio" class=" " value=" " required="required">
                                                             </div>
-                                                            <div class="error ng-hide"
-                                                                ng-show="ncaseform.sex.$dirty &amp;&amp; ncaseform.sex.$invalid">
-                                                                <small class="error ng-hide"
-                                                                    ng-show="ncaseform.age.$error.required"> Please
+                                                            <div class="error  ">
+                                                                <small class="error  "
+                                                                     > Please
                                                                     Enter Sex. </small>
                                                             </div>
                                                         </div>
-                                                    </div><!-- end ngRepeat: g in genderlist -->
-                                                    <div ng-repeat="g in genderlist" class="ng-scope">
-                                                        <div class="form-group col-xs-3">
+                                                        <div class="form-group d-inline-block">
                                                             <div class="radio">
-                                                                <label class="ng-binding"><input ng-required="true"
-                                                                        type="radio" name="optradio" ng-value="g"
-                                                                        class="ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required"
-                                                                        value="[object Object]"
-                                                                        required="required">Transgender</label>
+                                                                <label for="transgander">Transgender</label>
+                                                                <input  id="transgander" type="radio" name="optradio" class=" " value=" " required="required">
                                                             </div>
-                                                            <div class="error ng-hide"
-                                                                ng-show="ncaseform.sex.$dirty &amp;&amp; ncaseform.sex.$invalid">
-                                                                <small class="error ng-hide"
-                                                                    ng-show="ncaseform.age.$error.required"> Please
+                                                            <div class="error  ">
+                                                                <small class="error  "
+                                                                     > Please
                                                                     Enter Sex. </small>
                                                             </div>
                                                         </div>
-                                                    </div><!-- end ngRepeat: g in genderlist -->
+
+
+
+                                                        </div>
+                                                  
+                                               
                                         </div>
 
-
-                                        <div class="form-group col-xs-2">
+<div class="row">
+<div class="form-group col-md-3">
                                             <label for="identityType" class="labelchange">
                                                 <span class="tooltipid tooltipstered" data-placement="right">2.8. ID
-                                                    Type</span><span style="color: red">*</span>
+                                                    Type <span>*</span>
                                             </label> <select
-                                                class="form-control ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required"
-                                                id="identityType" ng-required="true" name="identityType"
+                                                class="form-control  "
+                                                id="identityType"   name="identityType"
                                                 ng-change="IdlableChange(patient,'main')"
                                                 ng-options="g as g.patientidtype for g in idtypelist | orderBy:'displayorder'"
                                                 required="required">
@@ -1659,31 +1961,31 @@
                                                 <option label="ABHA" value="object:50">ABHA</option>
                                                 <option label="Others" value="object:51">Others</option>
                                             </select>
-                                            <div class="error ng-hide"
-                                                ng-show=" deathcaseform.identityType.$dirty &amp;&amp;  deathcaseform.identityType.$invalid">
+                                            <div class="error  "
+                                                >
                                                 <small class="error"
-                                                    ng-show=" deathcaseform.identityType.$error.required">
+                                                    >
                                                     Please Select Id Type. </small>
                                             </div>
 
                                         </div>
-                                        <div class="form-group col-xs-2 ng-hide"
+                                        <div class="form-group col-md-3  "
                                             ng-show="patient.identityType.patientidtype === 'Others'">
                                             <label for="other" class="labelchange" style="min-width: 140px">2.9. Other
                                                 Id
-                                                type<span style="color: red">*</span></label> <input
+                                                type <span>*</span></label> <input
                                                 class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-required"
                                                 style="min-width: 140px" id="other" type="text" value=""
                                                 ng-required="patient.identityType.patientidtype === 'Others'"
                                                 name="other">
-                                            <div class="error ng-hide"
-                                                ng-show="deathcaseform.other.$dirty &amp;&amp; deathcaseform.other.$invalid">
-                                                <small class="error ng-hide"
-                                                    ng-show="deathcaseform.other.$error.required"> Please
+                                            <div class="error  "
+                                                 >
+                                                <small class="error  " ng-show="deathcaseform.other.$error.required">
+                                                    Please
                                                     Enter Identification Number Type. </small>
                                             </div>
                                         </div>
-                                        <div class="form-group col-xs-2"
+                                        <div class="form-group col-md-3"
                                             ng-show="patient.identityType.patientidtype !== 'Not Available'">
                                             <label for="patientidnumber" class="labelchange"
                                                 style="min-width: 160px"><span
@@ -1692,23 +1994,27 @@
                                                     style="color: red">*</span></label> <input
                                                 class="form-control ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required"
                                                 id="patientidnumber" type="text" value="" style="min-width: 140px"
+                                                    2.10. Identification Number</span><span>*</span></label> <input
+                                                class="form-control  "
+                                                id="patientidnumber" type="text" style="min-width: 140px"
                                                 ng-required="patient.identityType.patientidtype !== 'Not Available'"
                                                 ng-blur="getPDbyIdType(patient,'main')" name="patientidnumber"
                                                 required="required">
-                                            <div class="error ng-hide"
+                                            <div class="error  "
                                                 ng-show=" deathcaseform.patientidnumber.$dirty &amp;&amp;  deathcaseform.patientidnumber.$invalid">
                                                 <small class="error"
                                                     ng-show=" deathcaseform.patientidnumber.$error.required">
                                                     Please Enter Identification Number. </small>
                                             </div>
-                                            <small class="error ng-hide" ng-show="iderror">
+                                            <small class="error  " ng-show="iderror">
                                                 Please Enter valid Identification Number. </small>
                                         </div>
 
+</div>
+                                        
                                         <!-- <div class="form-group col-xs-2">
-										<label for="sex" class="labelchange">Sex<span
-											style="color: red">*</span></label> <select class="form-control"
-											id="sex"  name="sex" ng-required="true"
+										<label for="sex" class="labelchange">Sex<span>*</span></label> <select class="form-control"
+											id="sex"  name="sex"  
 											ng-options="g as g.gender for g in genderlist  | orderBy:'gender'">
 											<option value="">-----Select-----</option>
 										</select>
@@ -1729,18 +2035,18 @@
                                                 </span></label>
                                         </div>
                                     </div>
-                                    <div class="row">
+                                    <div class="row m-0">
 
 
                                         <div class="form-group col-xs-2">
                                             <label for="state" class="labelchange">
                                                 <span class="tooltipid tooltipstered" data-placement="right">2.11.
-                                                    State<span style="color: red">*</span></span></label>
+                                                    State <span>*</span></span></label>
                                             <select
                                                 class="form-control ng-pristine ng-untouched ng-not-empty ng-valid ng-valid-required"
                                                 id="state" style="pointer-events: none;"
                                                 ng-options="s as s.statename for s in statelist | orderBy:'statename'"
-                                                ng-change="getDistrict()" ng-required="true" name="state"
+                                                ng-change="getDistrict()"   name="state"
                                                 ng-readonly="true" required="required" readonly="readOnly">
                                                 <option value="" class="">-----Select-----</option>
                                                 <option label="Andaman &amp; Nicobar Islands" value="object:59">Andaman
@@ -1805,22 +2111,21 @@
                                                 <option label="West Bengal" value="object:93">West Bengal
                                                 </option>
                                             </select>
-                                            <div class="error ng-hide"
+                                            <div class="error  "
                                                 ng-show=" deathcaseform.state.$dirty &amp;&amp;  deathcaseform.state.$invalid">
-                                                <small class="error ng-hide"
-                                                    ng-show="deathcaseform.state.$error.required">
+                                                <small class="error  " ng-show="deathcaseform.state.$error.required">
                                                     Please Select State</small>
                                             </div>
                                         </div>
                                         <div class="form-group col-xs-2">
                                             <label for="district" class="labelchange">
                                                 <span class="tooltipid tooltipstered" data-placement="right">2.12.
-                                                    District<span style="color: red">*</span></span>
+                                                    District <span>*</span></span>
                                             </label> <select
                                                 class="form-control ng-pristine ng-untouched ng-not-empty ng-valid ng-valid-required"
                                                 id="district" ng-readonly="true" style="pointer-events: none;"
                                                 ng-options="d as d.districtname for d in districtlist | orderBy:'districtname'"
-                                                ng-change="gettaluks()" ng-required="true" name="district"
+                                                ng-change="gettaluks()"   name="district"
                                                 required="required" readonly="readOnly">
                                                 <option value="" class="">-----Select-----</option>
                                                 <option label="Bagalkot" value="object:112">Bagalkot
@@ -1870,9 +2175,9 @@
                                                 </option>
                                                 <option label="Yadgir" value="object:140">Yadgir</option>
                                             </select>
-                                            <div class="error ng-hide"
+                                            <div class="error  "
                                                 ng-show=" deathcaseform.district.$dirty &amp;&amp;  deathcaseform.district.$invalid">
-                                                <small class="error ng-hide"
+                                                <small class="error  "
                                                     ng-show=" deathcaseform.district.$error.required">
                                                     Please Select District</small>
                                             </div>
@@ -1881,10 +2186,10 @@
                                         <div class="form-group col-xs-2">
                                             <label for="subdistrict" class="labelchange" style="min-width: 107px">
                                                 <span class="tooltipid tooltipstered" data-placement="right">2.13. Sub
-                                                    District<span style="color: red">*</span></span>
+                                                    District <span>*</span></span>
                                             </label><select
                                                 class="form-control ng-pristine ng-untouched ng-not-empty ng-valid ng-valid-required"
-                                                id="subdistrict" ng-required="true" name="subdistrict"
+                                                id="subdistrict"   name="subdistrict"
                                                 ng-change="getwards():getVillagebySubdistCode()"
                                                 style="pointer-events: none;" ng-readonly="true"
                                                 ng-options="t as (t.category1=='ULB'?'ULB-'+t.subdistrictname:t.subdistrictname) group by t.category1 for t in subdistrictlist"
@@ -1913,9 +2218,9 @@
                                                     </option>
                                                 </optgroup>
                                             </select>
-                                            <div class="error ng-hide"
+                                            <div class="error  "
                                                 ng-show="deathcaseform.subdistrict.$dirty &amp;&amp; deathcaseform.subdistrict.$invalid">
-                                                <small class="error ng-hide"
+                                                <small class="error  "
                                                     ng-show="deathcaseform.subdistrict.$error.required">
                                                     Please Select Sub-District</small>
                                             </div>
@@ -1928,9 +2233,9 @@
                                             ng-show="facilityinfo.health_facility_urban_rural != 2">
                                             <label for="village" class="labelchange">
                                                 <span class="tooltipid tooltipstered" data-placement="right">2.14.
-                                                    Village<span style="color: red">*</span></span>
+                                                    Village <span>*</span></span>
                                             </label> <select
-                                                class="form-control ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required"
+                                                class="form-control  "
                                                 id="village" ng-required="facilityinfo.health_facility_urban_rural != 2"
                                                 name="village" ng-change="getLatLngByAddress(patient);"
                                                 ng-options="v as v.villagename for v in villagelist  | orderBy:'villagename'"
@@ -1955,7 +2260,7 @@
                                                 <option label="Kenchenahalli" value="object:159">
                                                     Kenchenahalli</option>
                                             </select>
-                                            <div class="error ng-hide"
+                                            <div class="error  "
                                                 ng-show="deathcaseform.village.$dirty &amp;&amp; deathcaseform.village.$invalid">
                                                 <small class="error" ng-show="deathcaseform.village.$error.required">
                                                     Please Select Village</small>
@@ -1965,19 +2270,18 @@
 
                                         <!-- ng-options="v as v.wardname for v in wardSubcenterList  | orderBy:'wardname' -->
 
-                                        <div class="form-group col-xs-2 ng-hide"
+                                        <div class="form-group col-xs-2  "
                                             ng-show="facilityinfo.health_facility_urban_rural === 2">
-                                            <label>Ward<span style="color: red">*</span></label> <select id="wardlistid"
-                                                name="wardlistid" ng-options="m as m.wardname for m in wardlist"
-                                                ng-change="getulbareas()"
+                                            <label>Ward <span>*</span></label> <select id="wardlistid" name="wardlistid"
+                                                ng-options="m as m.wardname for m in wardlist" ng-change="getulbareas()"
                                                 ng-required="facilityinfo.health_facility_urban_rural === 2"
                                                 class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-required">
                                                 <option value="" class="" selected="selected">--Select--
                                                 </option>
                                             </select>
-                                            <div class="error ng-hide"
+                                            <div class="error  "
                                                 ng-show="deathcaseform.wardlistid.$dirty &amp;&amp; deathcaseform.wardlistid.$invalid">
-                                                <small class="error ng-hide"
+                                                <small class="error  "
                                                     ng-show="deathcaseform.wardlistid.$error.required">
                                                     Ward is required.</small>
                                             </div>
@@ -1989,18 +2293,17 @@
                                         </div>
 
 
-                                        <div class="form-group col-xs-2 ng-hide" ng-show="hasRole('HFUSCUSER')">
-                                            <label>Area<span style="color: red">*</span></label> <select id="areaid"
-                                                name="areaname" ng-options="m as m.areaname for m in areaList"
+                                        <div class="form-group col-xs-2  " ng-show="hasRole('HFUSCUSER')">
+                                            <label>Area <span>*</span></label> <select id="areaid" name="areaname"
+                                                ng-options="m as m.areaname for m in areaList"
                                                 ng-required="hasRole('HFUSCUSER')"
                                                 class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-required">
                                                 <option value="" class="" selected="selected">--Select--
                                                 </option>
                                             </select>
-                                            <div class="error ng-hide"
+                                            <div class="error  "
                                                 ng-show="deathcaseform.areaname.$dirty &amp;&amp; deathcaseform.areaname.$invalid">
-                                                <small class="error ng-hide"
-                                                    ng-show="deathcaseform.areaname.$error.required">
+                                                <small class="error  " ng-show="deathcaseform.areaname.$error.required">
                                                     Ward is required.</small>
                                             </div>
                                             <!-- <div ng-show="wardreq">
@@ -2010,44 +2313,6 @@
                                         </div>
 
 
-
-
-                                        <!-- 	<div class="form-group col-xs-2">
-											<label for="subdistrict" class="labelchange"
-												style="min-width: 107px">2.13. Sub District<span
-												style="color: red">*</span>
-											</label><select class="form-control" id="subdistrict"
-												 ng-required="true" name=""
-												ng-change="getVillagebySubdistCode()"
-												style="pointer-events: none;" ng-readonly="true"
-												ng-options="t as t.subdistrictname for t in subdistrictlist  | orderBy:'subdistrictname'">
-												<option value="">-----Select-----</option>
-											</select>
-											<div class="error"
-												ng-show="deathcaseform.subdistrict.$dirty &amp;&amp; deathcaseform.subdistrict.$invalid">
-												<small class="error" 
-													ng-show="deathcaseform.subdistrict.$error.required">
-													Please Select Sub-District</small>
-											</div>
-										</div>
-
-
-										<div class="form-group col-xs-2">
-											<label for="village" class="labelchange">2.14.
-												Village<span style="color: red">*</span>
-											</label> <select class="form-control" id="village"
-												 ng-required="true" name="village"
-												ng-change="getLatLngByAddress(patient);"
-												ng-options="v as v.villagename for v in villagelist  | orderBy:'villagename'">
-												<option value="">-----Select-----</option>
-											</select>
-											<div class="error"
-												ng-show="deathcaseform.village.$dirty &amp;&amp; deathcaseform.village.$invalid">
-												<small class="error" 
-													ng-show="deathcaseform.village.$error.required">
-													Please Select Village</small>
-											</div>
-										</div> -->
                                     </div>
                                     <div class="row">
                                         <label class="col-xs-2 control-label" style="max-width: 123px;"></label>
@@ -2068,8 +2333,10 @@
                                                 class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-maxlength"
                                                 id="streetname" type="text" value="" name="streetname" ng-maxlength="100">
                                             <div class="error ng-hide"
+                                                id="streetname" type="text" name="streetname" ng-maxlength="100">
+                                            <div class="error  "
                                                 ng-show=" deathcaseform.streetname.$dirty &amp;&amp; deathcaseform.streetname.$invalid">
-                                                <small class="error ng-hide"
+                                                <small class="error  "
                                                     ng-show=" deathcaseform.streetname.$error.maxlength">
                                                     Please Enter maximum 100 letters. </small>
                                             </div>
@@ -2081,29 +2348,32 @@
                                                 class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-maxlength"
                                                 id="streetname" type="text" value="" name="landmark" ng-maxlength="100">
                                             <div class="error ng-hide"
+                                                id="streetname" type="text" name="landmark" ng-maxlength="100">
+                                            <div class="error  "
                                                 ng-show=" deathcaseform.landmark.$dirty &amp;&amp; deathcaseform.landmark.$invalid">
-                                                <small class="error ng-hide"
+                                                <small class="error  "
                                                     ng-show=" deathcaseform.landmark.$error.maxlength">
                                                     Please Enter maximum 100 letters. </small>
                                             </div>
                                         </div>
                                     </div>
                                     </fieldset>
-                                    <fieldset style="background-color: cornsilk;">
-                                        <legend align="left"
-                                            style="border-bottom: none; margin-bottom: 0px; width: auto;">
-                                            <b style="font-size: 14px;">
-                                                <span class="tooltipid tooltipstered" data-placement="right">3.
+                                    <fieldset>
+                                        <legend>
+                                            <b>
+                                                <span class="tooltipid tooltipstered label-title"
+                                                    data-placement="right">3.
                                                     Death Case
                                                     Details:</span></b>
                                         </legend>
 
+                                        <div class="row">
                                         <div class="form-group col-xs-4">
                                             <label for="deathcause" class="labelchange">
                                                 <span class="tooltipid tooltipstered" data-placement="right">3.1.
-                                                    Probable Cause Of Death <span style="color: red">*</span></span>
-                                            </label> <select id="deathcause" name="deathcause" ng-required="true"
-                                                class="form-control ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required"
+                                                    Probable Cause Of Death <span>*</span>
+                                            </label> <select id="deathcause" name="deathcause"  
+                                                class="form-control  "
                                                 ng-options="d as d.health_condition_name for d in deathCauseList  | orderBy:'displayorder'"
                                                 required="required">
                                                 <option value="" class="" selected="selected">----Select----
@@ -2111,20 +2381,18 @@
                                             </select>
 
                                         </div>
-                                        <div class="form-group col-xs-2 ng-hide"
+                                        <div class="form-group col-xs-2  "
                                             ng-show="patient.deatcause.health_condition_name == 'Others'">
                                             <label for="otherdc" class="labelchange" style="min-width: 140px">3.2. Other
                                                 Death
-                                                Cause<span style="color: red">*</span></label> <input
+                                                Cause <span>*</span></label> <input
                                                 class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-maxlength"
                                                 style="min-width: 140px" id="otherdc" type="text" value="" max="128"
                                                 ng-maxlength="128" name="otherdc">
-                                            <div class="error ng-hide"
+                                            <div class="error  "
                                                 ng-show="deathcaseform.otherdc.$dirty &amp;&amp; deathcaseform.otherdc.$invalid">
-                                                <small class="error ng-hide"
-                                                    ng-show="deathcaseform.otherdc.$error.required">
-                                                    Please Enter Other Death Cause. </small> <small
-                                                    class="error ng-hide"
+                                                <small class="error  " ng-show="deathcaseform.otherdc.$error.required">
+                                                    Please Enter Other Death Cause. </small> <small class="error  "
                                                     ng-show="deathcaseform.otherdc.$error.maxlength">
                                                     Please Enter maximum 128 letters. </small>
                                             </div>
@@ -2133,7 +2401,7 @@
                                         <div class="form-group col-xs-2">
                                             <label for="dateofdeath" class="labelchange" style="min-width: 113px"><span
                                                     class="tooltipid tooltipstered" data-placement="right">3.3. Date Of
-                                                    Death<span style="color: red">*</span></span>
+                                                    Death <span>*</span></span>
                                             </label>
                                             <div class="input-group input-append date dateclass"
                                                 data-provide="datepicker">
@@ -2144,37 +2412,37 @@
                                                     ng-change="checkDateValidation(patient.dateofdeath,patient.dateofbirth,'insert'); validate_DOB_DOD(patient.dateofdeath,'dodmain');ValidationageDOD('insert');"
                                                     ng-pattern="/^(31[ \/ ](0[13578]|1[02])[ \/ ](18|19|20)[0-9]{2})|((29|30)[\/](01|0[3-9]|1[0-2])[\/](18|19|20)[0-9]{2})|((0[1-9]|1[0-9]|2[0-8])[\/](0[1-9]|1[0-2])[\/](18|19|20)[0-9]{2})|(29[\/](02)[\/](((18|19|20)(04|08|[2468][048]|[13579][26]))|2000))$/"
                                                     required="required">
+                                                <input type="text" class="form-control  " id="dateofdeath"
+                                                    name="dateofdeath" placeholder="dd/mm/yyyy" required="required">
                                                 <span class="input-group-addon datepicker" style="padding: 2px 12px;">
                                                     <span class="glyphicon glyphicon-calendar"></span>
                                                 </span>
                                             </div>
-                                            <div class="error ng-hide"
-                                                ng-show="deathcaseform.dateofdeath.$dirty &amp;&amp; deathcaseform.dateofdeath.$invalid">
-                                                <small class="error"
-                                                    ng-show="deathcaseform.dateofdeath.$error.required">
-                                                    Please Select Date of Death.</small> <small class="error ng-hide"
-                                                    ng-show="deathcaseform.dateofdeath.$error.pattern">
+                                            <div class="error  ">
+                                                <small class="error">
+
+                                                    Please Select Date of Death.</small> <small class="error ">
                                                     Please Enter valid date in dd/mm/yyyy format.</small>
                                             </div>
-                                            <small class="error ng-hide" ng-show="showDateError">
+                                            <small class="error">
                                                 Date
                                                 Of
                                                 Birth should be
                                                 smaller than Date Of death.</small>
-                                            <div ng-show="showdoderror" class="ng-hide">
+                                            <div ng-show="showdoderror">
                                                 <small class="error"> Date of death can not be
                                                     earlier than 01/01/1900 and can not beyond todays date.
                                                 </small>
                                             </div>
-                                            <div ng-show="showDobAgeError" class="ng-hide">
+                                            <div>
                                                 <small class="error"> Date of Death can not be
                                                     earlier than Date of Birth. </small>
                                             </div>
                                         </div>
+                                        </div>
+                                        
 
                                         <div class="row">
-                                            <!-- <div class="form-group col-xs-2">
-						
 
 
                                             <div class="form-group col-xs-4">
@@ -2205,11 +2473,7 @@
                                         </div>
                                     </div> -->
                                             <div class="row">
-                                                <!-- <div class="form-group col-xs-3">
-									<p style="padding-left: 3px">
-										<span style="color: red">*</span> = Mandatory Values
-									</p>
-								</div> -->
+
                                                 <div class="form-group col-xs-6" style="padding-left: 6px;">
                                                     <button class="btn btn-primary"
                                                        >
@@ -2220,21 +2484,15 @@
                                                             data-placement="right">Reset</span></button>
                                                 </div>
                                             </div>
-
-
-
                                             </form>
                                         </div>
                                 </div>
                             </div>
 
-                            <div>
+                            <!-- <div>
                                 <div class="row">
-                                    <div class="col-xs-12" style="padding-left: 0px">
-                                        <b style="font-size: 15px; font-weight: bold;" class="tooltipid tooltipstered"
-                                            data-placement="right">4.
-                                            List of
-                                            Reported Deaths</b>
+                                    <div class="col-xs-12" >
+                                        <span class="label-title d-block">  4.List of Reported Deaths </span>
                                     </div>
                                 </div>
                                 <table class="table table-sm table-bordered" id="tableId">
@@ -2244,20 +2502,19 @@
                                             <th class="printhide">Action</th>
                                             <th>2.2. Person Name<span><a ng-click="showCols = !showCols"
                                                         style="cursor: pointer"> <span
-                                                            class="glyphicon glyphicon-arrow-right printhide"
-                                                            ng-show="!showCols"></span>
-                                                        <span class="glyphicon glyphicon-arrow-left printhide ng-hide"
-                                                            ng-show="showCols"></span>
+                                                            class="glyphicon glyphicon-arrow-right printhide"></span>
+                                                        <span class="glyphicon glyphicon-arrow-left printhide  "
+                                                            ></span>
                                                     </a></span></th>
-                                            <th ng-show="showCols" class="ng-hide">2.5. Age</th>
-                                            <th ng-show="showCols" class="ng-hide">2.7. Gender</th>
-                                            <th ng-show="showCols" class="ng-hide">2.8. ID Type/Id No</th>
-                                            <!-- <th ng-show="showCols">Phone No</th> -->
-                                            <th ng-show="showCols" class="ng-hide">2.11. State</th>
-                                            <th ng-show="showCols" class="ng-hide">2.12. District</th>
-                                            <th ng-show="showCols" class="ng-hide">2.13. Sub District</th>
-                                            <th ng-show="showCols" class="ng-hide">2.14. Village</th>
-                                            <th ng-show="showCols" class="ng-hide">2.15. Address</th>
+                                            <th ng-show="showCols">2.5. Age</th>
+                                            <th ng-show="showCols">2.7. Gender</th>
+                                            <th ng-show="showCols">2.8. ID Type/Id No</th>
+                                           
+                                            <th ng-show="showCols">2.11. State</th>
+                                            <th ng-show="showCols">2.12. District</th>
+                                            <th ng-show="showCols">2.13. Sub District</th>
+                                            <th ng-show="showCols">2.14. Village</th>
+                                            <th ng-show="showCols">2.15. Address</th>
                                             <th>3.1. Probable Cause Of Death</th>
                                             <th>3.3. Date of Death</th>
                                             <th>3.4. Remarks</th>
@@ -2268,12 +2525,10 @@
                                     </thead>
 
                                     <tbody>
-                                        <!-- ngRepeat: p in patientList -->
-                                    </tbody>
+                                     
                                 </table>
 
-                                <div class="alert alert-success ng-binding ng-hide" ng-show="finalsubmitsaved"
-                                    role="alert">
+                                <div class="alert alert-success ng-binding  " ng-show="finalsubmitsaved" role="alert">
                                     Data
                                     Successfully
                                     submitted on 2023-10-03 14:27:22</div>
@@ -2282,8 +2537,13 @@
                                         data-placement="right" >Submit</span></button>
 
                             </div>
+                                <button class="btn btn-primary printhide" ng-click="openSubmissionAlertModal()"><span
+                                        class="tooltipid tooltipstered" data-placement="right">Submit</span></button>
 
+                            </div> -->
 
+                            <button class="btn btn-primary d-flex m-auto" ng-click="openSubmissionAlertModal()"><span
+                                        class="tooltipid tooltipstered" data-placement="right">Submit</span></button>
                         </div>
                     </div>
 

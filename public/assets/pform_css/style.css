@@ -199,13 +199,25 @@ input.valid, textarea.valid {
 }
 
 .panel-body {
-  padding: 0 35px;
+  padding: 15px 35px;
 }
 
 .form-compact .form-group {
   padding-right: 10px;
 }
 
+.sform .form-group input[type=radio] {
+  width: auto;
+  box-shadow: none;
+}
+.sform .panel-title {
+  padding: 14px 0 3px;
+}
+.sform .label-title {
+  font-weight: 500;
+  padding: 10px 0;
+  font-size: 16px;
+}
 .sform .form-group:not(:last-child) {
   padding-right: 10px;
 }
@@ -219,7 +231,43 @@ input.valid, textarea.valid {
   margin-top: 5px;
   border-radius: 4px;
 }
+.sform .form-control {
+  border: 1px solid #ced4da;
+}
 
 .error {
   color: #ff0000;
+}
+
+.pform2 .form-group input[type=radio] {
+  width: auto;
+}
+.pform2 .form-group span.calender {
+  position: absolute;
+  top: 53%;
+  right: 10%;
+}
+.pform2 .apply-filter button.search-patient-btn {
+  margin: 21px 0 0;
+}
+
+@media (max-width: 768px) {
+  .pform2 .myForm {
+    background: #f9f9f9;
+    padding: 10px 10px;
+  }
+  .pform2 .search-patient-btn {
+    width: auto !important;
+  }
+  .pform2 .form-group label {
+    padding: 0 0px;
+    font-size: 14px;
+  }
+  .pform2 .apply-filter button.search-patient-btn {
+    margin: 0;
+  }
+}
+.deathcaseform .form-group .radio label {
+  margin: 0;
+  padding-right: 10px;
 }/*# sourceMappingURL=style.css.map */

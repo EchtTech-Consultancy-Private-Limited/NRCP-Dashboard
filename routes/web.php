@@ -22,9 +22,10 @@ Route::get('/', function () {
 //Admin Routes Start
 Route::get('dashboard', [MainController::class, 'dashboard'])->name('dashboard');
 Route::get('pform', [MainController::class, 'pformview'])->name('pform');
-Route::get('sform', [MainController::class, 'sformview']); 
+Route::get('sform', [MainController::class, 'sformview']);
 
 Route::get('sform', [MainController::class, 'sformview'])->name('sform');
+Route::get('pform2', [MainController::class, 'pform2view'])->name('pform2');
 
 
 Route::post('addpatient', [MainController::class, 'addpatientdata'])->name('addpatient');
@@ -33,4 +34,11 @@ Route::post('addpatient', [MainController::class, 'addpatientdata'])->name('addp
 //Route::get('login', [MainController::class, 'login'])->name('login');
 
 Route::post('patient-Record',[MainController::class,'patientAdd']);
+
+
+//human rabies
+Route::get('human-rabies',[MainController::class,'humanRabiesMap']);
+Route::get('human-rabies-death',[MainController::class,'humanRabiesDeath']);
+Route::get('human-rabies-death-default',[MainController::class,'humanRabiesDeathdefault']);
+
 

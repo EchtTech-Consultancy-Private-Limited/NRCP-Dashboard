@@ -12,9 +12,17 @@ class sform extends Model
 
     protected $fillable = [
         'illness_senario',
-        'age_of_5',
-        'number_of_cases_of_illness',
-        'gender',
+        'male_less_5_age_illness',
+        'male_greater_5_age_illness',
+        'male_total_illness',
+        'female_less_5_age_illness',
+        'female_greater_5_age_illness',
+        'female_total_illness',
+        'grand_total_illness',
+        'male_deths',
+        'female_deths',
+        'total_deths',
+        
     ];
 
 
