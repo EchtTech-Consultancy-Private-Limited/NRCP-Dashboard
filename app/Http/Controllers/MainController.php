@@ -8,6 +8,7 @@ use App\Models\patient_record;
 use Hash;
 use Redirect;
 use DB;
+use App\Models\sform;
 use Illuminate\Http\Request;
 
 class MainController extends Controller
@@ -15,8 +16,11 @@ class MainController extends Controller
     public function dashboard(Request $request)
     {
         $usertype = $request->usertype;
+<<<<<<< HEAD
         
         return view("dashboard")->with('usertype',$usertype);
+=======
+>>>>>>> 5eb8cc3a2b76faafac82fdc139c25f5eaadea7b9
 
 
         $states = DB::table('states')->get();
@@ -77,9 +81,9 @@ class MainController extends Controller
     public function pformView()
     {
         return view("pform");
-    }    
+    }
     public function sformView()
-    
+
     {
         return view("sform");
     }
@@ -124,10 +128,95 @@ class MainController extends Controller
         return back()->with('message', '');
     }
 
+    public function addpatientdata(Request $req){
+        
+        $dataRequest=$req->all();
+
+        unset($dataRequest['_token']);
+
+
+        
+        // $sform =new sform();
+        $illnessSenario="";
+
+     foreach($dataRequest as $key=>$value){
+    
+       
+        $keyData=(explode('_',$key));
+         if( $illnessSenario!=$keyData[0]){
+             $sform = new sform();
+           }
+
+        $illnessSenario=$keyData[0];
+       
+        
+        $sform->illness_senario=$keyData[0];
+    
+
+        if($keyData[5]=="less" && $keyData[3]=="male"){
+            $sform->male_less_5_age_illness=$value;
+        }
+
+
+        if($keyData[5]=="greater" && $keyData[3]=="male"){
+            $sform->male_greater_5_age_illness=$value;
+        
+
+        }
+
+        if($keyData[5]=="less" && $keyData[3]=="female"){
+            $sform->female_less_5_age_illness=$value;
+        }
+
+
+        if($keyData[5]=="greater" && $keyData[3]=="female"){
+            $sform->female_greater_5_age_illness=$value;
+        
+
+        }
+
+        
+
+        $sform->male_total_illness=$sform->male_less_5_age_illness + $sform->male_greater_5_age_illness;
+
+        $sform->female_total_illness=$sform->female_less_5_age_illness + $sform->female_greater_5_age_illness;
+
+        $sform->save();
+
+        
+        
+        // if(isset($value)){
+        // $patientsformdata = sform::create([
+        //     'illness_senario' =>$keyData[0],
+        //     'age_of_5'=>$ageis5,
+        //     'number_of_cases_of_illness'=>$value,
+        //     'gender' => $gender,
+           
+
+        // ]);
+    // }
+
+      
+
+        
+
+     }
+
+
+     return response()->json(['message'=>"data add successfully"]);
+
+        // explode(“ “, “Hello, what is your name?")
+        // for()
+
+        // dd($req->all());
+
+    }
+
 
     //p form
     public function humanRabiesMap(Request $request)
     {
+
         $states = DB::table('states')->get();
         $human_rabiess = DB::table('pform_human_rabies')->get();
         $currentYear = date('Y');
@@ -137,10 +226,12 @@ class MainController extends Controller
         $total_human_rabies = 0; // Initialize a variable to hold the total
         $array = [];
         foreach ($states as $value) {
-            if ($request->setyear != '')
+            if ($request->setyear != ''){
                 $human_rabies = DB::table('pform_human_rabies')->where('state_id', $value->id)->where('year', $request->setyear)->sum('cases');
-            else {
+                //dd($human_rabies);
+            }else {
                 $human_rabies = DB::table('pform_human_rabies')->where('state_id', $value->id)->where('year', $previousYear)->sum('cases');
+
             }
 
             $total_human_rabies += $human_rabies; // Accumulate the sum
@@ -152,6 +243,7 @@ class MainController extends Controller
 
     public function humanRabiesDeath(Request $request)
     {
+        //dd($request->all());
         $states = DB::table('states')->get();
         $statess = DB::table('states')->where('state_name', '=', $request->name)->first();
         //dd($statess);

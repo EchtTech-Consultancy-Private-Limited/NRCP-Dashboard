@@ -18,14 +18,18 @@ use App\Http\Controllers\MainController;
 Route::get('/', function () {
     return view('login');
 });
-
+  
 //Admin Routes Start
 Route::get('dashboard', [MainController::class, 'dashboard'])->name('dashboard');
 Route::get('pform', [MainController::class, 'pformview'])->name('pform');
-Route::get('sform', [MainController::class, 'sformview']); 
+Route::get('sform', [MainController::class, 'sformview']);
 
 Route::get('sform', [MainController::class, 'sformview'])->name('sform');
 Route::get('pformDashboard', [MainController::class, 'pformDashboardview'])->name('pformDashboard');
+
+
+Route::post('addpatient', [MainController::class, 'addpatientdata'])->name('addpatient');
+
 
 //Route::get('login', [MainController::class, 'login'])->name('login');
 

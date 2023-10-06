@@ -6,6 +6,15 @@
     integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
+    <style>
+.form-control {
+    border: 1px solid #acadaf;
+    padding: 4px 5px;
+    height: inherit;
+    width: 40px;
+}
+        </style>
+
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
 
 
@@ -88,8 +97,8 @@
                                         <div class="form-group "
                                             ng-show="facilityinfo.health_facility_urban_rural != 2">
                                             <label for="village" class="labelchange"><span
-                                                    class="tooltipid tooltipstered"
-                                                    data-placement="right">Village<span>*</span></span></label>
+                                                    class="tooltipid tooltipstered" data-placement="right">Village<span
+                                                        style="color: red">*</span></span></label>
                                             <select
                                                 class="form-control ng-not-empty ng-dirty ng-valid-parse ng-valid ng-valid-required ng-touched"
                                                 id="village" ng-required="
@@ -109,9 +118,9 @@
                                                 <option label="Hirehalli" value="object:167">Hirehalli</option>
                                                 <option label="Kenchenahalli" value="object:168">Kenchenahalli</option>
                                             </select>
-                                            <div class="error  "
+                                            <div class="error ng-hide"
                                                 ng-show="aggform.village.$dirty &amp;&amp; aggform.village.$invalid">
-                                                <small class="error  " ng-show="aggform.village.$error.required">
+                                                <small class="error ng-hide" ng-show="aggform.village.$error.required">
                                                     Please
                                                     Select Village</small>
                                             </div>
@@ -119,9 +128,10 @@
                                     </div>
 
 
-                                    <div class="form-group col-xs-2  "
+                                    <div class="form-group col-xs-2 ng-hide"
                                         ng-show="facilityinfo.health_facility_urban_rural === 2">
-                                        <label for="village" class="labelchange">Ward<span>*</span></label>
+                                        <label for="village" class="labelchange">Ward<span
+                                                style="color: red">*</span></label>
 
                                         <select
                                             class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-required"
@@ -131,8 +141,9 @@
                                             ng-options="v as v.wardname for v in wardSubcenterList  | orderBy:'wardname'">
                                             <option value="" class="" selected="selected">-----Select-----</option>
                                         </select>
-                                        <div class="error  ">
-                                            <small class="error  ">
+                                        <div class="error ng-hide"
+                                            ng-show="aggform.ward.$dirty &amp;&amp; aggform.ward.$invalid">
+                                            <small class="error ng-hide"  ">
                                                 Please
                                                 Select Ward</small>
                                         </div>
@@ -147,7 +158,7 @@
                                         </label><br> <span style="font-size: medium; color: #FF5733;" class="span-text">
                                             29-548-5537-295485537001-162758-03102023-S-1</span>
                                     </div>
-                                    <!-- <div class="row  " ng-show="facilitynp">
+                                    <!-- <div class="row ng-hide" ng-show="facilitynp">
                                         <div class="col-xs-12">
                                             <div class="alert alert-danger" role="alert">There
                                                 seems to be some server issue. Please login again or contact
@@ -165,7 +176,7 @@
                                         <tbody>
                                             <tr>
                                                 <td rowspan="3"></td>
-                                                <td colspan="7"><b>Number
+                                                <td colspan="7" style="text-align: center; font-size: 14px;"><b>Number
                                                         of cases of illness</b></td>
                                                 <td colspan="3" rowspan="2"><b>
                                                         Number of cases of deaths <br>
@@ -174,12 +185,12 @@
 
                                             </tr>
                                             <tr>
-                                                <td colspan="3"><b>Male</b>
+                                                <td colspan="3" style="text-align: center; font-size: 14px;"><b>Male</b>
                                                 </td>
-                                                <td colspan="3">
+                                                <td colspan="3" style="text-align: center; font-size: 14px;">
                                                     <b>Female</b>
                                                 </td>
-                                                <td rowspan="2"><b>Grand<br>
+                                                <td rowspan="2" style="text-align: center;"><b>Grand<br>
                                                         Total
                                                     </b></td>
 
@@ -198,803 +209,955 @@
                                             </tr>
 
                                             <tr>
-                                                <td id="tt32">2.1.1
+                                                <td style="width: 470px;" id="tt32" class="ng-binding">2.1.1
                                                     Only Fever &gt;= 7 days</td>
 
-                                                <td><input name="pformcountmale" type="text" class="form-control  ">
+                                                <td><input type="text" id="onlyfevergreaterthanequal7days_form_count_male_age_less_5" name="onlyfevergreaterthanequal7days_form_count_male_age_less_5" value="" class="form-control">
                                                 </td>
 
-                                                <td><input name="pformcountfemale" type="text" class="form-control  ">
+                                                <td><input name="onlyfevergreaterthanequal7days_form_count_male_age_greater_5" id="onlyfevergreaterthanequal7days_form_count_male_age_greater_5"  type="text" value="" class="form-control">
                                                 </td>
 
-                                                <td><input name="pformdeathcountmale" type="text" class="form-control"
+                                                <td><input name="" id="onlyfevergreaterthanequal7days_form_count_male_total" type="text" value=""
+                                                        class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input id="onlyfevergreaterthanequal7days_form_count_female_age_less_5"     name="onlyfevergreaterthanequal7days_form_count_female_age_less_5" type="text" value=""
+                                                        class="form-control  "
+                                                       >
+                                                </td>
+
+                                                <td><input name="onlyfevergreaterthanequal7days_form_count_female_age_greater_5" id="onlyfevergreaterthanequal7days_form_count_female_age_greater_5"  type="text" value=""
                                                         class="form-control  ">
                                                 </td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
-                                                        class="form-control  ">
-                                                </td>
 
+                                                <td><input name=""
+                                                     type="text" value="" id="onlyfevergreaterthanequal7days_form_count_female_total"
+                                                    class="form-control"
+                                                    readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                <td><input name="onlyfevergreaterthanequal7days_form_count_grand_total" id="onlyfevergreaterthanequal7days_form_count_grand_total" type="text" value=""
+                                                        class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
+                                                        class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
+                                                        class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
-                                                        readonly="readonly" tabindex="-1"></td>
-
-                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
+                                                        class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
                                             </tr>
 
                                             <tr>
-                                                <td id="tt33">2.1.2
+                                                <td style="width: 470px;" id="tt33" class="ng-binding">2.1.2
                                                     Only Fever &lt; 7 days</td>
 
-                                                <td><input name="pformcountmale" type="text" class="form-control  ">
+                                                <td><input id="onlyfeverlessthan7days_form_count_male_age_less_5"  name="onlyfeverlessthan7days_form_count_male_age_less_5" type="text" value="" class="form-control  ">
                                                 </td>
 
-                                                <td><input name="pformcountfemale" type="text" class="form-control  ">
+                                                <td><input id="onlyfeverlessthan7days_form_count_male_age_greater_5" name="onlyfeverlessthan7days_form_count_male_age_greater_5" type="text" value="" class="form-control  ">
                                                 </td>
 
-                                                <td><input name="pformdeathcountmale" type="text" class="form-control"
+                                                <td><input name="" type="text" value="" id="onlyfeverlessthan7days_form_count_male_total"
+                                                        class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
-                                                        class="form-control  ">
+                                                <td><input name="onlyfeverlessthan7days_form_count_female_age_less_5" type="text" value=""
+                                                        class="form-control  "
+                                                        id="onlyfeverlessthan7days_form_count_female_age_less_5">
                                                 </td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
-                                                        class="form-control  ">
+                                                <td><input id="onlyfeverlessthan7days_form_count_female_age_greater_5" name="onlyfeverlessthan7days_form_count_female_age_greater_5" type="text" value=""
+                                                        class="form-control ">
                                                 </td>
 
 
-                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                <td><input name="pformdeathcountfemale" type="text" value="" id="onlyfeverlessthan7days_form_count_female_total"
+                                                        class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                <td><input name="pformdeathcountfemale" type="text" value="" id="onlyfeverlessthan7days_form_count_grand_total"
+                                                        class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
+                                                        class="form-control  "
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
+                                                        class="form-control  "
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
+                                                        class="form-control  "
                                                         readonly="readonly" tabindex="-1"></td>
                                             </tr>
 
 
                                             <tr>
-                                                <td id="tt20">2.1.3
+                                                <td style="width: 470px;" id="tt20" class="ng-binding">2.1.3
                                                     Fever with Rash</td>
 
-                                                <td><input name="pformcountmale" type="text" class="form-control  ">
+                                                <td><input name="pformcountmale" type="text" value="" class="form-control  ">
                                                 </td>
 
-                                                <td><input name="pformcountfemale" type="text" class="form-control  ">
+                                                <td><input name="pformcountfemale" type="text" value="" class="form-control  ">
                                                 </td>
 
-                                                <td><input name="pformdeathcountmale" type="text" class="form-control"
+                                                <td><input name="pformdeathcountmale" type="text" value=""
+                                                        class="form-control  "
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
+                                                        class="form-control  "
+                                                        ng-value="(( s.name == 'Unknown')&amp;&amp;(s.casesfemalelt5yr == 0)  ?'':s.casesfemalelt5yr)">
+                                                </td>
+
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control  ">
                                                 </td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
-                                                        class="form-control  ">
-                                                </td>
 
-
-                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
+                                                        class="form-control  "
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
+                                                        class="form-control  "
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
+                                                        class="form-control  "
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
+                                                        class="form-control  "
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
+                                                        class="form-control  "
                                                         readonly="readonly" tabindex="-1"></td>
                                             </tr>
 
                                             <tr>
-                                                <td id="tt18">2.1.4
+                                                <td style="width: 470px;" id="tt18" class="ng-binding">2.1.4
                                                     Fever with Bleeding</td>
 
-                                                <td><input name="pformcountmale" type="text" class="form-control  ">
+                                                <td><input name="pformcountmale" type="text" value="" class="form-control  ">
                                                 </td>
 
-                                                <td><input name="pformcountfemale" type="text" class="form-control  ">
+                                                <td><input name="pformcountfemale" type="text" value="" class="form-control  ">
                                                 </td>
 
-                                                <td><input name="pformdeathcountmale" type="text" class="form-control"
+                                                <td><input name="pformdeathcountmale" type="text" value=""
+                                                        class="form-control  "
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
+                                                        class="form-control  "
+                                                        ng-value="(( s.name == 'Unknown')&amp;&amp;(s.casesfemalelt5yr == 0)  ?'':s.casesfemalelt5yr)">
+                                                </td>
+
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control  ">
                                                 </td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
-                                                        class="form-control  ">
-                                                </td>
 
-
-                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
+                                                        class="form-control  "
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
+                                                        class="form-control  "
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
+                                                        class="form-control  "
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
+                                                        class="form-control  "
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
+                                                        class="form-control  "
                                                         readonly="readonly" tabindex="-1"></td>
                                             </tr>
 
                                             <tr>
-                                                <td id="tt19">2.1.5
+                                                <td style="width: 470px;" id="tt19" class="ng-binding">2.1.5
                                                     Fever with Altered sensorium</td>
 
-                                                <td><input name="pformcountmale" type="text" class="form-control  ">
+                                                <td><input name="pformcountmale" type="text" value="" class="form-control  ">
                                                 </td>
 
-                                                <td><input name="pformcountfemale" type="text" class="form-control  ">
+                                                <td><input name="pformcountfemale" type="text" value="" class="form-control  ">
                                                 </td>
 
-                                                <td><input name="pformdeathcountmale" type="text" class="form-control"
+                                                <td><input name="pformdeathcountmale" type="text" value=""
+                                                        class="form-control  "
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
+                                                        class="form-control  "
+                                                        ng-value="(( s.name == 'Unknown')&amp;&amp;(s.casesfemalelt5yr == 0)  ?'':s.casesfemalelt5yr)">
+                                                </td>
+
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control  ">
                                                 </td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
-                                                        class="form-control  ">
-                                                </td>
 
-
-                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
+                                                        class="form-control  "
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
+                                                        class="form-control  "
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
+                                                        class="form-control  "
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
+                                                        class="form-control  "
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
+                                                        class="form-control  "
                                                         readonly="readonly" tabindex="-1"></td>
                                             </tr>
                                             <tr>
-                                                <td id="tt50">2.2.1
+                                                <td style="width: 470px;" id="tt50" class="ng-binding">2.2.1
                                                     Cough &lt;= 2 weeks with fever</td>
 
-                                                <td><input name="pformcountmale" type="text" class="form-control  ">
+                                                <td><input name="pformcountmale" type="text" value="" class="form-control  ">
                                                 </td>
 
-                                                <td><input name="pformcountfemale" type="text" class="form-control  ">
+                                                <td><input name="pformcountfemale" type="text" value="" class="form-control  ">
                                                 </td>
 
-                                                <td><input name="pformdeathcountmale" type="text" class="form-control"
+                                                <td><input name="pformdeathcountmale" type="text" value=""
+                                                        class="form-control  "
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
+                                                        class="form-control  "
+                                                        ng-value="(( s.name == 'Unknown')&amp;&amp;(s.casesfemalelt5yr == 0)  ?'':s.casesfemalelt5yr)">
+                                                </td>
+
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control  ">
                                                 </td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
-                                                        class="form-control  ">
-                                                </td>
 
-
-                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
+                                                        class="form-control  "
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
+                                                        class="form-control  "
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
+                                                        class="form-control  "
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
+                                                        class="form-control  "
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
+                                                        class="form-control  "
                                                         readonly="readonly" tabindex="-1"></td>
                                             </tr>
 
                                             <tr>
-                                                <td id="tt51">2.2.2
+                                                <td style="width: 470px;" id="tt51" class="ng-binding">2.2.2
                                                     Cough &lt;= 2 weeks without fever</td>
 
-                                                <td><input name="pformcountmale" type="text" class="form-control  ">
+                                                <td><input name="pformcountmale" type="text" value="" class="form-control  ">
                                                 </td>
 
-                                                <td><input name="pformcountfemale" type="text" class="form-control  ">
+                                                <td><input name="pformcountfemale" type="text" value="" class="form-control  ">
                                                 </td>
 
-                                                <td><input name="pformdeathcountmale" type="text" class="form-control"
+                                                <td><input name="pformdeathcountmale" type="text" value=""
+                                                        class="form-control  "
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
+                                                        class="form-control  "
+                                                        ng-value="(( s.name == 'Unknown')&amp;&amp;(s.casesfemalelt5yr == 0)  ?'':s.casesfemalelt5yr)">
+                                                </td>
+
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control  ">
                                                 </td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
-                                                        class="form-control  ">
-                                                </td>
 
-
-                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
+                                                        class="form-control  "
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
+                                                        class="form-control  "
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
+                                                        class="form-control  "
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
+                                                        class="form-control  "
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
+                                                        class="form-control  "
                                                         readonly="readonly" tabindex="-1"></td>
                                             </tr>
 
                                             <tr>
-                                                <td id="tt14">2.2.3
+                                                <td style="width: 470px;" id="tt14" class="ng-binding">2.2.3
                                                     Cough &gt; 2 weeks with fever</td>
 
-                                                <td><input name="pformcountmale" type="text" class="form-control  ">
+                                                <td><input name="pformcountmale" type="text" value="" class="form-control  ">
                                                 </td>
 
-                                                <td><input name="pformcountfemale" type="text" class="form-control  ">
+                                                <td><input name="pformcountfemale" type="text" value="" class="form-control  ">
                                                 </td>
 
-                                                <td><input name="pformdeathcountmale" type="text" class="form-control"
+                                                <td><input name="pformdeathcountmale" type="text" value=""
+                                                        class="form-control  "
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
+                                                        class="form-control  "
+                                                        ng-value="(( s.name == 'Unknown')&amp;&amp;(s.casesfemalelt5yr == 0)  ?'':s.casesfemalelt5yr)">
+                                                </td>
+
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control  ">
                                                 </td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
-                                                        class="form-control  ">
-                                                </td>
 
-
-                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
+                                                        class="form-control  "
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
+                                                        class="form-control  "
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
+                                                        class="form-control  "
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
+                                                        class="form-control  "
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
+                                                        class="form-control  "
                                                         readonly="readonly" tabindex="-1"></td>
                                             </tr>
                                             <tr>
-                                                <td id="tt13">2.2.4
+                                                <td style="width: 470px;" id="tt13" class="ng-binding">2.2.4
                                                     Cough &gt; 2 weeks without fever</td>
 
-                                                <td><input name="pformcountmale" type="text" class="form-control  ">
+                                                <td><input name="pformcountmale" type="text" value="" class="form-control  ">
                                                 </td>
 
-                                                <td><input name="pformcountfemale" type="text" class="form-control  ">
+                                                <td><input name="pformcountfemale" type="text" value="" class="form-control  ">
                                                 </td>
 
-                                                <td><input name="pformdeathcountmale" type="text" class="form-control"
+                                                <td><input name="pformdeathcountmale" type="text" value=""
+                                                        class="form-control  "
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
+                                                        class="form-control  "
+                                                        ng-value="(( s.name == 'Unknown')&amp;&amp;(s.casesfemalelt5yr == 0)  ?'':s.casesfemalelt5yr)">
+                                                </td>
+
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control  ">
                                                 </td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
-                                                        class="form-control  ">
-                                                </td>
 
-
-                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
+                                                        class="form-control  "
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
+                                                        class="form-control  "
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
+                                                        class="form-control  "
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
+                                                        class="form-control  "
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
+                                                        class="form-control  "
                                                         readonly="readonly" tabindex="-1"></td>
                                             </tr>
 
                                             <tr>
-                                                <td id="tt46">2.3.1
+                                                <td style="width: 470px;" id="tt46" class="ng-binding">2.3.1
                                                     Loose watery stools with blood &lt; 2 weeks</td>
 
-                                                <td><input name="pformcountmale" type="text" class="form-control  ">
+                                                <td><input name="pformcountmale" type="text" value="" class="form-control  ">
                                                 </td>
 
-                                                <td><input name="pformcountfemale" type="text" class="form-control  ">
+                                                <td><input name="pformcountfemale" type="text" value="" class="form-control  ">
                                                 </td>
 
-                                                <td><input name="pformdeathcountmale" type="text" class="form-control"
+                                                <td><input name="pformdeathcountmale" type="text" value=""
+                                                        class="form-control  "
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
+                                                        class="form-control  "
+                                                        ng-value="(( s.name == 'Unknown')&amp;&amp;(s.casesfemalelt5yr == 0)  ?'':s.casesfemalelt5yr)">
+                                                </td>
+
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control  ">
                                                 </td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
-                                                        class="form-control  ">
-                                                </td>
 
-
-                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
+                                                        class="form-control  "
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
+                                                        class="form-control  "
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
+                                                        class="form-control  "
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
+                                                        class="form-control  "
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
+                                                        class="form-control  "
                                                         readonly="readonly" tabindex="-1"></td>
                                             </tr>
 
                                             <tr>
-                                                <td id="tt58">2.3.2
+                                                <td style="width: 470px;" id="tt58" class="ng-binding">2.3.2
                                                     Loose watery stools without blood &lt; 2 weeks</td>
 
-                                                <td><input name="pformcountmale" type="text" class="form-control  ">
+                                                <td><input name="pformcountmale" type="text" value="" class="form-control  ">
                                                 </td>
 
-                                                <td><input name="pformcountfemale" type="text" class="form-control  ">
+                                                <td><input name="pformcountfemale" type="text" value="" class="form-control  ">
                                                 </td>
 
-                                                <td><input name="pformdeathcountmale" type="text" class="form-control"
+                                                <td><input name="pformdeathcountmale" type="text" value=""
+                                                        class="form-control  "
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
+                                                        class="form-control  "
+                                                        ng-value="(( s.name == 'Unknown')&amp;&amp;(s.casesfemalelt5yr == 0)  ?'':s.casesfemalelt5yr)">
+                                                </td>
+
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control  ">
                                                 </td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
-                                                        class="form-control  ">
-                                                </td>
 
-
-                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
+                                                        class="form-control  "
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
+                                                        class="form-control  "
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
+                                                        class="form-control  "
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
+                                                        class="form-control  "
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
+                                                        class="form-control  "
                                                         readonly="readonly" tabindex="-1"></td>
                                             </tr>
 
                                             <tr>
-                                                <td id="tt52">2.4.1
+                                                <td style="width: 470px;" id="tt52" class="ng-binding">2.4.1
                                                     Jaundice of &lt; 4 weeks</td>
 
-                                                <td><input name="pformcountmale" type="text" class="form-control  ">
+                                                <td><input name="pformcountmale" type="text" value="" class="form-control  ">
                                                 </td>
 
-                                                <td><input name="pformcountfemale" type="text" class="form-control  ">
+                                                <td><input name="pformcountfemale" type="text" value="" class="form-control  ">
                                                 </td>
 
-                                                <td><input name="pformdeathcountmale" type="text" class="form-control"
+                                                <td><input name="pformdeathcountmale" type="text" value=""
+                                                        class="form-control  "
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
+                                                        class="form-control  "
+                                                        ng-value="(( s.name == 'Unknown')&amp;&amp;(s.casesfemalelt5yr == 0)  ?'':s.casesfemalelt5yr)">
+                                                </td>
+
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control  ">
                                                 </td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
-                                                        class="form-control  ">
-                                                </td>
 
-
-                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
+                                                        class="form-control  "
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
+                                                        class="form-control  "
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
+                                                        class="form-control  "
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
+                                                        class="form-control  "
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
+                                                        class="form-control  "
                                                         readonly="readonly" tabindex="-1"></td>
                                             </tr>
 
                                             <tr>
-                                                <td id="tt3">2.5.1
+                                                <td style="width: 470px;" id="tt3" class="ng-binding">2.5.1
                                                     Acute Flaccid Paralysis</td>
 
-                                                <td><input name="pformcountmale" type="text" class="form-control  ">
+                                                <td><input name="pformcountmale" type="text" value="" class="form-control  ">
                                                 </td>
 
-                                                <td><input name="pformcountfemale" type="text" class="form-control  ">
+                                                <td><input name="pformcountfemale" type="text" value="" class="form-control  ">
                                                 </td>
 
-                                                <td><input name="pformdeathcountmale" type="text" class="form-control"
+                                                <td><input name="pformdeathcountmale" type="text" value=""
+                                                        class="form-control  "
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
+                                                        class="form-control  "
+                                                        ng-value="(( s.name == 'Unknown')&amp;&amp;(s.casesfemalelt5yr == 0)  ?'':s.casesfemalelt5yr)">
+                                                </td>
+
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control  ">
                                                 </td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
-                                                        class="form-control  ">
-                                                </td>
 
-
-                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
+                                                        class="form-control  "
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
+                                                        class="form-control  "
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
+                                                        class="form-control  "
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
+                                                        class="form-control  "
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
+                                                        class="form-control  "
                                                         readonly="readonly" tabindex="-1"></td>
                                             </tr>
 
                                             <tr>
-                                                <td id="tt53">2.6.1
+                                                <td style="width: 470px;" id="tt53" class="ng-binding">2.6.1
                                                     Malaria Vivax RDT</td>
 
-                                                <td><input name="pformcountmale" type="text" class="form-control  ">
+                                                <td><input name="pformcountmale" type="text" value="" class="form-control  ">
                                                 </td>
 
-                                                <td><input name="pformcountfemale" type="text" class="form-control  ">
+                                                <td><input name="pformcountfemale" type="text" value="" class="form-control  ">
                                                 </td>
 
-                                                <td><input name="pformdeathcountmale" type="text" class="form-control"
+                                                <td><input name="pformdeathcountmale" type="text" value=""
+                                                        class="form-control  "
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
+                                                        class="form-control  "
+                                                        ng-value="(( s.name == 'Unknown')&amp;&amp;(s.casesfemalelt5yr == 0)  ?'':s.casesfemalelt5yr)">
+                                                </td>
+
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control  ">
                                                 </td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
-                                                        class="form-control  ">
-                                                </td>
 
-
-                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
+                                                        class="form-control  "
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
+                                                        class="form-control  "
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
+                                                        class="form-control  "
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
+                                                        class="form-control  "
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
+                                                        class="form-control  "
                                                         readonly="readonly" tabindex="-1"></td>
                                             </tr>
 
                                             <tr>
-                                                <td id="tt54">2.6.2
+                                                <td style="width: 470px;" id="tt54" class="ng-binding">2.6.2
                                                     Malaria Falciparum RDT</td>
 
-                                                <td><input name="pformcountmale" type="text" class="form-control  ">
+                                                <td><input name="pformcountmale" type="text" value="" class="form-control  ">
                                                 </td>
 
-                                                <td><input name="pformcountfemale" type="text" class="form-control  ">
+                                                <td><input name="pformcountfemale" type="text" value="" class="form-control  ">
                                                 </td>
 
-                                                <td><input name="pformdeathcountmale" type="text" class="form-control"
+                                                <td><input name="pformdeathcountmale" type="text" value=""
+                                                        class="form-control  "
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
+                                                        class="form-control  "
+                                                        ng-value="(( s.name == 'Unknown')&amp;&amp;(s.casesfemalelt5yr == 0)  ?'':s.casesfemalelt5yr)">
+                                                </td>
+
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control  ">
                                                 </td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
-                                                        class="form-control  ">
-                                                </td>
 
-
-                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
+                                                        class="form-control  "
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
+                                                        class="form-control  "
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
+                                                        class="form-control  "
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
+                                                        class="form-control  "
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
+                                                        class="form-control  "
                                                         readonly="readonly" tabindex="-1"></td>
                                             </tr>
 
                                             <tr>
-                                                <td id="tt55">2.6.3
+                                                <td style="width: 470px;" id="tt55" class="ng-binding">2.6.3
                                                     Malaria Mixed RDT</td>
 
-                                                <td><input name="pformcountmale" type="text" class="form-control  ">
+                                                <td><input name="pformcountmale" type="text" value="" class="form-control  ">
                                                 </td>
 
-                                                <td><input name="pformcountfemale" type="text" class="form-control  ">
+                                                <td><input name="pformcountfemale" type="text" value="" class="form-control  ">
                                                 </td>
 
-                                                <td><input name="pformdeathcountmale" type="text" class="form-control"
+                                                <td><input name="pformdeathcountmale" type="text" value=""
+                                                        class="form-control  "
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
+                                                        class="form-control  "
+                                                        ng-value="(( s.name == 'Unknown')&amp;&amp;(s.casesfemalelt5yr == 0)  ?'':s.casesfemalelt5yr)">
+                                                </td>
+
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control  ">
                                                 </td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
-                                                        class="form-control  ">
-                                                </td>
 
-
-                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
+                                                        class="form-control  "
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
+                                                        class="form-control  "
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
+                                                        class="form-control  "
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
+                                                        class="form-control  "
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
+                                                        class="form-control  "
                                                         readonly="readonly" tabindex="-1"></td>
                                             </tr>
                                             <tr>
-                                                <td id="tt48">2.7.1
+                                                <td style="width: 470px;" id="tt48" class="ng-binding">2.7.1
                                                     Animal Bite - Snake Bite</td>
 
-                                                <td><input name="pformcountmale" type="text" class="form-control  ">
+                                                <td><input name="pformcountmale" type="text" value="" class="form-control  ">
                                                 </td>
 
-                                                <td><input name="pformcountfemale" type="text" class="form-control  ">
+                                                <td><input name="pformcountfemale" type="text" value="" class="form-control  ">
                                                 </td>
 
-                                                <td><input name="pformdeathcountmale" type="text" class="form-control"
+                                                <td><input name="pformdeathcountmale" type="text" value=""
+                                                        class="form-control  "
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
+                                                        class="form-control  "
+                                                        ng-value="(( s.name == 'Unknown')&amp;&amp;(s.casesfemalelt5yr == 0)  ?'':s.casesfemalelt5yr)">
+                                                </td>
+
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control  ">
                                                 </td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
-                                                        class="form-control  ">
-                                                </td>
 
-
-                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
+                                                        class="form-control  "
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
+                                                        class="form-control  "
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
+                                                        class="form-control  "
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
+                                                        class="form-control  "
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
+                                                        class="form-control  "
                                                         readonly="readonly" tabindex="-1"></td>
                                             </tr>
 
                                             <tr>
-                                                <td id="tt61">2.7.2
+                                                <td style="width: 470px;" id="tt61" class="ng-binding">2.7.2
                                                     Animal Bite - Dog Bite</td>
 
-                                                <td><input name="pformcountmale" type="text" class="form-control  ">
+                                                <td><input name="pformcountmale" type="text" value="" class="form-control  ">
                                                 </td>
 
-                                                <td><input name="pformcountfemale" type="text" class="form-control  ">
+                                                <td><input name="pformcountfemale" type="text" value="" class="form-control  ">
                                                 </td>
 
-                                                <td><input name="pformdeathcountmale" type="text" class="form-control"
+                                                <td><input name="pformdeathcountmale" type="text" value=""
+                                                        class="form-control  "
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
+                                                        class="form-control  "
+                                                        ng-value="(( s.name == 'Unknown')&amp;&amp;(s.casesfemalelt5yr == 0)  ?'':s.casesfemalelt5yr)">
+                                                </td>
+
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control  ">
                                                 </td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
-                                                        class="form-control  ">
-                                                </td>
 
-
-                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
+                                                        class="form-control  "
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
+                                                        class="form-control  "
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
+                                                        class="form-control  "
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
+                                                        class="form-control  "
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
+                                                        class="form-control  "
                                                         readonly="readonly" tabindex="-1"></td>
                                             </tr>
                                             <tr>
-                                                <td id="tt5">2.7.4
+                                                <td style="width: 470px;" id="tt5" class="ng-binding">2.7.4
                                                     Animal Bite - Others</td>
 
-                                                <td><input name="pformcountmale" type="text" class="form-control  ">
+                                                <td><input name="pformcountmale" type="text" value="" class="form-control  ">
                                                 </td>
 
-                                                <td><input name="pformcountfemale" type="text" class="form-control  ">
+                                                <td><input name="pformcountfemale" type="text" value="" class="form-control  ">
                                                 </td>
 
-                                                <td><input name="pformdeathcountmale" type="text" class="form-control"
+                                                <td><input name="pformdeathcountmale" type="text" value=""
+                                                        class="form-control  "
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
+                                                        class="form-control  "
+                                                        ng-value="(( s.name == 'Unknown')&amp;&amp;(s.casesfemalelt5yr == 0)  ?'':s.casesfemalelt5yr)">
+                                                </td>
+
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control  ">
                                                 </td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
-                                                        class="form-control  ">
-                                                </td>
 
-
-                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
+                                                        class="form-control  "
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
+                                                        class="form-control  "
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
+                                                        class="form-control  "
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
+                                                        class="form-control  "
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
+                                                        class="form-control  "
                                                         readonly="readonly" tabindex="-1"></td>
                                             </tr>
                                             <tr>
-                                                <td id="tt84">2.7.5
+                                                <td style="width: 470px;" id="tt84" class="ng-binding">2.7.5
                                                     Leptospirosis RDT</td>
 
-                                                <td><input name="pformcountmale" type="text" class="form-control  ">
+                                                <td><input name="pformcountmale" type="text" value="" class="form-control  ">
                                                 </td>
 
-                                                <td><input name="pformcountfemale" type="text" class="form-control  ">
+                                                <td><input name="pformcountfemale" type="text" value="" class="form-control  ">
                                                 </td>
 
-                                                <td><input name="pformdeathcountmale" type="text" class="form-control"
+                                                <td><input name="pformdeathcountmale" type="text" value=""
+                                                        class="form-control  "
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
+                                                        class="form-control  "
+                                                        ng-value="(( s.name == 'Unknown')&amp;&amp;(s.casesfemalelt5yr == 0)  ?'':s.casesfemalelt5yr)">
+                                                </td>
+
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control  ">
                                                 </td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
-                                                        class="form-control  ">
-                                                </td>
 
-
-                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
+                                                        class="form-control  "
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
+                                                        class="form-control  "
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
+                                                        class="form-control  "
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
+                                                        class="form-control  "
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
+                                                        class="form-control  "
                                                         readonly="readonly" tabindex="-1"></td>
                                             </tr>
                                             <tr>
-                                                <td id="tt56">2.14.1
+                                                <td style="width: 470px;" id="tt56" class="ng-binding">2.14.1
                                                     Others</td>
 
-                                                <td><input name="pformcountmale" type="text" class="form-control  ">
+                                                <td><input name="pformcountmale" type="text" value="" class="form-control  ">
                                                 </td>
 
-                                                <td><input name="pformcountfemale" type="text" class="form-control  ">
+                                                <td><input name="pformcountfemale" type="text" value="" class="form-control  ">
                                                 </td>
 
-                                                <td><input name="pformdeathcountmale" type="text" class="form-control"
+                                                <td><input name="pformdeathcountmale" type="text" value=""
+                                                        class="form-control  "
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
+                                                        class="form-control  "
+                                                        ng-value="(( s.name == 'Unknown')&amp;&amp;(s.casesfemalelt5yr == 0)  ?'':s.casesfemalelt5yr)">
+                                                </td>
+
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
                                                         class="form-control  ">
                                                 </td>
 
-                                                <td><input name="pformdeathcountfemale" type="text"
-                                                        class="form-control  ">
-                                                </td>
 
-
-                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
+                                                        class="form-control  "
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
+                                                        class="form-control  "
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
+                                                        class="form-control  "
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
+                                                        class="form-control  "
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text" class="form-control"
+                                                <td><input name="pformdeathcountfemale" type="text" value=""
+                                                        class="form-control  "
                                                         readonly="readonly" tabindex="-1"></td>
                                             </tr>
                                         </tbody>
                                     </table>
                                 </div>
 
-                                <div class="alert alert-success  " role="alert"> Data Saved Successfully</div>
-                                <button ng-disabled="aggform.$invalid" class="btn btn-primary printhide">
+                                <div class="alert alert-success " style="margin-top: 5px" ng-show="surDataSaved"
+                                    role="alert">
+                                    Data Saved
+                                    Successfully</div>
+                                <button id="submitformdata" class="btn btn-primary printhide"
+                                    style="margin: 5px;">
                                     <span class="tooltipid tooltipstered" data-placement="right">Save</span></button>
                             </form>
                         </div>
@@ -1010,9 +1173,9 @@
                                             <a role="button" data-toggle="collapse" data-parent="#accordion1"
                                                 data-target="#aggregationSummary" aria-expanded="true" id="aggregationSummary-link"
                                                 aria-controls="collapseOne"> <span
-                                                    class="tooltipid tooltipstered label-title" data-placement="right">
-                                                    1. S Form (Suspected Cases Form) <span
-                                                        class="printhide text-danger">(Click
+                                                    style="margin-top: 0px; font-size: 13px; font-weight: bold; opacity: 1;"
+                                                    class="tooltipid tooltipstered" data-placement="right">
+                                                    1. S Form (Suspected Cases Form) <span class="printhide">(Click
                                                         to View)</span>
                                                 </span>
                                             </a>
@@ -1057,7 +1220,7 @@
                                                                 Kenchenahalli
                                                             </option>
                                                         </select>
-                                                        <div class="error  "
+                                                        <div class="error ng-hide"
                                                             ng-show="aggform.village.$dirty &amp;&amp; aggform.village.$invalid">
                                                             <small class="error"
                                                                 ng-show="aggform.village.$error.required"> Please
@@ -1065,10 +1228,10 @@
                                                         </div>
                                                     </div>
 
-                                                    <div class="form-group col-xs-2  "
+                                                    <div class="form-group col-xs-2 ng-hide"
                                                         ng-show="facilityinfo.health_facility_urban_rural === 2">
-                                                        <label for="village"
-                                                            class="labelchange">Ward<span>*</span></label>
+                                                        <label for="village" class="labelchange">Ward<span
+                                                                style="color: red">*</span></label>
 
                                                         <select
                                                             class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-required"
@@ -1080,17 +1243,17 @@
                                                                 -----Select-----
                                                             </option>
                                                         </select>
-                                                        <div class="error  "
+                                                        <div class="error ng-hide"
                                                             ng-show="aggform.ward.$dirty &amp;&amp; aggform.ward.$invalid">
-                                                            <small class="error  "
-                                                                ng-show="aggform.ward.$error.required"> Please
+                                                            <small class="error ng-hide"
+                                                                 "> Please
                                                                 Select Ward</small>
                                                         </div>
 
                                                     </div>
 
 
-                                                    <div class="form-group col-xs-8   "
+                                                    <div class="form-group col-xs-8 ng-hide "
                                                         ng-show="villageSubcenter || wardSubcenter">
                                                         <label class="labelchange"><span class="tooltipid tooltipstered"
                                                                 data-placement="right">
@@ -1106,16 +1269,18 @@
 
 
 
-                                                <div class="table-responsive  ">
+                                                <div class="table-responsive ng-hide">
                                                     <table class="table table-condensed table-bordered" id="tableId">
                                                         <tbody>
                                                             <tr>
                                                                 <td rowspan="3"></td>
-                                                                <td colspan="7">
+                                                                <td colspan="7"
+                                                                    style="text-align: center; font-size: 14px;">
                                                                     <b>Number
                                                                         of cases of illness</b>
                                                                 </td>
-                                                                <td colspan="3" rowspan="2"><b>
+                                                                <td colspan="3" rowspan="2"
+                                                                    style="text-align: center; width: 20px"><b>
                                                                         Number of cases of deaths
                                                                         <br>
                                                                         <a href="">[click here to report
@@ -1124,13 +1289,15 @@
 
                                                             </tr>
                                                             <tr>
-                                                                <td colspan="3">
+                                                                <td colspan="3"
+                                                                    style="text-align: center; font-size: 14px;">
                                                                     <b>Male</b>
                                                                 </td>
-                                                                <td colspan="3">
+                                                                <td colspan="3"
+                                                                    style="text-align: center; font-size: 14px;">
                                                                     <b>Female</b>
                                                                 </td>
-                                                                <td rowspan="2"><b>Grand<br>
+                                                                <td rowspan="2" style="text-align: center;"><b>Grand<br>
                                                                         Total
                                                                     </b></td>
 
@@ -1152,12 +1319,14 @@
                                                     </table>
                                                 </div>
 
-                                                <div class="alert alert-success  " role="alert">Data Saved
+                                                <div class="alert alert-success" style="margin-top: 5px"
+                                                   role="alert">Data Saved
                                                     Successfully</div>
-                                                <button ng-disabled="aggform.$invalid" class="btn btn-primary printhide"
-                                                    disabled="disabled">
+                                                <button  class="btn btn-primary "
+                                                    style="margin: 5px;" 
+                                                   >
                                                     <span class="tooltipid tooltipstered"
-                                                        data-placement="right">Save</span></button>
+                                                        data-placement="right" >Save</span></button>
                                             </form>
                                         </div>
                                     </div>
@@ -1177,35 +1346,34 @@
                                             <a role="button" data-toggle="collapse" data-parent="#accordion2"
                                                 data-target="#DeathPatientformId" aria-expanded="true"
                                                 aria-controls="collapseOne"> <span
-                                                    class="tooltipid tooltipstered label-title"
-                                                    data-placement="right">2. Reporting
-                                                    Deaths</span> <span class="text-danger label-title">(Click to
-                                                    View)</span>
+                                                    
+                                                    class="tooltipid tooltipstered" data-placement="right">2. Reporting
+                                                    Deaths (Click to View)</span>
                                             </a>
                                         </h4>
                                     </div>
                                     <div id="DeathPatientformId" class="panel-collapse collapse in" role="tabpanel"
                                         aria-labelledby="DeathPatientformId1" aria-expanded="true" style="">
                                         <div class="panel-body">
-                                            <div class="row">
+                                            <div class="row"
+                                                style="margin-left: px; padding-left: 8px; padding-right: 2px;">
                                                 <div class="col-xs-12">
-                                                    <div>
-                                                        <span class="text-danger"><i class="fa fa-hand-o-right"
-                                                                aria-hidden="true"></i> Enter data accurately and
-                                                            completely</span>
+                                                    <div >
+                                                        <span
+                                                            class="glyphicon glyphicon-hand-right"></span>&nbsp;&nbsp;&nbsp;Enter
+                                                        data accurately and completely
                                                     </div>
                                                 </div>
                                             </div>
 
                                             <form name="deathcaseform" novalidate="" class="form-compact deathcaseform"
                                                 autocomplete="off">
-                                                <fieldset>
+                                                <fieldset style="background-color: aliceblue;">
                                                     <div class="row">
-                                                        <div class="col-md-12">
-                                                            <span class="label-title">
-                                                                Name:
-                                                            </span>
-                                                        </div>
+                                                        <label for="mobileno" class="col-xs-2 control-label"
+                                                            style="margin-top: 5px; max-width: 123px;"><span
+                                                                class="tooltipid tooltipstered"
+                                                                data-placement="right">Name:</span> </label>
 
                                                         <div class="form-group col-xs-2">
                                                             <label for="firstname" class="labelchange">2.2. First
@@ -1214,11 +1382,12 @@
                                                                 name="firstname" type="text"
                                                                 ng-pattern="/^[a-zA-Z'.,-]{0,150}$/"
                                                                 required="required">
-                                                            <div class="error  "
+                                                            <div class="error ng-hide"
                                                                 ng-show=" deathcaseform.firstname.$dirty &amp;&amp;  deathcaseform.firstname.$invalid">
                                                                 <small
                                                                     ng-show=" deathcaseform.firstname.$error.required">
-                                                                    Please Enter Name. </small> <small class="error  "
+                                                                    Please Enter Name. </small> <small
+                                                                    class="error ng-hide"
                                                                     ng-show=" deathcaseform.firstname.$error.pattern">
                                                                     Please Enter Valid First Name. </small>
                                                             </div>
@@ -1226,80 +1395,82 @@
                                                         <div class="form-group col-xs-2">
                                                             <label for="middlename" class="labelchange"
                                                                 style="min-width: 103px">2.3. Middle
-                                                                Name</label> <input class="form-control" id="middlename"
-                                                                name="middlename" ng-pattern="/^[a-zA-Z'.,-]{0,150}$/"
-                                                                type="text">
-                                                            <div class="error  "
+                                                                Name</label> <input
+                                                                class="form-control  "
+                                                                id="middlename" name="middlename"
+                                                                ng-pattern="/^[a-zA-Z'.,-]{0,150}$/" type="text" value="">
+                                                            <div class="error ng-hide"
                                                                 ng-show=" deathcaseform.middlename.$dirty &amp;&amp;  deathcaseform.middlename.$invalid">
-                                                                <small class="error  "
+                                                                <small class="error ng-hide"
                                                                     ng-show=" deathcaseform.middlename.$error.pattern">
                                                                     Please Enter Valid Middle Name. </small>
                                                             </div>
                                                         </div>
                                                         <div class="form-group col-xs-2">
                                                             <label for="lastname" class="labelchange">2.4. Last
-                                                                Name</label> <input class="form-control" id="lastname"
-                                                                name="lastname" ng-pattern="/^[a-zA-Z'.,-]{0,150}$/"
-                                                                type="text">
-                                                            <div class="error  "
+                                                                Name</label> <input
+                                                                class="form-control  "
+                                                                id="lastname" name="lastname"
+                                                                ng-pattern="/^[a-zA-Z'.,-]{0,150}$/" type="text" value="">
+                                                            <div class="error ng-hide"
                                                                 ng-show=" deathcaseform.lastname.$dirty &amp;&amp;  deathcaseform.lastname.$invalid">
-                                                                <small class="error  "
+                                                                <small class="error ng-hide"
                                                                     ng-show=" deathcaseform.lastname.$error.pattern">
                                                                     Please Enter Valid Last Name. </small>
                                                             </div>
                                                         </div>
 
-                                                        <div class="form-group ">
-                                                            <label class="radio-inline">
-
+                                                        <div class="form-group col-xs-4" style="margin-bottom: 0px;">
+                                                            <label class="radio-inline" style="font-weight: 700;">
+                                                                <input type="name=" agedob" id="inlineRadio2"
+                                                                    value="dob" ng-click="clearfield('dob')"
+                                                                    class="ng-pristine ng-untouched ng-valid ng-not-empty">
                                                                 <span class="tooltipid tooltipstered"
                                                                     data-placement="right">
-                                                                    2.5. Date Of Birth</span><span span>
+                                                                    2.5. Date Of Birth</span><span
+                                                                    ng-show="agedob=='dob'" span>
+                                                            </label> <label class="radio-inline"
+                                                                style="font-weight: 700;">
+                                                                <input type="radio"
+                                                                    name="agedob                                                                    id="
+                                                                    inlineRadio1" value="age"
+                                                                    ng-click="clearfield('age')"
+                                                                    class="ng-pristine ng-untouched ng-valid ng-not-empty">
+                                                                <span class="tooltipid tooltipstered"
+                                                                    data-placement="right">
+                                                                    2.6. Age</span> <span ng-show="agedob=='age'"
+                                                                    class="ng-hide">*</span>
                                                             </label>
-                                                            <input type="radio" name="agedob" id="inlineRadio2"
-                                                                value="dob">
-                                                            <div class="form-group m-0 d-inline-block pl-2">
-                                                                <label class="radio-inline">
+                                                        </div>
+                                                        <div class="form-group col-xs-2" ng-show="agedob=='dob'">
 
-                                                                    <span class="tooltipid tooltipstered"
-                                                                        data-placement="right">
-                                                                        2.6. Age</span> <span>*</span>
-                                                                </label>
-                                                                <input type="radio" name="agedob" id="inlineRadio1"
-                                                                    value="age">
+                                                            <div class="input-group input-append date ageclass"
+                                                                data-provide="datepicker">
+                                                                <input type="text" value=""
+                                                                    class="form-control ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required ng-valid-pattern"
+                                                                    name="dateofbirth" placeholder="dd/mm/yyyy"
+                                                                    required="required"> <span
+                                                                    class="input-group-addon datepicker"
+                                                                    style="padding: 2px 12px;"> <span
+                                                                        class="glyphicon glyphicon-calendar"></span>
+                                                                </span>
                                                             </div>
-                                                            <div class="form-group m-0">
-
-                                                                <div class="input-group " data-provide="datepicker">
-                                                                    <input type="text" class="form-control  "
-                                                                        name="dateofbirth" placeholder="dd/mm/yyyy"
-                                                                        required="required"> <span
-                                                                        class="input-group-addon "> <span
-                                                                            class="glyphicon glyphicon-calendar"></span>
-                                                                    </span>
-                                                                </div>
-                                                                <div class="error  "
-                                                                    ng-show="deathcaseform.dateofbirth.$dirty &amp;&amp; deathcaseform.dateofbirth.$invalid">
-                                                                    <small class="error" required>
-                                                                        Please Enter Date of Birth.</small> <small
-                                                                        class="error  ">
-                                                                        Please enter valid date in dd/mm/yyyy format
-                                                                        .</small>
-                                                                </div>
-                                                                <div ng-show="showdoberror">
-                                                                    <small class="error"> Date of Birth can not be
-                                                                        earlier than 01/01/1900 and can not beyond
-                                                                        todays
-                                                                        date.
-                                                                    </small>
-                                                                </div>
-
+                                                            <div class="error ng-hide"
+                                                                ng-show="deathcaseform.dateofbirth.$dirty &amp;&amp; deathcaseform.dateofbirth.$invalid">
+                                                                <small class="error" required>
+                                                                    Please Enter Date of Birth.</small> <small
+                                                                    class="error ng-hide">
+                                                                    Please enter valid date in dd/mm/yyyy format
+                                                                    .</small>
+                                                            </div>
+                                                            <div ng-show="showdoberror" class="ng-hide">
+                                                                <small class="error"> Date of Birth can not be
+                                                                    earlier than 01/01/1900 and can not beyond todays
+                                                                    date.
+                                                                </small>
                                                             </div>
 
                                                         </div>
-
-
-
                                                         <!-- ngIf: agedob=='age' -->
                                                     </div>
 
@@ -1885,8 +2056,11 @@
 
                 <!-- <div>
                                 <div class="row">
-                                    <div class="col-xs-12" >
-                                        <span class="label-title d-block">  4.List of Reported Deaths </span>
+                                    <div class="col-xs-12" style="padding-left: 0px">
+                                        <b style="font-size: 15px; font-weight: bold;" class="tooltipid tooltipstered"
+                                            data-placement="right">4.
+                                            List of
+                                            Reported Deaths</b>
                                     </div>
                                 </div>
                                 <table class="table table-sm table-bordered" id="tableId">
@@ -1896,19 +2070,20 @@
                                             <th class="printhide">Action</th>
                                             <th>2.2. Person Name<span><a ng-click="showCols = !showCols"
                                                         style="cursor: pointer"> <span
-                                                            class="glyphicon glyphicon-arrow-right printhide"></span>
-                                                        <span class="glyphicon glyphicon-arrow-left printhide  "
-                                                            ></span>
+                                                            class="glyphicon glyphicon-arrow-right printhide"
+                                                            ng-show="!showCols"></span>
+                                                        <span class="glyphicon glyphicon-arrow-left printhide ng-hide"
+                                                            ng-show="showCols"></span>
                                                     </a></span></th>
-                                            <th ng-show="showCols">2.5. Age</th>
-                                            <th ng-show="showCols">2.7. Gender</th>
-                                            <th ng-show="showCols">2.8. ID Type/Id No</th>
-                                           
-                                            <th ng-show="showCols">2.11. State</th>
-                                            <th ng-show="showCols">2.12. District</th>
-                                            <th ng-show="showCols">2.13. Sub District</th>
-                                            <th ng-show="showCols">2.14. Village</th>
-                                            <th ng-show="showCols">2.15. Address</th>
+                                            <th ng-show="showCols" class="ng-hide">2.5. Age</th>
+                                            <th ng-show="showCols" class="ng-hide">2.7. Gender</th>
+                                            <th ng-show="showCols" class="ng-hide">2.8. ID Type/Id No</th>
+                                            <th ng-show="showCols">Phone No</th> -->
+                                            <th ng-show="showCols" class="ng-hide">2.11. State</th>
+                                            <th ng-show="showCols" class="ng-hide">2.12. District</th>
+                                            <th ng-show="showCols" class="ng-hide">2.13. Sub District</th>
+                                            <th ng-show="showCols" class="ng-hide">2.14. Village</th>
+                                            <th ng-show="showCols" class="ng-hide">2.15. Address</th>
                                             <th>3.1. Probable Cause Of Death</th>
                                             <th>3.3. Date of Death</th>
                                             <th>3.4. Remarks</th>
@@ -1919,17 +2094,21 @@
                                     </thead>
 
                                     <tbody>
-                                     
+                                        <!-- ngRepeat: p in patientList -->
+                                    </tbody>
                                 </table>
 
-                                <div class="alert alert-success ng-binding  " ng-show="finalsubmitsaved" role="alert">
+                                <div class="alert alert-success ng-binding ng-hide" ng-show="finalsubmitsaved"
+                                    role="alert">
                                     Data
                                     Successfully
                                     submitted on 2023-10-03 14:27:22</div>
-                                <button class="btn btn-primary printhide" ng-click="openSubmissionAlertModal()"><span
-                                        class="tooltipid tooltipstered" data-placement="right">Submit</span></button>
+                                <button class="btn btn-primary printhide" ng-click="openSubmissionAlertModal()"
+                                    style="margin: 5px;"><span class="tooltipid tooltipstered"
+                                        data-placement="right" >Submit</span></button>
 
-                            </div> -->
+                            </div>
+
 
                 <button class="btn btn-primary d-flex m-auto" ng-click="openSubmissionAlertModal()"><span
                         class="tooltipid tooltipstered" data-placement="right">Submit</span></button>

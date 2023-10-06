@@ -1,6 +1,8 @@
 @include('includes.header')
 
 <link rel="stylesheet" href="{{ asset('assets/pform_css/style.css') }}">
+<script src="https://code.highcharts.com/maps/highmaps.js"></script>
+<script src="https://code.highcharts.com/maps/modules/exporting.js"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"
     integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw=="
@@ -81,15 +83,15 @@
 
 
                         @if (session()->has('message'))
-                        <script>
-                        Swal.fire({
-                            position: 'top-end',
-                            icon: 'success',
-                            title: 'Patient record saved successfully',
-                            showConfirmButton: false,
-                            timer: 3000
-                        })
-                        </script>
+                            <script>
+                                Swal.fire({
+                                    position: 'top-end',
+                                    icon: 'success',
+                                    title: 'Patient record saved successfully',
+                                    showConfirmButton: false,
+                                    timer: 3000
+                                })
+                            </script>
                         @endif
 
 
@@ -166,7 +168,8 @@
 
                                                                 <span class="calender"><i class="fa fa-calendar"
                                                                         aria-hidden="true"></i> </span>
-                                                                <small id="fromYear-error" class="form-text text-muted">
+                                                                <small id="fromYear-error"
+                                                                    class="form-text text-muted">
                                                                 </small>
                                                             </div>
                                                         </div>
@@ -176,9 +179,10 @@
                                                             <div class="form-group">
                                                                 <label for="toYear">To Year<span
                                                                         class="star">*</span></label>
-                                                                        <select class="form-select"
+                                                                <select class="form-select"
                                                                     aria-label="Default select example"
-                                                                    name="provisinal_diagnosis" id="district" required>
+                                                                    name="provisinal_diagnosis" id="district"
+                                                                    required>
                                                                     <option value=""> yyyy </option>
                                                                     <option value="1"> 2000</option>
                                                                     <option value="2"> 2001</option>
@@ -199,14 +203,16 @@
                                                                         class="star">*</span></label>
                                                                 <select class="form-select"
                                                                     aria-label="Default select example"
-                                                                    name="provisinal_diagnosis" id="formType" required>
+                                                                    name="provisinal_diagnosis" id="formType"
+                                                                    required>
                                                                     <option value=""> Select Form Type
                                                                     </option>
                                                                     <option value="1"> L Form</option>
                                                                     <option value="2">P Form</option>
                                                                     <option value="3">S Form</option>
                                                                 </select>
-                                                                <small id="formType-error" class="form-text text-muted">
+                                                                <small id="formType-error"
+                                                                    class="form-text text-muted">
                                                                 </small>
                                                             </div>
                                                         </div>
@@ -234,7 +240,8 @@
 
                                                         <div class="col-lg-3 col-md-3 col-6">
                                                             <div class="button apply-filter">
-                                                                <label for=""><span class="star"></span></label>
+                                                                <label for=""><span
+                                                                        class="star"></span></label>
                                                                 <button
                                                                     class="btn search-patient-btn bg-primary text-light">Apply
                                                                     Filter</button>
@@ -246,6 +253,96 @@
 
 
                                                 </form>
+
+
+
+
+
+
+
+                                                <!-- /.row -->
+                                                <div class="card-body">
+                                                    <div class="row bg-white">
+
+                                                        <div class="col-md-8">
+                                                            <div class="year-selector p-3">
+                                                                <div class="form-group">
+
+                                                                    <select class="form-select p-1 year"
+                                                                        name="year"
+                                                                        aria-label="Default select example"
+                                                                        id="year" required="">
+                                                                        <option value="yyyy">yyyy</option>
+                                                                        <?php
+                                                                        $currentYear = date('Y');
+                                                                        for ($year = $currentYear; $year >= 2015; $year--) {
+                                                                            $selected = $year == 2022 ? 'selected' : '';
+                                                                            echo "<option value='$year' $selected>$year</option>";
+                                                                        }
+                                                                        ?>
+                                                                    </select>
+
+
+                                                                    <small id="gander-error"
+                                                                        class="form-text text-muted">
+                                                                    </small>
+                                                                </div>
+
+                                                            </div>
+                                                            <div style="height: 700px;" id="container"></div>
+                                                        </div>
+                                                        <div class="col-md-4">
+
+                                                            <div style="padding:15px; border: 1px solid grey; border-radius:5px; background: white; color: black; height: 100%"
+                                                                id="detailsData">
+
+                                                            </div>
+
+
+                                                            <div class='table-responsive detailsDatas'>
+                                                                <table class='table table-bordered'>
+                                                                    <thead>
+                                                                        <tr>
+                                                                            <th rowspan='2'>State</th>
+                                                                            <th colspan='2'>presumptive </th>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <th>Cases</th>
+                                                                            <th>deaths</th>
+                                                                        </tr>
+
+                                                                    </thead>
+                                                                    <tbody id="tableBody">
+                                                                        <!-- Rows will be populated dynamically -->
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+
+
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                                <!-- /.row -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                                             </div>
 
                                         </div>
@@ -274,285 +371,676 @@
 
 
         <script>
-        $(document).ready(function() {
-            // $("#first-name-error").text("New word");
-            // console.log(fname);
-            //Detect that a user has started entering their name itno the name input
-            // Name can't be blank
-            $('#first-name').on('input', function() {
-                var input = $(this);
+            $(document).ready(function() {
+                // $("#first-name-error").text("New word");
+                // console.log(fname);
+                //Detect that a user has started entering their name itno the name input
+                // Name can't be blank
+                $('#first-name').on('input', function() {
+                    var input = $(this);
 
-                var is_name = input.val();
-                var regex = /^[A-Za-z\s]{1,}[\.]{0,1}[A-Za-z\s]{0,}$/;
-                var name = regex.test(is_name);
-                if (name) {
-                    $("#first-name-error").text("");
-                    // input.removeClass("invalid").addClass("valid");
-                } else {
-                    $("#first-name-error").text("Please enter valid name");
-                }
+                    var is_name = input.val();
+                    var regex = /^[A-Za-z\s]{1,}[\.]{0,1}[A-Za-z\s]{0,}$/;
+                    var name = regex.test(is_name);
+                    if (name) {
+                        $("#first-name-error").text("");
+                        // input.removeClass("invalid").addClass("valid");
+                    } else {
+                        $("#first-name-error").text("Please enter valid name");
+                    }
+                });
+
+                $('#last-name').on('input', function() {
+                    var input = $(this);
+
+                    var is_name = input.val();
+                    var regex = /^[A-Za-z\s]{1,}[\.]{0,1}[A-Za-z\s]{0,}$/;
+                    var name = regex.test(is_name);
+                    if (name) {
+                        $("#last-name-error").text("");
+                        // input.removeClass("invalid").addClass("valid");
+                    } else {
+                        $("#last-name-error").text("Please enter valid last name");
+                    }
+                });
+
+
+
+                $('#dob').on('click', function() {
+                    var input = $(this);
+
+                    var is_name = input.val();
+                    if (is_name == "") {
+                        $("#dob-error").text("Dob is required");
+                        // input.removeClass("invalid").addClass("valid");
+                    } else {
+                        $("#dob-error").text("");
+                    }
+                });
+
+
+                $('#gander').on('click', function() {
+                    var input = $(this);
+
+                    var is_name = input.val();
+                    if (is_name == "Select Your Gender") {
+                        $("#gander-error").text("Gander  is required");
+                        // input.removeClass("invalid").addClass("valid");
+                    } else {
+                        $("#gander-error").text("");
+                    }
+                });
+
+                $('#id-type').on('click', function() {
+                    var input = $(this);
+
+                    var is_name = input.val();
+                    if (is_name == "Select Your id-type") {
+                        $("#id-type-error").text("Id Type  is required");
+                        // input.removeClass("invalid").addClass("valid");
+                    } else {
+                        $("#gander-error").text("");
+                    }
+                });
+
+                $('#identification').on('input', function() {
+                    var input = $(this);
+
+                    var is_name = input.val();
+                    var regex = /^[0-9]+$/;
+                    var name = regex.test(is_name);
+
+
+                    if (name) {
+                        $("#identification-error").text("");
+                        // input.removeClass("invalid").addClass("valid");
+                    } else {
+                        $("#identification-error").text("Please enter valid identity no");
+                    }
+                });
+
+
+                $('#citizenship').on('click', function() {
+                    var input = $(this);
+
+                    var is_name = input.val();
+                    if (is_name == "Select Your Citizenship") {
+                        $("#citizenship-error").text("citizenship   is required");
+                        // input.removeClass("invalid").addClass("valid");
+                    } else {
+                        $("#citizenship-error").text("");
+                    }
+                });
+
+
+                $('#house-no').on('input', function() {
+                    var input = $(this);
+
+                    var is_name = input.val();
+                    if (is_name == "") {
+                        $("#house-no-error").text("House no is required");
+                        // input.removeClass("invalid").addClass("valid");
+                    } else {
+                        $("#house-no-error").text("");
+                    }
+                });
+
+                $('#state').on('click', function() {
+                    var input = $(this);
+
+                    var is_name = input.val();
+                    if (is_name == "Select Your state") {
+                        $("#state-error").text("state number  is required");
+                        // input.removeClass("invalid").addClass("valid");
+                    } else {
+                        $("#gander-error").text("");
+                    }
+                });
+
+                $('#district').on('click', function() {
+                    var input = $(this);
+
+                    var is_name = input.val();
+                    if (is_name == "Select Your district") {
+                        $("#district-error").text("district number  is required");
+                        // input.removeClass("invalid").addClass("valid");
+                    } else {
+                        $("#gander-error").text("");
+                    }
+                });
+
+                $('#taluka').on('click', function() {
+                    var input = $(this);
+
+                    var is_name = input.val();
+                    if (is_name == "Select Your taluka") {
+                        $("#taluka-error").text("taluka number  is required");
+                        // input.removeClass("invalid").addClass("valid");
+                    } else {
+                        $("#gander-error").text("");
+                    }
+                });
+
+                $('#village').on('click', function() {
+                    var input = $(this);
+
+                    var is_name = input.val();
+                    if (is_name == "Select Your village") {
+                        $("#village-error").text("Village number  is required");
+                        // input.removeClass("invalid").addClass("valid");
+                    } else {
+                        $("#gander-error").text("");
+                    }
+                });
+
+                $('#street-name').on('input', function() {
+                    var input = $(this);
+
+                    var is_name = input.val();
+                    if (is_name == "") {
+                        $("#street-name-error").text("Street-name  is required");
+                        // input.removeClass("invalid").addClass("valid");
+                    } else {
+                        $("#street-name-error").text("");
+                    }
+                });
+
+                $('#landmark').on('input', function() {
+                    var input = $(this);
+
+                    var is_name = input.val();
+                    if (is_name == "") {
+                        $("#landmark-error").text("Landmark  is required");
+                        // input.removeClass("invalid").addClass("valid");
+                    } else {
+                        $("#landmark-error").text("");
+                    }
+                });
+
+                $('#pin-code').on('input', function() {
+                    var input = $(this);
+
+                    var is_name = input.val();
+                    var regex = /^[0-9]+$/;
+                    var name = regex.test(is_name);
+
+                    if (name) {
+                        $("#pin-code-error").text("");
+                        // input.removeClass("invalid").addClass("valid");
+                    } else {
+                        $("#pin-code-error").text("Please enter valid pin code");
+                    }
+                });
+
+                $('#provisinal-diagnosis').on('click', function() {
+                    var input = $(this);
+
+                    var is_name = input.val();
+                    if (is_name == "Select Your Diagnosis") {
+                        $("#provisinal-diagnosis-error").text("Diagnosis number  is required");
+                        // input.removeClass("invalid").addClass("valid");
+                    } else {
+                        $("#gander-error").text("");
+                    }
+                });
+
+                $('#date-of-onset').on('input', function() {
+                    var input = $(this);
+
+                    var is_name = input.val();
+                    if (is_name == "") {
+                        $("#date-of-onset-error").text("date-of-onset  is required");
+                        // input.removeClass("invalid").addClass("valid");
+                    } else {
+                        $("#pin-code-error").text("");
+                    }
+                });
+
+
+                $('#OPD-IPD').on('click', function() {
+                    var input = $(this);
+
+                    var is_name = input.val();
+                    if (is_name == "Select Your OPD-IPD") {
+                        $("#opd-ipd-error").text("OPD/IPD is required");
+                        // input.removeClass("invalid").addClass("valid");
+                    } else {
+                        $("#opd-ipd-error").text("");
+                    }
+                });
+
+                // Email must be an email
+                $('#contact_email').on('input', function() {
+                    var input = $(this);
+                    var re = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+                    var is_email = re.test(input.val());
+                    if (is_email) {
+                        input.removeClass("invalid").addClass("valid");
+                    } else {
+                        input.removeClass("valid").addClass("invalid");
+                    }
+                });
+                // Website must be a website
+                $('#contact_website').on('input', function() {
+                    var input = $(this);
+                    if (input.val().substring(0, 4) == 'www.') {
+                        input.val('http://www.' + input.val().substring(4));
+                    }
+                    var re =
+                        /(http|ftp|https):\/\/[\w-]+(\.[\w-]+)+([\w.,@?^=%&:\/~+#-]*[\w@?^=%&\/~+#-])?/;
+                    var is_url = re.test(input.val());
+                    if (is_url) {
+                        input.removeClass("invalid").addClass("valid");
+                    } else {
+                        input.removeClass("valid").addClass("invalid");
+                    }
+                });
+                // Message can't be blank
+                $('#contact_message').keyup(function(event) {
+                    var input = $(this);
+                    var message = $(this).val();
+                    console.log(message);
+                    if (message) {
+                        input.removeClass("invalid").addClass("valid");
+                    } else {
+                        input.removeClass("valid").addClass("invalid");
+                    }
+                });
+                // After Form Submitted Validation
+
             });
-
-            $('#last-name').on('input', function() {
-                var input = $(this);
-
-                var is_name = input.val();
-                var regex = /^[A-Za-z\s]{1,}[\.]{0,1}[A-Za-z\s]{0,}$/;
-                var name = regex.test(is_name);
-                if (name) {
-                    $("#last-name-error").text("");
-                    // input.removeClass("invalid").addClass("valid");
-                } else {
-                    $("#last-name-error").text("Please enter valid last name");
-                }
-            });
-
-
-
-            $('#dob').on('click', function() {
-                var input = $(this);
-
-                var is_name = input.val();
-                if (is_name == "") {
-                    $("#dob-error").text("Dob is required");
-                    // input.removeClass("invalid").addClass("valid");
-                } else {
-                    $("#dob-error").text("");
-                }
-            });
-
-
-            $('#gander').on('click', function() {
-                var input = $(this);
-
-                var is_name = input.val();
-                if (is_name == "Select Your Gender") {
-                    $("#gander-error").text("Gander  is required");
-                    // input.removeClass("invalid").addClass("valid");
-                } else {
-                    $("#gander-error").text("");
-                }
-            });
-
-            $('#id-type').on('click', function() {
-                var input = $(this);
-
-                var is_name = input.val();
-                if (is_name == "Select Your id-type") {
-                    $("#id-type-error").text("Id Type  is required");
-                    // input.removeClass("invalid").addClass("valid");
-                } else {
-                    $("#gander-error").text("");
-                }
-            });
-
-            $('#identification').on('input', function() {
-                var input = $(this);
-
-                var is_name = input.val();
-                var regex = /^[0-9]+$/;
-                var name = regex.test(is_name);
-
-
-                if (name) {
-                    $("#identification-error").text("");
-                    // input.removeClass("invalid").addClass("valid");
-                } else {
-                    $("#identification-error").text("Please enter valid identity no");
-                }
-            });
-
-
-            $('#citizenship').on('click', function() {
-                var input = $(this);
-
-                var is_name = input.val();
-                if (is_name == "Select Your Citizenship") {
-                    $("#citizenship-error").text("citizenship   is required");
-                    // input.removeClass("invalid").addClass("valid");
-                } else {
-                    $("#citizenship-error").text("");
-                }
-            });
-
-
-            $('#house-no').on('input', function() {
-                var input = $(this);
-
-                var is_name = input.val();
-                if (is_name == "") {
-                    $("#house-no-error").text("House no is required");
-                    // input.removeClass("invalid").addClass("valid");
-                } else {
-                    $("#house-no-error").text("");
-                }
-            });
-
-            $('#state').on('click', function() {
-                var input = $(this);
-
-                var is_name = input.val();
-                if (is_name == "Select Your state") {
-                    $("#state-error").text("state number  is required");
-                    // input.removeClass("invalid").addClass("valid");
-                } else {
-                    $("#gander-error").text("");
-                }
-            });
-
-            $('#district').on('click', function() {
-                var input = $(this);
-
-                var is_name = input.val();
-                if (is_name == "Select Your district") {
-                    $("#district-error").text("district number  is required");
-                    // input.removeClass("invalid").addClass("valid");
-                } else {
-                    $("#gander-error").text("");
-                }
-            });
-
-            $('#taluka').on('click', function() {
-                var input = $(this);
-
-                var is_name = input.val();
-                if (is_name == "Select Your taluka") {
-                    $("#taluka-error").text("taluka number  is required");
-                    // input.removeClass("invalid").addClass("valid");
-                } else {
-                    $("#gander-error").text("");
-                }
-            });
-
-            $('#village').on('click', function() {
-                var input = $(this);
-
-                var is_name = input.val();
-                if (is_name == "Select Your village") {
-                    $("#village-error").text("Village number  is required");
-                    // input.removeClass("invalid").addClass("valid");
-                } else {
-                    $("#gander-error").text("");
-                }
-            });
-
-            $('#street-name').on('input', function() {
-                var input = $(this);
-
-                var is_name = input.val();
-                if (is_name == "") {
-                    $("#street-name-error").text("Street-name  is required");
-                    // input.removeClass("invalid").addClass("valid");
-                } else {
-                    $("#street-name-error").text("");
-                }
-            });
-
-            $('#landmark').on('input', function() {
-                var input = $(this);
-
-                var is_name = input.val();
-                if (is_name == "") {
-                    $("#landmark-error").text("Landmark  is required");
-                    // input.removeClass("invalid").addClass("valid");
-                } else {
-                    $("#landmark-error").text("");
-                }
-            });
-
-            $('#pin-code').on('input', function() {
-                var input = $(this);
-
-                var is_name = input.val();
-                var regex = /^[0-9]+$/;
-                var name = regex.test(is_name);
-
-                if (name) {
-                    $("#pin-code-error").text("");
-                    // input.removeClass("invalid").addClass("valid");
-                } else {
-                    $("#pin-code-error").text("Please enter valid pin code");
-                }
-            });
-
-            $('#provisinal-diagnosis').on('click', function() {
-                var input = $(this);
-
-                var is_name = input.val();
-                if (is_name == "Select Your Diagnosis") {
-                    $("#provisinal-diagnosis-error").text("Diagnosis number  is required");
-                    // input.removeClass("invalid").addClass("valid");
-                } else {
-                    $("#gander-error").text("");
-                }
-            });
-
-            $('#date-of-onset').on('input', function() {
-                var input = $(this);
-
-                var is_name = input.val();
-                if (is_name == "") {
-                    $("#date-of-onset-error").text("date-of-onset  is required");
-                    // input.removeClass("invalid").addClass("valid");
-                } else {
-                    $("#pin-code-error").text("");
-                }
-            });
-
-
-            $('#OPD-IPD').on('click', function() {
-                var input = $(this);
-
-                var is_name = input.val();
-                if (is_name == "Select Your OPD-IPD") {
-                    $("#opd-ipd-error").text("OPD/IPD is required");
-                    // input.removeClass("invalid").addClass("valid");
-                } else {
-                    $("#opd-ipd-error").text("");
-                }
-            });
-
-            // Email must be an email
-            $('#contact_email').on('input', function() {
-                var input = $(this);
-                var re = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-                var is_email = re.test(input.val());
-                if (is_email) {
-                    input.removeClass("invalid").addClass("valid");
-                } else {
-                    input.removeClass("valid").addClass("invalid");
-                }
-            });
-            // Website must be a website
-            $('#contact_website').on('input', function() {
-                var input = $(this);
-                if (input.val().substring(0, 4) == 'www.') {
-                    input.val('http://www.' + input.val().substring(4));
-                }
-                var re =
-                    /(http|ftp|https):\/\/[\w-]+(\.[\w-]+)+([\w.,@?^=%&:\/~+#-]*[\w@?^=%&\/~+#-])?/;
-                var is_url = re.test(input.val());
-                if (is_url) {
-                    input.removeClass("invalid").addClass("valid");
-                } else {
-                    input.removeClass("valid").addClass("invalid");
-                }
-            });
-            // Message can't be blank
-            $('#contact_message').keyup(function(event) {
-                var input = $(this);
-                var message = $(this).val();
-                console.log(message);
-                if (message) {
-                    input.removeClass("invalid").addClass("valid");
-                } else {
-                    input.removeClass("valid").addClass("invalid");
-                }
-            });
-            // After Form Submitted Validation
-
-        });
         </script>
+
+
+        <script>
+            $(document).ready(function() {
+
+                let mapdata = "";
+
+                year = $('#year').val();
+
+                 //  alert('function ready');
+
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+
+                $.ajax({
+                    url: "{{ url('human-rabies') }}",
+                    type: "get",
+                    success: function(result) {
+
+                        $("#detailsData").hide();
+                        (async () => {
+
+                            const topology = await fetch(
+                                'https://code.highcharts.com/mapdata/countries/in/custom/in-all-disputed.topo.json'
+                            ).then(response => response.json());
+
+                            // Prepare demo data. The data is joined to map using value of 'hc-key'
+                            // property by default. See API docs for 'joinBy' for more info on linking
+                            // data and map.
+                            // console.log(result.states[12].state_name)
+
+                            const statesData = result.array;
+                            //const statesDeaths = result.array1;
+
+                            const entries = Object.entries(statesData);
+
+                            const data = entries;
+
+                            const tableBody = $('.detailsDatas tbody');
+
+                            // Clear any existing rows in the table
+                            tableBody.empty();
+
+                            // Loop through the entries and add rows to the table
+                            entries.forEach(function(entry) {
+                                const state = entry[0];
+                                const cases = entry[1];
+
+                                const row = `
+                                <tr>
+                                    <td>${state}</td>
+                                    <td>${cases}</td>
+                                    <td></td>
+                                </tr>
+                            `;
+
+                                tableBody.append(row);
+                            });
+
+
+
+                            // Create the chart
+                            Highcharts.mapChart('container', {
+                                chart: {
+                                    map: topology
+                                },
+
+                                title: {
+                                    text: ''
+                                },
+
+                                subtitle: {
+                                    text: ''
+                                },
+
+                                mapNavigation: {
+                                    enabled: true,
+                                    buttonOptions: {
+                                        verticalAlign: 'bottom'
+                                    }
+                                },
+
+                                colorAxis: {
+                                    min: 0
+                                },
+                                plotOptions: {
+                                    series: {
+                                        events: {
+                                            click: function(e) {
+
+                                                let nameState = e.point.name
+
+                                                //  alert(nameState)
+
+                                                if (nameState) {
+
+                                                    $(".detailsDatas").hide();
+
+                                                }
+
+                                                $.ajaxSetup({
+                                                    headers: {
+                                                        'X-CSRF-TOKEN': $(
+                                                            'meta[name="csrf-token"]'
+                                                        ).attr(
+                                                            'content')
+                                                    }
+                                                });
+
+                                                $.ajax({
+                                                    url: "{{ url('human-rabies-death') }}",
+                                                    type: "get",
+                                                    data: {
+                                                        setyear: year,
+                                                        name: nameState
+                                                    },
+                                                    success: function(result) {
+
+                                                        $('#totalDeath')
+                                                            .text(result
+                                                                .human_rabies_deaths
+                                                            );
+
+                                                    }
+
+                                                });
+
+                                                $("#detailsData").show();
+
+
+                                                var StateContent =
+                                                    "Fetching the data for " + e.point
+                                                    .name +
+                                                    " <div class='table-responsive'> <table class='table table-bordered'><thead><tr><th rowspan='2'>State</th><th colspan='2'>presumptive </th></tr> <tr><th>Cases</th><th>deaths</th></tr></thead><tbody><tr><td>" +
+                                                    e.point
+                                                    .name +
+                                                    "</td><td>" + e.point.value +
+                                                    "</td><td><span id='totalDeath'></span></td></tr></tbody></table> </div>";
+
+
+                                                $("#detailsData").html(StateContent);
+
+
+                                            }
+                                        }
+                                    }
+                                },
+                                series: [{
+                                    data: data,
+                                    name: '',
+                                    allowPointSelect: true,
+                                    cursor: 'pointer',
+                                    color: "#fff",
+                                    states: {
+                                        select: {
+                                            color: 'blue'
+                                        }
+                                    },
+                                    dataLabels: {
+                                        enabled: false,
+                                        format: '{point.name}'
+                                    }
+                                }]
+
+                            });
+
+                        })();
+
+
+
+                    }
+                });
+
+            });
+        </script>
+
+
+        <script>
+            $('#year').on('change', function() {
+
+                year = $(this).val();
+
+                  // alert('year function')
+
+
+                if (year) {
+                    $(".detailsDatas").show();
+                    $("#detailsData").hide();
+                }
+
+                //  alert(year);
+
+                let mapdata = "";
+
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+
+                $.ajax({
+                    url: "{{ url('human-rabies') }}",
+                    type: "get",
+                    data: {
+                        setyear: year
+                    },
+                    success: function(result) {
+
+                        // console.log(data)
+
+                        $("#detailsData").hide();
+                        (async () => {
+
+                            const topology = await fetch(
+                                'https://code.highcharts.com/mapdata/countries/in/custom/in-all-disputed.topo.json'
+                            ).then(response => response.json());
+
+                            // Prepare demo data. The data is joined to map using value of 'hc-key'
+                            // property by default. See API docs for 'joinBy' for more info on linking
+                            // data and map.
+                            // console.log(result.states[12].state_name)
+
+                            const statesData = result.array;
+
+                               //console.log(statesData);
+
+                            const entries = Object.entries(statesData);
+                            const data = entries;
+
+
+
+                            const tableBody = $('.detailsDatas tbody');
+
+                            // Clear any existing rows in the table
+                            tableBody.empty();
+
+                            // Loop through the entries and add rows to the table
+                            entries.forEach(function(entry) {
+                                const state = entry[0];
+                                const cases = entry[1];
+
+                                const row = `
+                                    <tr>
+                                        <td>${state}</td>
+                                        <td>${cases}</td>
+                                        <td></td>
+                                    </tr>
+                                `;
+                                tableBody.append(row);
+                            });
+
+
+
+
+                            // Create the chart
+                            Highcharts.mapChart('container', {
+                                chart: {
+                                    map: topology
+                                },
+
+                                title: {
+                                    text: ''
+                                },
+
+                                subtitle: {
+                                    text: ''
+                                },
+
+                                mapNavigation: {
+                                    enabled: true,
+                                    buttonOptions: {
+                                        verticalAlign: 'bottom'
+                                    }
+                                },
+
+                                colorAxis: {
+                                    min: 0
+                                },
+                                plotOptions: {
+                                    series: {
+                                        events: {
+                                            click: function(e) {
+
+                                                let nameState = e.point.name
+
+                                               // alert(nameState)
+
+                                                $.ajaxSetup({
+                                                    headers: {
+                                                        'X-CSRF-TOKEN': $(
+                                                            'meta[name="csrf-token"]'
+                                                        ).attr(
+                                                            'content')
+                                                    }
+                                                });
+
+                                                $.ajax({
+                                                    url: "{{ url('human-rabies-death') }}",
+                                                    type: "get",
+                                                    data: {
+                                                        setyear: year,
+                                                        name: nameState
+                                                    },
+                                                    success: function(result) {
+
+                                                        $('#totalDeath')
+                                                            .text(result
+                                                                .human_rabies_deaths
+                                                            );
+
+                                                    }
+
+                                                });
+
+                                                $("#detailsData").show();
+
+
+                                                var StateContent =
+                                                    "Fetching the data for " + e.point
+                                                    .name +
+                                                    " <div class='table-responsive'> <table class='table table-bordered'><thead><tr><th rowspan='2'>State</th><th colspan='2'>presumptive </th></tr> <tr><th>Cases</th><th>deaths</th></tr></thead><tbody><tr><td>" +
+                                                    e.point
+                                                    .name +
+                                                    "</td><td>" + e.point.value +
+                                                    "</td><td><span id='totalDeath'></span></td></tr></tbody></table> </div>";
+
+
+                                                $("#detailsData").html(StateContent);
+
+
+                                            }
+                                        }
+                                    }
+                                },
+
+                                series: [{
+                                    data: data,
+                                    name: '',
+                                    allowPointSelect: true,
+                                    cursor: 'pointer',
+                                    color: "#fff",
+                                    states: {
+                                        select: {
+                                            color: 'blue'
+                                        }
+                                    },
+                                    dataLabels: {
+                                        enabled: false,
+                                        format: '{point.name}'
+                                    }
+                                }]
+
+                            });
+
+                        })();
+
+
+
+                    }
+                });
+
+            });
+        </script>
+
+
+
+        <script>
+            $(document).ready(function() {
+
+                $.ajax({
+                    url: "{{ url('human-rabies-death-default') }}",
+                    type: "get",
+                    success: function(result) {
+
+                        console.log(result.state_deaths)
+
+                    }
+
+                });
+            })
+        </script>
+
+
+
+        {{-- single state record --}}
+
+        <script></script>
+
 
 
         <!-- Main Footer -->
