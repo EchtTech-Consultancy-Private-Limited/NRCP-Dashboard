@@ -305,32 +305,32 @@
                                                 <td style="width: 470px;" id="tt20" class="ng-binding">2.1.3
                                                     Fever with Rash</td>
 
-                                                <td><input name="pformcountmale" type="text" value="" class="form-control  ">
+                                                <td><input name="feverwithrash_form_count_male_age_less_5" id="feverwithrash_form_count_male_age_less_5" type="text" value="" class="form-control  ">
                                                 </td>
 
-                                                <td><input name="pformcountfemale" type="text" value="" class="form-control  ">
+                                                <td><input name="feverwithrash_form_count_male_age_greater_5" id="feverwithrash_form_count_male_age_greater_5" type="text" value="" class="form-control  ">
                                                 </td>
 
-                                                <td><input name="pformdeathcountmale" type="text" value=""
-                                                        class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
+                                                <td><input name="feverwithrash_form_count_male_total" type="text" value=""
+                                                        class="form-control" id="feverwithrash_form_count_male_total"
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text" value=""
-                                                        class="form-control  "
-                                                        ng-value="(( s.name == 'Unknown')&amp;&amp;(s.casesfemalelt5yr == 0)  ?'':s.casesfemalelt5yr)">
+                                                <td><input name="feverwithrash_form_count_female_age_less_5" type="text" value=""
+                                                        class="form-control" id="feverwithrash_form_count_female_age_less_5"
+                                                        >
                                                 </td>
 
-                                                <td><input name="pformdeathcountfemale" type="text" value=""
+                                                <td><input name="feverwithrash_form_count_female_age_greater_5" type="text" value="" id="feverwithrash_form_count_female_age_greater_5"
                                                         class="form-control  ">
                                                 </td>
 
 
-                                                <td><input name="pformdeathcountfemale" type="text" value=""
-                                                        class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
+                                                <td><input name="feverwithrash_form_count_female_total" type="text" value=""
+                                                        class="form-control" id="feverwithrash_form_count_female_total"
                                                         readonly="readonly" tabindex="-1"></td>
 
-                                                <td><input name="pformdeathcountfemale" type="text" value=""
-                                                        class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern"
+                                                <td><input name="feverwithrash_form_count_grand_total" type="text" value=""
+                                                        class="form-control" id="feverwithrash_form_count_grand_total"
                                                         readonly="readonly" tabindex="-1"></td>
 
                                                 <td><input name="pformdeathcountfemale" type="text" value=""
@@ -2332,11 +2332,6 @@
                     }
 
                     $(`#${arrayId[0]}_form_count_grand_total`).val(Number($(`#${arrayId[0]}_form_count_male_total`).val()) + Number($(`#${arrayId[0]}_form_count_female_total`).val()));
-                
-
-
-
-
 
 
                 })
@@ -2360,13 +2355,7 @@
                 if($(this).val() && !$(this).attr("readonly")){
                     data[$(this).attr("id")]=$(this).val();
                 }
-        //         $(this).on('keyup',function(e){
-        // //      if(e.target.id=='only_fever_greater_7_days_form_count_male'){
-               
-        // //            console.log(e.target.value);
-        // //      }
-            
-        //   });
+     
 
             });
 
@@ -2374,25 +2363,6 @@
 
             console.log(data);
             
-
-        //         let onlyfevergreaterthanequal7days_form_count_male_age_less_5 = $('#onlyfevergreaterthanequal7days_form_count_male_age_less_5').val();
-        //    let onlyfevergreaterthanequal7days_form_count_male_age_greater_5 = $('#onlyfevergreaterthanequal7days_form_count_male_age_greater_5').val();
-        //    let onlyfevergreaterthanequal7days_form_count_female_age_less_5 = $('#onlyfevergreaterthanequal7days_form_count_female_age_less_5').val();
-        //    let onlyfevergreaterthanequal7days_form_count_female_age_greater_5 = $('#onlyfevergreaterthanequal7days_form_count_female_age_greater_5').val();
-
-        // {
-            
-        //     onlyfevergreaterthanequal7days_form_count_male_age_less_5 : onlyfevergreaterthanequal7days_form_count_male_age_less_5,
-        //     onlyfevergreaterthanequal7days_form_count_male_age_greater_5 : onlyfevergreaterthanequal7days_form_count_male_age_greater_5,
-        //     onlyfevergreaterthanequal7days_form_count_female_age_less_5 : onlyfevergreaterthanequal7days_form_count_female_age_less_5,
-        //     onlyfevergreaterthanequal7days_form_count_female_age_greater_5 : onlyfevergreaterthanequal7days_form_count_female_age_greater_5,
-        //     _token: $('meta[name="csrf-token"]').attr('content')
-        // },
-
-
-
-
-
            $.ajax({ 
                     type: "POST",
                     url: "{{ url('addpatient') }}", 
@@ -2402,18 +2372,10 @@
                         console.log(res);
                       
                     }
-
-
-
                 });
 
-
-           
-
-
             })
-         
-           
+            
         });
 
 
