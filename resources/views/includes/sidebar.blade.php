@@ -19,6 +19,13 @@
             </a>
         </li>
 
+        <li class="nav-item">
+            <a href="javascript:void(0)" class="nav-link {{ Request::routeIs('sform') ? 'active':'' }}">
+                <i class="far fa-circle nav-icon"></i>
+                <p>lform</p>
+            </a>
+        </li>
+
 
         <li class="nav-item">
             <a href="{{ url('sform') }}" class="nav-link {{ Request::routeIs('sform') ? 'active':'' }}">
@@ -28,9 +35,9 @@
         </li>
 
         <li class="nav-item">
-            <a href="{{ url('pform2') }}" class="nav-link {{ Request::routeIs('pform2') ? 'active':'' }}">
+            <a href="{{ url('Human-rabies-map') }}" class="nav-link {{ Request::routeIs('pform2') ? 'active':'' }}">
                 <i class="far fa-circle nav-icon"></i>
-                <p>pform2</p>
+                <p>pform map</p>
             </a>
         </li>
     </ul>
@@ -39,7 +46,7 @@
 
 
 
-<!-- 
+<!--
 <script>
 $(".nav-sidebar .nav-item .nav-link").click(() => {
     $(".nav-sidebar .nav-item").addClass("active");

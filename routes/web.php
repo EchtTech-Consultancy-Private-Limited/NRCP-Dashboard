@@ -25,7 +25,7 @@ Route::get('pform', [MainController::class, 'pformview'])->name('pform');
 Route::get('sform', [MainController::class, 'sformview']);
 
 Route::get('sform', [MainController::class, 'sformview'])->name('sform');
-Route::get('pform2', [MainController::class, 'pform2view'])->name('pform2');
+Route::get('Human-rabies-map', [MainController::class, 'HumanRabiesView'])->name('pform2');
 
 //Route::get('login', [MainController::class, 'login'])->name('login');
 
@@ -36,5 +36,17 @@ Route::post('patient-Record',[MainController::class,'patientAdd']);
 Route::get('human-rabies',[MainController::class,'humanRabiesMap']);
 Route::get('human-rabies-death',[MainController::class,'humanRabiesDeath']);
 Route::get('human-rabies-death-default',[MainController::class,'humanRabiesDeathdefault']);
+
+
+Route::get('human-rabies-state',[MainController::class,'humanRabiesStateWise']);
+Route::get('human-rabies-state-between',[MainController::class,'humanRabiesStateBetween']);
+
+
+//record-filter
+Route::get('human-rabies-state-year',[MainController::class,'humanRabiesStateYear']);
+Route::get('set-session',[MainController::class,'setSession']);
+
+
+
 
 
