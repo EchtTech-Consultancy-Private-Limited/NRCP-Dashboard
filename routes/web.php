@@ -25,7 +25,7 @@ Route::get('pform', [MainController::class, 'pformview'])->name('pform');
 Route::get('sform', [MainController::class, 'sformview']);
 
 Route::get('sform', [MainController::class, 'sformview'])->name('sform');
-Route::get('pform2', [MainController::class, 'pform2view'])->name('pform2');
+Route::get('pformDashboard', [MainController::class, 'pformDashboardview'])->name('pformDashboard');
 
 
 Route::post('addpatient', [MainController::class, 'addpatientdata'])->name('addpatient');

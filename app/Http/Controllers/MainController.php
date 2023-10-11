@@ -16,6 +16,8 @@ class MainController extends Controller
     public function dashboard(Request $request)
     {
         $usertype = $request->usertype;
+        
+        return view("dashboard")->with('usertype',$usertype);
 
 
         $states = DB::table('states')->get();
@@ -83,9 +85,9 @@ class MainController extends Controller
         return view("sform");
     }
 
-    public function pform2view()
+    public function pformDashboardview()
     {
-        return view('pform-two');
+        return view('pformDashboard');
     }
 
 
