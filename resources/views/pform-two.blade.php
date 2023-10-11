@@ -1037,7 +1037,48 @@
 
 
 
-        {{-- single state record --}}
+    <script>
+        $('#year').on('change', function() {
+            //alert($('#state').val() != '')
+            if ($('#state').val() != '') {
+                $('#state').val('');
+                $('.statewise').hide();
+            }
+        })
+
+
+    </script>
+
+
+
+
+    <script>
+        $(document).ready(function() {
+            $('#year').change(function() {
+                var fromYear = parseInt($(this).val());
+                   //alert(fromYear)
+                var toYearSelect = $('#yearto');
+
+
+
+                // Clear existing options
+                toYearSelect.empty();
+
+                // Add options starting from next year
+                for (var year = fromYear + 1; year <= new Date().getFullYear(); year++) {
+                    var option = $('<option></option>');
+                    option.val(year);
+                    option.text(year);
+
+                    if (year === new Date().getFullYear()) {
+                        option.prop('selected', true);
+                    }
+
+                    toYearSelect.append(option);
+                }
+            });
+        });
+    </script>
 
         <script></script>
 

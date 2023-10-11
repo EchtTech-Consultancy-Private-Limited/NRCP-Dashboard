@@ -122,6 +122,13 @@ ul {
             
         </li>
 
+        <li class="nav-item">
+            <a href="javascript:void(0)" class="nav-link {{ Request::routeIs('sform') ? 'active':'' }}">
+                <i class="far fa-circle nav-icon"></i>
+                <p>lform</p>
+            </a>
+        </li>
+
 
         <li class="nav-item">
             <a href="{{ url('sform') }}" class="nav-link {{ Request::routeIs('sform') ? 'active':'' }}">
@@ -131,9 +138,9 @@ ul {
         </li>
 
         <li class="nav-item">
-            <a href="{{ url('pform2') }}" class="nav-link {{ Request::routeIs('pform2') ? 'active':'' }}">
+            <a href="{{ url('Human-rabies-map') }}" class="nav-link {{ Request::routeIs('pform2') ? 'active':'' }}">
                 <i class="far fa-circle nav-icon"></i>
-                <p>pform2</p>
+                <p>pform map</p>
             </a>
         </li>
     </ul>
@@ -170,32 +177,13 @@ ul {
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 
+<!--
 <script>
     $(function() {
 	var Accordion = function(el, multiple) {
 		this.el = el || {};
 		this.multiple = multiple || false;
 
-		// Variables privadas
-		var links = this.el.find('.link');
-		// Evento
-		links.on('click', {el: this.el, multiple: this.multiple}, this.dropdown)
-	}
-
-	Accordion.prototype.dropdown = function(e) {
-		var $el = e.data.el;
-			$this = $(this),
-			$next = $this.next();
-
-		$next.slideToggle();
-		$this.parent().toggleClass('open');
-
-		if (!e.data.multiple) {
-			$el.find('.submenu').not($next).slideUp().parent().removeClass('open');
-		};
-	}	
-
-	var accordion = new Accordion($('#accordion'), false);
-});
-
-</script>
+})
+console.log("hellow world")
+</script> -->
