@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MainController;
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,10 +18,27 @@ use App\Http\Controllers\MainController;
 Route::get('/', function () {
     return view('login');
 });
-
+  
 //Admin Routes Start
-Route::get('dashboard', [MainController::class, 'dashboard']);
+Route::get('dashboard', [MainController::class, 'dashboard'])->name('dashboard');
+Route::get('pform', [MainController::class, 'pformview'])->name('pform');
+Route::get('sform', [MainController::class, 'sformview']);
 
-Route::get('pform', [MainController::class, 'pformview']);
+Route::get('sform', [MainController::class, 'sformview'])->name('sform');
+Route::get('pformDashboard', [MainController::class, 'pformDashboardview'])->name('pformDashboard');
+
+
+Route::post('addpatient', [MainController::class, 'addpatientdata'])->name('addpatient');
+
 
 //Route::get('login', [MainController::class, 'login'])->name('login');
+
+Route::post('patient-Record',[MainController::class,'patientAdd']);
+
+
+//human rabies
+Route::get('human-rabies',[MainController::class,'humanRabiesMap']);
+Route::get('human-rabies-death',[MainController::class,'humanRabiesDeath']);
+Route::get('human-rabies-death-default',[MainController::class,'humanRabiesDeathdefault']);
+
+
