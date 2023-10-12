@@ -22,7 +22,8 @@ Route::get('/',[authController::class,'login']);
 Route::post('/login',[authController::class,'loginSubmit']);
 Route::get('/logout',[authController::class,'logout'])->name('logout');
 
-Route::middleware(['Admin'])->group(function () {
+Route::middleware(['Admin','preventBackHistory'])->group(function () {
+
 //Admin Routes Start
 Route::get('dashboard', [MainController::class, 'dashboard'])->name('dashboard');
 Route::get('pform', [MainController::class, 'pformview'])->name('pform');

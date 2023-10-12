@@ -3,7 +3,7 @@
 
 function state_list(){
     $states = DB::table('states')->get();
-      return $states;
+    return $states;
 }
 
 function district_list(){
