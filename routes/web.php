@@ -57,7 +57,6 @@ Route::get('test',[MainController::class,'testFilter']);
 Route::get('set-session',[MainController::class,'setSession']);
 
 
-
 //monu
 Route::get('google-chart-case', [MainController::class, 'googleLineChart']);
 Route::get('horizontalBarChart', [MainController::class, 'horizontalBarChart']);
