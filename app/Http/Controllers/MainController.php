@@ -84,7 +84,6 @@ class MainController extends Controller
         return view('pformHumanRabies');
     }
 
-
     public function login()
     {
         return view("login");
