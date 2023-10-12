@@ -8,6 +8,7 @@ use App\Models\patient_record;
 use Hash;
 use Redirect;
 use DB;
+use App\Models\sform;
 use Illuminate\Http\Request;
 
 class MainController extends Controller
@@ -15,6 +16,8 @@ class MainController extends Controller
     public function dashboard(Request $request)
     {
         $usertype = $request->usertype;
+        
+        return view("dashboard")->with('usertype',$usertype);
 
         $states = DB::table('states')->get();
         $human_rabiess = DB::table('pform_human_rabies')->get();
@@ -117,6 +120,90 @@ class MainController extends Controller
         $data->opd_ipd = $request->opd_ipd;
         $data->save();
         return back()->with('message', '');
+    }
+
+    public function addpatientdata(Request $req){
+        
+        $dataRequest=$req->all();
+
+        unset($dataRequest['_token']);
+
+
+        
+        // $sform =new sform();
+        $illnessSenario="";
+
+     foreach($dataRequest as $key=>$value){
+    
+       
+        $keyData=(explode('_',$key));
+         if( $illnessSenario!=$keyData[0]){
+             $sform = new sform();
+           }
+
+        $illnessSenario=$keyData[0];
+       
+        
+        $sform->illness_senario=$keyData[0];
+    
+
+        if($keyData[5]=="less" && $keyData[3]=="male"){
+            $sform->male_less_5_age_illness=$value;
+        }
+
+
+        if($keyData[5]=="greater" && $keyData[3]=="male"){
+            $sform->male_greater_5_age_illness=$value;
+        
+
+        }
+
+        if($keyData[5]=="less" && $keyData[3]=="female"){
+            $sform->female_less_5_age_illness=$value;
+        }
+
+
+        if($keyData[5]=="greater" && $keyData[3]=="female"){
+            $sform->female_greater_5_age_illness=$value;
+        
+
+        }
+
+        
+
+        $sform->male_total_illness=$sform->male_less_5_age_illness + $sform->male_greater_5_age_illness;
+
+        $sform->female_total_illness=$sform->female_less_5_age_illness + $sform->female_greater_5_age_illness;
+
+        $sform->save();
+
+        
+        
+        // if(isset($value)){
+        // $patientsformdata = sform::create([
+        //     'illness_senario' =>$keyData[0],
+        //     'age_of_5'=>$ageis5,
+        //     'number_of_cases_of_illness'=>$value,
+        //     'gender' => $gender,
+           
+
+        // ]);
+    // }
+
+      
+
+        
+
+     }
+
+
+     return response()->json(['message'=>"data add successfully"]);
+
+        // explode(“ “, “Hello, what is your name?")
+        // for()
+
+        // dd($req->all());
+
     }
 
 
