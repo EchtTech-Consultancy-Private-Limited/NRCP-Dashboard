@@ -12,10 +12,20 @@
                 <p class="login-box-msg">Sign in to start your session</p>
 
 
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+
                 @if (session('success'))
-                 <div class="alert alert-success">
-                    {{ session('success') }}
-                 </div>
+                    <div class="alert alert-success">
+                        {{ session('success') }}
+                    </div>
                 @endif
 
 
@@ -28,7 +38,7 @@
                 <form action="{{ url('/login') }}" method="post">
                     @csrf
                     <div class="input-group mb-3">
-                        <select name="section" id="section" class="form-control">
+                        <select name="section_type" id="section" class="form-control">
                             <option value="">Select Section</option>
                             <option value="1">Animal Health</option>
                             <option value="2">Human Health Rabies</option>
@@ -36,7 +46,7 @@
 
                     </div>
                     <div class="input-group mb-3">
-                        <select name="usertype" id="usertype" class="form-control">
+                        <select name="user_type" id="usertype" class="form-control">
                             <option value="">Select User Type</option>
                             <option value="1">Central Login</option>
                             <option value="2">State Login</option>
@@ -94,4 +104,5 @@
         <!-- /.card -->
     </div>
     <!-- /.login-box -->
+
     @include('includes.login-footer')
