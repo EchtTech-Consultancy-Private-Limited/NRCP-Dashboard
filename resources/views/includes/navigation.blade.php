@@ -4,7 +4,7 @@
       <li class="nav-item">
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
-      
+
     </ul>
 
     <!-- Right navbar links -->
@@ -37,10 +37,10 @@
           <i class="fas fa-expand-arrows-alt"></i>
         </a>
       </li>
-<!--      <li class="nav-item">
-        <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
-          <i class="fas fa-th-large"></i>
+      <li class="nav-item">
+        <a class="nav-link" href="{{ url('logout') }}" role="button">
+          <i class="fa fa-power-off"></i>
         </a>
-      </li>-->
+      </li>
     </ul>
   </nav>
