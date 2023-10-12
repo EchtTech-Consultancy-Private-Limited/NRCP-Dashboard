@@ -17,9 +17,17 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->integer('user_type')->length(11)->unsigned()->nullable();
+            $table->integer('section_type')->length(11)->unsigned()->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
+        DB::table('users')->insert([
+            ['name' => 'Super Admin', 'email' => 'superadmin@gmail.com', 'email_verified_at' => '2023-08-11 23:28:25', 'password' => '$2y$10$ugaph24r5kowuOdZx.3ff.hLhxK6hBVU3kZ3DReNfHP1JNkkkEDT2','user_type'=>'2','section_type'=>'1'],
+        ]);
+        DB::table('users')->insert([
+            ['name' => 'Admin', 'email' => 'admin@gmail.com', 'email_verified_at' => '2023-08-11 23:28:25', 'password' => '$2y$10$ugaph24r5kowuOdZx.3ff.hLhxK6hBVU3kZ3DReNfHP1JNkkkEDT2','user_type'=>'1','section_type'=>'1'],
+        ]);
     }
 
     /**
