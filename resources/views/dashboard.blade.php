@@ -195,10 +195,9 @@
 
 
 
-                                                <form action="{{ url('/record-filter') }}" method="post"
-                                                    class="myForm">
-
-                                                    @csrf
+                                                <!-- <form action="{{ url('/record-filter') }}" method="post" class="myForm"> -->
+                                                <!-- <form action="#" method="post" class="myForm"> -->
+                                                    <!-- @csrf -->
                                                     <div class="row">
                                                         <div class="col-lg-3 col-md-3 col-6">
                                                             <div class="form-group">
@@ -206,10 +205,10 @@
                                                                         class="star">*</span></label>
                                                                 <select class="form-select state click-function"
                                                                     aria-label="Default select example" id="state"
-                                                                    name="state_name">
+                                                                    name="state_name" onChange="handleFilterValue();handleDistrict()">
                                                                     <option value=""> Select Your State </option>
                                                                     @foreach (state_list() as $state)
-                                                                        <option value="{{ $state->state_name }}">
+                                                                        <option value="{{ $state->state_name }}" state-id="{{$state->id}}">
                                                                             {{ ucfirst($state->state_name) ?? '' }} </option>
                                                                     @endforeach
                                                                 </select>
@@ -226,13 +225,8 @@
                                                                         class="star">*</span></label>
                                                                 <select class="form-select click-function"
                                                                     aria-label="Default select example" id="district"
-                                                                    name="district_name">
+                                                                    name="district_name" onChange="handleFilterValue()">
                                                                     <option value="">Enter your District </option>
-                                                                    @foreach (district_list() as $district)
-                                                                        <option value="{{ $district->district_name }}">
-                                                                            {{ $district->district_name ?? '' }}
-                                                                        </option>
-                                                                    @endforeach
                                                                 </select>
                                                                 <small id="district-error" class="form-text text-muted">
                                                                 </small>
@@ -245,7 +239,7 @@
                                                                         class="star">*</span></label>
                                                                 <select class="form-select p-1 year click-function"
                                                                     name="year" aria-label="Default select example"
-                                                                    id="year" required="">
+                                                                    id="year" required="" onChange="handleFilterValue()">
                                                                     <option value="yyyy">yyyy</option>
                                                                     <?php
                                                                     $currentYear = date('Y');
@@ -272,7 +266,7 @@
                                                                 <select class="form-select"
                                                                     aria-label="Default select example"
                                                                   id="yearto"
-                                                                   name="yearto" >
+                                                                   name="yearto"onChange="handleFilterValue()" >
                                                                     <option value=""> yyyy </option>
 
                                                                 </select>
@@ -290,7 +284,7 @@
                                                                         class="star">*</span></label>
                                                                 <select class="form-select p-1 year click-function"
                                                                     name="toYear" aria-label="To Year"
-                                                                    id="yearto">
+                                                                    id="yearto" onChange="handleFilterValue()">
 
 
                                                                     <!-- Options will be populated dynamically using JavaScript -->
@@ -310,16 +304,14 @@
                                                                         class="star">*</span></label>
                                                                 <select class="form-select "
                                                                     aria-label="Default select example"
-                                                                    id="formType">
+                                                                    id="formType" onChange="handleFormType()">
 
 
                                                                     <option value=""> Select Form Type
                                                                     </option>
-                                                                    <option value="1"> L Form</option>
-                                                                    <option value="2"
-                                                                        {{ Request::is('Human-rabies-map') ? 'selected' : '' }}>
-                                                                        P Form</option>
-                                                                    <option value="3">S Form</option>
+                                                                    <option value="1" form-type="l-form">L Form</option>
+                                                                    <option value="2" form-type="p-form">P Form</option>
+                                                                    <option value="3" form-type="s-form">S Form</option>
                                                                 </select>
                                                                 <small id="formType-error"
                                                                     class="form-text text-muted">
@@ -334,34 +326,35 @@
                                                                         class="star">*</span></label>
                                                                 <select class="form-select"
                                                                     aria-label="Default select example"
-                                                                    id="diseasesSyndromes">
+                                                                    id="diseasesSyndromes" onChange="handleFilterValue()">
                                                                     <option value=""> Select Diseases Syndromes
                                                                     </option>
-                                                                    <option value="1"
-                                                                        {{ Request::is('Human-rabies-map') ? 'selected' : '' }}>
-                                                                        Human Rabies</option>
-                                                                    <option value="2">Animal Bite-Dog
-                                                                        Bite(Presumptive Cases)</option>
-                                                                    <option value="3">Animal Bite-Dog
-                                                                        Bite(Syndromic Surveillance)</option>
                                                                 </select>
                                                                 <small id="diseasesSyndromes-error"
                                                                     class="form-text text-muted"> </small>
                                                             </div>
                                                         </div>
 
+                                                        
 
                                                         <div class="col-lg-3 col-md-3 col-6">
-                                                            {{-- <div class="button apply-filter">
+                                                            <div class="button apply-filter">
                                                                 <label for=""><span
                                                                         class="star"></span></label>
                                                                 <button
+                                                                    id="apply_filter"
                                                                     class="btn search-patient-btn bg-primary text-light apply-filter">Apply
                                                                     Filter</button>
 
-                                                            </div> --}}
+                                                            </div>
+                                                            <input type="hidden" value="" id="filter_state">
+                                                            <input type="hidden" value="" id="filter_district">
+                                                            <input type="hidden" value="" id="filter_from_year">
+                                                            <input type="hidden" value="" id="filter_to_year">
+                                                            <input type="hidden" value="" id="filter_form_type">
+                                                            <input type="hidden" value="" id="filter_diseases">
 
-                                                </form>
+                                                <!-- </form> -->
                                             </div>
                                         </div>
 
@@ -463,27 +456,74 @@
 
 
     <script>
-        // $('#year').on('change', function() {
-        //     //alert($('#state').val() != '')
-        //     if ($('#state').val() != '') {
-        //          $('#state').val('');
-        //         $('.statewise').hide();
-        //     }
-        // })
+        /*handle Form Type*/
+const handleFormType = ()=>{
+    
+    const formType = $('#formType').find(":selected").attr('form-type');
+    $("#diseasesSyndromes").html("");
+    let option="";
+    if(formType==="p-form"){
+        option="<option value='human_rabies'>Human Rabies</option> <option value='animal_bite'>Animal Bite - Dog Bite</option>";
+        $("#diseasesSyndromes").append(option);
+    }else  if(formType==="l-form"){
+        option="<option value='human_rabies'>Human Rabies</option> <option value='laboratary'>Human Rabies and Laboratary</option>";
+        $("#diseasesSyndromes").append(option);
+    }else{
+        option="<option value='animal_bite'>Animal Bite - Dog Bite</option>";
+        $("#diseasesSyndromes").append(option);
+    }
+}
 
-        // $('#yearto').on('change', function() {
-        //     //alert($('#state').val() != '')
-        //     if ($('#state').val() != '') {
-        //         $('#state').val('');
-        //         $('.statewise').hide();
-        //         // $('.detailsDatas').show();
+const handleFilterValue = ()=>{
+    const filter_state = $('#state').find(":selected").val();
+    const filter_district = $('#district').find(":selected").val();
+    const filter_from_year = $('#year').find(":selected").val();
+    const filter_to_year = $('#yearto').find(":selected").val();
+    const form_type = $('#formType').find(":selected").val();
+    const filter_diseasesSyndromes = $('#diseasesSyndromes').find(":selected").val();
 
-        //     }
-        // })
-    </script>
+    filter_state ? $("#filter_state").val(filter_state) : ""; 
+    filter_district ? $("#filter_district").val(filter_district) : ""; 
+    filter_from_year ? $("#filter_from_year").val(filter_from_year) : ""; 
+    filter_to_year ? $("#filter_to_year").val(filter_to_year) : ""; 
+    form_type ? $("#filter_form_type").val(form_type) : ""; 
+    filter_diseasesSyndromes ? $("#filter_diseases").val(filter_diseasesSyndromes) : ""; 
+    
+}
 
-    <script>
+const handleDistrict = ()=>{
+    const state_id = $('#state').find(":selected").attr('state-id');
+    let option = "<option>Please select district</option>";
+    $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
+            $.ajax({
+                url: "{{ url('get-district') }}",
+                type: "get",
+                data: {
+                    state_id: state_id,
+                    },
+                success: function(result) {
+                    if(result){
+                        $("#district").html("");
+                        result.district_list.forEach((district)=>{
+                            option +=`<option value="${district.id}">${district.district_name}</option>`;
+                        });
+                        $("#district").append(option);
+                    }else{
+                        $("#district").html("");
+                    }
+                }
+            });
+}
+
+
+/*end here*/ 
         $(document).ready(function() {
+
             $('#year').change(function() {
                 var fromYear = parseInt($(this).val());
                 var toYearSelect = $('#yearto');
@@ -577,9 +617,6 @@
 
                             tableBody.append(row);
                         });
-
-
-
                         // Create the chart
                         Highcharts.mapChart('container', {
                             chart: {
@@ -611,7 +648,7 @@
 
                                             let nameState = e.point.name
 
-                                            // alert(nameState)
+                                            
                                             $('.detailsDatas').hide();
                                             if ($('#state').val() != '') {
                                                 $('#state').val('');
@@ -689,13 +726,13 @@
 
                                             $("#detailsData").html(StateContent);
 
-                                            Swal.fire({
-                                                position: 'top-end',
-                                                icon: 'success',
-                                                title: 'State records fetched successfully',
-                                                showConfirmButton: false,
-                                                timer: 3000
-                                            })
+                                            // Swal.fire({
+                                            //     position: 'top-end',
+                                            //     icon: 'success',
+                                            //     title: 'State records fetched successfully',
+                                            //     showConfirmButton: false,
+                                            //     timer: 3000
+                                            // })
 
 
                                         }
@@ -738,20 +775,148 @@
         });
     </script>
 
+
     {{-- common function  --}}
     <script>
-        $('.click-function').on('change', function() {
+        $("#apply_filter").on('click',function(){
 
-            // alert('click class')
+            filter_state = $("#filter_state").val(); 
+            filter_district = $("#filter_district").val() ; 
+            filter_from_year = $("#filter_from_year").val() ; 
+            filter_to_year = $("#filter_to_year").val() ; 
+            form_type = $("#filter_form_type").val() ; 
+            filter_diseasesSyndromes = $("#filter_diseases").val() ;
 
-            var state = $('.state').val()
-            var year = $('#year').val();
-            var yearto = $('#yearto').val()
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $(
+                            'meta[name="csrf-token"]'
+                        ).attr(
+                            'content')
+                    }
+                });
+
+                $.ajax({
+                    url: "{{ url('test') }}",
+                    type: "get",
+                    data: {
+                        setstate: filter_state,
+                        district: filter_district,
+                        setyear: filter_from_year,
+                        setyearto: filter_to_year,
+                        form_type: form_type,
+                        filter_diseasesSyndromes:filter_diseasesSyndromes,
+                    },
+                    success: function(result) {
+
+                        (async () => {
+
+                            const topology = await fetch(
+                                'https://code.highcharts.com/mapdata/countries/in/custom/in-all-disputed.topo.json'
+                            ).then(response => response.json());
+
+                            // Swal.fire({
+                            //     position: 'top-end',
+                            //     icon: 'success',
+                            //     title: 'State records fetched successfully',
+                            //     showConfirmButton: false,
+                            //     timer: 3000
+                            // })
+
+                            const statesData = result;
+
+                            let data = [
+                                [statesData.state.state_name, statesData.human_rabies_case]
+                            ];
+
+                            $('.detailsDatas').hide();
+                            $('#yeartostate').show();
+
+
+
+                            var sessionvalue = "{{ session('type') }}"
+                            //alert(sessionvalue);
+                            if (sessionvalue === '1') {
+                                var Statewise =
+                                    "Fetching the data for " + result.state.state_name +
+                                    " <div class='table-responsive'> <table class='table table-bordered'><thead><tr><th rowspan='2'>State</th><th colspan='2'>presumptive </th></tr> <tr><th>Cases</th><th>deaths</th></tr></thead><tbody><tr><td>" +
+                                    result.state.state_name +
+                                    "</td><td>" + result.human_rabies_deaths +
+                                    "</td><td>" + result.human_rabies_case +
+                                    "</td></tr></tbody></table> </div>";
+                            } else {
+                                var Statewise =
+                                    "Fetching the data for " + result.state.state_name +
+                                    " <div class='table-responsive'> <table class='table table-bordered'><thead><tr><th rowspan='2'>State</th><th colspan='2'>presumptive </th></tr> <tr><th>Cases</th><th>deaths</th></tr></thead><tbody><tr><td>" +
+                                    result.state.state_name +
+                                    "</td><td>" + result.human_rabies_case +
+                                    "</td><td>" + result.human_rabies_deaths +
+                                    "</td></tr></tbody></table> </div>";
+                            }
+
+                            $("#yeartostate").html(Statewise);
+
+                            // Create the chart
+                            Highcharts.mapChart('container', {
+                                chart: {
+                                    map: topology
+                                },
+
+                                title: {
+                                    text: ''
+                                },
+
+                                subtitle: {
+                                    text: ''
+                                },
+
+                                mapNavigation: {
+                                    enabled: true,
+                                    buttonOptions: {
+                                        verticalAlign: 'bottom'
+                                    }
+                                },
+
+                                colorAxis: {
+                                    min: 0
+                                },
+                                plotOptions: {
+                                    series: {
+
+                                    }
+                                },
+
+                                series: [{
+                                    data: data,
+                                    name: '',
+                                    allowPointSelect: true,
+                                    cursor: 'pointer',
+                                    color: "#fff",
+                                    states: {
+                                        select: {
+                                            color: 'blue'
+                                        }
+                                    },
+                                    dataLabels: {
+                                        enabled: false,
+                                        format: '{point.name}'
+                                    }
+                                }]
+
+                            });
+
+                        })();
+
+
+                    }
+
+                });
+        });
+
+
+        $('#apply_filter-old').on('click', function() {
 
             if (state != '' && year != '' && yearto != '') {
-
-                alert('state and year and year to')
-
                 $.ajaxSetup({
                     headers: {
                         'X-CSRF-TOKEN': $(
@@ -777,13 +942,13 @@
                                 'https://code.highcharts.com/mapdata/countries/in/custom/in-all-disputed.topo.json'
                             ).then(response => response.json());
 
-                            Swal.fire({
-                                position: 'top-end',
-                                icon: 'success',
-                                title: 'State records fetched successfully',
-                                showConfirmButton: false,
-                                timer: 3000
-                            })
+                            // Swal.fire({
+                            //     position: 'top-end',
+                            //     icon: 'success',
+                            //     title: 'State records fetched successfully',
+                            //     showConfirmButton: false,
+                            //     timer: 3000
+                            // })
 
                             const statesData = result;
 
@@ -909,13 +1074,13 @@
                                 'https://code.highcharts.com/mapdata/countries/in/custom/in-all-disputed.topo.json'
                             ).then(response => response.json());
 
-                            Swal.fire({
-                                position: 'top-end',
-                                icon: 'success',
-                                title: 'State records fetched successfully',
-                                showConfirmButton: false,
-                                timer: 3000
-                            })
+                            // Swal.fire({
+                            //     position: 'top-end',
+                            //     icon: 'success',
+                            //     title: 'State records fetched successfully',
+                            //     showConfirmButton: false,
+                            //     timer: 3000
+                            // })
 
                             const statesData = result;
 
@@ -1035,8 +1200,6 @@
 
 
             } else if (year != '' && yearto != '') {
-
-                alert('year to year to')
 
                 $.ajaxSetup({
                     headers: {

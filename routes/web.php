@@ -38,6 +38,10 @@ Route::post('patient-Record',[MainController::class,'patientAdd']);
 
 
 //human rabies
+
+Route::get('human-rabies-new',[MainController::class,'humanRabiesMapNew']);
+
+
 Route::get('human-rabies',[MainController::class,'humanRabiesMap']);
 Route::get('human-rabies-death',[MainController::class,'humanRabiesDeath']);
 Route::get('human-rabies-death-default',[MainController::class,'humanRabiesDeathdefault']);
@@ -49,6 +53,7 @@ Route::get('human-rabies-state-between',[MainController::class,'humanRabiesState
 
 //record-filter
 Route::get('human-rabies-state-year',[MainController::class,'humanRabiesStateYear']);
+Route::get('test',[MainController::class,'testFilter']);
 Route::get('set-session',[MainController::class,'setSession']);
 
 
@@ -57,6 +62,7 @@ Route::get('set-session',[MainController::class,'setSession']);
 Route::get('google-chart-case', [MainController::class, 'googleLineChart']);
 Route::get('horizontalBarChart', [MainController::class, 'horizontalBarChart']);
 
+Route::get('get-district',[MainController::class,'getDistrict']);
 });
 
 
