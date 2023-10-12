@@ -16,7 +16,6 @@ class MainController extends Controller
     {
         $usertype = $request->usertype;
 
-
         $states = DB::table('states')->get();
         $human_rabiess = DB::table('pform_human_rabies')->get();
 
@@ -66,10 +65,8 @@ class MainController extends Controller
         }
         //dd($total_human_rabies_deaths); // This will dump the total number of cases
 
-
-
-
         return view("dashboard")->with('usertype', $usertype);
+
     }
 
     public function pformView()
@@ -126,49 +123,53 @@ class MainController extends Controller
     //p form
     public function humanRabiesMap(Request $request)
     {
+        $states = DB::table('states')->get();
+        $human_rabiess = DB::table('pform_human_rabies')->get();
+        $currentYear = date('Y');
+        $previousYear = $currentYear - 1;
         $type = session('type');
 
         if ($type != 1) {
-            $states = DB::table('states')->get();
-            $human_rabiess = DB::table('pform_human_rabies')->get();
-            $currentYear = date('Y');
-            $previousYear = $currentYear - 1;
 
             $total_human_rabies = 0; // Initialize a variable to hold the total
+            $total_rabies_record=0;
             $array = [];
             foreach ($states as $value) {
                 if ($request->setyear != '') {
                     $human_rabies = DB::table('pform_human_rabies')->where('state_id', $value->id)->where('year', $request->setyear)->sum('cases');
-                    //dd($human_rabies);
+                    $human_rabies_record = DB::table('pform_human_rabies')->where('state_id', $value->id)->where('year', $request->setyear)->sum('deaths');
+
                 } else {
                     $human_rabies = DB::table('pform_human_rabies')->where('state_id', $value->id)->where('year', $previousYear)->sum('cases');
+                    $human_rabies_record = DB::table('pform_human_rabies')->where('state_id', $value->id)->where('year', $request->setyear)->sum('deaths');
                 }
 
                 $total_human_rabies += $human_rabies; // Accumulate the sum
+                $total_rabies_record += $human_rabies_record;
                 $array[$value->state_name] = $human_rabies;
             }
         } else {
-            $states = DB::table('states')->get();
-            $human_rabiess = DB::table('pform_human_rabies')->get();
-            $currentYear = date('Y');
-            $previousYear = $currentYear - 1;
 
             $total_human_rabies = 0; // Initialize a variable to hold the total
+            $total_rabies_record=0;
             $array = [];
             foreach ($states as $value) {
                 if ($request->setyear != '') {
                     $human_rabies = DB::table('pform_human_rabies')->where('state_id', $value->id)->where('year', $request->setyear)->sum('deaths');
-                    //dd($human_rabies);
+                    $human_rabies_record = DB::table('pform_human_rabies')->where('state_id', $value->id)->where('year', $request->setyear)->sum('cases');
+
                 } else {
                     $human_rabies = DB::table('pform_human_rabies')->where('state_id', $value->id)->where('year', $previousYear)->sum('deaths');
-                }
+                    $human_rabies_record =DB::table('pform_human_rabies')->where('state_id', $value->id)->where('year', $previousYear)->sum('cases');
 
+                }
                 $total_human_rabies += $human_rabies; // Accumulate the sum
+                $total_rabies_record += $human_rabies_record;
                 $array[$value->state_name] = $human_rabies;
             }
         }
 
-        return response()->json(['array' => $array], 201);
+        return response()->json(['array' => $array,'total_rabies_record'=>$total_rabies_record,'human_rabies_record'=>$human_rabies_record], 201);
     }
 
     public function humanRabiesDeath(Request $request)
@@ -212,11 +213,20 @@ class MainController extends Controller
     //state wise
     public function humanRabiesStateWise(Request $request)
     {
-        // dd($request->all());
-        $state = DB::table('states')->where('state_name', '=', $request->setstate)->first();
-        $human_rabies_case = DB::table('pform_human_rabies')->where('state_id', $state->id)->where('year', $request->setyear)->sum('cases');
-        $human_rabies_deaths = DB::table('pform_human_rabies')->where('state_id', $state->id)->where('year', $request->setyear)->sum('deaths');
-        return response()->json(['human_rabies_case' => $human_rabies_case, 'human_rabies_deaths' => $human_rabies_deaths, 'state' => $state], 201);
+        $type = session('type');
+        if($type != 1) {
+            $state = DB::table('states')->where('state_name', '=', $request->setstate)->first();
+            $human_rabies_case = DB::table('pform_human_rabies')->where('state_id', $state->id)->where('year', $request->setyear)->sum('cases');
+            $human_rabies_deaths = DB::table('pform_human_rabies')->where('state_id', $state->id)->where('year', $request->setyear)->sum('deaths');
+            return response()->json(['human_rabies_case' => $human_rabies_case, 'human_rabies_deaths' => $human_rabies_deaths, 'state' => $state], 201);
+
+        }else{
+
+            $state = DB::table('states')->where('state_name', '=', $request->setstate)->first();
+            $human_rabies_deaths= DB::table('pform_human_rabies')->where('state_id', $state->id)->where('year', $request->setyear)->sum('cases');
+            $human_rabies_case = DB::table('pform_human_rabies')->where('state_id', $state->id)->where('year', $request->setyear)->sum('deaths');
+            return response()->json(['human_rabies_case' => $human_rabies_case, 'human_rabies_deaths' => $human_rabies_deaths, 'state' => $state], 201);
+        }
     }
 
 

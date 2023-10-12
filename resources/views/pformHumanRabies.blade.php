@@ -470,10 +470,12 @@
                             'https://code.highcharts.com/mapdata/countries/in/custom/in-all-disputed.topo.json'
                         ).then(response => response.json());
 
-                        const statesData = result.array;
 
+                        const statesData = result.array;
                         const entries = Object.entries(statesData);
 
+                          console.log(result);
+                        // console.log(entries);
 
                         const data = entries;
 
@@ -641,7 +643,7 @@
                                 color: "#fff",
                                 states: {
                                     select: {
-                                        color: 'red'
+                                        color: 'blue'
                                     }
                                 },
                                 dataLabels: {
@@ -866,8 +868,8 @@
                                     "Fetching the data for " + result.state.state_name +
                                     " <div class='table-responsive'> <table class='table table-bordered'><thead><tr><th rowspan='2'>State</th><th colspan='2'>presumptive </th></tr> <tr><th>Cases</th><th>deaths</th></tr></thead><tbody><tr><td>" +
                                     result.state.state_name +
-                                    "</td><td>" + result.human_rabies_case +
                                     "</td><td>" + result.human_rabies_deaths +
+                                    "</td><td>" + result.human_rabies_case +
                                     "</td></tr></tbody></table> </div>";
                             } else {
                                 var Statewise =

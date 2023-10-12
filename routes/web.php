@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MainController;
+use App\Http\Controllers\authController;
 
 
 /*
@@ -15,10 +16,13 @@ use App\Http\Controllers\MainController;
 |
 */
 
-Route::get('/', function () {
-    return view('login');
-});
+//login
 
+Route::get('/',[authController::class,'login']);
+Route::post('/login',[authController::class,'loginSubmit']);
+Route::get('/logout',[authController::class,'logout'])->name('logout');
+
+Route::middleware(['Admin'])->group(function () {
 //Admin Routes Start
 Route::get('dashboard', [MainController::class, 'dashboard'])->name('dashboard');
 Route::get('pform', [MainController::class, 'pformview'])->name('pform');
@@ -46,7 +50,7 @@ Route::get('human-rabies-state-between',[MainController::class,'humanRabiesState
 Route::get('human-rabies-state-year',[MainController::class,'humanRabiesStateYear']);
 Route::get('set-session',[MainController::class,'setSession']);
 
-
+});
 
 
 
