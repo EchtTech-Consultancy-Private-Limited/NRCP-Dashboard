@@ -335,7 +335,7 @@
                                                             </div>
                                                         </div>
 
-                                                        
+
 
                                                         <div class="col-lg-3 col-md-3 col-6">
                                                             <div class="button apply-filter">
@@ -458,7 +458,7 @@
     <script>
         /*handle Form Type*/
 const handleFormType = ()=>{
-    
+
     const formType = $('#formType').find(":selected").attr('form-type');
     $("#diseasesSyndromes").html("");
     let option="";
@@ -482,13 +482,13 @@ const handleFilterValue = ()=>{
     const form_type = $('#formType').find(":selected").val();
     const filter_diseasesSyndromes = $('#diseasesSyndromes').find(":selected").val();
 
-    filter_state ? $("#filter_state").val(filter_state) : ""; 
-    filter_district ? $("#filter_district").val(filter_district) : ""; 
-    filter_from_year ? $("#filter_from_year").val(filter_from_year) : ""; 
-    filter_to_year ? $("#filter_to_year").val(filter_to_year) : ""; 
-    form_type ? $("#filter_form_type").val(form_type) : ""; 
-    filter_diseasesSyndromes ? $("#filter_diseases").val(filter_diseasesSyndromes) : ""; 
-    
+    filter_state ? $("#filter_state").val(filter_state) : "";
+    filter_district ? $("#filter_district").val(filter_district) : "";
+    filter_from_year ? $("#filter_from_year").val(filter_from_year) : "";
+    filter_to_year ? $("#filter_to_year").val(filter_to_year) : "";
+    form_type ? $("#filter_form_type").val(form_type) : "";
+    filter_diseasesSyndromes ? $("#filter_diseases").val(filter_diseasesSyndromes) : "";
+
 }
 
 const handleDistrict = ()=>{
@@ -521,7 +521,7 @@ const handleDistrict = ()=>{
 }
 
 
-/*end here*/ 
+/*end here*/
         $(document).ready(function() {
 
             $('#year').change(function() {
@@ -648,7 +648,7 @@ const handleDistrict = ()=>{
 
                                             let nameState = e.point.name
 
-                                            
+
                                             $('.detailsDatas').hide();
                                             if ($('#state').val() != '') {
                                                 $('#state').val('');
@@ -780,11 +780,11 @@ const handleDistrict = ()=>{
     <script>
         $("#apply_filter").on('click',function(){
 
-            filter_state = $("#filter_state").val(); 
-            filter_district = $("#filter_district").val() ; 
-            filter_from_year = $("#filter_from_year").val() ; 
-            filter_to_year = $("#filter_to_year").val() ; 
-            form_type = $("#filter_form_type").val() ; 
+            filter_state = $("#filter_state").val();
+            filter_district = $("#filter_district").val() ;
+            filter_from_year = $("#filter_from_year").val() ;
+            filter_to_year = $("#filter_to_year").val() ;
+            form_type = $("#filter_form_type").val() ;
             filter_diseasesSyndromes = $("#filter_diseases").val() ;
 
                 $.ajaxSetup({

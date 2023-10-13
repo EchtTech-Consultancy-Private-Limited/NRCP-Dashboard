@@ -122,8 +122,9 @@ class MainController extends Controller
 /*dashboard form filter*/
 public function testFilter(Request $request)
 {
+    dd($request->all());
     $type = session('type');
-    
+
     $filter_state = $request->setstate ?? '';
     $filter_district = $request->district ?? '';
     $filter_from_year = $request->setyear ?? '';
@@ -140,14 +141,14 @@ public function testFilter(Request $request)
         if (!empty($request->setstate)) {
             $state->where('state_name','=', $filter_state)->first();
         }
-        
+
         if (!empty($request->setyear) && !empty($request->setyearto)) {
             $human_rabies_case = $human_rabies_case_query->where('state_id', $state->id)->whereBetween('year', [$filter_from_year, $filter_to_year])->sum('cases');
             $human_rabies_deaths = $human_rabies_case_query->where('state_id', $state->id)->whereBetween('year', [$filter_from_year, $filter_to_year])->sum('deaths');
         }
 
 
-        
+
 
 
 
@@ -376,5 +377,9 @@ public function testFilter(Request $request)
         ->get();
     return view('horizontalBarChart', compact('age_groups_data'));
     }
-    
+
+    public function horizontalBarChartcase(){
+        return view('horizontalBarChart', compact('age_groups_data'));
+    }
+
 }

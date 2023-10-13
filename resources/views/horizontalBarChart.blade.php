@@ -1,19 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Death by Age Group in India</title>
     <script src="https://code.highcharts.com/highcharts.js"></script>
-<script>
-
-document.addEventListener('DOMContentLoaded', function() {
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
     Highcharts.chart('chartContainer', {
         chart: {
             type: 'bar'
         },
         title: {
-            text: 'Dog Bite Cases by Age Group'
+            text: 'Death by Age Group in India'
         },
         xAxis: {
-            categories: ['0-10', '11-20', '21-30'].reverse(), // Reverse the order of categories
+            categories: ['0-10', '11-20', '21-30', '31-40', '41-50', '51-60', '61+'],
             title: {
                 text: null
             }
@@ -21,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function() {
         yAxis: {
             min: 0,
             title: {
-                text: 'Number of Cases',
+                text: 'Number of Deaths',
                 align: 'high'
             },
             labels: {
@@ -35,33 +37,21 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             }
         },
-        legend: {
-            layout: 'vertical',
-            align: 'right',
-            verticalAlign: 'top',
-            x: -40,
-            y: 80,
-            floating: true,
-            borderWidth: 1,
-            backgroundColor: ((Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF'),
-            shadow: true
-        },
-        credits: {
-            enabled: false
-        },
         series: [{
-            name: 'Cases',
-            data: [200, 150, 100].reverse() // Reverse the order of data points
+            name: 'Male',
+            data: [19,18,17]
+        }, {
+            name: 'Female',
+            data: [5]
         }]
     });
 });
 
-</script>
-
+     </script>
 </head>
 <body>
-    <h1>Age-wise Dog Bite Cases Statistics</h1>
-
+    <h1>Death by Age Group in India (Based on Male and Female)</h1>
     <div id="chartContainer" style="height: 400px;"></div>
+    <script src="script.js"></script>
 </body>
 </html>
