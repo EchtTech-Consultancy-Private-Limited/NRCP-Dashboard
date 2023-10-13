@@ -131,38 +131,40 @@ public function testFilter(Request $request)
     $filter_form = $request->form_type ?? '';
     $filter_diseasesSyndromes = $request->filter_diseasesSyndromes ?? '';
 
-        $human_rabies_case="";
-        $human_rabies_deaths="";
+        $human_rabies_case=0;
+        $human_rabies_deaths=0;
 
-        $state = DB::table('states');
+        $state = "";
         $human_rabies_case_query = DB::table('pform_human_rabies');
 
         if (!empty($request->setstate)) {
-            $state->where('state_name','=', $filter_state)->first();
+            $state = DB::table('states')->where('state_name','=', $filter_state)->first();
+            $human_rabies_case_query->where('state_id', $state->id);
+        }else{
+            $state = DB::table('states')->get();
         }
         
         if (!empty($request->setyear) && !empty($request->setyearto)) {
-            $human_rabies_case = $human_rabies_case_query->where('state_id', $state->id)->whereBetween('year', [$filter_from_year, $filter_to_year])->sum('cases');
-            $human_rabies_deaths = $human_rabies_case_query->where('state_id', $state->id)->whereBetween('year', [$filter_from_year, $filter_to_year])->sum('deaths');
+            $human_rabies_case = $human_rabies_case_query->whereBetween('year', [$filter_from_year, $filter_to_year])->sum('cases');
+            $human_rabies_deaths = $human_rabies_case_query->whereBetween('year', [$filter_from_year, $filter_to_year])->sum('deaths');
+        }else{
+            if (!empty($request->setyear)) {
+                $human_rabies_case = $human_rabies_case_query->where('year','=',$filter_from_year)->sum('cases');
+                $human_rabies_deaths = $human_rabies_case_query->where('year','=',$filter_from_year)->sum('deaths');
+            }
         }
 
-
+        //
+        $arr=""; 
+        if(!is_array($state)){
+            $arr=$state;
+        }else{
+            $arr=$state;
+        }
+        // $state = $human_rabies_case;
+        // return response()->json(['state' => $arr,'total_rabies_record'=>$total_rabies_record,'human_rabies_record'=>$human_rabies_record], 201);
         
-
-
-
-    // if ($type != 1) {
-    //     $state = DB::table('states')->where('state_name', '=', $request->setstate)->first();
-    //     $human_rabies_case = DB::table('pform_human_rabies')->where('state_id', $state->id)->whereBetween('year', [$request->setyear, $request->setyearto])->sum('cases');
-    //     $human_rabies_deaths = DB::table('pform_human_rabies')->where('state_id', $state->id)->whereBetween('year', [$request->setyear, $request->setyearto])->sum('deaths');
-    // } else {
-    //     $state = DB::table('states')->where('state_name', '=', $request->setstate)->first();
-    //     $human_rabies_deaths = DB::table('pform_human_rabies')->where('state_id', $state->id)->whereBetween('year', [$request->setyear, $request->setyearto])->sum('cases');
-    //     $human_rabies_case = DB::table('pform_human_rabies')->where('state_id', $state->id)->whereBetween('year', [$request->setyear, $request->setyearto])->sum('deaths');
-    // }
-
-
-    return response()->json(['human_rabies_case' => $human_rabies_case, 'human_rabies_deaths' => $human_rabies_deaths, 'state' => $state], 201);
+        return response()->json(['human_rabies_case' => $human_rabies_case, 'human_rabies_deaths' => $human_rabies_deaths, 'state' => $arr], 201);
 }
 
 
