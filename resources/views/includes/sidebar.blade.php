@@ -1,7 +1,7 @@
 
 <link rel="stylesheet" src="https://netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"></link>
 <style>
-    
+
 h1 {
   color: #FFF;
   font-size: 24px;
@@ -119,7 +119,7 @@ ul {
         </li>
 
         <li class="nav-item">
-            
+
         </li>
 
         <li class="nav-item">
@@ -151,15 +151,15 @@ ul {
 <ul id="accordion" class="accordion">
   <li>
     <div class="link bg-primary text-white"> <i class="nav-icon fas fa-tachometer-alt text-light"></i> <a href="#">Dashboard</a> </i></div>
-  
+
   </li>
   <li>
     <div class="link"> <i class="far fa-circle nav-icon"></i>pForm<i class="fa fa-chevron-down"></i></div>
     <ul class="submenu">
         <li><a href="{{ url('pformDashboard') }}" class="{{ Request::routeIs('pform2') ? 'active':'' }}">Dashboard</a></li>
         <li><a href="{{ url('pform') }}" class=" {{ Request::routeIs('pform') ? 'active':'' }}">pForm</a></li>
-        
-      
+
+
     </ul>
   </li>
   <li>
@@ -167,27 +167,22 @@ ul {
     <ul class="submenu">
       <li><a href="#">Dashboard</a></li>
       <li><a  href="{{ url('sform') }}"  class="{{ Request::routeIs('sform') ? 'active':'' }}">sform</a></li>
-     
+
     </ul>
   </li>
-  
- 
+
+
 </ul>
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 
-<<<<<<< HEAD
-=======
-<!--
->>>>>>> 2d5fd86663d4cf63b4d9116d4257edfa08678e0b
 <script>
     $(function() {
 	var Accordion = function(el, multiple) {
 		this.el = el || {};
 		this.multiple = multiple || false;
 
-<<<<<<< HEAD
 		// Variables privadas
 		var links = this.el.find('.link');
 		// Evento
@@ -205,14 +200,9 @@ ul {
 		if (!e.data.multiple) {
 			$el.find('.submenu').not($next).slideUp().parent().removeClass('open');
 		};
-	}	
+	}
 
 	var accordion = new Accordion($('#accordion'), false);
 });
 
 </script>
-=======
-})
-console.log("hellow world")
-</script> -->
->>>>>>> 2d5fd86663d4cf63b4d9116d4257edfa08678e0b

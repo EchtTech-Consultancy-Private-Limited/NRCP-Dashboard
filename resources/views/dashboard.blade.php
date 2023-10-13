@@ -73,7 +73,7 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-8">
-                            <h1 class="m-0">State Dashboard - Human Health Rabies</h1>
+                            <h1 class="m-0 text-dark" >State Dashboard - Human Health Rabies</h1>
                         </div><!-- /.col -->
                         <div class="col-sm-4">
                             <ol class="breadcrumb float-sm-right">
@@ -84,7 +84,7 @@
                     </div><!-- /.row -->
                 </div><!-- /.container-fluid -->
             </div>
-            
+
             <!-- /.content-header -->
 
             <!-- Main content -->
@@ -94,7 +94,7 @@
                     <div class="row">
                                     <div class="col-12 col-sm-6 col-md-3">
                                         <div class="info-box">
-                                            <span class="info-box-icon bg-info elevation-1"><img src="http://127.0.0.1:8000/assets/images/vaccination-coverage.png" alt="" class="das-icon"></span>
+                                            <span class="info-box-icon bg-info elevation-1"><img src="{{ asset('assets/images/vaccination-coverage.png') }}" alt="" class="das-icon"></span>
 
                                             <div class="info-box-content">
                                                 <span class="info-box-text">Vaccination Coverage</span>
@@ -110,7 +110,7 @@
                                     <!-- /.col -->
                                     <div class="col-12 col-sm-6 col-md-3">
                                         <div class="info-box mb-3">
-                                            <span class="info-box-icon bg-danger elevation-1"><img src="http://127.0.0.1:8000/assets/images/rabies-cases.png" alt="" class="das-icon"></span>
+                                            <span class="info-box-icon bg-danger elevation-1"><img src="{{ asset('assets/images/rabies-cases.png')}}" alt="" class="das-icon"></span>
 
                                             <div class="info-box-content">
                                                 <span class="info-box-text">Rabies Cases</span>
@@ -127,7 +127,7 @@
 
                                     <div class="col-12 col-sm-6 col-md-3">
                                         <div class="info-box mb-3">
-                                            <span class="info-box-icon bg-success elevation-1"><img src="http://127.0.0.1:8000/assets/images/animal-population.png" alt="" class="das-icon"></span>
+                                            <span class="info-box-icon bg-success elevation-1"><img src="{{ asset('assets/images/animal-population.png')}}" alt="" class="das-icon"></span>
 
                                             <div class="info-box-content">
                                                 <span class="info-box-text">Animal Population</span>
@@ -140,7 +140,7 @@
                                     <!-- /.col -->
                                     <div class="col-12 col-sm-6 col-md-3">
                                         <div class="info-box mb-3">
-                                            <span class="info-box-icon bg-warning elevation-1"><img src="http://127.0.0.1:8000/assets/images/control-measures.png" alt="" class="das-icon"></span>
+                                            <span class="info-box-icon bg-warning elevation-1"><img src="{{ asset('assets/images/control-measures.png')}}" alt="" class="das-icon"></span>
 
                                             <div class="info-box-content">
                                                 <span class="info-box-text">Control Measures</span>
@@ -152,7 +152,7 @@
                                     </div>
                                     <div class="col-12 col-sm-6 col-md-3">
                                         <div class="info-box mb-3">
-                                            <span class="info-box-icon bg-warning elevation-1"><img src="http://127.0.0.1:8000/assets/images/dog-bite.png" alt="" class="das-icon"></span>
+                                            <span class="info-box-icon bg-warning elevation-1"><img src="{{ asset('assets/images/dog-bite.png')}}" alt="" class="das-icon"></span>
 
                                             <div class="info-box-content">
                                                 <span class="info-box-text">Animal Bites Incidents</span>

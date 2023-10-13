@@ -289,4 +289,27 @@ class MainController extends Controller
         }
         return response()->json(['message' => 'Session value set successfully']);
     }
+
+  //monu
+    public function googleLineChart()
+    {
+
+        $dogbite_cases_male = DB::table('age_group_pform_dogbite_cases')->sum('male');
+        $dogbite_cases_female = DB::table('age_group_pform_dogbite_cases')->sum('female');
+        $total=($dogbite_cases_male +  $dogbite_cases_female);
+        $male_percentage = ($dogbite_cases_male / $total) * 100;
+        $female_percentage = ($dogbite_cases_female / $total) * 100;
+
+        return view('googleChart', compact('male_percentage','female_percentage','total'));
+    }
+
+    public function horizontalBarChart()
+     {
+    $age_groups_data = DB::table('age_group_pform_dogbite_cases')
+        ->select('age', 'male', 'female')
+        ->get();
+      //  dd($age_groups_data);
+
+    return view('horizontalBarChart', compact('age_groups_data'));
+    }
 }

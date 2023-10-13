@@ -51,6 +51,12 @@ Route::get('human-rabies-state-between',[MainController::class,'humanRabiesState
 Route::get('human-rabies-state-year',[MainController::class,'humanRabiesStateYear']);
 Route::get('set-session',[MainController::class,'setSession']);
 
+
+
+//monu
+Route::get('google-chart-case', [MainController::class, 'googleLineChart']);
+Route::get('horizontalBarChart', [MainController::class, 'horizontalBarChart']);
+
 });
 
 
