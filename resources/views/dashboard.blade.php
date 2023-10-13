@@ -300,6 +300,8 @@
 
                                                         <div class="col-lg-3 col-md-3 col-6">
                                                             <div class="form-group">
+
+
                                                                 <label for="formType">Form Type<span
                                                                         class="star">*</span></label>
                                                                 <select class="form-select "
@@ -307,10 +309,11 @@
                                                                     id="formType" onChange="handleFormType()">
 
 
+
                                                                     <option value=""> Select Form Type
                                                                     </option>
                                                                     <option value="1" form-type="l-form">L Form</option>
-                                                                    <option value="2" form-type="p-form">P Form</option>
+                                                                    <option value="2" form-type="p-form" >P Form</option>
                                                                     <option value="3" form-type="s-form">S Form</option>
                                                                 </select>
                                                                 <small id="formType-error"
@@ -329,6 +332,7 @@
                                                                     id="diseasesSyndromes" onChange="handleFilterValue()">
                                                                     <option value=""> Select Diseases Syndromes
                                                                     </option>
+                                                                    <option value='human_rabies' selected>Human Rabies</option> <option value='animal_bite'>Animal Bite - Dog Bite</option>
                                                                 </select>
                                                                 <small id="diseasesSyndromes-error"
                                                                     class="form-text text-muted"> </small>
@@ -349,9 +353,9 @@
                                                             </div>
                                                             <input type="hidden" value="" id="filter_state">
                                                             <input type="hidden" value="" id="filter_district">
-                                                            <input type="hidden" value="" id="filter_from_year">
+                                                            <input type="hidden" value="2022" id="filter_from_year">
                                                             <input type="hidden" value="" id="filter_to_year">
-                                                            <input type="hidden" value="" id="filter_form_type">
+                                                            <input type="hidden" value="2" id="filter_form_type">
                                                             <input type="hidden" value="" id="filter_diseases">
 
                                                 <!-- </form> -->
@@ -463,13 +467,13 @@ const handleFormType = ()=>{
     $("#diseasesSyndromes").html("");
     let option="";
     if(formType==="p-form"){
-        option="<option value='human_rabies'>Human Rabies</option> <option value='animal_bite'>Animal Bite - Dog Bite</option>";
+        option="<option>Please select Diseases Syndromes</option><option value='human_rabies'>Human Rabies</option> <option value='animal_bite'>Animal Bite - Dog Bite</option>";
         $("#diseasesSyndromes").append(option);
     }else  if(formType==="l-form"){
-        option="<option value='human_rabies'>Human Rabies</option> <option value='laboratary'>Human Rabies and Laboratary</option>";
+        option="<option>Please select Diseases Syndromes</option><option value='laboratary'>Human Rabies and Laboratary</option>";
         $("#diseasesSyndromes").append(option);
     }else{
-        option="<option value='animal_bite'>Animal Bite - Dog Bite</option>";
+        option="<option>Please select Diseases Syndromes</option><option value='animal_bite'>Animal Bite - Dog Bite</option>";
         $("#diseasesSyndromes").append(option);
     }
 }
@@ -1252,9 +1256,6 @@ const handleDistrict = ()=>{
                             //     console.log(
                             //         `State Name: ${stateName}, Total Cases: ${totalCases}`
                             //         );
-
-
-
 
                             // });
                             const statesData = result.array;

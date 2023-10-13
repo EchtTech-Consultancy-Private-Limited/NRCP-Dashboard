@@ -61,10 +61,12 @@ Route::get('set-session',[MainController::class,'setSession']);
 Route::get('google-chart-case', [MainController::class, 'googleLineChart']);
 Route::get('horizontalBarChart', [MainController::class, 'horizontalBarChart']);
 Route::get('horizontalBarChartcase',[MainController::class, 'horizontalBarChartcase']);
-
+Route::get('horizontalBarChartcaseAjax',[MainController::class, 'horizontalBarChartcaseAjax']);
 
 
 Route::get('get-district',[MainController::class,'getDistrict']);
+
+
 
 });
 

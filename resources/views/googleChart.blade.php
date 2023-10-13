@@ -54,6 +54,15 @@
     .col-md-6{
         width: 50%
     }
+
+        path.highcharts-point.highcharts-color-1 {
+    fill: #e45922 !important;
+}
+
+path.highcharts-point.highcharts-color-0 {
+    fill: #712980 !important;
+}
+
 </style>
 
   </head>

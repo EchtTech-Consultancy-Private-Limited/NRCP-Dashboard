@@ -39,7 +39,8 @@
         },
         series: [{
             name: 'Male',
-            data: [500, 400, 300, 200, 150, 100, 50]
+            data: [500, 400, 300, 200, 150, 100, 50],
+
         }, {
             name: 'Female',
             data: [600, 500, 400, 300, 250, 200, 100]
@@ -48,6 +49,8 @@
 });
 
      </script>
+
+
 </head>
 <body>
     <h1>Cases by Age Group in India (Based on Male and Female)</h1>
