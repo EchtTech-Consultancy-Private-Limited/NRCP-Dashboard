@@ -308,8 +308,6 @@ class MainController extends Controller
     $age_groups_data = DB::table('age_group_pform_dogbite_cases')
         ->select('age', 'male', 'female')
         ->get();
-      //  dd($age_groups_data);
-
     return view('horizontalBarChart', compact('age_groups_data'));
     }
 }
