@@ -791,130 +791,331 @@ const handleDistrict = ()=>{
             form_type = $("#filter_form_type").val() ; 
             filter_diseasesSyndromes = $("#filter_diseases").val() ;
 
-                $.ajaxSetup({
-                    headers: {
-                        'X-CSRF-TOKEN': $(
-                            'meta[name="csrf-token"]'
-                        ).attr(
-                            'content')
+    if (year) {
+        $(".detailsDatas").show();
+        $("#detailsData").hide();
+    }
+
+
+let mapdata = "";
+$.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+});
+$.ajax({
+    url: "{{ url('test') }}",
+    type: "get",
+    data: {
+            setstate: filter_state,
+            district: filter_district,
+            setyear: filter_from_year,
+            setyearto: filter_to_year,
+            form_type: form_type,
+            filter_diseasesSyndromes:filter_diseasesSyndromes,
+        },
+    success: function(result) {
+        $("#detailsData").hide();
+        (async () => {
+            const topology = await fetch(
+                'https://code.highcharts.com/mapdata/countries/in/custom/in-all-disputed.topo.json'
+            ).then(response => response.json());
+
+            let statesData = result.array;
+
+            const entries = Object.entries(statesData);
+            const data = entries;
+            const tableBody = $('.detailsDatas tbody');
+            // Clear any existing rows in the table
+            tableBody.empty();
+            // Loop through the entries and add rows to the table
+            let sessionvalue = "{{ session('type') }}";
+            entries.forEach(function(entry) {
+                console.log(entry,' entry point')
+                const state = entry[0];
+                const cases = entry[1];
+
+                const row = `
+                        <tr>
+                            <td>${state}</td>
+                            <td>${sessionvalue === '' ? cases : '' }</td>
+                            <td>${sessionvalue === '1' ? cases : ''}</td>
+                        </tr>
+                    `;
+                tableBody.append(row);
+            });
+
+            // Create the chart
+            Highcharts.mapChart('container', {
+                chart: {
+                    map: topology
+                },
+
+                title: {
+                    text: ''
+                },
+
+                subtitle: {
+                    text: ''
+                },
+
+                mapNavigation: {
+                    enabled: true,
+                    buttonOptions: {
+                        verticalAlign: 'bottom'
                     }
-                });
+                },
 
-                $.ajax({
-                    url: "{{ url('test') }}",
-                    type: "get",
-                    data: {
-                        setstate: filter_state,
-                        district: filter_district,
-                        setyear: filter_from_year,
-                        setyearto: filter_to_year,
-                        form_type: form_type,
-                        filter_diseasesSyndromes:filter_diseasesSyndromes,
-                    },
-                    success: function(result) {
+                colorAxis: {
+                    min: 0
+                },
+                plotOptions: {
+                    series: {
+                        events: {
+                            click: function(e) {
 
-                        (async () => {
+                                let nameState = e.point.name
 
-                            const topology = await fetch(
-                                'https://code.highcharts.com/mapdata/countries/in/custom/in-all-disputed.topo.json'
-                            ).then(response => response.json());
+                                //alert(nameState)
 
-                            // Swal.fire({
-                            //     position: 'top-end',
-                            //     icon: 'success',
-                            //     title: 'State records fetched successfully',
-                            //     showConfirmButton: false,
-                            //     timer: 3000
-                            // })
+                                $('.detailsDatas').hide();
+                                if ($('#state').val() != '') {
+                                    $('#state').val('');
+                                    $('.statewise').hide();
+                                }
 
-                            const statesData = result;
-
-                            let data = [
-                                [statesData.state.state_name, statesData.human_rabies_case]
-                            ];
-
-                            $('.detailsDatas').hide();
-                            $('#yeartostate').show();
-
-
-
-                            var sessionvalue = "{{ session('type') }}"
-                            //alert(sessionvalue);
-                            if (sessionvalue === '1') {
-                                var Statewise =
-                                    "Fetching the data for " + result.state.state_name +
-                                    " <div class='table-responsive'> <table class='table table-bordered'><thead><tr><th rowspan='2'>State</th><th colspan='2'>presumptive </th></tr> <tr><th>Cases</th><th>deaths</th></tr></thead><tbody><tr><td>" +
-                                    result.state.state_name +
-                                    "</td><td>" + result.human_rabies_deaths +
-                                    "</td><td>" + result.human_rabies_case +
-                                    "</td></tr></tbody></table> </div>";
-                            } else {
-                                var Statewise =
-                                    "Fetching the data for " + result.state.state_name +
-                                    " <div class='table-responsive'> <table class='table table-bordered'><thead><tr><th rowspan='2'>State</th><th colspan='2'>presumptive </th></tr> <tr><th>Cases</th><th>deaths</th></tr></thead><tbody><tr><td>" +
-                                    result.state.state_name +
-                                    "</td><td>" + result.human_rabies_case +
-                                    "</td><td>" + result.human_rabies_deaths +
-                                    "</td></tr></tbody></table> </div>";
-                            }
-
-                            $("#yeartostate").html(Statewise);
-
-                            // Create the chart
-                            Highcharts.mapChart('container', {
-                                chart: {
-                                    map: topology
-                                },
-
-                                title: {
-                                    text: ''
-                                },
-
-                                subtitle: {
-                                    text: ''
-                                },
-
-                                mapNavigation: {
-                                    enabled: true,
-                                    buttonOptions: {
-                                        verticalAlign: 'bottom'
+                                $.ajaxSetup({
+                                    headers: {
+                                        'X-CSRF-TOKEN': $(
+                                            'meta[name="csrf-token"]'
+                                        ).attr(
+                                            'content')
                                     }
-                                },
+                                });
 
-                                colorAxis: {
-                                    min: 0
-                                },
-                                plotOptions: {
-                                    series: {
-
-                                    }
-                                },
-
-                                series: [{
-                                    data: data,
-                                    name: '',
-                                    allowPointSelect: true,
-                                    cursor: 'pointer',
-                                    color: "#fff",
-                                    states: {
-                                        select: {
-                                            color: 'blue'
-                                        }
+                                $.ajax({
+                                    url: "{{ url('human-rabies-death') }}",
+                                    type: "get",
+                                    data: {
+                                        setyear: year,
+                                        name: nameState
                                     },
-                                    dataLabels: {
-                                        enabled: false,
-                                        format: '{point.name}'
+                                    success: function(
+                                        result) {
+
+                                        $('#totalDeath')
+                                            .text(result
+                                                .human_rabies_deaths
+                                            );
+
                                     }
-                                }]
 
-                            });
+                                });
 
-                        })();
+                                $("#detailsData").show();
 
 
+
+                                var sessionvalue =
+                                    "{{ session('type') }}"
+                                //alert(sessionvalue);
+                                if (sessionvalue === '1') {
+
+
+                                    var StateContent =
+                                        "Fetching the data for " + e
+                                        .point
+                                        .name +
+                                        " <div class='table-responsive'> <table class='table table-bordered'><thead><tr><th rowspan='2'>State</th><th colspan='2'>presumptive </th></tr> <tr><th>Cases</th><th>deaths</th></tr></thead><tbody><tr><td>" +
+                                        e.point
+                                        .name +
+                                        "</td><td><span id='totalDeath'></span></td><td>" +
+                                        e.point.value +
+                                        "</td></tr></tbody></table> </div>";
+
+                                } else {
+
+                                    var StateContent =
+                                        "Fetching the data for " + e
+                                        .point
+                                        .name +
+                                        " <div class='table-responsive'> <table class='table table-bordered'><thead><tr><th rowspan='2'>State</th><th colspan='2'>presumptive </th></tr> <tr><th>Cases</th><th>deaths</th></tr></thead><tbody><tr><td>" +
+                                        e.point
+                                        .name +
+                                        "</td><td>" + e.point
+                                        .value +
+                                        "</td><td><span id='totalDeath'></span></td></tr></tbody></table> </div>";
+
+                                }
+
+                                $("#detailsData").html(
+                                    StateContent);
+
+                                Swal.fire({
+                                    position: 'top-end',
+                                    icon: 'success',
+                                    title: 'State-wise records fetched successfully',
+                                    showConfirmButton: false,
+                                    timer: 3000
+                                })
+
+
+                            }
+                        }
                     }
+                },
 
-                });
+                series: [{
+                    data: data,
+                    name: '',
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    color: "#fff",
+                    states: {
+                        select: {
+                            color: 'blue'
+                        }
+                    },
+                    dataLabels: {
+                        enabled: false,
+                        format: '{point.name}'
+                    }
+                }]
+
+            });
+
+        })();
+
+
+
+    }
+});
+
+
+                // $.ajaxSetup({
+                //     headers: {
+                //         'X-CSRF-TOKEN': $(
+                //             'meta[name="csrf-token"]'
+                //         ).attr(
+                //             'content')
+                //     }
+                // });
+
+                // $.ajax({
+                //     url: "{{ url('test') }}",
+                //     type: "get",
+                //     data: {
+                //         setstate: filter_state,
+                //         district: filter_district,
+                //         setyear: filter_from_year,
+                //         setyearto: filter_to_year,
+                //         form_type: form_type,
+                //         filter_diseasesSyndromes:filter_diseasesSyndromes,
+                //     },
+                //     success: function(result) {
+
+                //         (async () => {
+
+                //             const topology = await fetch(
+                //                 'https://code.highcharts.com/mapdata/countries/in/custom/in-all-disputed.topo.json'
+                //             ).then(response => response.json());
+
+                //             // Swal.fire({
+                //             //     position: 'top-end',
+                //             //     icon: 'success',
+                //             //     title: 'State records fetched successfully',
+                //             //     showConfirmButton: false,
+                //             //     timer: 3000
+                //             // })
+
+                //             const statesData = result;
+
+                //             let data = [
+                //                 [statesData.state.state_name, statesData.human_rabies_case]
+                //             ];
+
+                //             $('.detailsDatas').hide();
+                //             $('#yeartostate').show();
+
+
+
+                //             var sessionvalue = "{{ session('type') }}"
+                //             //alert(sessionvalue);
+                //             if (sessionvalue === '1') {
+                //                 var Statewise =
+                //                     "Fetching the data for " + result.state.state_name +
+                //                     " <div class='table-responsive'> <table class='table table-bordered'><thead><tr><th rowspan='2'>State</th><th colspan='2'>presumptive </th></tr> <tr><th>Cases</th><th>deaths</th></tr></thead><tbody><tr><td>" +
+                //                     result.state.state_name +
+                //                     "</td><td>" + result.human_rabies_deaths +
+                //                     "</td><td>" + result.human_rabies_case +
+                //                     "</td></tr></tbody></table> </div>";
+                //             } else {
+                //                 var Statewise =
+                //                     "Fetching the data for " + result.state.state_name +
+                //                     " <div class='table-responsive'> <table class='table table-bordered'><thead><tr><th rowspan='2'>State</th><th colspan='2'>presumptive </th></tr> <tr><th>Cases</th><th>deaths</th></tr></thead><tbody><tr><td>" +
+                //                     result.state.state_name +
+                //                     "</td><td>" + result.human_rabies_case +
+                //                     "</td><td>" + result.human_rabies_deaths +
+                //                     "</td></tr></tbody></table> </div>";
+                //             }
+
+                //             $("#yeartostate").html(Statewise);
+
+                //             // Create the chart
+                //             Highcharts.mapChart('container', {
+                //                 chart: {
+                //                     map: topology
+                //                 },
+
+                //                 title: {
+                //                     text: ''
+                //                 },
+
+                //                 subtitle: {
+                //                     text: ''
+                //                 },
+
+                //                 mapNavigation: {
+                //                     enabled: true,
+                //                     buttonOptions: {
+                //                         verticalAlign: 'bottom'
+                //                     }
+                //                 },
+
+                //                 colorAxis: {
+                //                     min: 0
+                //                 },
+                //                 plotOptions: {
+                //                     series: {
+
+                //                     }
+                //                 },
+
+                //                 series: [{
+                //                     data: data,
+                //                     name: '',
+                //                     allowPointSelect: true,
+                //                     cursor: 'pointer',
+                //                     color: "#fff",
+                //                     states: {
+                //                         select: {
+                //                             color: 'blue'
+                //                         }
+                //                     },
+                //                     dataLabels: {
+                //                         enabled: false,
+                //                         format: '{point.name}'
+                //                     }
+                //                 }]
+
+                //             });
+
+                //         })();
+
+
+                //     }
+
+                // });
         });
 
 

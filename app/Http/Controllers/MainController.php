@@ -134,12 +134,13 @@ public function testFilter(Request $request)
         $human_rabies_case=0;
         $human_rabies_deaths=0;
 
-        $state = "";
+        $state = null;
         $human_rabies_case_query = DB::table('pform_human_rabies');
 
         if (!empty($request->setstate)) {
-            $state = DB::table('states')->where('state_name','=', $filter_state)->first();
-            $human_rabies_case_query->where('state_id', $state->id);
+            $state = DB::table('states')->where('state_name','=', $filter_state)->get()->toArray();
+            $human_rabies_case_query->where('state_id', $state[0]->id);
+            
         }else{
             $state = DB::table('states')->get();
         }
@@ -154,17 +155,15 @@ public function testFilter(Request $request)
             }
         }
 
-        //
-        $arr=""; 
-        if(!is_array($state)){
-            $arr=$state;
-        }else{
-            $arr=$state;
+        if(!empty($state)){
+            foreach($state as $key=>$value){
+                $query = clone $human_rabies_case_query;
+                $human_rabies = $query->where('state_id', $value->id)->sum('cases');
+                $array[$value->state_name] = $human_rabies; 
+            }
         }
-        // $state = $human_rabies_case;
-        // return response()->json(['state' => $arr,'total_rabies_record'=>$total_rabies_record,'human_rabies_record'=>$human_rabies_record], 201);
         
-        return response()->json(['human_rabies_case' => $human_rabies_case, 'human_rabies_deaths' => $human_rabies_deaths, 'state' => $arr], 201);
+        return response()->json(['array' => $array,'human_rabies_deaths'=>$human_rabies_deaths,'human_rabies_case'=>$human_rabies_case], 200);
 }
 
 
