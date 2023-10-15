@@ -66,7 +66,6 @@ class MainController extends Controller
         //dd($total_human_rabies_deaths); // This will dump the total number of cases
 
         return view("dashboard")->with('usertype', $usertype);
-
     }
 
     public function pformView()
@@ -119,55 +118,155 @@ class MainController extends Controller
     }
 
 
-/*dashboard form filter*/
-public function testFilter(Request $request)
-{
-    $type = session('type');
+    /*dashboard form filter*/
+    public function testFilter(Request $request)
+    {
+
+        //dd($request->form_type);
+        $type = session('type');
+
+        $filter_state = $request->setstate ?? '';
+        $filter_district = $request->district ?? '';
+        $filter_from_year = $request->setyear ?? '';
+        $filter_to_year = $request->setyearto ?? '';
+        $filter_form = $request->form_type ?? '';
+        $filter_diseasesSyndromes = $request->filter_diseasesSyndromes ?? '';
+
+
+        //sform
+        if ($request->form_type == 3) {
+
+            $human_rabies_case = 0;
+            $human_rabies_deaths = 0;
+
+            $state = "";
+            $human_rabies_case_query = DB::table('animalbite_dog_sform_bite');
+
+            if (!empty($request->setstate)) {
+                dd($request->all());
+                $state = DB::table('states')->where('state_name', '=', $filter_state)->first();
+                $human_rabies_case_query->where('state_id', $state->id);
+            } else {
+                $state = DB::table('states')->get();
+            }
+
+            if (!empty($request->setyear) && !empty($request->setyearto)) {
+                $human_rabies_case = $human_rabies_case_query->whereBetween('year', [$filter_from_year, $filter_to_year])->sum('cases');
+                $human_rabies_deaths = $human_rabies_case_query->whereBetween('year', [$filter_from_year, $filter_to_year])->sum('deaths');
+            } else {
+                if (!empty($request->setyear)) {
+                    $human_rabies_case = $human_rabies_case_query->where('year', '=', $filter_from_year)->sum('cases');
+                    $human_rabies_deaths = $human_rabies_case_query->where('year', '=', $filter_from_year)->sum('deaths');
+                }
+            }
+
+            //
+            $arr = "";
+            if (!is_array($state)) {
+                $arr = $state;
+            } else {
+                $arr = $state;
+            }
+
+
+
+            //lform
+        } else if ($request->form_type == 1) {
+
+            $persons_tested_total = 0;
+            $samples_tested = 0;
+            $Positive_tested = 0;
+
+            $state = "";
+            $laboratory_case_query = DB::table('laboratory_case_lform_state_wise');
+
+            if (!empty($request->setstate)) {
+                $state = DB::table('states')->where('state_name', '=', $filter_state)->first();
+                $laboratory_case_query->where('state_id', $state->id);
+            } else {
+                $state = DB::table('states')->get();
+            }
+
+            if (!empty($request->setyear) && !empty($request->setyearto)) {
+                $persons_tested_total = $laboratory_case_query->whereBetween('year', [$filter_from_year, $filter_to_year])->sum('persons_tested');
+                $samples_tested = $laboratory_case_query->whereBetween('year', [$filter_from_year, $filter_to_year])->sum('samples_tested');
+                $Positive_tested = $laboratory_case_query->whereBetween('year', [$filter_from_year, $filter_to_year])->sum('Positive_tested');
+            } else {
+
+                if (!empty($request->setyear)) {
+                    $persons_tested_total = $laboratory_case_query->where('year', '=', $filter_district)->sum('persons_tested');
+                    $samples_tested = $laboratory_case_query->where('year', '=', $filter_district)->sum('samples_tested');
+                    $Positive_tested = $laboratory_case_query->where('year', '=', $filter_district)->sum('Positive_tested');
+                }
+            }
+
+            if (!empty($request->district)) {
+                $district = DB::table('district')->where('id', '=', $filter_district)->first();
+
+                $persons_tested_total = $laboratory_case_query->where('year', '=', $filter_from_year)->sum('persons_tested');
+                $samples_tested = $laboratory_case_query->where('year', '=', $filter_from_year)->sum('samples_tested');
+                $Positive_tested = $laboratory_case_query->where('year', '=', $filter_from_year)->sum('Positive_tested');
+            } else {
+            }
+
+            //
+            $arr = "";
+            if (!is_array($state)) {
+                $arr = $state;
+            } else {
+                $arr = $state;
+            }
+            // $state = $human_rabies_case;
+            return response()->json([], 201);
+            //p form
+        } else {
+
+            $type = session('type');
     
-    $filter_state = $request->setstate ?? '';
-    $filter_district = $request->district ?? '';
-    $filter_from_year = $request->setyear ?? '';
-    $filter_to_year = $request->setyearto ?? '';
-    $filter_form = $request->form_type ?? '';
-    $filter_diseasesSyndromes = $request->filter_diseasesSyndromes ?? '';
-
-        $human_rabies_case=0;
-        $human_rabies_deaths=0;
-
-        $state = null;
-        $human_rabies_case_query = DB::table('pform_human_rabies');
-
-        if (!empty($request->setstate)) {
-            $state = DB::table('states')->where('state_name','=', $filter_state)->get()->toArray();
-            $human_rabies_case_query->where('state_id', $state[0]->id);
-            
-        }else{
-            $state = DB::table('states')->get();
-        }
+            $filter_state = $request->setstate ?? '';
+            $filter_district = $request->district ?? '';
+            $filter_from_year = $request->setyear ?? '';
+            $filter_to_year = $request->setyearto ?? '';
+            $filter_form = $request->form_type ?? '';
+            $filter_diseasesSyndromes = $request->filter_diseasesSyndromes ?? '';
         
-        if (!empty($request->setyear) && !empty($request->setyearto)) {
-            $human_rabies_case = $human_rabies_case_query->whereBetween('year', [$filter_from_year, $filter_to_year])->sum('cases');
-            $human_rabies_deaths = $human_rabies_case_query->whereBetween('year', [$filter_from_year, $filter_to_year])->sum('deaths');
-        }else{
-            if (!empty($request->setyear)) {
-                $human_rabies_case = $human_rabies_case_query->where('year','=',$filter_from_year)->sum('cases');
-                $human_rabies_deaths = $human_rabies_case_query->where('year','=',$filter_from_year)->sum('deaths');
-            }
-        }
-
-        if(!empty($state)){
-            foreach($state as $key=>$value){
-                $query = clone $human_rabies_case_query;
-                $human_rabies = $query->where('state_id', $value->id)->sum('cases');
-                $array[$value->state_name] = $human_rabies; 
-            }
-        }
+                $human_rabies_case=0;
+                $human_rabies_deaths=0;
         
+                $state = null;
+                $human_rabies_case_query = DB::table('pform_human_rabies');
+        
+                if (!empty($request->setstate)) {
+                    $state = DB::table('states')->where('state_name','=', $filter_state)->get()->toArray();
+                    $human_rabies_case_query->where('state_id', $state[0]->id);
+                    
+                }else{
+                    $state = DB::table('states')->get();
+                }
+                
+                if (!empty($request->setyear) && !empty($request->setyearto)) {
+                    $human_rabies_case = $human_rabies_case_query->whereBetween('year', [$filter_from_year, $filter_to_year])->sum('cases');
+                    $human_rabies_deaths = $human_rabies_case_query->whereBetween('year', [$filter_from_year, $filter_to_year])->sum('deaths');
+                }else{
+                    if (!empty($request->setyear)) {
+                        $human_rabies_case = $human_rabies_case_query->where('year','=',$filter_from_year)->sum('cases');
+                        $human_rabies_deaths = $human_rabies_case_query->where('year','=',$filter_from_year)->sum('deaths');
+                    }
+                }
+        
+                if(!empty($state)){
+                    foreach($state as $key=>$value){
+                        $query = clone $human_rabies_case_query;
+                        $human_rabies = $query->where('state_id', $value->id)->sum('cases');
+                        $array[$value->state_name] = $human_rabies; 
+                    }
+                }
+        }
         return response()->json(['array' => $array,'human_rabies_deaths'=>$human_rabies_deaths,'human_rabies_case'=>$human_rabies_case], 200);
-}
+    }
 
 
-/*end*/
+    /*end*/
 
 
     //p form
@@ -182,13 +281,12 @@ public function testFilter(Request $request)
         if ($type != 1) {
 
             $total_human_rabies = 0; // Initialize a variable to hold the total
-            $total_rabies_record=0;
+            $total_rabies_record = 0;
             $array = [];
             foreach ($states as $value) {
                 if ($request->setyear != '') {
                     $human_rabies = DB::table('pform_human_rabies')->where('state_id', $value->id)->where('year', $request->setyear)->sum('cases');
                     $human_rabies_record = DB::table('pform_human_rabies')->where('state_id', $value->id)->where('year', $request->setyear)->sum('deaths');
-
                 } else {
                     $human_rabies = DB::table('pform_human_rabies')->where('state_id', $value->id)->where('year', $previousYear)->sum('cases');
                     $human_rabies_record = DB::table('pform_human_rabies')->where('state_id', $value->id)->where('year', $request->setyear)->sum('deaths');
@@ -201,17 +299,15 @@ public function testFilter(Request $request)
         } else {
 
             $total_human_rabies = 0; // Initialize a variable to hold the total
-            $total_rabies_record=0;
+            $total_rabies_record = 0;
             $array = [];
             foreach ($states as $value) {
                 if ($request->setyear != '') {
                     $human_rabies = DB::table('pform_human_rabies')->where('state_id', $value->id)->where('year', $request->setyear)->sum('deaths');
                     $human_rabies_record = DB::table('pform_human_rabies')->where('state_id', $value->id)->where('year', $request->setyear)->sum('cases');
-
                 } else {
                     $human_rabies = DB::table('pform_human_rabies')->where('state_id', $value->id)->where('year', $previousYear)->sum('deaths');
-                    $human_rabies_record =DB::table('pform_human_rabies')->where('state_id', $value->id)->where('year', $previousYear)->sum('cases');
-
+                    $human_rabies_record = DB::table('pform_human_rabies')->where('state_id', $value->id)->where('year', $previousYear)->sum('cases');
                 }
                 $total_human_rabies += $human_rabies; // Accumulate the sum
                 $total_rabies_record += $human_rabies_record;
@@ -219,7 +315,7 @@ public function testFilter(Request $request)
             }
         }
 
-        return response()->json(['array' => $array,'total_rabies_record'=>$total_rabies_record,'human_rabies_record'=>$human_rabies_record], 201);
+        return response()->json(['array' => $array, 'total_rabies_record' => $total_rabies_record, 'human_rabies_record' => $human_rabies_record], 201);
     }
 
     public function humanRabiesDeath(Request $request)
@@ -264,16 +360,15 @@ public function testFilter(Request $request)
     public function humanRabiesStateWise(Request $request)
     {
         $type = session('type');
-        if($type != 1) {
+        if ($type != 1) {
             $state = DB::table('states')->where('state_name', '=', $request->setstate)->first();
             $human_rabies_case = DB::table('pform_human_rabies')->where('state_id', $state->id)->where('year', $request->setyear)->sum('cases');
             $human_rabies_deaths = DB::table('pform_human_rabies')->where('state_id', $state->id)->where('year', $request->setyear)->sum('deaths');
             return response()->json(['human_rabies_case' => $human_rabies_case, 'human_rabies_deaths' => $human_rabies_deaths, 'state' => $state], 201);
-
-        }else{
+        } else {
 
             $state = DB::table('states')->where('state_name', '=', $request->setstate)->first();
-            $human_rabies_deaths= DB::table('pform_human_rabies')->where('state_id', $state->id)->where('year', $request->setyear)->sum('cases');
+            $human_rabies_deaths = DB::table('pform_human_rabies')->where('state_id', $state->id)->where('year', $request->setyear)->sum('cases');
             $human_rabies_case = DB::table('pform_human_rabies')->where('state_id', $state->id)->where('year', $request->setyear)->sum('deaths');
             return response()->json(['human_rabies_case' => $human_rabies_case, 'human_rabies_deaths' => $human_rabies_deaths, 'state' => $state], 201);
         }
@@ -341,41 +436,80 @@ public function testFilter(Request $request)
         return response()->json(['message' => 'Session value set successfully']);
     }
 
-    public function getDistrict(Request $request){
-            $district = DB::table('district')->where('state_id', $request->state_id)->get();
-            if(!empty($district)){
-                return response()->json([
-                    'result' => true,
-                    'message' => 'Successfully',
-                    'district_list' => $district,
-                ], 200);
-            }else{
-                return response()->json([
-                    'result' => false,
-                    'message' => 'Not Found',
-                    'district_list' => $district,
-                ], 404);
-            }
+    public function getDistrict(Request $request)
+    {
+        $district = DB::table('district')->where('state_id', $request->state_id)->get();
+        if (!empty($district)) {
+            return response()->json([
+                'result' => true,
+                'message' => 'Successfully',
+                'district_list' => $district,
+            ], 200);
+        } else {
+            return response()->json([
+                'result' => false,
+                'message' => 'Not Found',
+                'district_list' => $district,
+            ], 404);
+        }
     }
-  //monu
+    //monu
     public function googleLineChart()
     {
 
         $dogbite_cases_male = DB::table('age_group_pform_dogbite_cases')->sum('male');
         $dogbite_cases_female = DB::table('age_group_pform_dogbite_cases')->sum('female');
-        $total=($dogbite_cases_male +  $dogbite_cases_female);
+        $total = ($dogbite_cases_male +  $dogbite_cases_female);
         $male_percentage = ($dogbite_cases_male / $total) * 100;
         $female_percentage = ($dogbite_cases_female / $total) * 100;
 
-        return view('googleChart', compact('male_percentage','female_percentage','total'));
+        return view('googleChart', compact('male_percentage', 'female_percentage', 'total'));
     }
 
     public function horizontalBarChart()
-     {
-    $age_groups_data = DB::table('age_group_pform_dogbite_cases')
-        ->select('age', 'male', 'female')
-        ->get();
-    return view('horizontalBarChart', compact('age_groups_data'));
+    {
+        $age_groups_data = DB::table('age_group_pform_dogbite_cases')
+            ->select('age', 'male', 'female')
+            ->get();
+        return view('horizontalBarChart', compact('age_groups_data'));
     }
-    
+
+    public function horizontalBarChartcase()
+    {
+        $age_groups_data = DB::table('age_group_pform_dogbite_cases')
+            ->select('age', 'male', 'female')
+            ->get();
+        return view('horizontalBarChart', compact('age_groups_data'));
+    }
+
+    public function horizontalBarChartcaseAjax()
+    {
+        $age_groups_data = DB::table('age_group_pform_dogbite_cases')->get();
+        $ageGroups = collect($age_groups_data)->pluck('age')->unique();
+        //dd($ageGroups);
+
+        foreach ($ageGroups as $ageGroup) {
+            $dogbite_cases_male = DB::table('age_group_pform_dogbite_cases')->where('age', $ageGroup)->sum('male');
+            $dogbite_cases_female = DB::table('age_group_pform_dogbite_cases')->where('age', $ageGroup)->sum('female');
+            //dd($dogbite_cases_female);  //total 80+ dog bite
+            // dd($dogbite_cases_male);      //total 80+ dog bite
+
+            $total_cases = $dogbite_cases_male + $dogbite_cases_female;
+
+            if ($total_cases > 0) {
+                $male_percentage = ($dogbite_cases_male / $total_cases) * 10;
+                $female_percentage = ($dogbite_cases_female / $total_cases) * 10;
+            } else {
+                $male_percentage = 0;
+                $female_percentage = 0;
+            }
+
+            $responseData[] = [
+                'age_group' => $ageGroup,
+                'male_percentage' => $male_percentage,
+                'female_percentage' => $female_percentage
+            ];
+        }
+        return response()->json($responseData);
+    }
 }
