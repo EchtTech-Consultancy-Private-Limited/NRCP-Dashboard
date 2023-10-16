@@ -15,15 +15,15 @@ crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <link rel="stylesheet" href="{{ asset('assets/login/plugins/overlayScrollbars/css/OverlayScrollbars.min.css') }}">
   <!-- Theme style -->
   <link rel="stylesheet" href="{{ asset('assets/login/dist/css/adminlte.min.css') }}">
-  
+
   <link rel="stylesheet" href="{{ asset('assets/login/dist/css/tempusdominus-bootstrap-4.css') }}">
-  
+
   <link rel="stylesheet" href="{{ asset('assets/login/dist/css/tempusdominus-bootstrap-4.min.css') }}">
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  
-  
+
+
   <script type="text/javascript" src="{{ asset('gstatic.com_charts_loader.js') }}"></script>
-  
+
   <link rel="stylesheet" href="{{ asset('assets/pform_css/style.css') }}">
   <script src="https://code.highcharts.com/maps/highmaps.js"></script>
   <script src="https://code.highcharts.com/maps/modules/exporting.js"></script>

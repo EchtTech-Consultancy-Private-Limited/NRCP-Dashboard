@@ -1,4 +1,5 @@
-        /*handle Form Type*/
+const BASE_URL ="http://localhost/NRCP-Dashboard/public";
+/*handle Form Type*/
 const handleFormType = ()=>{
 
     const formType = $('#formType').find(":selected").attr('form-type');
@@ -49,7 +50,7 @@ const handleDistrict = ()=>{
             });
 
             $.ajax({
-                url: "/get-district",
+                url: BASE_URL+"/get-district",
                 type: "get",
                 data: {
                     state_id: state_id,
@@ -105,20 +106,20 @@ const handleDistrict = ()=>{
                 filter_to_year = $("#filter_to_year").val();
                 form_type = $("#filter_form_type").val();
                 filter_diseasesSyndromes = $("#filter_diseases").val();
-            
+
                 if (year) {
                     $(".detailsDatas").show();
                     $("#detailsData").hide();
                 }
-            
-            
+
+
                 $.ajaxSetup({
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     }
                 });
                 $.ajax({
-                    url: "/test",
+                    url: BASE_URL+"/test",
                     type: "get",
                     data: {
                         setstate: filter_state,
@@ -138,16 +139,16 @@ const handleDistrict = ()=>{
                             const topology = await fetch(
                                 'https://code.highcharts.com/mapdata/countries/in/custom/in-all-disputed.topo.json'
                             ).then(response => response.json());
-            
+
                             let statesData = result.array;
-            
+
                             const entries = Object.entries(statesData);
                             const data = entries;
                             const tableBody = $('.detailsDatas tbody');
                             // Clear any existing rows in the table
                             tableBody.empty();
                             // Loop through the entries and add rows to the table
-            
+
                             entries.forEach(function(entry) {
                                 const state = entry[0];
                                 const cases = entry[1];
@@ -160,37 +161,37 @@ const handleDistrict = ()=>{
                                     `;
                                 tableBody.append(row);
                             });
-            
+
                             // Create the chart
                             Highcharts.mapChart('container', {
                                 chart: {
                                     map: topology
                                 },
-            
+
                                 title: {
                                     text: ''
                                 },
-            
+
                                 subtitle: {
                                     text: ''
                                 },
-            
+
                                 mapNavigation: {
                                     enabled: true,
                                     buttonOptions: {
                                         verticalAlign: 'bottom'
                                     }
                                 },
-            
+
                                 colorAxis: {
                                     min: 0
                                 },
                                 plotOptions: {
                                     series: {
-                                        
+
                                     }
                                 },
-            
+
                                 series: [{
                                     data: data,
                                     name: '',
@@ -207,20 +208,20 @@ const handleDistrict = ()=>{
                                         format: '{point.name}'
                                     }
                                 }]
-            
+
                             });
-            
+
                         })();
-            
-            
-            
+
+
+
                     }
                 });
-            
+
             });
-    
+
         });
-    
+
         $(document).ready(function() {
 
             let mapdata = "";
@@ -238,11 +239,11 @@ const handleDistrict = ()=>{
 
 
             $.ajax({
-                url: "/human-rabies",
+                url: BASE_URL+"/human-rabies",
                 type: "get",
                 success: function(result) {
 
-                    /*google chart start*/ 
+                    /*google chart start*/
                     google.charts.load('current', {'packages':['corechart']});
                     google.charts.setOnLoadCallback(drawCharts);
 
@@ -280,7 +281,7 @@ const handleDistrict = ()=>{
                     }
 
 
-                    /*end google chart*/ 
+                    /*end google chart*/
 
 
                     let sessionValue = $("#session_value").val();
@@ -372,7 +373,7 @@ const handleDistrict = ()=>{
                                             });
 
                                             $.ajax({
-                                                url: "/human-rabies-death",
+                                                url: BASE_URL+"/human-rabies-death",
                                                 type: "get",
                                                 data: {
                                                     setyear: year,
@@ -474,25 +475,25 @@ const handleDistrict = ()=>{
             });
 
 
-            // pyramid chart 
+            // pyramid chart
             $.ajax({
-                url: "/horizontalBarChartcaseAjax",
+                url: BASE_URL+"/horizontalBarChartcaseAjax",
                 type: "get",
                 success: function(result) {
                     var data = result; // Assuming 'result' contains the data you provided
-        
+
                     var categories = data.map(item => item.age_group);
-        
+
                     var males = {
                         name: 'Males',
                         data: data.map(item => item.male_percentage)
                     };
-        
+
                     var females = {
                         name: 'Females',
                         data: data.map(item => -item.female_percentage)
                     };
-        
+
                     var options = {
                         series: [males, females],
                         chart: {
@@ -556,23 +557,23 @@ const handleDistrict = ()=>{
                             }
                         },
                     };
-        
+
                     var chart = new ApexCharts(document.querySelector("#chart"), options);
                     chart.render();
                 }
             });
 
         });
-    
-   
 
- 
+
+
+
         $('#type').on('change', function() {
-            
+
             let typeValue = $(this).val(); // The value you want to store in the session
             $("#session_value").val(typeValue);
             $.ajax({
-                url: '/set-session',
+                url: BASE_URL+'/set-session',
                 type: 'get',
                 data: {
                     type: typeValue
@@ -628,11 +629,10 @@ const handleDistrict = ()=>{
                 series: [{
                     name: 'Male',
                     data: [500, 400, 300, 200, 150, 100, 50],
-        
+
                 }, {
                     name: 'Female',
                     data: [600, 500, 400, 300, 250, 200, 100]
                 }]
             });
         });
-    

@@ -1,6 +1,9 @@
 @include('includes.login-header')
 
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"
+integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw=="
+crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <body class="hold-transition login-page">
     <div class="login-box" style="width: 450px;">
         <!-- /.login-logo -->
@@ -37,15 +40,15 @@
 
                 <form action="{{ url('/login') }}" method="post">
                     @csrf
-                    <div class="input-group mb-3">
+                    {{-- <div class="input-group mb-3">
                         <select name="section_type" id="section" class="form-control">
                             <option value="">Select Section</option>
                             <option value="1">Animal Health</option>
                             <option value="2">Human Health Rabies</option>
                         </select>
 
-                    </div>
-                    <div class="input-group mb-3">
+                    </div> --}}
+                    {{-- <div class="input-group mb-3">
                         <select name="user_type" id="usertype" class="form-control">
                             <option value="">Select User Type</option>
                             <option value="1">Central Login</option>
@@ -54,7 +57,7 @@
                             <option value="4">Health Facilities</option>
                         </select>
 
-                    </div>
+                    </div> --}}
                     <div class="input-group mb-3">
                         <input type="email" name="email" class="form-control" placeholder="Email">
                         <div class="input-group-append">
@@ -71,6 +74,23 @@
                             </div>
 
                         </div>
+                    </div>
+
+                    <div class="col-md-8">
+                        <div class="captcha">
+                            <span>{!! captcha_img('math') !!}</span>
+                            <button type="button" class="btn btn-success btn-refresh"><i
+                                    class="fa fas-rotate"></i></button>
+                        </div>
+                        <input id="captcha" type="text" class="form-control" placeholder="Enter Captcha"
+                            name="captcha">
+
+
+                        {{-- @if ($errors->has('captcha'))
+                            <span class="help-block">
+                                <strong>{{ $errors->first('captcha') }}</strong>
+                            </span>
+                        @endif --}}
                     </div>
                     <div class="row">
                         <div class="col-8">
@@ -104,5 +124,18 @@
         <!-- /.card -->
     </div>
     <!-- /.login-box -->
+
+    <script type="text/javascript">
+        $(".btn-refresh").click(function() {
+
+            $.ajax({
+                type: 'GET',
+                url: "{{ url('/refresh_captcha') }}",
+                success: function(data) {
+                    $(".captcha span").html(data.captcha);
+                }
+            });
+        });
+    </script>
 
     @include('includes.login-footer')

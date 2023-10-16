@@ -21,7 +21,7 @@ use App\Http\Controllers\authController;
 Route::get('/',[authController::class,'login']);
 Route::post('/login',[authController::class,'loginSubmit']);
 Route::get('/logout',[authController::class,'logout'])->name('logout');
-
+Route::get('refresh_captcha',[authController::class, 'refreshCaptcha'])->name('refresh_captcha');
 Route::middleware(['Admin','preventBackHistory'])->group(function () {
 
 //Admin Routes Start

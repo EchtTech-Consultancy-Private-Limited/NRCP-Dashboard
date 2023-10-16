@@ -23,12 +23,15 @@ class authController extends Controller
             [
                 'email' => ['required', 'string', 'email', 'max:50', 'regex:/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix'],
                 'password' => 'required|min:8|max:15',
-                'user_type'=>'required',
-                'section_type'=>'required'
-            ]
+                'captcha' => 'required|captcha'
+                ]
+                ,[
+                    'captcha.captcha' => 'Invalid captcha code.',
+
+                ]
         );
 
-        if (Auth::attempt($request->only('email','password','user_type','section_type'))) {
+        if (Auth::attempt($request->only('email','password'))) {
             session(['loggedIn' => true]);
             if (session('loggedIn')) {
                 return redirect()->intended('/dashboard')->with('success', 'Login successfull!!');
@@ -44,5 +47,9 @@ class authController extends Controller
         Auth::logout();
         session()->forget('loggedIn');
         return redirect('/')->with('success', 'Logout successfull!!');
+    }
+    public function refreshCaptcha()
+    {
+        return response()->json(['captcha'=> captcha_img('math')]);
     }
 }
