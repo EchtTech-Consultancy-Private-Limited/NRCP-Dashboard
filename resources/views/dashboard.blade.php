@@ -91,79 +91,7 @@
             <section class="content pform2">
                 <div class="container-fluid">
                     <!-- Info boxes -->
-                    <div class="row">
-                                    <div class="col-12 col-sm-6 col-md-3">
-                                        <div class="info-box">
-                                            <span class="info-box-icon bg-info elevation-1"><img src="{{ asset('assets/images/vaccination-coverage.png') }}" alt="" class="das-icon"></span>
-
-                                            <div class="info-box-content">
-                                                <span class="info-box-text">Vaccination Coverage</span>
-                                                <span class="info-box-number">
-                                                    68
-                                                    <small>%</small>
-                                                </span>
-                                            </div>
-                                            <!-- /.info-box-content -->
-                                        </div>
-                                        <!-- /.info-box -->
-                                    </div>
-                                    <!-- /.col -->
-                                    <div class="col-12 col-sm-6 col-md-3">
-                                        <div class="info-box mb-3">
-                                            <span class="info-box-icon bg-danger elevation-1"><img src="{{ asset('assets/images/rabies-cases.png')}}" alt="" class="das-icon"></span>
-
-                                            <div class="info-box-content">
-                                                <span class="info-box-text">Rabies Cases</span>
-                                                <span class="info-box-number">41,410</span>
-                                            </div>
-                                            <!-- /.info-box-content -->
-                                        </div>
-                                        <!-- /.info-box -->
-                                    </div>
-                                    <!-- /.col -->
-
-                                    <!-- fix for small devices only -->
-                                    <div class="clearfix hidden-md-up"></div>
-
-                                    <div class="col-12 col-sm-6 col-md-3">
-                                        <div class="info-box mb-3">
-                                            <span class="info-box-icon bg-success elevation-1"><img src="{{ asset('assets/images/animal-population.png')}}" alt="" class="das-icon"></span>
-
-                                            <div class="info-box-content">
-                                                <span class="info-box-text">Animal Population</span>
-                                                <span class="info-box-number">6879408</span>
-                                            </div>
-                                            <!-- /.info-box-content -->
-                                        </div>
-                                        <!-- /.info-box -->
-                                    </div>
-                                    <!-- /.col -->
-                                    <div class="col-12 col-sm-6 col-md-3">
-                                        <div class="info-box mb-3">
-                                            <span class="info-box-icon bg-warning elevation-1"><img src="{{ asset('assets/images/control-measures.png')}}" alt="" class="das-icon"></span>
-
-                                            <div class="info-box-content">
-                                                <span class="info-box-text">Control Measures</span>
-                                                <span class="info-box-number">2,000</span>
-                                            </div>
-                                            <!-- /.info-box-content -->
-                                        </div>
-                                        <!-- /.info-box -->
-                                    </div>
-                                    <div class="col-12 col-sm-6 col-md-3">
-                                        <div class="info-box mb-3">
-                                            <span class="info-box-icon bg-warning elevation-1"><img src="{{ asset('assets/images/dog-bite.png')}}" alt="" class="das-icon"></span>
-
-                                            <div class="info-box-content">
-                                                <span class="info-box-text">Animal Bites Incidents</span>
-                                                <span class="info-box-number">762,9700</span>
-                                            </div>
-                                            <!-- /.info-box-content -->
-                                        </div>
-                                        <!-- /.info-box -->
-                                    </div>
-                                    <!-- /.col -->
-                                </div>
+                    
                     <div class="row">
 
 
@@ -308,12 +236,10 @@
                                                                     aria-label="Default select example"
                                                                     id="formType" onChange="handleFormType()">
 
-
-
-                                                                    <option value=""> Select Form Type
+                                                                    <option value="" disabled> Select Form Type
                                                                     </option>
                                                                     <option value="1" form-type="l-form">L Form</option>
-                                                                    <option value="2" form-type="p-form" >P Form</option>
+                                                                    <option value="2" form-type="p-form" selected >P Form</option>
                                                                     <option value="3" form-type="s-form">S Form</option>
                                                                 </select>
                                                                 <small id="formType-error"
@@ -467,13 +393,16 @@ const handleFormType = ()=>{
     $("#diseasesSyndromes").html("");
     let option="";
     if(formType==="p-form"){
-        option="<option>Please select Diseases Syndromes</option><option value='human_rabies'>Human Rabies</option> <option value='animal_bite'>Animal Bite - Dog Bite</option>";
+        $("#filter_form_type").val(2);
+        option="<option value='human_rabies'>Human Rabies</option> <option value='animal_bite'>Animal Bite - Dog Bite</option>";
         $("#diseasesSyndromes").append(option);
     }else  if(formType==="l-form"){
+        $("#filter_form_type").val(1);
         option="<option>Please select Diseases Syndromes</option><option value='laboratary'>Human Rabies and Laboratary</option>";
         $("#diseasesSyndromes").append(option);
     }else{
-        option="<option>Please select Diseases Syndromes</option><option value='animal_bite'>Animal Bite - Dog Bite</option>";
+        $("#filter_form_type").val(3);
+        option="<option value='animal_bite'>Animal Bite - Dog Bite</option>";
         $("#diseasesSyndromes").append(option);
     }
 }
