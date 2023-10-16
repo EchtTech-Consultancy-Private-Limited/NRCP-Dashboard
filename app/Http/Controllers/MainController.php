@@ -141,26 +141,31 @@ class MainController extends Controller
 
             if (!empty($request->setstate)) {
                 $state = DB::table('states')->where('state_name', '=', $filter_state)->get()->toArray();
-                $animal_bite_query->where('state_id', $state->id);
+                $animal_bite_query->where('state_id', $state[0]->id);
             } else {
                 $state = DB::table('states')->get();
             }
 
             if (!empty($request->setyear) && !empty($request->setyearto)) {
-                $human_rabies_case = $animal_bite_query->whereBetween('year', [$filter_from_year, $filter_to_year])->sum('dob_bite_cases');
+                $human_rabies_case = $animal_bite_query->whereBetween('year', [$filter_from_year, $filter_to_year])->sum('cases');
+                $human_rabies_deaths = $animal_bite_query->whereBetween('year', [$filter_from_year, $filter_to_year])->sum('deaths');
             } else {
                 if (!empty($request->setyear)) {
-                    $human_rabies_case = $animal_bite_query->where('year', '=', $filter_from_year)->sum('dob_bite_cases');
+                    $human_rabies_case = $animal_bite_query->where('year', '=', $filter_from_year)->sum('cases');
+                    $human_rabies_deaths = $animal_bite_query->where('year', '=', $filter_from_year)->sum('cases');
                 }
             }
             if (!empty($request->district)) {
                 $animal_bite_query->where('district_id',  $filter_district);
             }
-            
+            $case_type = 'cases';
+                if($type==1){
+                    $case_type='deaths';
+                }
             if(!empty($state)){
                 foreach($state as $key=>$value){
                     $query = clone $animal_bite_query;
-                    $human_rabies = $query->where('state_id', $value->id)->sum('dob_bite_cases');
+                    $human_rabies = $query->where('state_id', $value->id)->sum($case_type);
                     $array[$value->state_name] = $human_rabies; 
                 }
             }
@@ -219,6 +224,7 @@ class MainController extends Controller
             return response()->json(['array' => $array,'human_rabies_deaths'=>$human_rabies_deaths,'human_rabies_case'=>$human_rabies_case], 200);
             //p form
         } else {
+
                 $table_name = "pform_human_rabies";
                 if(!empty($filter_diseasesSyndromes)  && $filter_diseasesSyndromes==="animal_bite"){
                     $table_name="dog_bite_pform_cases_districtwise";
@@ -252,10 +258,15 @@ class MainController extends Controller
                     $human_rabies_case_query->where('district_id',  $filter_district);
                 }
         
+                $case_type = 'cases';
+                if($type==1){
+                    $case_type='deaths';
+                }
+                // dd($case_type);
                 if(!empty($state)){
                     foreach($state as $key=>$value){
                         $query = clone $human_rabies_case_query;
-                        $human_rabies = $query->where('state_id', $value->id)->sum('cases');
+                        $human_rabies = $query->where('state_id', $value->id)->sum($case_type);
                         $array[$value->state_name] = $human_rabies; 
                     }
                 }

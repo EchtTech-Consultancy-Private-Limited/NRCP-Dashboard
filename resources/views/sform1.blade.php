@@ -13,7 +13,7 @@
     height: inherit;
     width: 40px;
 }
-        </style>
+</style>
 
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
 

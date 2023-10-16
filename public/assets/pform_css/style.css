@@ -275,3 +275,13 @@ input.valid, textarea.valid {
   padding: 8px 20px;
   border-radius: 5px;
 }/*# sourceMappingURL=style.css.map */
+
+
+.table-responsive.detailsDatas {
+  height: 688px;
+}
+
+path.highcharts-point.highcharts-name-uttar-pradesh.highcharts-key-uttar.pradesh.highcharts-point-select {
+color: #0043ff;
+fill: #0043ff;
+}
