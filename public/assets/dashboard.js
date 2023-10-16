@@ -6,14 +6,17 @@ const handleFormType = ()=>{
     let option="";
     if(formType==="p-form"){
         $("#filter_form_type").val(2);
+        $("#graphical_view").show();
         option="<option value='human_rabies'>Human Rabies</option> <option value='animal_bite'>Animal Bite - Dog Bite</option>";
         $("#diseasesSyndromes").append(option);
     }else  if(formType==="l-form"){
         $("#filter_form_type").val(1);
+        $("#graphical_view").hide();
         option="<option>Please select Diseases Syndromes</option><option value='laboratary'>Human Rabies and Laboratary</option>";
         $("#diseasesSyndromes").append(option);
     }else{
         $("#filter_form_type").val(3);
+        $("#graphical_view").hide();
         option="<option value='animal_bite'>Animal Bite - Dog Bite</option>";
         $("#diseasesSyndromes").append(option);
     }
@@ -226,16 +229,60 @@ const handleDistrict = ()=>{
             $('#yeartostate').hide();
 
 
+
             $.ajaxSetup({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
             });
 
+
             $.ajax({
                 url: "/human-rabies",
                 type: "get",
                 success: function(result) {
+
+                    /*google chart start*/ 
+                    google.charts.load('current', {'packages':['corechart']});
+                    google.charts.setOnLoadCallback(drawCharts);
+
+                    function drawCharts() {
+                    var data = google.visualization.arrayToDataTable([
+                        ['Gender', 'Percentage'],
+                        ['Male', result.male_percentage],
+                        ['Female', result.female_percentage]
+                    ]);
+
+                    var options = {
+                        title: 'Cases by Gender in india n=('+result.total+')',
+                    };
+
+                    var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+                    chart.draw(data, options);
+                    }
+                    google.charts.load('current', {'packages':['corechart']});
+                    google.charts.setOnLoadCallback(drawChart);
+
+                    function drawChart() {
+                    var data = google.visualization.arrayToDataTable([
+                        ['Gender', 'Percentage'],
+                        ['Male', result.female_percentage],
+                        ['Female', result.male_percentage]
+                    ]);
+
+                    var options = {
+                        title: 'Death by Gender in india n=('+result.total+')',
+                    };
+
+                    var chart = new google.visualization.PieChart(document.getElementById('piecharts'));
+
+                    chart.draw(data, options);
+                    }
+
+
+                    /*end google chart*/ 
+
+
                     let sessionValue = $("#session_value").val();
                     if (!sessionValue) {
                         sessionValue = 0
@@ -426,6 +473,95 @@ const handleDistrict = ()=>{
                 }
             });
 
+
+            // pyramid chart 
+            $.ajax({
+                url: "/horizontalBarChartcaseAjax",
+                type: "get",
+                success: function(result) {
+                    var data = result; // Assuming 'result' contains the data you provided
+        
+                    var categories = data.map(item => item.age_group);
+        
+                    var males = {
+                        name: 'Males',
+                        data: data.map(item => item.male_percentage)
+                    };
+        
+                    var females = {
+                        name: 'Females',
+                        data: data.map(item => -item.female_percentage)
+                    };
+        
+                    var options = {
+                        series: [males, females],
+                        chart: {
+                            type: 'bar',
+                            height: 440,
+                            stacked: true
+                        },
+                        colors: ['#ed855a', '#712980'],
+                        plotOptions: {
+                            bar: {
+                                horizontal: true,
+                                barHeight: '80%',
+                            },
+                        },
+                        dataLabels: {
+                            enabled: false
+                        },
+                        stroke: {
+                            width: 1,
+                            colors: ["#fff"]
+                        },
+                        grid: {
+                            xaxis: {
+                                lines: {
+                                    show: false
+                                }
+                            }
+                        },
+                        yaxis: {
+                            min: -10,
+                            max: 10,
+                            title: {
+                                // text: 'Age',
+                            },
+                        },
+                        tooltip: {
+                            shared: false,
+                            x: {
+                                formatter: function(val) {
+                                    return val
+                                }
+                            },
+                            y: {
+                                formatter: function(val) {
+                                    return Math.abs(val) + "%"
+                                }
+                            }
+                        },
+                        title: {
+                            text: 'Case by age group in india'
+                        },
+                        xaxis: {
+                            categories: categories,
+                            title: {
+                                text: 'Percent'
+                            },
+                            labels: {
+                                formatter: function(val) {
+                                    return Math.abs(Math.round(val)) + "%"
+                                }
+                            }
+                        },
+                    };
+        
+                    var chart = new ApexCharts(document.querySelector("#chart"), options);
+                    chart.render();
+                }
+            });
+
         });
     
    
@@ -457,4 +593,46 @@ const handleDistrict = ()=>{
         function capitalizeFirstLetter(string) {
             return string.charAt(0).toUpperCase() + string.slice(1);
         }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            Highcharts.chart('chartContainer', {
+                chart: {
+                    type: 'bar'
+                },
+                title: {
+                    text: 'Cases by Age Group in India'
+                },
+                xAxis: {
+                    categories: ['0-10', '11-20', '21-30', '31-40', '41-50', '51-60', '61+'],
+                    title: {
+                        text: null
+                    }
+                },
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: 'Number of Cases',
+                        align: 'high'
+                    },
+                    labels: {
+                        overflow: 'justify'
+                    }
+                },
+                plotOptions: {
+                    bar: {
+                        dataLabels: {
+                            enabled: true
+                        }
+                    }
+                },
+                series: [{
+                    name: 'Male',
+                    data: [500, 400, 300, 200, 150, 100, 50],
+        
+                }, {
+                    name: 'Female',
+                    data: [600, 500, 400, 300, 250, 200, 100]
+                }]
+            });
+        });
     

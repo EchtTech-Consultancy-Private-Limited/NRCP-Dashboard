@@ -143,8 +143,7 @@
                               class="star"></span></label>
                            <button
                               id="apply_filter"
-                              class="btn search-patient-btn bg-primary text-light apply-filter">Apply
-                           Filter</button>
+                              class="btn search-patient-btn bg-primary text-light apply-filter">Search</button>
                         </div>
                         <input type="hidden" value="" id="filter_state">
                         <input type="hidden" value="" id="filter_district">
@@ -205,6 +204,36 @@
                      </div>
                   </div>
                   <!-- /.row -->
+<!-- graph start-->
+      <div id="graphical_view">
+         <div class="row">
+            <div class="col-md-6">
+                  <div id="piechart" style="width: 100%; height: 500px;"></div>
+            </div>
+
+            <div class="col-md-6">
+                  <div id="piecharts" style="width: 100%; height: 500px;"></div>
+            </div>
+         </div>
+<!-- end here -->
+         <div class="row">
+            <div class="col-md-12">
+               <div id="chart"></div>
+            </div>
+         </div>
+         <div class="row">
+            <div class="col-md-12">
+                  <h1>Cases by Age Group in India (Based on Male and Female)</h1>
+                  <div id="chartContainer" style="height: 400px;"></div>
+            </div>
+         </div>
+      </div>
+
+         
+
+         
+
+
                </div>
             </div>
          </div>

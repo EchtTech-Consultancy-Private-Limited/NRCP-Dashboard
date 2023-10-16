@@ -109,7 +109,7 @@
                 },
             };
 
-            var chart = new ApexCharts(document.querySelector("#chart"), options);
+            var chart = new ApexCharts(document.querySelector("#pyramid_chart"), options);
             chart.render();
         }
     });
