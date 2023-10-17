@@ -1,5 +1,11 @@
 const BASE_URL =window.location.origin;
 /*handle Form Type*/
+
+$(document).ready(function(){
+    $('.lform').hide()
+})
+
+
 const handleFormType = ()=>{
 
     const formType = $('#formType').find(":selected").attr('form-type');
@@ -130,6 +136,43 @@ const handleDistrict = ()=>{
                         filter_diseasesSyndromes: filter_diseasesSyndromes,
                     },
                     success: function(result) {
+
+                          //alert(form_type);
+
+                        if (form_type == '1') {
+                            $('.defaultform').hide()
+                            $('.lform').show()
+                        }
+
+                        if(form_type == '1'){
+
+                            $('#box3').html(result.total_persons);
+                            $('#box4').html(result.total_samples);
+                            $('#box5').html(result.total_positive);
+                            $('#text3').html("Laboratory Cases Persons Tested");
+                            $('#text4').html("Laboratory Cases Samples Tested");
+                            $('#text5').html("Laboratory Cases Positive ");
+
+                        }else{
+
+                            if(form_type == '3'){
+                                $('.lform').hide()
+                                $('.defaultform').show()
+                                $('#box1').html(result.total_cases);
+                                $('#box2').html(result.total_deaths);
+                                $('#text1').html("Total Cases Syndromic Surveillance Cases");
+                                $('#text2').html("Deaths Syndromic Surveillance Cases");
+
+                            }else{
+                                $('.lform').hide()
+                                $('.defaultform').show()
+                                 $('#text1').html("Total Cases Presumptive Cases");
+                                 $('#text2').html("Deaths Presumptive Cases");
+                                 $('#box1').html(result.total_cases);
+                                 $('#box2').html(result.total_deaths);
+                            }
+                        }
+
                         let sessionValue = $("#session-value").val();
                         if (!sessionValue) {
                             sessionValue = 0
@@ -190,22 +233,22 @@ const handleDistrict = ()=>{
                                     series: {
                                         events: {
                                             click: function(e) {
-    
+
                                                 let nameState = e.point.name
-    
-    
+
+
                                                 $('.detailsDatas').hide();
                                                 if ($('#state').val() != '') {
                                                     $('#state').val('');
                                                     $('.statewise').hide();
                                                 }
-    
+
                                                 if (nameState) {
-    
+
                                                     $(".detailsDatas").hide();
-    
+
                                                 }
-    
+
                                                 $.ajaxSetup({
                                                     headers: {
                                                         'X-CSRF-TOKEN': $(
@@ -214,7 +257,7 @@ const handleDistrict = ()=>{
                                                             'content')
                                                     }
                                                 });
-    
+
                                                 $.ajax({
                                                     url: BASE_URL+"/human-rabies-death",
                                                     type: "get",
@@ -223,25 +266,25 @@ const handleDistrict = ()=>{
                                                         name: nameState
                                                     },
                                                     success: function(result) {
-    
+
                                                         $('#totalDeath')
                                                             .text(result
                                                                 .human_rabies_deaths
                                                             );
-    
+
                                                     }
-    
+
                                                 });
-    
+
                                                 $("#detailsData").show();
-    
+
                                                 console.log(e.point.name,' name.....')
                                                 // var sessionvalue =
                                                 //     "{{ session('type') }}"
                                                 //alert(sessionvalue);
                                                 if (sessionValue == '1') {
-    
-    
+
+
                                                     var StateContent =
                                                         "Fetching the data for " + e
                                                         .point
@@ -252,9 +295,9 @@ const handleDistrict = ()=>{
                                                         "</td><td><span id='totalDeath'></span></td><td>" +
                                                         e.point.value +
                                                         "</td></tr></tbody></table> </div>";
-    
+
                                                 } else {
-    
+
                                                     var StateContent =
                                                         "Fetching the data for " + e
                                                         .point
@@ -264,11 +307,11 @@ const handleDistrict = ()=>{
                                                         .name +
                                                         "</td><td>" + e.point.value +
                                                         "</td><td><span id='totalDeath'></span></td></tr></tbody></table> </div>";
-    
+
                                                 }
-    
-    
-    
+
+
+
                                                 $("#detailsData").html(StateContent);
                                             }
                                         }
@@ -325,6 +368,10 @@ const handleDistrict = ()=>{
                 url: BASE_URL+"/human-rabies",
                 type: "get",
                 success: function(result) {
+                        $('#text1').html("Total Cases Presumptive Cases");
+                        $('#text2').html("Deaths Presumptive Cases");
+                        $('#box1').html(result.total_cases);
+                        $('#box2').html(result.total_deaths);
 
                     /*google chart start*/
                     google.charts.load('current', {'packages':['corechart']});
@@ -684,7 +731,7 @@ const handleDistrict = ()=>{
                     type: 'bar'
                 },
                 title: {
-                    text: 'Cases by Age Group in India'
+                    text: 'Deaths by Age Group in India'
                 },
                 xAxis: {
                     categories: ['0-10', '11-20', '21-30', '31-40', '41-50', '51-60', '61+'],
@@ -719,3 +766,4 @@ const handleDistrict = ()=>{
                 }]
             });
         });
+

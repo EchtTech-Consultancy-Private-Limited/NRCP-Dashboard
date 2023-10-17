@@ -20,10 +20,12 @@ use App\Http\Controllers\authController;
 
 Route::get('/',[authController::class,'login']);
 Route::post('/login',[authController::class,'loginSubmit']);
-Route::get('/logout',[authController::class,'logout'])->name('logout');
+
 Route::get('refresh_captcha',[authController::class, 'refreshCaptcha'])->name('refresh_captcha');
+
 Route::middleware(['Admin','preventBackHistory'])->group(function () {
 
+Route::get('/logout',[authController::class,'logout'])->name('logout');
 //Admin Routes Start
 Route::get('dashboard', [MainController::class, 'dashboard'])->name('dashboard');
 Route::get('pform', [MainController::class, 'pformview'])->name('pform');
@@ -57,7 +59,6 @@ Route::get('test',[MainController::class,'testFilter']);
 Route::get('set-session',[MainController::class,'setSession']);
 
 
-//monu
 Route::get('horizontalBarChart', [MainController::class, 'horizontalBarChart']);
 Route::get('horizontalBarChartcase',[MainController::class, 'horizontalBarChartcase']);
 Route::get('horizontalBarChartcaseAjax',[MainController::class, 'horizontalBarChartcaseAjax']);

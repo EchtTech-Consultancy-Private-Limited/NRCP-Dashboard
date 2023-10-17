@@ -1,9 +1,5 @@
 @include('includes.login-header')
 
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"
-integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw=="
-crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <body class="hold-transition login-page">
     <div class="login-box" style="width: 450px;">
         <!-- /.login-logo -->
@@ -78,13 +74,14 @@ crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
                     <div class="col-md-12">
                         <div class="captcha d-flex justify-content-center">
+                              <input id="captcha" type="text" class="form-control" placeholder="Enter Captcha"
+                                    name="captcha">
                             <div class="d-flex">
                                 <span class="me-2">{!! captcha_img('math') !!}</span>
                                 <button type="button" class="btn btn-success btn-refresh"><i
                                         class="fa fas-rotate"></i></button>
                             </div>
-                            <input id="captcha" type="text" class="form-control" placeholder="Enter Captcha"
-                                    name="captcha">
+
                         </div>
 
 
@@ -96,7 +93,7 @@ crossorigin="anonymous" referrerpolicy="no-referrer"></script>
                         @endif --}}
                     </div>
                     <div class="row">
-                        <div class="col-8">
+                        <div class="col-12">
                             <div class="icheck-primary">
                                 {{-- <input type="checkbox" id="remember">
                                 <label for="remember">
