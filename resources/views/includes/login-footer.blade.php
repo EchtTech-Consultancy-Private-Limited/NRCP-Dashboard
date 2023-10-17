@@ -6,4 +6,5 @@
 <!-- AdminLTE App -->
 <script src="{{ asset('assets/login/dist/js/adminlte.min.js') }}"></script>
 </body>
+
 </html>
