@@ -201,8 +201,9 @@ const handleDistrict = ()=>{
                              $('#box2').html(result.total_deaths);
                         }
                     }
-                    let sessionValue = $("#session-value").val();
+                    let sessionValue = $("#session_value").val();
                     let case_type_col = result?.case_type_col;
+                    alert(sessionValue)
                     if (!sessionValue) {
                         sessionValue = 0
                     }
@@ -228,8 +229,8 @@ const handleDistrict = ()=>{
                                     const row = `
                                     <tr>
                                         <td>${capitalizeFirstLetter(state)}</td>
-                                        <td>${sessionValue === 0 ? cases : 0 }</td>
-                                        <td>${sessionValue === 1 ? cases : 0}</td>
+                                        <td>${sessionValue == 0 ? cases : 0 }</td>
+                                        <td>${sessionValue == 1 ? cases : 0}</td>
                                     </tr>
                                 `;
                                     tableBody.append(row);                                    
