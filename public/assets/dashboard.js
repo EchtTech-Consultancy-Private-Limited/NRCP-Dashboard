@@ -1,4 +1,4 @@
-const BASE_URL ="https://dev.nrcpdashboard.staggings.in/public";
+const BASE_URL =window.location.origin;
 /*handle Form Type*/
 const handleFormType = ()=>{
 
@@ -188,7 +188,90 @@ const handleDistrict = ()=>{
                                 },
                                 plotOptions: {
                                     series: {
-
+                                        events: {
+                                            click: function(e) {
+    
+                                                let nameState = e.point.name
+    
+    
+                                                $('.detailsDatas').hide();
+                                                if ($('#state').val() != '') {
+                                                    $('#state').val('');
+                                                    $('.statewise').hide();
+                                                }
+    
+                                                if (nameState) {
+    
+                                                    $(".detailsDatas").hide();
+    
+                                                }
+    
+                                                $.ajaxSetup({
+                                                    headers: {
+                                                        'X-CSRF-TOKEN': $(
+                                                            'meta[name="csrf-token"]'
+                                                        ).attr(
+                                                            'content')
+                                                    }
+                                                });
+    
+                                                $.ajax({
+                                                    url: BASE_URL+"/human-rabies-death",
+                                                    type: "get",
+                                                    data: {
+                                                        setyear: year,
+                                                        name: nameState
+                                                    },
+                                                    success: function(result) {
+    
+                                                        $('#totalDeath')
+                                                            .text(result
+                                                                .human_rabies_deaths
+                                                            );
+    
+                                                    }
+    
+                                                });
+    
+                                                $("#detailsData").show();
+    
+                                                console.log(e.point.name,' name.....')
+                                                // var sessionvalue =
+                                                //     "{{ session('type') }}"
+                                                //alert(sessionvalue);
+                                                if (sessionValue == '1') {
+    
+    
+                                                    var StateContent =
+                                                        "Fetching the data for " + e
+                                                        .point
+                                                        .name +
+                                                        " <div class='table-responsive'> <table class='table table-bordered'><thead><tr><th rowspan='2'>State</th><th colspan='2'>presumptive </th></tr> <tr><th>Cases</th><th>deaths</th></tr></thead><tbody><tr><td>" +
+                                                        e.point
+                                                        .name +
+                                                        "</td><td><span id='totalDeath'></span></td><td>" +
+                                                        e.point.value +
+                                                        "</td></tr></tbody></table> </div>";
+    
+                                                } else {
+    
+                                                    var StateContent =
+                                                        "Fetching the data for " + e
+                                                        .point
+                                                        .name +
+                                                        " <div class='table-responsive'> <table class='table table-bordered'><thead><tr><th rowspan='2'>State</th><th colspan='2'>presumptive </th></tr> <tr><th>Cases</th><th>deaths</th></tr></thead><tbody><tr><td>" +
+                                                        e.point
+                                                        .name +
+                                                        "</td><td>" + e.point.value +
+                                                        "</td><td><span id='totalDeath'></span></td></tr></tbody></table> </div>";
+    
+                                                }
+    
+    
+    
+                                                $("#detailsData").html(StateContent);
+                                            }
+                                        }
                                     }
                                 },
 
