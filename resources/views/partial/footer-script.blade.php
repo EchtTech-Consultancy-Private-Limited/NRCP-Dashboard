@@ -35,9 +35,8 @@
 
 <!-- AdminLTE for demo purposes -->
 <script src="{{ asset('assets/login/dist/js/demo.js') }}"></script>
+<script src="{{ asset('jquery.min.js') }}"></script>
+
+
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="{{ asset('assets/login/dist/js/pages/dashboard2.js') }}"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
-
-

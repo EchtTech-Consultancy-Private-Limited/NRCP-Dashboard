@@ -234,7 +234,7 @@ class MainController extends Controller
                 }
             }
             return response()->json(['array' => $array,'total_persons'=>$total_persons,'total_samples'=>$total_samples,'total_positive'=>$total_positive,'human_rabies_deaths' => $human_rabies_deaths, 'human_rabies_case' => $human_rabies_case,'case_type_col'=>$case_type_col], 200);
-            
+
             //p form
         } else {
 
@@ -543,6 +543,7 @@ class MainController extends Controller
         }
         return response()->json($responseData);
     }
+
 
 
 }
