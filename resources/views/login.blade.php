@@ -76,14 +76,17 @@ crossorigin="anonymous" referrerpolicy="no-referrer"></script>
                         </div>
                     </div>
 
-                    <div class="col-md-8">
-                        <div class="captcha">
-                            <span>{!! captcha_img('math') !!}</span>
-                            <button type="button" class="btn btn-success btn-refresh"><i
-                                    class="fa fas-rotate"></i></button>
+                    <div class="col-md-12">
+                        <div class="captcha d-flex justify-content-center">
+                            <div class="d-flex">
+                                <span class="me-2">{!! captcha_img('math') !!}</span>
+                                <button type="button" class="btn btn-success btn-refresh"><i
+                                        class="fa fas-rotate"></i></button>
+                            </div>
+                            <input id="captcha" type="text" class="form-control" placeholder="Enter Captcha"
+                                    name="captcha">
                         </div>
-                        <input id="captcha" type="text" class="form-control" placeholder="Enter Captcha"
-                            name="captcha">
+
 
 
                         {{-- @if ($errors->has('captcha'))
@@ -95,14 +98,14 @@ crossorigin="anonymous" referrerpolicy="no-referrer"></script>
                     <div class="row">
                         <div class="col-8">
                             <div class="icheck-primary">
-                                <input type="checkbox" id="remember">
+                                {{-- <input type="checkbox" id="remember">
                                 <label for="remember">
                                     Remember Me
-                                </label>
+                                </label> --}}
                             </div>
                         </div>
                         <!-- /.col -->
-                        <div class="col-4">
+                        <div class="col-4" >
                             <button type="submit" class="btn btn-primary btn-block">Sign In</button>
                         </div>
                         <!-- /.col -->
@@ -112,9 +115,9 @@ crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
                 <!-- /.social-auth-links -->
 
-                <p class="mb-1">
+                {{-- <p class="mb-1">
                     <a href="forgot-password.html">I forgot my password</a>
-                </p>
+                </p> --}}
                 <!--      <p class="mb-0">
         <a href="register.html" class="text-center">Register a new membership</a>
       </p>-->

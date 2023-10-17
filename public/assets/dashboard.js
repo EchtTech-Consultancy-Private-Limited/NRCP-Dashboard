@@ -1,4 +1,4 @@
-const BASE_URL ="http://localhost/NRCP-Dashboard/public";
+const BASE_URL ="https://dev.nrcpdashboard.staggings.in/public";
 /*handle Form Type*/
 const handleFormType = ()=>{
 
