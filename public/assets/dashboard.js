@@ -89,6 +89,7 @@ const handleDistrict = ()=>{
         $(document).ready(function() {
             $("#l-dropdown").hide();
             $('.lform').hide()
+            $('.l-form-map').hide()
             $('#year').change(function() {
                 var fromYear = parseInt($(this).val());
                 var toYearSelect = $('#yearto');
