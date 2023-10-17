@@ -167,6 +167,12 @@
                            {{ session('type') == '1' ? 'selected' : '' }}>Deaths
                            </option>
                            </select>
+                           <select class="form-control" id="l-dropdown" onChange="handleFilterValue()">
+                              <option value="">Select test type</option>
+                              <option value="person_tested">Person Tested</option>
+                              <option value="sample_tested">Sample Tested</option>
+                              <option value="positive_tested">Positive</option>
+                           </select>
                         </div>
                         <div class="col-md-8">
                            <div class="year-selector p-3">
@@ -184,11 +190,11 @@
                               id="detailsData">
                            </div>
                            <div class='table-responsive detailsDatas'>
-                              <table class='table table-bordered'>
+                              <table class='table table-bordered s-p-form-map'>
                                  <thead>
                                     <tr>
                                        <th rowspan='2'>State</th>
-                                       <th colspan='2'>presumptive </th>
+                                       <th colspan='2'>Presumptive </th>
                                     </tr>
                                     <tr>
                                        <th>Cases</th>
@@ -196,6 +202,22 @@
                                     </tr>
                                  </thead>
                                  <tbody id="tableBody">
+
+                                 </tbody>
+                              </table>
+                              <table class='table table-bordered l-form-map'>
+                                 <thead>
+                                    <tr>
+                                       <th rowspan='2'>State</th>
+                                       <th colspan='3'>Laboratory Cases</th>
+                                    </tr>
+                                    <tr>
+                                       <th>Person Tested</th>
+                                       <th>Sample Tested</th>
+                                       <th>Positive</th>
+                                    </tr>
+                                 </thead>
+                                 <tbody id="tableBody_l_form">
                                     <!-- Rows will be populated dynamically -->
                                  </tbody>
                               </table>
@@ -203,6 +225,36 @@
                         </div>
                      </div>
                   </div>
+
+
+                  
+                  <div class="row lform">
+                        <div class="col-4 d-flex justify-content-center">
+                            <div class="box"><span id="text3"> </span><br><span id="box3">
+                                </span></div>
+                        </div>
+                        <div class="col-4 d-flex justify-content-center">
+                            <div class="box"><span id="text4"> </span><br><span id="box4">
+                                </span></div>
+                        </div>
+                        <div class="col-4 d-flex justify-content-center">
+                            <div class="box"><span id="text5"> </span><br><span id="box5">
+                                </span></div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="row defaultform">
+                        <div class="col 6 d-flex justify-content-center">
+                            <div class="box"><span id="text1"> </span><br><span id="box1">
+                                </span></div>
+                        </div>
+                        <div class="col 6 d-flex justify-content-center">
+                            <div class="box"><span id="text2"> </span><br><span id="box2">
+                                </span></div>
+                        </div>
+                    </div>
                   <!-- /.row -->
 <!-- graph start-->
       <div id="graphical_view">
@@ -230,10 +282,6 @@
       </div>
 
          
-
-         
-
-
                </div>
             </div>
          </div>

@@ -29,6 +29,10 @@
 <!-- ChartJS -->
 <script src="{{ asset('assets/login/plugins/chart.js/Chart.min.js') }}"></script>
 
+<script type="text/javascript" src="{{ asset('gstatic.com_charts_loader.js') }}"></script>
+<script type="text/javascript" src="{{ asset('highmaps.js') }}"></script>
+<script type="text/javascript" src="{{ asset('jsdelivr.net_npm_apexcharts.js') }}"></script>
+
 <!-- AdminLTE for demo purposes -->
 <script src="{{ asset('assets/login/dist/js/demo.js') }}"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->

@@ -1,0 +1,22 @@
+
+.box {
+    width: 250px;
+    /* Adjust this value to change the width of the box */
+    height: 120px;
+    /* Adjust this value to change the height of the box */
+    background-color: #3498db;
+    /* Change this to set the background color */
+    border: 2px solid #2c3e50;
+    /* Add a border if desired */
+    padding: 10px;
+    /* Add padding to the content inside the box */
+    margin: 10px;
+    /* Add margin around the box */
+    color: #fff;
+    /* Set the text color */
+    text-align: center;
+    /* Center the text */
+    font-size: 15px;
+    /* Set the font size */
+}
+

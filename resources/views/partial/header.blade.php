@@ -22,7 +22,7 @@
             <!-- Right navbar links -->
             <ul class="navbar-nav ml-auto">
             <!-- Navbar Search -->
-            <li class="nav-item">
+            {{-- <li class="nav-item">
                 <a class="nav-link" data-widget="navbar-search" href="#" role="button">
                 <i class="fas fa-search"></i>
                 </a>
@@ -41,7 +41,7 @@
                     </div>
                 </form>
                 </div>
-            </li>
+            </li> --}}
 
 
             <li class="nav-item">
@@ -49,6 +49,7 @@
                 <i class="fas fa-expand-arrows-alt"></i>
                 </a>
             </li>
+
             <li class="nav-item">
                 <a class="nav-link" href="{{ url('logout') }}" role="button">
                 <i class="fa fa-power-off"></i>
@@ -81,7 +82,7 @@
                     </div>
                 </div>
                 <!-- Sidebar Menu -->
-                @include('includes.sidebar')
+                @include('partial.sidebar')
                 <!-- /.sidebar-menu -->
             </div>
             <!-- /.sidebar -->
