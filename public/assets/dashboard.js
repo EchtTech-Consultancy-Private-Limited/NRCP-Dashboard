@@ -1,7 +1,7 @@
-const BASE_URL =window.location.origin;
+const BASE_URL =window.location.origin+"/public";
 /*handle Form Type*/
 const handleFormType = ()=>{
-    
+
     const formType = $('#formType').find(":selected").attr('form-type');
     $("#diseasesSyndromes").html("");
     let option="";
@@ -32,7 +32,7 @@ const handleFormType = ()=>{
         $('#l-dropdown option[value=""]').prop('selected', 'selected').change();
         $("#l-dropdown").hide();
         $("#type").show();
-        
+
     }
 }
 
@@ -136,7 +136,7 @@ const handleDistrict = ()=>{
                 $('.l-form-map').show();
                 $('#l-dropdown').show();
                 $("#type").hide();
-                
+
             }else{
                 $('.s-p-form-map').show();
                 $("#type").show();
@@ -232,7 +232,7 @@ const handleDistrict = ()=>{
                                         <td>${sessionValue == 1 ? cases : 0}</td>
                                     </tr>
                                 `;
-                                    tableBody.append(row);                                    
+                                    tableBody.append(row);
                                 }else{
                                     const row = `
                                     <tr>
@@ -245,8 +245,8 @@ const handleDistrict = ()=>{
                                     tableBody.append(row);
                                 }
 
-                            });    
-                        
+                            });
+
 
                         // Create the chart
                         Highcharts.mapChart('container', {
@@ -350,13 +350,13 @@ const handleDistrict = ()=>{
                                                     "</td><td><span id='totalDeath'></span></td></tr></tbody></table> </div>";
 
                                             }
-                                            
+
                                             if (form_type == 1) {
                                                 var StateContent = "Fetching the data for " + e.point.name +
                                                     '<div class="table-responsive ab"><table class="table table-bordered l-form-map"><thead><tr><th rowspan="2">State</th><th colspan="3">Laboratory Cases</th></tr>' + '<tr><th>Person Tested</th><th>Sample Tested</th><th>Positive</th></tr></thead><tbody id="tableBody_l_form"><tr><td>' + e.point.name + '</td><td>' + (case_type_col == 1 ? e.point.value : 0) + '</td><td>' + (case_type_col == 2 ? e.point.value : 0) + '</td><td>' + (case_type_col == 3 ? e.point.value : 0) + '</td></tr></tbody></table></div>';
                                             }
-                                            
-                                            
+
+
                                             $("#detailsData").html(StateContent);
                                         }
                                     }
@@ -558,7 +558,7 @@ const handleDistrict = ()=>{
 
                                             });
                                             const form_type = $('#formType').find(":selected").val();
-                                            
+
                                             $("#detailsData").show();
 
                                             if (sessionValue == '1') {
