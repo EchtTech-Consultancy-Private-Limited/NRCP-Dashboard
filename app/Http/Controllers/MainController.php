@@ -130,6 +130,7 @@ class MainController extends Controller
         $filter_to_year = $request->setyearto ?? '';
         $filter_form = $request->form_type ?? '';
         $filter_diseasesSyndromes = $request->filter_diseasesSyndromes ?? '';
+        $l_dropdown = $request->l_dropdown ?? '';
 
         //sform
         if ($request->form_type == 3) {
@@ -212,15 +213,28 @@ class MainController extends Controller
             if (!empty($request->district)) {
                 $laboratory_case_query->where('district_id', '=', $filter_district);
             }
+            $case_type = "";
+            $case_type_col=1;
+            if($l_dropdown=="sample_tested"){
+                $case_type='samples_tested';
+                $case_type_col=2;
+            }else if($l_dropdown=="positive_tested"){
+                $case_type='Positive_tested';
+                $case_type_col=3;
+            }else{
+                $case_type = 'persons_tested';
+                $case_type_col=1;
+            }
 
             if (!empty($state)) {
                 foreach ($state as $key => $value) {
                     $query = clone $laboratory_case_query;
-                    $human_rabies = $query->where('state_id', $value->id)->sum('persons_tested');
+                    $human_rabies = $query->where('state_id', $value->id)->sum($case_type);
                     $array[$value->state_name] = $human_rabies;
                 }
             }
-            return response()->json(['array' => $array,'total_persons'=>$total_persons,'total_samples'=>$total_samples,'total_positive'=>$total_positive,'human_rabies_deaths' => $human_rabies_deaths, 'human_rabies_case' => $human_rabies_case], 200);
+            return response()->json(['array' => $array,'total_persons'=>$total_persons,'total_samples'=>$total_samples,'total_positive'=>$total_positive,'human_rabies_deaths' => $human_rabies_deaths, 'human_rabies_case' => $human_rabies_case,'case_type_col'=>$case_type_col], 200);
+            
             //p form
         } else {
 

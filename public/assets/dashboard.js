@@ -1,13 +1,7 @@
 const BASE_URL =window.location.origin;
 /*handle Form Type*/
-
-$(document).ready(function(){
-    $('.lform').hide()
-})
-
-
 const handleFormType = ()=>{
-
+    
     const formType = $('#formType').find(":selected").attr('form-type');
     $("#diseasesSyndromes").html("");
     let option="";
@@ -16,16 +10,29 @@ const handleFormType = ()=>{
         $("#graphical_view").show();
         option="<option value='human_rabies'>Human Rabies</option> <option value='animal_bite'>Animal Bite - Dog Bite</option>";
         $("#diseasesSyndromes").append(option);
+        $('#l-dropdown option[value=""]').prop('selected', 'selected').change();
+        $("#l-dropdown").hide();
+        $("#type").show();
+
     }else  if(formType==="l-form"){
         $("#filter_form_type").val(1);
         $("#graphical_view").hide();
-        option="<option>Please select Diseases Syndromes</option><option value='laboratary'>Human Rabies and Laboratary</option>";
+        $('#l-dropdown option[value="person_tested"]').prop('selected', 'selected').change();
+
+        option="<option value='laboratary'>Human Rabies and Laboratary</option>";
         $("#diseasesSyndromes").append(option);
+        $("#l-dropdown").show();
+        $("#type").hide();
     }else{
         $("#filter_form_type").val(3);
         $("#graphical_view").hide();
         option="<option value='animal_bite'>Animal Bite - Dog Bite</option>";
         $("#diseasesSyndromes").append(option);
+        // $('#l-dropdown option[value=""]').attr("selected", true);
+        $('#l-dropdown option[value=""]').prop('selected', 'selected').change();
+        $("#l-dropdown").hide();
+        $("#type").show();
+        
     }
 }
 
@@ -36,6 +43,7 @@ const handleFilterValue = ()=>{
     const filter_to_year = $('#yearto').find(":selected").val();
     const form_type = $('#formType').find(":selected").val();
     const filter_diseasesSyndromes = $('#diseasesSyndromes').find(":selected").val();
+    const l_dropdown = $('#l-dropdown').find(":selected").val();
 
     filter_state ? $("#filter_state").val(filter_state) : "";
     filter_district ? $("#filter_district").val(filter_district) : "";
@@ -43,6 +51,7 @@ const handleFilterValue = ()=>{
     filter_to_year ? $("#filter_to_year").val(filter_to_year) : "";
     form_type ? $("#filter_form_type").val(form_type) : "";
     filter_diseasesSyndromes ? $("#filter_diseases").val(filter_diseasesSyndromes) : "";
+    l_dropdown ? $("#l-dropdown").val(l_dropdown) : "";
 
 }
 
@@ -78,7 +87,8 @@ const handleDistrict = ()=>{
 
 /*end here*/
         $(document).ready(function() {
-
+            $("#l-dropdown").hide();
+            $('.lform').hide()
             $('#year').change(function() {
                 var fromYear = parseInt($(this).val());
                 var toYearSelect = $('#yearto');
@@ -106,247 +116,278 @@ const handleDistrict = ()=>{
             // $('#year').change();
 
             $("#apply_filter").on('click', function() {
-                filter_state = $("#filter_state").val();
-                filter_district = $("#filter_district").val();
-                filter_from_year = $("#filter_from_year").val();
-                filter_to_year = $("#filter_to_year").val();
-                form_type = $("#filter_form_type").val();
-                filter_diseasesSyndromes = $("#filter_diseases").val();
-
-                if (year) {
-                    $(".detailsDatas").show();
-                    $("#detailsData").hide();
-                }
-
-
-                $.ajaxSetup({
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    }
-                });
-                $.ajax({
-                    url: BASE_URL+"/test",
-                    type: "get",
-                    data: {
-                        setstate: filter_state,
-                        district: filter_district,
-                        setyear: filter_from_year,
-                        setyearto: filter_to_year,
-                        form_type: form_type,
-                        filter_diseasesSyndromes: filter_diseasesSyndromes,
-                    },
-                    success: function(result) {
-
-                          //alert(form_type);
-
-                        if (form_type == '1') {
-                            $('.defaultform').hide()
-                            $('.lform').show()
-                        }
-
-                        if(form_type == '1'){
-
-                            $('#box3').html(result.total_persons);
-                            $('#box4').html(result.total_samples);
-                            $('#box5').html(result.total_positive);
-                            $('#text3').html("Laboratory Cases Persons Tested");
-                            $('#text4').html("Laboratory Cases Samples Tested");
-                            $('#text5').html("Laboratory Cases Positive ");
-
-                        }else{
-
-                            if(form_type == '3'){
-                                $('.lform').hide()
-                                $('.defaultform').show()
-                                $('#box1').html(result.total_cases);
-                                $('#box2').html(result.total_deaths);
-                                $('#text1').html("Total Cases Syndromic Surveillance Cases");
-                                $('#text2').html("Deaths Syndromic Surveillance Cases");
-
-                            }else{
-                                $('.lform').hide()
-                                $('.defaultform').show()
-                                 $('#text1').html("Total Cases Presumptive Cases");
-                                 $('#text2').html("Deaths Presumptive Cases");
-                                 $('#box1').html(result.total_cases);
-                                 $('#box2').html(result.total_deaths);
-                            }
-                        }
-
-                        let sessionValue = $("#session-value").val();
-                        if (!sessionValue) {
-                            sessionValue = 0
-                        }
-                        $("#detailsData").hide();
-                        (async () => {
-                            const topology = await fetch(
-                                'https://code.highcharts.com/mapdata/countries/in/custom/in-all-disputed.topo.json'
-                            ).then(response => response.json());
-
-                            let statesData = result.array;
-
-                            const entries = Object.entries(statesData);
-                            const data = entries;
-                            const tableBody = $('.detailsDatas tbody');
-                            // Clear any existing rows in the table
-                            tableBody.empty();
-                            // Loop through the entries and add rows to the table
-
-                            entries.forEach(function(entry) {
-                                const state = entry[0];
-                                const cases = entry[1];
-                                const row = `
-                                        <tr>
-                                            <td>${capitalizeFirstLetter(state)}</td>
-                                            <td>${sessionValue === 0 ? cases : '' }</td>
-                                            <td>${sessionValue === 1 ? cases : ''}</td>
-                                        </tr>
-                                    `;
-                                tableBody.append(row);
-                            });
-
-                            // Create the chart
-                            Highcharts.mapChart('container', {
-                                chart: {
-                                    map: topology
-                                },
-
-                                title: {
-                                    text: ''
-                                },
-
-                                subtitle: {
-                                    text: ''
-                                },
-
-                                mapNavigation: {
-                                    enabled: true,
-                                    buttonOptions: {
-                                        verticalAlign: 'bottom'
-                                    }
-                                },
-
-                                colorAxis: {
-                                    min: 0
-                                },
-                                plotOptions: {
-                                    series: {
-                                        events: {
-                                            click: function(e) {
-
-                                                let nameState = e.point.name
-
-
-                                                $('.detailsDatas').hide();
-                                                if ($('#state').val() != '') {
-                                                    $('#state').val('');
-                                                    $('.statewise').hide();
-                                                }
-
-                                                if (nameState) {
-
-                                                    $(".detailsDatas").hide();
-
-                                                }
-
-                                                $.ajaxSetup({
-                                                    headers: {
-                                                        'X-CSRF-TOKEN': $(
-                                                            'meta[name="csrf-token"]'
-                                                        ).attr(
-                                                            'content')
-                                                    }
-                                                });
-
-                                                $.ajax({
-                                                    url: BASE_URL+"/human-rabies-death",
-                                                    type: "get",
-                                                    data: {
-                                                        setyear: year,
-                                                        name: nameState
-                                                    },
-                                                    success: function(result) {
-
-                                                        $('#totalDeath')
-                                                            .text(result
-                                                                .human_rabies_deaths
-                                                            );
-
-                                                    }
-
-                                                });
-
-                                                $("#detailsData").show();
-
-                                                console.log(e.point.name,' name.....')
-                                                // var sessionvalue =
-                                                //     "{{ session('type') }}"
-                                                //alert(sessionvalue);
-                                                if (sessionValue == '1') {
-
-
-                                                    var StateContent =
-                                                        "Fetching the data for " + e
-                                                        .point
-                                                        .name +
-                                                        " <div class='table-responsive'> <table class='table table-bordered'><thead><tr><th rowspan='2'>State</th><th colspan='2'>presumptive </th></tr> <tr><th>Cases</th><th>deaths</th></tr></thead><tbody><tr><td>" +
-                                                        e.point
-                                                        .name +
-                                                        "</td><td><span id='totalDeath'></span></td><td>" +
-                                                        e.point.value +
-                                                        "</td></tr></tbody></table> </div>";
-
-                                                } else {
-
-                                                    var StateContent =
-                                                        "Fetching the data for " + e
-                                                        .point
-                                                        .name +
-                                                        " <div class='table-responsive'> <table class='table table-bordered'><thead><tr><th rowspan='2'>State</th><th colspan='2'>presumptive </th></tr> <tr><th>Cases</th><th>deaths</th></tr></thead><tbody><tr><td>" +
-                                                        e.point
-                                                        .name +
-                                                        "</td><td>" + e.point.value +
-                                                        "</td><td><span id='totalDeath'></span></td></tr></tbody></table> </div>";
-
-                                                }
-
-
-
-                                                $("#detailsData").html(StateContent);
-                                            }
-                                        }
-                                    }
-                                },
-
-                                series: [{
-                                    data: data,
-                                    name: '',
-                                    allowPointSelect: true,
-                                    cursor: 'pointer',
-                                    color: "#fff",
-                                    states: {
-                                        select: {
-                                            color: 'blue'
-                                        }
-                                    },
-                                    dataLabels: {
-                                        enabled: false,
-                                        format: '{point.name}'
-                                    }
-                                }]
-
-                            });
-
-                        })();
-
-
-
-                    }
-                });
+               apply_filter();
 
             });
 
         });
+
+        const apply_filter = ()=>{
+            const filter_state = $("#filter_state").val();
+            const filter_district = $("#filter_district").val();
+            const filter_from_year = $("#filter_from_year").val();
+            const filter_to_year = $("#filter_to_year").val();
+            const form_type = $("#filter_form_type").val();
+            const filter_diseasesSyndromes = $("#filter_diseases").val();
+            const l_dropdown = $("#l-dropdown").val();
+            if(form_type==1){
+                $('.s-p-form-map').hide();
+                $('.l-form-map').show();
+                $('#l-dropdown').show();
+                $("#type").hide();
+                
+            }else{
+                $('.s-p-form-map').show();
+                $("#type").show();
+                $('.l-form-map').hide();
+                $('#l-dropdown').hide();
+            }
+
+            if (year) {
+                $(".detailsDatas").show();
+                $("#detailsData").hide();
+            }
+
+
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            $.ajax({
+                url: BASE_URL+"/test",
+                type: "get",
+                data: {
+                    setstate: filter_state,
+                    district: filter_district,
+                    setyear: filter_from_year,
+                    setyearto: filter_to_year,
+                    form_type: form_type,
+                    filter_diseasesSyndromes: filter_diseasesSyndromes,
+                    l_dropdown: l_dropdown,
+                },
+                success: function(result) {
+                    if (form_type == '1') {
+                        $('.defaultform').hide()
+                        $('.lform').show()
+                    }
+
+                    if(form_type == '1'){
+
+                        $('#box3').html(result.total_persons);
+                        $('#box4').html(result.total_samples);
+                        $('#box5').html(result.total_positive);
+                        $('#text3').html("Laboratory Cases Persons Tested");
+                        $('#text4').html("Laboratory Cases Samples Tested");
+                        $('#text5').html("Laboratory Cases Positive ");
+
+                    }else{
+
+                        if(form_type == '3'){
+                            $('.lform').hide()
+                            $('.defaultform').show()
+                            $('#box1').html(result.total_cases);
+                            $('#box2').html(result.total_deaths);
+                            $('#text1').html("Total Cases Syndromic Surveillance Cases");
+                            $('#text2').html("Deaths Syndromic Surveillance Cases");
+
+                        }else{
+                            $('.lform').hide()
+                            $('.defaultform').show()
+                             $('#text1').html("Total Cases Presumptive Cases");
+                             $('#text2').html("Deaths Presumptive Cases");
+                             $('#box1').html(result.total_cases);
+                             $('#box2').html(result.total_deaths);
+                        }
+                    }
+                    let sessionValue = $("#session-value").val();
+                    let case_type_col = result?.case_type_col;
+                    if (!sessionValue) {
+                        sessionValue = 0
+                    }
+                    $("#detailsData").hide();
+                    (async () => {
+                        const topology = await fetch(
+                            'https://code.highcharts.com/mapdata/countries/in/custom/in-all-disputed.topo.json'
+                        ).then(response => response.json());
+
+                        let statesData = result.array;
+
+                        const entries = Object.entries(statesData);
+                        const data = entries;
+                        const tableBody = $('.detailsDatas tbody');
+                        // Clear any existing rows in the table
+                        tableBody.empty();
+                        // Loop through the entries and add rows to the table
+                            entries.forEach(function(entry) {
+                                const state = entry[0];
+                                const cases = entry[1];
+
+                                if(l_dropdown==""){
+                                    const row = `
+                                    <tr>
+                                        <td>${capitalizeFirstLetter(state)}</td>
+                                        <td>${sessionValue === 0 ? cases : 0 }</td>
+                                        <td>${sessionValue === 1 ? cases : 0}</td>
+                                    </tr>
+                                `;
+                                    tableBody.append(row);                                    
+                                }else{
+                                    const row = `
+                                    <tr>
+                                        <td>${capitalizeFirstLetter(state)}</td>
+                                        <td>${case_type_col === 1 ? cases : 0 }</td>
+                                        <td>${case_type_col === 2 ? cases : 0}</td>
+                                        <td>${case_type_col === 3 ? cases : 0}</td>
+                                    </tr>
+                                `;
+                                    tableBody.append(row);
+                                }
+
+                            });    
+                        
+
+                        // Create the chart
+                        Highcharts.mapChart('container', {
+                            chart: {
+                                map: topology
+                            },
+
+                            title: {
+                                text: ''
+                            },
+
+                            subtitle: {
+                                text: ''
+                            },
+
+                            mapNavigation: {
+                                enabled: true,
+                                buttonOptions: {
+                                    verticalAlign: 'bottom'
+                                }
+                            },
+
+                            colorAxis: {
+                                min: 0
+                            },
+                            plotOptions: {
+                                series: {
+                                    events: {
+                                        click: function(e) {
+
+                                            let nameState = e.point.name
+
+
+                                            $('.detailsDatas').hide();
+                                            if ($('#state').val() != '') {
+                                                $('#state').val('');
+                                                $('.statewise').hide();
+                                            }
+
+                                            if (nameState) {
+                                                $(".detailsDatas").hide();
+                                            }
+
+                                            $.ajaxSetup({
+                                                headers: {
+                                                    'X-CSRF-TOKEN': $(
+                                                        'meta[name="csrf-token"]'
+                                                    ).attr(
+                                                        'content')
+                                                }
+                                            });
+
+                                            $.ajax({
+                                                url: BASE_URL+"/human-rabies-death",
+                                                type: "get",
+                                                data: {
+                                                    setyear: year,
+                                                    name: nameState
+                                                },
+                                                success: function(result) {
+
+                                                    $('#totalDeath')
+                                                        .text(result
+                                                            .human_rabies_deaths
+                                                        );
+
+                                                }
+
+                                            });
+
+                                            $("#detailsData").show();
+
+                                            console.log(e.point.name,' name.....')
+                                            // var sessionvalue =
+                                            //     "{{ session('type') }}"
+                                            //alert(sessionvalue);
+                                            if (sessionValue == '1' && form_type!=1) {
+
+
+                                                var StateContent =
+                                                    "Fetching the data for " + e
+                                                    .point
+                                                    .name +
+                                                    " <div class='table-responsive'> <table class='table table-bordered'><thead><tr><th rowspan='2'>State</th><th colspan='2'>presumptive </th></tr> <tr><th>Cases</th><th>deaths</th></tr></thead><tbody><tr><td>" +
+                                                    e.point
+                                                    .name +
+                                                    "</td><td><span id='totalDeath'></span></td><td>" +
+                                                    e.point.value +
+                                                    "</td></tr></tbody></table> </div>";
+
+                                            } else {
+
+                                                var StateContent =
+                                                    "Fetching the data for " + e
+                                                    .point
+                                                    .name +
+                                                    " <div class='table-responsive'> <table class='table table-bordered'><thead><tr><th rowspan='2'>State</th><th colspan='2'>presumptive </th></tr> <tr><th>Cases</th><th>deaths</th></tr></thead><tbody><tr><td>" +
+                                                    e.point
+                                                    .name +
+                                                    "</td><td>" + e.point.value +
+                                                    "</td><td><span id='totalDeath'></span></td></tr></tbody></table> </div>";
+
+                                            }
+                                            
+                                            if (form_type == 1) {
+                                                var StateContent = "Fetching the data for " + e.point.name +
+                                                    '<div class="table-responsive ab"><table class="table table-bordered l-form-map"><thead><tr><th rowspan="2">State</th><th colspan="3">Laboratory Cases</th></tr>' + '<tr><th>Person Tested</th><th>Sample Tested</th><th>Positive</th></tr></thead><tbody id="tableBody_l_form"><tr><td>' + e.point.name + '</td><td>' + (case_type_col == 1 ? e.point.value : 0) + '</td><td>' + (case_type_col == 2 ? e.point.value : 0) + '</td><td>' + (case_type_col == 3 ? e.point.value : 0) + '</td></tr></tbody></table></div>';
+                                            }
+                                            
+                                            
+                                            $("#detailsData").html(StateContent);
+                                        }
+                                    }
+                                }
+                            },
+
+                            series: [{
+                                data: data,
+                                name: '',
+                                allowPointSelect: true,
+                                cursor: 'pointer',
+                                color: "#fff",
+                                states: {
+                                    select: {
+                                        color: 'blue'
+                                    }
+                                },
+                                dataLabels: {
+                                    enabled: false,
+                                    format: '{point.name}'
+                                }
+                            }]
+
+                        });
+
+                    })();
+
+
+
+                }
+            });
+        }
 
         $(document).ready(function() {
 
@@ -354,8 +395,6 @@ const handleDistrict = ()=>{
             year = $('#year').val();
             $('.statewise').hide();
             $('#yeartostate').hide();
-
-
 
             $.ajaxSetup({
                 headers: {
@@ -372,7 +411,6 @@ const handleDistrict = ()=>{
                         $('#text2').html("Deaths Presumptive Cases");
                         $('#box1').html(result.total_cases);
                         $('#box2').html(result.total_deaths);
-
                     /*google chart start*/
                     google.charts.load('current', {'packages':['corechart']});
                     google.charts.setOnLoadCallback(drawCharts);
@@ -442,8 +480,8 @@ const handleDistrict = ()=>{
                             const row = `
                                 <tr>
                                     <td>${capitalizeFirstLetter(state)}</td>
-                                    <td>${sessionValue == 0 ? cases : '' }</td>
-                                    <td>${sessionValue == 1 ? cases : ''}</td>
+                                    <td>${sessionValue == 0 ? cases : 0 }</td>
+                                    <td>${sessionValue == 1 ? cases : 0}</td>
                                 </tr>
                             `;
 
@@ -477,7 +515,6 @@ const handleDistrict = ()=>{
                                 series: {
                                     events: {
                                         click: function(e) {
-
                                             let nameState = e.point.name
 
 
@@ -519,16 +556,11 @@ const handleDistrict = ()=>{
                                                 }
 
                                             });
-
+                                            const form_type = $('#formType').find(":selected").val();
+                                            
                                             $("#detailsData").show();
 
-                                            console.log(e.point.name,' name.....')
-                                            // var sessionvalue =
-                                            //     "{{ session('type') }}"
-                                            //alert(sessionvalue);
                                             if (sessionValue == '1') {
-
-
                                                 var StateContent =
                                                     "Fetching the data for " + e
                                                     .point
@@ -553,8 +585,6 @@ const handleDistrict = ()=>{
                                                     "</td><td><span id='totalDeath'></span></td></tr></tbody></table> </div>";
 
                                             }
-
-
 
                                             $("#detailsData").html(StateContent);
 
@@ -731,7 +761,7 @@ const handleDistrict = ()=>{
                     type: 'bar'
                 },
                 title: {
-                    text: 'Deaths by Age Group in India'
+                    text: 'Cases by Age Group in India'
                 },
                 xAxis: {
                     categories: ['0-10', '11-20', '21-30', '31-40', '41-50', '51-60', '61+'],
@@ -766,4 +796,3 @@ const handleDistrict = ()=>{
                 }]
             });
         });
-
