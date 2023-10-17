@@ -175,53 +175,43 @@ class MainController extends Controller
             //lform
         } else if ($request->form_type == 1) {
 
-            $persons_tested_total = 0;
-            $samples_tested = 0;
-            $Positive_tested = 0;
+            $human_rabies_case = 0;
+            $human_rabies_deaths = 0;
 
-            $state = "";
             $laboratory_case_query = DB::table('laboratory_case_lform_state_wise');
 
             if (!empty($request->setstate)) {
                 $state = DB::table('states')->where('state_name', '=', $filter_state)->get()->toArray();
-                $laboratory_case_query->where('state_id', $state->id);
+                $laboratory_case_query->where('state_id', $state[0]->id);
             } else {
                 $state = DB::table('states')->get();
             }
 
             if (!empty($request->setyear) && !empty($request->setyearto)) {
-                $persons_tested_total = $laboratory_case_query->whereBetween('year', [$filter_from_year, $filter_to_year])->sum('persons_tested');
-                $samples_tested = $laboratory_case_query->whereBetween('year', [$filter_from_year, $filter_to_year])->sum('samples_tested');
-                $Positive_tested = $laboratory_case_query->whereBetween('year', [$filter_from_year, $filter_to_year])->sum('Positive_tested');
-            } else {
 
+                $laboratory_total = $laboratory_case_query->whereBetween('year', [$filter_from_year, $filter_to_year])->sum('persons_tested');
+                $laboratory_samples = $laboratory_case_query->whereBetween('year', [$filter_from_year, $filter_to_year])->sum('samples_tested');
+                $laboratory_Positive = $laboratory_case_query->whereBetween('year', [$filter_from_year, $filter_to_year])->sum('Positive_tested');
+            } else {
                 if (!empty($request->setyear)) {
-                    $persons_tested_total = $laboratory_case_query->where('year', '=', $filter_district)->sum('persons_tested');
-                    $samples_tested = $laboratory_case_query->where('year', '=', $filter_district)->sum('samples_tested');
-                    $Positive_tested = $laboratory_case_query->where('year', '=', $filter_district)->sum('Positive_tested');
+                    $laboratory_total = $laboratory_case_query->where('year', '=', $filter_from_year)->sum('persons_tested');
+                    $laboratory_samples = $laboratory_case_query->where('year', '=', $filter_from_year)->sum('samples_tested');
+                    $laboratory_Positive = $laboratory_case_query->where('year', '=', $filter_from_year)->sum('Positive_tested');
                 }
             }
 
             if (!empty($request->district)) {
-                $district = DB::table('district')->where('id', '=', $filter_district)->first();
-
-                $persons_tested_total = $laboratory_case_query->where('year', '=', $filter_from_year)->sum('persons_tested');
-                $samples_tested = $laboratory_case_query->where('year', '=', $filter_from_year)->sum('samples_tested');
-                $Positive_tested = $laboratory_case_query->where('year', '=', $filter_from_year)->sum('Positive_tested');
-            } else {
+                $laboratory_case_query->where('district_id', '=', $filter_district);
             }
 
-            //
-            
-            if(!empty($state)){
-                foreach($state as $key=>$value){
-                    $query = clone $human_rabies_case_query;
-                    $human_rabies = $query->where('state_id', $value->id)->sum('cases');
-                    $array[$value->state_name] = $human_rabies; 
+            if (!empty($state)) {
+                foreach ($state as $key => $value) {
+                    $query = clone $laboratory_case_query;
+                    $human_rabies = $query->where('state_id', $value->id)->sum('persons_tested');
+                    $array[$value->state_name] = $human_rabies;
                 }
             }
-            // $state = $human_rabies_case;
-            return response()->json(['array' => $array,'human_rabies_deaths'=>$human_rabies_deaths,'human_rabies_case'=>$human_rabies_case], 200);
+            return response()->json(['array' => $array, 'human_rabies_deaths' => $human_rabies_deaths, 'human_rabies_case' => $human_rabies_case], 200);
             //p form
         } else {
 
