@@ -203,7 +203,6 @@ const handleDistrict = ()=>{
                     }
                     let sessionValue = $("#session_value").val();
                     let case_type_col = result?.case_type_col;
-                    alert(sessionValue)
                     if (!sessionValue) {
                         sessionValue = 0
                     }
