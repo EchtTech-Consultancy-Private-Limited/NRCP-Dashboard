@@ -1,4 +1,3 @@
-
 <!-- jQuery -->
 <script src="{{ asset('assets/login/plugins/jquery/jquery.min.js') }}"></script>
 <!-- Bootstrap 4 -->
@@ -8,4 +7,5 @@
 
 <script src="{{ asset('jquery.min.js') }}"></script>
 </body>
+
 </html>
