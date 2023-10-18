@@ -10,8 +10,8 @@
 
 <!-- REQUIRED SCRIPTS -->
 <!-- jQuery -->
-<!-- <script src="{{ asset('assets/login/plugins/jquery/jquery.min.js') }}"></script> -->
-<script src="{{ asset('jquery.min.js') }}"></script>
+<script src="{{ asset('assets/login/plugins/jquery/jquery.min.js') }}"></script>
+<!-- <script src="{{ asset('jquery.min.js') }}"></script> -->
 <!-- Bootstrap -->
 <script src="{{ asset('assets/login/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 <!-- overlayScrollbars -->
