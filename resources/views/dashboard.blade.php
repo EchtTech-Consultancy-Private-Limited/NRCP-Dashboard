@@ -6,6 +6,7 @@
 <!-- fix for small devices only -->
 <div class="clearfix hidden-md-up"></div>
 <div class="col-md-12">
+
    <!-- general form elements -->
    <div class="card card-primary">
       <div class="form-tab">
@@ -141,9 +142,7 @@
                         <div class="button apply-filter">
                            <label for=""><span
                               class="star"></span></label>
-                           <button
-                              id="apply_filter"
-                              class="btn search-patient-btn bg-primary text-light apply-filter">Search</button>
+                           <button id="apply_filter" class="btn search-patient-btn bg-primary text-light apply-filter">Search</button>
                         </div>
                         <input type="hidden" value="" id="filter_state">
                         <input type="hidden" value="" id="filter_district">

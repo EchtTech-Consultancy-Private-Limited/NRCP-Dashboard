@@ -1,4 +1,9 @@
+@if(Auth::user())
+<script>window.location = "{{ url('/dashboard') }}";</script>
+@endif
+
 @include('includes.login-header')
+
 
 <body class="hold-transition login-page">
     <div class="login-box" style="width: 450px;">
