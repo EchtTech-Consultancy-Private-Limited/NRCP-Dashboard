@@ -131,6 +131,10 @@ const handleDistrict = ()=>{
             const form_type = $("#filter_form_type").val();
             const filter_diseasesSyndromes = $("#filter_diseases").val();
             const l_dropdown = $("#l-dropdown").val();
+            const search_btn = $("#apply_filter");
+            search_btn.attr("disabled",true);
+            let loading_content = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Loading...';
+            search_btn.html(loading_content);
             if(form_type==1){
                 $('.s-p-form-map').hide();
                 $('.l-form-map').show();
@@ -168,6 +172,8 @@ const handleDistrict = ()=>{
                     l_dropdown: l_dropdown,
                 },
                 success: function(result) {
+                    $("#apply_filter").attr("disabled",false);
+                    search_btn.html("Search");
                     if (form_type == '1') {
                         $('.defaultform').hide()
                         $('.lform').show()
