@@ -35,7 +35,6 @@
 
 <!-- AdminLTE for demo purposes -->
 <script src="{{ asset('assets/login/dist/js/demo.js') }}"></script>
-<script src="{{ asset('jquery.js') }}"></script>
 
 
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
