@@ -1,4 +1,4 @@
-const BASE_URL =window.location.origin+'/public';
+const BASE_URL =window.location.origin;
 /*handle Form Type*/
 const handleFormType = ()=>{
 
@@ -13,6 +13,7 @@ const handleFormType = ()=>{
         $('#l-dropdown option[value=""]').prop('selected', 'selected').change();
         $("#l-dropdown").hide();
         $("#type").show();
+        
 
     }else  if(formType==="l-form"){
         $("#filter_form_type").val(1);
@@ -23,6 +24,8 @@ const handleFormType = ()=>{
         $("#diseasesSyndromes").append(option);
         $("#l-dropdown").show();
         $("#type").hide();
+        $("#map-text").html("Animal Bite - Dog Bite (Laboratory Cases) in India")
+
     }else{
         $("#filter_form_type").val(3);
         $("#graphical_view").hide();
@@ -32,6 +35,8 @@ const handleFormType = ()=>{
         $('#l-dropdown option[value=""]').prop('selected', 'selected').change();
         $("#l-dropdown").hide();
         $("#type").show();
+        $("#map-text").html("Animal Bite - Dog Bite (Syndromic Surveillance) Cases in India")
+
 
     }
 }
@@ -52,7 +57,16 @@ const handleFilterValue = ()=>{
     form_type ? $("#filter_form_type").val(form_type) : "";
     filter_diseasesSyndromes ? $("#filter_diseases").val(filter_diseasesSyndromes) : "";
     l_dropdown ? $("#l-dropdown").val(l_dropdown) : "";
+    
+    filter_diseasesSyndromes==="animal_bite" ? $("#map-text").html("Animal Bite - Dog Bite (Presumptive Cases) in India"):$("#map-text").html("Human Rabies (Presumptive Cases) in India");
+    
+    
 
+
+}
+
+const getLFormDate = ()=>{
+    // apply_filter();
 }
 
 const handleDistrict = ()=>{
@@ -121,6 +135,16 @@ const handleDistrict = ()=>{
 
             });
 
+            $("#reset_button").on('click', function() {
+                $('#state option[value=""]').prop('selected', 'selected').change();
+                $('#district option[value=""]').prop('selected', 'selected').change();
+                $('#year option[value="2022"]').prop('selected', 'selected').change();
+                $('#yearto option[value=""]').prop('selected', 'selected').change();
+                $('#formType option[value="2"]').prop('selected', 'selected').change();
+                $('#diseasesSyndromes option[value="human_rabies"]').prop('selected', 'selected').change();
+                apply_filter();
+            });
+
         });
 
         const apply_filter = ()=>{
@@ -184,25 +208,18 @@ const handleDistrict = ()=>{
                         $('#box3').html(result.total_persons);
                         $('#box4').html(result.total_samples);
                         $('#box5').html(result.total_positive);
-                        $('#text3').html("Laboratory Cases Persons Tested");
-                        $('#text4').html("Laboratory Cases Samples Tested");
-                        $('#text5').html("Laboratory Cases Positive ");
-
                     }else{
-
+                        $('.lform').hide()
+                        $('.defaultform').show()
                         if(form_type == '3'){
-                            $('.lform').hide()
-                            $('.defaultform').show()
                             $('#box1').html(result.total_cases);
                             $('#box2').html(result.total_deaths);
-                            $('#text1').html("Total Cases Syndromic Surveillance Cases");
-                            $('#text2').html("Deaths Syndromic Surveillance Cases");
+                            $('#text1').html("<strong>Total Cases</strong></br> Syndromic Surveillance Cases");
+                            $('#text2').html("<strong>Deaths</strong></br> Syndromic Surveillance Cases");
 
                         }else{
-                            $('.lform').hide()
-                            $('.defaultform').show()
-                             $('#text1').html("Total Cases Presumptive Cases");
-                             $('#text2').html("Deaths Presumptive Cases");
+                             $('#text1').html("<strong>Total Cases</strong></br> Presumptive Cases");
+                             $('#text2').html("<strong>Deaths</strong></br> Presumptive Cases");
                              $('#box1').html(result.total_cases);
                              $('#box2').html(result.total_deaths);
                         }
@@ -396,6 +413,8 @@ const handleDistrict = ()=>{
             });
         }
 
+        
+
         $(document).ready(function() {
 
             let mapdata = "";
@@ -414,8 +433,8 @@ const handleDistrict = ()=>{
                 url: BASE_URL+"/human-rabies",
                 type: "get",
                 success: function(result) {
-                        $('#text1').html("Total Cases Presumptive Cases");
-                        $('#text2').html("Deaths Presumptive Cases");
+                        $('#text1').html("<strong>Total Cases</strong></br> Presumptive Cases");
+                        $('#text2').html("<strong>Deaths</strong></br> Presumptive Cases");
                         $('#box1').html(result.total_cases);
                         $('#box2').html(result.total_deaths);
                     /*google chart start*/
