@@ -17,10 +17,8 @@ use App\Http\Controllers\authController;
 */
 
 //login
-
 Route::get('/',[authController::class,'login']);
 Route::post('/login',[authController::class,'loginSubmit']);
-
 Route::get('refresh_captcha',[authController::class, 'refreshCaptcha'])->name('refresh_captcha');
 
 Route::middleware(['Admin','preventBackHistory'])->group(function () {
@@ -33,8 +31,6 @@ Route::get('sform', [MainController::class, 'sformview']);
 
 Route::get('sform', [MainController::class, 'sformview'])->name('sform');
 Route::get('Human-rabies-map', [MainController::class, 'HumanRabiesView'])->name('pform2');
-
-
 Route::post('patient-Record',[MainController::class,'patientAdd']);
 
 //human rabies
