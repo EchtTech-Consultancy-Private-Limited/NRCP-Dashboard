@@ -1,4 +1,4 @@
-const BASE_URL =window.location.origin+"/public";
+const BASE_URL =window.location.origin+'/public';
 /*handle Form Type*/
 const handleFormType = ()=>{
 
@@ -13,7 +13,6 @@ const handleFormType = ()=>{
         $('#l-dropdown option[value=""]').prop('selected', 'selected').change();
         $("#l-dropdown").hide();
         $("#type").show();
-
 
     }else  if(formType==="l-form"){
         $("#filter_form_type").val(1);
@@ -36,8 +35,6 @@ const handleFormType = ()=>{
         $("#l-dropdown").hide();
         $("#type").show();
         $("#map-text").html("Animal Bite - Dog Bite (Syndromic Surveillance) Cases in India")
-
-
     }
 }
 
@@ -59,10 +56,6 @@ const handleFilterValue = ()=>{
     l_dropdown ? $("#l-dropdown").val(l_dropdown) : "";
 
     filter_diseasesSyndromes==="animal_bite" ? $("#map-text").html("Animal Bite - Dog Bite (Presumptive Cases) in India"):$("#map-text").html("Human Rabies (Presumptive Cases) in India");
-
-
-
-
 }
 
 const getLFormDate = ()=>{
