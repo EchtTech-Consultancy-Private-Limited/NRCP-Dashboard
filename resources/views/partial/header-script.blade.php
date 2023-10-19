@@ -2,7 +2,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>NRCP | Dashboard</title>
 
-<script src="{{ asset('jquery.min.js') }}"></script>
+<script src="{{ asset('jquery.js') }}"></script>
 <!-- Google Font: Source Sans Pro -->
 
 <link rel="stylesheet" href="{{ asset('assets/css/dashboard.css') }}">

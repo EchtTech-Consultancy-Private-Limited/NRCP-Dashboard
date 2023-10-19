@@ -1,4 +1,6 @@
-const BASE_URL =window.location.origin+'/public';
+const BASE_URL =window.location.origin+"/public"
+;
+
 /*handle Form Type*/
 const handleFormType = ()=>{
 
@@ -177,7 +179,7 @@ const handleDistrict = ()=>{
                 }
             });
             $.ajax({
-                url: BASE_URL+"/test",
+                url: BASE_URL+"/get-filter-data",
                 type: "get",
                 data: {
                     setstate: filter_state,
@@ -421,7 +423,6 @@ const handleDistrict = ()=>{
                 }
             });
 
-
             $.ajax({
                 url: BASE_URL+"/human-rabies",
                 type: "get",
@@ -656,7 +657,7 @@ const handleDistrict = ()=>{
 
             // pyramid chart
             $.ajax({
-                url: BASE_URL+"/horizontalBarChartcaseAjax",
+                url: BASE_URL+"/p-form-horizontal-barchart",
                 type: "get",
                 success: function(result) {
                     var data = result; // Assuming 'result' contains the data you provided
