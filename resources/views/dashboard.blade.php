@@ -56,7 +56,7 @@
                            <select class="form-select p-1 year click-function"
                               name="year" aria-label="Default select example"
                               id="year" required="" onChange="handleFilterValue()">
-                              <option value="yyyy">yyyy</option>
+                              <option value="yyyy" disabled>yyyy</option>
                               <?php
                                  $currentYear = date('Y');
                                  for ($year = $currentYear; $year >= 2015; $year--) {
@@ -143,7 +143,9 @@
                            <label for=""><span
                               class="star"></span></label>
                            <button id="apply_filter" class="btn search-patient-btn bg-primary text-light apply-filter">Search</button>
+                           
                         </div>
+                        
                         <input type="hidden" value="" id="filter_state">
                         <input type="hidden" value="" id="filter_district">
                         <input type="hidden" value="2022" id="filter_from_year">
@@ -153,7 +155,18 @@
                         <input type="hidden" value={{ session('type')??0 }} id="session_value">
                         <!-- </form> -->
                      </div>
+                     <div class="col-lg-3 col-md-3 col-6">
+                        <div class="button apply-filter">
+                        <label for=""><span
+                              class="star"></span></label>
+                              <button id="reset_button" class="btn search-patient-btn bg-warning text-light apply-filter">Reset</button>
+                        </div>
+                     </div>
                   </div>
+
+                  
+                  
+                  <h1 id="map-text" class="map-text">Human Rabies (Presumptive Cases) in India</h1>
                   <!-- /.row -->
                   <div class="card-body">
                      <div class="row bg-white">
@@ -229,16 +242,22 @@
                   
                   <div class="row lform">
                         <div class="col-4 d-flex justify-content-center">
-                            <div class="box"><span id="text3"> </span><br><span id="box3">
-                                </span></div>
+                            <div class="box"><span id="box3">
+                                </span></br><span id="text3">
+                                    <strong>Laboratory Cases</strong></br> Persons Tested   
+                              </span></div>
                         </div>
                         <div class="col-4 d-flex justify-content-center">
-                            <div class="box"><span id="text4"> </span><br><span id="box4">
-                                </span></div>
+                            <div class="box"><span id="box4">
+                                </span></br><span id="text4">
+                                <strong>Laboratory Cases</strong></br> Samples Tested   
+                              </span></div>
                         </div>
                         <div class="col-4 d-flex justify-content-center">
-                            <div class="box"><span id="text5"> </span><br><span id="box5">
-                                </span></div>
+                            <div class="box"><span id="box5">
+                                </span></br><span id="text5">
+                                <strong>Laboratory Cases</strong></br> Positive    
+                              </span></div>
                         </div>
                     </div>
 
@@ -246,12 +265,12 @@
 
                     <div class="row defaultform">
                         <div class="col 6 d-flex justify-content-center">
-                            <div class="box"><span id="text1"> </span><br><span id="box1">
-                                </span></div>
+                            <div class="box"><span id="box1">
+                                </span></br><span id="text1"> </span></div>
                         </div>
                         <div class="col 6 d-flex justify-content-center">
-                            <div class="box"><span id="text2"> </span><br><span id="box2">
-                                </span></div>
+                            <div class="box"><span id="box2">
+                                </span></br><span id="text2"> </span></div>
                         </div>
                     </div>
                   <!-- /.row -->

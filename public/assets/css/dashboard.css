@@ -1,25 +1,24 @@
 
 .box {
     width: 250px;
-    /* Adjust this value to change the width of the box */
-    height: 120px;
-    /* Adjust this value to change the height of the box */
+    height: 90px;
     background-color: #3498db;
-    /* Change this to set the background color */
-    border: 2px solid #2c3e50;
-    /* Add a border if desired */
     padding: 10px;
-    /* Add padding to the content inside the box */
     margin: 10px;
-    /* Add margin around the box */
     color: #fff;
-    /* Set the text color */
+    border-radius: 5px;
     text-align: center;
-    /* Center the text */
     font-size: 15px;
-    /* Set the font size */
+    box-shadow: 1px 5px 7px 0px lightgrey;
 }
 
-
+.map-text{
+    text-align: left;
+    margin: 0;
+    color:#000;
+}
+.highcharts-credits{
+    display: none;
+}
 
 
