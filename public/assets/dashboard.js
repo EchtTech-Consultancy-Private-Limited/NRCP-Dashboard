@@ -1,4 +1,5 @@
 const BASE_URL =window.location.origin+"/public";
+
 /*handle Form Type*/
 const handleFormType = ()=>{
 
