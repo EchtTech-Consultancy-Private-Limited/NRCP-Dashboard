@@ -179,7 +179,7 @@
                            {{ session('type') == '1' ? 'selected' : '' }}>Deaths
                            </option>
                            </select>
-                           <select class="form-control" id="l-dropdown" onChange="handleFilterValue()">
+                           <select class="form-control" id="l-dropdown" onChange="handleFilterValue(); getLFormData();">
                               <option value="">Select test type</option>
                               <option value="person_tested">Person Tested</option>
                               <option value="sample_tested">Sample Tested</option>

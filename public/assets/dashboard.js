@@ -1,4 +1,4 @@
-const BASE_URL =window.location.origin+"/public"
+const BASE_URL =window.location.origin
 ;
 
 /*handle Form Type*/
@@ -67,8 +67,8 @@ const handleFilterValue = ()=>{
 
 }
 
-const getLFormDate = ()=>{
-    // apply_filter();
+const getLFormData = ()=>{
+    apply_filter();
 }
 
 const handleDistrict = ()=>{
@@ -150,13 +150,14 @@ const handleDistrict = ()=>{
         });
 
         const apply_filter = ()=>{
-            const filter_state = $("#filter_state").val();
-            const filter_district = $("#filter_district").val();
-            const filter_from_year = $("#filter_from_year").val();
-            const filter_to_year = $("#filter_to_year").val();
-            const form_type = $("#filter_form_type").val();
-            const filter_diseasesSyndromes = $("#filter_diseases").val();
-            const l_dropdown = $("#l-dropdown").val();
+            const filter_state = $('#state').find(":selected").val();
+            const filter_district = $('#district').find(":selected").val();
+            const filter_from_year = $('#year').find(":selected").val();
+            const filter_to_year = $('#yearto').find(":selected").val();
+            const form_type = $('#formType').find(":selected").val();
+            const filter_diseasesSyndromes = $('#diseasesSyndromes').find(":selected").val();
+            const l_dropdown = $('#l-dropdown').find(":selected").val();
+        
             const search_btn = $("#apply_filter");
             search_btn.attr("disabled",true);
             let loading_content = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Loading...';
