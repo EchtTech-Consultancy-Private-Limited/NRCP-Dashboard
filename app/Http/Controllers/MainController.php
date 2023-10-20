@@ -179,7 +179,7 @@ class MainController extends Controller
         } else {
 
                 // this is for google chart
-               
+
                 $table_name = "pform_human_rabies";
                 if(!empty($filter_diseasesSyndromes)  && $filter_diseasesSyndromes==="animal_bite"){
                     $table_name="dog_bite_pform_cases_districtwise";
@@ -199,8 +199,11 @@ class MainController extends Controller
                     $human_rabies_case_query->where('state_id', $state[0]->id);
                     $age_groups_data->where('state_id', $state[0]->id);
 
-                    $dogbite_cases_male = $age_group_query->where('state_id',$state[0]->id)->sum('male');
-                    $dogbite_cases_female = $age_group_query->where('state_id',$state[0]->id)->sum('female');
+                    $dogbite_cases_male = $age_group_query->where('state_id',$state[0]->id)->sum('male_case');
+
+                    $dogbite_cases_female = $age_group_query->where('state_id',$state[0]->id)->sum('female_case');
+                    $dogbite_cases_male_death =$age_group_query->where('state_id',$state[0]->id)->sum('male_death');
+                    $dogbite_cases_female_death = $age_group_query->where('state_id',$state[0]->id)->sum('female_death');
 
                 }else{
                     $state = DB::table('states')->get();
@@ -210,8 +213,11 @@ class MainController extends Controller
                     $human_rabies_case = $human_rabies_case_query->whereBetween('year', [$filter_from_year, $filter_to_year])->sum('cases');
                     $human_rabies_deaths = $human_rabies_case_query->whereBetween('year', [$filter_from_year, $filter_to_year])->sum('deaths');
 
-                    $dogbite_cases_male = $age_group_query->whereBetween('year', [$filter_from_year, $filter_to_year])->sum('male');
-                    $dogbite_cases_female = $age_group_query->whereBetween('year', [$filter_from_year, $filter_to_year])->sum('female');
+                    $dogbite_cases_male = $age_group_query->whereBetween('year', [$filter_from_year, $filter_to_year])->sum('male_case');
+                    $dogbite_cases_female = $age_group_query->whereBetween('year', [$filter_from_year, $filter_to_year])->sum('female_case');
+                    $dogbite_cases_male_death =$age_group_query->whereBetween('year', [$filter_from_year, $filter_to_year])->sum('male_death');
+                    $dogbite_cases_female_death = $age_group_query->whereBetween('year', [$filter_from_year, $filter_to_year])->sum('female_death');
+
 
                     $age_groups_data->whereBetween('year', [$filter_from_year, $filter_to_year]);
 
@@ -220,8 +226,12 @@ class MainController extends Controller
                         $human_rabies_case = $human_rabies_case_query->where('year','=',$filter_from_year)->sum('cases');
                         $human_rabies_deaths = $human_rabies_case_query->where('year','=',$filter_from_year)->sum('deaths');
 
-                        $dogbite_cases_male = $age_group_query->where('year','=',$filter_from_year)->sum('male');
-                        $dogbite_cases_female = $age_group_query->where('year','=',$filter_from_year)->sum('female');
+
+                        $dogbite_cases_male = $age_group_query->where('year','=',$filter_from_year)->sum('male_case');
+                        $dogbite_cases_female = $age_group_query->where('year','=',$filter_from_year)->sum('female_case');
+                        $dogbite_cases_male_death =$age_group_query->where('year','=',$filter_from_year)->sum('male_death');
+                        $dogbite_cases_female_death = $age_group_query->where('year','=',$filter_from_year)->sum('female_death');
+
                         $age_groups_data->where('year','=',$filter_from_year);
 
                     }
@@ -243,28 +253,37 @@ class MainController extends Controller
                         $array[$value->state_name] = $human_rabies;
                     }
                 }
-                
-                $total = ($dogbite_cases_male +  $dogbite_cases_female);
-                
-                $male_percentage = ($dogbite_cases_male / $total) * 100;
-                $female_percentage = ($dogbite_cases_female / $total) * 100;
+
+                // this is for google chart
+
+
+
+        $total = ($dogbite_cases_male +  $dogbite_cases_female);
+
+        $male_percentage = ($dogbite_cases_male / $total) * 100;
+        $female_percentage = ($dogbite_cases_female / $total) * 100;
+        //deaths
+
+        $total_death_google_graph = ($dogbite_cases_male_death +  $dogbite_cases_female_death);
+        $male_percentage_death = ($dogbite_cases_male_death / $total_death_google_graph) * 100;
+        $female_percentage_death = ($dogbite_cases_female_death / $total_death_google_graph) * 100;
 
                 /*pyramid code*/
-                $age_groups_data = $age_groups_data->get();
-                $ageGroups = collect($age_groups_data)->pluck('age')->unique();
+                $age_groups_d = $age_groups_data->get();
+                $ageGroups = collect($age_groups_d)->pluck('age')->unique();
 
                 foreach ($ageGroups as $ageGroup) {
-                    $pyramid_dogbite_cases_male = $age_groups_data->where('age', $ageGroup)->sum('male');
-                    $pyramid_dogbite_cases_female = $age_groups_data->where('age', $ageGroup)->sum('female');
+                    $pyramid_dogbite_cases_male = $age_groups_data->where('age', $ageGroup)->sum('male_case');
+                    $pyramid_dogbite_cases_female = $age_groups_data->where('age', $ageGroup)->sum('female_case');
                     $pyramid_total_cases = $pyramid_dogbite_cases_male + $pyramid_dogbite_cases_female;
                     if ($pyramid_total_cases > 0) {
-                        $pyramid_male_percentage = ($pyramid_dogbite_cases_male / $pyramid_total_cases) * 10;
-                        $pyramid_female_percentage = ($pyramid_dogbite_cases_female / $pyramid_total_cases) * 10;
+                        $pyramid_male_percentage = ($pyramid_dogbite_cases_male / $pyramid_total_cases) * 100;
+                        $pyramid_female_percentage = ($pyramid_dogbite_cases_female / $pyramid_total_cases) * 100;
                     } else {
                         $pyramid_male_percentage = 0;
                         $pyramid_female_percentage = 0;
                     }
-        
+
                     $responseData[] = [
                         'pyramid_age_group' => $ageGroup,
                         'pyramid_male_percentage' => round($pyramid_male_percentage,2),
@@ -272,9 +291,9 @@ class MainController extends Controller
                     ];
                 }
                 /*end here*/
-                
+
         }
-        return response()->json(['array' => $array,'total_cases'=>$total_cases,'total_deaths'=>$total_deaths,'human_rabies_deaths'=>$human_rabies_deaths,'human_rabies_case'=>$human_rabies_case,'male_percentage'=>round($male_percentage, 2),'female_percentage'=>round($female_percentage,2),'total'=>$total,$responseData], 200);
+        return response()->json(['array' => $array,'total_cases'=>$total_cases,'total_deaths'=>$total_deaths,'human_rabies_deaths'=>$human_rabies_deaths,'human_rabies_case'=>$human_rabies_case,'male_percentage'=>round($male_percentage, 2),'female_percentage'=>round($female_percentage,2),'total'=>$total,$responseData ,'male_percentage_death'=>$male_percentage_death,'female_percentage_death'=>$female_percentage_death,'total_death_google_graph'=>$total_death_google_graph], 200);
     }
 
 
@@ -333,20 +352,28 @@ class MainController extends Controller
         }
 
         // this is for google chart
-        $dogbite_cases_male = DB::table('age_group_pform_dogbite_cases')->sum('male');
-        $dogbite_cases_female = DB::table('age_group_pform_dogbite_cases')->sum('female');
+        $dogbite_cases_male = DB::table('age_group_pform_dogbite_cases')->sum('male_case');
+        $dogbite_cases_female = DB::table('age_group_pform_dogbite_cases')->sum('female_case');
         $total = ($dogbite_cases_male +  $dogbite_cases_female);
         $male_percentage = ($dogbite_cases_male / $total) * 100;
         $female_percentage = ($dogbite_cases_female / $total) * 100;
+        //deaths
+        $dogbite_cases_male_death = DB::table('age_group_pform_dogbite_cases')->sum('male_death');
+        $dogbite_cases_female_death = DB::table('age_group_pform_dogbite_cases')->sum('female_death');
+        $total_death_google_graph = ($dogbite_cases_male_death +  $dogbite_cases_female_death);
+        $male_percentage_death = ($dogbite_cases_male_death / $total_death_google_graph) * 100;
+        $female_percentage_death = ($dogbite_cases_female_death / $total_death_google_graph) * 100;
 
-        //pyramid bar chart
-        $age_groups_data = DB::table('age_group_pform_dogbite_cases')
-        ->select('age', 'male', 'female')
-        ->get();
+        // //pyramid bar chart
+        // $age_groups_data = DB::table('age_group_pform_dogbite_cases')
+        // ->select('age', 'male', 'female')
+        // ->get();
 
 
 
-        return response()->json(['array' => $array,'total_cases'=>$total_cases,'total_deaths'=>$total_deaths,'total_rabies_record' => $total_rabies_record, 'human_rabies_record' => $human_rabies_record,'dogbite_cases_male'=>$dogbite_cases_male,'dogbite_cases_female'=>$dogbite_cases_female,'total'=>$total,'male_percentage'=>$male_percentage,'female_percentage'=>$female_percentage], 201);
+        return response()->json(['array' => $array,'total_cases'=>$total_cases,'total_deaths'=>$total_deaths,'total_rabies_record' => $total_rabies_record, 'human_rabies_record' => $human_rabies_record,'dogbite_cases_male'=>$dogbite_cases_male,'dogbite_cases_female'=>$dogbite_cases_female,'total'=>$total,'male_percentage'=>$male_percentage,'female_percentage'=>$female_percentage,
+
+        'male_percentage_death'=>$male_percentage_death,'female_percentage_death'=>$female_percentage_death,'total_death_google_graph'=>$total_death_google_graph], 201);
     }
 
     public function humanRabiesDeath(Request $request)
@@ -387,7 +414,7 @@ class MainController extends Controller
         return response()->json(['state_deaths' => $state_deaths], 201);
     }
 
-    
+
     public function  setSession(Request $request)
     {
         $type = $request->input('type');
@@ -427,10 +454,8 @@ class MainController extends Controller
         //dd($ageGroups);
 
         foreach ($ageGroups as $ageGroup) {
-            $dogbite_cases_male = DB::table('age_group_pform_dogbite_cases')->where('age', $ageGroup)->sum('male');
-            $dogbite_cases_female = DB::table('age_group_pform_dogbite_cases')->where('age', $ageGroup)->sum('female');
-            //dd($dogbite_cases_female);  //total 80+ dog bite
-            // dd($dogbite_cases_male);      //total 80+ dog bite
+            $dogbite_cases_male = DB::table('age_group_pform_dogbite_cases')->where('age', $ageGroup)->sum('male_case');
+            $dogbite_cases_female = DB::table('age_group_pform_dogbite_cases')->where('age', $ageGroup)->sum('female_case');
 
             $total_cases = $dogbite_cases_male + $dogbite_cases_female;
 
@@ -450,6 +475,35 @@ class MainController extends Controller
         }
         return response()->json($responseData);
     }
+    public function pFormHorizontalBarChartDeath()
+    {
+        $age_groups_data = DB::table('age_group_pform_dogbite_cases')->get();
+        $ageGroups = collect($age_groups_data)->pluck('age')->unique();
+        //dd($ageGroups);
+
+        foreach ($ageGroups as $ageGroup) {
+            $dogbite_death_male = DB::table('age_group_pform_dogbite_cases')->where('age', $ageGroup)->sum('male_death');
+            $dogbite_death_female = DB::table('age_group_pform_dogbite_cases')->where('age', $ageGroup)->sum('female_death');
+
+            $total_death = $dogbite_death_male + $dogbite_death_female;
+
+            if ($total_death > 0) {
+                $male_percentage_death = ($dogbite_death_male / $total_death) * 100;
+                $female_percentage_death = ($dogbite_death_female / $total_death) * 100;
+            } else {
+                $male_percentage_death = 0;
+                $female_percentage_death = 0;
+            }
+
+            $responseDataDeath[] = [
+                'pyramid_age_group' => $ageGroup,
+                'pyramid_male_percentage' => round($male_percentage_death,2),
+                'pyramid_female_percentage' => round($female_percentage_death,2)
+            ];
+        }
+        return response()->json($responseDataDeath);
+    }
+
 
 
 

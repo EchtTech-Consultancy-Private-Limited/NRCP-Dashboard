@@ -150,7 +150,7 @@ const handleDistrict = ()=>{
             const form_type = $('#formType').find(":selected").val();
             const filter_diseasesSyndromes = $('#diseasesSyndromes').find(":selected").val();
             const l_dropdown = $('#l-dropdown').find(":selected").val();
-        
+
             const search_btn = $("#apply_filter");
             search_btn.attr("disabled",true);
             let loading_content = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Loading...';
@@ -192,10 +192,11 @@ const handleDistrict = ()=>{
                     l_dropdown: l_dropdown,
                 },
                 success: function(result) {
-                    $("#apply_filter").attr("disabled",false);
-                    googlePieChart(result); 
-                    pyramidChart(result[0]); 
+                    googlePieChart(result);
+                    pyramidChart(result[0]);
+                    barChart(result[0]);
                     search_btn.html("Search");
+                    search_btn.attr("disabled",false);
                     if (form_type == '1') {
                         $('.defaultform').hide()
                         $('.lform').show()
@@ -407,6 +408,10 @@ const handleDistrict = ()=>{
 
 
 
+                },
+                error:(xhr,status)=>{
+                    search_btn.html("Search");
+                    search_btn.attr("disabled",false);
                 }
             });
         }
@@ -436,7 +441,7 @@ const handleDistrict = ()=>{
                         $('#box2').html(result.total_deaths);
 
                         /*Google Chart Pie Chart*/
-                        googlePieChart(result); 
+                        googlePieChart(result);
 
 
                     let sessionValue = $("#session_value").val();
@@ -664,48 +669,89 @@ const handleDistrict = ()=>{
         }
 
         document.addEventListener('DOMContentLoaded', function() {
-            Highcharts.chart('chartContainer', {
-                chart: {
-                    type: 'bar'
-                },
-                title: {
-                    text: 'Cases by Age Group in India'
-                },
-                xAxis: {
-                    categories: ['0-10', '11-20', '21-30', '31-40', '41-50', '51-60', '61+'],
-                    title: {
-                        text: null
-                    }
-                },
-                yAxis: {
-                    min: 0,
-                    title: {
-                        text: 'Number of Cases',
-                        align: 'high'
-                    },
-                    labels: {
-                        overflow: 'justify'
-                    }
-                },
-                plotOptions: {
-                    bar: {
-                        dataLabels: {
-                            enabled: true
-                        }
-                    }
-                },
-                series: [{
-                    name: 'Male',
-                    data: [500, 400, 300, 200, 150, 100, 50],
 
-                }, {
-                    name: 'Female',
-                    data: [600, 500, 400, 300, 250, 200, 100]
-                }]
+
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $(
+                        'meta[name="csrf-token"]'
+                    ).attr(
+                        'content')
+                }
             });
+
+            $.ajax({
+                url: BASE_URL+"/pform-horizontal-barchart-death",
+                type: "get",
+
+                success: function(result) {
+
+                    barChart(result);
+
+
+                }
+
+            });
+
         });
 
-        
+
+
+const barChart  = (result)=>{
+    console.log(result,'main result')
+    var categories = result.map(item => item.pyramid_age_group);
+
+    var males = {
+        name: 'Males',
+        data: result.map(item => item.pyramid_male_percentage)
+    };
+     console.log(males,' male')
+    var females = {
+        name: 'Females',
+        data: result.map(item => item.pyramid_female_percentage)
+    };
+   // console.log(females,' male')
+    Highcharts.chart('chartContainer', {
+        chart: {
+            type: 'bar'
+        },
+        title: {
+            text: 'Death by Age Group in India'
+        },
+        xAxis: {
+            categories: categories,
+            title: {
+                text: null
+            }
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: 'Number of Cases',
+                align: 'high'
+            },
+            labels: {
+                overflow: 'justify'
+            }
+        },
+        plotOptions: {
+            bar: {
+                dataLabels: {
+                    enabled: true
+                }
+            }
+        },
+        series: [males,females]
+        // series: [{
+        //     name: 'Male',
+        //     data: [males],
+
+        // }, {
+        //     name: 'Female',
+        //     data: [females]
+        // }]
+    });
+}
 const pyramidChart = (result)=>{
     var data = result; // Assuming 'result' contains the data you provided
 
@@ -814,12 +860,12 @@ const googlePieChart = (result)=>{
         function drawChart() {
         var data = google.visualization.arrayToDataTable([
             ['Gender', 'Percentage'],
-            ['Male', result.female_percentage],
-            ['Female', result.male_percentage]
+            ['Male', result.male_percentage_death],
+            ['Female', result.female_percentage_death]
         ]);
 
         var options = {
-            title: 'Death by Gender in india n=('+result.total+')',
+            title: 'Death by Gender in india n=('+result.total_death_google_graph+')',
         };
 
         var chart = new google.visualization.PieChart(document.getElementById('piecharts'));
