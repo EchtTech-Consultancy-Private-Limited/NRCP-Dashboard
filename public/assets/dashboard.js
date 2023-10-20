@@ -192,6 +192,8 @@ const handleDistrict = ()=>{
                     l_dropdown: l_dropdown,
                 },
                 success: function(result) {
+                    search_btn.html("Search");
+                    search_btn.attr("disabled",false);
                     googlePieChart(result);
                     pyramidChart(result[0]);
                     barChart(result[0]);
