@@ -753,6 +753,7 @@ const barChart  = (result)=>{
     });
 }
 const pyramidChart = (result)=>{
+
     var data = result; // Assuming 'result' contains the data you provided
 
     var categories = data.map(item => item.pyramid_age_group);
