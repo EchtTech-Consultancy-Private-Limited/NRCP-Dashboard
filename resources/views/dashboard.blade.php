@@ -28,7 +28,7 @@
                               <option value="" disabled selected> Select Your State </option>
                               @foreach (state_list() as $state)
                               <option value="{{ $state->state_name }}" state-id="{{$state->id}}">
-                                 {{ ucfirst($state->state_name) ?? '' }} 
+                                 {{ ucfirst($state->state_name) ?? '' }}
                               </option>
                               @endforeach
                            </select>
@@ -71,7 +71,7 @@
                            </small>
                         </div>
                      </div>
-                     {{-- 
+                     {{--
                      <div class="col-lg-3 col-md-3 col-6">
                         <div class="form-group">
                            <label for="toYear">To Year<span
@@ -143,9 +143,9 @@
                            <label for=""><span
                               class="star"></span></label>
                            <button id="apply_filter" class="btn search-patient-btn bg-primary text-light apply-filter">Search</button>
-                           
+
                         </div>
-                        
+
                         <input type="hidden" value="" id="filter_state">
                         <input type="hidden" value="" id="filter_district">
                         <input type="hidden" value="2022" id="filter_from_year">
@@ -164,8 +164,8 @@
                      </div>
                   </div>
 
-                  
-                  
+
+
                   <h1 id="map-text" class="map-text">Human Rabies (Presumptive Cases) in India</h1>
                   <!-- /.row -->
                   <div class="card-body">
@@ -239,24 +239,24 @@
                   </div>
 
 
-                  
+
                   <div class="row lform">
                         <div class="col-4 d-flex justify-content-center">
                             <div class="box"><span id="box3">
                                 </span></br><span id="text3">
-                                    <strong>Laboratory Cases</strong></br> Persons Tested   
+                                    <strong>Laboratory Cases</strong></br> Persons Tested
                               </span></div>
                         </div>
                         <div class="col-4 d-flex justify-content-center">
                             <div class="box"><span id="box4">
                                 </span></br><span id="text4">
-                                <strong>Laboratory Cases</strong></br> Samples Tested   
+                                <strong>Laboratory Cases</strong></br> Samples Tested
                               </span></div>
                         </div>
                         <div class="col-4 d-flex justify-content-center">
                             <div class="box"><span id="box5">
                                 </span></br><span id="text5">
-                                <strong>Laboratory Cases</strong></br> Positive    
+                                <strong>Laboratory Cases</strong></br> Positive
                               </span></div>
                         </div>
                     </div>
@@ -299,7 +299,7 @@
          </div>
       </div>
 
-         
+
                </div>
             </div>
          </div>

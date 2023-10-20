@@ -698,7 +698,7 @@ const handleDistrict = ()=>{
 
 
 const barChart  = (result)=>{
-    console.log(result,'main result')
+
     var categories = result.map(item => item.pyramid_age_group);
 
     var males = {
