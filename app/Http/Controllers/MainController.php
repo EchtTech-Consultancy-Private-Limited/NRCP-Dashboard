@@ -445,59 +445,57 @@ class MainController extends Controller
 
     public function pFormHorizontalBarChart()
     {
-        $age_groups_data = DB::table('age_group_pform_dogbite_cases')->get();
-        $ageGroups = collect($age_groups_data)->pluck('age')->unique();
-        //dd($ageGroups);
 
-        foreach ($ageGroups as $ageGroup) {
-            $dogbite_cases_male = DB::table('age_group_pform_dogbite_cases')->where('age', $ageGroup)->sum('male_case');
-            $dogbite_cases_female = DB::table('age_group_pform_dogbite_cases')->where('age', $ageGroup)->sum('female_case');
+        
+            $ageGroups = DB::table('age_group_pform_dogbite_cases')->selectRaw('age, sum(male_case) as male_case, sum(female_case) as female_case')
+                    ->groupBy('age')
+                    ->get();
+            foreach ($ageGroups as $ageGroup) {
 
-            $total_cases = $dogbite_cases_male + $dogbite_cases_female;
+                $total_cases = $ageGroup->male_case + $ageGroup->female_case;
+                if ($total_cases > 0) {
+                    $male_percentage = ($ageGroup->male_case / $total_cases) * 100;
+                    $female_percentage = ($ageGroup->female_case / $total_cases) * 100;
+                } else {
+                    $male_percentage = 0;
+                    $female_percentage = 0;
+                }
 
-
-            if ($total_cases > 0) {
-                $male_percentage = ($dogbite_cases_male / $total_cases) * 100;
-                $female_percentage = ($dogbite_cases_female / $total_cases) * 100;
-            } else {
-                $male_percentage = 0;
-                $female_percentage = 0;
+                $responseData[] = [
+                    'pyramid_age_group' => $ageGroup->age,
+                    'pyramid_male_percentage' => round($male_percentage, 2),
+                    'pyramid_female_percentage' => round($female_percentage, 2)
+                ];
             }
 
-            $responseData[] = [
-                'pyramid_age_group' => $ageGroup,
-                'pyramid_male_percentage' => round($male_percentage, 2),
-                'pyramid_female_percentage' => round($female_percentage, 2)
-            ];
-        }
+            
         return response()->json($responseData);
     }
     public function pFormHorizontalBarChartDeath()
     {
-        $age_groups_data = DB::table('age_group_pform_dogbite_cases')->get();
-        $ageGroups = collect($age_groups_data)->pluck('age')->unique();
-        //dd($ageGroups);
+        
+        $ageGroups = DB::table('age_group_pform_dogbite_cases')->selectRaw('age, sum(male_death) as male_death, sum(female_death) as female_death')
+        ->groupBy('age')
+        ->get();
 
-        foreach ($ageGroups as $ageGroup) {
-            $dogbite_death_male = DB::table('age_group_pform_dogbite_cases')->where('age', $ageGroup)->sum('male_death');
-            $dogbite_death_female = DB::table('age_group_pform_dogbite_cases')->where('age', $ageGroup)->sum('female_death');
+            foreach ($ageGroups as $ageGroup) {
 
-            $total_death = $dogbite_death_male + $dogbite_death_female;
+                $total_cases = $ageGroup->male_death + $ageGroup->female_death;
+                if ($total_cases > 0) {
+                    $male_percentage = ($ageGroup->male_death / $total_cases) * 100;
+                    $female_percentage = ($ageGroup->female_death / $total_cases) * 100;
+                } else {
+                    $male_percentage = 0;
+                    $female_percentage = 0;
+                }
 
-            if ($total_death > 0) {
-                $male_percentage_death = ($dogbite_death_male / $total_death) * 100;
-                $female_percentage_death = ($dogbite_death_female / $total_death) * 100;
-            } else {
-                $male_percentage_death = 0;
-                $female_percentage_death = 0;
+                $responseData[] = [
+                    'pyramid_age_group' => $ageGroup->age,
+                    'pyramid_male_percentage' => round($male_percentage, 2),
+                    'pyramid_female_percentage' => round($female_percentage, 2)
+                ];
             }
-
-            $responseDataDeath[] = [
-                'pyramid_age_group' => $ageGroup,
-                'pyramid_male_percentage' => round($male_percentage_death, 2),
-                'pyramid_female_percentage' => round($female_percentage_death, 2)
-            ];
-        }
-        return response()->json($responseDataDeath);
+        return response()->json($responseData);
     }
+
 }
