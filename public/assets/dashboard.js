@@ -93,7 +93,7 @@ const handleDistrict = ()=>{
                     if(result){
                         $("#district").html("");
                         result.district_list.forEach((district)=>{
-                            option +=`<option value="${district.id}">${district.district_name}</option>`;
+                            option +=`<option value="${district.id}" dist-name="${district.district_name}">${district.district_name}</option>`;
                         });
                         $("#district").append(option);
                     }else{
@@ -102,7 +102,6 @@ const handleDistrict = ()=>{
                 }
             });
 }
-
 
 /*end here*/
 $(document).ready(function() {
@@ -207,11 +206,10 @@ const apply_filter = ()=>{
             search_btn.attr("disabled",false);
             search_btn.html("Search");
             search_btn.attr("disabled",false);
-            console.log(form_type,' formm')
             if(form_type=='2'){
             googlePieChart(result);
-            pyramidChart(result[0]);
             barChart(result[0]);
+            pyramidChart(result[0]);
             }
             
             if (form_type == '1') {
@@ -704,11 +702,22 @@ document.addEventListener('DOMContentLoaded', function() {
 
 });
 
-
-
-
-
 const googlePieChart = (result)=>{
+    const filter_state = $('#state').find(":selected").attr('state-name');
+    const filter_district = $('#district').find(":selected").attr('dist-name');
+    const filter_from_year = $('#year').find(":selected").val();
+    const filter_to_year = $('#yearto').find(":selected").val();
+    const form_type = $('#formType').find(":selected").attr('form-type');
+    const filter_diseasesSyndromes = $('#diseasesSyndromes').find(":selected").val();
+    const l_dropdown = $('#l-dropdown').find(":selected").val();
+    if(result.length<1){
+        $("#is_graph_data_available").val("No graph data available");
+    }else{
+        $("#is_graph_data_available").val("");
+    }
+    let is_graph_data_available = $("#is_graph_data_available").val();
+    is_graph_data_available= is_graph_data_available!==""?is_graph_data_available:"";
+    
 /*google chart start*/
         google.charts.load('current', {'packages':['corechart']});
         google.charts.setOnLoadCallback(drawCharts);
@@ -721,7 +730,7 @@ const googlePieChart = (result)=>{
         ]);
 
         var options = {
-            title: 'Cases by Gender in india n=('+result.total+')',
+            title: `Cases by Gender in India ${filter_state!==undefined?filter_state+' >':''} ${filter_district!==undefined?filter_district+' >':''} ${filter_from_year!==""?filter_from_year+' >':''} ${filter_to_year!==""?filter_to_year+' >':''} ${form_type!==""?form_type+' >':''} ${filter_diseasesSyndromes!==""?filter_diseasesSyndromes?.split('_')?.join(" ")+' >':''} ${l_dropdown!==""?l_dropdown:''} n=(${result.total})`,
         };
 
         var chart = new google.visualization.PieChart(document.getElementById('piechart'));
@@ -738,7 +747,7 @@ const googlePieChart = (result)=>{
         ]);
 
         var options = {
-            title: 'Death by Gender in india n=('+result.total_death_google_graph+')',
+            title: `Death by Gender in India ${filter_state!==undefined?filter_state+' >':''} ${filter_district!==undefined?filter_district+' >':''} ${filter_from_year!==""?filter_from_year+' >':''} ${filter_to_year!==""?filter_to_year+' >':''} ${form_type!==""?form_type+' >':''} ${filter_diseasesSyndromes!==""?filter_diseasesSyndromes?.split('_')?.join(" ")+' >':''} ${l_dropdown!==""?l_dropdown:''} n=(${result.total_death_google_graph})`,
         };
 
         var chart = new google.visualization.PieChart(document.getElementById('piecharts'));
@@ -749,23 +758,38 @@ const googlePieChart = (result)=>{
 }
 
 const pyramidChart = (result)=>{
+    const filter_state = $('#state').find(":selected").attr('state-name');
+    const filter_district = $('#district').find(":selected").attr('dist-name');
+    const filter_from_year = $('#year').find(":selected").val();
+    const filter_to_year = $('#yearto').find(":selected").val();
+    const form_type = $('#formType').find(":selected").attr('form-type');
+    const filter_diseasesSyndromes = $('#diseasesSyndromes').find(":selected").val();
+    const l_dropdown = $('#l-dropdown').find(":selected").val();
+    if(result.length<1){
+        $("#is_graph_data_available").val("No graph data available");
+    }else{
+        $("#is_graph_data_available").val("");
+    }
+    let is_graph_data_available = $("#is_graph_data_available").val();
+    is_graph_data_available= is_graph_data_available!==""?is_graph_data_available:"";
+    var options_val = {
+        text: `Case by age group in India ${filter_state!==undefined?filter_state+' >':''} ${filter_district!==undefined?filter_district+' >':''} ${filter_from_year!==""?filter_from_year+' >':''} ${filter_to_year!==""?filter_to_year+' >':''} ${form_type!==""?form_type+' >':''} ${filter_diseasesSyndromes!==""?filter_diseasesSyndromes?.split('_')?.join(" "):''} ${l_dropdown!==""?"> "+l_dropdown:''}`,
+    };
 
-    var data = result; // Assuming 'result' contains the data you provided
 
-    var categories = data.map(item => item.pyramid_age_group);
+    let categories = result.map(item => item.pyramid_age_group);
 
-    var males = {
+    let males = {
         name: 'Males',
-        data: data.map(item => item.pyramid_male_percentage)
+        data: result.map(item => item.pyramid_male_percentage)
     };
 
-    var females = {
+    let females = {
         name: 'Females',
-        data: data.map(item => -item.pyramid_female_percentage)
+        data: result.map(item => -item.pyramid_female_percentage)
     };
-
-    var options = {
-        series: [males, females],
+    let options = {
+        series: [females,males],
         chart: {
             type: 'bar',
             height: 440,
@@ -812,8 +836,9 @@ const pyramidChart = (result)=>{
                 }
             }
         },
-        title: {
-            text: 'Case by age group in india'
+        title: options_val,
+        subtitle:{
+            text:is_graph_data_available
         },
         xaxis: {
             categories: categories,
@@ -827,12 +852,32 @@ const pyramidChart = (result)=>{
             }
         },
     };
-
-    var chart = new ApexCharts(document.querySelector("#chart"), options);
+    const chartContainer = document.querySelector("#chart");
+    chartContainer.innerHTML = '';
+    let chart = new ApexCharts(document.querySelector("#chart"), options);
     chart.render();
 }
 
 const barChart  = (result)=>{
+    const filter_state = $('#state').find(":selected").attr('state-name');
+    const filter_district = $('#district').find(":selected").attr('dist-name');
+    const filter_from_year = $('#year').find(":selected").val();
+    const filter_to_year = $('#yearto').find(":selected").val();
+    const form_type = $('#formType').find(":selected").attr('form-type');
+    const filter_diseasesSyndromes = $('#diseasesSyndromes').find(":selected").val();
+    const l_dropdown = $('#l-dropdown').find(":selected").val();
+    if(result.length<1){
+        $("#is_graph_data_available").val("No graph data available");
+    }else{
+        $("#is_graph_data_available").val("");
+    }
+    let is_graph_data_available = $("#is_graph_data_available").val();
+    is_graph_data_available= is_graph_data_available!==""?is_graph_data_available:"";
+    
+    var options_val = {
+        text: `Death by age group in India ${filter_state!==undefined?filter_state+' >':''} ${filter_district!==undefined?filter_district+' >':''} ${filter_from_year!==""?filter_from_year+' >':''} ${filter_to_year!==""?filter_to_year+' >':''} ${form_type!==""?form_type+' >':''} ${filter_diseasesSyndromes!==""?filter_diseasesSyndromes?.split('_')?.join(" "):''} ${l_dropdown!==""?"> "+l_dropdown:''}`,
+        
+    };
     var categories = result.map(item => item.pyramid_age_group);
 
     var males = {
@@ -847,8 +892,9 @@ const barChart  = (result)=>{
         chart: {
             type: 'bar'
         },
-        title: {
-            text: 'Death by Age Group in India'
+        title: options_val,
+        subtitle:{
+            text:is_graph_data_available,
         },
         xAxis: {
             categories: categories,
@@ -874,13 +920,10 @@ const barChart  = (result)=>{
             }
         },
         series: [males,females]
-        // series: [{
-        //     name: 'Male',
-        //     data: [males],
-
-        // }, {
-        //     name: 'Female',
-        //     data: [females]
-        // }]
     });
 }
+
+
+$('#mySelect2').select2({
+    tags: true
+  });

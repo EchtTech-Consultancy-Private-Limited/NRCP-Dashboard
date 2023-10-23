@@ -257,17 +257,33 @@ class MainController extends Controller
 
             // this is for google chart
             $total = ($dogbite_cases_male +  $dogbite_cases_female);
-            $male_percentage = ($dogbite_cases_male / $total) * 100;
-            $female_percentage = ($dogbite_cases_female / $total) * 100;
+            if($total>0){
+                $male_percentage = ($dogbite_cases_male / $total) * 100;
+                $female_percentage = ($dogbite_cases_female / $total) * 100;    
+            }else{
+                $male_percentage =0;
+                $female_percentage = 0;
+            }
+            
             //deaths
-            $total_death_google_graph = ($dogbite_cases_male_death +  $dogbite_cases_female_death);
-            $male_percentage_death = ($dogbite_cases_male_death / $total_death_google_graph) * 100;
-            $female_percentage_death = ($dogbite_cases_female_death / $total_death_google_graph) * 100;
 
+            $total_death_google_graph = ($dogbite_cases_male_death +  $dogbite_cases_female_death);
+            if($total_death_google_graph>0){
+                $male_percentage_death = ($dogbite_cases_male_death / $total_death_google_graph) * 100;
+                $female_percentage_death = ($dogbite_cases_female_death / $total_death_google_graph) * 100;
+    
+            }else{
+                $male_percentage_death = 0;
+                $female_percentage_death = 0;
+    
+            }
+            
             /*pyramid code*/
             $ageGroups = $age_groups_data->selectRaw('age, sum(male_case) as male_case, sum(female_case) as female_case,sum(male_death) as male_death, sum(female_death) as female_death ')
                     ->groupBy('age')
                     ->get();
+
+            $responseData=[];
             foreach ($ageGroups as $ageGroup) {
                 $total_cases = $ageGroup->male_case + $ageGroup->female_case;
                 $total_death = $ageGroup->male_death + $ageGroup->female_death;
@@ -297,6 +313,7 @@ class MainController extends Controller
                 ];
             }
             /*end here*/
+            // dd($responseData);die();
         }
         return response()->json(['array' => $array, 'total_cases' => $total_cases, 'total_deaths' => $total_deaths, 'human_rabies_deaths' => $human_rabies_deaths, 'human_rabies_case' => $human_rabies_case, 'male_percentage' => round($male_percentage, 2), 'female_percentage' => round($female_percentage, 2), 'total' => $total, $responseData, 'male_percentage_death' => $male_percentage_death, 'female_percentage_death' => $female_percentage_death, 'total_death_google_graph' => $total_death_google_graph], 200);
     }

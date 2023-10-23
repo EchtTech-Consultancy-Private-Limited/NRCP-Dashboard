@@ -22,6 +22,7 @@
 <script src="{{ asset('assets/login/dist/js/adminlte.js') }}"></script>
 
 <!-- PAGE PLUGINS -->
+<script src="{{ asset('assets/js/select2.min.js') }}"></script>
 <script src="{{ asset('assets/dashboard.js') }}"></script>
 
 <!-- jQuery Mapael -->
@@ -38,7 +39,6 @@
 
 <!-- AdminLTE for demo purposes -->
 <script src="{{ asset('assets/login/dist/js/demo.js') }}"></script>
-
 
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="{{ asset('assets/login/dist/js/pages/dashboard2.js') }}"></script>

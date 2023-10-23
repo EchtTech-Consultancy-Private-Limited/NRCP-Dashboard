@@ -25,9 +25,9 @@
                            <select class="form-select state click-function"
                               aria-label="Default select example" id="state"
                               name="state_name" onChange="handleFilterValue();handleDistrict()">
-                              <option value="" disabled selected> Select Your State </option>
+                              <option value="" disabled selected state-name=""> Select Your State </option>
                               @foreach (state_list() as $state)
-                              <option value="{{ $state->state_name }}" state-id="{{$state->id}}">
+                              <option value="{{ $state->state_name }}" state-name="{{ucfirst($state->state_name)}}" state-id="{{$state->id}}">
                                  {{ ucfirst($state->state_name) ?? '' }}
                               </option>
                               @endforeach
@@ -43,7 +43,7 @@
                            <select class="form-select click-function"
                               aria-label="Default select example" id="district"
                               name="district_name" onChange="handleFilterValue()">
-                              <option value="">Enter your District </option>
+                              <option value="" dist-name="">Enter your District </option>
                            </select>
                            <small id="district-error" class="form-text text-muted">
                            </small>
@@ -144,8 +144,8 @@
                         <div class="form-group">
                            <label for="testPerformed">Test Performed<span
                               class="star">*</span></label>
-                           <select class="form-select" aria-label="Default select">
-                              <option value="">--All--</option>
+                           <select class="form-select"  id="mySelect22" aria-label="Default select">
+                              <option value="" selected>--All--</option>
                               <option name="test-performed" value="direct_fat_post">Direct FAT (Postmortem)</option>
                               <option name="test-performed" value="direct_fat_skin">Direct FAT (Skin Biopsy- Antemortem)</option>
                               <option name="test-performed" value="virus_isolation">Virus Isolation by Cell Culture</option>
@@ -174,6 +174,7 @@
                         <input type="hidden" value="2" id="filter_form_type">
                         <input type="hidden" value="" id="filter_diseases">
                         <input type="hidden" value={{ session('type')??0 }} id="session_value">
+                        <input type="hidden" value="" id="is_graph_data_available">
                         <!-- </form> -->
                         <div class="button apply-filter">
                         <label for=""><span class="star"></span></label>
@@ -185,10 +186,7 @@
 
 
                   </div>
-
-
-
-                  <h1 id="map-text" class="map-text">Human Rabies (Presumptive Cases) in India</h1>
+                  <h1 id="map-text" class="map-text mt-2">Human Rabies (Presumptive Cases) in India</h1>
                   <!-- /.row -->
                   <div class="card-body">
                      <div class="row bg-white">
