@@ -144,8 +144,8 @@
                         <div class="form-group">
                            <label for="testPerformed">Test Performed<span
                               class="star">*</span></label>
-                           <select class="form-select"  id="mySelect22" aria-label="Default select">
-                              <option value="" selected>--All--</option>
+                           <select  class="form-control" id="maySelect2455" aria-label="Default select">
+                              <!-- <option value="" selected>--All--</option> -->
                               <option name="test-performed" value="direct_fat_post">Direct FAT (Postmortem)</option>
                               <option name="test-performed" value="direct_fat_skin">Direct FAT (Skin Biopsy- Antemortem)</option>
                               <option name="test-performed" value="virus_isolation">Virus Isolation by Cell Culture</option>
@@ -157,7 +157,6 @@
                               class="form-text text-muted"> </small>
                         </div>
                      </div>
-
 
                      <div class="col-lg-3 col-md-3 col-6 search-reset">
                         <div class="button apply-filter">

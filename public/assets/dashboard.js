@@ -923,7 +923,10 @@ const barChart  = (result)=>{
     });
 }
 
+$("#mySelect2").select2({
+    tags: true,
+});
 
-$('#mySelect2').select2({
-    tags: true
-  });
+// $('#mySelect2').select2({
+//     tags: true
+//   });
