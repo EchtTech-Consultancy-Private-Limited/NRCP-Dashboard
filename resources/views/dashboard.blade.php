@@ -138,11 +138,32 @@
                               class="form-text text-muted"> </small>
                         </div>
                      </div>
-                     <div class="col-lg-3 col-md-3 col-6">
+
+
+                     <div class="col-lg-3 col-md-3 col-6" id="test_performed">
+                        <div class="form-group">
+                           <label for="testPerformed">Test Performed<span
+                              class="star">*</span></label>
+                           <select class="form-select" aria-label="Default select">
+                              <option value="">--All--</option>
+                              <option name="test-performed" value="direct_fat_post">Direct FAT (Postmortem)</option>
+                              <option name="test-performed" value="direct_fat_skin">Direct FAT (Skin Biopsy- Antemortem)</option>
+                              <option name="test-performed" value="virus_isolation">Virus Isolation by Cell Culture</option>
+                              <option name="test-performed" value="ag_capture">Ag Capture ELISA (Post Mortem)</option>
+                              <option name="test-performed" value="rabies_rt">Rabies RT-PCR</option>
+                              <option name="test-performed" value="rffit">RFFIT- rabies virus neutralising antibody (RVNA) titres</option>
+                           </select>
+                           <small id="testPerformed-error"
+                              class="form-text text-muted"> </small>
+                        </div>
+                     </div>
+
+
+                     <div class="col-lg-3 col-md-3 col-6 search-reset">
                         <div class="button apply-filter">
                            <label for=""><span
                               class="star"></span></label>
-                           <button id="apply_filter" class="btn search-patient-btn bg-primary text-light apply-filter">Search</button>
+                           <button id="apply_filter" class="btn  bg-primary text-light apply-filter">Search</button>
 
                         </div>
 
@@ -154,14 +175,15 @@
                         <input type="hidden" value="" id="filter_diseases">
                         <input type="hidden" value={{ session('type')??0 }} id="session_value">
                         <!-- </form> -->
-                     </div>
-                     <div class="col-lg-3 col-md-3 col-6">
                         <div class="button apply-filter">
-                        <label for=""><span
-                              class="star"></span></label>
-                              <button id="reset_button" class="btn search-patient-btn bg-warning text-light apply-filter">Reset</button>
+                        <label for=""><span class="star"></span></label>
+                              <button id="reset_button" class="btn btn-warning text-light apply-filter text-white">Reset</button>
                         </div>
                      </div>
+
+                     
+
+
                   </div>
 
 

@@ -29,3 +29,9 @@
     height: 100%;
 
 }
+
+.search-reset{
+    display: flex;
+    align-items: center;
+    margin-top: 30px;
+}

@@ -61,6 +61,7 @@ class MainController extends Controller
     /*dashboard form filter*/
     public function getFilterData(Request $request)
     {
+
         $type = session('type');
         $array = null;
         $state = null;
@@ -264,13 +265,12 @@ class MainController extends Controller
             $female_percentage_death = ($dogbite_cases_female_death / $total_death_google_graph) * 100;
 
             /*pyramid code*/
-            $ageGroups = $age_groups_data->selectRaw('age, sum(male_case) as male_case, sum(female_case) as female_case')
+            $ageGroups = $age_groups_data->selectRaw('age, sum(male_case) as male_case, sum(female_case) as female_case,sum(male_death) as male_death, sum(female_death) as female_death ')
                     ->groupBy('age')
                     ->get();
-
             foreach ($ageGroups as $ageGroup) {
-
                 $total_cases = $ageGroup->male_case + $ageGroup->female_case;
+                $total_death = $ageGroup->male_death + $ageGroup->female_death;
                 if ($total_cases > 0) {
                     $male_percentage = ($ageGroup->male_case / $total_cases) * 100;
                     $female_percentage = ($ageGroup->female_case / $total_cases) * 100;
@@ -279,10 +279,21 @@ class MainController extends Controller
                     $female_percentage = 0;
                 }
 
+                if ($total_death > 0) {
+                    $male_death_percentage = ($ageGroup->male_death / $total_death) * 100;
+                    $female_death_percentage = ($ageGroup->female_death / $total_death) * 100;
+                } else {
+                    $male_death_percentage = 0;
+                    $female_death_percentage = 0;
+                }
+
                 $responseData[] = [
                     'pyramid_age_group' => $ageGroup->age,
                     'pyramid_male_percentage' => round($male_percentage, 2),
-                    'pyramid_female_percentage' => round($female_percentage, 2)
+                    'pyramid_female_percentage' => round($female_percentage, 2),
+                    'pyramid_male_death_percentage' => round($male_percentage, 2),
+                    'pyramid_female_death_percentage' => round($female_percentage, 2)
+
                 ];
             }
             /*end here*/
@@ -445,8 +456,6 @@ class MainController extends Controller
 
     public function pFormHorizontalBarChart()
     {
-
-        
             $ageGroups = DB::table('age_group_pform_dogbite_cases')->selectRaw('age, sum(male_case) as male_case, sum(female_case) as female_case')
                     ->groupBy('age')
                     ->get();
@@ -491,8 +500,8 @@ class MainController extends Controller
 
                 $responseData[] = [
                     'pyramid_age_group' => $ageGroup->age,
-                    'pyramid_male_percentage' => round($male_percentage, 2),
-                    'pyramid_female_percentage' => round($female_percentage, 2)
+                    'pyramid_male_death_percentage' => round($male_percentage, 2),
+                    'pyramid_female_death_percentage' => round($female_percentage, 2)
                 ];
             }
         return response()->json($responseData);
