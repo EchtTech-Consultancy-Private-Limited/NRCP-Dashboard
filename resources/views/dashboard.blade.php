@@ -144,7 +144,7 @@
                         <div class="form-group">
                            <label for="testPerformed">Test Performed<span
                               class="star">*</span></label>
-                           <select  class="form-control" id="maySelect2455" aria-label="Default select">
+                           <select  class="form-control" id="mySelect2" multiple="multiple" aria-label="Default select">
                               <!-- <option value="" selected>--All--</option> -->
                               <option name="test-performed" value="direct_fat_post">Direct FAT (Postmortem)</option>
                               <option name="test-performed" value="direct_fat_skin">Direct FAT (Skin Biopsy- Antemortem)</option>
