@@ -142,6 +142,10 @@ class MainController extends Controller
             if (!empty($request->setstate)) {
                 $state = DB::table('states')->where('state_name', '=', $filter_state)->get()->toArray();
                 $laboratory_case_query->where('state_id', $state[0]->id);
+                $laboratory_total = $laboratory_case_query->where('state_name', '=', $filter_state)->sum('persons_tested');
+                $laboratory_samples = $laboratory_case_query->where('state_name', '=', $filter_state)->sum('samples_tested');
+                $laboratory_Positive = $laboratory_case_query->where('state_name', '=', $filter_state)->sum('Positive_tested');
+
             } else {
                 $state = DB::table('states')->get();
             }
@@ -161,6 +165,9 @@ class MainController extends Controller
 
             if (!empty($request->district)) {
                 $laboratory_case_query->where('district_id', '=', $filter_district);
+                $laboratory_total = $laboratory_case_query->where('state_name', '=', $filter_state)->sum('persons_tested');
+                $laboratory_samples = $laboratory_case_query->where('state_name', '=', $filter_state)->sum('samples_tested');
+                $laboratory_Positive = $laboratory_case_query->where('state_name', '=', $filter_state)->sum('Positive_tested');
             }
             $case_type = "";
             $case_type_col = 1;
@@ -182,7 +189,7 @@ class MainController extends Controller
                     $array[$value->state_name] = $human_rabies;
                 }
             }
-            return response()->json(['array' => $array, 'total_persons' => $total_persons, 'total_samples' => $total_samples, 'total_positive' => $total_positive, 'human_rabies_deaths' => $human_rabies_deaths, 'human_rabies_case' => $human_rabies_case, 'case_type_col' => $case_type_col], 200);
+            return response()->json(['laboratory_total'=>$laboratory_total,'laboratory_samples'=>$laboratory_samples,'laboratory_Positive'=>$laboratory_Positive,'array' => $array, 'total_persons' => $total_persons, 'total_samples' => $total_samples, 'total_positive' => $total_positive, 'human_rabies_deaths' => $human_rabies_deaths, 'human_rabies_case' => $human_rabies_case, 'case_type_col' => $case_type_col], 200);
 
             //p form
         } else {
