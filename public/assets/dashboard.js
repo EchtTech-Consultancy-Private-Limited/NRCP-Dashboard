@@ -220,9 +220,9 @@ const apply_filter = ()=>{
 
             if(form_type == '1'){
 
-                $('#box3').html(result.total_persons);
-                $('#box4').html(result.total_samples);
-                $('#box5').html(result.total_positive);
+                $('#box3').html(result.laboratory_total);
+                $('#box4').html(result.laboratory_samples);
+                $('#box5').html(result.laboratory_Positive);
             }else{
                 $('.lform').hide()
                 $('.defaultform').show()
