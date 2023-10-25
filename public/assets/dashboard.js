@@ -1,5 +1,5 @@
-const BASE_URL =window.location.origin;
-;
+// const BASE_URL =window.location.origin;
+const BASE_URL =window.location.origin+"/public";
 
 /*handle Form Type*/
 const handleFormType = ()=>{
@@ -210,7 +210,7 @@ const apply_filter = ()=>{
             barChart(result[0]);
             pyramidChart(result[0]);
             }
-            
+
             if (form_type == '1') {
                 $('.defaultform').hide()
                 $('.lform').show()
@@ -438,7 +438,7 @@ $(document).ready(function() {
     $("#mySelect2").select2({
         tags: true,
     });
-    
+
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -703,7 +703,7 @@ const googlePieChart = (result)=>{
     }
     let is_graph_data_available = $("#is_graph_data_available").val();
     is_graph_data_available= is_graph_data_available!==""?is_graph_data_available:"";
-    
+
 /*google chart start*/
         google.charts.load('current', {'packages':['corechart']});
         google.charts.setOnLoadCallback(drawCharts);
@@ -859,10 +859,10 @@ const barChart  = (result)=>{
     }
     let is_graph_data_available = $("#is_graph_data_available").val();
     is_graph_data_available= is_graph_data_available!==""?is_graph_data_available:"";
-    
+
     var options_val = {
         text: `Death by age group in India ${filter_state!==undefined?filter_state+' >':''} ${filter_district!==undefined?filter_district+' >':''} ${filter_from_year!==""?filter_from_year+' >':''} ${filter_to_year!==""?filter_to_year+' >':''} ${form_type!==""?form_type+' >':''} ${filter_diseasesSyndromes!==""?filter_diseasesSyndromes?.split('_')?.join(" "):''} ${l_dropdown!==""?"> "+l_dropdown:''}`,
-        
+
     };
     var categories = result.map(item => item.pyramid_age_group);
 
