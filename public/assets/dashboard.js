@@ -438,7 +438,6 @@ $(document).ready(function() {
     $("#mySelect2").select2({
         tags: true,
     });
-    
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
