@@ -2,10 +2,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>NRCP | Dashboard</title>
 
-<script src="{{ asset('jquery.min.js') }}"></script>
+<script src="{{ asset('jquery.js') }}"></script>
 <!-- Google Font: Source Sans Pro -->
 
 <link rel="stylesheet" href="{{ asset('assets/css/dashboard.css') }}">
+<link href="{{asset('assets/css/select2.min.css')}}" rel="stylesheet" />
 
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
 <!-- Font Awesome Icons -->

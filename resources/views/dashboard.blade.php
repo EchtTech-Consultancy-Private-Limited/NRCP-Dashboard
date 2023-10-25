@@ -25,10 +25,10 @@
                            <select class="form-select state click-function"
                               aria-label="Default select example" id="state"
                               name="state_name" onChange="handleFilterValue();handleDistrict()">
-                              <option value="" disabled selected> Select Your State </option>
+                              <option value="" disabled selected state-name=""> Select Your State </option>
                               @foreach (state_list() as $state)
-                              <option value="{{ $state->state_name }}" state-id="{{$state->id}}">
-                                 {{ ucfirst($state->state_name) ?? '' }} 
+                              <option value="{{ $state->state_name }}" state-name="{{ucfirst($state->state_name)}}" state-id="{{$state->id}}">
+                                 {{ ucfirst($state->state_name) ?? '' }}
                               </option>
                               @endforeach
                            </select>
@@ -43,7 +43,7 @@
                            <select class="form-select click-function"
                               aria-label="Default select example" id="district"
                               name="district_name" onChange="handleFilterValue()">
-                              <option value="">Enter your District </option>
+                              <option value="" dist-name="">Enter your District </option>
                            </select>
                            <small id="district-error" class="form-text text-muted">
                            </small>
@@ -71,7 +71,7 @@
                            </small>
                         </div>
                      </div>
-                     {{-- 
+                     {{--
                      <div class="col-lg-3 col-md-3 col-6">
                         <div class="form-group">
                            <label for="toYear">To Year<span
@@ -138,48 +138,63 @@
                               class="form-text text-muted"> </small>
                         </div>
                      </div>
-                     <div class="col-lg-3 col-md-3 col-6">
+
+
+                     <div class="col-lg-3 col-md-3 col-6" id="test_performed">
+                        <div class="form-group">
+                           <label for="testPerformed">Test Performed<span
+                              class="star">*</span></label>
+                           <select  class="form-control" id="mySelect2" multiple="multiple" aria-label="Default select">
+                              <!-- <option value="" selected>--All--</option> -->
+                              <option name="test-performed" value="direct_fat_post">Direct FAT (Postmortem)</option>
+                              <option name="test-performed" value="direct_fat_skin">Direct FAT (Skin Biopsy- Antemortem)</option>
+                              <option name="test-performed" value="virus_isolation">Virus Isolation by Cell Culture</option>
+                              <option name="test-performed" value="ag_capture">Ag Capture ELISA (Post Mortem)</option>
+                              <option name="test-performed" value="rabies_rt">Rabies RT-PCR</option>
+                              <option name="test-performed" value="rffit">RFFIT- rabies virus neutralising antibody (RVNA) titres</option>
+                           </select>
+                           <small id="testPerformed-error"
+                              class="form-text text-muted"> </small>
+                        </div>
+                     </div>
+
+                     <div class="col-lg-3 col-md-3 col-6 search-reset">
                         <div class="button apply-filter">
                            <label for=""><span
                               class="star"></span></label>
-                           <button id="apply_filter" class="btn search-patient-btn bg-primary text-light apply-filter">Search</button>
-                           
+                           <button id="apply_filter" class="btn  bg-primary text-light apply-filter">Search</button>
+
                         </div>
-                        
+
                         <input type="hidden" value="" id="filter_state">
                         <input type="hidden" value="" id="filter_district">
                         <input type="hidden" value="2022" id="filter_from_year">
                         <input type="hidden" value="" id="filter_to_year">
                         <input type="hidden" value="2" id="filter_form_type">
                         <input type="hidden" value="" id="filter_diseases">
-                        <input type="hidden" value={{ session('type')??0 }} id="session_value">
+                        <input type="hidden" value="0" id="session_value">
+                        <input type="hidden" value="" id="is_graph_data_available">
                         <!-- </form> -->
-                     </div>
-                     <div class="col-lg-3 col-md-3 col-6">
                         <div class="button apply-filter">
-                        <label for=""><span
-                              class="star"></span></label>
-                              <button id="reset_button" class="btn search-patient-btn bg-warning text-light apply-filter">Reset</button>
+                        <label for=""><span class="star"></span></label>
+                              <button id="reset_button" class="btn btn-warning text-light apply-filter text-white">Reset</button>
                         </div>
                      </div>
-                  </div>
 
-                  
-                  
-                  <h1 id="map-text" class="map-text">Human Rabies (Presumptive Cases) in India</h1>
+                     
+
+
+                  </div>
+                  <h1 id="map-text" class="map-text mt-2">Human Rabies (Presumptive Cases) in India</h1>
                   <!-- /.row -->
                   <div class="card-body">
                      <div class="row bg-white">
                         <div class="col-md-5">
                            <select class="form-control" name="type" id="type">
-                           <option value=""
-                           {{ session('type') == '' ? 'selected' : '' }}>Cases
-                           </option>
-                           <option value="1"
-                           {{ session('type') == '1' ? 'selected' : '' }}>Deaths
-                           </option>
+                           <option value="0">Cases</option>
+                           <option value="1">Deaths</option>
                            </select>
-                           <select class="form-control" id="l-dropdown" onChange="handleFilterValue()">
+                           <select class="form-control" id="l-dropdown" onChange="handleFilterValue(); getLFormData();">
                               <option value="">Select test type</option>
                               <option value="person_tested">Person Tested</option>
                               <option value="sample_tested">Sample Tested</option>
@@ -239,24 +254,24 @@
                   </div>
 
 
-                  
+
                   <div class="row lform">
                         <div class="col-4 d-flex justify-content-center">
                             <div class="box"><span id="box3">
                                 </span></br><span id="text3">
-                                    <strong>Laboratory Cases</strong></br> Persons Tested   
+                                    <strong>Laboratory Cases</strong></br> Persons Tested
                               </span></div>
                         </div>
                         <div class="col-4 d-flex justify-content-center">
                             <div class="box"><span id="box4">
                                 </span></br><span id="text4">
-                                <strong>Laboratory Cases</strong></br> Samples Tested   
+                                <strong>Laboratory Cases</strong></br> Samples Tested
                               </span></div>
                         </div>
                         <div class="col-4 d-flex justify-content-center">
                             <div class="box"><span id="box5">
                                 </span></br><span id="text5">
-                                <strong>Laboratory Cases</strong></br> Positive    
+                                <strong>Laboratory Cases</strong></br> Positive
                               </span></div>
                         </div>
                     </div>
@@ -299,7 +314,7 @@
          </div>
       </div>
 
-         
+
                </div>
             </div>
          </div>

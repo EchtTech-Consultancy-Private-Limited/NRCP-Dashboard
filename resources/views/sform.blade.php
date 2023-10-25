@@ -1,78 +1,5 @@
-@include('includes.header')
-
-<link rel="stylesheet" href="{{ asset('assets/pform_css/style.css') }}">
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"
-    integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw=="
-    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
-<body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
-
-
-    <div class="wrapper">
-
-        <!-- Preloader -->
-        <div class="preloader flex-column justify-content-center align-items-center">
-            <img class="animation__wobble" src="{{ asset('assets/login/dist/img/AdminLTELogo.png') }}" alt="logo"
-                height="60" width="60">
-        </div>
-
-        <!-- Navbar -->
-        @include('includes.navigation')
-        <!-- /.navbar -->
-
-        <!-- Main Sidebar Container -->
-        <aside class="main-sidebar sidebar-dark-primary elevation-4">
-            <!-- Brand Logo -->
-            <a href="index3.html" class="brand-link">
-                <img src="{{ asset('assets/login/dist/img/AdminLTELogo.png') }}" alt="Logo"
-                    class="brand-image img-circle elevation-3" style="opacity: .8">
-                <span class="brand-text font-weight-light">NRCP Dashboard</span>
-            </a>
-
-            <!-- Sidebar -->
-            <div class="sidebar">
-
-                <!-- SidebarSearch Form -->
-                <div class="form-inline">
-                    <div class="input-group" data-widget="sidebar-search">
-                        <input class="form-control form-control-sidebar" type="search" placeholder="Search"
-                            aria-label="Search">
-                        <div class="input-group-append">
-                            <button class="btn btn-sidebar">
-                                <i class="fas fa-search fa-fw"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Sidebar Menu -->
-                @include('includes.sidebar')
-                <!-- /.sidebar-menu -->
-            </div>
-            <!-- /.sidebar -->
-        </aside>
-
-        <!-- Content Wrapper. Contains page content -->
-        <div class="content-wrapper">
-            <!-- Content Header (Page header) -->
-            <div class="content-header">
-                <div class="container-fluid">
-                    <div class="row mb-2">
-                        <div class="col-sm-6">
-
-                        </div><!-- /.col -->
-                        <div class="col-sm-6">
-                            <ol class="breadcrumb float-sm-right">
-                                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                <li class="breadcrumb-item active">Dashboard</li>
-                            </ol>
-                        </div><!-- /.col -->
-                    </div><!-- /.row -->
-                </div><!-- /.container-fluid -->
-            </div>
-            <!-- /.content-header -->
-
+@extends('layouts.main')
+@section("content")
             <!-- Main content -->
             <section class="content sform">
                 <div class="container-fluid">
@@ -81,8 +8,6 @@
                             <form
                                 class="form-compact ng-dirty ng-valid-parse ng-valid ng-valid-required ng-valid-pattern ng-valid-maxlength"
                                 name="aggform" autocomplete="off">
-
-
                                 <div class="row m-0">
                                     <div class="col-xs-4">
                                         <div class="form-group "
@@ -117,12 +42,9 @@
                                             </div>
                                         </div>
                                     </div>
-
-
                                     <div class="form-group col-xs-2  "
                                         ng-show="facilityinfo.health_facility_urban_rural === 2">
                                         <label for="village" class="labelchange">Ward<span>*</span></label>
-
                                         <select
                                             class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-required"
                                             id="ward" ng-required="
@@ -136,10 +58,7 @@
                                                 Please
                                                 Select Ward</small>
                                         </div>
-
                                     </div>
-
-
                                     <div class="form-group col-xs-8" ng-show="villageSubcenter || wardSubcenter">
                                         <label class="labelchange">
                                             <div class="tooltipid tooltipstered " data-placement="right">
@@ -154,12 +73,7 @@
                                                 helpdesk.</div>
                                         </div>
                                     </div> -->
-
                                 </div>
-
-
-
-
                                 <div class="table-responsive">
                                     <table class="table table-condensed table-bordered" id="tableId">
                                         <tbody>
@@ -172,7 +86,6 @@
                                                             ng-click="scrollTo('deathPatientDetailsForm')"
                                                             class="printhide">[click here
                                                             to report deaths] </a></b></td>
-
                                             </tr>
                                             <tr>
                                                 <td colspan="3"><b>Male</b>
@@ -183,7 +96,6 @@
                                                 <td rowspan="2"><b>Grand<br>
                                                         Total
                                                     </b></td>
-
                                             </tr>
                                             <tr>
                                                 <td><b> &lt;= 5 Yr</b></td>
@@ -197,811 +109,561 @@
                                                 <td><b>Total<br>Death
                                                     </b></td>
                                             </tr>
-
                                             <tr>
                                                 <td id="tt32">2.1.1
                                                     Only Fever &gt;= 7 days</td>
-
                                                 <td><input name="pformcountmale" type="text" class="form-control  ">
                                                 </td>
-
                                                 <td><input name="pformcountfemale" type="text" class="form-control  ">
                                                 </td>
-
                                                 <td><input name="pformdeathcountmale" type="text" class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
-
                                                 <td><input name="pformdeathcountfemale" type="text"
                                                         class="form-control  ">
                                                 </td>
-
                                                 <td><input name="pformdeathcountfemale" type="text"
                                                         class="form-control  ">
                                                 </td>
-
-
                                                 <td><input name="pformdeathcountfemale" type="text" class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
-
                                                 <td><input name="pformdeathcountfemale" type="text" class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
-
                                                 <td><input name="pformdeathcountfemale" type="text" class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
-
                                                 <td><input name="pformdeathcountfemale" type="text" class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
-
                                                 <td><input name="pformdeathcountfemale" type="text" class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
                                             </tr>
-
                                             <tr>
                                                 <td id="tt33">2.1.2
                                                     Only Fever &lt; 7 days</td>
-
                                                 <td><input name="pformcountmale" type="text" class="form-control  ">
                                                 </td>
-
                                                 <td><input name="pformcountfemale" type="text" class="form-control  ">
                                                 </td>
-
                                                 <td><input name="pformdeathcountmale" type="text" class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
-
                                                 <td><input name="pformdeathcountfemale" type="text"
                                                         class="form-control  ">
                                                 </td>
-
                                                 <td><input name="pformdeathcountfemale" type="text"
                                                         class="form-control  ">
                                                 </td>
-
-
                                                 <td><input name="pformdeathcountfemale" type="text" class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
-
                                                 <td><input name="pformdeathcountfemale" type="text" class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
-
                                                 <td><input name="pformdeathcountfemale" type="text" class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
-
                                                 <td><input name="pformdeathcountfemale" type="text" class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
-
                                                 <td><input name="pformdeathcountfemale" type="text" class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
                                             </tr>
-
-
                                             <tr>
                                                 <td id="tt20">2.1.3
                                                     Fever with Rash</td>
-
                                                 <td><input name="pformcountmale" type="text" class="form-control  ">
                                                 </td>
-
                                                 <td><input name="pformcountfemale" type="text" class="form-control  ">
                                                 </td>
-
                                                 <td><input name="pformdeathcountmale" type="text" class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
-
                                                 <td><input name="pformdeathcountfemale" type="text"
                                                         class="form-control  ">
                                                 </td>
-
                                                 <td><input name="pformdeathcountfemale" type="text"
                                                         class="form-control  ">
                                                 </td>
-
-
                                                 <td><input name="pformdeathcountfemale" type="text" class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
-
                                                 <td><input name="pformdeathcountfemale" type="text" class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
-
                                                 <td><input name="pformdeathcountfemale" type="text" class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
-
                                                 <td><input name="pformdeathcountfemale" type="text" class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
-
                                                 <td><input name="pformdeathcountfemale" type="text" class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
                                             </tr>
-
                                             <tr>
                                                 <td id="tt18">2.1.4
                                                     Fever with Bleeding</td>
-
                                                 <td><input name="pformcountmale" type="text" class="form-control  ">
                                                 </td>
-
                                                 <td><input name="pformcountfemale" type="text" class="form-control  ">
                                                 </td>
-
                                                 <td><input name="pformdeathcountmale" type="text" class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
-
                                                 <td><input name="pformdeathcountfemale" type="text"
                                                         class="form-control  ">
                                                 </td>
-
                                                 <td><input name="pformdeathcountfemale" type="text"
                                                         class="form-control  ">
                                                 </td>
-
-
                                                 <td><input name="pformdeathcountfemale" type="text" class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
-
                                                 <td><input name="pformdeathcountfemale" type="text" class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
-
                                                 <td><input name="pformdeathcountfemale" type="text" class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
-
                                                 <td><input name="pformdeathcountfemale" type="text" class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
-
                                                 <td><input name="pformdeathcountfemale" type="text" class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
                                             </tr>
-
                                             <tr>
                                                 <td id="tt19">2.1.5
                                                     Fever with Altered sensorium</td>
-
                                                 <td><input name="pformcountmale" type="text" class="form-control  ">
                                                 </td>
-
                                                 <td><input name="pformcountfemale" type="text" class="form-control  ">
                                                 </td>
-
                                                 <td><input name="pformdeathcountmale" type="text" class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
-
                                                 <td><input name="pformdeathcountfemale" type="text"
                                                         class="form-control  ">
                                                 </td>
-
                                                 <td><input name="pformdeathcountfemale" type="text"
                                                         class="form-control  ">
                                                 </td>
-
-
                                                 <td><input name="pformdeathcountfemale" type="text" class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
-
                                                 <td><input name="pformdeathcountfemale" type="text" class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
-
                                                 <td><input name="pformdeathcountfemale" type="text" class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
-
                                                 <td><input name="pformdeathcountfemale" type="text" class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
-
                                                 <td><input name="pformdeathcountfemale" type="text" class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
                                             </tr>
                                             <tr>
                                                 <td id="tt50">2.2.1
                                                     Cough &lt;= 2 weeks with fever</td>
-
                                                 <td><input name="pformcountmale" type="text" class="form-control  ">
                                                 </td>
-
                                                 <td><input name="pformcountfemale" type="text" class="form-control  ">
                                                 </td>
-
                                                 <td><input name="pformdeathcountmale" type="text" class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
-
                                                 <td><input name="pformdeathcountfemale" type="text"
                                                         class="form-control  ">
                                                 </td>
-
                                                 <td><input name="pformdeathcountfemale" type="text"
                                                         class="form-control  ">
                                                 </td>
-
-
                                                 <td><input name="pformdeathcountfemale" type="text" class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
-
                                                 <td><input name="pformdeathcountfemale" type="text" class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
-
                                                 <td><input name="pformdeathcountfemale" type="text" class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
-
                                                 <td><input name="pformdeathcountfemale" type="text" class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
-
                                                 <td><input name="pformdeathcountfemale" type="text" class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
                                             </tr>
-
                                             <tr>
                                                 <td id="tt51">2.2.2
                                                     Cough &lt;= 2 weeks without fever</td>
-
                                                 <td><input name="pformcountmale" type="text" class="form-control  ">
                                                 </td>
-
                                                 <td><input name="pformcountfemale" type="text" class="form-control  ">
                                                 </td>
-
                                                 <td><input name="pformdeathcountmale" type="text" class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
-
                                                 <td><input name="pformdeathcountfemale" type="text"
                                                         class="form-control  ">
                                                 </td>
-
                                                 <td><input name="pformdeathcountfemale" type="text"
                                                         class="form-control  ">
                                                 </td>
-
-
                                                 <td><input name="pformdeathcountfemale" type="text" class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
-
                                                 <td><input name="pformdeathcountfemale" type="text" class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
-
                                                 <td><input name="pformdeathcountfemale" type="text" class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
-
                                                 <td><input name="pformdeathcountfemale" type="text" class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
-
                                                 <td><input name="pformdeathcountfemale" type="text" class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
                                             </tr>
-
                                             <tr>
                                                 <td id="tt14">2.2.3
                                                     Cough &gt; 2 weeks with fever</td>
-
                                                 <td><input name="pformcountmale" type="text" class="form-control  ">
                                                 </td>
-
                                                 <td><input name="pformcountfemale" type="text" class="form-control  ">
                                                 </td>
-
                                                 <td><input name="pformdeathcountmale" type="text" class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
-
                                                 <td><input name="pformdeathcountfemale" type="text"
                                                         class="form-control  ">
                                                 </td>
-
                                                 <td><input name="pformdeathcountfemale" type="text"
                                                         class="form-control  ">
                                                 </td>
-
-
                                                 <td><input name="pformdeathcountfemale" type="text" class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
-
                                                 <td><input name="pformdeathcountfemale" type="text" class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
-
                                                 <td><input name="pformdeathcountfemale" type="text" class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
-
                                                 <td><input name="pformdeathcountfemale" type="text" class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
-
                                                 <td><input name="pformdeathcountfemale" type="text" class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
                                             </tr>
                                             <tr>
                                                 <td id="tt13">2.2.4
                                                     Cough &gt; 2 weeks without fever</td>
-
                                                 <td><input name="pformcountmale" type="text" class="form-control  ">
                                                 </td>
-
                                                 <td><input name="pformcountfemale" type="text" class="form-control  ">
                                                 </td>
-
                                                 <td><input name="pformdeathcountmale" type="text" class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
-
                                                 <td><input name="pformdeathcountfemale" type="text"
                                                         class="form-control  ">
                                                 </td>
-
                                                 <td><input name="pformdeathcountfemale" type="text"
                                                         class="form-control  ">
                                                 </td>
-
-
                                                 <td><input name="pformdeathcountfemale" type="text" class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
-
                                                 <td><input name="pformdeathcountfemale" type="text" class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
-
                                                 <td><input name="pformdeathcountfemale" type="text" class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
-
                                                 <td><input name="pformdeathcountfemale" type="text" class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
-
                                                 <td><input name="pformdeathcountfemale" type="text" class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
                                             </tr>
-
                                             <tr>
                                                 <td id="tt46">2.3.1
                                                     Loose watery stools with blood &lt; 2 weeks</td>
-
                                                 <td><input name="pformcountmale" type="text" class="form-control  ">
                                                 </td>
-
                                                 <td><input name="pformcountfemale" type="text" class="form-control  ">
                                                 </td>
-
                                                 <td><input name="pformdeathcountmale" type="text" class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
-
                                                 <td><input name="pformdeathcountfemale" type="text"
                                                         class="form-control  ">
                                                 </td>
-
                                                 <td><input name="pformdeathcountfemale" type="text"
                                                         class="form-control  ">
                                                 </td>
-
-
                                                 <td><input name="pformdeathcountfemale" type="text" class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
-
                                                 <td><input name="pformdeathcountfemale" type="text" class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
-
                                                 <td><input name="pformdeathcountfemale" type="text" class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
-
                                                 <td><input name="pformdeathcountfemale" type="text" class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
-
                                                 <td><input name="pformdeathcountfemale" type="text" class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
                                             </tr>
-
                                             <tr>
                                                 <td id="tt58">2.3.2
                                                     Loose watery stools without blood &lt; 2 weeks</td>
-
                                                 <td><input name="pformcountmale" type="text" class="form-control  ">
                                                 </td>
-
                                                 <td><input name="pformcountfemale" type="text" class="form-control  ">
                                                 </td>
-
                                                 <td><input name="pformdeathcountmale" type="text" class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
-
                                                 <td><input name="pformdeathcountfemale" type="text"
                                                         class="form-control  ">
                                                 </td>
-
                                                 <td><input name="pformdeathcountfemale" type="text"
                                                         class="form-control  ">
                                                 </td>
-
-
                                                 <td><input name="pformdeathcountfemale" type="text" class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
-
                                                 <td><input name="pformdeathcountfemale" type="text" class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
-
                                                 <td><input name="pformdeathcountfemale" type="text" class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
-
                                                 <td><input name="pformdeathcountfemale" type="text" class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
-
                                                 <td><input name="pformdeathcountfemale" type="text" class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
                                             </tr>
-
                                             <tr>
                                                 <td id="tt52">2.4.1
                                                     Jaundice of &lt; 4 weeks</td>
-
                                                 <td><input name="pformcountmale" type="text" class="form-control  ">
                                                 </td>
-
                                                 <td><input name="pformcountfemale" type="text" class="form-control  ">
                                                 </td>
-
                                                 <td><input name="pformdeathcountmale" type="text" class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
-
                                                 <td><input name="pformdeathcountfemale" type="text"
                                                         class="form-control  ">
                                                 </td>
-
                                                 <td><input name="pformdeathcountfemale" type="text"
                                                         class="form-control  ">
                                                 </td>
-
-
                                                 <td><input name="pformdeathcountfemale" type="text" class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
-
                                                 <td><input name="pformdeathcountfemale" type="text" class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
-
                                                 <td><input name="pformdeathcountfemale" type="text" class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
-
                                                 <td><input name="pformdeathcountfemale" type="text" class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
-
                                                 <td><input name="pformdeathcountfemale" type="text" class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
                                             </tr>
-
                                             <tr>
                                                 <td id="tt3">2.5.1
                                                     Acute Flaccid Paralysis</td>
-
                                                 <td><input name="pformcountmale" type="text" class="form-control  ">
                                                 </td>
-
                                                 <td><input name="pformcountfemale" type="text" class="form-control  ">
                                                 </td>
-
                                                 <td><input name="pformdeathcountmale" type="text" class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
-
                                                 <td><input name="pformdeathcountfemale" type="text"
                                                         class="form-control  ">
                                                 </td>
-
                                                 <td><input name="pformdeathcountfemale" type="text"
                                                         class="form-control  ">
                                                 </td>
-
-
                                                 <td><input name="pformdeathcountfemale" type="text" class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
-
                                                 <td><input name="pformdeathcountfemale" type="text" class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
-
                                                 <td><input name="pformdeathcountfemale" type="text" class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
-
                                                 <td><input name="pformdeathcountfemale" type="text" class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
-
                                                 <td><input name="pformdeathcountfemale" type="text" class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
                                             </tr>
-
                                             <tr>
                                                 <td id="tt53">2.6.1
                                                     Malaria Vivax RDT</td>
-
                                                 <td><input name="pformcountmale" type="text" class="form-control  ">
                                                 </td>
-
                                                 <td><input name="pformcountfemale" type="text" class="form-control  ">
                                                 </td>
-
                                                 <td><input name="pformdeathcountmale" type="text" class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
-
                                                 <td><input name="pformdeathcountfemale" type="text"
                                                         class="form-control  ">
                                                 </td>
-
                                                 <td><input name="pformdeathcountfemale" type="text"
                                                         class="form-control  ">
                                                 </td>
-
-
                                                 <td><input name="pformdeathcountfemale" type="text" class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
-
                                                 <td><input name="pformdeathcountfemale" type="text" class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
-
                                                 <td><input name="pformdeathcountfemale" type="text" class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
-
                                                 <td><input name="pformdeathcountfemale" type="text" class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
-
                                                 <td><input name="pformdeathcountfemale" type="text" class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
                                             </tr>
-
                                             <tr>
                                                 <td id="tt54">2.6.2
                                                     Malaria Falciparum RDT</td>
-
                                                 <td><input name="pformcountmale" type="text" class="form-control  ">
                                                 </td>
-
                                                 <td><input name="pformcountfemale" type="text" class="form-control  ">
                                                 </td>
-
                                                 <td><input name="pformdeathcountmale" type="text" class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
-
                                                 <td><input name="pformdeathcountfemale" type="text"
                                                         class="form-control  ">
                                                 </td>
-
                                                 <td><input name="pformdeathcountfemale" type="text"
                                                         class="form-control  ">
                                                 </td>
-
-
                                                 <td><input name="pformdeathcountfemale" type="text" class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
-
                                                 <td><input name="pformdeathcountfemale" type="text" class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
-
                                                 <td><input name="pformdeathcountfemale" type="text" class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
-
                                                 <td><input name="pformdeathcountfemale" type="text" class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
-
                                                 <td><input name="pformdeathcountfemale" type="text" class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
                                             </tr>
-
                                             <tr>
                                                 <td id="tt55">2.6.3
                                                     Malaria Mixed RDT</td>
-
                                                 <td><input name="pformcountmale" type="text" class="form-control  ">
                                                 </td>
-
                                                 <td><input name="pformcountfemale" type="text" class="form-control  ">
                                                 </td>
-
                                                 <td><input name="pformdeathcountmale" type="text" class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
-
                                                 <td><input name="pformdeathcountfemale" type="text"
                                                         class="form-control  ">
                                                 </td>
-
                                                 <td><input name="pformdeathcountfemale" type="text"
                                                         class="form-control  ">
                                                 </td>
-
-
                                                 <td><input name="pformdeathcountfemale" type="text" class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
-
                                                 <td><input name="pformdeathcountfemale" type="text" class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
-
                                                 <td><input name="pformdeathcountfemale" type="text" class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
-
                                                 <td><input name="pformdeathcountfemale" type="text" class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
-
                                                 <td><input name="pformdeathcountfemale" type="text" class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
                                             </tr>
                                             <tr>
                                                 <td id="tt48">2.7.1
                                                     Animal Bite - Snake Bite</td>
-
                                                 <td><input name="pformcountmale" type="text" class="form-control  ">
                                                 </td>
-
                                                 <td><input name="pformcountfemale" type="text" class="form-control  ">
                                                 </td>
-
                                                 <td><input name="pformdeathcountmale" type="text" class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
-
                                                 <td><input name="pformdeathcountfemale" type="text"
                                                         class="form-control  ">
                                                 </td>
-
                                                 <td><input name="pformdeathcountfemale" type="text"
                                                         class="form-control  ">
                                                 </td>
-
-
                                                 <td><input name="pformdeathcountfemale" type="text" class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
-
                                                 <td><input name="pformdeathcountfemale" type="text" class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
-
                                                 <td><input name="pformdeathcountfemale" type="text" class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
-
                                                 <td><input name="pformdeathcountfemale" type="text" class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
-
                                                 <td><input name="pformdeathcountfemale" type="text" class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
                                             </tr>
-
                                             <tr>
                                                 <td id="tt61">2.7.2
                                                     Animal Bite - Dog Bite</td>
-
                                                 <td><input name="pformcountmale" type="text" class="form-control  ">
                                                 </td>
-
                                                 <td><input name="pformcountfemale" type="text" class="form-control  ">
                                                 </td>
-
                                                 <td><input name="pformdeathcountmale" type="text" class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
-
                                                 <td><input name="pformdeathcountfemale" type="text"
                                                         class="form-control  ">
                                                 </td>
-
                                                 <td><input name="pformdeathcountfemale" type="text"
                                                         class="form-control  ">
                                                 </td>
-
-
                                                 <td><input name="pformdeathcountfemale" type="text" class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
-
                                                 <td><input name="pformdeathcountfemale" type="text" class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
-
                                                 <td><input name="pformdeathcountfemale" type="text" class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
-
                                                 <td><input name="pformdeathcountfemale" type="text" class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
-
                                                 <td><input name="pformdeathcountfemale" type="text" class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
                                             </tr>
                                             <tr>
                                                 <td id="tt5">2.7.4
                                                     Animal Bite - Others</td>
-
                                                 <td><input name="pformcountmale" type="text" class="form-control  ">
                                                 </td>
-
                                                 <td><input name="pformcountfemale" type="text" class="form-control  ">
                                                 </td>
-
                                                 <td><input name="pformdeathcountmale" type="text" class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
-
                                                 <td><input name="pformdeathcountfemale" type="text"
                                                         class="form-control  ">
                                                 </td>
-
                                                 <td><input name="pformdeathcountfemale" type="text"
                                                         class="form-control  ">
                                                 </td>
-
-
                                                 <td><input name="pformdeathcountfemale" type="text" class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
-
                                                 <td><input name="pformdeathcountfemale" type="text" class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
-
                                                 <td><input name="pformdeathcountfemale" type="text" class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
-
                                                 <td><input name="pformdeathcountfemale" type="text" class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
-
                                                 <td><input name="pformdeathcountfemale" type="text" class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
                                             </tr>
                                             <tr>
                                                 <td id="tt84">2.7.5
                                                     Leptospirosis RDT</td>
-
                                                 <td><input name="pformcountmale" type="text" class="form-control  ">
                                                 </td>
-
                                                 <td><input name="pformcountfemale" type="text" class="form-control  ">
                                                 </td>
-
                                                 <td><input name="pformdeathcountmale" type="text" class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
-
                                                 <td><input name="pformdeathcountfemale" type="text"
                                                         class="form-control  ">
                                                 </td>
-
                                                 <td><input name="pformdeathcountfemale" type="text"
                                                         class="form-control  ">
                                                 </td>
-
-
                                                 <td><input name="pformdeathcountfemale" type="text" class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
-
                                                 <td><input name="pformdeathcountfemale" type="text" class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
-
                                                 <td><input name="pformdeathcountfemale" type="text" class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
-
                                                 <td><input name="pformdeathcountfemale" type="text" class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
-
                                                 <td><input name="pformdeathcountfemale" type="text" class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
                                             </tr>
                                             <tr>
                                                 <td id="tt56">2.14.1
                                                     Others</td>
-
                                                 <td><input name="pformcountmale" type="text" class="form-control  ">
                                                 </td>
-
                                                 <td><input name="pformcountfemale" type="text" class="form-control  ">
                                                 </td>
-
                                                 <td><input name="pformdeathcountmale" type="text" class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
-
                                                 <td><input name="pformdeathcountfemale" type="text"
                                                         class="form-control  ">
                                                 </td>
-
                                                 <td><input name="pformdeathcountfemale" type="text"
                                                         class="form-control  ">
                                                 </td>
-
-
                                                 <td><input name="pformdeathcountfemale" type="text" class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
-
                                                 <td><input name="pformdeathcountfemale" type="text" class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
-
                                                 <td><input name="pformdeathcountfemale" type="text" class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
-
                                                 <td><input name="pformdeathcountfemale" type="text" class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
-
                                                 <td><input name="pformdeathcountfemale" type="text" class="form-control"
                                                         readonly="readonly" tabindex="-1"></td>
                                             </tr>
                                         </tbody>
                                     </table>
                                 </div>
-
                                 <div class="alert alert-success  " role="alert"> Data Saved Successfully</div>
                                 <button ng-disabled="aggform.$invalid" class="btn btn-primary printhide">
                                     <span class="tooltipid tooltipstered" data-placement="right">Save</span></button>
                             </form>
                         </div>
-
                         <div>
-
                             <!-- Aggregation Summary Display Table -->
                             <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
                                 <div class="panel panel-default">
@@ -1023,7 +685,6 @@
                                         <div class="panel-body">
                                             <form class="form-compact ng-pristine ng-invalid ng-invalid-required"
                                                 name="aggform" autocomplete="off">
-
                                                 <!--Village Drop Down -->
                                                 <div class="row m-0">
                                                     <div class="form-group col-xs-4"
@@ -1066,12 +727,10 @@
                                                                 Select Village</small>
                                                         </div>
                                                     </div>
-
                                                     <div class="form-group col-xs-2  "
                                                         ng-show="facilityinfo.health_facility_urban_rural === 2">
                                                         <label for="village"
                                                             class="labelchange">Ward<span>*</span></label>
-
                                                         <select
                                                             class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-required"
                                                             id="ward " ng-required="
@@ -1088,10 +747,7 @@
                                                                 ng-show="aggform.ward.$error.required"> Please
                                                                 Select Ward</small>
                                                         </div>
-
                                                     </div>
-
-
                                                     <div class="form-group col-xs-8   "
                                                         ng-show="villageSubcenter || wardSubcenter">
                                                         <label class="labelchange"><span class="tooltipid tooltipstered"
@@ -1101,13 +757,7 @@
                                                             class="ng-binding ">
                                                         </span>
                                                     </div>
-
-
                                                 </div>
-
-
-
-
                                                 <div class="table-responsive  ">
                                                     <table class="table table-condensed table-bordered" id="tableId">
                                                         <tbody>
@@ -1125,7 +775,6 @@
                                                                             class="printhide">[click here to report
                                                                             deaths]
                                                                         </a></b></td>
-
                                                             </tr>
                                                             <tr>
                                                                 <td colspan="3">
@@ -1137,7 +786,6 @@
                                                                 <td rowspan="2"><b>Grand<br>
                                                                         Total
                                                                     </b></td>
-
                                                             </tr>
                                                             <tr>
                                                                 <td><b> &lt;= 5 Yr</b></td>
@@ -1151,11 +799,9 @@
                                                                 <td><b>Total<br>Death
                                                                     </b></td>
                                                             </tr>
-
                                                         </tbody>
                                                     </table>
                                                 </div>
-
                                                 <div class="alert alert-success  " role="alert">Data Saved
                                                     Successfully</div>
                                                 <button ng-disabled="aggform.$invalid" class="btn btn-primary printhide"
@@ -1166,9 +812,7 @@
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
-
                         </div>
                         <!-- Death Patient Details Form  -->
                         <div id="deathPatientDetailsForm"></div>
@@ -1199,7 +843,6 @@
                                                     </div>
                                                 </div>
                                             </div>
-
                                             <form name="deathcaseform" novalidate=""
                                                 class="form-compact deathcaseform"
                                                 autocomplete="off">
@@ -1210,7 +853,6 @@
                                                                 Name:
                                                             </span>
                                                         </div>
-
                                                         <div class="form-group col-xs-2">
                                                             <label for="firstname" class="labelchange">2.2. First
                                                                 Name <span>*</span>
@@ -1252,10 +894,8 @@
                                                                     Please Enter Valid Last Name. </small>
                                                             </div>
                                                         </div>
-
                                                         <div class="form-group ">
                                                             <label class="radio-inline">
-
                                                                 <span class="tooltipid tooltipstered"
                                                                     data-placement="right">
                                                                     2.5. Date Of Birth</span><span span>
@@ -1264,7 +904,6 @@
                                                                 value="dob">
                                                             <div class="form-group m-0 d-inline-block pl-2">
                                                                 <label class="radio-inline">
-
                                                                     <span class="tooltipid tooltipstered"
                                                                         data-placement="right">
                                                                         2.6. Age</span> <span>*</span>
@@ -1273,7 +912,6 @@
                                                                     value="age">
                                                             </div>
                                                             <div class="form-group m-0">
-
                                                                 <div class="input-group " data-provide="datepicker">
                                                                     <input type="text" class="form-control  "
                                                                         name="dateofbirth" placeholder="dd/mm/yyyy"
@@ -1297,16 +935,10 @@
                                                                         date.
                                                                     </small>
                                                                 </div>
-
                                                             </div>
-
                                                         </div>
-
-
-
                                                         <!-- ngIf: agedob=='age' -->
                                                     </div>
-
                                                         <div class="col-md-12">
                                                             <label for="gander">Gander:</label>
                                                         </div>
@@ -1343,14 +975,8 @@
                                                                     Enter Sex. </small>
                                                             </div>
                                                         </div>
-
-
-
                                                         </div>
-                                                  
-                                               
                                         </div>
-
 <div class="row">
 <div class="form-group col-md-3">
                                             <label for="identityType" class="labelchange">
@@ -1429,7 +1055,6 @@
                                                     >
                                                     Please Select Id Type. </small>
                                             </div>
-
                                         </div>
                                         <div class="form-group col-md-3  "
                                             ng-show="patient.identityType.patientidtype === 'Others'">
@@ -1467,9 +1092,7 @@
                                             <small class="error  " ng-show="iderror">
                                                 Please Enter valid Identification Number. </small>
                                         </div>
-
 </div>
-                                        
                                         <!-- <div class="form-group col-xs-2">
 										<label for="sex" class="labelchange">Sex<span>*</span></label> <select class="form-control"
 											id="sex"  name="sex"  
@@ -1483,7 +1106,6 @@
 												Enter Sex. </small>
 										</div>
 									</div> -->
-
                                     </div>
                                     <div class="row">
                                         <div class="col-md-12">
@@ -1494,8 +1116,6 @@
                                         </div>
                                     </div>
                                     <div class="row m-0">
-
-
                                         <div class="form-group col-xs-2">
                                             <label for="state" class="labelchange">
                                                 <span class="tooltipid tooltipstered" data-placement="right">2.11.
@@ -1640,7 +1260,6 @@
                                                     Please Select District</small>
                                             </div>
                                         </div>
-
                                         <div class="form-group col-xs-2">
                                             <label for="subdistrict" class="labelchange" style="min-width: 107px">
                                                 <span class="tooltipid tooltipstered" data-placement="right">2.13. Sub
@@ -1683,9 +1302,7 @@
                                                     Please Select Sub-District</small>
                                             </div>
                                         </div>
-
                                         <!-- ng-change="patient.taluk.category=='U4'?getwards():getVillagebySubdistCode()" -->
-
                                         <!-- ng-show="patient.taluk.category=='S'   -->
                                         <div class="form-group col-xs-2"
                                             ng-show="facilityinfo.health_facility_urban_rural != 2">
@@ -1724,10 +1341,7 @@
                                                     Please Select Village</small>
                                             </div>
                                         </div>
-
-
                                         <!-- ng-options="v as v.wardname for v in wardSubcenterList  | orderBy:'wardname' -->
-
                                         <div class="form-group col-xs-2  "
                                             ng-show="facilityinfo.health_facility_urban_rural === 2">
                                             <label>Ward <span>*</span></label> <select id="wardlistid" name="wardlistid"
@@ -1743,14 +1357,10 @@
                                                     ng-show="deathcaseform.wardlistid.$error.required">
                                                     Ward is required.</small>
                                             </div>
-
                                             <!-- <div ng-show="wardreq">
 												<small  Please select ward. </small>
 											</div> -->
-
                                         </div>
-
-
                                         <div class="form-group col-xs-2  " ng-show="hasRole('HFUSCUSER')">
                                             <label>Area <span>*</span></label> <select id="areaid" name="areaname"
                                                 ng-options="m as m.areaname for m in areaList"
@@ -1767,14 +1377,10 @@
                                             <!-- <div ng-show="wardreq">
 												<small  Please select ward. </small>
 											</div> -->
-
                                         </div>
-
-
                                     </div>
                                     <div class="row">
                                         <label class="col-xs-2 control-label" style="max-width: 123px;"></label>
-
                                         <div class="form-group col-xs-2">
                                             <label for="houseno" class="labelchange">
                                                 <span class="tooltipid tooltipstered" data-placement="right">2.15. House
@@ -1782,8 +1388,6 @@
                                                 class="form-control ng-pristine ng-untouched ng-valid ng-empty"
                                                 id="houseno" type="text">
                                         </div>
-
-
                                         <div class="form-group col-xs-3">
                                             <label for="streetname" class="labelchange">
                                                 <span class="tooltipid tooltipstered" data-placement="right">2.16.
@@ -1820,7 +1424,6 @@
                                                     Death Case
                                                     Details:</span></b>
                                         </legend>
-
                                         <div class="row">
                                         <div class="form-group col-xs-4">
                                             <label for="deathcause" class="labelchange">
@@ -1833,7 +1436,6 @@
                                                 <option value="" class="" selected="selected">----Select----
                                                 </option>
                                             </select>
-
                                         </div>
                                         <div class="form-group col-xs-2  "
                                             ng-show="patient.deatcause.health_condition_name == 'Others'">
@@ -1851,7 +1453,6 @@
                                                     Please Enter maximum 128 letters. </small>
                                             </div>
                                         </div>
-
                                         <div class="form-group col-xs-2">
                                             <label for="dateofdeath" class="labelchange" style="min-width: 113px"><span
                                                     class="tooltipid tooltipstered" data-placement="right">3.3. Date Of
@@ -1867,7 +1468,6 @@
                                             </div>
                                             <div class="error  ">
                                                 <small class="error">
-
                                                     Please Select Date of Death.</small> <small class="error ">
                                                     Please Enter valid date in dd/mm/yyyy format.</small>
                                             </div>
@@ -1887,12 +1487,8 @@
                                             </div>
                                         </div>
                                         </div>
-                                        
-
                                         <div class="row">
-
                                             <div class="row">
-
                                                 <div class="form-group col-xs-6" style="padding-left: 6px;">
                                                     <button class="btn btn-primary"
                                                         ng-click="save_Patient_Details_of_deathCases()"
@@ -1909,7 +1505,6 @@
                                         </div>
                                 </div>
                             </div>
-
                             <!-- <div>
                                 <div class="row">
                                     <div class="col-xs-12" >
@@ -1930,7 +1525,6 @@
                                             <th ng-show="showCols">2.5. Age</th>
                                             <th ng-show="showCols">2.7. Gender</th>
                                             <th ng-show="showCols">2.8. ID Type/Id No</th>
-                                           
                                             <th ng-show="showCols">2.11. State</th>
                                             <th ng-show="showCols">2.12. District</th>
                                             <th ng-show="showCols">2.13. Sub District</th>
@@ -1939,332 +1533,23 @@
                                             <th>3.1. Probable Cause Of Death</th>
                                             <th>3.3. Date of Death</th>
                                             <th>3.4. Remarks</th>
-
-
-
                                         </tr>
                                     </thead>
-
                                     <tbody>
-                                     
                                 </table>
-
                                 <div class="alert alert-success ng-binding  " ng-show="finalsubmitsaved" role="alert">
                                     Data
                                     Successfully
                                     submitted on 2023-10-03 14:27:22</div>
                                 <button class="btn btn-primary printhide" ng-click="openSubmissionAlertModal()"><span
                                         class="tooltipid tooltipstered" data-placement="right">Submit</span></button>
-
                             </div> -->
-
                             <button class="btn btn-primary d-flex m-auto" ng-click="openSubmissionAlertModal()"><span
                                         class="tooltipid tooltipstered" data-placement="right">Submit</span></button>
                         </div>
                     </div>
-
             </section>
-
-
-
         </div>
-
-
-
         <!-- Line Listing table  -->
-
-
-
-
-
-
         <!-- /.content-wrapper -->
-
-
-        <script>
-        $(document).ready(function() {
-            // $("#first-name-error").text("New word");
-            // console.log(fname);
-            //Detect that a user has started entering their name itno the name input
-            // Name can't be blank
-            $('#first-name').on('input', function() {
-                var input = $(this);
-
-                var is_name = input.val();
-                var regex = /^[A-Za-z\s]{1,}[\.]{0,1}[A-Za-z\s]{0,}$/;
-                var name = regex.test(is_name);
-                if (name) {
-                    $("#first-name-error").text("");
-                    // input.removeClass("invalid").addClass("valid");
-                } else {
-                    $("#first-name-error").text("Please enter valid name");
-                }
-            });
-
-            $('#last-name').on('input', function() {
-                var input = $(this);
-
-                var is_name = input.val();
-                var regex = /^[A-Za-z\s]{1,}[\.]{0,1}[A-Za-z\s]{0,}$/;
-                var name = regex.test(is_name);
-                if (name) {
-                    $("#last-name-error").text("");
-                    // input.removeClass("invalid").addClass("valid");
-                } else {
-                    $("#last-name-error").text("Please enter valid last name");
-                }
-            });
-
-
-
-            $('#dob').on('click', function() {
-                var input = $(this);
-
-                var is_name = input.val();
-                if (is_name == "") {
-                    $("#dob-error").text("Dob is required");
-                    // input.removeClass("invalid").addClass("valid");
-                } else {
-                    $("#dob-error").text("");
-                }
-            });
-
-
-            $('#gander').on('click', function() {
-                var input = $(this);
-
-                var is_name = input.val();
-                if (is_name == "Select Your Gender") {
-                    $("#gander-error").text("Gander  is required");
-                    // input.removeClass("invalid").addClass("valid");
-                } else {
-                    $("#gander-error").text("");
-                }
-            });
-
-            $('#id-type').on('click', function() {
-                var input = $(this);
-
-                var is_name = input.val();
-                if (is_name == "Select Your id-type") {
-                    $("#id-type-error").text("Id Type  is required");
-                    // input.removeClass("invalid").addClass("valid");
-                } else {
-                    $("#gander-error").text("");
-                }
-            });
-
-            $('#identification').on('input', function() {
-                var input = $(this);
-
-                var is_name = input.val();
-                var regex = /^[0-9]+$/;
-                var name = regex.test(is_name);
-
-
-                if (name) {
-                    $("#identification-error").text("");
-                    // input.removeClass("invalid").addClass("valid");
-                } else {
-                    $("#identification-error").text("Please enter valid identity no");
-                }
-            });
-
-
-            $('#citizenship').on('click', function() {
-                var input = $(this);
-
-                var is_name = input.val();
-                if (is_name == "Select Your Citizenship") {
-                    $("#citizenship-error").text("citizenship   is required");
-                    // input.removeClass("invalid").addClass("valid");
-                } else {
-                    $("#citizenship-error").text("");
-                }
-            });
-
-
-            $('#house-no').on('input', function() {
-                var input = $(this);
-
-                var is_name = input.val();
-                if (is_name == "") {
-                    $("#house-no-error").text("House no is required");
-                    // input.removeClass("invalid").addClass("valid");
-                } else {
-                    $("#house-no-error").text("");
-                }
-            });
-
-            $('#state').on('click', function() {
-                var input = $(this);
-
-                var is_name = input.val();
-                if (is_name == "Select Your state") {
-                    $("#state-error").text("state number  is required");
-                    // input.removeClass("invalid").addClass("valid");
-                } else {
-                    $("#gander-error").text("");
-                }
-            });
-
-            $('#district').on('click', function() {
-                var input = $(this);
-
-                var is_name = input.val();
-                if (is_name == "Select Your district") {
-                    $("#district-error").text("district number  is required");
-                    // input.removeClass("invalid").addClass("valid");
-                } else {
-                    $("#gander-error").text("");
-                }
-            });
-
-            $('#taluka').on('click', function() {
-                var input = $(this);
-
-                var is_name = input.val();
-                if (is_name == "Select Your taluka") {
-                    $("#taluka-error").text("taluka number  is required");
-                    // input.removeClass("invalid").addClass("valid");
-                } else {
-                    $("#gander-error").text("");
-                }
-            });
-
-            $('#village').on('click', function() {
-                var input = $(this);
-
-                var is_name = input.val();
-                if (is_name == "Select Your village") {
-                    $("#village-error").text("Village number  is required");
-                    // input.removeClass("invalid").addClass("valid");
-                } else {
-                    $("#gander-error").text("");
-                }
-            });
-
-            $('#street-name').on('input', function() {
-                var input = $(this);
-
-                var is_name = input.val();
-                if (is_name == "") {
-                    $("#street-name-error").text("Street-name  is required");
-                    // input.removeClass("invalid").addClass("valid");
-                } else {
-                    $("#street-name-error").text("");
-                }
-            });
-
-            $('#landmark').on('input', function() {
-                var input = $(this);
-
-                var is_name = input.val();
-                if (is_name == "") {
-                    $("#landmark-error").text("Landmark  is required");
-                    // input.removeClass("invalid").addClass("valid");
-                } else {
-                    $("#landmark-error").text("");
-                }
-            });
-
-            $('#pin-code').on('input', function() {
-                var input = $(this);
-
-                var is_name = input.val();
-                var regex = /^[0-9]+$/;
-                var name = regex.test(is_name);
-
-                if (name) {
-                    $("#pin-code-error").text("");
-                    // input.removeClass("invalid").addClass("valid");
-                } else {
-                    $("#pin-code-error").text("Please enter valid pin code");
-                }
-            });
-
-            $('#provisinal-diagnosis').on('click', function() {
-                var input = $(this);
-
-                var is_name = input.val();
-                if (is_name == "Select Your Diagnosis") {
-                    $("#provisinal-diagnosis-error").text("Diagnosis number  is required");
-                    // input.removeClass("invalid").addClass("valid");
-                } else {
-                    $("#gander-error").text("");
-                }
-            });
-
-            $('#date-of-onset').on('input', function() {
-                var input = $(this);
-
-                var is_name = input.val();
-                if (is_name == "") {
-                    $("#date-of-onset-error").text("date-of-onset  is required");
-                    // input.removeClass("invalid").addClass("valid");
-                } else {
-                    $("#pin-code-error").text("");
-                }
-            });
-
-
-            $('#OPD-IPD').on('click', function() {
-                var input = $(this);
-
-                var is_name = input.val();
-                if (is_name == "Select Your OPD-IPD") {
-                    $("#opd-ipd-error").text("OPD/IPD is required");
-                    // input.removeClass("invalid").addClass("valid");
-                } else {
-                    $("#opd-ipd-error").text("");
-                }
-            });
-
-            // Email must be an email
-            $('#contact_email').on('input', function() {
-                var input = $(this);
-                var re = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-                var is_email = re.test(input.val());
-                if (is_email) {
-                    input.removeClass("invalid").addClass("valid");
-                } else {
-                    input.removeClass("valid").addClass("invalid");
-                }
-            });
-            // Website must be a website
-            $('#contact_website').on('input', function() {
-                var input = $(this);
-                if (input.val().substring(0, 4) == 'www.') {
-                    input.val('http://www.' + input.val().substring(4));
-                }
-                var re =
-                    /(http|ftp|https):\/\/[\w-]+(\.[\w-]+)+([\w.,@?^=%&:\/~+#-]*[\w@?^=%&\/~+#-])?/;
-                var is_url = re.test(input.val());
-                if (is_url) {
-                    input.removeClass("invalid").addClass("valid");
-                } else {
-                    input.removeClass("valid").addClass("invalid");
-                }
-            });
-            // Message can't be blank
-            $('#contact_message').keyup(function(event) {
-                var input = $(this);
-                var message = $(this).val();
-                console.log(message);
-                if (message) {
-                    input.removeClass("invalid").addClass("valid");
-                } else {
-                    input.removeClass("valid").addClass("invalid");
-                }
-            });
-            // After Form Submitted Validation
-
-        });
-        </script>
-
-
-        <!-- Main Footer -->
-        @include('includes.footer')
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
-        </script>
+       @endsection
