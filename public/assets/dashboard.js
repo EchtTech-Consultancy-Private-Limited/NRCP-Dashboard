@@ -159,6 +159,7 @@ const apply_filter = ()=>{
     const form_type = $('#formType').find(":selected").val();
     const filter_diseasesSyndromes = $('#diseasesSyndromes').find(":selected").val();
     const l_dropdown = $('#l-dropdown').find(":selected").val();
+    const session_value = $('#session_value').val();
 
     const search_btn = $("#apply_filter");
     search_btn.attr("disabled",true);
@@ -199,6 +200,7 @@ const apply_filter = ()=>{
             form_type: form_type,
             filter_diseasesSyndromes: filter_diseasesSyndromes,
             l_dropdown: l_dropdown,
+            session_value:session_value
         },
         success: function(result) {
             search_btn.html("Search");
@@ -225,16 +227,16 @@ const apply_filter = ()=>{
                 $('.lform').hide()
                 $('.defaultform').show()
                 if(form_type == '3'){
-                    $('#box1').html(result.total_cases);
-                    $('#box2').html(result.total_deaths);
+                    $('#box1').html(result.human_rabies_case);
+                    $('#box2').html(result.human_rabies_deaths);
                     $('#text1').html("<strong>Total Cases</strong></br> Syndromic Surveillance Cases");
                     $('#text2').html("<strong>Deaths</strong></br> Syndromic Surveillance Cases");
 
                 }else{
                         $('#text1').html("<strong>Total Cases</strong></br> Presumptive Cases");
                         $('#text2').html("<strong>Deaths</strong></br> Presumptive Cases");
-                        $('#box1').html(result.total_cases);
-                        $('#box2').html(result.total_deaths);
+                        $('#box1').html(result.human_rabies_case);
+                        $('#box2').html(result.human_rabies_deaths);
                 }
             }
             let sessionValue = $("#session_value").val();
@@ -311,89 +313,89 @@ const apply_filter = ()=>{
                     plotOptions: {
                         series: {
                             events: {
-                                click: function(e) {
+                                // click: function(e) {
 
-                                    let nameState = e.point.name
-
-
-                                    $('.detailsDatas').hide();
-                                    if ($('#state').val() != '') {
-                                        $('#state').val('');
-                                        $('.statewise').hide();
-                                    }
-
-                                    if (nameState) {
-                                        $(".detailsDatas").hide();
-                                    }
-
-                                    $.ajaxSetup({
-                                        headers: {
-                                            'X-CSRF-TOKEN': $(
-                                                'meta[name="csrf-token"]'
-                                            ).attr(
-                                                'content')
-                                        }
-                                    });
-
-                                    $.ajax({
-                                        url: BASE_URL+"/human-rabies-death",
-                                        type: "get",
-                                        data: {
-                                            setyear: year,
-                                            name: nameState
-                                        },
-                                        success: function(result) {
-
-                                            $('#totalDeath')
-                                                .text(result
-                                                    .human_rabies_deaths
-                                                );
-
-                                        }
-
-                                    });
-
-                                    $("#detailsData").show();
-
-                                    // var sessionvalue =
-                                    //     "{{ session('type') }}"
-                                    //alert(sessionvalue);
-                                    if (sessionValue == '1' && form_type!=1) {
+                                //     let nameState = e.point.name
 
 
-                                        var StateContent =
-                                            "Fetching the data for " + e
-                                            .point
-                                            .name +
-                                            " <div class='table-responsive'> <table class='table table-bordered'><thead><tr><th rowspan='2'>State</th><th colspan='2'>presumptive </th></tr> <tr><th>Cases</th><th>deaths</th></tr></thead><tbody><tr><td>" +
-                                            e.point
-                                            .name +
-                                            "</td><td><span id='totalDeath'></span></td><td>" +
-                                            e.point.value +
-                                            "</td></tr></tbody></table> </div>";
+                                //     $('.detailsDatas').hide();
+                                //     if ($('#state').val() != '') {
+                                //         $('#state').val('');
+                                //         $('.statewise').hide();
+                                //     }
 
-                                    } else {
+                                //     if (nameState) {
+                                //         $(".detailsDatas").hide();
+                                //     }
 
-                                        var StateContent =
-                                            "Fetching the data for " + e
-                                            .point
-                                            .name +
-                                            " <div class='table-responsive'> <table class='table table-bordered'><thead><tr><th rowspan='2'>State</th><th colspan='2'>presumptive </th></tr> <tr><th>Cases</th><th>deaths</th></tr></thead><tbody><tr><td>" +
-                                            e.point
-                                            .name +
-                                            "</td><td>" + e.point.value +
-                                            "</td><td><span id='totalDeath'></span></td></tr></tbody></table> </div>";
+                                //     $.ajaxSetup({
+                                //         headers: {
+                                //             'X-CSRF-TOKEN': $(
+                                //                 'meta[name="csrf-token"]'
+                                //             ).attr(
+                                //                 'content')
+                                //         }
+                                //     });
 
-                                    }
-                                    console.log(form_type,' form type')
-                                    if (form_type == 1) {
-                                        var StateContent = "Fetching the data for " + e.point.name +
-                                            '<div class="table-responsive ab"><table class="table table-bordered l-form-map"><thead><tr><th rowspan="2">State</th><th colspan="3">Laboratory Cases</th></tr>' + '<tr><th>Person Tested</th><th>Sample Tested</th><th>Positive</th></tr></thead><tbody id="tableBody_l_form"><tr><td>' + e.point.name + '</td><td>' + (case_type_col == 1 ? e.point.value : 0) + '</td><td>' + (case_type_col == 2 ? e.point.value : 0) + '</td><td>' + (case_type_col == 3 ? e.point.value : 0) + '</td></tr></tbody></table></div>';
-                                    }
+                                //     $.ajax({
+                                //         url: BASE_URL+"/human-rabies-death",
+                                //         type: "get",
+                                //         data: {
+                                //             setyear: year,
+                                //             name: nameState
+                                //         },
+                                //         success: function(result) {
+
+                                //             $('#totalDeath')
+                                //                 .text(result
+                                //                     .human_rabies_deaths
+                                //                 );
+
+                                //         }
+
+                                //     });
+
+                                //     $("#detailsData").show();
+
+                                //     // var sessionvalue =
+                                //     //     "{{ session('type') }}"
+                                //     //alert(sessionvalue);
+                                //     if (sessionValue == '1' && form_type!=1) {
 
 
-                                    $("#detailsData").html(StateContent);
-                                }
+                                //         var StateContent =
+                                //             "Fetching the data for " + e
+                                //             .point
+                                //             .name +
+                                //             " <div class='table-responsive'> <table class='table table-bordered'><thead><tr><th rowspan='2'>State</th><th colspan='2'>presumptive </th></tr> <tr><th>Cases</th><th>deaths</th></tr></thead><tbody><tr><td>" +
+                                //             e.point
+                                //             .name +
+                                //             "</td><td><span id='totalDeath'></span></td><td>" +
+                                //             e.point.value +
+                                //             "</td></tr></tbody></table> </div>";
+
+                                //     } else {
+
+                                //         var StateContent =
+                                //             "Fetching the data for " + e
+                                //             .point
+                                //             .name +
+                                //             " <div class='table-responsive'> <table class='table table-bordered'><thead><tr><th rowspan='2'>State</th><th colspan='2'>presumptive </th></tr> <tr><th>Cases</th><th>deaths</th></tr></thead><tbody><tr><td>" +
+                                //             e.point
+                                //             .name +
+                                //             "</td><td>" + e.point.value +
+                                //             "</td><td><span id='totalDeath'></span></td></tr></tbody></table> </div>";
+
+                                //     }
+                                //     console.log(form_type,' form type')
+                                //     if (form_type == 1) {
+                                //         var StateContent = "Fetching the data for " + e.point.name +
+                                //             '<div class="table-responsive ab"><table class="table table-bordered l-form-map"><thead><tr><th rowspan="2">State</th><th colspan="3">Laboratory Cases</th></tr>' + '<tr><th>Person Tested</th><th>Sample Tested</th><th>Positive</th></tr></thead><tbody id="tableBody_l_form"><tr><td>' + e.point.name + '</td><td>' + (case_type_col == 1 ? e.point.value : 0) + '</td><td>' + (case_type_col == 2 ? e.point.value : 0) + '</td><td>' + (case_type_col == 3 ? e.point.value : 0) + '</td></tr></tbody></table></div>';
+                                //     }
+
+
+                                //     $("#detailsData").html(StateContent);
+                                // }
                             }
                         }
                     },
@@ -520,90 +522,90 @@ $(document).ready(function() {
                     plotOptions: {
                         series: {
                             events: {
-                                click: function(e) {
-                                    let nameState = e.point.name
+                                // click: function(e) {
+                                //     let nameState = e.point.name
 
 
-                                    $('.detailsDatas').hide();
-                                    if ($('#state').val() != '') {
-                                        $('#state').val('');
-                                        $('.statewise').hide();
-                                    }
+                                //     $('.detailsDatas').hide();
+                                //     if ($('#state').val() != '') {
+                                //         $('#state').val('');
+                                //         $('.statewise').hide();
+                                //     }
 
-                                    if (nameState) {
+                                //     if (nameState) {
 
-                                        $(".detailsDatas").hide();
+                                //         $(".detailsDatas").hide();
 
-                                    }
+                                //     }
 
-                                    $.ajaxSetup({
-                                        headers: {
-                                            'X-CSRF-TOKEN': $(
-                                                'meta[name="csrf-token"]'
-                                            ).attr(
-                                                'content')
-                                        }
-                                    });
+                                //     $.ajaxSetup({
+                                //         headers: {
+                                //             'X-CSRF-TOKEN': $(
+                                //                 'meta[name="csrf-token"]'
+                                //             ).attr(
+                                //                 'content')
+                                //         }
+                                //     });
 
-                                    $.ajax({
-                                        url: BASE_URL+"/human-rabies-death",
-                                        type: "get",
-                                        data: {
-                                            setyear: year,
-                                            name: nameState
-                                        },
-                                        success: function(result) {
+                                //     $.ajax({
+                                //         url: BASE_URL+"/human-rabies-death",
+                                //         type: "get",
+                                //         data: {
+                                //             setyear: year,
+                                //             name: nameState
+                                //         },
+                                //         success: function(result) {
 
-                                            $('#totalDeath')
-                                                .text(result
-                                                    .human_rabies_deaths
-                                                );
+                                //             $('#totalDeath')
+                                //                 .text(result
+                                //                     .human_rabies_deaths
+                                //                 );
 
-                                        }
+                                //         }
 
-                                    });
-                                    const form_type = $('#formType').find(":selected").val();
+                                //     });
+                                //     const form_type = $('#formType').find(":selected").val();
 
-                                    $("#detailsData").show();
+                                //     $("#detailsData").show();
 
-                                    if (sessionValue == '1') {
-                                        var StateContent =
-                                            "Fetching the data for " + e
-                                            .point
-                                            .name +
-                                            " <div class='table-responsive'> <table class='table table-bordered'><thead><tr><th rowspan='2'>State</th><th colspan='2'>presumptive </th></tr> <tr><th>Cases</th><th>deaths</th></tr></thead><tbody><tr><td>" +
-                                            e.point
-                                            .name +
-                                            "</td><td><span id='totalDeath'></span></td><td>" +
-                                            e.point.value +
-                                            "</td></tr></tbody></table> </div>";
+                                //     if (sessionValue == '1') {
+                                //         var StateContent =
+                                //             "Fetching the data for " + e
+                                //             .point
+                                //             .name +
+                                //             " <div class='table-responsive'> <table class='table table-bordered'><thead><tr><th rowspan='2'>State</th><th colspan='2'>presumptive </th></tr> <tr><th>Cases</th><th>deaths</th></tr></thead><tbody><tr><td>" +
+                                //             e.point
+                                //             .name +
+                                //             "</td><td><span id='totalDeath'></span></td><td>" +
+                                //             e.point.value +
+                                //             "</td></tr></tbody></table> </div>";
 
-                                    } else {
+                                //     } else {
 
-                                        var StateContent =
-                                            "Fetching the data for " + e
-                                            .point
-                                            .name +
-                                            " <div class='table-responsive'> <table class='table table-bordered'><thead><tr><th rowspan='2'>State</th><th colspan='2'>presumptive </th></tr> <tr><th>Cases</th><th>deaths</th></tr></thead><tbody><tr><td>" +
-                                            e.point
-                                            .name +
-                                            "</td><td>" + e.point.value +
-                                            "</td><td><span id='totalDeath'></span></td></tr></tbody></table> </div>";
+                                //         var StateContent =
+                                //             "Fetching the data for " + e
+                                //             .point
+                                //             .name +
+                                //             " <div class='table-responsive'> <table class='table table-bordered'><thead><tr><th rowspan='2'>State</th><th colspan='2'>presumptive </th></tr> <tr><th>Cases</th><th>deaths</th></tr></thead><tbody><tr><td>" +
+                                //             e.point
+                                //             .name +
+                                //             "</td><td>" + e.point.value +
+                                //             "</td><td><span id='totalDeath'></span></td></tr></tbody></table> </div>";
 
-                                    }
+                                //     }
 
-                                    $("#detailsData").html(StateContent);
+                                //     $("#detailsData").html(StateContent);
 
-                                    // Swal.fire({
-                                    //     position: 'top-end',
-                                    //     icon: 'success',
-                                    //     title: 'State records fetched successfully',
-                                    //     showConfirmButton: false,
-                                    //     timer: 3000
-                                    // })
+                                //     // Swal.fire({
+                                //     //     position: 'top-end',
+                                //     //     icon: 'success',
+                                //     //     title: 'State records fetched successfully',
+                                //     //     showConfirmButton: false,
+                                //     //     timer: 3000
+                                //     // })
 
 
-                                }
+                                // }
                             }
                         }
                     },
