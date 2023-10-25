@@ -172,7 +172,7 @@
                         <input type="hidden" value="" id="filter_to_year">
                         <input type="hidden" value="2" id="filter_form_type">
                         <input type="hidden" value="" id="filter_diseases">
-                        <input type="hidden" value={{ session('type')??0 }} id="session_value">
+                        <input type="hidden" value="0" id="session_value">
                         <input type="hidden" value="" id="is_graph_data_available">
                         <!-- </form> -->
                         <div class="button apply-filter">
@@ -191,12 +191,8 @@
                      <div class="row bg-white">
                         <div class="col-md-5">
                            <select class="form-control" name="type" id="type">
-                           <option value=""
-                           {{ session('type') == '' ? 'selected' : '' }}>Cases
-                           </option>
-                           <option value="1"
-                           {{ session('type') == '1' ? 'selected' : '' }}>Deaths
-                           </option>
+                           <option value="0">Cases</option>
+                           <option value="1">Deaths</option>
                            </select>
                            <select class="form-control" id="l-dropdown" onChange="handleFilterValue(); getLFormData();">
                               <option value="">Select test type</option>

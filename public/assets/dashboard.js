@@ -1,4 +1,4 @@
-const BASE_URL =window.location.origin+"/public";
+const BASE_URL =window.location.origin;
 ;
 
 /*handle Form Type*/
@@ -652,27 +652,10 @@ $(document).ready(function() {
 
 
 $('#type').on('change', function() {
-
-    let typeValue = $(this).val(); // The value you want to store in the session
+    const typeValue = $('#type').find(":selected").val();
     $("#session_value").val(typeValue);
-    $.ajax({
-        url: BASE_URL+'/set-session',
-        type: 'get',
-        data: {
-            type: typeValue
-        },
-        headers: {
-            'X-CSRF-TOKEN': 'your_csrf_token_here' // Include CSRF token if required
-        },
-        success: function(response) {
-            location.reload(true);
-        },
-        error: function(error) {
-            console.error('Error:', error);
-        }
-    });
-
-})
+    apply_filter();
+});
 
 function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);

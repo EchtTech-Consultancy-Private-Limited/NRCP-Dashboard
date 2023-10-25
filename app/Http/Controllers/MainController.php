@@ -62,9 +62,9 @@ class MainController extends Controller
     public function getFilterData(Request $request)
     {
 
-        $type = session('type');
         $array = null;
         $state = null;
+        $filter_session = $request->session_type ?? '';
         $filter_state = $request->setstate ?? '';
         $filter_district = $request->district ?? '';
         $filter_from_year = $request->setyear ?? '';
@@ -104,7 +104,7 @@ class MainController extends Controller
                 $animal_bite_query->where('district_id',  $filter_district);
             }
             $case_type = 'cases';
-            if ($type == 1) {
+            if ($filter_session == 1) {
                 $case_type = 'deaths';
             }
             if (!empty($state)) {
@@ -243,7 +243,7 @@ class MainController extends Controller
             }
 
             $case_type = 'cases';
-            if ($type == 1) {
+            if ($filter_session == 1) {
                 $case_type = 'deaths';
             }
             // dd($case_type);
@@ -334,9 +334,7 @@ class MainController extends Controller
         $human_rabiess = DB::table('pform_human_rabies')->get();
         $currentYear = date('Y');
         $previousYear = $currentYear - 1;
-        $type = session('type');
 
-        if ($type != 1) {
 
             $total_human_rabies = 0; // Initialize a variable to hold the total
             $total_rabies_record = 0;
@@ -354,24 +352,6 @@ class MainController extends Controller
                 $total_rabies_record += $human_rabies_record;
                 $array[$value->state_name] = $human_rabies;
             }
-        } else {
-
-            $total_human_rabies = 0; // Initialize a variable to hold the total
-            $total_rabies_record = 0;
-            $array = [];
-            foreach ($states as $value) {
-                if ($request->setyear != '') {
-                    $human_rabies = DB::table('pform_human_rabies')->where('state_id', $value->id)->where('year', $request->setyear)->sum('deaths');
-                    $human_rabies_record = DB::table('pform_human_rabies')->where('state_id', $value->id)->where('year', $request->setyear)->sum('cases');
-                } else {
-                    $human_rabies = DB::table('pform_human_rabies')->where('state_id', $value->id)->where('year', $previousYear)->sum('deaths');
-                    $human_rabies_record = DB::table('pform_human_rabies')->where('state_id', $value->id)->where('year', $previousYear)->sum('cases');
-                }
-                $total_human_rabies += $human_rabies; // Accumulate the sum
-                $total_rabies_record += $human_rabies_record;
-                $array[$value->state_name] = $human_rabies;
-            }
-        }
 
         // this is for google chart
         $dogbite_cases_male = DB::table('age_group_pform_dogbite_cases')->sum('male_case');
@@ -385,13 +365,6 @@ class MainController extends Controller
         $total_death_google_graph = ($dogbite_cases_male_death +  $dogbite_cases_female_death);
         $male_percentage_death = ($dogbite_cases_male_death / $total_death_google_graph) * 100;
         $female_percentage_death = ($dogbite_cases_female_death / $total_death_google_graph) * 100;
-
-        // //pyramid bar chart
-        // $age_groups_data = DB::table('age_group_pform_dogbite_cases')
-        // ->select('age', 'male', 'female')
-        // ->get();
-
-
 
         return response()->json([
             'array' => $array, 'total_cases' => $total_cases, 'total_deaths' => $total_deaths, 'total_rabies_record' => $total_rabies_record, 'human_rabies_record' => $human_rabies_record, 'dogbite_cases_male' => $dogbite_cases_male, 'dogbite_cases_female' => $dogbite_cases_female, 'total' => $total, 'male_percentage' => $male_percentage, 'female_percentage' => $female_percentage,
@@ -436,20 +409,6 @@ class MainController extends Controller
             dd($state_deaths);
         }
         return response()->json(['state_deaths' => $state_deaths], 201);
-    }
-
-
-    public function  setSession(Request $request)
-    {
-        $type = $request->input('type');
-        if ($type === '') {
-            // If the value is blank, destroy the session
-            session()->forget('type');
-        } else {
-            // If the value is not blank, set it in the session
-            session(['type' => $type]);
-        }
-        return response()->json(['message' => 'Session value set successfully']);
     }
 
     public function getDistrict(Request $request)
