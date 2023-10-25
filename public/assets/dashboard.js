@@ -3,7 +3,6 @@ const BASE_URL =window.location.origin+"/public";
 
 /*handle Form Type*/
 const handleFormType = ()=>{
-
     const formType = $('#formType').find(":selected").attr('form-type');
     $("#diseasesSyndromes").html("");
     let option="";
@@ -12,7 +11,7 @@ const handleFormType = ()=>{
         $("#graphical_view").show();
         option="<option value='human_rabies'>Human Rabies</option> <option value='animal_bite'>Animal Bite - Dog Bite</option>";
         $("#diseasesSyndromes").append(option);
-        $('#l-dropdown option[value=""]').prop('selected', 'selected').change();
+        $('#l-dropdown option[value=""]').prop('selected', 'selected');
         $("#l-dropdown").hide();
         $("#test_performed").hide();
         $("#type").show();
@@ -20,7 +19,7 @@ const handleFormType = ()=>{
     }else  if(formType==="l-form"){
         $("#filter_form_type").val(1);
         $("#graphical_view").hide();
-        $('#l-dropdown option[value="person_tested"]').prop('selected', 'selected').change();
+        $('#l-dropdown option[value="person_tested"]').prop('selected', 'selected');
 
         option="<option value='laboratary'>Human Rabies and Laboratary</option>";
         $("#diseasesSyndromes").append(option);
@@ -35,7 +34,7 @@ const handleFormType = ()=>{
         option="<option value='animal_bite'>Animal Bite - Dog Bite</option>";
         $("#diseasesSyndromes").append(option);
         // $('#l-dropdown option[value=""]').attr("selected", true);
-        $('#l-dropdown option[value=""]').prop('selected', 'selected').change();
+        $('#l-dropdown option[value=""]').prop('selected', 'selected');
         $("#l-dropdown").hide();
         $("#test_performed").hide();
         $("#type").show();
@@ -64,7 +63,7 @@ const handleFilterValue = ()=>{
 }
 
 const getLFormData = ()=>{
-    // apply_filter();
+    apply_filter();
 }
 
 const handleTestPerformed = ()=>{
@@ -436,6 +435,10 @@ $(document).ready(function() {
     $('.statewise').hide();
     $('#yeartostate').hide();
 
+    $("#mySelect2").select2({
+        tags: true,
+    });
+    
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -922,7 +925,3 @@ const barChart  = (result)=>{
         series: [males,females]
     });
 }
-
-$("#mySelect2").select2({
-    tags: true,
-});
