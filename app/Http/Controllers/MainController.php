@@ -75,8 +75,6 @@ class MainController extends Controller
 
         //sform
         if ($request->form_type == 3) {
-            // dd('hii');
-
             $human_rabies_case = 0;
             $human_rabies_deaths = 0;
 
@@ -193,8 +191,6 @@ class MainController extends Controller
 
             //p form
         } else {
-
-
 
             $table_name = "pform_human_rabies";
             if (!empty($filter_diseasesSyndromes)  && $filter_diseasesSyndromes === "animal_bite") {
@@ -381,7 +377,6 @@ class MainController extends Controller
 
         return response()->json([
             'array' => $array, 'total_cases' => $total_cases, 'total_deaths' => $total_deaths, 'total_rabies_record' => $total_rabies_record, 'human_rabies_record' => $human_rabies_record, 'dogbite_cases_male' => $dogbite_cases_male, 'dogbite_cases_female' => $dogbite_cases_female, 'total' => $total, 'male_percentage' => $male_percentage, 'female_percentage' => $female_percentage,
-
             'male_percentage_death' => $male_percentage_death, 'female_percentage_death' => $female_percentage_death, 'total_death_google_graph' => $total_death_google_graph
         ], 201);
     }

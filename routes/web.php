@@ -17,27 +17,23 @@ use App\Http\Controllers\authController;
 */
 
 //login
+Route::middleware(['preventBackHistory'])->group(function () {
 Route::get('/',[authController::class,'login']);
 Route::post('/login',[authController::class,'loginSubmit']);
 Route::get('refresh_captcha',[authController::class, 'refreshCaptcha'])->name('refresh_captcha');
 
-Route::middleware(['Admin','preventBackHistory'])->group(function () {
-
+Route::middleware(['Admin'])->group(function () {
 Route::get('/logout',[authController::class,'logout'])->name('logout');
-//Admin Routes Start
 Route::get('dashboard', [MainController::class, 'dashboard'])->name('dashboard');
 Route::get('pform', [MainController::class, 'pformview'])->name('pform');
 Route::get('sform', [MainController::class, 'sformview']);
-
 Route::get('sform', [MainController::class, 'sformview'])->name('sform');
 Route::get('Human-rabies-map', [MainController::class, 'HumanRabiesView'])->name('pform2');
 Route::post('patient-Record',[MainController::class,'patientAdd']);
 
 //human rabies
-
 Route::get('human-rabies',[MainController::class,'humanRabiesMap']);
 Route::get('human-rabies-death',[MainController::class,'humanRabiesDeath']);
-
 //record-filter
 Route::get('get-filter-data',[MainController::class,'getFilterData']);
 Route::get('set-session',[MainController::class,'setSession']);
@@ -48,7 +44,7 @@ Route::get('pform-horizontal-barchart-death',[MainController::class,'pFormHorizo
 // Route::get('age_group',[MainController::class,'getFilterData']);
 });
 
-
+});
 
 
 
