@@ -186,6 +186,47 @@
 
                   </div>
                   <h1 id="map-text" class="map-text mt-2">Human Rabies (Presumptive Cases) in India</h1>
+
+
+
+
+
+
+
+                  <div class="row lform">
+                        <div class="col-4 d-flex justify-content-center">
+                            <div class="box"><span id="box3">
+                                </span></br><span id="text3">
+                                    <strong>Laboratory Cases</strong></br> Persons Tested
+                              </span></div>
+                        </div>
+                        <div class="col-4 d-flex justify-content-center">
+                            <div class="box"><span id="box4">
+                                </span></br><span id="text4">
+                                <strong>Laboratory Cases</strong></br> Samples Tested
+                              </span></div>
+                        </div>
+                        <div class="col-4 d-flex justify-content-center">
+                            <div class="box"><span id="box5">
+                                </span></br><span id="text5">
+                                <strong>Laboratory Cases</strong></br> Positive
+                              </span></div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="row defaultform">
+                        <div class="col 6 d-flex justify-content-center">
+                            <div class="box"><span id="box1">
+                                </span></br><span id="text1"> </span></div>
+                        </div>
+                        <div class="col 6 d-flex justify-content-center">
+                            <div class="box"><span id="box2">
+                                </span></br><span id="text2"> </span></div>
+                        </div>
+                    </div>
+
                   <!-- /.row -->
                   <div class="card-body">
                      <div class="row bg-white">
@@ -253,41 +294,6 @@
                      </div>
                   </div>
 
-
-
-                  <div class="row lform">
-                        <div class="col-4 d-flex justify-content-center">
-                            <div class="box"><span id="box3">
-                                </span></br><span id="text3">
-                                    <strong>Laboratory Cases</strong></br> Persons Tested
-                              </span></div>
-                        </div>
-                        <div class="col-4 d-flex justify-content-center">
-                            <div class="box"><span id="box4">
-                                </span></br><span id="text4">
-                                <strong>Laboratory Cases</strong></br> Samples Tested
-                              </span></div>
-                        </div>
-                        <div class="col-4 d-flex justify-content-center">
-                            <div class="box"><span id="box5">
-                                </span></br><span id="text5">
-                                <strong>Laboratory Cases</strong></br> Positive
-                              </span></div>
-                        </div>
-                    </div>
-
-
-
-                    <div class="row defaultform">
-                        <div class="col 6 d-flex justify-content-center">
-                            <div class="box"><span id="box1">
-                                </span></br><span id="text1"> </span></div>
-                        </div>
-                        <div class="col 6 d-flex justify-content-center">
-                            <div class="box"><span id="box2">
-                                </span></br><span id="text2"> </span></div>
-                        </div>
-                    </div>
                   <!-- /.row -->
 <!-- graph start-->
       <div id="graphical_view">
@@ -300,7 +306,7 @@
                   <div id="piecharts" style="width: 100%; height: 500px;"></div>
             </div>
          </div>
-<!-- end here -->
+
          <div class="row">
             <div class="col-md-12">
                <div id="chart"></div>
@@ -313,7 +319,7 @@
             </div>
          </div>
       </div>
-
+<!-- end here -->
 
                </div>
             </div>

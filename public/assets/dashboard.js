@@ -18,7 +18,7 @@ const handleFormType = ()=>{
 
     }else  if(formType==="l-form"){
         $("#filter_form_type").val(1);
-        $("#graphical_view").hide();
+        // $("#graphical_view").hide();
         $('#l-dropdown option[value="person_tested"]').prop('selected', 'selected');
 
         option="<option value='laboratary'>Human Rabies and Laboratary</option>";
@@ -30,7 +30,7 @@ const handleFormType = ()=>{
 
     }else{
         $("#filter_form_type").val(3);
-        $("#graphical_view").hide();
+        // $("#graphical_view").hide();
         option="<option value='animal_bite'>Animal Bite - Dog Bite</option>";
         $("#diseasesSyndromes").append(option);
         // $('#l-dropdown option[value=""]').attr("selected", true);
@@ -718,7 +718,7 @@ const googlePieChart = (result)=>{
         ]);
 
         var options = {
-            title: `Cases by Gender in India ${filter_state!==undefined?filter_state+' >':''} ${filter_district!==undefined?filter_district+' >':''} ${filter_from_year!==""?filter_from_year+' >':''} ${filter_to_year!==""?filter_to_year+' >':''} ${form_type!==""?form_type+' >':''} ${filter_diseasesSyndromes!==""?filter_diseasesSyndromes?.split('_')?.join(" ")+' >':''} ${l_dropdown!==""?l_dropdown:''} n=(${result.total})`,
+            title: `Cases by Gender in India ${filter_state!==undefined?filter_state+' >':''} ${filter_district!==undefined?filter_district+' >':''} ${filter_from_year!==""?filter_from_year+' >':''} ${filter_to_year!==""?filter_to_year+' >':''}    n=(${result.total})`,
         };
 
         var chart = new google.visualization.PieChart(document.getElementById('piechart'));
@@ -735,7 +735,7 @@ const googlePieChart = (result)=>{
         ]);
 
         var options = {
-            title: `Death by Gender in India ${filter_state!==undefined?filter_state+' >':''} ${filter_district!==undefined?filter_district+' >':''} ${filter_from_year!==""?filter_from_year+' >':''} ${filter_to_year!==""?filter_to_year+' >':''} ${form_type!==""?form_type+' >':''} ${filter_diseasesSyndromes!==""?filter_diseasesSyndromes?.split('_')?.join(" ")+' >':''} ${l_dropdown!==""?l_dropdown:''} n=(${result.total_death_google_graph})`,
+            title: `Death by Gender in India ${filter_state!==undefined?filter_state+' >':''} ${filter_district!==undefined?filter_district+' >':''} ${filter_from_year!==""?filter_from_year+' >':''} ${filter_to_year!==""?filter_to_year+' >':''}  n=(${result.total_death_google_graph})`,
         };
 
         var chart = new google.visualization.PieChart(document.getElementById('piecharts'));
@@ -761,7 +761,7 @@ const pyramidChart = (result)=>{
     let is_graph_data_available = $("#is_graph_data_available").val();
     is_graph_data_available= is_graph_data_available!==""?is_graph_data_available:"";
     var options_val = {
-        text: `Case by age group in India ${filter_state!==undefined?filter_state+' >':''} ${filter_district!==undefined?filter_district+' >':''} ${filter_from_year!==""?filter_from_year+' >':''} ${filter_to_year!==""?filter_to_year+' >':''} ${form_type!==""?form_type+' >':''} ${filter_diseasesSyndromes!==""?filter_diseasesSyndromes?.split('_')?.join(" "):''} ${l_dropdown!==""?"> "+l_dropdown:''}`,
+        text: `Case by age group in India ${filter_state!==undefined?filter_state+' >':''} ${filter_district!==undefined?filter_district+' >':''} ${filter_from_year!==""?filter_from_year+' >':''} ${filter_to_year!==""?filter_to_year+' >':''}`,
     };
 
 
@@ -863,7 +863,7 @@ const barChart  = (result)=>{
     is_graph_data_available= is_graph_data_available!==""?is_graph_data_available:"";
 
     var options_val = {
-        text: `Death by age group in India ${filter_state!==undefined?filter_state+' >':''} ${filter_district!==undefined?filter_district+' >':''} ${filter_from_year!==""?filter_from_year+' >':''} ${filter_to_year!==""?filter_to_year+' >':''} ${form_type!==""?form_type+' >':''} ${filter_diseasesSyndromes!==""?filter_diseasesSyndromes?.split('_')?.join(" "):''} ${l_dropdown!==""?"> "+l_dropdown:''}`,
+        text: `Death by age group in India ${filter_state!==undefined?filter_state+' >':''} ${filter_district!==undefined?filter_district+' >':''} ${filter_from_year!==""?filter_from_year+' >':''} ${filter_to_year!==""?filter_to_year+' >':''}  `,
 
     };
     var categories = result.map(item => item.pyramid_age_group);
