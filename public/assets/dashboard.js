@@ -1,5 +1,5 @@
-// const BASE_URL =window.location.origin;
-const BASE_URL =window.location.origin+"/public";
+const BASE_URL =window.location.origin;
+// const BASE_URL =window.location.origin+"/public";
 
 /*handle Form Type*/
 const handleFormType = ()=>{
@@ -21,7 +21,7 @@ const handleFormType = ()=>{
         // $("#graphical_view").hide();
         $('#l-dropdown option[value="person_tested"]').prop('selected', 'selected');
 
-        option="<option value='laboratary'>Human Rabies and Laboratary</option>";
+        option="<option value='laboratary'>Human Rabies</option>";
         $("#diseasesSyndromes").append(option);
         $("#l-dropdown").show();
         $("#test_performed").show();

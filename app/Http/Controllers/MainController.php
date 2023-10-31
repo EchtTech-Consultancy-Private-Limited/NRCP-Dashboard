@@ -490,5 +490,5 @@ class MainController extends Controller
             }
         return response()->json($responseData);
     }
-
+    
 }
