@@ -235,8 +235,6 @@
                            </select>
                         </div>
 
-
-
                         <div class="col-md-8">
                            <div class="year-selector p-3"> </div>
 
