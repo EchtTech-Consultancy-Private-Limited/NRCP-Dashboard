@@ -1,5 +1,5 @@
-// const BASE_URL =window.location.origin;
-const BASE_URL =window.location.origin+"/public";
+const BASE_URL =window.location.origin;
+// const BASE_URL =window.location.origin+"/public";
 
 /*handle Form Type*/
 const handleFormType = ()=>{
@@ -219,7 +219,7 @@ const apply_filter = ()=>{
                       containerElement.style.display = "none";  // Hide "container"
                       stateElement.style.display = "block";     // Show "state"
 
-                      const dynamicImageName =   'http://localhost:8000/state/'+ element.replace(/\s/g, '%20')  + '.png'; // Modify this based on your naming convention
+                      const dynamicImageName =   BASE_URL+'/state/'+ element.replace(/\s/g, '%20')  + '.png'; // Modify this based on your naming convention
                        // console.log(dynamicImageName);
                       $stateImageElement.attr("src", dynamicImageName);
                    }
