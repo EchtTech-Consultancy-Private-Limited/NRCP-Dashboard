@@ -1,0 +1,124 @@
+.box {
+    width: 250px;
+    height: 111px;
+    // background-color: #3498db;
+    background-color: #0078d7;
+    padding: 10px;
+    margin: 10px;
+    color: #fff;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 15px;
+    box-shadow: 1px 5px 7px 0px lightgrey;
+    display: inline-block;
+}
+
+.map-text {
+    text-align: left;
+    margin: 0;
+    color: #000;
+}
+.highcharts-credits {
+    display: none;
+}
+
+.dashboard-year {
+    padding:15px; 
+    border: 1px solid grey;
+    border-radius:5px;
+    background: white;
+    color: black;
+    height: 100%;
+
+}
+
+.search-reset{
+    display: flex;
+    align-items: center;
+    margin-top: 30px;
+}
+
+
+.country-map {
+    border: 1px solid #ddd;
+    padding: 11px;
+    border-radius: 5px;
+    .map{
+        height: 600px;
+    }
+}
+
+.card{
+    box-shadow: 0px 0px 0px !important;
+}
+.main-title{
+    padding-left: 36px !important;
+    padding-top: 21px !important;
+    font-weight: bold;
+    margin: 0;
+}
+.dashboard {
+   
+    .dashboard-filter{
+        // border: 1px solid #ddd;
+        padding: 15px;
+        border-radius: 5px;
+        box-shadow: 0px 0px 25px #cdcdcd;
+    }
+
+    .form-group select {
+        font-size: 13px;
+        margin: 5px 0px;
+        color: #404040;
+        border: 1px solid #dfdfdf;
+        border-radius: 0.25rem;
+        width: 100%;
+    }
+
+    .dashboard-table{
+        max-height: 667px;
+        overflow-y: auto;
+    }
+
+    .button {
+        border-radius: 22px;
+        padding: 8px 29px;
+    }
+
+    .stateImage {
+        height: 100%;
+        max-width: 100%;
+    }
+
+    input.select2-search__field {
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    .select2-container--default .select2-selection--multiple{
+        height: auto !important;
+        margin: 5px 0;
+    }
+}
+
+
+.user-icon{
+    display: block;
+    i{
+        font-size: 34px;
+    margin-bottom: 7px;
+    color: #ffc150;
+    }
+}
+
+.box {
+    .cases{
+        font-size: 18px;
+        font-weight: bold;
+        color: #ffeb3b;
+    }
+
+    .case-title{
+        font-size: 13px;
+    }
+}
