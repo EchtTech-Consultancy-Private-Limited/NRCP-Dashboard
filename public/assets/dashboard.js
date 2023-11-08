@@ -219,13 +219,14 @@ const apply_filter = ()=>{
                       containerElement.style.display = "none";  // Hide "container"
                       stateElement.style.display = "block";     // Show "state"
 
-                      const dynamicImageName =   'http://localhost:8000/state/'+ element.replace(/\s/g, '%20')  + '.png'; // Modify this based on your naming convention
+                      const dynamicImageName =   BASE_URL+'/state/'+ element.replace(/\s/g, '%20')  + '.png'; // Modify this based on your naming convention
                        // console.log(dynamicImageName);
                       $stateImageElement.attr("src", dynamicImageName);
                    }
                  
               });
             
+              
             search_btn.html("Search");
             search_btn.attr("disabled",false);
             search_btn.html("Search");
