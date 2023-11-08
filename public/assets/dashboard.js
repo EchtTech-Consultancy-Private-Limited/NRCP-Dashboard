@@ -147,7 +147,7 @@ $(document).ready(function() {
         $('#formType option[value="2"]').prop('selected', 'selected').change();
         $('#diseasesSyndromes option[value="human_rabies"]').prop('selected', 'selected').change();
         $("#stateMap").hide();
-        $("#container").hide();
+        $("#container").show();
         apply_filter();
     });
 
@@ -213,9 +213,10 @@ const apply_filter = ()=>{
                 const stateElement = document.getElementById("stateMap");
                 const $stateImageElement = $(".stateImage");
 
+            if(filter_state !== ''){    
                 result.imageNames.forEach(element => {
                      //console.log(entries[0][0] == element);
-                  if(entries[0][0] == element){
+                  if(entries[0][0] == element ){
                       containerElement.style.display = "none";  // Hide "container"
                       stateElement.style.display = "block";     // Show "state"
 
@@ -225,7 +226,7 @@ const apply_filter = ()=>{
                    }
                  
               });
-            
+            }
               
             search_btn.html("Search");
             search_btn.attr("disabled",false);

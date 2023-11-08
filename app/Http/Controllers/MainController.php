@@ -514,10 +514,5 @@ class MainController extends Controller
         }
       
     }
-
-    public function getmap(){
-        return view('map');
-    }
-
   
 }
