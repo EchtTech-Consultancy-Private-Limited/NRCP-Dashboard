@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\patient_record;
 use Hash;
 use Redirect;
+use File;
 use DB;
 use Illuminate\Http\Request;
 
@@ -73,6 +74,17 @@ class MainController extends Controller
         $filter_diseasesSyndromes = $request->filter_diseasesSyndromes ?? '';
         $l_dropdown = $request->l_dropdown ?? '';
 
+        $directory = public_path('state'); 
+        $files = File::files($directory);
+        
+        $imageNames = [];
+        foreach ($files as $file) {
+            $filename = $file->getFilename();
+            $imageNameWithoutExtension = pathinfo($filename, PATHINFO_FILENAME);
+            $imageNames[] = $imageNameWithoutExtension;
+        }
+
+
         //sform
         if ($request->form_type == 3) {
             $human_rabies_case = 0;
@@ -121,16 +133,14 @@ class MainController extends Controller
                 }
             }
 
-            return response()->json(['array' => $array, 'total_cases' => $total_cases, 'total_deaths' => $total_deaths, 'human_rabies_deaths' => $human_rabies_deaths, 'human_rabies_case' => $human_rabies_case], 200);
+            return response()->json(['imageNames'=>$imageNames,'array' => $array, 'total_cases' => $total_cases, 'total_deaths' => $total_deaths, 'human_rabies_deaths' => $human_rabies_deaths, 'human_rabies_case' => $human_rabies_case], 200);
 
             //lform
         } else if ($request->form_type == 1) {
 
             $human_rabies_case = 0;
             $human_rabies_deaths = 0;
-
             $laboratory_case_query = DB::table('laboratory_case_lform_state_wise');
-
 
             $total_persons = $laboratory_case_query->sum('persons_tested');
             $total_samples = $laboratory_case_query->sum('samples_tested');
@@ -187,7 +197,9 @@ class MainController extends Controller
                     $array[$value->state_name] = $human_rabies;
                 }
             }
-            return response()->json(['laboratory_total'=>$laboratory_total,'laboratory_samples'=>$laboratory_samples,'laboratory_Positive'=>$laboratory_Positive,'array' => $array, 'total_persons' => $total_persons, 'total_samples' => $total_samples, 'total_positive' => $total_positive, 'human_rabies_deaths' => $human_rabies_deaths, 'human_rabies_case' => $human_rabies_case, 'case_type_col' => $case_type_col], 200);
+
+        
+            return response()->json(['imageNames'=>$imageNames,'laboratory_total'=>$laboratory_total,'laboratory_samples'=>$laboratory_samples,'laboratory_Positive'=>$laboratory_Positive,'array' => $array, 'total_persons' => $total_persons, 'total_samples' => $total_samples, 'total_positive' => $total_positive, 'human_rabies_deaths' => $human_rabies_deaths, 'human_rabies_case' => $human_rabies_case, 'case_type_col' => $case_type_col], 200);
 
             //p form
         } else {
@@ -322,7 +334,7 @@ class MainController extends Controller
             /*end here*/
             // dd($responseData);die();
         }
-        return response()->json(['array' => $array, 'total_cases' => $total_cases, 'total_deaths' => $total_deaths, 'human_rabies_deaths' => $human_rabies_deaths, 'human_rabies_case' => $human_rabies_case, 'male_percentage' => round($male_percentage, 2), 'female_percentage' => round($female_percentage, 2), 'total' => $total, $responseData, 'male_percentage_death' => $male_percentage_death, 'female_percentage_death' => $female_percentage_death, 'total_death_google_graph' => $total_death_google_graph], 200);
+        return response()->json(['imageNames'=>$imageNames,'array' => $array, 'total_cases' => $total_cases, 'total_deaths' => $total_deaths, 'human_rabies_deaths' => $human_rabies_deaths, 'human_rabies_case' => $human_rabies_case, 'male_percentage' => round($male_percentage, 2), 'female_percentage' => round($female_percentage, 2), 'total' => $total, $responseData, 'male_percentage_death' => $male_percentage_death, 'female_percentage_death' => $female_percentage_death, 'total_death_google_graph' => $total_death_google_graph], 200);
     }
 
 
@@ -490,5 +502,22 @@ class MainController extends Controller
             }
         return response()->json($responseData);
     }
-    
+
+
+    public function stateMap(){
+        $directory = public_path('state'); // Path to the "state" directory within the "public" folder
+        $files = File::files($directory);
+        
+        $imageNames = [];
+        foreach ($files as $file) {
+            $imageNames[] = $file->getFilename();
+        }
+      
+    }
+
+    public function getmap(){
+        return view('map');
+    }
+
+  
 }

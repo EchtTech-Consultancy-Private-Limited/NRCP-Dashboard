@@ -51,7 +51,7 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="{{ url('logout') }}" role="button">
+                <a class="nav-link" onclick="return confirm('Are you sure you want to logout?')" href="{{ url('logout') }}" role="button">
                 <i class="fa fa-power-off"></i>
                 </a>
             </li>

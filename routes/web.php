@@ -42,8 +42,7 @@ Route::get('get-district',[MainController::class,'getDistrict']);
 Route::get('pform-horizontal-barchart-death',[MainController::class,'pFormHorizontalBarChartDeath']);
 
 
-
-// Route::get('age_group',[MainController::class,'getFilterData']);
+Route::get('map',[MainController::class,'getmap']);
 });
 
 });

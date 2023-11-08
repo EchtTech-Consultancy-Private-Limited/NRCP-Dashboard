@@ -155,9 +155,10 @@
 </nav> -->
 
 <ul id="accordion" class="accordion">
+    
     <li>
         <div class="link bg-primary text-white"> <i class="nav-icon fas fa-tachometer-alt text-light"></i> <a
-                href="#">Dashboard</a> </i></div>
+                href="{{ url('/dashboard') }}">Dashboard</a> </i></div>
 
     </li>
 

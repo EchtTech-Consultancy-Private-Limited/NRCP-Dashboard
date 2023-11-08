@@ -1,5 +1,5 @@
-// const BASE_URL =window.location.origin;
-const BASE_URL =window.location.origin+"/public";
+const BASE_URL =window.location.origin;
+// const BASE_URL =window.location.origin+"/public";
 
 /*handle Form Type*/
 const handleFormType = ()=>{
@@ -146,6 +146,8 @@ $(document).ready(function() {
         $('#yearto option[value=""]').prop('selected', 'selected').change();
         $('#formType option[value="2"]').prop('selected', 'selected').change();
         $('#diseasesSyndromes option[value="human_rabies"]').prop('selected', 'selected').change();
+        $("#stateMap").hide();
+        $("#container").hide();
         apply_filter();
     });
 
@@ -203,6 +205,27 @@ const apply_filter = ()=>{
             session_value:session_value
         },
         success: function(result) {
+
+                let statesData = result.array;
+                const entries = Object.entries(statesData);
+               
+                const containerElement = document.getElementById("container");
+                const stateElement = document.getElementById("stateMap");
+                const $stateImageElement = $(".stateImage");
+
+                result.imageNames.forEach(element => {
+                     //console.log(entries[0][0] == element);
+                  if(entries[0][0] == element){
+                      containerElement.style.display = "none";  // Hide "container"
+                      stateElement.style.display = "block";     // Show "state"
+
+                      const dynamicImageName =   'http://localhost:8000/state/'+ element.replace(/\s/g, '%20')  + '.png'; // Modify this based on your naming convention
+                       // console.log(dynamicImageName);
+                      $stateImageElement.attr("src", dynamicImageName);
+                   }
+                 
+              });
+            
             search_btn.html("Search");
             search_btn.attr("disabled",false);
             search_btn.html("Search");
@@ -436,6 +459,8 @@ $(document).ready(function() {
     year = $('#year').val();
     $('.statewise').hide();
     $('#yeartostate').hide();
+    $("#stateMap").hide();
+
 
     $("#mySelect2").select2({
         tags: true,
@@ -455,7 +480,6 @@ $(document).ready(function() {
                 $('#text2').html("<strong>Deaths</strong></br> Presumptive Cases");
                 $('#box1').html(result.total_cases);
                 $('#box2').html(result.total_deaths);
-
                 /*Google Chart Pie Chart*/
                 googlePieChart(result);
 

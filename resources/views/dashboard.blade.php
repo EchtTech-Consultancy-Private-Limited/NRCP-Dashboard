@@ -187,12 +187,6 @@
                   </div>
                   <h1 id="map-text" class="map-text mt-2">Human Rabies (Presumptive Cases) in India</h1>
 
-
-
-
-
-
-
                   <div class="row lform">
                         <div class="col-4 d-flex justify-content-center">
                             <div class="box"><span id="box3">
@@ -213,8 +207,6 @@
                               </span></div>
                         </div>
                     </div>
-
-
 
                     <div class="row defaultform">
                         <div class="col 6 d-flex justify-content-center">
@@ -242,11 +234,18 @@
                               <option value="positive_tested">Positive</option>
                            </select>
                         </div>
+
+
+
                         <div class="col-md-8">
-                           <div class="year-selector p-3">
-                           </div>
-                           <div style="height: 700px;" id="container"></div>
+                           <div class="year-selector p-3"> </div>
+
+                             <div style="height: 700px;" id="container"></div>
+
+                             <div style="height: 700px;" id="stateMap" ><img style="height:380px;" class="stateImage"  src=""></div>
+
                         </div>
+                        
                         <div class="col-md-4">
                            <div style="padding:15px; border: 1px solid grey; border-radius:5px; background: white; color: black; height: 100%"
                               id="yeartostate">
