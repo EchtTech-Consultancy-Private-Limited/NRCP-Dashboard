@@ -57,6 +57,9 @@
   margin: 0;
 }
 
+.dashboard .select2-container--default .select2-selection--multiple .select2-selection__rendered li:first-child.select2-search.select2-search--inline .select2-search__field {
+  padding: 1px 0 !important;
+}
 .dashboard .dashboard-filter {
   padding: 15px;
   border-radius: 5px;
@@ -76,7 +79,7 @@
 }
 .dashboard .button {
   border-radius: 22px;
-  padding: 8px 29px;
+  padding: 8px 24px;
 }
 .dashboard .stateImage {
   height: 100%;
@@ -89,6 +92,7 @@
 .dashboard .select2-container--default .select2-selection--multiple {
   height: auto !important;
   margin: 5px 0;
+  min-height: auto !important;
 }
 
 .user-icon {

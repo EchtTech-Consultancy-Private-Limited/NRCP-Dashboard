@@ -252,16 +252,16 @@ const apply_filter = ()=>{
                 $('.lform').hide()
                 $('.defaultform').show()
                 if(form_type == '3'){
-                    $('#box1').html("Total Cases" + " " + result.human_rabies_case);
-                    $('#box2').html( "Total Deaths" + " " + result.human_rabies_deaths);
+                    $('#box1').html("Total Cases-" + " " + result.human_rabies_case);
+                    $('#box2').html( "Total Deaths-" + " " + result.human_rabies_deaths);
                     $('#text1').html("Syndromic Surveillance Cases");
                     $('#text2').html("Syndromic Surveillance Cases");
 
                 }else{
                         $('#text1').html("Presumptive Cases");
-                        $('#text2').html("<strong>Deaths</strong></br> Presumptive Cases");
-                        $('#box1').html("Total Cases" + " " + result.human_rabies_case);
-                        $('#box2').html(result.human_rabies_deaths);
+                        $('#text2').html("Presumptive Cases");
+                        $('#box1').html("Total Cases-" + " " + result.human_rabies_case);
+                        $('#box2').html("Total Deaths-" + " " + result.human_rabies_deaths);
                 }
             }
             let sessionValue = $("#session_value").val();

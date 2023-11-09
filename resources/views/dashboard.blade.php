@@ -161,8 +161,8 @@
 
                      <div class="col-lg-3 col-md-3 col-6 search-reset">
                         <div class=" apply-filter">
-                           <label for=""><span
-                              class="star"></span></label>
+                           <!-- <label for=""><span
+                              class="star"></span></label> -->
                            <button id="apply_filter" class="btn  bg-primary text-light apply-filter button">Search</button>
 
                         </div>
@@ -177,7 +177,7 @@
                         <input type="hidden" value="" id="is_graph_data_available">
                         <!-- </form> -->
                         <div class="button apply-filter">
-                        <label for=""><span class="star"></span></label>
+                        <!-- <label for=""><span class="star"></span></label> -->
                               <button id="reset_button" class="btn btn-dark text-light apply-filter text-white button">Reset</button>
                         </div>
                      </div>
@@ -249,7 +249,7 @@
                               <span class="user-icon">
                               <i class="fa fa-users" aria-hidden="true"></i>
                               </span> 
-                                 <span id="box2" class="cases"> </span></br><span id="text2" class="case-title"> </span>
+                                 <span id="box2" class="cases"> </span> <br><span id="text2" class="case-title"> </span>
                               </div>
                         </div>
                         
