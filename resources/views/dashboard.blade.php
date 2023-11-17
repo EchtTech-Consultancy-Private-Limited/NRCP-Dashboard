@@ -8,7 +8,7 @@
 <div class="col-md-12">
 
    <!-- general form elements -->
-   <div class="card card-primary">
+   <div class="card card-primary dashboard">
       <div class="form-tab">
          <div class="bootstrap-tab">
             <div class="tab-content" id="myTabContent">
@@ -17,6 +17,7 @@
                   <!-- <form action="{{ url('/record-filter') }}" method="post" class="myForm"> -->
                   <!-- <form action="#" method="post" class="myForm"> -->
                   <!-- @csrf -->
+                  <div class="dashboard-filter">
                   <div class="row">
                      <div class="col-lg-3 col-md-3 col-6">
                         <div class="form-group">
@@ -142,7 +143,7 @@
 
                      <div class="col-lg-3 col-md-3 col-6" id="test_performed">
                         <div class="form-group">
-                           <label for="testPerformed">Test Performed<span
+                           <label for="testPerformed" class="d-block">Test Performed<span
                               class="star">*</span></label>
                            <select  class="form-control" id="mySelect2" multiple="multiple" aria-label="Default select">
                               <!-- <option value="" selected>--All--</option> -->
@@ -159,10 +160,10 @@
                      </div>
 
                      <div class="col-lg-3 col-md-3 col-6 search-reset">
-                        <div class="button apply-filter">
-                           <label for=""><span
-                              class="star"></span></label>
-                           <button id="apply_filter" class="btn  bg-primary text-light apply-filter">Search</button>
+                        <div class=" apply-filter">
+                           <!-- <label for=""><span
+                              class="star"></span></label> -->
+                           <button id="apply_filter" class="btn  bg-primary text-light apply-filter button">Search</button>
 
                         </div>
 
@@ -176,8 +177,8 @@
                         <input type="hidden" value="" id="is_graph_data_available">
                         <!-- </form> -->
                         <div class="button apply-filter">
-                        <label for=""><span class="star"></span></label>
-                              <button id="reset_button" class="btn btn-warning text-light apply-filter text-white">Reset</button>
+                        <!-- <label for=""><span class="star"></span></label> -->
+                              <button id="reset_button" class="btn btn-dark text-light apply-filter text-white button">Reset</button>
                         </div>
                      </div>
 
@@ -185,76 +186,119 @@
 
 
                   </div>
-                  <h1 id="map-text" class="map-text mt-2">Human Rabies (Presumptive Cases) in India</h1>
+                  </div>
+                  <div class="presumptive-cases dashboard-filter mt-5">
+                         <h1 id="map-text" class="map-text my-3">Human Rabies (Presumptive Cases) in India</h1>
 
-                  <div class="row lform">
-                        <div class="col-4 d-flex justify-content-center">
-                            <div class="box"><span id="box3">
-                                </span></br><span id="text3">
-                                    <strong>Laboratory Cases</strong></br> Persons Tested
-                              </span></div>
+                        <div class="row lform">
+                              <div class="col-md-12 ">
+                                 <div class="box">
+                                 <span class="user-icon">
+                                 <i class="fa fa-users" aria-hidden="true"></i>
+                              </span>
+                              <span id="text3" class="cases">  Laboratory Cases-  <span id="box3">  </span> </span>
+                               <br>
+                                    <span id="text3" class="case-title">
+                                           Persons Tested
+                                    </span>
+                                 </div>
+
+                                 <div class="box">
+                                          <span class="user-icon">
+                                             <i class="fa fa-users" aria-hidden="true"></i>
+                                          </span>
+                                          <span id="text4"  class="cases">Laboratory Cases-     <span id="box4"> </span>   </span> 
+<br>
+                                       <span id="text4" class="case-title"> Samples Tested
+                                    </span>
+                                      </div>
+                                    <div class="box">
+                                       <span class="user-icon">
+                                             <i class="fa fa-users" aria-hidden="true"></i>
+                                       </span>
+                                       <span id="text5"  class="cases">Laboratory Cases-  <span id="box5"> </span> </span>
+                                      <br>
+                                    
+                                    <span id="text5" class="case-title"> Positive </span>
+                                 </div>
+                              </div>
+                              <!-- <div class="col-4 ">
+                                 <div class="box"><span id="box4">
+                                    </span></br><span id="text4">
+                                    <strong>Laboratory Cases</strong></br> Samples Tested
+                                    </span></div>
+                              </div>
+                              <div class="col-4 ">
+                                 <div class="box"><span id="box5">
+                                    </span></br><span id="text5">
+                                    <strong>Laboratory Cases</strong></br> Positive
+                                    </span></div>
+                              </div> -->
                         </div>
-                        <div class="col-4 d-flex justify-content-center">
-                            <div class="box"><span id="box4">
-                                </span></br><span id="text4">
-                                <strong>Laboratory Cases</strong></br> Samples Tested
-                              </span></div>
+
+                        <div class="row defaultform">
+                        <div class="col-md-12">
+                            <div class="box">
+                              <span class="user-icon">
+                                 <i class="fa fa-users" aria-hidden="true"></i>
+                              </span> 
+                              <span id="box1" class="cases">  </span>  </br><span id="text1" class="case-title"> </span>
+                            </div>
+
+                              <div class="box">
+                              <span class="user-icon">
+                              <i class="fa fa-users" aria-hidden="true"></i>
+                              </span> 
+                                 <span id="box2" class="cases"> </span> <br><span id="text2" class="case-title"> </span>
+                              </div>
                         </div>
-                        <div class="col-4 d-flex justify-content-center">
-                            <div class="box"><span id="box5">
-                                </span></br><span id="text5">
-                                <strong>Laboratory Cases</strong></br> Positive
-                              </span></div>
-                        </div>
+                        
                     </div>
 
-                    <div class="row defaultform">
-                        <div class="col 6 d-flex justify-content-center">
-                            <div class="box"><span id="box1">
-                                </span></br><span id="text1"> </span></div>
-                        </div>
-                        <div class="col 6 d-flex justify-content-center">
-                            <div class="box"><span id="box2">
-                                </span></br><span id="text2"> </span></div>
-                        </div>
-                    </div>
 
+                  </div>
+                 
+                   
                   <!-- /.row -->
-                  <div class="card-body">
+                  <div class="card-body p-0 my-5">
                      <div class="row bg-white">
-                        <div class="col-md-5">
-                           <select class="form-control" name="type" id="type">
-                           <option value="0">Cases</option>
-                           <option value="1">Deaths</option>
-                           </select>
-                           <select class="form-control" id="l-dropdown" onChange="handleFilterValue(); getLFormData();">
-                              <option value="">Select test type</option>
-                              <option value="person_tested">Person Tested</option>
-                              <option value="sample_tested">Sample Tested</option>
-                              <option value="positive_tested">Positive</option>
-                           </select>
-                        </div>
+                       
 
-                        <div class="col-md-8">
-                           <div class="year-selector p-3"> </div>
-
-                             <div style="height: 700px;" id="container"></div>
-
-                             <div style="height: 700px;" id="stateMap" ><img style="height:380px;" class="stateImage"  src=""></div>
+                        <div class="col-md-6 pr-4">
+                           <div class="country-map dashboard-filter">
+                                 <div class="">
+                                 <select class="form-control w-auto" name="type" id="type" >
+                                 <option value="0">Cases</option>
+                                 <option value="1">Deaths</option>
+                                 </select>
+                                 <select class="form-control" id="l-dropdown" onChange="handleFilterValue(); getLFormData();">
+                                    <option value="">Select test type</option>
+                                    <option value="person_tested">Person Tested</option>
+                                    <option value="sample_tested">Sample Tested</option>
+                                    <option value="positive_tested">Positive</option>
+                                 </select>
+                                 </div>
+                                 <div class="year-selector p-3"> </div>
+                                 <div  id="container" class="map"></div>
+                                 <div  id="stateMap" ><img  class="stateImage"  src=""></div>
+                           </div>
+                       
 
                         </div>
                         
-                        <div class="col-md-4">
-                           <div style="padding:15px; border: 1px solid grey; border-radius:5px; background: white; color: black; height: 100%"
-                              id="yeartostate">
-                           </div>
-                           <div style="padding:15px; border: 1px solid grey; border-radius:5px; background: white; color: black; height: 100%"
-                              class="statewise">
-                           </div>
-                           <div style="padding:15px; border: 1px solid grey; border-radius:5px; background: white; color: black; height: 100%"
-                              id="detailsData">
-                           </div>
-                           <div class='table-responsive detailsDatas'>
+                        <div class="col-md-6 pl-4">
+                           <div class="dashboard-filter">
+                              <div style="padding:15px; border: 1px solid grey; border-radius:5px; background: white; color: black; height: 100%"
+                                 id="yeartostate">
+                              </div>
+                              <div style="padding:15px; border: 1px solid grey; border-radius:5px; background: white; color: black; height: 100%"
+                                 class="statewise">
+                              </div>
+                              <div style="padding:15px; border: 1px solid grey; border-radius:5px; background: white; color: black; height: 100%"
+                                 id="detailsData">
+                              </div>
+
+                              <div class= "table-responsive detailsDatas dashboard-table">
                               <table class='table table-bordered s-p-form-map'>
                                  <thead>
                                     <tr>
@@ -288,6 +332,9 @@
                               </table>
                            </div>
                         </div>
+                          
+                          
+                        </div>
                      </div>
                   </div>
 
@@ -295,24 +342,26 @@
 <!-- graph start-->
       <div id="graphical_view">
          <div class="row">
-            <div class="col-md-6">
-                  <div id="piechart" style="width: 100%; height: 500px;"></div>
+            <div class="col-md-6 pr-4">
+                  <div id="piechart" class="piechart dashboard-filter" height="400"></div>
             </div>
 
-            <div class="col-md-6">
-                  <div id="piecharts" style="width: 100%; height: 500px;"></div>
+            <div class="col-md-6 pl-4">
+                  <div id="piecharts" class="piechart dashboard-filter " height="400"></div>
             </div>
          </div>
 
          <div class="row">
             <div class="col-md-12">
-               <div id="chart"></div>
+               <div id="chart" class="dashboard-filter mt-5"></div>
             </div>
          </div>
          <div class="row">
             <div class="col-md-12">
+               <div class="dashboard-filter mt-5">
                   <h1>Cases by Age Group in India (Based on Male and Female)</h1>
                   <div id="chartContainer" style="height: 400px;"></div>
+               </div>
             </div>
          </div>
       </div>
