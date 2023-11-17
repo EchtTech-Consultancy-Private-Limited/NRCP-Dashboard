@@ -59,6 +59,9 @@
 }
 .dashboard {
    
+    .select2-container--default .select2-selection--multiple .select2-selection__rendered li:first-child.select2-search.select2-search--inline .select2-search__field{
+        padding: 1px 0 !important;
+    }
     .dashboard-filter{
         // border: 1px solid #ddd;
         padding: 15px;
@@ -82,7 +85,7 @@
 
     .button {
         border-radius: 22px;
-        padding: 8px 29px;
+        padding: 8px 24px;
     }
 
     .stateImage {
@@ -98,6 +101,7 @@
     .select2-container--default .select2-selection--multiple{
         height: auto !important;
         margin: 5px 0;
+        min-height: auto !important;
     }
 }
 
@@ -122,3 +126,4 @@
         font-size: 13px;
     }
 }
+
