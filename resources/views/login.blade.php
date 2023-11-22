@@ -4,6 +4,12 @@
 
 @include('includes.login-header')
 
+<style>
+                            
+    i.fa.fa-refresh1:before {
+      content: "\f021";
+  }
+                              </style>
 
 <body class="hold-transition login-page">
     <div class="login-box" style="width: 450px;">
@@ -68,9 +74,12 @@
                         </div>
                     </div>
                     <div class="input-group mb-3">
-                        <input type="password" name="password" class="form-control" placeholder="Password">
+                        <input type="password" name="password" id="password" class="form-control" placeholder="Password">
+                        
                         <div class="input-group-append">
+                          
                             <div class="input-group-text">
+                                <i class="fa fa-eye pr-3" aria-hidden="true" id="togglePassword"></i>
                                 <span class="fas fa-lock"></span>
                             </div>
 
@@ -78,17 +87,19 @@
                     </div>
 
                     <div class="col-md-12">
-                        <div class="captcha d-flex justify-content-center">
-                              <input id="captcha" type="text" class="form-control" placeholder="Enter Captcha"
+                        <div class="captcha row">
+                              <input id="captcha" type="text" class="form-control col-md-7" placeholder="Enter Captcha"
                                     name="captcha">
-                            <div class="d-flex">
-                                <span class="me-2">{!! captcha_img('math') !!}</span>
+
+                            <div class="col-md-5 text-right pr-0">
+                                <span class="me-2" style=" width: 117px;display: inline-block;">{!! captcha_img('math') !!}</span>
                                 <button type="button" class="btn btn-success btn-refresh"><i
-                                        class="fa fas-rotate"></i></button>
+                                        class="fa fa-refresh1"></i></button>
                             </div>
 
                         </div>
 
+                      
 
 
                         {{-- @if ($errors->has('captcha'))
@@ -142,5 +153,23 @@
             });
         });
     </script>
+
+
+<script>
+    let password = document.querySelector('#password');
+    let togglePassword = document.querySelector('#togglePassword');
+
+    togglePassword.addEventListener('click', (e)=>{
+        const type = password.getAttribute('type') === 'password' ? 'text' :'password';
+
+        password.setAttribute('type', type);
+
+        this.classlist.toggle('fa-eye-slash');
+    });
+</script>
+
+
+ 
+   
 
     @include('includes.login-footer')
