@@ -1,37 +1,38 @@
-// const BASE_URL =window.location.origin;
-const BASE_URL =window.location.origin+"/public";
+const BASE_URL = window.location.origin;
+// const BASE_URL =window.location.origin+"/public";
+
 
 /*handle Form Type*/
-const handleFormType = ()=>{
+const handleFormType = () => {
     const formType = $('#formType').find(":selected").attr('form-type');
     $("#diseasesSyndromes").html("");
-    let option="";
-    if(formType==="p-form"){
+    let option = "";
+    if (formType === "p-form") {
         $("#filter_form_type").val(2);
         $("#graphical_view").show();
-        option="<option value='human_rabies'>Human Rabies</option> <option value='animal_bite'>Animal Bite - Dog Bite</option>";
+        option = "<option value='human_rabies'>Human Rabies</option> <option value='animal_bite'>Animal Bite - Dog Bite</option>";
         $("#diseasesSyndromes").append(option);
         $('#l-dropdown option[value=""]').prop('selected', 'selected');
         $("#l-dropdown").hide();
         $("#test_performed").hide();
         $("#type").show();
 
-    }else  if(formType==="l-form"){
+    } else if (formType === "l-form") {
         $("#filter_form_type").val(1);
         // $("#graphical_view").hide();
         $('#l-dropdown option[value="person_tested"]').prop('selected', 'selected');
 
-        option="<option value='laboratary'>Human Rabies</option>";
+        option = "<option value='laboratary'>Human Rabies</option>";
         $("#diseasesSyndromes").append(option);
         $("#l-dropdown").show();
         $("#test_performed").show();
         $("#type").hide();
         $("#map-text").html("Animal Bite - Dog Bite (Laboratory Cases) in India")
 
-    }else{
+    } else {
         $("#filter_form_type").val(3);
         // $("#graphical_view").hide();
-        option="<option value='animal_bite'>Animal Bite - Dog Bite</option>";
+        option = "<option value='animal_bite'>Animal Bite - Dog Bite</option>";
         $("#diseasesSyndromes").append(option);
         // $('#l-dropdown option[value=""]').attr("selected", true);
         $('#l-dropdown option[value=""]').prop('selected', 'selected');
@@ -42,7 +43,7 @@ const handleFormType = ()=>{
     }
 }
 
-const handleFilterValue = ()=>{
+const handleFilterValue = () => {
     const filter_state = $('#state').find(":selected").val();
     const filter_district = $('#district').find(":selected").val();
     const filter_from_year = $('#year').find(":selected").val();
@@ -59,56 +60,56 @@ const handleFilterValue = ()=>{
     filter_diseasesSyndromes ? $("#filter_diseases").val(filter_diseasesSyndromes) : "";
     l_dropdown ? $("#l-dropdown").val(l_dropdown) : "";
 
-    filter_diseasesSyndromes==="animal_bite" ? $("#map-text").html("Animal Bite - Dog Bite (Presumptive Cases) in India"):$("#map-text").html("Human Rabies (Presumptive Cases) in India");
+    filter_diseasesSyndromes === "animal_bite" ? $("#map-text").html("Animal Bite - Dog Bite (Presumptive Cases) in India") : $("#map-text").html("Human Rabies (Presumptive Cases) in India");
 }
 
-const getLFormData = ()=>{
+const getLFormData = () => {
     apply_filter();
 }
 
-const handleTestPerformed = ()=>{
+const handleTestPerformed = () => {
     const arr = [];
-        $.each($("input[name='test-perfomed']:checked"), function(){
-            arr.push($(this).val());
+    $.each($("input[name='test-perfomed']:checked"), function () {
+        arr.push($(this).val());
     });
 }
 
-const handleDistrict = ()=>{
+const handleDistrict = () => {
     const state_id = $('#state').find(":selected").attr('state-id');
     let option = "<option value=''>Please select district</option>";
     $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
 
-            $.ajax({
-                url: BASE_URL+"/get-district",
-                type: "get",
-                data: {
-                    state_id: state_id,
-                    },
-                success: function(result) {
-                    if(result){
-                        $("#district").html("");
-                        result.district_list.forEach((district)=>{
-                            option +=`<option value="${district.id}" dist-name="${district.district_name}">${district.district_name}</option>`;
-                        });
-                        $("#district").append(option);
-                    }else{
-                        $("#district").html("");
-                    }
-                }
-            });
+    $.ajax({
+        url: BASE_URL + "/get-district",
+        type: "get",
+        data: {
+            state_id: state_id,
+        },
+        success: function (result) {
+            if (result) {
+                $("#district").html("");
+                result.district_list.forEach((district) => {
+                    option += `<option value="${district.id}" dist-name="${district.district_name}">${district.district_name}</option>`;
+                });
+                $("#district").append(option);
+            } else {
+                $("#district").html("");
+            }
+        }
+    });
 }
 
 /*end here*/
-$(document).ready(function() {
+$(document).ready(function () {
     $("#l-dropdown").hide();
     $('.lform').hide()
     $('.l-form-map').hide()
     $('#test_performed').hide()
-    $('#year').change(function() {
+    $('#year').change(function () {
         var fromYear = parseInt($(this).val());
         var toYearSelect = $('#yearto');
         //aleart(toYearSelect)
@@ -134,12 +135,12 @@ $(document).ready(function() {
     // Trigger the change event to populate the "to year" dropdown initially
     // $('#year').change();
 
-    $("#apply_filter").on('click', function() {
+    $("#apply_filter").on('click', function () {
         apply_filter();
 
     });
 
-    $("#reset_button").on('click', function() {
+    $("#reset_button").on('click', function () {
         $('#state option[value=""]').prop('selected', 'selected').change();
         $('#district option[value=""]').prop('selected', 'selected').change();
         $('#year option[value="2022"]').prop('selected', 'selected').change();
@@ -153,7 +154,7 @@ $(document).ready(function() {
 
 });
 
-const apply_filter = ()=>{
+const apply_filter = () => {
     const filter_state = $('#state').find(":selected").val();
     const filter_district = $('#district').find(":selected").val();
     const filter_from_year = $('#year').find(":selected").val();
@@ -164,16 +165,16 @@ const apply_filter = ()=>{
     const session_value = $('#session_value').val();
 
     const search_btn = $("#apply_filter");
-    search_btn.attr("disabled",true);
+    search_btn.attr("disabled", true);
     let loading_content = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Loading...';
     search_btn.html(loading_content);
-    if(form_type==1){
+    if (form_type == 1) {
         $('.s-p-form-map').hide();
         $('.l-form-map').show();
         $('#l-dropdown').show();
         $("#type").hide();
 
-    }else{
+    } else {
         $('.s-p-form-map').show();
         $("#type").show();
         $('.l-form-map').hide();
@@ -192,7 +193,7 @@ const apply_filter = ()=>{
         }
     });
     $.ajax({
-        url: BASE_URL+"/get-filter-data",
+        url: BASE_URL + "/get-filter-data",
         type: "get",
         data: {
             setstate: filter_state,
@@ -202,40 +203,44 @@ const apply_filter = ()=>{
             form_type: form_type,
             filter_diseasesSyndromes: filter_diseasesSyndromes,
             l_dropdown: l_dropdown,
-            session_value:session_value
+            session_value: session_value
         },
-        success: function(result) {
+        success: function (result) {
 
-                let statesData = result.array;
-                const entries = Object.entries(statesData);
-               
-                const containerElement = document.getElementById("container");
-                const stateElement = document.getElementById("stateMap");
-                const $stateImageElement = $(".stateImage");
-
-            if(filter_state !== ''){    
-                result.imageNames.forEach(element => {
-                     //console.log(entries[0][0] == element);
-                  if(entries[0][0] == element ){
-                      containerElement.style.display = "none";  // Hide "container"
-                      stateElement.style.display = "block";     // Show "state"
-
-                      const dynamicImageName =   BASE_URL+'/state/'+ element.replace(/\s/g, '%20')  + '.png'; // Modify this based on your naming convention
-                       // console.log(dynamicImageName);
-                      $stateImageElement.attr("src", dynamicImageName);
-                   }
-                 
-              });
-            }
+            console.log(result);
+             
+            let statesData = result.array;
+            const entries = Object.entries(statesData);
               
+              //console.log(result.setstateMap)    //setstate
+
+            const containerElement = document.getElementById("container");
+            const stateElement = document.getElementById("stateMap");
+            const $stateImageElement = $(".stateImage");
+
+            if (filter_state !== '') {
+                result.imageNames.forEach(element => {
+                    //console.log(entries[0][0] == element);
+                    if (result.setstateMap == element) {
+                        containerElement.style.display = "none";  // Hide "container"
+                        stateElement.style.display = "block";     // Show "state"
+
+                        const dynamicImageName = BASE_URL + '/state/' + element.replace(/\s/g, '%20') + '.png'; // Modify this based on your naming convention
+                        // console.log(dynamicImageName);
+                        $stateImageElement.attr("src", dynamicImageName);
+                    }
+
+                });
+            }
+
             search_btn.html("Search");
-            search_btn.attr("disabled",false);
+            search_btn.attr("disabled", false);
             search_btn.html("Search");
-            search_btn.attr("disabled",false);
-            if(form_type=='2'){
-            googlePieChart(result);
-            barChart(result[0]);
-            pyramidChart(result[0]);
+            search_btn.attr("disabled", false);
+            if (form_type == '2') {
+                googlePieChart(result);
+                barChart(result[0]);
+                pyramidChart(result[0]);
             }
 
             if (form_type == '1') {
@@ -243,25 +248,25 @@ const apply_filter = ()=>{
                 $('.lform').show()
             }
 
-            if(form_type == '1'){
+            if (form_type == '1') {
 
                 $('#box3').html(result.laboratory_total);
                 $('#box4').html(result.laboratory_samples);
                 $('#box5').html(result.laboratory_Positive);
-            }else{
+            } else {
                 $('.lform').hide()
                 $('.defaultform').show()
-                if(form_type == '3'){
+                if (form_type == '3') {
                     $('#box1').html("Total Cases-" + " " + result.human_rabies_case);
-                    $('#box2').html( "Total Deaths-" + " " + result.human_rabies_deaths);
+                    $('#box2').html("Total Deaths-" + " " + result.human_rabies_deaths);
                     $('#text1').html("Syndromic Surveillance Cases");
                     $('#text2').html("Syndromic Surveillance Cases");
 
-                }else{
-                        $('#text1').html("Presumptive Cases");
-                        $('#text2').html("Presumptive Cases");
-                        $('#box1').html("Total Cases-" + " " + result.human_rabies_case);
-                        $('#box2').html("Total Deaths-" + " " + result.human_rabies_deaths);
+                } else {
+                    $('#text1').html("Presumptive Cases");
+                    $('#text2').html("Presumptive Cases");
+                    $('#box1').html("Total Cases-" + " " + result.human_rabies_case);
+                    $('#box2').html("Total Deaths-" + " " + result.human_rabies_deaths);
                 }
             }
             let sessionValue = $("#session_value").val();
@@ -283,32 +288,32 @@ const apply_filter = ()=>{
                 // Clear any existing rows in the table
                 tableBody.empty();
                 // Loop through the entries and add rows to the table
-                    entries.forEach(function(entry) {
-                        const state = entry[0];
-                        const cases = entry[1];
+                entries.forEach(function (entry) {
+                    const state = entry[0];
+                    const cases = entry[1];
 
-                        if(l_dropdown==""){
-                            const row = `
+                    if (l_dropdown == "") {
+                        const row = `
                             <tr>
                                 <td>${capitalizeFirstLetter(state)}</td>
-                                <td>${sessionValue == 0 ? cases : 0 }</td>
+                                <td>${sessionValue == 0 ? cases : 0}</td>
                                 <td>${sessionValue == 1 ? cases : 0}</td>
                             </tr>
                         `;
-                            tableBody.append(row);
-                        }else{
-                            const row = `
+                        tableBody.append(row);
+                    } else {
+                        const row = `
                             <tr>
                                 <td>${capitalizeFirstLetter(state)}</td>
-                                <td>${case_type_col === 1 ? cases : 0 }</td>
+                                <td>${case_type_col === 1 ? cases : 0}</td>
                                 <td>${case_type_col === 2 ? cases : 0}</td>
                                 <td>${case_type_col === 3 ? cases : 0}</td>
                             </tr>
                         `;
-                            tableBody.append(row);
-                        }
+                        tableBody.append(row);
+                    }
 
-                    });
+                });
 
 
                 // Create the chart
@@ -449,14 +454,14 @@ const apply_filter = ()=>{
 
 
         },
-        error:(xhr,status)=>{
+        error: (xhr, status) => {
             search_btn.html("Search");
-            search_btn.attr("disabled",false);
+            search_btn.attr("disabled", false);
         }
     });
 }
 
-$(document).ready(function() {
+$(document).ready(function () {
 
     year = $('#year').val();
     $('.statewise').hide();
@@ -475,15 +480,15 @@ $(document).ready(function() {
     });
 
     $.ajax({
-        url: BASE_URL+"/human-rabies",
+        url: BASE_URL + "/human-rabies",
         type: "get",
-        success: function(result) {
-                $('#text1').html("Presumptive Cases");
-                $('#text2').html("Presumptive Cases");
-                $('#box1').html("Total Cases -" + " " + result.total_cases);
-                $('#box2').html("Total Deaths -" + " " + result.total_deaths);
-                /*Google Chart Pie Chart*/ 
-                googlePieChart(result);
+        success: function (result) {
+            $('#text1').html("Presumptive Cases");
+            $('#text2').html("Presumptive Cases");
+            $('#box1').html("Total Cases -" + " " + result.total_cases);
+            $('#box2').html("Total Deaths -" + " " + result.total_deaths);
+            /*Google Chart Pie Chart*/
+            googlePieChart(result);
 
 
             let sessionValue = $("#session_value").val();
@@ -508,13 +513,13 @@ $(document).ready(function() {
                 $('#detailsData').hide();
 
                 // Loop through the entries and add rows to the table
-                entries.forEach(function(entry) {
+                entries.forEach(function (entry) {
                     const state = entry[0];
                     const cases = entry[1];
                     const row = `
                         <tr>
                             <td>${capitalizeFirstLetter(state)}</td>
-                            <td>${sessionValue == 0 ? cases : 0 }</td>
+                            <td>${sessionValue == 0 ? cases : 0}</td>
                             <td>${sessionValue == 1 ? cases : 0}</td>
                         </tr>
                     `;
@@ -669,9 +674,9 @@ $(document).ready(function() {
     });
     // pyramid chart
     $.ajax({
-        url: BASE_URL+"/p-form-horizontal-barchart",
+        url: BASE_URL + "/p-form-horizontal-barchart",
         type: "get",
-        success: function(result) {
+        success: function (result) {
             pyramidChart(result);
         }
     });
@@ -679,7 +684,7 @@ $(document).ready(function() {
 });
 
 
-$('#type').on('change', function() {
+$('#type').on('change', function () {
     const typeValue = $('#type').find(":selected").val();
     $("#session_value").val(typeValue);
     apply_filter();
@@ -689,7 +694,7 @@ function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
 
 
     $.ajaxSetup({
@@ -702,10 +707,10 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     $.ajax({
-        url: BASE_URL+"/pform-horizontal-barchart-death",
+        url: BASE_URL + "/pform-horizontal-barchart-death",
         type: "get",
 
-        success: function(result) {
+        success: function (result) {
 
             barChart(result);
 
@@ -716,7 +721,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 });
 
-const googlePieChart = (result)=>{
+const googlePieChart = (result) => {
     const filter_state = $('#state').find(":selected").attr('state-name');
     const filter_district = $('#district').find(":selected").attr('dist-name');
     const filter_from_year = $('#year').find(":selected").val();
@@ -724,19 +729,19 @@ const googlePieChart = (result)=>{
     const form_type = $('#formType').find(":selected").attr('form-type');
     const filter_diseasesSyndromes = $('#diseasesSyndromes').find(":selected").val();
     const l_dropdown = $('#l-dropdown').find(":selected").val();
-    if(result.length<1){
+    if (result.length < 1) {
         $("#is_graph_data_available").val("No graph data available");
-    }else{
+    } else {
         $("#is_graph_data_available").val("");
     }
     let is_graph_data_available = $("#is_graph_data_available").val();
-    is_graph_data_available= is_graph_data_available!==""?is_graph_data_available:"";
+    is_graph_data_available = is_graph_data_available !== "" ? is_graph_data_available : "";
 
-/*google chart start*/
-        google.charts.load('current', {'packages':['corechart']});
-        google.charts.setOnLoadCallback(drawCharts);
+    /*google chart start*/
+    google.charts.load('current', { 'packages': ['corechart'] });
+    google.charts.setOnLoadCallback(drawCharts);
 
-        function drawCharts() {
+    function drawCharts() {
         var data = google.visualization.arrayToDataTable([
             ['Gender', 'Percentage'],
             ['Male', result.male_percentage],
@@ -744,16 +749,16 @@ const googlePieChart = (result)=>{
         ]);
 
         var options = {
-            title: `Cases by Gender in India ${filter_state!==undefined?filter_state+' >':''} ${filter_district!==undefined?filter_district+' >':''} ${filter_from_year!==""?filter_from_year+' >':''} ${filter_to_year!==""?filter_to_year+' >':''}    n=(${result.total})`,
+            title: `Cases by Gender in India ${filter_state !== undefined ? filter_state + ' >' : ''} ${filter_district !== undefined ? filter_district + ' >' : ''} ${filter_from_year !== "" ? filter_from_year + ' >' : ''} ${filter_to_year !== "" ? filter_to_year + ' >' : ''}    n=(${result.total})`,
         };
 
         var chart = new google.visualization.PieChart(document.getElementById('piechart'));
         chart.draw(data, options);
-        }
-        google.charts.load('current', {'packages':['corechart']});
-        google.charts.setOnLoadCallback(drawChart);
+    }
+    google.charts.load('current', { 'packages': ['corechart'] });
+    google.charts.setOnLoadCallback(drawChart);
 
-        function drawChart() {
+    function drawChart() {
         var data = google.visualization.arrayToDataTable([
             ['Gender', 'Percentage'],
             ['Male', result.male_percentage_death],
@@ -761,17 +766,17 @@ const googlePieChart = (result)=>{
         ]);
 
         var options = {
-            title: `Death by Gender in India ${filter_state!==undefined?filter_state+' >':''} ${filter_district!==undefined?filter_district+' >':''} ${filter_from_year!==""?filter_from_year+' >':''} ${filter_to_year!==""?filter_to_year+' >':''}  n=(${result.total_death_google_graph})`,
+            title: `Death by Gender in India ${filter_state !== undefined ? filter_state + ' >' : ''} ${filter_district !== undefined ? filter_district + ' >' : ''} ${filter_from_year !== "" ? filter_from_year + ' >' : ''} ${filter_to_year !== "" ? filter_to_year + ' >' : ''}  n=(${result.total_death_google_graph})`,
         };
 
         var chart = new google.visualization.PieChart(document.getElementById('piecharts'));
 
         chart.draw(data, options);
-        }
-/*end google chart*/
+    }
+    /*end google chart*/
 }
 
-const pyramidChart = (result)=>{
+const pyramidChart = (result) => {
     const filter_state = $('#state').find(":selected").attr('state-name');
     const filter_district = $('#district').find(":selected").attr('dist-name');
     const filter_from_year = $('#year').find(":selected").val();
@@ -779,15 +784,15 @@ const pyramidChart = (result)=>{
     const form_type = $('#formType').find(":selected").attr('form-type');
     const filter_diseasesSyndromes = $('#diseasesSyndromes').find(":selected").val();
     const l_dropdown = $('#l-dropdown').find(":selected").val();
-    if(result.length<1){
+    if (result.length < 1) {
         $("#is_graph_data_available").val("No graph data available");
-    }else{
+    } else {
         $("#is_graph_data_available").val("");
     }
     let is_graph_data_available = $("#is_graph_data_available").val();
-    is_graph_data_available= is_graph_data_available!==""?is_graph_data_available:"";
+    is_graph_data_available = is_graph_data_available !== "" ? is_graph_data_available : "";
     var options_val = {
-        text: `Case by age group in India ${filter_state!==undefined?filter_state+' >':''} ${filter_district!==undefined?filter_district+' >':''} ${filter_from_year!==""?filter_from_year+' >':''} ${filter_to_year!==""?filter_to_year+' >':''}`,
+        text: `Case by age group in India ${filter_state !== undefined ? filter_state + ' >' : ''} ${filter_district !== undefined ? filter_district + ' >' : ''} ${filter_from_year !== "" ? filter_from_year + ' >' : ''} ${filter_to_year !== "" ? filter_to_year + ' >' : ''}`,
     };
 
 
@@ -803,7 +808,7 @@ const pyramidChart = (result)=>{
         data: result.map(item => -item.pyramid_female_percentage)
     };
     let options = {
-        series: [females,males],
+        series: [females, males],
         chart: {
             type: 'bar',
             height: 440,
@@ -840,19 +845,19 @@ const pyramidChart = (result)=>{
         tooltip: {
             shared: false,
             x: {
-                formatter: function(val) {
+                formatter: function (val) {
                     return val
                 }
             },
             y: {
-                formatter: function(val) {
+                formatter: function (val) {
                     return Math.abs(val) + "%"
                 }
             }
         },
         title: options_val,
-        subtitle:{
-            text:is_graph_data_available
+        subtitle: {
+            text: is_graph_data_available
         },
         xaxis: {
             categories: categories,
@@ -860,7 +865,7 @@ const pyramidChart = (result)=>{
                 text: 'Percent'
             },
             labels: {
-                formatter: function(val) {
+                formatter: function (val) {
                     return Math.abs(Math.round(val)) + "%"
                 }
             }
@@ -872,7 +877,7 @@ const pyramidChart = (result)=>{
     chart.render();
 }
 
-const barChart  = (result)=>{
+const barChart = (result) => {
     const filter_state = $('#state').find(":selected").attr('state-name');
     const filter_district = $('#district').find(":selected").attr('dist-name');
     const filter_from_year = $('#year').find(":selected").val();
@@ -880,16 +885,16 @@ const barChart  = (result)=>{
     const form_type = $('#formType').find(":selected").attr('form-type');
     const filter_diseasesSyndromes = $('#diseasesSyndromes').find(":selected").val();
     const l_dropdown = $('#l-dropdown').find(":selected").val();
-    if(result.length<1){
+    if (result.length < 1) {
         $("#is_graph_data_available").val("No graph data available");
-    }else{
+    } else {
         $("#is_graph_data_available").val("");
     }
     let is_graph_data_available = $("#is_graph_data_available").val();
-    is_graph_data_available= is_graph_data_available!==""?is_graph_data_available:"";
+    is_graph_data_available = is_graph_data_available !== "" ? is_graph_data_available : "";
 
     var options_val = {
-        text: `Death by age group in India ${filter_state!==undefined?filter_state+' >':''} ${filter_district!==undefined?filter_district+' >':''} ${filter_from_year!==""?filter_from_year+' >':''} ${filter_to_year!==""?filter_to_year+' >':''}  `,
+        text: `Death by age group in India ${filter_state !== undefined ? filter_state + ' >' : ''} ${filter_district !== undefined ? filter_district + ' >' : ''} ${filter_from_year !== "" ? filter_from_year + ' >' : ''} ${filter_to_year !== "" ? filter_to_year + ' >' : ''}  `,
 
     };
     var categories = result.map(item => item.pyramid_age_group);
@@ -907,8 +912,8 @@ const barChart  = (result)=>{
             type: 'bar'
         },
         title: options_val,
-        subtitle:{
-            text:is_graph_data_available,
+        subtitle: {
+            text: is_graph_data_available,
         },
         xAxis: {
             categories: categories,
@@ -933,6 +938,6 @@ const barChart  = (result)=>{
                 }
             }
         },
-        series: [males,females]
+        series: [males, females]
     });
 }
