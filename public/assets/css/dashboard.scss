@@ -15,15 +15,19 @@
 
 .map-text {
     text-align: left;
-    margin: 0;
-    color: #000;
+    background: #92271d;
+    display: inline-block;
+    color: #ddd;
+    padding: 8px 16px;
+    margin-left: 9px;
+    border-radius: 5px;
 }
 .highcharts-credits {
     display: none;
 }
 
 .dashboard-year {
-    padding:15px; 
+    padding:15px;
     border: 1px solid grey;
     border-radius:5px;
     background: white;
@@ -58,7 +62,7 @@
     margin: 0;
 }
 .dashboard {
-   
+
     .select2-container--default .select2-selection--multiple .select2-selection__rendered li:first-child.select2-search.select2-search--inline .select2-search__field{
         padding: 1px 0 !important;
     }
@@ -127,3 +131,183 @@
     }
 }
 
+.sticky {
+    position: fixed;
+    top: 56.5px;
+    width: 82%;
+    background: #fff;
+    z-index: 99999999;
+    box-shadow: 0px 5px 15px #cdcdcd !important;
+    padding: 0px 13px !important;
+
+    select{
+        margin: 5px 0px 0;
+    }
+    .form-group {
+        margin: 10px 0 0px !important;
+    }
+    .form-group label{
+        // color: #fff;
+    }
+  }
+
+  @media(max-width:1550px){
+    .sticky {
+        width: 77.5%;
+    }
+    h1.text-dark.text-left.main-title {
+        font-size: 22px !important;
+    }
+  }
+  @media(max-width:1300px){
+    .sticky {
+        width: 73%;
+    }
+    .dashboard .dashboard-filter h1 {
+        font-size: 20px !important;
+    }
+  }
+  @media(max-width:1100px){
+    .sticky {
+        width: 68.5%;
+    }
+  }
+
+  .main-sidebar, .main-header, .layout-navbar-fixed .wrapper .brand-link{
+    background-color: #3f51b5 !important;
+  }
+
+  .form-control-sidebar, .btn-sidebar{
+    background-color: #fff !important;
+    color: #000 !important;
+  }
+
+
+
+  .accordion {
+    width: 100%;
+    max-width: 360px;
+    margin: 15px auto 20px;
+    /* background: #FFF; */
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    position: relative;
+}
+
+.accordion .link {
+    cursor: pointer;
+    display: block;
+    padding: 15px 15px 15px 42px;
+    color: #4D4D4D;
+    font-size: 14px;
+    font-weight: 700;
+    border-bottom: 1px solid #CCC;
+    position: relative;
+    -webkit-transition: all 0.4s ease;
+    -o-transition: all 0.4s ease;
+    transition: all 0.4s ease;
+    background: #b5d9ff!important;
+    border-radius: 5px;
+    margin: 3px;
+    a, i{
+        color: #333 !important;
+    }
+}
+
+.accordion li:last-child .link {
+    border-bottom: 0;
+}
+
+.accordion li i {
+    position: absolute;
+    top: 16px;
+    left: 12px;
+    font-size: 18px;
+    color: #595959;
+    -webkit-transition: all 0.4s ease;
+    -o-transition: all 0.4s ease;
+    transition: all 0.4s ease;
+}
+
+.accordion li i.fa-chevron-down {
+    right: 12px;
+    left: auto;
+    font-size: 16px;
+}
+
+.accordion li.open .link {
+    color: #b63b4d;
+}
+
+.accordion li.open i {
+    color: #b63b4d;
+}
+
+.accordion li.open i.fa-chevron-down {
+    -webkit-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+    transform: rotate(180deg);
+}
+
+/**
+* Submenu
+-----------------------------*/
+.accordion .nav-link {
+    padding: 20px;
+}
+
+.submenu {
+    display: none;
+    background: #444359;
+    font-size: 14px;
+}
+
+.submenu li {
+    border-bottom: 1px solid #4b4a5e;
+}
+
+.submenu a {
+    display: block;
+    text-decoration: none;
+    color: #d9d9d9;
+    padding: 12px;
+    padding-left: 42px;
+    -webkit-transition: all 0.25s ease;
+    -o-transition: all 0.25s ease;
+    transition: all 0.25s ease;
+}
+
+.submenu a:hover {
+    background: #b63b4d;
+    color: #FFF;
+}
+
+.search{
+    position: relative;
+    i{
+        position: absolute;
+        right: 9px;
+        top: 9px;
+        color: #6e6e6e;
+    }
+}
+
+h1.text-dark.text-left.main-title {
+    font-size: 24px;
+}
+
+.brand-link{
+    border-bottom: 1px solid #ddd !important;
+}
+
+.dashboard .dashboard-filter{
+    h1{
+        font-size: 22px !important;
+    }
+}
+
+.breadcrumb {
+    background: transparent !important;
+}

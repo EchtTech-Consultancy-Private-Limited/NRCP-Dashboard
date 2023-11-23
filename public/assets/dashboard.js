@@ -1,5 +1,5 @@
-// const BASE_URL = window.location.origin;
-const BASE_URL =window.location.origin+"/public";
+const BASE_URL = window.location.origin;
+// const BASE_URL =window.location.origin+"/public";
 
 
 /*handle Form Type*/
@@ -208,10 +208,10 @@ const apply_filter = () => {
         success: function (result) {
 
             console.log(result);
-             
+
             let statesData = result.array;
             const entries = Object.entries(statesData);
-              
+
               //console.log(result.setstateMap)    //setstate
 
             const containerElement = document.getElementById("container");
@@ -941,3 +941,25 @@ const barChart = (result) => {
         series: [males, females]
     });
 }
+
+
+
+// sticky nav script
+window.onscroll = function() {myFunction()};
+
+// Get the navbar
+var navbar = document.getElementById("dashboard-filter");
+
+// Get the offset position of the navbar
+var sticky = navbar.offsetTop;
+
+// Add the sticky class to the navbar when you reach its scroll position. Remove "sticky" when you leave the scroll position
+function myFunction() {
+  if (window.pageYOffset >= sticky) {
+    navbar.classList.add("sticky")
+  } else {
+    navbar.classList.remove("sticky");
+  }
+}
+
+console.log("dashboard code heare");
