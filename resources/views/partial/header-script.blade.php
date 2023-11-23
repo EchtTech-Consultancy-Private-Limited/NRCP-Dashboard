@@ -22,3 +22,4 @@
 {{-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> --}}
 
 <link rel="stylesheet" href="{{ asset('assets/pform_css/style.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/font-awesome-4.7.0/css/font-awesome.min.css') }}">
