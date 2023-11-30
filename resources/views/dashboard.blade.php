@@ -352,12 +352,11 @@
          </div>
 
          <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-6 pr-4">
                <div id="chart" class="dashboard-filter mt-5"></div>
             </div>
-         </div>
-         <div class="row">
-            <div class="col-md-12">
+
+            <div class="col-md-6 pl-4">
                <div class="dashboard-filter mt-5">
                   <h1>Cases by Age Group in India (Based on Male and Female)</h1>
                   <div id="chartContainer" style="height: 400px;"></div>
