@@ -1,7 +1,6 @@
 .box {
     width: 250px;
     height: 111px;
-    // background-color: #3498db;
     background-color: #0078d7;
     padding: 10px;
     margin: 10px;
@@ -9,15 +8,15 @@
     border-radius: 5px;
     text-align: center;
     font-size: 15px;
-    box-shadow: 1px 5px 7px 0px lightgrey;
+    box-shadow: 7px 6px 12px #538cba;
     display: inline-block;
 }
 
 .map-text {
     text-align: left;
-    background: #92271d;
-    display: inline-block;
-    color: #ddd;
+    background: #624bff;
+    display: block;
+    color: #fff;
     padding: 8px 16px;
     margin-left: 9px;
     border-radius: 5px;
@@ -115,7 +114,7 @@
     i{
         font-size: 34px;
     margin-bottom: 7px;
-    color: #ffc150;
+    color: #fff;
     }
 }
 
@@ -207,7 +206,7 @@
     -webkit-transition: all 0.4s ease;
     -o-transition: all 0.4s ease;
     transition: all 0.4s ease;
-    background: #b5d9ff!important;
+    background: #fff !important;
     border-radius: 5px;
     margin: 3px;
     a, i{
@@ -304,10 +303,51 @@ h1.text-dark.text-left.main-title {
 
 .dashboard .dashboard-filter{
     h1{
-        font-size: 22px !important;
+        font-size: 19px !important;
+        font-weight: 400;
     }
 }
 
 .breadcrumb {
     background: transparent !important;
+}
+
+.os-host-overflow-x {
+
+
+}
+
+.sidebar.os-host.os-theme-light.os-host-resize-disabled.os-host-scrollbar-vertical-hidden.os-host-transition.os-host-overflow.os-host-overflow-x{
+    .dashboard-title{
+         a{
+            visibility: hidden  ;
+         }
+    }
+}
+
+
+.main-sidebar, .main-header, .layout-navbar-fixed .wrapper .brand-link{
+    background-image: url('../images/black-bg.jpg');
+    // background-image: url('../images/black-bg3.avif');
+}
+
+.box:nth-child(1){
+    background: linear-gradient(180deg, #d53369 0%, #daae51 100%);
+}
+.box:nth-child(2){
+    background-image: linear-gradient( 181.3deg, rgb(0 186 209) 0.2%, rgba(68,36,164,1) 100% );
+}
+.box:nth-child(3){
+    background: linear-gradient(180deg, #1CB5E0 0%, #000851 100%);
+
+}
+
+
+.table {
+    thead{
+        th{
+            background-color: #5941ff;
+            color: #fff;
+        }
+    }
 }
