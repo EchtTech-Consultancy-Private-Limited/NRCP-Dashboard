@@ -8,7 +8,7 @@
     border-radius: 5px;
     text-align: center;
     font-size: 15px;
-    box-shadow: 7px 6px 12px #538cba;
+    box-shadow: 7px 6px 12px #ddd;
     display: inline-block;
 }
 
@@ -122,7 +122,8 @@
     .cases{
         font-size: 18px;
         font-weight: bold;
-        color: #ffeb3b;
+        // color: #ffeb3b;
+        color: #fff;
     }
 
     .case-title{
@@ -332,7 +333,7 @@ h1.text-dark.text-left.main-title {
 }
 
 .box:nth-child(1){
-    background: linear-gradient(180deg, #d53369 0%, #daae51 100%);
+    background: linear-gradient(0deg, #d53369 0%, #daae51 100%);
 }
 .box:nth-child(2){
     background-image: linear-gradient( 181.3deg, rgb(0 186 209) 0.2%, rgba(68,36,164,1) 100% );
@@ -350,4 +351,8 @@ h1.text-dark.text-left.main-title {
             color: #fff;
         }
     }
+}
+
+.table-bordered thead td, .table-bordered thead th{
+    vertical-align: middle !important;
 }
