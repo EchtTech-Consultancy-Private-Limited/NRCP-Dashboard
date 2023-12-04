@@ -17,7 +17,7 @@
                   <!-- <form action="{{ url('/record-filter') }}" method="post" class="myForm"> -->
                   <!-- <form action="#" method="post" class="myForm"> -->
                   <!-- @csrf -->
-                  <div class="dashboard-filter">
+                  <div class="dashboard-filter" id="dashboard-filter">
                   <div class="row">
                      <div class="col-lg-3 col-md-3 col-6">
                         <div class="form-group">
@@ -207,7 +207,7 @@
                                           <span class="user-icon">
                                              <i class="fa fa-users" aria-hidden="true"></i>
                                           </span>
-                                          <span id="text4"  class="cases">Laboratory Cases-     <span id="box4"> </span>   </span> 
+                                          <span id="text4"  class="cases">Laboratory Cases-     <span id="box4"> </span>   </span>
 <br>
                                        <span id="text4" class="case-title"> Samples Tested
                                     </span>
@@ -218,7 +218,7 @@
                                        </span>
                                        <span id="text5"  class="cases">Laboratory Cases-  <span id="box5"> </span> </span>
                                       <br>
-                                    
+
                                     <span id="text5" class="case-title"> Positive </span>
                                  </div>
                               </div>
@@ -241,28 +241,28 @@
                             <div class="box">
                               <span class="user-icon">
                                  <i class="fa fa-users" aria-hidden="true"></i>
-                              </span> 
+                              </span>
                               <span id="box1" class="cases">  </span>  </br><span id="text1" class="case-title"> </span>
                             </div>
 
                               <div class="box">
                               <span class="user-icon">
                               <i class="fa fa-users" aria-hidden="true"></i>
-                              </span> 
+                              </span>
                                  <span id="box2" class="cases"> </span> <br><span id="text2" class="case-title"> </span>
                               </div>
                         </div>
-                        
+
                     </div>
 
 
                   </div>
-                 
-                   
+
+
                   <!-- /.row -->
                   <div class="card-body p-0 my-5">
                      <div class="row bg-white">
-                       
+
 
                         <div class="col-md-6 pr-4">
                            <div class="country-map dashboard-filter">
@@ -282,10 +282,10 @@
                                  <div  id="container" class="map"></div>
                                  <div  id="stateMap" ><img  class="stateImage"  src=""></div>
                            </div>
-                       
+
 
                         </div>
-                        
+
                         <div class="col-md-6 pl-4">
                            <div class="dashboard-filter">
                               <div style="padding:15px; border: 1px solid grey; border-radius:5px; background: white; color: black; height: 100%"
@@ -332,8 +332,8 @@
                               </table>
                            </div>
                         </div>
-                          
-                          
+
+
                         </div>
                      </div>
                   </div>
@@ -352,12 +352,11 @@
          </div>
 
          <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-6 pr-4">
                <div id="chart" class="dashboard-filter mt-5"></div>
             </div>
-         </div>
-         <div class="row">
-            <div class="col-md-12">
+
+            <div class="col-md-6 pl-4">
                <div class="dashboard-filter mt-5">
                   <h1>Cases by Age Group in India (Based on Male and Female)</h1>
                   <div id="chartContainer" style="height: 400px;"></div>
