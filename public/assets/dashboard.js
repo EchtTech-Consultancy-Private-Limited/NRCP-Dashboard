@@ -1,4 +1,4 @@
-// const BASE_URL = window.location.origin;
+const BASE_URL = window.location.origin;
 const BASE_URL =window.location.origin+"/public";
 
 /*handle Form Type*/
@@ -152,6 +152,7 @@ $(document).ready(function () {
 
 function resetButton(){
   $('.state_filter_district').html('State')
+  $('#filter_state').val('')
   $('#state option[value=""]').prop('selected', 'selected').change();
   $('#district option[value=""]').prop('selected', 'selected').change();
   $('#year option[value="2022"]').prop('selected', 'selected').change();
@@ -344,7 +345,7 @@ const apply_filter = () => {
                     colorAxis: {
                         min: 0, 
                         max: 100, 
-                        minColor: 'white', 
+                        minColor: '#ADD8E6', 
                         maxColor: 'blue', 
                         labels: {
                             format: '{value}',
