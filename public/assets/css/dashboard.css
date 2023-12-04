@@ -76,6 +76,7 @@
   border: 1px solid #dfdfdf;
   border-radius: 0.25rem;
   width: 100%;
+  text-transform: capitalize;
 }
 .dashboard .dashboard-table {
   max-height: 667px;
@@ -130,7 +131,13 @@
   margin: 5px 0px 0;
 }
 .sticky .form-group {
-  margin: 10px 0 0px !important;
+  margin: 2px 0 0px !important
+}
+
+.sticky .form-group label {
+  padding: 0 0px;
+  font-size: 15px;
+  margin-bottom: 0px;
 }
 @media (max-width: 1550px) {
   .sticky {
@@ -306,3 +313,9 @@ h1.text-dark.text-left.main-title {
 .table-bordered thead td, .table-bordered thead th {
   vertical-align: middle !important;
 }/*# sourceMappingURL=dashboard.css.map */
+
+ .dashboard .button {
+    /* border-radius: 22px; */
+    padding: 3px 15px;
+    font-size: 14px;
+}
