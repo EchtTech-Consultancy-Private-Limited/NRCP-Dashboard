@@ -1,6 +1,5 @@
-// const BASE_URL = window.location.origin;
-const BASE_URL =window.location.origin+"/public";
-
+const BASE_URL = window.location.origin;
+// const BASE_URL =window.location.origin+"/public";
 
 /*handle Form Type*/
 const handleFormType = () => {
@@ -61,6 +60,7 @@ const handleFilterValue = () => {
     l_dropdown ? $("#l-dropdown").val(l_dropdown) : "";
 
     filter_diseasesSyndromes === "animal_bite" ? $("#map-text").html("Animal Bite - Dog Bite (Presumptive Cases) in India") : $("#map-text").html("Human Rabies (Presumptive Cases) in India");
+    
 }
 
 const getLFormData = () => {
@@ -119,7 +119,7 @@ $(document).ready(function () {
 
         // Add options starting from next year
         $('#yearto').html('<option value="" selected>Choose Year</option>');
-        for (var year = fromYear + 1; year <= new Date().getFullYear(); year++) {
+        for (var year = fromYear ; year <= new Date().getFullYear(); year++) {
 
             var option = $('<option></option>');
             option.val(year);
@@ -140,22 +140,36 @@ $(document).ready(function () {
 
     });
 
+
+    
+
     $("#reset_button").on('click', function () {
-        $('#state option[value=""]').prop('selected', 'selected').change();
-        $('#district option[value=""]').prop('selected', 'selected').change();
-        $('#year option[value="2022"]').prop('selected', 'selected').change();
-        $('#yearto option[value=""]').prop('selected', 'selected').change();
-        $('#formType option[value="2"]').prop('selected', 'selected').change();
-        $('#diseasesSyndromes option[value="human_rabies"]').prop('selected', 'selected').change();
-        $("#stateMap").hide();
-        $("#container").show();
-        apply_filter();
+      resetButton()
+        // apply_filter();
     });
 
 });
 
+function resetButton(){
+  $('.state_filter_district').html('State')
+  $('#state option[value=""]').prop('selected', 'selected').change();
+  $('#district option[value=""]').prop('selected', 'selected').change();
+  $('#year option[value="2022"]').prop('selected', 'selected').change();
+  $('#yearto option[value=""]').prop('selected', 'selected').change();
+  $('#formType option[value="2"]').prop('selected', 'selected').change();
+  $('#diseasesSyndromes option[value="human_rabies"]').prop('selected', 'selected').change();
+  const search_btn = $("#apply_filter");
+  search_btn.attr("disabled", false);
+  let loading_content = 'Search';
+  search_btn.html(loading_content);
+  $("#stateMap").hide();
+  $("#container").show();
+  defaultLoadMapData();
+}
+
 const apply_filter = () => {
-    const filter_state = $('#state').find(":selected").val();
+    // const filter_state = $('#state').find(":selected").val();
+    const filter_state = $('#filter_state').val();
     const filter_district = $('#district').find(":selected").val();
     const filter_from_year = $('#year').find(":selected").val();
     const filter_to_year = $('#yearto').find(":selected").val();
@@ -207,31 +221,23 @@ const apply_filter = () => {
         },
         success: function (result) {
 
-            console.log(result);
-
+       if(result.array == '' || result.array == null){
+          defaultLoadMapData();
+          resetButton();
+          console.log('hiisdfds');
+          return ;
+       }
             let statesData = result.array;
             const entries = Object.entries(statesData);
-
-              //console.log(result.setstateMap)    //setstate
-
-            const containerElement = document.getElementById("container");
-            const stateElement = document.getElementById("stateMap");
-            const $stateImageElement = $(".stateImage");
-
-            if (filter_state !== '') {
-                result.imageNames.forEach(element => {
-                    //console.log(entries[0][0] == element);
-                    if (result.setstateMap == element) {
-                        containerElement.style.display = "none";  // Hide "container"
-                        stateElement.style.display = "block";     // Show "state"
-
-                        const dynamicImageName = BASE_URL + '/state/' + element.replace(/\s/g, '%20') + '.png'; // Modify this based on your naming convention
-                        // console.log(dynamicImageName);
-                        $stateImageElement.attr("src", dynamicImageName);
-                    }
-
-                });
+           
+            if(filter_district != '' || filter_state != ''){
+              $('.state_filter_district').html('District')
             }
+                   
+          
+        if(filter_state != ''){
+              drilldownHandle(result)
+        }   
 
             search_btn.html("Search");
             search_btn.attr("disabled", false);
@@ -315,9 +321,7 @@ const apply_filter = () => {
 
                 });
 
-
-                // Create the chart
-                Highcharts.mapChart('container', {
+                let options = {
                     chart: {
                         map: topology
                     },
@@ -338,94 +342,24 @@ const apply_filter = () => {
                     },
 
                     colorAxis: {
-                        min: 0
+                        min: 0, 
+                        max: 100, 
+                        minColor: 'white', 
+                        maxColor: 'blue', 
+                        labels: {
+                            format: '{value}',
+                        },
                     },
                     plotOptions: {
                         series: {
                             events: {
-                                // click: function(e) {
+                                click: function(e) {
+                                  let nameState = e.point.name
 
-                                //     let nameState = e.point.name
-
-
-                                //     $('.detailsDatas').hide();
-                                //     if ($('#state').val() != '') {
-                                //         $('#state').val('');
-                                //         $('.statewise').hide();
-                                //     }
-
-                                //     if (nameState) {
-                                //         $(".detailsDatas").hide();
-                                //     }
-
-                                //     $.ajaxSetup({
-                                //         headers: {
-                                //             'X-CSRF-TOKEN': $(
-                                //                 'meta[name="csrf-token"]'
-                                //             ).attr(
-                                //                 'content')
-                                //         }
-                                //     });
-
-                                //     $.ajax({
-                                //         url: BASE_URL+"/human-rabies-death",
-                                //         type: "get",
-                                //         data: {
-                                //             setyear: year,
-                                //             name: nameState
-                                //         },
-                                //         success: function(result) {
-
-                                //             $('#totalDeath')
-                                //                 .text(result
-                                //                     .human_rabies_deaths
-                                //                 );
-
-                                //         }
-
-                                //     });
-
-                                //     $("#detailsData").show();
-
-                                //     // var sessionvalue =
-                                //     //     "{{ session('type') }}"
-                                //     //alert(sessionvalue);
-                                //     if (sessionValue == '1' && form_type!=1) {
-
-
-                                //         var StateContent =
-                                //             "Fetching the data for " + e
-                                //             .point
-                                //             .name +
-                                //             " <div class='table-responsive'> <table class='table table-bordered'><thead><tr><th rowspan='2'>State</th><th colspan='2'>presumptive </th></tr> <tr><th>Cases</th><th>deaths</th></tr></thead><tbody><tr><td>" +
-                                //             e.point
-                                //             .name +
-                                //             "</td><td><span id='totalDeath'></span></td><td>" +
-                                //             e.point.value +
-                                //             "</td></tr></tbody></table> </div>";
-
-                                //     } else {
-
-                                //         var StateContent =
-                                //             "Fetching the data for " + e
-                                //             .point
-                                //             .name +
-                                //             " <div class='table-responsive'> <table class='table table-bordered'><thead><tr><th rowspan='2'>State</th><th colspan='2'>presumptive </th></tr> <tr><th>Cases</th><th>deaths</th></tr></thead><tbody><tr><td>" +
-                                //             e.point
-                                //             .name +
-                                //             "</td><td>" + e.point.value +
-                                //             "</td><td><span id='totalDeath'></span></td></tr></tbody></table> </div>";
-
-                                //     }
-                                //     console.log(form_type,' form type')
-                                //     if (form_type == 1) {
-                                //         var StateContent = "Fetching the data for " + e.point.name +
-                                //             '<div class="table-responsive ab"><table class="table table-bordered l-form-map"><thead><tr><th rowspan="2">State</th><th colspan="3">Laboratory Cases</th></tr>' + '<tr><th>Person Tested</th><th>Sample Tested</th><th>Positive</th></tr></thead><tbody id="tableBody_l_form"><tr><td>' + e.point.name + '</td><td>' + (case_type_col == 1 ? e.point.value : 0) + '</td><td>' + (case_type_col == 2 ? e.point.value : 0) + '</td><td>' + (case_type_col == 3 ? e.point.value : 0) + '</td></tr></tbody></table></div>';
-                                //     }
-
-
-                                //     $("#detailsData").html(StateContent);
-                                // }
+                                    $('#filter_state').val(nameState);
+                                    apply_filter();
+                           
+                                }
                             }
                         }
                     },
@@ -447,8 +381,15 @@ const apply_filter = () => {
                         }
                     }]
 
-                });
+                }
 
+              //  Create the chart
+              if(filter_state === ''){
+                Highcharts.mapChart('container', 
+                    options
+                
+                );
+              }
             })();
 
 
@@ -461,228 +402,230 @@ const apply_filter = () => {
     });
 }
 
+const defaultLoadMapData = ()=>{
+  year = $('#year').val();
+  $('.statewise').hide();
+  $('#yeartostate').hide();
+  $("#stateMap").hide();
+
+
+  $("#mySelect2").select2({
+      tags: true,
+  });
+
+  $.ajaxSetup({
+      headers: {
+          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      }
+  });
+
+  $.ajax({
+      url: BASE_URL + "/human-rabies",
+      type: "get",
+      success: function (result) {
+          $('#text1').html("Presumptive Cases");
+          $('#text2').html("Presumptive Cases");
+          $('#box1').html("Total Cases -" + " " + result.total_cases);
+          $('#box2').html("Total Deaths -" + " " + result.total_deaths);
+          /*Google Chart Pie Chart*/
+          googlePieChart(result);
+
+
+          let sessionValue = $("#session_value").val();
+          if (!sessionValue) {
+              sessionValue = 0
+          }
+
+          (async () => {
+              const topology = await fetch(
+                  'https://code.highcharts.com/mapdata/countries/in/custom/in-all-disputed.topo.json'
+              ).then(response => response.json());
+
+              const statesData = result.array;
+              const entries = Object.entries(statesData);
+              const data = entries;
+              const tableBody = $('.detailsDatas tbody');
+
+
+              // Clear any existing rows in the table
+              tableBody.empty();
+              $('#detailsData').hide();
+
+              // Loop through the entries and add rows to the table
+              entries.forEach(function (entry) {
+                  const state = entry[0];
+                  const cases = entry[1];
+                  const row = `
+                      <tr>
+                          <td>${capitalizeFirstLetter(state)}</td>
+                          <td>${sessionValue == 0 ? cases : 0}</td>
+                          <td>${sessionValue == 1 ? cases : 0}</td>
+                      </tr>
+                  `;
+
+                  tableBody.append(row);
+              });
+              // Create the chart
+              Highcharts.mapChart('container', 
+              {
+                  chart: {
+                      map: topology,
+                  },
+
+                  title: {
+                      text: ''
+                  },
+
+                  subtitle: {
+                      text: ''
+                  },
+                  mapNavigation: {
+                      enabled: true,
+                      buttonOptions: {
+                          verticalAlign: 'bottom'
+                      }
+                  },
+                  colorAxis: {
+                    min: 0, 
+                    max: 100, 
+                    minColor: '#ADD8E6', 
+                    maxColor: 'blue', 
+                    labels: {
+                        format: '{value}',
+                    },
+                },
+                  plotOptions: {
+                      series: {
+                          events: {
+                               click: function(e) {   
+                                  let nameState = e.point.name
+                                  //alert(nameState);
+                                  $('#filter_state').val(nameState);
+                                  apply_filter();
+                               }
+                          }
+                      }
+                  },
+                  series: [{
+                      data: data,
+                      name: '',
+                      allowPointSelect: true,
+                      cursor: 'pointer',
+                      color: "#fff",
+                      states: {
+                          select: {
+                              color: 'blue'
+                          }
+                      },
+                      dataLabels: {
+                          enabled: false,
+                          format: '{point.name}'
+                      }
+                  }],
+              }
+              );
+          })();
+      }
+  });
+
+
+  
+  // pyramid chart
+  $.ajax({
+      url: BASE_URL + "/p-form-horizontal-barchart",
+      type: "get",
+      success: function (result) {
+          pyramidChart(result);
+      }
+  });
+
+}
 $(document).ready(function () {
 
-    year = $('#year').val();
-    $('.statewise').hide();
-    $('#yeartostate').hide();
-    $("#stateMap").hide();
-
-
-    $("#mySelect2").select2({
-        tags: true,
-    });
-
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-    });
-
-    $.ajax({
-        url: BASE_URL + "/human-rabies",
-        type: "get",
-        success: function (result) {
-            $('#text1').html("Presumptive Cases");
-            $('#text2').html("Presumptive Cases");
-            $('#box1').html("Total Cases -" + " " + result.total_cases);
-            $('#box2').html("Total Deaths -" + " " + result.total_deaths);
-            /*Google Chart Pie Chart*/
-            googlePieChart(result);
-
-
-            let sessionValue = $("#session_value").val();
-            if (!sessionValue) {
-                sessionValue = 0
-            }
-
-            (async () => {
-
-                const topology = await fetch(
-                    'https://code.highcharts.com/mapdata/countries/in/custom/in-all-disputed.topo.json'
-                ).then(response => response.json());
-
-
-                const statesData = result.array;
-                const entries = Object.entries(statesData);
-                const data = entries;
-                const tableBody = $('.detailsDatas tbody');
-
-                // Clear any existing rows in the table
-                tableBody.empty();
-                $('#detailsData').hide();
-
-                // Loop through the entries and add rows to the table
-                entries.forEach(function (entry) {
-                    const state = entry[0];
-                    const cases = entry[1];
-                    const row = `
-                        <tr>
-                            <td>${capitalizeFirstLetter(state)}</td>
-                            <td>${sessionValue == 0 ? cases : 0}</td>
-                            <td>${sessionValue == 1 ? cases : 0}</td>
-                        </tr>
-                    `;
-
-                    tableBody.append(row);
-                });
-                // Create the chart
-                Highcharts.mapChart('container', {
-                    chart: {
-                        map: topology
-                    },
-
-                    title: {
-                        text: ''
-                    },
-
-                    subtitle: {
-                        text: ''
-                    },
-
-                    mapNavigation: {
-                        enabled: true,
-                        buttonOptions: {
-                            verticalAlign: 'bottom'
-                        }
-                    },
-
-                    colorAxis: {
-                        min: 0
-                    },
-                    plotOptions: {
-                        series: {
-                            events: {
-                                // click: function(e) {
-                                //     let nameState = e.point.name
-
-
-                                //     $('.detailsDatas').hide();
-                                //     if ($('#state').val() != '') {
-                                //         $('#state').val('');
-                                //         $('.statewise').hide();
-                                //     }
-
-                                //     if (nameState) {
-
-                                //         $(".detailsDatas").hide();
-
-                                //     }
-
-                                //     $.ajaxSetup({
-                                //         headers: {
-                                //             'X-CSRF-TOKEN': $(
-                                //                 'meta[name="csrf-token"]'
-                                //             ).attr(
-                                //                 'content')
-                                //         }
-                                //     });
-
-                                //     $.ajax({
-                                //         url: BASE_URL+"/human-rabies-death",
-                                //         type: "get",
-                                //         data: {
-                                //             setyear: year,
-                                //             name: nameState
-                                //         },
-                                //         success: function(result) {
-
-                                //             $('#totalDeath')
-                                //                 .text(result
-                                //                     .human_rabies_deaths
-                                //                 );
-
-                                //         }
-
-                                //     });
-                                //     const form_type = $('#formType').find(":selected").val();
-
-                                //     $("#detailsData").show();
-
-                                //     if (sessionValue == '1') {
-                                //         var StateContent =
-                                //             "Fetching the data for " + e
-                                //             .point
-                                //             .name +
-                                //             " <div class='table-responsive'> <table class='table table-bordered'><thead><tr><th rowspan='2'>State</th><th colspan='2'>presumptive </th></tr> <tr><th>Cases</th><th>deaths</th></tr></thead><tbody><tr><td>" +
-                                //             e.point
-                                //             .name +
-                                //             "</td><td><span id='totalDeath'></span></td><td>" +
-                                //             e.point.value +
-                                //             "</td></tr></tbody></table> </div>";
-
-                                //     } else {
-
-                                //         var StateContent =
-                                //             "Fetching the data for " + e
-                                //             .point
-                                //             .name +
-                                //             " <div class='table-responsive'> <table class='table table-bordered'><thead><tr><th rowspan='2'>State</th><th colspan='2'>presumptive </th></tr> <tr><th>Cases</th><th>deaths</th></tr></thead><tbody><tr><td>" +
-                                //             e.point
-                                //             .name +
-                                //             "</td><td>" + e.point.value +
-                                //             "</td><td><span id='totalDeath'></span></td></tr></tbody></table> </div>";
-
-                                //     }
-
-                                //     $("#detailsData").html(StateContent);
-
-                                //     // Swal.fire({
-                                //     //     position: 'top-end',
-                                //     //     icon: 'success',
-                                //     //     title: 'State records fetched successfully',
-                                //     //     showConfirmButton: false,
-                                //     //     timer: 3000
-                                //     // })
-
-
-                                // }
-                            }
-                        }
-                    },
-                    // tooltip: {
-                    //     pointFormatter: function() {
-
-                    //         console.log(data)
-                    //     return `<b>State:</b> ${this.name}</br><b>Total Death:</b> ${this.name}</br>`
-                    //     }
-                    // },
-                    series: [{
-                        data: data,
-                        name: '',
-                        allowPointSelect: true,
-                        cursor: 'pointer',
-                        color: "#fff",
-                        states: {
-                            select: {
-                                color: 'blue'
-                            }
-                        },
-                        dataLabels: {
-                            enabled: false,
-                            format: '{point.name}'
-                        }
-                    }]
-
-                });
-
-            })();
-
-
-
-        }
-    });
-    // pyramid chart
-    $.ajax({
-        url: BASE_URL + "/p-form-horizontal-barchart",
-        type: "get",
-        success: function (result) {
-            pyramidChart(result);
-        }
-    });
+  defaultLoadMapData();
 
 });
 
+const getDistrictValue = (s_name,entries)=>{
+  
+  let m = 0;
+    entries.map((items)=>{
+      // console.log(items,' first time')
+      if(s_name==items[0].toLowerCase()){
+        m = items[1];
+      }
+    })
+    return m;
+}
+//state wise map
+async function drilldownHandle(state) {
+
+  let statesData = state.array;
+  
+
+  const entries = Object.entries(statesData);
+  const selectedMapData = DISTRICT_MAPS.find(data => {
+      const dataName = data.name.toLowerCase();
+      const stateName = String(state.setstateMap).toLowerCase();
+      return dataName === stateName;
+  });
+  const district_list = selectedMapData.data;
+  
+  const updatedArray = district_list.map((item) => {
+    return {
+        ...item,
+        mapData: item.mapData.map((mapItem) => {
+            const value = getDistrictValue(mapItem.name.toLowerCase(), entries);
+            return {
+                ...mapItem,
+                value: value,
+            };
+        }),
+    };
+});
+
+  Highcharts.mapChart('container', {
+      chart: {
+          map: india,
+      },
+      title: {
+          text: ''
+      },
+      subtitle: {
+          text: ''
+      },
+      mapNavigation: {
+          enabled: true,
+          buttonOptions: {
+              verticalAlign: 'bottom'
+          }
+      },
+      colorAxis: {
+        min: 0, 
+        max: 100, 
+        minColor: '#ADD8E6', 
+        maxColor: 'blue', 
+        labels: {
+            format: '{value}',
+        },
+    },
+      dataLabels:{
+
+      },
+      plotOptions: {
+          series: {
+              events: {
+                  click: function(e) {   
+                     
+                     
+                  }
+              }
+          }
+      },
+      series: updatedArray
+  });
+  
+}
 
 $('#type').on('change', function () {
     const typeValue = $('#type').find(":selected").val();
