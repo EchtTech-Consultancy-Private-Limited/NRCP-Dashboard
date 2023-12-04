@@ -47,13 +47,13 @@
                     </div>
                 </li> -->
 
-                <div class="form-inline">
+                {{-- <div class="form-inline">
                     <div class="input-group search" data-widget="sidebar-search" >
                         <input class="form-control form-control-sidebar" type="search" placeholder="Search"
                             aria-label="Search">
                             <i class="fas fa-search fa-fw"></i>
                     </div>
-                </div>
+                </div> --}}
                 <li class="nav-item">
                     <a class="nav-link" data-widget="fullscreen" href="#" role="button">
                         <i class="fas fa-expand-arrows-alt"></i>
