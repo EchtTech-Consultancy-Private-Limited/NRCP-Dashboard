@@ -578,7 +578,7 @@ async function drilldownHandle(state) {
         data:item.data.map((mapColor) => {
             return {
                 ...mapColor,
-                color:'red'
+                color:'#b31404'
             };
         }),
 
@@ -587,7 +587,6 @@ async function drilldownHandle(state) {
             return {
                 ...mapItem,
                 value: value,
-                color:'red'
             };
         }),
     };
