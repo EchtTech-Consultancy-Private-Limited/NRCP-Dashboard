@@ -1,5 +1,5 @@
-// const BASE_URL = window.location.origin;
-const BASE_URL =window.location.origin+"/public";
+const BASE_URL = window.location.origin;
+// const BASE_URL =window.location.origin+"/public";
 
 /*handle Form Type*/
 const handleFormType = () => {
@@ -345,8 +345,8 @@ const apply_filter = () => {
                     colorAxis: {
                         min: 0, 
                         max: 100, 
-                        minColor: '#ADD8E6', 
-                        maxColor: 'blue', 
+                        minColor: '#fcad95', 
+                        maxColor: '#b31404', 
                         labels: {
                             format: '{value}',
                         },
@@ -364,7 +364,6 @@ const apply_filter = () => {
                             }
                         }
                     },
-
                     series: [{
                         data: data,
                         name: '',
@@ -373,7 +372,7 @@ const apply_filter = () => {
                         color: "#fff",
                         states: {
                             select: {
-                                color: 'blue'
+                                color: '#fcad95'
                             }
                         },
                         dataLabels: {
@@ -489,8 +488,8 @@ const defaultLoadMapData = ()=>{
                   colorAxis: {
                     min: 0, 
                     max: 100, 
-                    minColor: '#ADD8E6', 
-                    maxColor: 'blue', 
+                    minColor: '#fcad95', 
+                    maxColor: '#b31404', 
                     labels: {
                         format: '{value}',
                     },
@@ -501,6 +500,7 @@ const defaultLoadMapData = ()=>{
                                click: function(e) {   
                                   let nameState = e.point.name
                                   //alert(nameState);
+                                  updateStateListDropdown(nameState);
                                   $('#filter_state').val(nameState);
                                   apply_filter();
                                }
@@ -515,7 +515,7 @@ const defaultLoadMapData = ()=>{
                       color: "#fff",
                       states: {
                           select: {
-                              color: 'blue'
+                              color: '#fcad95'
                           }
                       },
                       dataLabels: {
@@ -563,7 +563,6 @@ async function drilldownHandle(state) {
 
   let statesData = state.array;
   
-
   const entries = Object.entries(statesData);
   const selectedMapData = DISTRICT_MAPS.find(data => {
       const dataName = data.name.toLowerCase();
@@ -573,17 +572,27 @@ async function drilldownHandle(state) {
   const district_list = selectedMapData.data;
   
   const updatedArray = district_list.map((item) => {
+    console.log(item,'item');
     return {
         ...item,
+        data:item.data.map((mapColor) => {
+            return {
+                ...mapColor,
+                color:'red'
+            };
+        }),
+
         mapData: item.mapData.map((mapItem) => {
             const value = getDistrictValue(mapItem.name.toLowerCase(), entries);
             return {
                 ...mapItem,
                 value: value,
+                color:'red'
             };
         }),
     };
 });
+
 
   Highcharts.mapChart('container', {
       chart: {
@@ -604,8 +613,8 @@ async function drilldownHandle(state) {
       colorAxis: {
         min: 0, 
         max: 100, 
-        minColor: '#ADD8E6', 
-        maxColor: 'blue', 
+        minColor: '#fcad95', 
+        maxColor: '#b31404', 
         labels: {
             format: '{value}',
         },
@@ -633,6 +642,25 @@ $('#type').on('change', function () {
     $("#session_value").val(typeValue);
     apply_filter();
 });
+const updateStateListDropdown = (state_name) => {
+    const selectElement = document.getElementsByName("state_name");
+    let sl = document.querySelector('#state') ;
+    const selectOptions = selectElement[0].children;
+    for (let i = 0; i < selectOptions.length; i++) {
+        const option = selectOptions[i];
+        const optionValue = option.attributes[0].value;
+        if (optionValue.length) {
+          if (optionValue.toLowerCase() == state_name.toLowerCase()) {
+            sl.selectedIndex  = i;
+            const changeEvent = new Event("change", {
+              bubbles: true,
+              cancelable: true,
+            });
+            sl.dispatchEvent(changeEvent);
+          }
+        }
+      }
+}
 
 function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
