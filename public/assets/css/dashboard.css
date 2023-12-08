@@ -14,7 +14,7 @@
 
 .map-text {
   text-align: left;
-  background: #624bff;
+  background-color: #3090C7;
   display: block;
   color: #fff;
   padding: 8px 16px;
@@ -85,6 +85,7 @@
 .dashboard .button {
   border-radius: 22px;
   padding: 8px 24px;
+  background-color: #337ab7 !important;
 }
 .dashboard .stateImage {
   height: 100%;
@@ -312,6 +313,16 @@ h1.text-dark.text-left.main-title {
 
 .table-bordered thead td, .table-bordered thead th {
   vertical-align: middle !important;
+<<<<<<< HEAD
+}
+
+.nrcp-main-title {
+  padding: 6px 15px !important;
+  font-size: 24px;
+  background: #ab4024;
+  color: #fff !important;
+}/*# sourceMappingURL=dashboard.css.map */
+=======
 }/*# sourceMappingURL=dashboard.css.map */
 
  .dashboard .button {
@@ -319,3 +330,4 @@ h1.text-dark.text-left.main-title {
     padding: 3px 15px;
     font-size: 14px;
 }
+>>>>>>> 876361e8bc28186dd45912ab3bd6add5defe7b91

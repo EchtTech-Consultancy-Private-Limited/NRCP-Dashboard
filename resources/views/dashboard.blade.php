@@ -9,6 +9,11 @@
 
    <!-- general form elements -->
    <div class="card card-primary dashboard">
+              <div class="row">
+              <div class="col-sm-8">
+                <h1 class="text-left  main-title nrcp-main-title" >State Dashboard - Human Health Rabies</h1>
+    </div>
+              </div>
       <div class="form-tab">
          <div class="bootstrap-tab">
             <div class="tab-content" id="myTabContent">
@@ -163,7 +168,7 @@
                         <div class=" apply-filter">
                            <!-- <label for=""><span
                               class="star"></span></label> -->
-                           <button id="apply_filter" class="btn  bg-primary text-light apply-filter button">Search</button>
+                           <button id="apply_filter" class="btn  bg-primary text-light apply-filter button border-0">Search</button>
 
                         </div>
 
@@ -176,9 +181,9 @@
                         <input type="hidden" value="0" id="session_value">
                         <input type="hidden" value="" id="is_graph_data_available">
                         <!-- </form> -->
-                        <div class="button apply-filter">
+                        <div class=" apply-filter ml-2  border-0">
                         <!-- <label for=""><span class="star"></span></label> -->
-                              <button id="reset_button" class="btn btn-dark text-light apply-filter text-white button">Reset</button>
+                              <button id="reset_button" class="btn btn-dark text-light apply-filter text-white button border-0">Reset</button>
                         </div>
                      </div>
 
