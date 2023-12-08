@@ -42,3 +42,5 @@
 
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="{{ asset('assets/login/dist/js/pages/dashboard2.js') }}"></script>
+<script src="{{ asset('assets/district_map.js') }}"></script>
+<script src="{{ asset('assets/indiaMap.js') }}"></script>

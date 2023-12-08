@@ -14,8 +14,7 @@ use Illuminate\Http\Request;
 class MainController extends Controller
 {
 
-    public function dashboard(Request $request)
-    {
+    public function dashboard(Request $request){
         return view("dashboard");
     }
 
@@ -149,6 +148,7 @@ class MainController extends Controller
                 }
             }
             return response()->json(['setstateMap'=>$setstateMap,'imageNames'=>$imageNames,'array' => $array, 'total_cases' => $total_cases, 'total_deaths' => $total_deaths, 'human_rabies_deaths' => $human_rabies_deaths, 'human_rabies_case' => $human_rabies_case], 200);
+      
         } catch (QueryException $e) {
 
             return response()->json(['error' => 'Database error'], 500);

@@ -307,7 +307,7 @@
                               <table class='table table-bordered s-p-form-map'>
                                  <thead>
                                     <tr>
-                                       <th rowspan='2'>State</th>
+                                       <th rowspan='2' class="state_filter_district">State</th>
                                        <th colspan='2'>Presumptive </th>
                                     </tr>
                                     <tr>
@@ -322,7 +322,7 @@
                               <table class='table table-bordered l-form-map'>
                                  <thead>
                                     <tr>
-                                       <th rowspan='2'>State</th>
+                                       <th rowspan='2' class="state_filter_district">State</th>
                                        <th colspan='3'>Laboratory Cases</th>
                                     </tr>
                                     <tr>

@@ -9,8 +9,9 @@
     <div class="wrapper">
         <!-- Preloader -->
         <div class="preloader flex-column justify-content-center align-items-center">
-            <img class="animation__wobble" src="{{ asset('assets/login/dist/img/AdminLTELogo.png') }}" alt="logo"
+            <img class="animation__wobble" src="{{ asset('AdminLTELogo.png') }}" alt="logo"
                 height="60" width="60">
+                
         </div>
         <!-- Navbar -->
         <nav class="main-header navbar navbar-expand navbar-dark">
@@ -46,13 +47,13 @@
                     </div>
                 </li> -->
 
-                <div class="form-inline">
+                {{-- <div class="form-inline">
                     <div class="input-group search" data-widget="sidebar-search" >
                         <input class="form-control form-control-sidebar" type="search" placeholder="Search"
                             aria-label="Search">
                             <i class="fas fa-search fa-fw"></i>
                     </div>
-                </div>
+                </div> --}}
                 <li class="nav-item">
                     <a class="nav-link" data-widget="fullscreen" href="#" role="button">
                         <i class="fas fa-expand-arrows-alt"></i>
@@ -72,9 +73,9 @@
         <!-- Main Sidebar Container -->
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
-            <a href="index3.html" class="brand-link">
-                <img src="{{ asset('assets/login/dist/img/AdminLTELogo.png') }}" alt="Logo"
-                    class="brand-image img-circle elevation-3" style="opacity: .8">
+            <a href="{{ url('/') }}" class="brand-link">
+                {{-- <img src="{{ asset('AdminLTELogo.png') }}" alt="Logo"
+                    class="brand-image img-circle elevation-3" style="opacity: .8"> --}}
                 <span class="brand-text font-weight-light">NRCP Dashboard</span>
             </a>
             <!-- Sidebar -->
