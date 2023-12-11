@@ -297,7 +297,12 @@
 }
 
 h1.text-dark.text-left.main-title {
-    font-size: 24px;
+    font-size: 22px;
+    color: #fff !important;
+    font-weight: 400;
+    margin: 11px 7px;
+    padding: 8px 39px !important;
+    display: inline-block;
 }
 
 .brand-link{
@@ -349,7 +354,7 @@ h1.text-dark.text-left.main-title {
 .table {
     thead{
         th{
-            background-color: #5941ff;
+            background-color: #3090C7;
             color: #fff;
         }
     }

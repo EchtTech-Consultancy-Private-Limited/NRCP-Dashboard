@@ -76,7 +76,6 @@
   border: 1px solid #dfdfdf;
   border-radius: 0.25rem;
   width: 100%;
-  text-transform: capitalize;
 }
 .dashboard .dashboard-table {
   max-height: 667px;
@@ -132,13 +131,7 @@
   margin: 5px 0px 0;
 }
 .sticky .form-group {
-  margin: 2px 0 0px !important
-}
-
-.sticky .form-group label {
-  padding: 0 0px;
-  font-size: 15px;
-  margin-bottom: 0px;
+  margin: 10px 0 0px !important;
 }
 @media (max-width: 1550px) {
   .sticky {
@@ -270,7 +263,12 @@
 }
 
 h1.text-dark.text-left.main-title {
-  font-size: 24px;
+  font-size: 22px;
+  color: #fff !important;
+  font-weight: 400;
+  margin: 11px 7px;
+  padding: 8px 39px !important;
+  display: inline-block;
 }
 
 .brand-link {
@@ -307,13 +305,12 @@ h1.text-dark.text-left.main-title {
 }
 
 .table thead th {
-  background-color: #5941ff;
+  background-color: #3090C7;
   color: #fff;
 }
 
 .table-bordered thead td, .table-bordered thead th {
   vertical-align: middle !important;
-<<<<<<< HEAD
 }
 
 .nrcp-main-title {
@@ -322,12 +319,3 @@ h1.text-dark.text-left.main-title {
   background: #ab4024;
   color: #fff !important;
 }/*# sourceMappingURL=dashboard.css.map */
-=======
-}/*# sourceMappingURL=dashboard.css.map */
-
- .dashboard .button {
-    /* border-radius: 22px; */
-    padding: 3px 15px;
-    font-size: 14px;
-}
->>>>>>> 876361e8bc28186dd45912ab3bd6add5defe7b91
