@@ -1,5 +1,24 @@
 @extends('layouts.main')
 @section("content")
+<style>
+
+@media print {
+    /* Add styles for print here */
+    #container {
+        /* Adjust map styles for print */
+        width: 100%; /* Adjust as needed */
+        
+    }
+
+    .detailsDatas {
+        /* Adjust table styles for print */
+        width: 100%; /* Adjust as needed */
+    }
+
+    /* Add other print-specific styles as needed */
+}
+ </style>  
+
 <div class="container-fluid">
 <!-- Info boxes -->
 <div class="row">
@@ -180,6 +199,12 @@
                         <!-- <label for=""><span class="star"></span></label> -->
                               <button id="reset_button" class="btn btn-dark text-light apply-filter text-white button">Reset</button>
                         </div>
+                        <div class="button apply-filter">
+                           <!-- <label for=""><span class="star"></span></label> -->
+                                 <button id="printButton" class="btn btn-dark text-light apply-filter text-white button">Print</button>
+                           </div>
+
+                       
                      </div>
 
 

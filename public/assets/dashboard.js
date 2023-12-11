@@ -1,5 +1,5 @@
-// const BASE_URL = window.location.origin;
-const BASE_URL =window.location.origin+"/public";
+const BASE_URL = window.location.origin;
+// const BASE_URL =window.location.origin+"/public";
 
 /*handle Form Type*/
 const handleFormType = () => {
@@ -139,9 +139,6 @@ $(document).ready(function () {
         apply_filter();
 
     });
-
-
-    
 
     $("#reset_button").on('click', function () {
       resetButton()
@@ -346,7 +343,7 @@ const apply_filter = () => {
                         min: 0, 
                         max: 100, 
                         minColor: '#fcad95', 
-                        maxColor: '#b31404', 
+                        maxColor: '#ab4024', 
                         labels: {
                             format: '{value}',
                         },
@@ -489,7 +486,7 @@ const defaultLoadMapData = ()=>{
                     min: 0, 
                     max: 100, 
                     minColor: '#fcad95', 
-                    maxColor: '#b31404', 
+                    maxColor: '#ab4024', 
                     labels: {
                         format: '{value}',
                     },
@@ -578,7 +575,7 @@ async function drilldownHandle(state) {
         data:item.data.map((mapColor) => {
             return {
                 ...mapColor,
-                color:'#b31404'
+                color:'#ab4024'
             };
         }),
 
@@ -933,4 +930,21 @@ function myFunction() {
   }
 }
 
-console.log("dashboard code heare");
+
+// Add this after your existing code
+$(document).ready(function() {
+    // Existing code...
+
+    // Add a click event to the print button
+    $('#printButton').on('click', function() {
+        alert("clicked")
+        console.log($('.dashboard .dashboard-table'));
+        $('.dashboard .dashboard-table').css('max-height', 'fit-content');
+        // Trigger the print functionality
+        window.print();
+
+
+    });
+});
+
+// console.log("dashboard code heare");
