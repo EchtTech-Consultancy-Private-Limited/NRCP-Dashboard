@@ -322,21 +322,46 @@ h1.text-dark.text-left.main-title {
 
 
 @media print {
-  @page
-  {
-   size: 5.5in 8.5in ;
-   size: landscape;
- }
-  body{
+ 
+  /* body{
       width: 21cm !important;
       height: 29.7cm !important;
       margin: 0px !important; 
-      /* change the margins as you want them to be. */
- } 
+ }  */
+
+.country-map{
+  width: 100%;
 }
+.col-md-6 {
+  -ms-flex: 0 0 100%;
+  flex: 0 0 100%;
+  max-width: 100%;
+}
+
+}
+
 .nrcp-main-title {
-  padding: 6px 15px !important;
   font-size: 24px;
   background: #ab4024;
   color: #fff !important;
+  margin: 74px 6px 18PX !important;
+  padding: 5px 34px !important;
+  border-radius: 5PX;
 }/*# sourceMappingURL=dashboard.css.map */
+
+.nrcp-main-title h1{
+  font-size: 24px;
+  margin: 0;
+  line-height: 1;
+}
+.nrcp-main-title .breadcrumb-item{
+  font-size: 18px;
+  color: #fff;
+}
+.nrcp-main-title .breadcrumb-item.active {
+  color: #cccccc;
+}
+.nrcp-main-title .breadcrumb-item a{
+  font-size: 18px;
+  color: #fff;
+}

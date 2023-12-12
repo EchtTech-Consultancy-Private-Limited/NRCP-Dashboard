@@ -937,11 +937,17 @@ $(document).ready(function() {
 
     // Add a click event to the print button
     $('#printButton').on('click', function() {
-        alert("clicked")
-        console.log($('.dashboard .dashboard-table'));
+        // alert("clicked")
+        var getFullContent = document.body.innerHTML;
+        var printsection = document.getElementById('country-map').innerHTML;
+        document.body.innerHTML = printsection;
+        // document.body.innerHTML;
         $('.dashboard .dashboard-table').css('max-height', 'fit-content');
-        // Trigger the print functionality
         window.print();
+        document.body.innerHTML = getFullContent;
+        
+        console.log($('.dashboard .dashboard-table'));
+     
 
 
     });
