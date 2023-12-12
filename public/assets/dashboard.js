@@ -946,21 +946,4 @@ function myFunction() {
 }
 
 
-// Add this after your existing code
-// $(document).ready(function() {
-//     // Existing code...
-
-//     // Add a click event to the print button
-//     $('#printButton').on('click', function() {
-//         alert("clicked")
-//         console.log($('.dashboard .dashboard-table'));
-//         $('.dashboard .dashboard-table').css('max-height', 'fit-content');
-//         // Trigger the print functionality
-//         window.print();
-
-
-//     });
-// });
-
-// console.log("dashboard code heare");
 

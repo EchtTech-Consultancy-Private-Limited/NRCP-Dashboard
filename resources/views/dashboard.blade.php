@@ -1,6 +1,6 @@
 @extends('layouts.main')
 @section("content")
-{{-- <style>
+<style>
 
 @media print {
     /* Add styles for print here */
@@ -17,7 +17,7 @@
 
     /* Add other print-specific styles as needed */
 }
- </style>   --}}
+ </style>  
 
 <div class="container-fluid">
     <!-- Info boxes -->
@@ -28,6 +28,10 @@
 
             <!-- general form elements -->
             <div class="card card-primary dashboard">
+                <!-- <div class=" apply-filter">
+                   
+                    <button id="printButton" class="btn apply-filter text-white button">Print</button>
+                </div> -->
                 <!-- <div class="row">
                     <div class="col-sm-8">
                         <h1 class="text-left  main-title nrcp-main-title">State Dashboard - Human Health Rabies</h1>
@@ -186,30 +190,33 @@
                                                 <!-- <label for=""><span
                               class="star"></span></label> -->
                                                 <button id="apply_filter"
-                                                    class="btn  bg-primary text-light apply-filter button border-0">Search</button>
+                                                    class="btn  bg-primary text-light apply-filter button border-0 mr-2">Search</button>
 
                                             </div>
 
-                                            <input type="hidden" value="" id="filter_state">
-                                            <input type="hidden" value="" id="filter_district">
-                                            <input type="hidden" value="2022" id="filter_from_year">
-                                            <input type="hidden" value="" id="filter_to_year">
-                                            <input type="hidden" value="2" id="filter_form_type">
-                                            <input type="hidden" value="" id="filter_diseases">
-                                            <input type="hidden" value="0" id="session_value">
-                                            <input type="hidden" value="" id="is_graph_data_available">
-                                            <!-- </form> -->
-                                            <div class=" apply-filter ml-2  border-0">
-                                                <!-- <label for=""><span class="star"></span></label> -->
-                                                <button id="reset_button"
-                                                    class="btn btn-dark text-light apply-filter text-white button border-0">Reset</button>
-                                            </div>
+                        <input type="hidden" value="" id="filter_state">
+                        <input type="hidden" value="" id="filter_district">
+                        <input type="hidden" value="2022" id="filter_from_year">
+                        <input type="hidden" value="" id="filter_to_year">
+                        <input type="hidden" value="2" id="filter_form_type">
+                        <input type="hidden" value="" id="filter_diseases">
+                        <input type="hidden" value="0" id="session_value">
+                        <input type="hidden" value="" id="is_graph_data_available">
+                        <!-- </form> -->
+                        <div class="button apply-filter">
+                        <!-- <label for=""><span class="star"></span></label> -->
+                              <button id="reset_button" class="btn btn-dark text-light apply-filter text-white button">Reset</button>
+                        </div>
+                        <div class="button apply-filter">
+                           <!-- <label for=""><span class="star"></span></label> -->
+                                 <button id="printButton" class="btn btn-dark text-light apply-filter text-white button">Print</button>
+                           </div>
 
-                                            {{-- <div class="button apply-filter">
-                                             <!-- <label for=""><span class="star"></span></label> -->
-                                                   <button id="printButton" class="btn btn-dark text-light apply-filter text-white button">Print</button>
-                                             </div> --}}
-                                        </div>
+                       
+                     </div>
+
+
+
 
                                     </div>
                                 </div>
@@ -294,7 +301,7 @@
 
 
                                         <div class="col-md-6 pr-4">
-                                            <div class="country-map dashboard-filter">
+                                            <div class="country-map dashboard-filter" id="country-map">
                                                 <div class="">
                                                     <select class="form-control w-auto" name="type" id="type">
                                                         <option value="0">Cases</option>
