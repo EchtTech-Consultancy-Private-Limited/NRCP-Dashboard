@@ -60,7 +60,7 @@ const handleFilterValue = () => {
     l_dropdown ? $("#l-dropdown").val(l_dropdown) : "";
 
     filter_diseasesSyndromes === "animal_bite" ? $("#map-text").html("Animal Bite - Dog Bite (Presumptive Cases) in India") : $("#map-text").html("Human Rabies (Presumptive Cases) in India");
-    
+
 }
 
 const getLFormData = () => {
@@ -119,7 +119,7 @@ $(document).ready(function () {
 
         // Add options starting from next year
         $('#yearto').html('<option value="" selected>Choose Year</option>');
-        for (var year = fromYear ; year <= new Date().getFullYear(); year++) {
+        for (var year = fromYear; year <= new Date().getFullYear(); year++) {
 
             var option = $('<option></option>');
             option.val(year);
@@ -141,28 +141,28 @@ $(document).ready(function () {
     });
 
     $("#reset_button").on('click', function () {
-      resetButton()
+        resetButton()
         // apply_filter();
     });
 
 });
 
-function resetButton(){
-  $('.state_filter_district').html('State')
-  $('#filter_state').val('')
-  $('#state option[value=""]').prop('selected', 'selected').change();
-  $('#district option[value=""]').prop('selected', 'selected').change();
-  $('#year option[value="2022"]').prop('selected', 'selected').change();
-  $('#yearto option[value=""]').prop('selected', 'selected').change();
-  $('#formType option[value="2"]').prop('selected', 'selected').change();
-  $('#diseasesSyndromes option[value="human_rabies"]').prop('selected', 'selected').change();
-  const search_btn = $("#apply_filter");
-  search_btn.attr("disabled", false);
-  let loading_content = 'Search';
-  search_btn.html(loading_content);
-  $("#stateMap").hide();
-  $("#container").show();
-  defaultLoadMapData();
+function resetButton() {
+    $('.state_filter_district').html('State')
+    $('#filter_state').val('')
+    $('#state option[value=""]').prop('selected', 'selected').change();
+    $('#district option[value=""]').prop('selected', 'selected').change();
+    $('#year option[value="2022"]').prop('selected', 'selected').change();
+    $('#yearto option[value=""]').prop('selected', 'selected').change();
+    $('#formType option[value="2"]').prop('selected', 'selected').change();
+    $('#diseasesSyndromes option[value="human_rabies"]').prop('selected', 'selected').change();
+    const search_btn = $("#apply_filter");
+    search_btn.attr("disabled", false);
+    let loading_content = 'Search';
+    search_btn.html(loading_content);
+    $("#stateMap").hide();
+    $("#container").show();
+    defaultLoadMapData();
 }
 
 const apply_filter = () => {
@@ -219,23 +219,23 @@ const apply_filter = () => {
         },
         success: function (result) {
 
-       if(result.array == '' || result.array == null){
-          defaultLoadMapData();
-          resetButton();
-          console.log('hiisdfds');
-          return ;
-       }
+            if (result.array == '' || result.array == null) {
+                defaultLoadMapData();
+                resetButton();
+                console.log('hiisdfds');
+                return;
+            }
             let statesData = result.array;
             const entries = Object.entries(statesData);
-           
-            if(filter_district != '' || filter_state != ''){
-              $('.state_filter_district').html('District')
+
+            if (filter_district != '' || filter_state != '') {
+                $('.state_filter_district').html('District')
             }
-                   
-          
-        if(filter_state != ''){
-              drilldownHandle(result)
-        }   
+
+
+            if (filter_state != '') {
+                drilldownHandle(result)
+            }
 
             search_btn.html("Search");
             search_btn.attr("disabled", false);
@@ -340,10 +340,10 @@ const apply_filter = () => {
                     },
 
                     colorAxis: {
-                        min: 0, 
-                        max: 100, 
-                        minColor: '#fcad95', 
-                        maxColor: '#ab4024', 
+                        min: 0,
+                        max: 100,
+                        minColor: '#fcad95',
+                        maxColor: '#ab4024',
                         labels: {
                             format: '{value}',
                         },
@@ -351,12 +351,12 @@ const apply_filter = () => {
                     plotOptions: {
                         series: {
                             events: {
-                                click: function(e) {
-                                  let nameState = e.point.name
+                                click: function (e) {
+                                    let nameState = e.point.name
 
                                     $('#filter_state').val(nameState);
                                     apply_filter();
-                           
+
                                 }
                             }
                         }
@@ -380,13 +380,13 @@ const apply_filter = () => {
 
                 }
 
-              //  Create the chart
-              if(filter_state === ''){
-                Highcharts.mapChart('container', 
-                    options
-                
-                );
-              }
+                //  Create the chart
+                if (filter_state === '') {
+                    Highcharts.mapChart('container',
+                        options
+
+                    );
+                }
             })();
 
 
@@ -399,60 +399,60 @@ const apply_filter = () => {
     });
 }
 
-const defaultLoadMapData = ()=>{
-  year = $('#year').val();
-  $('.statewise').hide();
-  $('#yeartostate').hide();
-  $("#stateMap").hide();
+const defaultLoadMapData = () => {
+    year = $('#year').val();
+    $('.statewise').hide();
+    $('#yeartostate').hide();
+    $("#stateMap").hide();
 
 
-  $("#mySelect2").select2({
-      tags: true,
-  });
+    $("#mySelect2").select2({
+        tags: true,
+    });
 
-  $.ajaxSetup({
-      headers: {
-          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-      }
-  });
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
 
-  $.ajax({
-      url: BASE_URL + "/human-rabies",
-      type: "get",
-      success: function (result) {
-          $('#text1').html("Presumptive Cases");
-          $('#text2').html("Presumptive Cases");
-          $('#box1').html("Total Cases -" + " " + result.total_cases);
-          $('#box2').html("Total Deaths -" + " " + result.total_deaths);
-          /*Google Chart Pie Chart*/
-          googlePieChart(result);
-
-
-          let sessionValue = $("#session_value").val();
-          if (!sessionValue) {
-              sessionValue = 0
-          }
-
-          (async () => {
-              const topology = await fetch(
-                  'https://code.highcharts.com/mapdata/countries/in/custom/in-all-disputed.topo.json'
-              ).then(response => response.json());
-
-              const statesData = result.array;
-              const entries = Object.entries(statesData);
-              const data = entries;
-              const tableBody = $('.detailsDatas tbody');
+    $.ajax({
+        url: BASE_URL + "/human-rabies",
+        type: "get",
+        success: function (result) {
+            $('#text1').html("Presumptive Cases");
+            $('#text2').html("Presumptive Cases");
+            $('#box1').html("Total Cases -" + " " + result.total_cases);
+            $('#box2').html("Total Deaths -" + " " + result.total_deaths);
+            /*Google Chart Pie Chart*/
+            googlePieChart(result);
 
 
-              // Clear any existing rows in the table
-              tableBody.empty();
-              $('#detailsData').hide();
+            let sessionValue = $("#session_value").val();
+            if (!sessionValue) {
+                sessionValue = 0
+            }
 
-              // Loop through the entries and add rows to the table
-              entries.forEach(function (entry) {
-                  const state = entry[0];
-                  const cases = entry[1];
-                  const row = `
+            (async () => {
+                const topology = await fetch(
+                    'https://code.highcharts.com/mapdata/countries/in/custom/in-all-disputed.topo.json'
+                ).then(response => response.json());
+
+                const statesData = result.array;
+                const entries = Object.entries(statesData);
+                const data = entries;
+                const tableBody = $('.detailsDatas tbody');
+
+
+                // Clear any existing rows in the table
+                tableBody.empty();
+                $('#detailsData').hide();
+
+                // Loop through the entries and add rows to the table
+                entries.forEach(function (entry) {
+                    const state = entry[0];
+                    const cases = entry[1];
+                    const row = `
                       <tr>
                           <td>${capitalizeFirstLetter(state)}</td>
                           <td>${sessionValue == 0 ? cases : 0}</td>
@@ -460,177 +460,191 @@ const defaultLoadMapData = ()=>{
                       </tr>
                   `;
 
-                  tableBody.append(row);
-              });
-              // Create the chart
-              Highcharts.mapChart('container', 
-              {
-                  chart: {
-                      map: topology,
-                  },
+                    tableBody.append(row);
+                });
+                // Create the chart
+                Highcharts.mapChart('container',
+                    {
+                        chart: {
+                            map: topology,
+                        },
 
-                  title: {
-                      text: ''
-                  },
+                        title: {
+                            text: ''
+                        },
 
-                  subtitle: {
-                      text: ''
-                  },
-                  mapNavigation: {
-                      enabled: true,
-                      buttonOptions: {
-                          verticalAlign: 'bottom'
-                      }
-                  },
-                  colorAxis: {
-                    min: 0, 
-                    max: 100, 
-                    minColor: '#fcad95', 
-                    maxColor: '#ab4024', 
-                    labels: {
-                        format: '{value}',
-                    },
-                },
-                  plotOptions: {
-                      series: {
-                          events: {
-                               click: function(e) {   
-                                  let nameState = e.point.name
-                                  //alert(nameState);
-                                  updateStateListDropdown(nameState);
-                                  $('#filter_state').val(nameState);
-                                  apply_filter();
-                               }
-                          }
-                      }
-                  },
-                  series: [{
-                      data: data,
-                      name: '',
-                      allowPointSelect: true,
-                      cursor: 'pointer',
-                      color: "#fff",
-                      states: {
-                          select: {
-                              color: '#fcad95'
-                          }
-                      },
-                      dataLabels: {
-                          enabled: false,
-                          format: '{point.name}'
-                      }
-                  }],
-              }
-              );
-          })();
-      }
-  });
+                        subtitle: {
+                            text: ''
+                        },
+                        mapNavigation: {
+                            enabled: true,
+                            buttonOptions: {
+                                verticalAlign: 'bottom'
+                            }
+                        },
+                        colorAxis: {
+                            min: 0,
+                            max: 100,
+                            minColor: '#fcad95',
+                            maxColor: '#ab4024',
+                            labels: {
+                                format: '{value}',
+                            },
+                        },
+                        plotOptions: {
+                            series: {
+                                events: {
+                                    click: function (e) {
+                                        let nameState = e.point.name
+                                        //alert(nameState);
+                                        updateStateListDropdown(nameState);
+                                        $('#filter_state').val(nameState);
+                                        apply_filter();
+                                    }
+                                }
+                            }
+                        },
+                        series: [{
+                            data: data,
+                            name: '',
+                            allowPointSelect: true,
+                            cursor: 'pointer',
+                            color: "#fff",
+                            states: {
+                                select: {
+                                    color: '#fcad95'
+                                }
+                            },
+                            dataLabels: {
+                                enabled: false,
+                                format: '{point.name}'
+                            }
 
 
-  
-  // pyramid chart
-  $.ajax({
-      url: BASE_URL + "/p-form-horizontal-barchart",
-      type: "get",
-      success: function (result) {
-          pyramidChart(result);
-      }
-  });
+                        }],
+                        exporting: {
+                            enabled: true, // Enable exporting module
+                            buttons: {
+                                contextButton: {
+                                    menuItems: ['printChart', 'separator', 'downloadPNG', 'downloadJPEG', 'downloadPDF', 'downloadSVG']
+                                }
+                            }
+                        }
+
+                    }
+
+                );
+            })();
+        }
+    });
+
+
+
+    // pyramid chart
+    $.ajax({
+        url: BASE_URL + "/p-form-horizontal-barchart",
+        type: "get",
+        success: function (result) {
+            pyramidChart(result);
+        }
+    });
 
 }
 $(document).ready(function () {
 
-  defaultLoadMapData();
+    defaultLoadMapData();
 
 });
 
-const getDistrictValue = (s_name,entries)=>{
-  
-  let m = 0;
-    entries.map((items)=>{
-      // console.log(items,' first time')
-      if(s_name==items[0].toLowerCase()){
-        m = items[1];
-      }
+const getDistrictValue = (s_name, entries) => {
+
+    let m = 0;
+    entries.map((items) => {
+        // console.log(items,' first time')
+        if (s_name == items[0].toLowerCase()) {
+            m = items[1];
+        }
     })
     return m;
 }
 //state wise map
 async function drilldownHandle(state) {
 
-  let statesData = state.array;
-  
-  const entries = Object.entries(statesData);
-  const selectedMapData = DISTRICT_MAPS.find(data => {
-      const dataName = data.name.toLowerCase();
-      const stateName = String(state.setstateMap).toLowerCase();
-      return dataName === stateName;
-  });
-  const district_list = selectedMapData.data;
-  
-  const updatedArray = district_list.map((item) => {
-    console.log(item,'item');
-    return {
-        ...item,
-        data:item.data.map((mapColor) => {
-            return {
-                ...mapColor,
-                color:'#ab4024'
-            };
-        }),
+    let statesData = state.array;
 
-        mapData: item.mapData.map((mapItem) => {
-            const value = getDistrictValue(mapItem.name.toLowerCase(), entries);
-            return {
-                ...mapItem,
-                value: value,
-            };
-        }),
-    };
-});
+    const entries = Object.entries(statesData);
+    const selectedMapData = DISTRICT_MAPS.find(data => {
+        const dataName = data.name.toLowerCase();
+        const stateName = String(state.setstateMap).toLowerCase();
+        return dataName === stateName;
+    });
+    const district_list = selectedMapData.data;
+
+    const updatedArray = district_list.map((item) => {
+        //console.log(item,'item');
+        return {
+            ...item,
+            data: item.data.map((mapColor) => {
+
+                console.log(mapColor)
+                return {
+                    ...mapColor,
+                    color: '#ce4c39'
+                };
+            }),
+
+            mapData: item.mapData.map((mapItem) => {
+                const value = getDistrictValue(mapItem.name.toLowerCase(), entries);
+                return {
+                    ...mapItem,
+                    value: value,
+                };
+            }),
+        };
+    });
 
 
-  Highcharts.mapChart('container', {
-      chart: {
-          map: india,
-      },
-      title: {
-          text: ''
-      },
-      subtitle: {
-          text: ''
-      },
-      mapNavigation: {
-          enabled: true,
-          buttonOptions: {
-              verticalAlign: 'bottom'
-          }
-      },
-      colorAxis: {
-        min: 0, 
-        max: 100, 
-        minColor: '#fcad95', 
-        maxColor: '#b31404', 
-        labels: {
-            format: '{value}',
+    Highcharts.mapChart('container', {
+        chart: {
+            map: india,
         },
-    },
-      dataLabels:{
+        title: {
+            text: ''
+        },
+        subtitle: {
+            text: ''
+        },
+        mapNavigation: {
+            enabled: true,
+            buttonOptions: {
+                verticalAlign: 'bottom'
+            }
+        },
+        colorAxis: {
+            min: 0,
+            max: 100,
+            minColor: '#fcad95',
+            maxColor: '#b31404',
+            labels: {
+                format: '{value}',
+            },
+        },
+        dataLabels: {
 
-      },
-      plotOptions: {
-          series: {
-              events: {
-                  click: function(e) {   
-                     
-                     
-                  }
-              }
-          }
-      },
-      series: updatedArray
-  });
-  
+        },
+        plotOptions: {
+            series: {
+                events: {
+                    click: function (e) {
+
+
+                    }
+                }
+            }
+        },
+        series: updatedArray
+    });
+
 }
 
 $('#type').on('change', function () {
@@ -638,24 +652,25 @@ $('#type').on('change', function () {
     $("#session_value").val(typeValue);
     apply_filter();
 });
+
 const updateStateListDropdown = (state_name) => {
     const selectElement = document.getElementsByName("state_name");
-    let sl = document.querySelector('#state') ;
+    let sl = document.querySelector('#state');
     const selectOptions = selectElement[0].children;
     for (let i = 0; i < selectOptions.length; i++) {
         const option = selectOptions[i];
         const optionValue = option.attributes[0].value;
         if (optionValue.length) {
-          if (optionValue.toLowerCase() == state_name.toLowerCase()) {
-            sl.selectedIndex  = i;
-            const changeEvent = new Event("change", {
-              bubbles: true,
-              cancelable: true,
-            });
-            sl.dispatchEvent(changeEvent);
-          }
+            if (optionValue.toLowerCase() == state_name.toLowerCase()) {
+                sl.selectedIndex = i;
+                const changeEvent = new Event("change", {
+                    bubbles: true,
+                    cancelable: true,
+                });
+                sl.dispatchEvent(changeEvent);
+            }
         }
-      }
+    }
 }
 
 function capitalizeFirstLetter(string) {
@@ -913,7 +928,7 @@ const barChart = (result) => {
 
 
 // sticky nav script
-window.onscroll = function() {myFunction()};
+window.onscroll = function () { myFunction() };
 
 // Get the navbar
 var navbar = document.getElementById("dashboard-filter");
@@ -923,29 +938,29 @@ var sticky = navbar.offsetTop;
 
 // Add the sticky class to the navbar when you reach its scroll position. Remove "sticky" when you leave the scroll position
 function myFunction() {
-  if (window.pageYOffset >= sticky) {
-    navbar.classList.add("sticky")
-  } else {
-    navbar.classList.remove("sticky");
-  }
+    if (window.pageYOffset >= sticky) {
+        navbar.classList.add("sticky")
+    } else {
+        navbar.classList.remove("sticky");
+    }
 }
 
 
 // Add this after your existing code
-$(document).ready(function() {
-    // Existing code...
+// $(document).ready(function() {
+//     // Existing code...
 
-    // Add a click event to the print button
-    $('#printButton').on('click', function() {
-        alert("clicked")
-        console.log($('.dashboard .dashboard-table'));
-        $('.dashboard .dashboard-table').css('max-height', 'fit-content');
-        // Trigger the print functionality
-        window.print();
+//     // Add a click event to the print button
+//     $('#printButton').on('click', function() {
+//         alert("clicked")
+//         console.log($('.dashboard .dashboard-table'));
+//         $('.dashboard .dashboard-table').css('max-height', 'fit-content');
+//         // Trigger the print functionality
+//         window.print();
 
 
-    });
-});
+//     });
+// });
 
 // console.log("dashboard code heare");
 
