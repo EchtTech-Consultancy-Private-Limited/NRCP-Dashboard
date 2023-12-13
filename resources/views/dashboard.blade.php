@@ -206,10 +206,10 @@
                                                 <input type="hidden" value="0" id="session_value">
                                                 <input type="hidden" value="" id="is_graph_data_available">
                                                 <!-- </form> -->
-                                                <div class="button apply-filter">
+                                                <div class=" apply-filter">
                                                     <!-- <label for=""><span class="star"></span></label> -->
                                                     <button id="reset_button"
-                                                        class="btn btn-dark text-light apply-filter text-white button">Reset</button>
+                                                        class="btn border-0 text-light apply-filter text-white button">Reset</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -299,7 +299,7 @@
 
                                             <div class="col-md-6 pr-4">
                                                 <div class="country-map dashboard-filter" id="country-map">
-                                                    <div class="">
+                                                    <div class="case-type">
                                                         <select class="form-control w-auto" name="type"
                                                             id="type">
                                                             <option value="0">Cases</option>
