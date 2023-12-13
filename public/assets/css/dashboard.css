@@ -48,6 +48,7 @@
 }
 .country-map .map {
   height: 600px;
+  margin-top: -47px;
 }
 
 .card {
@@ -76,10 +77,9 @@
   border: 1px solid #dfdfdf;
   border-radius: 0.25rem;
   width: 100%;
-  text-transform: capitalize;
 }
 .dashboard .dashboard-table {
-  max-height: 667px;
+  max-height: 590px;
   overflow-y: auto;
 }
 .dashboard .button {
@@ -132,13 +132,7 @@
   margin: 5px 0px 0;
 }
 .sticky .form-group {
-  margin: 2px 0 0px !important
-}
-
-.sticky .form-group label {
-  padding: 0 0px;
-  font-size: 15px;
-  margin-bottom: 0px;
+  margin: 10px 0 0px !important;
 }
 @media (max-width: 1550px) {
   .sticky {
@@ -182,7 +176,7 @@
 .accordion .link {
   cursor: pointer;
   display: block;
-  padding: 15px 15px 15px 42px;
+  padding: 15px 12px 15px 20px;
   color: #4D4D4D;
   font-size: 14px;
   font-weight: 700;
@@ -270,7 +264,12 @@
 }
 
 h1.text-dark.text-left.main-title {
-  font-size: 24px;
+  font-size: 22px;
+  color: #fff !important;
+  font-weight: 400;
+  margin: 11px 7px;
+  padding: 8px 39px !important;
+  display: inline-block;
 }
 
 .brand-link {
@@ -307,27 +306,114 @@ h1.text-dark.text-left.main-title {
 }
 
 .table thead th {
-  background-color: #5941ff;
+  background-color: #3090C7;
   color: #fff;
 }
 
 .table-bordered thead td, .table-bordered thead th {
   vertical-align: middle !important;
-<<<<<<< HEAD
 }
-
-.nrcp-main-title {
-  padding: 6px 15px !important;
-  font-size: 24px;
-  background: #ab4024;
-  color: #fff !important;
-}/*# sourceMappingURL=dashboard.css.map */
-=======
-}/*# sourceMappingURL=dashboard.css.map */
 
  .dashboard .button {
     /* border-radius: 22px; */
     padding: 3px 15px;
     font-size: 14px;
 }
->>>>>>> 876361e8bc28186dd45912ab3bd6add5defe7b91
+
+
+
+@media print {
+ 
+  /* body{
+      width: 21cm !important;
+      height: 29.7cm !important;
+      margin: 0px !important; 
+ }  */
+
+.country-map{
+  width: 100%;
+}
+.col-md-6 {
+  -ms-flex: 0 0 100%;
+  flex: 0 0 100%;
+  max-width: 100%;
+}
+
+}
+
+.nrcp-main-title {
+  font-size: 24px;
+  background: #ab4024;
+  color: #fff !important;
+  margin: 74px 6px 18PX !important;
+  padding: 5px 34px !important;
+  border-radius: 5PX;
+}/*# sourceMappingURL=dashboard.css.map */
+
+.nrcp-main-title h1{
+    font-size: 22px;
+    margin: 0;
+    font-weight: 400;
+    line-height: 1;
+}
+.nrcp-main-title .breadcrumb-item{
+  font-size: 15px;
+  color: #fff;
+  font-weight: 400;
+}
+.nrcp-main-title .breadcrumb-item.active {
+  color: #e2e2e2;
+}
+.nrcp-main-title .breadcrumb-item a{
+  font-size: 18px;
+  color: #fff;
+}
+
+
+.sidebar.os-host.os-theme-light.os-host-resize-disabled.os-host-scrollbar-vertical-hidden.os-host-transition.os-host-overflow.os-host-overflow-x .dashboard-title{
+  display: none !important;
+}
+
+.breadcrumb-item+.breadcrumb-item::before {
+  color: #e4e4e4;
+}
+
+.country-map .case-type{
+  position: absolute;
+  top: 10px;
+  left: 16px;
+  z-index: 99;
+}
+
+
+
+
+.table-responsive {
+  overflow-y: scroll;
+  scrollbar-width: thin;
+  scrollbar-color: #ddd #999; /* violet pour le thumb, gris pour la track */
+}
+
+.table-responsive::-webkit-scrollbar {
+  width: 7px;
+  border-radius: 10px !important;
+}
+
+.table-responsive::-webkit-scrollbar-thumb {
+  background-color: #ddd; /* violet pour le thumb */
+  border-radius: 10px !important;
+}
+
+.table-responsive::-webkit-scrollbar-thumb:hover {
+  background-color: #333; /* violet lÃ©gÃ¨rement plus foncÃ© au survol */
+}
+
+.table-responsive::-webkit-scrollbar-track {
+  background-color: #fff; /* gris pour la track */
+  border-radius: 10px !important;
+}
+
+
+.main-header .navbar-nav .nav-item .nav-link[data-widget="pushmenu"]{
+  display: none !important;
+}

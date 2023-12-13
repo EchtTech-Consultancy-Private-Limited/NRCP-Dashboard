@@ -44,3 +44,8 @@
 <script src="{{ asset('assets/login/dist/js/pages/dashboard2.js') }}"></script>
 <script src="{{ asset('assets/district_map.js') }}"></script>
 <script src="{{ asset('assets/indiaMap.js') }}"></script>
+
+<script src="{{ asset('assets/highchartsPrint.js')}}"></script>
+<script src="{{ asset('assets/exportingPrint.js') }}"></script>
+{{-- highchart --}}
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
