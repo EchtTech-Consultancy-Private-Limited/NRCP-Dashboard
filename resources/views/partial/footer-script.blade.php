@@ -47,3 +47,5 @@
 
 <script src="{{ asset('assets/highchartsPrint.js')}}"></script>
 <script src="{{ asset('assets/exportingPrint.js') }}"></script>
+{{-- highchart --}}
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>

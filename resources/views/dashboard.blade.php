@@ -401,6 +401,16 @@
                                                     <div id="chartContainer" style="height: 400px;"></div>
                                                 </div>
                                             </div>
+
+                                            <div class="col-md-6 pl-4">
+                                                <div class="dashboard-filter mt-5">
+                                                    {{-- <h1></h1> --}}
+                                                    <div id="barchart_material" style="width: 410px; height: 250px;"></div>
+                                                </div>
+                                            </div>
+
+                                          
+
                                         </div>
                                     </div>
                                     <!-- end here -->

@@ -41,7 +41,7 @@ Route::get('p-form-horizontal-barchart',[MainController::class, 'pFormHorizontal
 Route::get('get-district',[MainController::class,'getDistrict']);
 Route::get('pform-horizontal-barchart-death',[MainController::class,'pFormHorizontalBarChartDeath']);
 
-
+Route::get('p-form-high-chart',[MainController::class,'pFormHighChart']);
 });
 
 });

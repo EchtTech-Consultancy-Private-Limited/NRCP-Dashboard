@@ -222,7 +222,7 @@ const apply_filter = () => {
             if (result.array == '' || result.array == null) {
                 defaultLoadMapData();
                 resetButton();
-                console.log('hiisdfds');
+                //console.log('hiisdfds');
                 return;
             }
             let statesData = result.array;
@@ -245,11 +245,13 @@ const apply_filter = () => {
                 googlePieChart(result);
                 barChart(result[0]);
                 pyramidChart(result[0]);
+                highchartMap(result.total_records);
             }
 
             if (form_type == '1') {
                 $('.defaultform').hide()
                 $('.lform').show()
+                highchartMap(result.total_records);
             }
 
             if (form_type == '1') {
@@ -260,6 +262,7 @@ const apply_filter = () => {
             } else {
                 $('.lform').hide()
                 $('.defaultform').show()
+                highchartMap(result.total_records);
                 if (form_type == '3') {
                     $('#box1').html("Total Cases-" + " " + result.human_rabies_case);
                     $('#box2').html("Total Deaths-" + " " + result.human_rabies_deaths);
@@ -358,6 +361,10 @@ const apply_filter = () => {
                                     apply_filter();
 
                                 }
+                            },
+                            dataLabels: {
+                                enabled: true,
+                                format: '{point.value}' // Customize the format as needed
                             }
                         }
                     },
@@ -372,9 +379,13 @@ const apply_filter = () => {
                                 color: '#fcad95'
                             }
                         },
-                        dataLabels: {
-                            enabled: false,
-                            format: '{point.name}'
+                        exporting: {
+                            enabled: true,
+                            buttons: {
+                                contextButton: {
+                                    menuItems: ['printChart', 'separator', 'downloadPNG', 'downloadJPEG', 'downloadPDF', 'downloadSVG']
+                                }
+                            }
                         }
                     }]
 
@@ -463,77 +474,137 @@ const defaultLoadMapData = () => {
                     tableBody.append(row);
                 });
                 // Create the chart
-                Highcharts.mapChart('container',
-                    {
-                        chart: {
-                            map: topology,
-                        },
+                // Highcharts.mapChart('container',
+                //     {
+                //         chart: {
+                //             map: topology,
+                //         },
 
-                        title: {
-                            text: ''
-                        },
+                //         title: {
+                //             text: ''
+                //         },
 
-                        subtitle: {
-                            text: ''
+                //         subtitle: {
+                //             text: ''
+                //         },
+                //         mapNavigation: {
+                //             enabled: true,
+                //             buttonOptions: {
+                //                 verticalAlign: 'bottom'
+                //             }
+                //         },
+                //         colorAxis: {
+                //             min: 0,
+                //             max: 100,
+                //             minColor: '#fcad95',
+                //             maxColor: '#ab4024',
+                //             labels: {
+                //                 format: '{value}',
+                //             },
+                //         },
+                //         plotOptions: {
+                //             series: {
+                //                 events: {
+                //                     click: function (e) {
+                //                         let nameState = e.point.name
+                //                         //alert(nameState);
+                //                         updateStateListDropdown(nameState);
+                //                         $('#filter_state').val(nameState);
+                //                         apply_filter();
+                //                     }
+                //                 }
+                //             }
+                //         },
+                //         series: [{
+                //             data: data,
+                //             name: '',
+                //             allowPointSelect: true,
+                //             cursor: 'pointer',
+                //             color: "#fff",
+                //             states: {
+                //                 select: {
+                //                     color: '#fcad95'
+                //                 }
+                //             },
+                //             dataLabels: {
+                //                 enabled: false,
+                //                 format: '{point.name}'
+                //             }
+                //         }],
+                //         exporting: {
+                //             enabled: true, // Enable exporting module
+                //             buttons: {
+                //                 contextButton: {
+                //                     menuItems: ['printChart', 'separator', 'downloadPNG', 'downloadJPEG', 'downloadPDF', 'downloadSVG']
+                //                 }
+                //             }
+                //         }
+                //     }
+                // );
+                Highcharts.mapChart('container', {
+                    chart: {
+                        map: topology,
+                    },
+                    title: {
+                        text: ''
+                    },
+                    subtitle: {
+                        text: ''
+                    },
+                    mapNavigation: {
+                        enabled: true,
+                        buttonOptions: {
+                            verticalAlign: 'bottom'
+                        }
+                    },
+                    colorAxis: {
+                        min: 0,
+                        max: 100,
+                        minColor: '#fcad95',
+                        maxColor: '#ab4024',
+                        labels: {
+                            format: '{value}',
                         },
-                        mapNavigation: {
-                            enabled: true,
-                            buttonOptions: {
-                                verticalAlign: 'bottom'
-                            }
-                        },
-                        colorAxis: {
-                            min: 0,
-                            max: 100,
-                            minColor: '#fcad95',
-                            maxColor: '#ab4024',
-                            labels: {
-                                format: '{value}',
-                            },
-                        },
-                        plotOptions: {
-                            series: {
-                                events: {
-                                    click: function (e) {
-                                        let nameState = e.point.name
-                                        //alert(nameState);
-                                        updateStateListDropdown(nameState);
-                                        $('#filter_state').val(nameState);
-                                        apply_filter();
-                                    }
-                                }
-                            }
-                        },
-                        series: [{
-                            data: data,
-                            name: '',
-                            allowPointSelect: true,
-                            cursor: 'pointer',
-                            color: "#fff",
-                            states: {
-                                select: {
-                                    color: '#fcad95'
+                    },
+                    plotOptions: {
+                        series: {
+                            events: {
+                                click: function (e) {
+                                    console.log(e.point)
+                                    let nameState = e.point.name
+                                    updateStateListDropdown(nameState);
+                                    $('#filter_state').val(nameState);
+                                    apply_filter();
                                 }
                             },
                             dataLabels: {
-                                enabled: false,
-                                format: '{point.name}'
-                            }
-
-
-                        }],
-                        exporting: {
-                            enabled: true, // Enable exporting module
-                            buttons: {
-                                contextButton: {
-                                    menuItems: ['printChart', 'separator', 'downloadPNG', 'downloadJPEG', 'downloadPDF', 'downloadSVG']
-                                }
+                                enabled: true,
+                                format: '{point.value}' // Customize the format as needed
                             }
                         }
-
+                    },
+                    series: [{
+                        data: data,
+                        name: '',
+                        allowPointSelect: true,
+                        cursor: 'pointer',
+                        color: "#fff",
+                        states: {
+                            select: {
+                                color: '#fcad95'
+                            }
+                        }
+                    }],
+                    exporting: {
+                        enabled: true,
+                        buttons: {
+                            contextButton: {
+                                menuItems: ['printChart', 'separator', 'downloadPNG', 'downloadJPEG', 'downloadPDF', 'downloadSVG']
+                            }
+                        }
                     }
-
-                );
+                });
+                
             })();
         }
     });
@@ -549,7 +620,17 @@ const defaultLoadMapData = () => {
         }
     });
 
+    //high chart
+    $.ajax({
+        url: BASE_URL + "/p-form-high-chart",
+        type: "get",
+        success: function (result) {
+            highchartMap(result);
+        }
+    });
+
 }
+
 $(document).ready(function () {
 
     defaultLoadMapData();
@@ -586,7 +667,7 @@ async function drilldownHandle(state) {
             ...item,
             data: item.data.map((mapColor) => {
 
-                console.log(mapColor)
+             //   console.log(mapColor)
                 return {
                     ...mapColor,
                     color: '#ce4c39'
@@ -629,20 +710,22 @@ async function drilldownHandle(state) {
                 format: '{value}',
             },
         },
-        dataLabels: {
 
-        },
         plotOptions: {
             series: {
+                dataLabels: {
+                    enabled: true,
+                    format: '{point.value}', // You can customize the format as needed
+                },
                 events: {
                     click: function (e) {
-
-
+                        // Handle click events here
                     }
                 }
             }
         },
-        series: updatedArray
+        series: updatedArray,
+      
     });
 
 }
@@ -760,6 +843,7 @@ const googlePieChart = (result) => {
 }
 
 const pyramidChart = (result) => {
+   // console.log(result);
     const filter_state = $('#state').find(":selected").attr('state-name');
     const filter_district = $('#district').find(":selected").attr('dist-name');
     const filter_from_year = $('#year').find(":selected").val();
@@ -781,17 +865,18 @@ const pyramidChart = (result) => {
 
     let categories = result.map(item => item.pyramid_age_group);
 
-    let males = {
-        name: 'Males',
-        data: result.map(item => item.pyramid_male_percentage)
-    };
-
     let females = {
         name: 'Females',
-        data: result.map(item => -item.pyramid_female_percentage)
+        data: result.map(item => item.pyramid_female_percentage)
     };
+
+    let males = {
+        name: 'Males',
+        data: result.map(item => -item.pyramid_male_percentage)
+    };
+
     let options = {
-        series: [females, males],
+        series: [males, females],
         chart: {
             type: 'bar',
             height: 440,
@@ -923,6 +1008,55 @@ const barChart = (result) => {
         },
         series: [males, females]
     });
+}
+
+const highchartMap = (total_records) => {
+    console.log(total_records[0].value);
+    const filter_state = $('#state').find(":selected").attr('state-name');
+    const filter_district = $('#district').find(":selected").attr('dist-name');
+    const filter_from_year = $('#year').find(":selected").val();
+    const filter_to_year = $('#yearto').find(":selected").val();
+    const form_type = $('#formType').find(":selected").attr('form-type');
+    const filter_diseasesSyndromes = $('#diseasesSyndromes').find(":selected").val();
+    const l_dropdown = $('#l-dropdown').find(":selected").val();
+    if (total_records.length < 1) {
+        $("#is_graph_data_available").val("No graph data available");
+    } else {
+        $("#is_graph_data_available").val("");
+    }
+   google.charts.load('current', {'packages':['bar']});
+   google.charts.setOnLoadCallback(drawChart);
+
+   function drawChart() {
+   
+    if(total_records[0].value == "lformValue"){
+
+       var jsData = [['Year', 'Samples', 'Positive']];
+
+    }else{
+
+        var jsData = [['Year', 'Cases', 'Deaths']];
+
+    } 
+
+     for (var i = 0; i < total_records.length; i++) {
+       jsData.push([total_records[i].year, parseInt(total_records[i].case), parseInt(total_records[i].death)]);
+     }
+
+     var data = google.visualization.arrayToDataTable(jsData);
+
+     var options = {
+       chart: {
+        //  title: 'Website Performance',
+        //  subtitle: 'Click and Views',
+       },
+     };
+
+     var chart = new google.charts.Bar(document.getElementById('barchart_material'));
+
+     chart.draw(data, google.charts.Bar.convertOptions(options));
+   }
+
 }
 
 
