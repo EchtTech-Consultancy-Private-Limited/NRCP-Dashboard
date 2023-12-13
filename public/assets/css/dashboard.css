@@ -412,3 +412,8 @@ h1.text-dark.text-left.main-title {
   background-color: #fff; /* gris pour la track */
   border-radius: 10px !important;
 }
+
+
+.main-header .navbar-nav .nav-item .nav-link[data-widget="pushmenu"]{
+  display: none !important;
+}
