@@ -404,8 +404,15 @@
 
                                             <div class="col-md-6 pr-4">
                                                 <div class="dashboard-filter mt-5">
+                                                   
+                                                    <div id="barchart_materialcase" style="width: 410px; height: 250px;"></div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-6 pl-4">
+                                                <div class="dashboard-filter mt-5">
                                                     {{-- <h1></h1> --}}
-                                                    <div id="barchart_material" ></div>
+                                                    <div id="barchart_materialdeath" style="width: 410px; height: 250px;"></div>
                                                 </div>
                                             </div>
 

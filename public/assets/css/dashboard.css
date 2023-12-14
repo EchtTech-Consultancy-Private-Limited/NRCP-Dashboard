@@ -421,3 +421,6 @@ h1.text-dark.text-left.main-title {
 .highcharts-menu hr{
   margin: 0 !important;
 }
+#barchart_materialdeath path{
+  fill: red;
+}

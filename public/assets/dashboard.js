@@ -245,13 +245,15 @@ const apply_filter = () => {
                 googlePieChart(result);
                 barChart(result[0]);
                 pyramidChart(result[0]);
-                highchartMap(result.total_records);
+                highchartMapcase(result.total_records);
+                highchartMapDeath(result.total_records);
             }
 
             if (form_type == '1') {
                 $('.defaultform').hide()
                 $('.lform').show()
-                highchartMap(result.total_records);
+                highchartMapcase(result.total_records);
+                highchartMapDeath(result.total_records);
             }
 
             if (form_type == '1') {
@@ -262,7 +264,8 @@ const apply_filter = () => {
             } else {
                 $('.lform').hide()
                 $('.defaultform').show()
-                highchartMap(result.total_records);
+                highchartMapcase(result.total_records);
+                highchartMapDeath(result.total_records);
                 if (form_type == '3') {
                     $('#box1').html("Total Cases-" + " " + result.human_rabies_case);
                     $('#box2').html("Total Deaths-" + " " + result.human_rabies_deaths);
@@ -625,7 +628,8 @@ const defaultLoadMapData = () => {
         url: BASE_URL + "/p-form-high-chart",
         type: "get",
         success: function (result) {
-            highchartMap(result);
+               highchartMapcase(result);
+               highchartMapDeath(result);
         }
     });
 
@@ -1010,7 +1014,56 @@ const barChart = (result) => {
     });
 }
 
-const highchartMap = (total_records) => {
+const highchartMapcase = (total_records) => {
+   // console.log(total_records[0].value);
+    const filter_state = $('#state').find(":selected").attr('state-name');
+    const filter_district = $('#district').find(":selected").attr('dist-name');
+    const filter_from_year = $('#year').find(":selected").val();
+    const filter_to_year = $('#yearto').find(":selected").val();
+    const form_type = $('#formType').find(":selected").attr('form-type');
+    const filter_diseasesSyndromes = $('#diseasesSyndromes').find(":selected").val();
+    const l_dropdown = $('#l-dropdown').find(":selected").val();
+    if (total_records.length < 1) {
+        $("#is_graph_data_available").val("No graph data available");
+    } else {
+        $("#is_graph_data_available").val("");
+    }
+   google.charts.load('current', {'packages':['bar']});
+   google.charts.setOnLoadCallback(drawChart);
+
+   function drawChart() {
+   
+    if(total_records[0].value == "lformValue"){
+
+       var jsData = [['Year', 'Samples']];
+
+    }else{
+
+        var jsData = [['Year', 'Cases']];
+
+    } 
+
+     for (var i = 0; i < total_records.length; i++) {
+       jsData.push([total_records[i].year, parseInt(total_records[i].case)]);
+     }
+
+     var data = google.visualization.arrayToDataTable(jsData);
+
+     var options = {
+       chart: {
+        //  title: 'Website Performance',
+        //  subtitle: 'Click and Views',
+       },
+     };
+
+     var chart = new google.charts.Bar(document.getElementById('barchart_materialcase'));
+
+     chart.draw(data, google.charts.Bar.convertOptions(options));
+   }
+
+}
+
+const highchartMapDeath = (total_records) => {
     console.log(total_records[0].value);
     const filter_state = $('#state').find(":selected").attr('state-name');
     const filter_district = $('#district').find(":selected").attr('dist-name');
@@ -1031,16 +1084,16 @@ const highchartMap = (total_records) => {
    
     if(total_records[0].value == "lformValue"){
 
-       var jsData = [['Year', 'Samples', 'Positive']];
+       var jsData = [['Year', 'Positive']];
 
     }else{
 
-        var jsData = [['Year', 'Cases', 'Deaths']];
+        var jsData = [['Year', 'Deaths']];
 
     } 
 
      for (var i = 0; i < total_records.length; i++) {
-       jsData.push([total_records[i].year, parseInt(total_records[i].case), parseInt(total_records[i].death)]);
+       jsData.push([total_records[i].year, parseInt(total_records[i].death)]);
      }
 
      var data = google.visualization.arrayToDataTable(jsData);
@@ -1052,7 +1105,7 @@ const highchartMap = (total_records) => {
        },
      };
 
-     var chart = new google.charts.Bar(document.getElementById('barchart_material'));
+     var chart = new google.charts.Bar(document.getElementById('barchart_materialdeath'));
 
      chart.draw(data, google.charts.Bar.convertOptions(options));
    }
