@@ -424,3 +424,6 @@ h1.text-dark.text-left.main-title {
 #barchart_materialdeath path{
   fill: red;
 }
+#barchart_materialdeath rect[width="12"]{
+  fill: red;
+}
