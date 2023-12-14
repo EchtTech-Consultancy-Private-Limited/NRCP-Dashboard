@@ -413,9 +413,11 @@ h1.text-dark.text-left.main-title {
   border-radius: 10px !important;
 }
 
+
+.main-header .navbar-nav .nav-item .nav-link[data-widget="pushmenu"]{
+  display: none !important;
+}
+
 #barchart_materialdeath path{
   fill: red;
 }
-/* #barchart_materialdeath rect{
-  
-} */
