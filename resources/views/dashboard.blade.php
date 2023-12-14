@@ -402,10 +402,10 @@
                                                 </div>
                                             </div>
 
-                                            <div class="col-md-6 pl-4">
+                                            <div class="col-md-6 pr-4">
                                                 <div class="dashboard-filter mt-5">
                                                     {{-- <h1></h1> --}}
-                                                    <div id="barchart_material" style="width: 410px; height: 250px;"></div>
+                                                    <div id="barchart_material" ></div>
                                                 </div>
                                             </div>
 

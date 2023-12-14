@@ -417,3 +417,7 @@ h1.text-dark.text-left.main-title {
 .main-header .navbar-nav .nav-item .nav-link[data-widget="pushmenu"]{
   display: none !important;
 }
+
+.highcharts-menu hr{
+  margin: 0 !important;
+}
