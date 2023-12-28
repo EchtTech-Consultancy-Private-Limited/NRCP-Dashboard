@@ -102,24 +102,7 @@
                                                     </small>
                                                 </div>
                                             </div>
-                                            {{--
-                     <div class="col-lg-3 col-md-3 col-6">
-                        <div class="form-group">
-                           <label for="toYear">To Year<span
-                              class="star">*</span></label>
-                           <select class="form-select"
-                              aria-label="Default select example"
-                              id="yearto"
-                              name="yearto"onChange="handleFilterValue()" >
-                              <option value=""> yyyy </option>
-                           </select>
-                           <span class="calender"><i class="fa fa-calendar"
-                              aria-hidden="true"></i> </span>
-                           <small id="toYear-error" class="form-text text-muted">
-                           </small>
-                        </div>
-                     </div>
-                     --}}
+
                                             <div class="col-lg-3 col-md-3 col-6">
                                                 <div class="form-group">
                                                     <label for="toYear">To Year<span class="star">*</span></label>
@@ -397,7 +380,7 @@
 
                                             <div class="col-md-6 pl-4">
                                                 <div class="dashboard-filter mt-5">
-                                                    <h1>Cases by Age Group in India (Based on Male and Female)</h1>
+                                                    {{-- <h1>Cases by Age Group in India (Based on Male and Female)</h1> --}}
                                                     <div id="chartContainer" style="height: 400px;"></div>
                                                 </div>
                                             </div>
