@@ -290,9 +290,9 @@
                                         <button class="buttons-print" type="button"><span> <i class="fa fa-print"></i></span></button>
                                         </div> -->
                                     </div>
-                                    <div id="printMap1">
-                                        <div class="row bg-white">
-                                            <div class="col-md-6 pr-4">
+                                    <div>
+                                        <div class="row bg-white" >
+                                            <div class="col-md-6 pr-4"  id="printMap1">
                                                 <div class="country-map " id="country-map">
                                                     <div class="case-type">
                                                         <select class="form-control w-auto" name="type" id="type">

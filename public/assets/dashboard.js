@@ -1,5 +1,5 @@
-// const BASE_URL = window.location.origin;
-const BASE_URL =window.location.origin+"/public";
+const BASE_URL = window.location.origin;
+// const BASE_URL =window.location.origin+"/public";
 
 /*handle Form Type*/
 const handleFormType = () => {
@@ -1214,7 +1214,7 @@ function printContent(printMap1) {
             <ul style="position: absolute; top: 50px; right: 50px;">
                 <li><b> State - </b> ${state}  </li>
                 <li><b> Year -</b> ${year} </li>
-                <li><b> Form Type </b> ${formType} </li>
+                <li><b> Form Type -</b> ${formType} </li>
                 <li><b> Diseases Syndromes -</b> ${DiseasesSyndromes} </li>
             </ul>
         `;
