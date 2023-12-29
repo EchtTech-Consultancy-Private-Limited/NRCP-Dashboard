@@ -7,6 +7,7 @@
 
 
 <link rel="stylesheet" href="{{ asset('assets/css/dashboard.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/css/print.css') }}"  media="print">
 <link href="{{asset('assets/css/select2.min.css')}}" rel="stylesheet" />
 <link rel="shortcut icon" type="image/x-icon" href="{{ asset('AdminLTELogo.png') }}">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">

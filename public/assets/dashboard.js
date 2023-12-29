@@ -1,5 +1,5 @@
-// const BASE_URL = window.location.origin;
-const BASE_URL =window.location.origin+"/public";
+const BASE_URL = window.location.origin;
+// const BASE_URL =window.location.origin+"/public";
 
 /*handle Form Type*/
 const handleFormType = () => {
@@ -1167,3 +1167,79 @@ $(document).ready(function () {
 
 
 
+// print map
+
+// function printDiv(divId) {
+//     var printContents = document.getElementById(divId).innerHTML;
+//     var originalContents = document.body.innerHTML;
+
+//     document.body.innerHTML = printContents;
+
+//     window.print();
+
+//     document.body.innerHTML = originalContents;
+// }
+
+
+
+// function printContent(printMap1) {
+//     var printContents = document.getElementById(printMap1).innerHTML;
+//     var originalContents = document.body.innerHTML;
+
+
+      
+
+//     document.body.innerHTML = printContents;
+
+//     window.print();
+
+//     document.body.innerHTML = originalContents;
+// }
+
+
+function printContent(printMap1) {
+    // Get the content of the element to be printed
+    var printContents = document.getElementById(printMap1).innerHTML;
+
+    // Additional text to be added
+    let state = $('#state').val();
+    let year = $('#year').val();
+    let formType = $('#formType').val();
+    let DiseasesSyndromes = $('#diseasesSyndromes').val();
+
+    // Check if state is not null before adding to additional text
+    var additionalText = "";
+    if (state !== null) {
+        additionalText = `
+            <ul style="position: absolute; top: 50px; right: 50px;">
+                <li><b> State - </b> ${state}  </li>
+                <li><b> Year -</b> ${year} </li>
+                <li><b> Form Type -</b> ${formType} </li>
+                <li><b> Diseases Syndromes -</b> ${DiseasesSyndromes} </li>
+            </ul>
+        `;
+    }else{
+        additionalText = `
+            <ul style="position: absolute; top: 50px; right: 50px;">
+                <li><b> Year -</b> ${year} </li>
+                <li><b> Form Type </b> ${formType} </li>
+                <li><b> Diseases Syndromes -</b> ${DiseasesSyndromes} </li>
+            </ul>
+        `;
+    }
+
+    // Combine the additional text with the original content
+    printContents += additionalText;
+
+    // Save the current content of the body
+    var originalContents = document.body.innerHTML;
+
+    // Set the body content to the content to be printed
+    document.body.innerHTML = printContents;
+
+    // Print the content
+    window.print();
+
+    // Restore the original content of the body
+    document.body.innerHTML = originalContents;
+}
