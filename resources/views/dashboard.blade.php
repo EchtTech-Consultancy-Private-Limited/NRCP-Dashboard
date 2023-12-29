@@ -101,18 +101,18 @@
                                                 <small id="fromYear-error" class="form-text text-muted">
                                                 </small>
                                             </div>
-
-                                            <div class="col-lg-3 col-md-3 col-6">
-                                                <div class="form-group">
-                                                    <label for="toYear">To Year<span class="star">*</span></label>
-                                                    <select class="form-select p-1 year click-function" name="toYear"
-                                                        aria-label="To Year" id="yearto" onChange="handleFilterValue()">
-                                                        <!-- Options will be populated dynamically using JavaScript -->
-                                                    </select>
-                                                    <span class="calender"><i class="fa fa-calendar" aria-hidden="true"></i>
-                                                    </span>
-                                                    <small id="toYear-error" class="form-text text-muted"></small>
-                                                </div>
+                                        </div>
+                                      
+                                        <div class="col-lg-3 col-md-3 col-6">
+                                            <div class="form-group">
+                                                <label for="toYear">To Year<span class="star">*</span></label>
+                                                <select class="form-select p-1 year click-function" name="toYear"
+                                                    aria-label="To Year" id="yearto" onChange="handleFilterValue()">
+                                                    <!-- Options will be populated dynamically using JavaScript -->
+                                                </select>
+                                                <span class="calender"><i class="fa fa-calendar" aria-hidden="true"></i>
+                                                </span>
+                                                <small id="toYear-error" class="form-text text-muted"></small>
                                             </div>
                                         </div>
                                         <div class="col-lg-3 col-md-3 col-6">
@@ -290,9 +290,9 @@
                                         <button class="buttons-print" type="button"><span> <i class="fa fa-print"></i></span></button>
                                         </div> -->
                                     </div>
-                                    <div>
-                                        <div class="row bg-white" >
-                                            <div class="col-md-6 pr-4"  id="printMap1">
+                                    <div >
+                                        <div class="row bg-white">
+                                            <div class="col-md-6 pr-4" id="printMap1">
                                                 <div class="country-map " id="country-map">
                                                     <div class="case-type">
                                                         <select class="form-control w-auto" name="type" id="type">
@@ -383,30 +383,6 @@
                                         <div class="col-md-6 pl-4">
                                             <div id="piecharts" class="piechart dashboard-filter " height="400">
                                             </div>
-
-                                            <div class="col-md-6 pl-4">
-                                                <div class="dashboard-filter mt-5">
-                                                    {{-- <h1>Cases by Age Group in India (Based on Male and Female)</h1> --}}
-                                                    <div id="chartContainer" style="height: 400px;"></div>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-md-6 pr-4">
-                                                <div class="dashboard-filter mt-5">
-                                                   
-                                                    <div id="barchart_materialcase" style="width: 410px; height: 250px;"></div>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-md-6 pl-4">
-                                                <div class="dashboard-filter mt-5">
-                                                    {{-- <h1></h1> --}}
-                                                    <div id="barchart_materialdeath" style="width: 410px; height: 250px;"></div>
-                                                </div>
-                                            </div>
-
-                                          
-
                                         </div>
                                     </div>
 
