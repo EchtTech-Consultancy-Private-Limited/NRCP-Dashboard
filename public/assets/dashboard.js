@@ -1,6 +1,5 @@
-const BASE_URL = window.location.origin;
-
-// const BASE_URL =window.location.origin+"/public";
+// const BASE_URL = window.location.origin;
+const BASE_URL =window.location.origin+"/public";
 
 /*handle Form Type*/
 const handleFormType = () => {
@@ -246,15 +245,15 @@ const apply_filter = () => {
                 googlePieChart(result);
                 barChart(result[0]);
                 pyramidChart(result[0]);
-                highchartMapcase(result.total_records);
-                highchartMapDeath(result.total_records);
+              //  highchartMapcase(result.total_records);
+              //  highchartMapDeath(result.total_records);
             }
 
             if (form_type == '1') {
                 $('.defaultform').hide()
                 $('.lform').show()
-                highchartMapcase(result.total_records);
-                highchartMapDeath(result.total_records);
+              //  highchartMapcase(result.total_records);
+              //  highchartMapDeath(result.total_records);
             }
 
             if (form_type == '1') {
@@ -265,8 +264,8 @@ const apply_filter = () => {
             } else {
                 $('.lform').hide()
                 $('.defaultform').show()
-                highchartMapcase(result.total_records);
-                highchartMapDeath(result.total_records);
+              //  highchartMapcase(result.total_records);
+              //  highchartMapDeath(result.total_records);
                 if (form_type == '3') {
                     $('#box1').html("Total Cases-" + " " + result.human_rabies_case);
                     $('#box2').html("Total Deaths-" + " " + result.human_rabies_deaths);
@@ -367,7 +366,7 @@ const apply_filter = () => {
                                 }
                             },
                             dataLabels: {
-                                enabled: true,
+                                enabled: false,
                                 format: '{point.value}' // Customize the format as needed
                             }
                         }
@@ -582,7 +581,7 @@ const defaultLoadMapData = () => {
                                 }
                             },
                             dataLabels: {
-                                enabled: true,
+                                enabled: false,
                                 format: '{point.value}' // Customize the format as needed
                             }
                         }
@@ -719,7 +718,7 @@ async function drilldownHandle(state) {
         plotOptions: {
             series: {
                 dataLabels: {
-                    enabled: true,
+                    enabled: false,
                     format: '{point.value}', // You can customize the format as needed
                 },
                 events: {
@@ -1132,6 +1131,39 @@ function myFunction() {
         navbar.classList.remove("sticky");
     }
 }
+
+
+$(document).ready(function () {
+    // Function to populate #yearto dropdown based on the selected year from #year
+    function populateToYearDropdown() {
+        var fromYear = parseInt($('#year').val());
+        var toYearSelect = $('#yearto');
+
+        // Clear existing options
+        toYearSelect.empty();
+
+        // Add options starting from the selected year up to the current year
+        // toYearSelect.html('<option value="" selected>Choose Year</option>');
+        for (var year = fromYear; year <= new Date().getFullYear(); year++) {
+            var option = $('<option></option>');
+            option.val(year);
+            option.text(year);
+            toYearSelect.append(option);
+        }
+    }
+
+    // Trigger the function on page load
+    populateToYearDropdown();
+
+    // Set a default selected option for #yearto
+    // $('#yearto').append('<option value="" selected>Choose Year</option>');
+
+    // Attach the change event to #year dropdown
+    $('#year').change(function () {
+        // Call the function to repopulate #yearto dropdown when #year changes
+        populateToYearDropdown();
+    });
+});
 
 
 
