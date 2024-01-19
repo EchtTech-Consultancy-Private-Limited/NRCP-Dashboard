@@ -31,7 +31,7 @@
             <!-- general form elements -->
             <div class="card card-primary dashboard">
                 <!-- <div class=" apply-filter">
-                       
+
                         <button id="printButton" class="btn apply-filter text-white button">Print</button>
                     </div> -->
                 <!-- <div class="row">
@@ -102,7 +102,7 @@
                                                 </small>
                                             </div>
                                         </div>
-                                      
+
                                         <div class="col-lg-3 col-md-3 col-6">
                                             <div class="form-group">
                                                 <label for="toYear">To Year<span class="star">*</span></label>
@@ -299,13 +299,16 @@
                                                             <option value="0">Cases</option>
                                                             <option value="1">Deaths</option>
                                                         </select>
-                                                        <select class="form-control" id="l-dropdown"
+                                                        <div class="chart-print">
+                                                            <a class="chart-print-new" href="#">Chart Print</a>
+                                                        </div>
+                                                        <!-- <select class="form-control" id="l-dropdown"
                                                             onChange="handleFilterValue(); getLFormData();">
                                                             <option value="">Select test type</option>
                                                             <option value="person_tested">Person Tested</option>
                                                             <option value="sample_tested">Sample Tested</option>
                                                             <option value="positive_tested">Positive</option>
-                                                        </select>
+                                                        </select> -->
                                                     </div>
                                                     <div class="year-selector p-3"> </div>
                                                     <div id="container" class="map"></div>
@@ -337,7 +340,7 @@
                                                                 </tr>
                                                                 <tr>
                                                                     <th>Cases</th>
-                                                                    <th>deaths</th>
+                                                                    <th>Deaths</th>
                                                                 </tr>
                                                             </thead>
                                                             <tbody id="tableBody">

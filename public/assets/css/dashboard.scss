@@ -25,7 +25,7 @@ $background-color_7: #333;
 /* body{
       width: 21cm !important;
       height: 29.7cm !important;
-      margin: 0px !important; 
+      margin: 0px !important;
  }  */
 /*# sourceMappingURL=dashboard.css.map */
 .box {
@@ -459,6 +459,25 @@ h1.text-dark.text-left.main-title {
     width: 33px;
     height: 32px;
 
-	
+
 }
 
+.country-map .case-type
+{
+    position: relative;
+}
+
+.chart-print
+{
+    background-color: #fff;
+    padding: 10px 8px;
+    position: absolute;
+    right: 14px;
+    top: 0;
+
+}
+.chart-print a
+{
+    color: #808080;
+    font-size: 14px;
+}
