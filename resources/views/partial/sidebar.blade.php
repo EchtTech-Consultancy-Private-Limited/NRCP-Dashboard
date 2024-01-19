@@ -41,7 +41,7 @@
 <ul id="accordion" class="accordion">
 
     <li>
-        <div class="link bg-primary text-white dashboard-title"> 
+        <div class="link bg-primary text-white dashboard-title">
             <!-- <i class="nav-icon fas fa-tachometer-alt text-light"></i> -->
              <a
                 href="{{ url('/dashboard') }}">Dashboard</a> </i></div>

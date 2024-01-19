@@ -1,5 +1,5 @@
-// const BASE_URL = window.location.origin;
-const BASE_URL =window.location.origin+"/public";
+const BASE_URL = window.location.origin;
+// const BASE_URL =window.location.origin+"/public";
 
 /*handle Form Type*/
 const handleFormType = () => {
@@ -607,7 +607,7 @@ const defaultLoadMapData = () => {
                         }
                     }
                 });
-                
+
             })();
         }
     });
@@ -729,7 +729,7 @@ async function drilldownHandle(state) {
             }
         },
         series: updatedArray,
-      
+
     });
 
 }
@@ -1032,7 +1032,7 @@ const highchartMapcase = (total_records) => {
    google.charts.setOnLoadCallback(drawChart);
 
    function drawChart() {
-   
+
     if(total_records[0].value == "lformValue"){
 
        var jsData = [['Year', 'Samples']];
@@ -1041,7 +1041,7 @@ const highchartMapcase = (total_records) => {
 
         var jsData = [['Year', 'Cases']];
 
-    } 
+    }
 
      for (var i = 0; i < total_records.length; i++) {
        jsData.push([total_records[i].year, parseInt(total_records[i].case)]);
@@ -1081,7 +1081,7 @@ const highchartMapDeath = (total_records) => {
    google.charts.setOnLoadCallback(drawChart);
 
    function drawChart() {
-   
+
     if(total_records[0].value == "lformValue"){
 
        var jsData = [['Year', 'Positive']];
@@ -1090,7 +1090,7 @@ const highchartMapDeath = (total_records) => {
 
         var jsData = [['Year', 'Deaths']];
 
-    } 
+    }
 
      for (var i = 0; i < total_records.length; i++) {
        jsData.push([total_records[i].year, parseInt(total_records[i].death)]);
@@ -1187,7 +1187,7 @@ $(document).ready(function () {
 //     var originalContents = document.body.innerHTML;
 
 
-      
+
 
 //     document.body.innerHTML = printContents;
 

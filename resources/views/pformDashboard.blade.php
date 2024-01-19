@@ -27,7 +27,7 @@
             <a href="index3.html" class="brand-link">
                 <img src="{{ asset('assets/login/dist/img/AdminLTELogo.png') }}" alt="Logo"
                     class="brand-image img-circle elevation-3" style="opacity: .8">
-                <span class="brand-text font-weight-light">NRCP Dashboard</span>
+                <h4 class="brand-text font-weight-bold"><b>NRCP Dashboard</b></h4>
             </a>
 
             <!-- Sidebar -->
