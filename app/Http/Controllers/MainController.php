@@ -442,7 +442,8 @@ class MainController extends Controller
     public function humanRabiesMap(Request $request)
     {
         $currentYear = date('Y');
-        $previousYear = $currentYear - 1;
+       // dd($currentYear);
+        $previousYear = $currentYear - 2;
 
         $total_cases = DB::table('pform_human_rabies')->where('year', $previousYear)->sum('cases');
         $total_deaths = DB::table('pform_human_rabies')->where('year', $previousYear)->sum('deaths');
@@ -451,7 +452,7 @@ class MainController extends Controller
         $states = DB::table('states')->get();
         $human_rabiess = DB::table('pform_human_rabies')->get();
         $currentYear = date('Y');
-        $previousYear = $currentYear - 1;
+        $previousYear = $currentYear - 2;
 
 
         $total_human_rabies = 0; // Initialize a variable to hold the total
@@ -498,7 +499,7 @@ class MainController extends Controller
         //dd($statess);
         $human_rabiess = DB::table('pform_human_rabies')->get();
         $currentYear = date('Y');
-        $previousYear = $currentYear - 1;
+        $previousYear = $currentYear - 2;
         //total death
         $total_human_rabies_deaths = 0; // Initialize a variable to hold the total
         $array1 = [];
@@ -517,7 +518,7 @@ class MainController extends Controller
     {
         $states = DB::table('states')->get();
         $currentYear = date('Y');
-        $previousYear = $currentYear - 1;
+        $previousYear = $currentYear - 2;
         //total case 2022
         $total_human_rabies_deaths = 0; // Initialize a variable to hold the total
         foreach ($states as $value) {
