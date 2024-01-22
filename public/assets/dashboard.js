@@ -1,5 +1,5 @@
-// const BASE_URL = window.location.origin;
-const BASE_URL =window.location.origin+"/public";
+ //const BASE_URL = window.location.origin;
+ const BASE_URL =window.location.origin+"/public";
 
 /*handle Form Type*/
 const handleFormType = () => {
@@ -415,6 +415,7 @@ const apply_filter = () => {
 
 const defaultLoadMapData = () => {
     year = $('#year').val();
+    
     $('.statewise').hide();
     $('#yeartostate').hide();
     $("#stateMap").hide();
@@ -573,7 +574,7 @@ const defaultLoadMapData = () => {
                         series: {
                             events: {
                                 click: function (e) {
-                                    console.log(e.point)
+                                  //  console.log(e.point)
                                     let nameState = e.point.name
                                     updateStateListDropdown(nameState);
                                     $('#filter_state').val(nameState);
@@ -1064,7 +1065,7 @@ const highchartMapcase = (total_records) => {
 }
 
 const highchartMapDeath = (total_records) => {
-    console.log(total_records[0].value);
+   // console.log(total_records[0].value);
     const filter_state = $('#state').find(":selected").attr('state-name');
     const filter_district = $('#district').find(":selected").attr('dist-name');
     const filter_from_year = $('#year').find(":selected").val();
