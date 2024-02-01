@@ -13,7 +13,7 @@ $color_12: #e2e2e2;
 $color_13: #e4e4e4;
 $background-color_1: #0078d7;
 $background-color_2: #3090C7;
-$background-color_3: #337ab7;
+$background-color_3: #1d7bbe;
 $background-color_4: #3f51b5;
 $background-color_5: #fff;
 $background-color_6: #ddd;
@@ -28,6 +28,11 @@ $background-color_7: #333;
       margin: 0px !important;
  }  */
 /*# sourceMappingURL=dashboard.css.map */
+
+body{
+	font-family:"Open Sans", sans-serif !important;
+   }
+
 .box {
 	width: 250px;
 	height: 111px;
@@ -80,8 +85,9 @@ $background-color_7: #333;
 }
 .search-reset {
 	display: flex;
-	align-items: center;
-	margin-top: 30px;
+    align-items: center;
+    margin: 7px 0 5px;
+    justify-content: center;
 }
 .country-map {
 	border: 1px solid #ddd;
@@ -151,7 +157,7 @@ $background-color_7: #333;
 		border-radius: 22px;
 		padding: 8px 24px;
 		background-color: $background-color_3 !important;
-		padding: 3px 15px;
+		padding: 5px 20px;
 		font-size: 14px;
 	}
 	.stateImage {
@@ -174,11 +180,12 @@ $background-color_7: #333;
 .sticky {
 	position: fixed;
 	top: 56.5px;
-	width: 82%;
+	margin-left: -30px;
+    width: 85.3%;
 	background: #fff;
 	z-index: 99999999;
 	box-shadow: 0px 5px 15px #cdcdcd !important;
-	padding: 0px 13px !important;
+	padding: 10px 15px !important;
 	select {
 		margin: 5px 0px 0;
 	}
@@ -226,9 +233,9 @@ $background-color_7: #333;
 	.link {
 		cursor: pointer;
 		display: block;
-		padding: 15px 12px 15px 20px;
+		padding: 10px 14px;
 		color: $color_5;
-		font-size: 14px;
+		font-size: 16px;
 		font-weight: 700;
 		border-bottom: 1px solid #CCC;
 		position: relative;
@@ -355,17 +362,18 @@ h1.text-dark.text-left.main-title {
 	padding: 5px 34px !important;
 	border-radius: 5PX;
 	h1 {
-		font-size: 22px;
+		font-size: 18px;
 		margin: 0;
 		font-weight: 400;
 		line-height: 1;
+		padding: 10px 0;
 	}
 	.breadcrumb-item {
-		font-size: 15px;
+		font-size: 14px;
 		color: $color_1;
 		font-weight: 400;
 		a {
-			font-size: 18px;
+			font-size: 14px;
 			color: $color_1;
 		}
 	}
@@ -375,7 +383,7 @@ h1.text-dark.text-left.main-title {
 }
 .breadcrumb-item+.breadcrumb-item {
 	&::before {
-		color: $color_13;
+		color: #c9c5c5 !important;
 	}
 }
 .table-responsive {
@@ -413,15 +421,15 @@ h1.text-dark.text-left.main-title {
 }
 @media (max-width: 1550px) {
 	.sticky {
-		width: 77.5%;
+		width: 81.5%;
 	}
 	h1.text-dark.text-left.main-title {
 		font-size: 22px !important;
 	}
 }
 @media (max-width: 1300px) {
-	.sticky {
-		width: 73%;
+	.sticky {       
+		width: 78%;
 	}
 	.dashboard {
 		.dashboard-filter {
