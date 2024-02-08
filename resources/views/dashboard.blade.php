@@ -8,7 +8,6 @@
         /* Adjust map styles for print */
         width: 100%;
         /* Adjust as needed */
-
     }
 
     .detailsDatas {
@@ -48,7 +47,7 @@
                                 <!-- @csrf -->
                                 <div class="dashboard-filter" id="dashboard-filter">
                                     <div class="row">
-                                        <div class="col-lg-3 col-md-3 col-6">
+                                        <div class="col-lg-2 col-md-2 col-4">
                                             <div class="form-group">
                                                 <label for="state">State<span class="star">*</span></label>
                                                 <select class="form-select state click-function"
@@ -69,7 +68,7 @@
                                                 </small>
                                             </div>
                                         </div>
-                                        <div class="col-lg-3 col-md-3 col-6">
+                                        <div class="col-lg-2 col-md-2 col-4">
                                             <div class="form-group">
                                                 <label for="district">District<span class="star">*</span></label>
                                                 <select class="form-select click-function"
@@ -81,7 +80,7 @@
                                                 </small>
                                             </div>
                                         </div>
-                                        <div class="col-lg-3 col-md-3 col-6">
+                                        <div class="col-lg-2 col-md-2 col-4">
                                             <div class="form-group">
                                                 <label for="fromYear">From Year<span class="star">*</span></label>
                                                 <select class="form-select p-1 year click-function" name="year"
@@ -96,26 +95,26 @@
                                                         }
                                                         ?>
                                                 </select>
-                                                <span class="calender"><i class="fa fa-calendar" aria-hidden="true"></i>
-                                                </span>
+                                                <!-- <span class="calender"><i class="fa fa-calendar" aria-hidden="true"></i>
+                                                </span> -->
                                                 <small id="fromYear-error" class="form-text text-muted">
                                                 </small>
                                             </div>
                                         </div>
 
-                                        <div class="col-lg-3 col-md-3 col-6">
+                                        <div class="col-lg-2 col-md-2 col-4">
                                             <div class="form-group">
                                                 <label for="toYear">To Year<span class="star">*</span></label>
                                                 <select class="form-select p-1 year click-function" name="toYear"
                                                     aria-label="To Year" id="yearto" onChange="handleFilterValue()">
                                                     <!-- Options will be populated dynamically using JavaScript -->
                                                 </select>
-                                                <span class="calender"><i class="fa fa-calendar" aria-hidden="true"></i>
-                                                </span>
+                                                <!-- <span class="calender"><i class="fa fa-calendar" aria-hidden="true"></i>
+                                                </span> -->
                                                 <small id="toYear-error" class="form-text text-muted"></small>
                                             </div>
                                         </div>
-                                        <div class="col-lg-3 col-md-3 col-6">
+                                        <div class="col-lg-2 col-md-2 col-4">
                                             <div class="form-group">
                                                 <label for="formType">Form Type<span class="star">*</span></label>
                                                 <select class="form-select " aria-label="Default select example"
@@ -130,7 +129,7 @@
                                                 </small>
                                             </div>
                                         </div>
-                                        <div class="col-lg-3 col-md-3 col-6">
+                                        <div class="col-lg-2 col-md-2 col-4">
                                             <div class="form-group">
                                                 <label for="diseasesSyndromes">Diseases Syndromes<span
                                                         class="star">*</span></label>
@@ -147,7 +146,7 @@
                                         </div>
 
 
-                                        <div class="col-lg-3 col-md-3 col-6" id="test_performed">
+                                        <div class="col-lg-2 col-md-2 col-4" id="test_performed">
                                             <div class="form-group">
                                                 <label for="testPerformed" class="d-block">Test Performed<span
                                                         class="star">*</span></label>
@@ -171,8 +170,8 @@
                                             </div>
                                         </div>
 
-                                        <div class="col-lg-3 col-md-3 col-6 search-reset">
-                                            <div class=" apply-filter">
+                                        <div class="col-lg-12 col-md-12 col-12 search-reset">
+                                            <div class=" apply-filter text-center">
                                                 <!-- <label for=""><span
                                   class="star"></span></label> -->
                                                 <button id="apply_filter"
