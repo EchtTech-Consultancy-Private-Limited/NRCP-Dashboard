@@ -25,3 +25,6 @@
 
 <link rel="stylesheet" href="{{ asset('assets/pform_css/style.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/font-awesome-4.7.0/css/font-awesome.min.css') }}">
+
+<script src="https://code.highcharts.com/maps/highmaps.js"></script>
+<script src="https://code.highcharts.com/maps/modules/exporting.js"></script>
