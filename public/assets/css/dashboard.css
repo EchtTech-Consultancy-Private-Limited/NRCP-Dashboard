@@ -83,8 +83,8 @@ body {
 }
 .country-map .case-type {
   position: absolute;
-  top: 10px;
-  left: 16px;
+  /*top: 10px;*/
+  /*left: 16px;*/
   z-index: 99;
 }
 

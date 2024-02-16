@@ -298,9 +298,9 @@
                                                                 <option value="0">Cases</option>
                                                                 <option value="1">Deaths</option>
                                                             </select>
-                                                            <div class="chart-print">
-                                                                <a class="chart-print-new" href="#">Chart Print</a>
-                                                            </div>
+{{--                                                            <div class="chart-print">--}}
+{{--                                                                <a class="chart-print-new" href="#">Chart Print</a>--}}
+{{--                                                            </div>--}}
                                                             <!-- <select class="form-control" id="l-dropdown"
                                                                 onChange="handleFilterValue(); getLFormData();">
                                                                 <option value="">Select test type</option>
