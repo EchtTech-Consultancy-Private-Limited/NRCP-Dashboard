@@ -281,6 +281,7 @@ const apply_filter = () => {
             }
             let sessionValue = $("#session_value").val();
             let case_type_col = result?.case_type_col;
+
             if (!sessionValue) {
                 sessionValue = 0
             }
@@ -293,37 +294,52 @@ const apply_filter = () => {
                 let statesData = result.array;
 
                 const entries = Object.entries(statesData);
+
                 const data = entries;
                 const tableBody = $('.detailsDatas tbody');
                 // Clear any existing rows in the table
                 tableBody.empty();
+const selectedType = $('#type').val();
+
                 // Loop through the entries and add rows to the table
                 entries.forEach(function (entry) {
                     const state = entry[0];
                     const cases = entry[1];
-
+                    console.log(state, cases);
+                    console.log("test data")
                     if (l_dropdown == "") {
                         const row = `
-                            <tr>
-                                <td>${capitalizeFirstLetter(state)}</td>
-                                <td>${sessionValue == 0 ? cases : 0}</td>
-                                <td>${sessionValue == 1 ? cases : 0}</td>
-                            </tr>
-                        `;
+            <tr>
+                <td>${capitalizeFirstLetter(state)}</td>
+                <td>${sessionValue == 0 ? cases : 0}</td>
+                <td>${sessionValue == 1 ? cases : 0}</td>
+            </tr>
+        `;
                         tableBody.append(row);
                     } else {
-                        const row = `
-                            <tr>
-                                <td>${capitalizeFirstLetter(state)}</td>
-                                <td>${case_type_col === 1 ? cases : 0}</td>
-                                <td>${case_type_col === 2 ? cases : 0}</td>
-                                <td>${case_type_col === 3 ? cases : 0}</td>
-                            </tr>
-                        `;
+                        let row = `<tr><td>${capitalizeFirstLetter(state)}</td>`;
+                        if (case_type_col) {
+                            row += `
+                <td>${case_type_col === 1 ? cases : 0}</td>
+                <td>${case_type_col === 2 ? cases : 0}</td>
+                <td>${case_type_col === 3 ? cases : 0}</td>
+            `;
+                        } else {
+                            if (selectedType == 1){
+                                row += `<td>0</td>`;
+                                row += `<td>${cases}</td>`;
+                            }
+                            if (selectedType == 0){
+                                row += `<td>${cases}</td>`;
+                                row += `<td>0</td>`;
+                            }
+
+                        }
+                        row += `</tr>`;
                         tableBody.append(row);
                     }
-
                 });
+
 
                 let options = {
                     chart: {
@@ -398,11 +414,9 @@ const apply_filter = () => {
                 if (filter_state === '') {
                     Highcharts.mapChart('container',
                         options
-
                     );
                 }
             })();
-
 
 
         },
@@ -547,7 +561,6 @@ const defaultLoadMapData = () => {
     });
 
 
-
     // pyramid chart
     $.ajax({
         url: BASE_URL + "/p-form-horizontal-barchart",
@@ -586,6 +599,7 @@ const getDistrictValue = (s_name, entries) => {
     })
     return m;
 }
+
 //state wise map
 async function drilldownHandle(state) {
 
@@ -745,9 +759,9 @@ const googlePieChart = (result) => {
     /*google chart start*/
 
     var mapFilterTypeText = "";
-    if (mapFilterType == 0){
+    if (mapFilterType == 0) {
         mapFilterTypeText = "Cases";
-    }else{
+    } else {
         mapFilterTypeText = "Death";
     }
 
@@ -1014,9 +1028,9 @@ const highchartMapcase = (total_records) => {
 
     var mapFilterType = $('#type').find(":selected").val();
     var mapFilterTypeText = "";
-    if (mapFilterType == 0){
+    if (mapFilterType == 0) {
         mapFilterTypeText = "Cases";
-    }else{
+    } else {
         mapFilterTypeText = "Death";
     }
 
@@ -1025,7 +1039,7 @@ const highchartMapcase = (total_records) => {
     const filteredRecords = total_records.filter(record => record["case"]);
 
 
-    new Highcharts.Chart('barchart_materialcase',{
+    new Highcharts.Chart('barchart_materialcase', {
         chart: {
             renderTo: 'barchart_materialcase',
             type: 'column',
@@ -1072,7 +1086,6 @@ const highchartMapcase = (total_records) => {
     });
 
 
-
 }
 
 const highchartMapDeath = (total_records) => {
@@ -1092,7 +1105,7 @@ const highchartMapDeath = (total_records) => {
 
     const filteredRecords = total_records.filter(record => record["death"]);
 
-    new Highcharts.Chart('barchart_materialdeaths',{
+    new Highcharts.Chart('barchart_materialdeaths', {
         chart: {
             renderTo: 'barchart_materialdeaths',
             type: 'column',
@@ -1142,9 +1155,10 @@ const highchartMapDeath = (total_records) => {
 }
 
 
-
 // sticky nav script
-window.onscroll = function () { myFunction() };
+window.onscroll = function () {
+    myFunction()
+};
 
 // Get the navbar
 var navbar = document.getElementById("dashboard-filter");
@@ -1195,7 +1209,6 @@ $(document).ready(function () {
 });
 
 
-
 // print map
 
 // function printDiv(divId) {
@@ -1210,12 +1223,9 @@ $(document).ready(function () {
 // }
 
 
-
 // function printContent(printMap1) {
 //     var printContents = document.getElementById(printMap1).innerHTML;
 //     var originalContents = document.body.innerHTML;
-
-
 
 
 //     document.body.innerHTML = printContents;
@@ -1247,7 +1257,7 @@ function printContent(printMap1) {
                 <li><b> Diseases Syndromes -</b> ${DiseasesSyndromes} </li>
             </ul>
         `;
-    }else{
+    } else {
         additionalText = `
             <ul style="position: absolute; top: 50px; right: 50px;">
                 <li><b> Year -</b> ${year} </li>
