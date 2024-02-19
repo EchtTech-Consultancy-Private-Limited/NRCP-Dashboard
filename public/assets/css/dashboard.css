@@ -10,7 +10,9 @@
 body {
   font-family: "Open Sans", sans-serif !important;
 }
-
+.highcharts-exporting-group{
+  display: none;
+}
 .box {
   width: 250px;
   height: 111px;
