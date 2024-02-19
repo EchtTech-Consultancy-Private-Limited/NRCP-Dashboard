@@ -25,7 +25,8 @@
 
 <!-- PAGE PLUGINS -->
 <script src="{{ asset('assets/js/select2.min.js') }}"></script>
-<script src="{{ asset('assets/dashboard.js') }}"></script>
+<script src="https://code.highcharts.com/highcharts-3d.js"></script>
+<script src="{{ asset('assets/dashboard_highchart.js') }}"></script>
 
 <!-- jQuery Mapael -->
 <script src="{{ asset('assets/login/plugins/jquery-mousewheel/jquery.mousewheel.js') }}"></script>
@@ -36,7 +37,7 @@
 <script src="{{ asset('assets/login/plugins/chart.js/Chart.min.js') }}"></script>
 
 <script type="text/javascript" src="{{ asset('gstatic.com_charts_loader.js') }}"></script>
-<script type="text/javascript" src="{{ asset('highmaps.js') }}"></script>
+
 <script type="text/javascript" src="{{ asset('jsdelivr.net_npm_apexcharts.js') }}"></script>
 
 <!-- AdminLTE for demo purposes -->

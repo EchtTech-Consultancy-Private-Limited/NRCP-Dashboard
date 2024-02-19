@@ -4,8 +4,12 @@
 /* body{
       width: 21cm !important;
       height: 29.7cm !important;
-      margin: 0px !important; 
+      margin: 0px !important;
  }  */
+
+body {
+  font-family: "Open Sans", sans-serif !important;
+}
 
 .box {
   width: 250px;
@@ -64,7 +68,8 @@
 .search-reset {
   display: flex;
   align-items: center;
-  margin-top: 30px;
+  margin: 7px 0 5px;
+  justify-content: center;
 }
 
 .country-map {
@@ -78,8 +83,8 @@
 }
 .country-map .case-type {
   position: absolute;
-  top: 10px;
-  left: 16px;
+  /*top: 10px;*/
+  /*left: 16px;*/
   z-index: 99;
 }
 
@@ -126,8 +131,8 @@
 .dashboard .button {
   border-radius: 22px;
   padding: 8px 24px;
-  background-color: #337ab7 !important;
-  padding: 3px 15px;
+  background-color: #1d7bbe !important;
+  padding: 5px 20px;
   font-size: 14px;
 }
 .dashboard .stateImage {
@@ -151,11 +156,12 @@
 .sticky {
   position: fixed;
   top: 56.5px;
-  width: 82%;
+  margin-left: -30px;
+  width: 85.3%;
   background: #fff;
   z-index: 99999999;
   box-shadow: 0px 5px 15px #cdcdcd !important;
-  padding: 0px 13px !important;
+  padding: 10px 15px !important;
 }
 .sticky select {
   margin: 5px 0px 0;
@@ -202,9 +208,9 @@
 .accordion .link {
   cursor: pointer;
   display: block;
-  padding: 15px 12px 15px 20px;
+  padding: 10px 14px;
   color: #4D4D4D;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 700;
   border-bottom: 1px solid #CCC;
   position: relative;
@@ -324,18 +330,19 @@ h1.text-dark.text-left.main-title {
   border-radius: 5PX;
 }
 .nrcp-main-title h1 {
-  font-size: 22px;
+  font-size: 18px;
   margin: 0;
   font-weight: 400;
   line-height: 1;
+  padding: 10px 0;
 }
 .nrcp-main-title .breadcrumb-item {
-  font-size: 15px;
+  font-size: 14px;
   color: #fff;
   font-weight: 400;
 }
 .nrcp-main-title .breadcrumb-item a {
-  font-size: 18px;
+  font-size: 14px;
   color: #fff;
 }
 .nrcp-main-title .breadcrumb-item.active {
@@ -343,7 +350,7 @@ h1.text-dark.text-left.main-title {
 }
 
 .breadcrumb-item + .breadcrumb-item::before {
-  color: #e4e4e4;
+  color: #c9c5c5 !important;
 }
 
 .table-responsive {
@@ -380,7 +387,7 @@ h1.text-dark.text-left.main-title {
 
 @media (max-width: 1550px) {
   .sticky {
-    width: 77.5%;
+    width: 81.5%;
   }
   h1.text-dark.text-left.main-title {
     font-size: 22px !important;
@@ -388,7 +395,7 @@ h1.text-dark.text-left.main-title {
 }
 @media (max-width: 1300px) {
   .sticky {
-    width: 73%;
+    width: 78%;
   }
   .dashboard .dashboard-filter h1 {
     font-size: 20px !important;
@@ -418,4 +425,21 @@ h1.text-dark.text-left.main-title {
   border-radius: 100%;
   width: 33px;
   height: 32px;
+}
+
+.country-map .case-type {
+  position: relative;
+}
+
+.chart-print {
+  background-color: #fff;
+  padding: 10px 8px;
+  position: absolute;
+  right: 14px;
+  top: 0;
+}
+
+.chart-print a {
+  color: #808080;
+  font-size: 14px;
 }/*# sourceMappingURL=dashboard.css.map */

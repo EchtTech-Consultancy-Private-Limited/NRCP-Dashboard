@@ -41,6 +41,7 @@
 <ul id="accordion" class="accordion">
 
     <li>
+
         @if (Auth::user()->user_type == 0)
             <div class="link bg-primary text-white dashboard-title">
                 <a href="{{ url('/general-laboratory') }}">General</a> </i>
@@ -63,6 +64,12 @@
                 <a href="{{ url('/dashboard') }}">Dashboard</a> </i>
             </div>
         @endif
+
+        <div class="link bg-primary text-white dashboard-title">
+            <!-- <i class="nav-icon fas fa-tachometer-alt text-light"></i> -->
+             <a
+                href="{{ url('/dashboard') }}">Dashboard</a> </i></div>
+
 
     </li>
 

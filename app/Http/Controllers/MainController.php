@@ -154,9 +154,9 @@ class MainController extends Controller
                     'death' => $human_rabies_deaths,
                     'value' => 'sformValue'
                 ];
-          
+
                 return response()->json(['total_records'=>$total_records, 'setstateMap' => $setstateMap, 'imageNames' => $imageNames, 'array' => $array, 'total_cases' => $total_cases, 'total_deaths' => $total_deaths, 'human_rabies_deaths' => $human_rabies_deaths, 'human_rabies_case' => $human_rabies_case], 200);
-          
+
             } catch (QueryException $e) {
 
                 return response()->json(['error' => 'Database error'], 500);
@@ -307,7 +307,7 @@ class MainController extends Controller
                     $dogbite_cases_male_death = $age_group_query->whereBetween('year', [$filter_from_year, $filter_to_year])->sum('male_death');
                     $dogbite_cases_female_death = $age_group_query->whereBetween('year', [$filter_from_year, $filter_to_year])->sum('female_death');
                     $age_groups_data->whereBetween('year', [$filter_from_year, $filter_to_year]);
-             
+
                 } else {
                     if (!empty($request->setyear)) {
                         $human_rabies_case = $human_rabies_case_query->where('year', '=', $filter_from_year)->sum('cases');
@@ -413,15 +413,15 @@ class MainController extends Controller
                     ];
                 }
 
-            
+
                     $total_records[] = [
                         'year' => $request->setyear,
                         'case' => $human_rabies_case,
                         'death' => $human_rabies_deaths,
                         'value' => 'pformValue'
                     ];
-              
-             
+
+
 
                 return response()->json(['total_records' => $total_records, 'setstateMap' => $setstateMap, 'imageNames' => $imageNames, 'array' => $array, 'total_cases' => $total_cases, 'total_deaths' => $total_deaths, 'human_rabies_deaths' => $human_rabies_deaths, 'human_rabies_case' => $human_rabies_case, 'male_percentage' => round($male_percentage, 2), 'female_percentage' => round($female_percentage, 2), 'total' => $total, $responseData, 'male_percentage_death' => $male_percentage_death, 'female_percentage_death' => $female_percentage_death, 'total_death_google_graph' => $total_death_google_graph], 200);
             } catch (QueryException $e) {
@@ -442,7 +442,8 @@ class MainController extends Controller
     public function humanRabiesMap(Request $request)
     {
         $currentYear = date('Y');
-        $previousYear = $currentYear - 1;
+       // dd($currentYear);
+        $previousYear = $currentYear - 2;
 
         $total_cases = DB::table('pform_human_rabies')->where('year', $previousYear)->sum('cases');
         $total_deaths = DB::table('pform_human_rabies')->where('year', $previousYear)->sum('deaths');
@@ -451,7 +452,7 @@ class MainController extends Controller
         $states = DB::table('states')->get();
         $human_rabiess = DB::table('pform_human_rabies')->get();
         $currentYear = date('Y');
-        $previousYear = $currentYear - 1;
+        $previousYear = $currentYear - 2;
 
 
         $total_human_rabies = 0; // Initialize a variable to hold the total
@@ -498,7 +499,7 @@ class MainController extends Controller
         //dd($statess);
         $human_rabiess = DB::table('pform_human_rabies')->get();
         $currentYear = date('Y');
-        $previousYear = $currentYear - 1;
+        $previousYear = $currentYear - 2;
         //total death
         $total_human_rabies_deaths = 0; // Initialize a variable to hold the total
         $array1 = [];
@@ -517,7 +518,7 @@ class MainController extends Controller
     {
         $states = DB::table('states')->get();
         $currentYear = date('Y');
-        $previousYear = $currentYear - 1;
+        $previousYear = $currentYear - 2;
         //total case 2022
         $total_human_rabies_deaths = 0; // Initialize a variable to hold the total
         foreach ($states as $value) {

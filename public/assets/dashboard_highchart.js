@@ -1,5 +1,5 @@
-//const BASE_URL = window.location.origin;
- const BASE_URL =window.location.origin+"/public";
+// const BASE_URL = window.location.origin;
+const BASE_URL =window.location.origin+"/public";
 
 /*handle Form Type*/
 const handleFormType = () => {
@@ -245,15 +245,15 @@ const apply_filter = () => {
                 googlePieChart(result);
                 barChart(result[0]);
                 pyramidChart(result[0]);
-              //  highchartMapcase(result.total_records);
-              //  highchartMapDeath(result.total_records);
+                //  highchartMapcase(result.total_records);
+                //  highchartMapDeath(result.total_records);
             }
 
             if (form_type == '1') {
                 $('.defaultform').hide()
                 $('.lform').show()
-              //  highchartMapcase(result.total_records);
-              //  highchartMapDeath(result.total_records);
+                //  highchartMapcase(result.total_records);
+                //  highchartMapDeath(result.total_records);
             }
 
             if (form_type == '1') {
@@ -264,8 +264,8 @@ const apply_filter = () => {
             } else {
                 $('.lform').hide()
                 $('.defaultform').show()
-              //  highchartMapcase(result.total_records);
-              //  highchartMapDeath(result.total_records);
+                //  highchartMapcase(result.total_records);
+                //  highchartMapDeath(result.total_records);
                 if (form_type == '3') {
                     $('#box1').html("Total Cases-" + " " + result.human_rabies_case);
                     $('#box2').html("Total Deaths-" + " " + result.human_rabies_deaths);
@@ -281,6 +281,7 @@ const apply_filter = () => {
             }
             let sessionValue = $("#session_value").val();
             let case_type_col = result?.case_type_col;
+
             if (!sessionValue) {
                 sessionValue = 0
             }
@@ -293,37 +294,52 @@ const apply_filter = () => {
                 let statesData = result.array;
 
                 const entries = Object.entries(statesData);
+
                 const data = entries;
                 const tableBody = $('.detailsDatas tbody');
                 // Clear any existing rows in the table
                 tableBody.empty();
+const selectedType = $('#type').val();
+
                 // Loop through the entries and add rows to the table
                 entries.forEach(function (entry) {
                     const state = entry[0];
                     const cases = entry[1];
-
+                    console.log(state, cases);
+                    console.log("test data")
                     if (l_dropdown == "") {
                         const row = `
-                            <tr>
-                                <td>${capitalizeFirstLetter(state)}</td>
-                                <td>${sessionValue == 0 ? cases : 0}</td>
-                                <td>${sessionValue == 1 ? cases : 0}</td>
-                            </tr>
-                        `;
+            <tr>
+                <td>${capitalizeFirstLetter(state)}</td>
+                <td>${sessionValue == 0 ? cases : 0}</td>
+                <td>${sessionValue == 1 ? cases : 0}</td>
+            </tr>
+        `;
                         tableBody.append(row);
                     } else {
-                        const row = `
-                            <tr>
-                                <td>${capitalizeFirstLetter(state)}</td>
-                                <td>${case_type_col === 1 ? cases : 0}</td>
-                                <td>${case_type_col === 2 ? cases : 0}</td>
-                                <td>${case_type_col === 3 ? cases : 0}</td>
-                            </tr>
-                        `;
+                        let row = `<tr><td>${capitalizeFirstLetter(state)}</td>`;
+                        if (case_type_col) {
+                            row += `
+                <td>${case_type_col === 1 ? cases : 0}</td>
+                <td>${case_type_col === 2 ? cases : 0}</td>
+                <td>${case_type_col === 3 ? cases : 0}</td>
+            `;
+                        } else {
+                            if (selectedType == 1){
+                                row += `<td>0</td>`;
+                                row += `<td>${cases}</td>`;
+                            }
+                            if (selectedType == 0){
+                                row += `<td>${cases}</td>`;
+                                row += `<td>0</td>`;
+                            }
+
+                        }
+                        row += `</tr>`;
                         tableBody.append(row);
                     }
-
                 });
+
 
                 let options = {
                     chart: {
@@ -398,11 +414,9 @@ const apply_filter = () => {
                 if (filter_state === '') {
                     Highcharts.mapChart('container',
                         options
-
                     );
                 }
             })();
-
 
 
         },
@@ -415,7 +429,7 @@ const apply_filter = () => {
 
 const defaultLoadMapData = () => {
     year = $('#year').val();
-    
+
     $('.statewise').hide();
     $('#yeartostate').hide();
     $("#stateMap").hide();
@@ -477,74 +491,7 @@ const defaultLoadMapData = () => {
 
                     tableBody.append(row);
                 });
-                // Create the chart
-                // Highcharts.mapChart('container',
-                //     {
-                //         chart: {
-                //             map: topology,
-                //         },
 
-                //         title: {
-                //             text: ''
-                //         },
-
-                //         subtitle: {
-                //             text: ''
-                //         },
-                //         mapNavigation: {
-                //             enabled: true,
-                //             buttonOptions: {
-                //                 verticalAlign: 'bottom'
-                //             }
-                //         },
-                //         colorAxis: {
-                //             min: 0,
-                //             max: 100,
-                //             minColor: '#fcad95',
-                //             maxColor: '#ab4024',
-                //             labels: {
-                //                 format: '{value}',
-                //             },
-                //         },
-                //         plotOptions: {
-                //             series: {
-                //                 events: {
-                //                     click: function (e) {
-                //                         let nameState = e.point.name
-                //                         //alert(nameState);
-                //                         updateStateListDropdown(nameState);
-                //                         $('#filter_state').val(nameState);
-                //                         apply_filter();
-                //                     }
-                //                 }
-                //             }
-                //         },
-                //         series: [{
-                //             data: data,
-                //             name: '',
-                //             allowPointSelect: true,
-                //             cursor: 'pointer',
-                //             color: "#fff",
-                //             states: {
-                //                 select: {
-                //                     color: '#fcad95'
-                //                 }
-                //             },
-                //             dataLabels: {
-                //                 enabled: false,
-                //                 format: '{point.name}'
-                //             }
-                //         }],
-                //         exporting: {
-                //             enabled: true, // Enable exporting module
-                //             buttons: {
-                //                 contextButton: {
-                //                     menuItems: ['printChart', 'separator', 'downloadPNG', 'downloadJPEG', 'downloadPDF', 'downloadSVG']
-                //                 }
-                //             }
-                //         }
-                //     }
-                // );
                 Highcharts.mapChart('container', {
                     chart: {
                         map: topology,
@@ -574,7 +521,7 @@ const defaultLoadMapData = () => {
                         series: {
                             events: {
                                 click: function (e) {
-                                  //  console.log(e.point)
+                                    //  console.log(e.point)
                                     let nameState = e.point.name
                                     updateStateListDropdown(nameState);
                                     $('#filter_state').val(nameState);
@@ -614,7 +561,6 @@ const defaultLoadMapData = () => {
     });
 
 
-
     // pyramid chart
     $.ajax({
         url: BASE_URL + "/p-form-horizontal-barchart",
@@ -629,8 +575,8 @@ const defaultLoadMapData = () => {
         url: BASE_URL + "/p-form-high-chart",
         type: "get",
         success: function (result) {
-               highchartMapcase(result);
-               highchartMapDeath(result);
+            highchartMapcase(result);
+            highchartMapDeath(result);
         }
     });
 
@@ -653,6 +599,7 @@ const getDistrictValue = (s_name, entries) => {
     })
     return m;
 }
+
 //state wise map
 async function drilldownHandle(state) {
 
@@ -672,7 +619,7 @@ async function drilldownHandle(state) {
             ...item,
             data: item.data.map((mapColor) => {
 
-             //   console.log(mapColor)
+                //   console.log(mapColor)
                 return {
                     ...mapColor,
                     color: '#ce4c39'
@@ -800,6 +747,7 @@ const googlePieChart = (result) => {
     const form_type = $('#formType').find(":selected").attr('form-type');
     const filter_diseasesSyndromes = $('#diseasesSyndromes').find(":selected").val();
     const l_dropdown = $('#l-dropdown').find(":selected").val();
+    var mapFilterType = $('#type').find(":selected").val();
     if (result.length < 1) {
         $("#is_graph_data_available").val("No graph data available");
     } else {
@@ -809,46 +757,85 @@ const googlePieChart = (result) => {
     is_graph_data_available = is_graph_data_available !== "" ? is_graph_data_available : "";
 
     /*google chart start*/
-    google.charts.load('current', { 'packages': ['corechart'] });
-    google.charts.setOnLoadCallback(drawCharts);
 
-    function drawCharts() {
-        var data = google.visualization.arrayToDataTable([
-            ['Gender', 'Percentage'],
-            ['Male', result.male_percentage],
-            ['Female', result.female_percentage]
-        ]);
-
-        var options = {
-            title: `Cases by Gender in India ${filter_state !== undefined ? filter_state + ' >' : ''} ${filter_district !== undefined ? filter_district + ' >' : ''} ${filter_from_year !== "" ? filter_from_year + ' >' : ''} ${filter_to_year !== "" ? filter_to_year + ' >' : ''}    n=(${result.total})`,
-        };
-
-        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
-        chart.draw(data, options);
+    var mapFilterTypeText = "";
+    if (mapFilterType == 0) {
+        mapFilterTypeText = "Cases";
+    } else {
+        mapFilterTypeText = "Death";
     }
-    google.charts.load('current', { 'packages': ['corechart'] });
-    google.charts.setOnLoadCallback(drawChart);
 
-    function drawChart() {
-        var data = google.visualization.arrayToDataTable([
-            ['Gender', 'Percentage'],
-            ['Male', result.male_percentage_death],
-            ['Female', result.female_percentage_death]
-        ]);
 
-        var options = {
-            title: `Death by Gender in India ${filter_state !== undefined ? filter_state + ' >' : ''} ${filter_district !== undefined ? filter_district + ' >' : ''} ${filter_from_year !== "" ? filter_from_year + ' >' : ''} ${filter_to_year !== "" ? filter_to_year + ' >' : ''}  n=(${result.total_death_google_graph})`,
-        };
+    Highcharts.chart('containerPie', {
+        chart: {
+            type: 'pie',
+            options3d: {
+                enabled: true,
+                alpha: 45
+            }
+        },
+        title: {
+            text: `Cases by Gender in India ${filter_state !== undefined ? filter_state + ' >' : ''} ${filter_district !== undefined ? filter_district + ' >' : ''} ${filter_from_year !== "" ? filter_from_year + ' >' : ''} ${filter_to_year !== "" ? filter_to_year + ' >' : ''}    n=(${result.total})`,
+            align: 'left'
+        },
+        subtitle: {
+            text: 'Gender Percentage',
+            align: 'left'
+        },
+        plotOptions: {
+            pie: {
+                innerSize: 100,
+                depth: 45
+            }
+        },
+        series: [{
+            name: `${mapFilterTypeText}`,
+            data: [
+                ['Male', result.male_percentage],
+                ['Female', result.female_percentage]
+            ]
+        }]
+    });
 
-        var chart = new google.visualization.PieChart(document.getElementById('piecharts'));
 
-        chart.draw(data, options);
-    }
+    // 2nd pie chart
+
+    Highcharts.chart('containerPie2nd', {
+        chart: {
+            type: 'pie',
+            options3d: {
+                enabled: true,
+                alpha: 45
+            }
+        },
+        title: {
+            text: `Death by Gender in India ${filter_state !== undefined ? filter_state + ' >' : ''} ${filter_district !== undefined ? filter_district + ' >' : ''} ${filter_from_year !== "" ? filter_from_year + ' >' : ''} ${filter_to_year !== "" ? filter_to_year + ' >' : ''}  n=(${result.total_death_google_graph})`,
+            align: 'left'
+        },
+        subtitle: {
+            text: 'Gender Percentage',
+            align: 'left'
+        },
+        plotOptions: {
+            pie: {
+                innerSize: 100,
+                depth: 45
+            }
+        },
+        series: [{
+            name: `${mapFilterTypeText}`,
+            data: [
+                ['Male', result.male_percentage_death],
+                ['Female', result.female_percentage_death]
+            ]
+        }]
+    });
+
     /*end google chart*/
 }
 
 const pyramidChart = (result) => {
-   // console.log(result);
+    // console.log(result);
     const filter_state = $('#state').find(":selected").attr('state-name');
     const filter_district = $('#district').find(":selected").attr('dist-name');
     const filter_from_year = $('#year').find(":selected").val();
@@ -1016,7 +1003,7 @@ const barChart = (result) => {
 }
 
 const highchartMapcase = (total_records) => {
-   // console.log(total_records[0].value);
+    // console.log(total_records[0].value);
     const filter_state = $('#state').find(":selected").attr('state-name');
     const filter_district = $('#district').find(":selected").attr('dist-name');
     const filter_from_year = $('#year').find(":selected").val();
@@ -1029,43 +1016,80 @@ const highchartMapcase = (total_records) => {
     } else {
         $("#is_graph_data_available").val("");
     }
-   google.charts.load('current', {'packages':['bar']});
-   google.charts.setOnLoadCallback(drawChart);
 
-   function drawChart() {
+    console.log(" Bar Chart" + total_records[0].year);
 
-    if(total_records[0].value == "lformValue"){
+    var jsData = [['Year', 'Cases']]; // Initialize the data array with column headers
 
-       var jsData = [['Year', 'Samples']];
-
-    }else{
-
-        var jsData = [['Year', 'Cases']];
-
+    for (var i = 0; i < total_records.length; i++) {
+        jsData.push([total_records[i].year]);
     }
 
-     for (var i = 0; i < total_records.length; i++) {
-       jsData.push([total_records[i].year, parseInt(total_records[i].case)]);
-     }
 
-     var data = google.visualization.arrayToDataTable(jsData);
+    var mapFilterType = $('#type').find(":selected").val();
+    var mapFilterTypeText = "";
+    if (mapFilterType == 0) {
+        mapFilterTypeText = "Cases";
+    } else {
+        mapFilterTypeText = "Death";
+    }
 
-     var options = {
-       chart: {
-        //  title: 'Website Performance',
-        //  subtitle: 'Click and Views',
-       },
-     };
 
-     var chart = new google.charts.Bar(document.getElementById('barchart_materialcase'));
+    console.log(total_records)
+    const filteredRecords = total_records.filter(record => record["case"]);
 
-     chart.draw(data, google.charts.Bar.convertOptions(options));
-   }
+
+    new Highcharts.Chart('barchart_materialcase', {
+        chart: {
+            renderTo: 'barchart_materialcase',
+            type: 'column',
+            options3d: {
+                enabled: true,
+                alpha: 15,
+                beta: 15,
+                depth: 50,
+                viewDistance: 25
+            }
+        },
+        xAxis: {
+            categories: total_records.map(record => record["year"])
+        },
+        yAxis: {
+            title: {
+                enabled: false
+            }
+        },
+        tooltip: {
+            headerFormat: `${mapFilterTypeText} `,
+            pointFormat: ' {point.y}'
+        },
+        title: {
+            text: ``,
+            align: 'left'
+        },
+        subtitle: {
+            text: 'Cases',
+            align: 'left'
+        },
+        legend: {
+            enabled: false
+        },
+        plotOptions: {
+            column: {
+                depth: 25
+            }
+        },
+        series: [{
+            data: filteredRecords.map(record => parseInt(record["case"])),
+            colorByPoint: true
+        }]
+    });
+
 
 }
 
 const highchartMapDeath = (total_records) => {
-   // console.log(total_records[0].value);
+    // console.log(total_records[0].value);
     const filter_state = $('#state').find(":selected").attr('state-name');
     const filter_district = $('#district').find(":selected").attr('dist-name');
     const filter_from_year = $('#year').find(":selected").val();
@@ -1078,45 +1102,63 @@ const highchartMapDeath = (total_records) => {
     } else {
         $("#is_graph_data_available").val("");
     }
-   google.charts.load('current', {'packages':['bar']});
-   google.charts.setOnLoadCallback(drawChart);
 
-   function drawChart() {
+    const filteredRecords = total_records.filter(record => record["death"]);
 
-    if(total_records[0].value == "lformValue"){
+    new Highcharts.Chart('barchart_materialdeaths', {
+        chart: {
+            renderTo: 'barchart_materialdeaths',
+            type: 'column',
+            options3d: {
+                enabled: true,
+                alpha: 15,
+                beta: 15,
+                depth: 50,
+                viewDistance: 25
+            }
+        },
+        xAxis: {
+            categories: total_records.map(record => record["year"])
+        },
+        yAxis: {
+            title: {
+                enabled: false
+            }
+        },
+        tooltip: {
+            headerFormat: `Death`,
+            pointFormat: ' {point.y}'
+        },
+        title: {
+            text: ``,
+            align: 'left'
+        },
+        subtitle: {
+            text: 'Death',
+            align: 'left'
+        },
+        legend: {
+            enabled: false
+        },
+        plotOptions: {
+            column: {
+                depth: 25
+            }
+        },
+        series: [{
+            data: filteredRecords.map(record => parseInt(record["death"])),
+            colorByPoint: true
+        }]
+    });
 
-       var jsData = [['Year', 'Positive']];
-
-    }else{
-
-        var jsData = [['Year', 'Deaths']];
-
-    }
-
-     for (var i = 0; i < total_records.length; i++) {
-       jsData.push([total_records[i].year, parseInt(total_records[i].death)]);
-     }
-
-     var data = google.visualization.arrayToDataTable(jsData);
-
-     var options = {
-       chart: {
-        //  title: 'Website Performance',
-        //  subtitle: 'Click and Views',
-       },
-     };
-
-     var chart = new google.charts.Bar(document.getElementById('barchart_materialdeath'));
-
-     chart.draw(data, google.charts.Bar.convertOptions(options));
-   }
 
 }
 
 
-
 // sticky nav script
-window.onscroll = function () { myFunction() };
+window.onscroll = function () {
+    myFunction()
+};
 
 // Get the navbar
 var navbar = document.getElementById("dashboard-filter");
@@ -1167,7 +1209,6 @@ $(document).ready(function () {
 });
 
 
-
 // print map
 
 // function printDiv(divId) {
@@ -1182,12 +1223,9 @@ $(document).ready(function () {
 // }
 
 
-
 // function printContent(printMap1) {
 //     var printContents = document.getElementById(printMap1).innerHTML;
 //     var originalContents = document.body.innerHTML;
-
-
 
 
 //     document.body.innerHTML = printContents;
@@ -1219,7 +1257,7 @@ function printContent(printMap1) {
                 <li><b> Diseases Syndromes -</b> ${DiseasesSyndromes} </li>
             </ul>
         `;
-    }else{
+    } else {
         additionalText = `
             <ul style="position: absolute; top: 50px; right: 50px;">
                 <li><b> Year -</b> ${year} </li>
