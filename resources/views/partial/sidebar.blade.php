@@ -41,10 +41,35 @@
 <ul id="accordion" class="accordion">
 
     <li>
+
+        @if (Auth::user()->user_type == 0)
+            <div class="link bg-primary text-white dashboard-title">
+                <a href="{{ url('/general-laboratory') }}">General</a> </i>
+            </div>
+            <div class="link bg-primary text-white dashboard-title">
+                <a href="{{ url('/quality-assurance') }}">Quality</a> </i>
+            </div>
+            <div class="link bg-primary text-white dashboard-title">
+                <a href="{{ url('/equipment') }}">Equipment</a> </i>
+            </div>
+            <div class="link bg-primary text-white dashboard-title">
+                <a href="{{ url('/rabies-test') }}">Rabies</a> </i>
+            </div>
+            <div class="link bg-primary text-white dashboard-title">
+                <a href="{{ url('/expenditure') }}">Expenditure</a> </i>
+            </div>
+        @endif
+        @if (Auth::user()->user_type == 1)
+            <div class="link bg-primary text-white dashboard-title">
+                <a href="{{ url('/dashboard') }}">Dashboard</a> </i>
+            </div>
+        @endif
+
         <div class="link bg-primary text-white dashboard-title">
             <!-- <i class="nav-icon fas fa-tachometer-alt text-light"></i> -->
              <a
                 href="{{ url('/dashboard') }}">Dashboard</a> </i></div>
+
 
     </li>
 
@@ -56,7 +81,8 @@
             <ul class="submenu">
                 <li><a href="{{ url('pformDashboard') }}"
                         class="{{ Request::routeIs('pform2') ? 'active' : '' }}">Dashboard</a></li>
-                <li><a href="{{ url('pform') }}" class=" {{ Request::routeIs('pform') ? 'active' : '' }}">pForm</a></li>
+                <li><a href="{{ url('pform') }}" class=" {{ Request::routeIs('pform') ? 'active' : '' }}">pForm</a>
+                </li>
 
 
             </ul>
@@ -65,7 +91,8 @@
             <div class="link"> <i class="far fa-circle nav-icon"></i>sform<i class="fa fa-chevron-down"></i></div>
             <ul class="submenu">
                 <li><a href="#">Dashboard</a></li>
-                <li><a href="{{ url('sform') }}" class="{{ Request::routeIs('sform') ? 'active' : '' }}">sform</a></li>
+                <li><a href="{{ url('sform') }}" class="{{ Request::routeIs('sform') ? 'active' : '' }}">sform</a>
+                </li>
 
             </ul>
         </li>

@@ -32,7 +32,7 @@
                                     <button class="btn btn-primary" data-toggle="modal" data-target="#expenditure_save">
                                         Expenditure
                                     </button>
-                                    <table id="table_" class="table">
+                                    <table id="table_expenditure" class="table">
                                         <thead>
                                             <tr>
                                                 <th>ID</th>

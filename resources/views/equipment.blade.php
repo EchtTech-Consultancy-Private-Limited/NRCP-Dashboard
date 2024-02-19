@@ -72,7 +72,7 @@
                                                                 <option value='yes'>Yes</option>
                                                                 <option value='no'>No</option>
                                                             </select>
-                                                            <small id="pt-error" class="form-text text-muted">
+                                                            <small id="equipment-error" class="form-text text-muted">
                                                             </small>
                                                         </div>
                                                     </div>
@@ -84,7 +84,7 @@
                                                                 aria-label="Default select example" name="quantity"
                                                                 id="quantity">
                                                             </select>
-                                                            <small id="accredited_pt-error" class="form-text text-muted">
+                                                            <small id="quantity-error" class="form-text text-muted">
                                                             </small>
                                                         </div>
                                                     </div>
@@ -95,7 +95,7 @@
                                                             <input type="date"t class="form-select"
                                                                 aria-label="Default select example" name="year_of_purchase"
                                                                 id="year_of_purchase">
-                                                            <small id="supervisors_trained-error"
+                                                            <small id="year_of_purchase-error"
                                                                 class="form-text text-muted">
                                                             </small>
                                                         </div>
@@ -117,7 +117,7 @@
                                 </div>
 
                             </div>
-                            <div class="modal fade" id="edit" tabindex="-1" role="dialog"
+                            <div class="modal fade" id="equipment_form" tabindex="-1" role="dialog"
                                 aria-labelledby="editListingModalLabel" aria-hidden="true">
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">

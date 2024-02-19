@@ -32,7 +32,7 @@
                                     <button class="btn btn-primary" data-toggle="modal" data-target="#addListingModal">
                                         GeneralProfile
                                     </button>
-                                    <div id="general_profile_success">
+                                    <div id="general_profile_success"></div>
                                             <table id="table_general_profile" class="table">
                                                 <thead>
                                                     <tr>
@@ -63,7 +63,6 @@
                                                     <form class="myForm" id="general_profile">
                                                         @csrf
                                                         <div class="row">
-                                                            <div id="general_profile_error">
                                                             <div class="col-lg-3 col-md-3 col-6">
                                                                 <div class="form-group">
                                                                     <label for="state">State<span
