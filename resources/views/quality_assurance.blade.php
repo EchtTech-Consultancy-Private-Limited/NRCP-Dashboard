@@ -32,8 +32,7 @@
                                     <button class="btn btn-primary" data-toggle="modal" data-target="#addListingModal">
                                         Quality Assurance
                                     </button>
-                                    <div id="quality_assurance_success">
-                                        <div id="quality_assurance_error">
+                                    <div id="quality_assurance_success"></div>
                                             <table id="table_quality_assurance" class="table">
                                                 <thead>
                                                     <tr>

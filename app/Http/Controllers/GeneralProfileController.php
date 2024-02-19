@@ -35,10 +35,6 @@ class GeneralProfileController extends Controller
             [
                 'state' => 'required',
                 'hospital' => 'required',
-                'designation' => 'required',
-                'contact_number' => 'required',
-                'mou' => 'required',
-                'date_of_joining' => 'required',
             ]
         );
         if ($validator->fails()) {
