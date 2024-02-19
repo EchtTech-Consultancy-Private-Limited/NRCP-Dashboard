@@ -48,7 +48,7 @@ Route::get('pform-horizontal-barchart-death',[MainController::class,'pFormHorizo
 
 Route::get('p-form-high-chart',[MainController::class,'pFormHighChart']);
 
-Route::get('general-laboratory',[GeneralProfileController::class,'create']);
+Route::get('general-laboratory',[GeneralProfileController::class,'create'])->name('general-laboratory');
 Route::get('general-profile',[GeneralProfileController::class,'index']);
 Route::post('general-add', [GeneralProfileController::class, 'store']);
 Route::get('general-laboratory-profile/{id}', [GeneralProfileController::class, 'edit']);
