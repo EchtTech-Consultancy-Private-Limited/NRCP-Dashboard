@@ -13,6 +13,11 @@
 <script src="{{ asset('assets/login/plugins/jquery/jquery.min.js') }}"></script>
 <script src="{{ asset('assets/js/pform.js') }}"></script>
 <script src="{{ asset('assets/js/sform.js') }}"></script>
+<script src="{{ asset('assets/js/general_profile.js') }}"></script>
+<script src="{{ asset('assets/js/quality_assurance.js') }}"></script>
+<script src="{{ asset('assets/js/rabies_test.js') }}"></script>
+<script src="{{ asset('assets/js/equipment.js') }}"></script>
+<script src="{{ asset('assets/js/expenditure.js') }}"></script>
 <!-- <script src="{{ asset('jquery.min.js') }}"></script> -->
 <!-- Bootstrap -->
 <script src="{{ asset('assets/login/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
