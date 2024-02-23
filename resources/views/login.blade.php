@@ -66,6 +66,16 @@
                         </select>
 
                     </div> --}}
+                    <div class="input-group mb-3 space-between" >
+                        <div class="w-25">
+                            <input type="radio" name="user_type" value='1' class="mr-2" checked>
+                            <label>Rabies</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="user_type" value='2' class="mr-2">
+                            <label>Laboratory</label>
+                        </div>
+                    </div>
                     <div class="input-group mb-3">
                         <input type="email" name="email" class="form-control" placeholder="Email">
                         <div class="input-group-append">
