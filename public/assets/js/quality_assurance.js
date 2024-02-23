@@ -1,6 +1,6 @@
 $(document).ready(function () {
     profilequality_assurance();
-    $('#quality_assurance').submit(function (e) {
+    $('#quality_assuranceA').submit(function (e) {
         e.preventDefault();
         $.ajax({
             type: 'POST',

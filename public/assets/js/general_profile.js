@@ -1,6 +1,6 @@
 $(document).ready(function () {
     table_generalprofile();
-    $('#general_profile').submit(function (e) {
+    $('#general_profileA').submit(function (e) {
         e.preventDefault();
         $.ajax({
             type: 'POST',

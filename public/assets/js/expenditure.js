@@ -1,6 +1,6 @@
 $(document).ready(function () {
     expenditure_edit();
-    $('#expenditure').submit(function (e) {
+    $('#expenditureA').submit(function (e) {
         e.preventDefault();
         $.ajax({
             type: 'POST',

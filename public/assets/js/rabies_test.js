@@ -1,6 +1,6 @@
 $(document).ready(function () {
     rabies_test_detail();
-    $('#rabies_detail_test').submit(function (e) {
+    $('#rabies_detail_testA').submit(function (e) {
         e.preventDefault();
         $.ajax({
             type: 'POST',

@@ -38,6 +38,7 @@
                                 <h1 class="text-left  main-title nrcp-main-title">State Dashboard - Human Health Rabies</h1>
                             </div>
                         </div> -->
+@if (Auth::user()->user_type == 1)
                     <div class="form-tab">
                         <div class="row">
                             <div class="col-md-12">
@@ -438,7 +439,7 @@
                     </div>
                 </div>
                 <!-- /.card -->
-
+@endif
             </div>
             </div>
             <script>

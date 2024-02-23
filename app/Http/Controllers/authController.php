@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Auth;
+use Auth,DB;
 use app\Models\User;
 
 class authController extends Controller
@@ -18,26 +18,37 @@ class authController extends Controller
     public function loginSubmit(Request $request)
     {
         //dd($request->all());
-
+        
         $request->validate(
             [
                 'email' => ['required', 'string', 'email', 'max:50', 'regex:/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix'],
                 'password' => 'required|min:8|max:15',
-                'captcha' => 'required|captcha'
+                'captcha' => 'required|captcha',
+                'user_type' => 'required'
                 ]
                 ,[
                     'captcha.captcha' => 'Invalid captcha code.',
 
                 ]
         );
-
-        if (Auth::attempt($request->only('email','password'))) {
-            session(['loggedIn' => true]);
-            if (session('loggedIn')) {
-                return redirect()->intended('/dashboard')->with('success', 'Login successfull!!');
+        //dd($request->user_type);
+        $exitUser = DB::table('dashboard_login')->where('email',$request->email)->where('user_type',$request->user_type)->first();
+        if($exitUser == null){
+            return redirect()->back()->with('error', 'User do not match for this user type');
+        }else{
+            if($request->user_type == '2'){
+                $redirect = 'general-laboratory';
+            }else{
+                $redirect = 'dashboard';
             }
-        } else {
-            return redirect()->back()->with('error', 'Email and/or password invalid.');
+            if (Auth::attempt($request->only('email','password'))) {
+                session(['loggedIn' => true]);
+                if (session('loggedIn')) {
+                    return redirect()->intended($redirect)->with('success', 'Login successfull!!');
+                }
+            } else {
+                return redirect()->back()->with('error', 'Email and/or password invalid.');
+            }
         }
     }
 

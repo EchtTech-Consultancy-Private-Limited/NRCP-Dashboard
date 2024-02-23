@@ -29,40 +29,33 @@ class EquipmentsController extends Controller
 
     public function store(Request $request)
     {
-
-        $validator = Validator::make(
-            $request->all(),
-            [
+        try{
+            $request->validate([
                 'equipment' => 'required',
                 'quantity' => 'required',
                 'year_of_purchase' => 'required',
-            ]
-        );
-        if ($validator->fails()) {
-            $notification = [
-                'status' => 201,
-                'message' => $validator->errors()
-            ];
-        } else {
-            $equipment = new Equipments();
-            $equipment->equipment = $request->equipment;
-            $equipment->quantity = $request->quantity;
-            $equipment->year_of_purchase = $request->year_of_purchase;
-            $equipment->save();
+            ],[
+                'equipment.required' => 'Equipment Name Required',
+                'quantity.required' => 'Quantity Required',
+                'year_of_purchase.required' => 'Year of purchase Required',
+            ]);
+        
+            Equipments::insert([
+                'equipment' => $request->equipment,
+                'quantity' => $request->quantity,
+                'year_of_purchase' => $request->year_of_purchase
+            ]);
+        
+                $notification = array(
+                    'message' => 'Added successfully',
+                    'alert-type' => 'success'
+                );
+            } 
+            catch(Throwable $e){report($e);
+                return false;
+            } 
 
-            if ($equipment == true) {
-                $notification = [
-                    'status' => 200,
-                    'message' => 'Added successfully.'
-                ];
-            } else {
-                $notification = [
-                    'status' => 201,
-                    'message' => 'some error accoured.'
-                ];
-            }
-        }
-        return response()->json($notification);
+        return redirect()->back()->with($notification);
     }
 
     public function update(Request $request, $id)

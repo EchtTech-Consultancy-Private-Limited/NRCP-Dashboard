@@ -54,7 +54,7 @@ body {
 }
 .form-group input, .form-group select {
   font-size: 13px;
-  margin: 5px 0px;
+  margin: 0px 0px;
   box-shadow: inset 0 0px 8px 0px #e3e0e0;
   width: 100%;
   padding: 7px 2.25rem 7px 0.75rem !important;

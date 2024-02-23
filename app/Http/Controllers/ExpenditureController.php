@@ -17,7 +17,8 @@ class ExpenditureController extends Controller
 
     public function create()
     {
-        return view('expenditure');
+        $expenditure = Expenditure::where(['soft_delete' => 0])->get();
+        return view('expenditure', compact('expenditure'));
     }
 
     public function edit($id)
@@ -27,40 +28,34 @@ class ExpenditureController extends Controller
     }
 
     public function store(Request $request)
-    {       
-        $validator = Validator::make(
-            $request->all(),
-            [
+    {   
+        try{
+            $request->validate([
                 'financial_year' => 'required',
                 'fund_recieved' => 'required',
                 'equipment_purchase' => 'required',
-            ]
-        );
-        if ($validator->fails()) {
-            $notification = [
-                'status' => 201,
-                'message' => $validator->errors()
-            ];
-        } else {
-            $expenditure = new Expenditure();
-            $expenditure->financial_year = $request->financial_year;
-            $expenditure->fund_recieved = $request->fund_recieved;
-            $expenditure->equipment_purchase = $request->equipment_purchase;
-            $expenditure->save();
+            ],[
+                'financial_year.required' => 'financial year Required',
+                'fund_recieved.required' => 'fund recieved Required',
+                'equipment_purchase.required' => 'equipment purchase Required',
+            ]);
+        
+            Expenditure::insert([
+                'financial_year' => $request->financial_year,
+                'fund_recieved' => $request->fund_recieved,
+                'equipment_purchase' => $request->equipment_purchase
+            ]);
+        
+                $notification = array(
+                    'message' => 'Added successfully',
+                    'alert-type' => 'success'
+                );
+            } 
+            catch(Throwable $e){report($e);
+                return false;
+            } 
 
-            if ($expenditure == true) {
-                $notification = [
-                    'status' => 200,
-                    'message' => 'Added successfully.'
-                ];
-            } else {
-                $notification = [
-                    'status' => 201,
-                    'message' => 'some error accoured.'
-                ];
-            }
-        }
-        return response()->json($notification);
+        return redirect()->back()->with($notification);    
     }
 
     public function update(Request $request, $id)

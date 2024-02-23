@@ -12,7 +12,10 @@ class GeneralProfileController extends Controller
     public function index()
     {
         $general_profile = GeneralProfile::where(['soft_delete' => 0])->get();
-        return response()->json(['general_profile' => $general_profile]);
+
+        return view('general_profile', compact('general_profile'));
+
+        //return response()->json(['general_profile' => $general_profile]);
     }
 
     public function create()
@@ -29,42 +32,33 @@ class GeneralProfileController extends Controller
 
     public function store(Request $request)
     {
-
-        $validator = Validator::make(
-            $request->all(),
-            [
+        try{
+            $request->validate([
                 'state' => 'required',
                 'hospital' => 'required',
-            ]
-        );
-        if ($validator->fails()) {
-            $notification = [
-                'status' => 201,
-                'message' => $validator->errors()
-            ];
-        } else {
-            $general_profile = new GeneralProfile();
-            $general_profile->state = $request->state;
-            $general_profile->hospital = $request->hospital;
-            $general_profile->designation = $request->designation;
-            $general_profile->contact_number = $request->contact_number;
-            $general_profile->mou = $request->mou;
-            $general_profile->date_of_joining = $request->date_of_joining;
-            $general_profile->save();
-
-            if ($general_profile == true) {
-                $notification = [
-                    'status' => 200,
-                    'message' => 'Added successfully.'
-                ];
-            } else {
-                $notification = [
-                    'status' => 201,
-                    'message' => 'some error accoured.'
-                ];
-            }
-        }
-        return response()->json($notification);
+            ],[
+                'state.required' => 'State Name Required',
+                'hospital.required' => 'Hospital Name Required',
+            ]);
+        
+            GeneralProfile::insert([
+                'state' => $request->state,
+                'hospital' => $request->hospital,
+                'designation' => $request->designation??'NULL',
+                'contact_number' => $request->contact_number??'NULL',
+                'mou' => $request->mou??'NULL',
+                'date_of_joining' => $request->date_of_joining??'NULL',
+            ]);
+        
+                $notification = array(
+                    'message' => 'Added successfully',
+                    'alert-type' => 'success'
+                );
+            } 
+            catch(Throwable $e){report($e);
+                return false;
+            }   
+        return redirect()->back()->with($notification);
     }
 
     public function update(Request $request, $id)
@@ -115,6 +109,7 @@ class GeneralProfileController extends Controller
         if ($general_profile->soft_delete == 0) {
             $general_profile = GeneralProfile::where('id', $id)->update(['soft_delete' => 1]);
         }
-        return response()->json('success', 'Deleted successfully.');
+    	return response()->json(['success'=>"Deleted successfully.", 'tr'=>'tr_'.$id]);
+        //return response()->json('success', 'Deleted successfully.');
     }
 }

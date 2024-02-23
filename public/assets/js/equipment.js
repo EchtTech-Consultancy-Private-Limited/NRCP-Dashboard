@@ -1,6 +1,6 @@
 $(document).ready(function () {
     equipment_edit();
-    $('#general_equipment').submit(function (e) {
+    $('#general_equipmentA').submit(function (e) {
         e.preventDefault();
         $.ajax({
             type: 'POST',

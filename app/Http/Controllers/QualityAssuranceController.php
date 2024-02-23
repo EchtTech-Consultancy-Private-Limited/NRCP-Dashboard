@@ -11,13 +11,15 @@ class QualityAssuranceController extends Controller
 {
     public function index()
     {
-        $quality_assurance = QualityAssurance::where(['soft_delete'=>0])->get();
-        return response()->json(['quality_assurance' => $quality_assurance]);
+        $quality_assurances = QualityAssurance::where(['soft_delete'=>0])->get();
+        return view('quality_assurance', compact('quality_assurances'));
+        //return response()->json(['quality_assurance' => $quality_assurance]);
     }
     
     public function create()
-    {
-        return view('quality_assurance');
+    {   
+        $quality_assurances = QualityAssurance::where(['soft_delete'=>0])->get();
+        return view('quality_assurance', compact('quality_assurances'));
     }
 
     public function edit($id)
@@ -28,41 +30,32 @@ class QualityAssuranceController extends Controller
 
     public function store(Request $request)
     {
-        $validator=Validator::make($request->all(),
-            [
+        try{
+            $request->validate([
                 'pt' => 'required',
-        ]);
-        if($validator->fails())
-        {
-            $notification =[
-                'status'=>201,
-                'message'=> $validator->errors()
-            ];
-        }
-        else{
-            $quality_assurance =new QualityAssurance();
-        $quality_assurance->pt =$request->pt;
-        $quality_assurance->accredited_pt =$request->accredited_pt;
-        $quality_assurance->supervisors_trained =$request->supervisors_trained;
-        $quality_assurance->lims =$request->lims;
-        $quality_assurance->save();
-           
-        if($quality_assurance == true)
-        {
-            $notification =[
-                'status'=>200,
-                'message'=>'Added successfully.'
-            ];
-        }
-        else{
-            $notification = [
-                    'status'=>201,
-                    'message'=>'some error accoured.'
-                ];
-             }
-        }
-        return response()->json($notification);
+                'accredited_pt' => 'required',
+            ],[
+                'pt.required' => 'PT Name Required',
+                'accredited_pt.required' => 'accredited Name Required',
+            ]);
         
+            QualityAssurance::insert([
+                'pt' => $request->pt,
+                'accredited_pt' => $request->accredited_pt,
+                'supervisors_trained' => $request->supervisors_trained??'NULL',
+                'lims' => $request->lims??'NULL',
+            ]);
+        
+                $notification = array(
+                    'message' => 'Added successfully',
+                    'alert-type' => 'success'
+                );
+            } 
+            catch(Throwable $e){report($e);
+                return false;
+            } 
+
+        return redirect()->back()->with($notification);
     }
 
     public function update(Request $request, $id)
