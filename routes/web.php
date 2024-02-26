@@ -49,44 +49,48 @@ Route::middleware(['Admin'])->group(function () {
         Route::get('p-form-high-chart',[MainController::class,'pFormHighChart']);
 
         /**  Use For laboratory*/
-        Route::middleware(['AccessUrlPermission'])->group(function () {
+        Route::middleware(['AccessUrlPermission','preventBackHistory'])->group(function () {
             Route::get('general-laboratory',[GeneralProfileController::class,'create'])->name('general-laboratory');
             Route::get('general-profile',[GeneralProfileController::class,'index']);
             Route::post('general-save', [GeneralProfileController::class, 'store'])->name('general-save');
             Route::get('general-laboratory-profile/{id}', [GeneralProfileController::class, 'edit']);
-            Route::put('general-edit/{id}', [GeneralProfileController::class, 'update']);
+            Route::get('general-edit/{id}', [GeneralProfileController::class, 'edit'])->name('general-edit');
+            Route::post('general-update', [GeneralProfileController::class, 'update'])->name('general-update');
             Route::delete('general-laboratory-destroy/{id}', [GeneralProfileController::class, 'destroy']);
 
             Route::get('quality-assurance',[QualityAssuranceController::class,'create'])->name('quality-assurance');
             Route::post('quality-add', [QualityAssuranceController::class, 'store'])->name('quality-add');
             Route::get('quality-profile',[QualityAssuranceController::class,'index']);
             Route::get('quality-assurance-profile/{id}', [QualityAssuranceController::class, 'edit']);
-            Route::put('quality-edit/{id}', [QualityAssuranceController::class, 'update']);
+            Route::get('quality-edit/{id}', [QualityAssuranceController::class, 'edit'])->name('quality-edit');
+            Route::post('quality-update', [QualityAssuranceController::class, 'update'])->name('quality-update');
             Route::get('quality-destroy/{id}', [QualityAssuranceController::class, 'destroy']);
 
             Route::get('equipment',[EquipmentsController::class,'create'])->name('equipment');
             Route::post('equipment-add', [EquipmentsController::class, 'store'])->name('equipment-add');
             Route::get('equipment-profile', [EquipmentsController::class, 'index']);
-            Route::get('equipment-edit/{id}', [EquipmentsController::class, 'edit']);
-            Route::put('equipment-update/{id}', [EquipmentsController::class, 'update']);
+            Route::get('equipment-edit/{id}', [EquipmentsController::class, 'edit'])->name('equipment-edit');
+            Route::post('equipment-update', [EquipmentsController::class, 'update'])->name('equipment-update');
             Route::delete('equipment-destroy/{id}', [EquipmentsController::class, 'destroy']);
 
             Route::get('rabies-test',[RabiesTestController::class,'create'])->name('rabies-test');
             Route::post('rabies-test-carried', [RabiesTestController::class, 'store'])->name('rabies-test-carried');
             Route::get('rabies-test-carried-out', [RabiesTestController::class, 'index']);
-            Route::get('rabies-test-edit/{id}', [RabiesTestController::class, 'edit']);
-            Route::put('rabies-edit/{id}', [RabiesTestController::class, 'update']);
+            Route::get('rabies-test-edit/{id}', [RabiesTestController::class, 'edit'])->name('rabies-test-edit');
+            Route::post('rabies-update', [RabiesTestController::class, 'update'])->name('rabies-update');
             Route::get('rabies-test-destroy/{id}', [RabiesTestController::class, 'destroy']);
 
             Route::get('expenditure',[ExpenditureController::class,'create'])->name('expenditure');
             Route::post('expenditure-add', [ExpenditureController::class, 'store'])->name('expenditure-add');
             Route::get('expenditure-profile', [ExpenditureController::class, 'index']);
-            Route::get('expenditure-edit/{id}', [ExpenditureController::class, 'edit']);
-            Route::put('expenditure-update/{id}', [ExpenditureController::class, 'update']);
+            Route::get('expenditure-edit/{id}', [ExpenditureController::class, 'edit'])->name('expenditure-edit');
+            Route::post('expenditure-update', [ExpenditureController::class, 'update'])->name('expenditure-update');
             Route::delete('expenditure-destroy/{id}', [ExpenditureController::class, 'destroy']);
 
             
             Route::get('report-list', [ReportGenerateControllerController::class, 'index'])->name('report-list');
+            Route::post('report-export', [ReportGenerateControllerController::class, 'export'])->name('report-export');
+            Route::post('generate-pdf', [ReportGenerateControllerController::class, 'generatePDF'])->name('generate-pdf');
         });
     });
 

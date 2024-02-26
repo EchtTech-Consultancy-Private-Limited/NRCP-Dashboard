@@ -25,7 +25,9 @@ class QualityAssuranceController extends Controller
     public function edit($id)
     {
         $quality_assurance = QualityAssurance::findOrFail($id);
-        return response()->json(['quality_assurance' => $quality_assurance]);
+
+        return view('quality_assurance_edit', compact('quality_assurance'));
+       // return response()->json(['quality_assurance' => $quality_assurance]);
     }
 
     public function store(Request $request)
@@ -58,50 +60,37 @@ class QualityAssuranceController extends Controller
         return redirect()->back()->with($notification);
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        $quality_assurance=QualityAssurance::findOrFail($id);
+        $quality_assurance=QualityAssurance::findOrFail($request->id);
         if($quality_assurance)
         {
-         $validator=Validator::make($request->all(),
-            [
-                'pt' => 'required',
-                'accredited_pt' => 'required',
-                'supervisors_trained' => 'required',
-                'lims' => 'required',
-        ]);
-        if($validator->fails())
-        {
-            $notification =[
-                'status'=>201,
-                'message'=> $validator->errors()
-            ];
-        }
-        else{
+            try{
+                $request->validate([
+                    'pt' => 'required',
+                    'accredited_pt' => 'required',
+                ],[
+                    'pt.required' => 'PT Name Required',
+                    'accredited_pt.required' => 'accredited Name Required',
+                ]);
             
-            $quality_assurance= QualityAssurance::where('id',$id)->update([
+                QualityAssurance::where('id',$request->id)->update([
                     'pt' => $request->pt,
                     'accredited_pt' => $request->accredited_pt,
-                    'supervisors_trained' => $request->supervisors_trained,
-                    'lims' => $request->lims,
+                    'supervisors_trained' => $request->supervisors_trained??'NULL',
+                    'lims' => $request->lims??'NULL',
                 ]);
-           
-        if($quality_assurance == true)
-        {
-            $notification =[
-                'status'=>200,
-                'message'=>'Added successfully.'
-            ];
-        }
-        else{
-            $notification = [
-                    'status'=>201,
-                    'message'=>'some error accoured.'
-                ];
-             }
-        }
-        return response()->json($notification);
-        }
+            
+                    $notification = array(
+                        'message' => 'Update successfully',
+                        'alert-type' => 'success'
+                    );
+                } 
+                catch(Throwable $e){report($e);
+                    return false;
+                } 
+            }
+            return redirect()->back()->with($notification);
     }
 
     public function destroy($id)
