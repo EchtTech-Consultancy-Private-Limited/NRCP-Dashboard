@@ -104,7 +104,7 @@
                                     <td>{{$data->supervisors_trained}}</td>
                                     <td>{{$data->lims}}</td>
                                     <td>
-                                    <a href="" class="btn btn-primary editbtn btn-sm" title="Edit Data"><i class="fa fa-pencil"></i> </a>
+                                    <a href="{{ url('quality-edit',$data->id) }}" class="btn btn-primary editbtn btn-sm" title="Edit Data"><i class="fa fa-pencil"></i> </a>
                                     <a href="" class="btn btn-danger deletebtn btn-sm" title="Delete Data" id="delete">
                                         <i class="fa fa-trash"></i>
                                     </a>

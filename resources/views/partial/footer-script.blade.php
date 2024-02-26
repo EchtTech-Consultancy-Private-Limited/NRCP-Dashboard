@@ -43,7 +43,6 @@
 <!-- <script src="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css"></script> -->
 <!-- <script src="{{ asset('assets/js/datatable.js') }}"></script>
 <script src="{{ asset('assets/js/datatable.js') }}"></script> -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-confirmation/1.0.5/bootstrap-confirmation.min.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="{{ asset('assets/login/dist/js/pages/dashboard2.js') }}"></script>
 <script src="{{ asset('assets/district_map.js') }}"></script>

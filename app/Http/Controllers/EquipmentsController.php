@@ -23,8 +23,9 @@ class EquipmentsController extends Controller
 
     public function edit($id)
     {
-        $equipment_edit = Equipments::findOrFail($id);
-        return response()->json(['equipment_edit' => $equipment_edit]);
+        $equipment = Equipments::findOrFail($id);
+        return view('equipment_edit', compact('equipment'));
+        //return response()->json(['equipment_edit' => $equipment_edit]);
     }
 
     public function store(Request $request)
@@ -58,43 +59,37 @@ class EquipmentsController extends Controller
         return redirect()->back()->with($notification);
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        $equipment = Equipments::findOrFail($id);
+        $equipment = Equipments::findOrFail($request->id);
         if ($equipment) {
-            $validator = Validator::make(
-                $request->all(),
-                [
+            try{
+                $request->validate([
                     'equipment' => 'required',
-                ]
-            );
-            if ($validator->fails()) {
-                $notification = [
-                    'status' => 201,
-                    'message' => $validator->errors()
-                ];
-            } else {
-
-                $equipment = Equipments::where('id', $id)->update([
+                    'quantity' => 'required',
+                    'year_of_purchase' => 'required',
+                ],[
+                    'equipment.required' => 'Equipment Name Required',
+                    'quantity.required' => 'Quantity Required',
+                    'year_of_purchase.required' => 'Year of purchase Required',
+                ]);
+            
+                Equipments::where('id',$request->id)->update([
                     'equipment' => $request->equipment,
                     'quantity' => $request->quantity,
-                    'year_of_purchase' => $request->year_of_purchase,
+                    'year_of_purchase' => $request->year_of_purchase
                 ]);
-
-                if ($equipment == true) {
-                    $notification = [
-                        'status' => 200,
-                        'message' => 'Added successfully.'
-                    ];
-                } else {
-                    $notification = [
-                        'status' => 201,
-                        'message' => 'some error accoured.'
-                    ];
-                }
+            
+                    $notification = array(
+                        'message' => 'Update successfully',
+                        'alert-type' => 'success'
+                    );
+                } 
+                catch(Throwable $e){report($e);
+                    return false;
+                } 
             }
-            return response()->json($notification);
-        }
+            return redirect()->back()->with($notification);
     }
 
     public function destroy($id)

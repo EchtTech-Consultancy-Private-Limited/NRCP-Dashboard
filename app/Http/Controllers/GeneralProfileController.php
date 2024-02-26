@@ -27,7 +27,7 @@ class GeneralProfileController extends Controller
     public function edit($id)
     {
         $general_profile = GeneralProfile::findOrFail($id);
-        return response()->json(['general_profile' => $general_profile]);
+        return view('general_profile_edit', compact('general_profile'));
     }
 
     public function store(Request $request)
@@ -61,46 +61,39 @@ class GeneralProfileController extends Controller
         return redirect()->back()->with($notification);
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        $general_profile = GeneralProfile::findOrFail($id);
-        if ($general_profile) {
-            $validator = Validator::make(
-                $request->all(),
-                [
+        $general_profile = GeneralProfile::findOrFail($request->id);
+        if($general_profile){
+            try{
+                $request->validate([
                     'state' => 'required',
-                ]
-            );
-            if ($validator->fails()) {
-                $notification = [
-                    'status' => 201,
-                    'message' => $validator->errors()
-                ];
-            } else {
-
-                $general_profile = GeneralProfile::where('id', $id)->update([
+                    'hospital' => 'required',
+                ],[
+                    'state.required' => 'State Name Required',
+                    'hospital.required' => 'Hospital Name Required',
+                ]);
+            
+                GeneralProfile::where('id',$request->id)->update([
                     'state' => $request->state,
                     'hospital' => $request->hospital,
-                    'designation' => $request->designation,
-                    'contact_number' => $request->contact_number,
-                    'mou' => $request->mou,
-                    'date_of_joining' => $request->date_of_joining,
+                    'designation' => $request->designation??'NULL',
+                    'contact_number' => $request->contact_number??'NULL',
+                    'mou' => $request->mou??'NULL',
+                    'date_of_joining' => $request->date_of_joining??'NULL',
                 ]);
-
-                if ($general_profile == true) {
-                    $notification = [
-                        'status' => 200,
-                        'message' => 'Added successfully.'
-                    ];
-                } else {
-                    $notification = [
-                        'status' => 201,
-                        'message' => 'some error accoured.'
-                    ];
-                }
-            }
-            return response()->json($notification);
-        }
+            
+                    $notification = array(
+                        'message' => 'Update successfully',
+                        'alert-type' => 'success'
+                    );
+                } 
+                catch(Throwable $e){report($e);
+                    return false;
+                } 
+            }  
+        return redirect()->back()->with($notification);
+        
     }
 
     public function destroy($id)

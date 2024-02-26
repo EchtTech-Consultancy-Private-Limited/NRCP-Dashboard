@@ -67,13 +67,13 @@
 
                     </div> --}}
                     <div class="input-group mb-3 space-between" >
-                        <div class="w-25">
+                        <div class="w-45">
                             <input type="radio" name="user_type" value='1' class="mr-2" checked>
-                            <label>Rabies</label>
+                            <label>National User</label>
                         </div>
-                        <div>
+                        <div class="ml-4">
                             <input type="radio" name="user_type" value='2' class="mr-2">
-                            <label>Laboratory</label>
+                            <label>Laboratory User</label>
                         </div>
                     </div>
                     <div class="input-group mb-3">

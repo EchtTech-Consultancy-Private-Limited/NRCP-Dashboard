@@ -24,7 +24,8 @@ class ExpenditureController extends Controller
     public function edit($id)
     {
         $expenditure = Expenditure::findOrFail($id);
-        return response()->json(['expenditure' => $expenditure]);
+        return view('expenditure_edit', compact('expenditure'));
+       // return response()->json(['expenditure' => $expenditure]);
     }
 
     public function store(Request $request)
@@ -58,43 +59,37 @@ class ExpenditureController extends Controller
         return redirect()->back()->with($notification);    
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        $expenditure = Expenditure::findOrFail($id);
+        $expenditure = Expenditure::findOrFail($request->id);
         if ($expenditure) {
-            $validator = Validator::make(
-                $request->all(),
-                [
+            try{
+                $request->validate([
                     'financial_year' => 'required',
-                ]
-            );
-            if ($validator->fails()) {
-                $notification = [
-                    'status' => 201,
-                    'message' => $validator->errors()
-                ];
-            } else {
-
-                $expenditure = Expenditure::where('id', $id)->update([
+                    'fund_recieved' => 'required',
+                    'equipment_purchase' => 'required',
+                ],[
+                    'financial_year.required' => 'financial year Required',
+                    'fund_recieved.required' => 'fund recieved Required',
+                    'equipment_purchase.required' => 'equipment purchase Required',
+                ]);
+            
+                Expenditure::where('id',$request->id)->update([
                     'financial_year' => $request->financial_year,
                     'fund_recieved' => $request->fund_recieved,
-                    'equipment_purchase' => $request->equipment_purchase,
+                    'equipment_purchase' => $request->equipment_purchase
                 ]);
-
-                if ($expenditure == true) {
-                    $notification = [
-                        'status' => 200,
-                        'message' => 'Added successfully.'
-                    ];
-                } else {
-                    $notification = [
-                        'status' => 201,
-                        'message' => 'some error accoured.'
-                    ];
-                }
+            
+                    $notification = array(
+                        'message' => 'Update successfully',
+                        'alert-type' => 'success'
+                    );
+                } 
+                catch(Throwable $e){report($e);
+                    return false;
+                } 
             }
-            return response()->json($notification);
-        }
+            return redirect()->back()->with($notification);    
     }
 
     public function destroy($id)

@@ -23,8 +23,12 @@ class RabiesTestController extends Controller
 
     public function edit($id)
     {
-        $rabies_test = RabiesTest::findOrFail($id);
-        return response()->json(['rabies_test' => $rabies_test]);
+        $rabiestest = RabiesTest::findOrFail($id);
+
+        return view('rabies_test_edit', compact('rabiestest'));
+
+
+      //  return response()->json(['rabies_test' => $rabies_test]);
     }
 
     public function store(Request $request)
@@ -63,24 +67,22 @@ class RabiesTestController extends Controller
         return redirect()->back()->with($notification);
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        $rabies_test = RabiesTest::findOrFail($id);
+        $rabies_test = RabiesTest::findOrFail($request->id);
         if ($rabies_test) {
-            $validator = Validator::make(
-                $request->all(),
-                [
+            try{
+                $request->validate([
                     'date' => 'required',
-                ]
-            );
-            if ($validator->fails()) {
-                $notification = [
-                    'status' => 201,
-                    'message' => $validator->errors()
-                ];
-            } else {
-
-                $rabies_test = RabiesTest::where('id', $id)->update([
+                    'number_of_patients' => 'required',
+                    'type' => 'required',
+                ],[
+                    'date.required' => 'Date Required',
+                    'number_of_patients.required' => 'number of patients Required',
+                    'type.required' => 'Type Required',
+                ]);
+            
+                RabiesTest::where('id',$request->id)->update([
                     'date' => $request->date,
                     'number_of_patients' => $request->number_of_patients,
                     'numbers_of_sample_recieved' => $request->numbers_of_sample_recieved,
@@ -90,21 +92,17 @@ class RabiesTestController extends Controller
                     'numbers_of_positives' => $request->numbers_of_positives,
                     'numbers_of_intered_ihip' => $request->numbers_of_intered_ihip,
                 ]);
-
-                if ($rabies_test == true) {
-                    $notification = [
-                        'status' => 200,
-                        'message' => 'Added successfully.'
-                    ];
-                } else {
-                    $notification = [
-                        'status' => 201,
-                        'message' => 'some error accoured.'
-                    ];
-                }
+            
+                    $notification = array(
+                        'message' => 'Update successfully',
+                        'alert-type' => 'success'
+                    );
+                } 
+                catch(Throwable $e){report($e);
+                    return false;
+                } 
             }
-            return response()->json($notification);
-        }
+            return redirect()->back()->with($notification);
     }
 
     public function destroy($id)
