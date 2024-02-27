@@ -33,6 +33,9 @@ class ReportGenerateControllerController extends Controller
     }
     public function export(Request $request) 
     {   
+        $start_date = Carbon::parse("$request->startdate 00:00:00")->format('Y-m-d H:i:s');
+        $end_date = Carbon::parse("$request->enddate 23:59:59")->format('Y-m-d H:i:s');
+        
         if($request->bthValue =='pdf'){
             $this->generatePDF();
         }else{
