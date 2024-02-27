@@ -17,7 +17,7 @@ class RabiesTestController extends Controller
 
     public function create()
     {
-        $rabies_test = RabiesTest::all();
+        $rabies_test = RabiesTest::where(['soft_delete' => 0])->get();
         return view('rabies_test', compact('rabies_test'));
     }
 
@@ -111,6 +111,6 @@ class RabiesTestController extends Controller
         if ($rabies_test->soft_delete == 0) {
             $rabies_test = RabiesTest::where('id', $id)->update(['soft_delete' => 1]);
         }
-        return response()->json('success', 'Deleted successfully.');
+        return response()->json(['message'=>"Deleted successfully.",'alert-type' => 'success','success'=>'1', 'tr'=>'tr_'.$id]);
     }
 }

@@ -20,7 +20,7 @@ class GeneralProfileController extends Controller
 
     public function create()
     {
-        $general_profile = GeneralProfile::all();
+        $general_profile = GeneralProfile::where(['soft_delete' => 0])->get();
         return view('general_profile', compact('general_profile'));
     }
 
@@ -97,12 +97,13 @@ class GeneralProfileController extends Controller
     }
 
     public function destroy($id)
-    {
+    {  
         $general_profile = GeneralProfile::findOrFail($id);
         if ($general_profile->soft_delete == 0) {
             $general_profile = GeneralProfile::where('id', $id)->update(['soft_delete' => 1]);
         }
-    	return response()->json(['success'=>"Deleted successfully.", 'tr'=>'tr_'.$id]);
+        
+    	return response()->json(['message'=>"Deleted successfully.",'alert-type' => 'success','success'=>'1', 'tr'=>'tr_'.$id]);
         //return response()->json('success', 'Deleted successfully.');
     }
 }

@@ -111,7 +111,7 @@
                                     <td>{{$general_profiles->date_of_joining}}</td>
                                     <td>
                                     <a href="{{ url('general-edit',$general_profiles->id) }}" class="btn btn-primary editbtn btn-sm" title="Edit Data"><i class="fa fa-pencil"></i> </a>
-                                    <a href="" class="btn btn-danger deletebtn btn-sm" title="Delete Data" id="delete">
+                                    <a href="javascript:void(0)" data-url="{{ route('general-laboratory-destroy', $general_profiles->id) }}" class="btn btn-danger deletebtn btn-sm delete-user" title="Delete Data" id="delete">
                                         <i class="fa fa-trash"></i>
                                     </a>
                                     </td>
@@ -127,48 +127,4 @@
       </div>
    </div>
 </div>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-confirmation/1.0.5/bootstrap-confirmation.min.js"></script>
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-<script type="text/javascript">
-    $(document).ready(function () {
-        $('[data-toggle=confirmation]').confirmation({
-            rootSelector: '[data-toggle=confirmation]',
-            onConfirm: function (event, element) {
-                element.trigger('confirm');
-            }
-        });
-
-
-        $(document).on('confirm', function (e) {
-            var ele = e.target;
-            e.preventDefault();
-
-
-            $.ajax({
-                url: ele.href,
-                type: 'DELETE',
-                headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-                success: function (data) {
-                    if (data['success']) {
-                        $("#" + data['tr']).slideUp("slow");
-                        alert(data['success']);
-                    } else if (data['error']) {
-                        alert(data['error']);
-                    } else {
-                        alert('Whoops Something went wrong!!');
-                    }
-                },
-                error: function (data) {
-                    alert(data.responseText);
-                }
-            });
-
-
-            return false;
-        });
-    });
-</script>
 @endsection

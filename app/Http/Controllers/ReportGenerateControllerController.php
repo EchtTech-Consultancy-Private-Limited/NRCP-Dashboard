@@ -38,33 +38,33 @@ class ReportGenerateControllerController extends Controller
         }else{
             if($request->modulename =='1'){
                 $fileName = 'GeneralProfile';
-                $level_three_array = GeneralProfile::get()->toarray();
+                $level_three_array = GeneralProfile::where(['soft_delete' => 0])->get()->toarray();
                 $arrays = [$level_three_array];
             }elseif($request->modulename =='2'){
                 $fileName = 'QualityAssurance';
-                $level_four_array = QualityAssurance::get()->toarray();
+                $level_four_array = QualityAssurance::where(['soft_delete' => 0])->get()->toarray();
                 $arrays = [$level_four_array];
             }
             elseif($request->modulename =='3'){
                 $fileName = 'Equipments';
-                $level_one_array = Equipments::get()->toarray();
+                $level_one_array = Equipments::where(['soft_delete' => 0])->get()->toarray();
                 $arrays = [$level_one_array];
             }
             elseif($request->modulename =='4'){
                 $fileName = 'RabiesTest';
-                $level_five_array = RabiesTest::get()->toarray();
+                $level_five_array = RabiesTest::where(['soft_delete' => 0])->get()->toarray();
                 $arrays = [$level_five_array];
             }
             elseif($request->modulename =='5'){
                 $fileName = 'Expenditure';
-                $level_two_array = Expenditure::get()->toarray();
+                $level_two_array = Expenditure::where(['soft_delete' => 0])->get()->toarray();
                 $arrays = [$level_two_array];
             }else{
-                $level_one_array = Equipments::get()->toarray();
-                $level_two_array = Expenditure::get()->toarray();
-                $level_three_array = GeneralProfile::get()->toarray();
-                $level_four_array = QualityAssurance::get()->toarray();
-                $level_five_array = RabiesTest::get()->toarray();
+                $level_one_array = Equipments::where(['soft_delete' => 0])->get()->toarray();
+                $level_two_array = Expenditure::where(['soft_delete' => 0])->get()->toarray();
+                $level_three_array = GeneralProfile::where(['soft_delete' => 0])->get()->toarray();
+                $level_four_array = QualityAssurance::where(['soft_delete' => 0])->get()->toarray();
+                $level_five_array = RabiesTest::where(['soft_delete' => 0])->get()->toarray();
                 $arrays = [$level_one_array, $level_two_array, $level_three_array,$level_four_array,$level_five_array];
             }
             return Excel::download(new ReportGeneralExport($arrays), Carbon::now()->format('d-m-Y').'-'.$fileName.'.xlsx');

@@ -1,32 +1,30 @@
-$(document).ready(function () {
-    $('[data-toggle=confirmation]').confirmation({
-        rootSelector: '[data-toggle=confirmation]',
-        onConfirm: function (event, element) {
-            element.trigger('confirm');
+$(document).ready(function() {
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
     });
-    $(document).on('confirm', function (e) {
-        var ele = e.target;
-        e.preventDefault();
-        alert(ele.href);
-        $.ajax({
-            url: ele.href,
-            type: 'DELETE',
-            headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-            success: function (data) {
-                if (data['success']) {
-                    $("#" + data['tr']).slideUp("slow");
-                    alert(data['success']);
-                } else if (data['error']) {
-                    alert(data['error']);
-                } else {
-                    alert('Whoops Something went wrong!!');
+    $(document).on('click', '.delete-user', function() {
+
+        var userURL = $(this).data('url');
+        var trObj = $(this);
+
+        if (confirm("Are you sure you want to delete this user?") == true) {
+            $.ajax({
+                url: userURL,
+                type: 'DELETE',
+                dataType: 'json',
+                success: function(data) {
+                    //alert(data.success);
+                    if(data.success ==1){
+                        toastr.success("Deleted successfully.");
+                        location.reload();
+                    }
+                    //trObj.parents("tr").remove();
                 }
-            },
-            error: function (data) {
-                alert(data.responseText);
-            }
-        });
-        return false;
+            });
+        }
+
     });
+
 });
