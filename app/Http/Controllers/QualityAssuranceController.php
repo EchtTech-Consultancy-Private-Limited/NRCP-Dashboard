@@ -100,6 +100,6 @@ class QualityAssuranceController extends Controller
             {
                 $quality_assurance= QualityAssurance::where('id',$id)->update(['soft_delete'=>1]);
         }
-            return response()->json('success','Deleted successfully.');
+        return response()->json(['message'=>"Deleted successfully.",'alert-type' => 'success','success'=>'1', 'tr'=>'tr_'.$id]);
     }
 }

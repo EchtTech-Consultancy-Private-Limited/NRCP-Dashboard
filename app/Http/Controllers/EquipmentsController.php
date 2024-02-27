@@ -17,7 +17,7 @@ class EquipmentsController extends Controller
 
     public function create()
     {
-        $equipment = Equipments::all();
+        $equipment = Equipments::where(['soft_delete' => 0])->get();
         return view('equipment', compact('equipment'));
     }
 
@@ -98,6 +98,6 @@ class EquipmentsController extends Controller
         if ($equipment->soft_delete == 0) {
             $equipment = Equipments::where('id', $id)->update(['soft_delete' => 1]);
         }
-        return response()->json('success', 'Deleted successfully.');
+        return response()->json(['message'=>"Deleted successfully.",'alert-type' => 'success','success'=>'1', 'tr'=>'tr_'.$id]);
     }
 }

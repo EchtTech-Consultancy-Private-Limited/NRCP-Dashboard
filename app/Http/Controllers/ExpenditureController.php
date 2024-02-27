@@ -98,6 +98,6 @@ class ExpenditureController extends Controller
         if ($expenditure->soft_delete == 0) {
             $expenditure = Expenditure::where('id', $id)->update(['soft_delete' => 1]);
         }
-        return response()->json('success', 'Deleted successfully.');
+        return response()->json(['message'=>"Deleted successfully.",'alert-type' => 'success','success'=>'1', 'tr'=>'tr_'.$id]);
     }
 }

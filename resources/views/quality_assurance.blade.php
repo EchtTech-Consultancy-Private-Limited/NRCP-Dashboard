@@ -105,7 +105,7 @@
                                     <td>{{$data->lims}}</td>
                                     <td>
                                     <a href="{{ url('quality-edit',$data->id) }}" class="btn btn-primary editbtn btn-sm" title="Edit Data"><i class="fa fa-pencil"></i> </a>
-                                    <a href="" class="btn btn-danger deletebtn btn-sm" title="Delete Data" id="delete">
+                                    <a href="javascript:void(0)" data-url="{{ route('quality-destroy', $data->id) }}" class="btn btn-danger deletebtn btn-sm delete-user" title="Delete Data" id="delete">
                                         <i class="fa fa-trash"></i>
                                     </a>
                                     </td>
@@ -113,121 +113,8 @@
                                 @endforeach
                             </tbody>
                         </table>
-                        <!-- <table id="table_quality_assurance" class="table">
-                           <thead>
-                              <tr>
-                                 <th>ID</th>
-                                 <th>Proficiency Testing</th>
-                                 <th>Nabl</th>
-                                 <th>Actions</th>
-                              </tr>
-                           </thead>
-                           <tbody>
-                           </tbody>
-                        </table> -->
                      </div>
                   </div>
-                  
-                  <!-- <div class="modal fade" id="edit_quality_assurance" tabindex="-1" role="dialog"
-                     aria-labelledby="editListingModalLabel" aria-hidden="true">
-                     <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                           <div class="modal-header">
-                              <h5 class="modal-title" id="edit_quality_assurance">GeneralProfile
-                              </h5>
-                              <button type="button" class="close" data-dismiss="modal"
-                                 aria-label="Close">
-                              <span aria-hidden="true">&times;</span>
-                              </button>
-                           </div>
-                           <div class="modal-body">
-                              <form class="myForm" id="quality_assurance_submit">
-                                 @csrf
-                                 <div class="row">
-                                    <input type="hidden" id="quality_assurance_update">
-                                    <div class="col-lg-3 col-md-3 col-6">
-                                       <div class="form-group">
-                                          <label for="state">Proficincy Testing\ILC
-                                          Provider/Reciever or getting panels for same?<span
-                                             class="star">*</span></label>
-                                          <select class="form-select"
-                                             aria-label="Default select example" name="pt"
-                                             id="edit_pt">
-                                             <option value=""> Select
-                                             </option>
-                                             <option value='yes'>Yes</option>
-                                             <option value='no'>No</option>
-                                          </select>
-                                          <small id="pt-error" class="form-text text-muted">
-                                          </small>
-                                       </div>
-                                    </div>
-                                    <div class="col-lg-3 col-md-3 col-6">
-                                       <div class="form-group">
-                                          <label for="district">Are you accredited as Proficiency
-                                          Testing Provider by NABL(ISO 17043)/others?<span
-                                             class="star">*</span></label>
-                                          <select class="form-select"
-                                             aria-label="Default select example"
-                                             name="accredited_pt" id="edit_accredited_pt">
-                                             <option value=""> Select
-                                             </option>
-                                             <option value='yes'>Yes</option>
-                                             <option value='no'>No</option>
-                                          </select>
-                                          <small id="accredited_pt-error"
-                                             class="form-text text-muted">
-                                          </small>
-                                       </div>
-                                    </div>
-                                    <div class="col-lg-3 col-md-3 col-6">
-                                       <div class="form-group">
-                                          <label for="fromYear">Are the laboratory
-                                          supervisors/personnel trained in ISO
-                                          15189/ISO17025/any other relevant standard?<span
-                                             class="star">*</span></label>
-                                          <select class="form-select"
-                                             aria-label="Default select example"
-                                             name="supervisors_trained"
-                                             id="edit_supervisors_trained">
-                                             <option value=""> Select
-                                             </option>
-                                             <option value='yes'>Yes</option>
-                                             <option value='no'>No</option>
-                                          </select>
-                                          <small id="supervisors_trained-error"
-                                             class="form-text text-muted">
-                                          </small>
-                                       </div>
-                                    </div>
-                                    <div class="col-lg-3 col-md-3 col-6">
-                                       <div class="form-group">
-                                          <label for="diseasesSyndromes">Laboratory Information
-                                          Management Services(LIMS)available?<span
-                                             class="star">*</span></label>
-                                          <select class="form-select" name="lims"
-                                             id="edit_lims">
-                                             <option value=""> Select
-                                             </option>
-                                             <option value='yes'>Yes</option>
-                                             <option value='no'>No</option>
-                                          </select>
-                                          <small id="lims-error" class="form-text text-muted">
-                                          </small>
-                                       </div>
-                                    </div>
-                                    <div class="col-lg-3 col-md-3 col-6 search-reset">
-                                       <div class=" apply-filter">
-                                          <button type="submit" id="submit-btn"
-                                             class="btn  bg-primary text-light apply-filter button border-0 mr-2">Save</button>
-                                       </div>
-                                    </div>
-                                 </div>
-                              </form>
-                           </div>
-                        </div>
-                     </div>
-                  </div> -->
                </div>
             </div>
          </div>
