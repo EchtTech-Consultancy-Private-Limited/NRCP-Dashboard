@@ -64,6 +64,15 @@
             <div class="link bg-primary text-white dashboard-title {{ (Request::segment(1) == 'dashboard')?'active':'' }}">
                 <a href="{{ url('/dashboard') }}">Dashboard</a> </i>
             </div>
+            <div class="link bg-primary text-white dashboard-title {{ (Request::segment(1) == 'pform')?'active':'' }}">
+                <a href="{{ url('/pform') }}">P Form</a> </i>
+            </div>
+            <div class="link bg-primary text-white dashboard-title {{ (Request::segment(1) == 'sform')?'active':'' }}">
+                <a href="{{ url('/sform') }}">S Form</a> </i>
+            </div>
+            <div class="link bg-primary text-white dashboard-title {{ (Request::segment(1) == 'lform')?'active':'' }}">
+                <a href="{{ url('/lform') }}">L Form</a> </i>
+            </div>
         @endif
         <!-- <div class="link bg-primary text-white dashboard-title">
             <a href="{{ url('/dashboard') }}">Dashboard</a> </i>
@@ -73,8 +82,7 @@
         <!-- <li>
             <div class="link"> <i class="far fa-circle nav-icon"></i>pForm<i class="fa fa-chevron-down"></i></div>
             <ul class="submenu">
-                <li><a href="{{ url('pformDashboard') }}"
-                        class="{{ Request::routeIs('pform2') ? 'active' : '' }}">Dashboard</a></li>
+                <li><a href="{{ url('pformDashboard') }}" class="{{ Request::routeIs('pform2') ? 'active' : '' }}">Dashboard</a></li>
                 <li><a href="{{ url('pform') }}" class=" {{ Request::routeIs('pform') ? 'active' : '' }}">pForm</a>
                 </li>
 
