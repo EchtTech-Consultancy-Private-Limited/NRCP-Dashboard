@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Expenditure;
 use Illuminate\Support\Facades\Validator;
+use DB;
 
 class ExpenditureController extends Controller
 {
@@ -18,13 +19,15 @@ class ExpenditureController extends Controller
     public function create()
     {
         $expenditure = Expenditure::where(['soft_delete' => 0])->get();
-        return view('expenditure', compact('expenditure'));
+        $equipment_purchase_masters = DB::table('equipment_purchase_masters')->get();
+        return view('expenditure', compact('expenditure','equipment_purchase_masters'));
     }
 
     public function edit($id)
     {
         $expenditure = Expenditure::findOrFail($id);
-        return view('expenditure_edit', compact('expenditure'));
+        $equipment_purchase_masters = DB::table('equipment_purchase_masters')->get();
+        return view('expenditure_edit', compact('expenditure','equipment_purchase_masters'));
        // return response()->json(['expenditure' => $expenditure]);
     }
 
