@@ -18,8 +18,9 @@
                                         <label for="state">Equipment<span class="star">*</span></label>
                                         <select class="form-control" aria-label="Default select example" name="equipment" id="equipment">
                                             <option value=""> Select</option>
-                                            <option value='yes'>Yes</option>
-                                            <option value='no'>No</option>
+                                            @foreach($equipment_masters as $data)
+                                            <option value='{{$data->name}}'>{{$data->name}}</option>
+                                            @endforeach
                                         </select>
                                             @error('equipment') 
                                                 <span class="form-text text-muted">{{ $message }}</span>
@@ -81,7 +82,11 @@
                                 @foreach($equipment as $data)
                                 <tr>
                                     <td>{{$data->id}}</td>
-                                    <td>{{$data->equipment}}</td>
+                                    @foreach($equipment_masters as $datas)
+                                     @if($data->equipment ==$datas->name)
+                                        <td>{{$datas->name}}</td>
+                                     @endif
+                                    @endforeach
                                     <td>{{$data->quantity}}</td>
                                     <td>{{$data->year_of_purchase}}</td>
                                     <td>

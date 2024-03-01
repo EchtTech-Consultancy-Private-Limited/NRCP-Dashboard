@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MainController;
+use App\Http\Controllers\PFormController;
+use App\Http\Controllers\SFormController;
+use App\Http\Controllers\LFormController;
 use App\Http\Controllers\authController;
 use App\Http\Controllers\GeneralProfileController;
 use App\Http\Controllers\QualityAssuranceController;
@@ -31,9 +34,13 @@ Route::get('refresh_captcha',[authController::class, 'refreshCaptcha'])->name('r
 Route::middleware(['Admin'])->group(function () {
         Route::get('/logout',[authController::class,'logout'])->name('logout');
         Route::get('dashboard', [MainController::class, 'dashboard'])->name('dashboard');
-        Route::get('pform', [MainController::class, 'pformview'])->name('pform');
-        Route::get('sform', [MainController::class, 'sformview']);
-        Route::get('sform', [MainController::class, 'sformview'])->name('sform');
+
+        /** Form Routes */
+        Route::get('pform', [PFormController::class, 'index'])->name('pform');
+        Route::get('sform', [SFormController::class, 'index'])->name('sform');
+        Route::get('lform', [LFormController::class, 'index'])->name('lform');
+
+
         Route::get('Human-rabies-map', [MainController::class, 'HumanRabiesView'])->name('pform2');
         Route::post('patient-Record',[MainController::class,'patientAdd']);
 

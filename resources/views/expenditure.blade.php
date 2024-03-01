@@ -31,15 +31,13 @@
                               <div class="row">
                                 <div class="col-lg-2 col-md-2 col-6">
                                     <div class="form-group">
-                                        <label for="state">Financial Year<span
-                                            class="star">*</span></label>
-                                        <select class="form-select" aria-label="Default select example"
-                                            name="financial_year" id="financial_year">
-                                            <option value=""> Select
-                                            </option>
+                                        <label for="state">Financial Year<span class="star">*</span></label>
+                                        <!-- <select class="form-select" aria-label="Default select example" name="financial_year" id="financial_year">
+                                            <option value=""> Select</option>
                                             <option value='yes'>Yes</option>
                                             <option value='no'>No</option>
-                                        </select>
+                                        </select> -->
+                                        <input type="date" class="form-control" aria-label="Default select example" name="financial_year" id="financial_year">
                                         @error('financial_year') 
                                           <span class="form-text text-muted">{{ $message }}</span>
                                        @enderror 
@@ -53,8 +51,8 @@
                                             name="fund_recieved" id="fund_recieved">
                                             <option value=""> Select
                                             </option>
-                                            <option value='yes'>Yes</option>
-                                            <option value='no'>No</option>
+                                            <option value='Yes'>Yes</option>
+                                            <option value='No'>No</option>
                                         </select>
                                         @error('fund_recieved') 
                                           <span class="form-text text-muted">{{ $message }}</span>
@@ -63,14 +61,12 @@
                                 </div>
                                 <div class="col-lg-4 col-md-4 col-6">
                                     <div class="form-group">
-                                        <label for="fromYear">Equipment Purchase(Financial Year
-                                        Wise)<span class="star">*</span></label>
-                                        <select class="form-select" aria-label="Default select example"
-                                            name="equipment_purchase" id="equipment_purchase">
-                                            <option value=""> Select
-                                            </option>
-                                            <option value='yes'>Yes</option>
-                                            <option value='no'>No</option>
+                                        <label for="fromYear">Equipment Purchase(Financial Year Wise)<span class="star">*</span></label>
+                                        <select class="form-select" aria-label="Default select example" name="equipment_purchase" id="equipment_purchase">
+                                            <option value=""> Select </option>
+                                            @foreach($equipment_purchase_masters as $equipment_purchase_master)
+                                            <option value='{{$equipment_purchase_master->name}}'>{{$equipment_purchase_master->name}}</option>
+                                            @endforeach
                                         </select>
                                         @error('equipment_purchase') 
                                           <span class="form-text text-muted">{{ $message }}</span>
@@ -115,7 +111,11 @@
                                  <td>{{$data->id}}</td>
                                  <td>{{$data->financial_year}}</td>
                                  <td>{{$data->fund_recieved}}</td>
-                                 <td>{{$data->equipment_purchase}}</td>
+                                 @foreach($equipment_purchase_masters as $equipment_purchase_master)
+                                 @if($data->equipment_purchase == $equipment_purchase_master->name)
+                                    <td>{{$equipment_purchase_master->name}}</td>
+                                 @endif
+                                 @endforeach
                                  <td>
                                  <a href="{{ url('expenditure-edit',$data->id) }}" class="btn btn-primary editbtn btn-sm" title="Edit Data"><i class="fa fa-pencil"></i> </a>
                                  <a href="javascript:void(0)" data-url="{{ route('expenditure-destroy', $data->id) }}" class="btn btn-danger deletebtn btn-sm delete-user" title="Delete Data" id="delete">

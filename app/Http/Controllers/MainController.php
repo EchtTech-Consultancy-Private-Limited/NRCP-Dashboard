@@ -21,12 +21,12 @@ class MainController extends Controller
 
     public function pformView()
     {
-        return view("pform");
+        return view("form.pform");
     }
     public function sformView()
 
     {
-        return view("sform");
+        return view("form.sform");
     }
 
     public function patientAdd(Request $request)
