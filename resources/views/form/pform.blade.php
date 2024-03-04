@@ -75,8 +75,8 @@
                                             </div>
 
                                             <div class="col-lg-8 col-md-8">
-                                                <button class="search-patient-btn bg-info text-light"
-                                                    id="search-patient-btn">Search Patient</button>
+                                                <a href="{{ url('patient_records_form') }}" class="search-patient-btn bg-info text-light"
+                                                    id="search-patient-btn">Search Patient</a>
                                             </div>
                                             <div class="col-lg-3 col-md-3">
                                                 <div class="form-group">

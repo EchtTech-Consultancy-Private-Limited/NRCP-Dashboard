@@ -53,6 +53,7 @@ body {
   float: right;
   background: #ab4024 !important;
   border-radius: 50px;
+  text-align: center;
 }
 
 .form-group {
@@ -364,4 +365,26 @@ textarea.valid {
 .accordian-pform .card-header .btn-link{
   font-size: 15px;
   font-weight: bold;
+}
+
+.heading-text{
+  font-size: 18px;
+  margin: 0;
+  font-weight: bold;
+  line-height: 1;
+  padding: 10px 0;
+}
+p.or {
+  margin-top: 10px;
+  border: 1px solid #ab4024;
+  height: 35px;
+  width: 35px;
+  text-align: center;
+  border-radius: 50px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #ab4024;
+  background: #fff;
+  margin-bottom: 10px;
 }

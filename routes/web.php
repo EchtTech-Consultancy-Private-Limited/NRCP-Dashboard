@@ -43,6 +43,8 @@ Route::middleware(['Admin'])->group(function () {
 
         Route::get('Human-rabies-map', [MainController::class, 'HumanRabiesView'])->name('pform2');
         Route::post('patient-Record',[MainController::class,'patientAdd']);
+         
+        Route::get('patient_records_form',[MainController::class,'patientrecordsform']);
 
         //human rabies
         Route::get('human-rabies',[MainController::class,'humanRabiesMap']);
