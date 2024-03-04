@@ -19,8 +19,13 @@
                                         <label for="state">Equipment<span class="star">*</span></label>
                                         <select class="form-control" aria-label="Default select example" name="equipment" id="equipment">
                                             <option value=""> Select</option>
-                                            <option value='yes' <?php if($equipment->equipment == 'yes'){ echo 'selected'; }else{ echo '';} ?>>Yes</option>
-                                            <option value='no' <?php if($equipment->equipment == 'no'){ echo 'selected'; }else{ echo '';} ?>>No</option>
+                                            @foreach($equipment_masters as $data)
+                                            @if($equipment->equipment == $data->name)
+                                                <option value='{{$equipment->equipment}}' selected>{{$data->name}}</option>
+                                            @else
+                                                <option value='{{$data->name}}'>{{$data->name}}</option>
+                                            @endif
+                                            @endforeach
                                         </select>
                                             @error('equipment') 
                                                 <span class="form-text text-muted">{{ $message }}</span>

@@ -16,15 +16,8 @@
                               <input type="hidden" name="id" value="{{$expenditure->id}}" >
                                 <div class="col-lg-2 col-md-2 col-6">
                                     <div class="form-group">
-                                        <label for="state">Financial Year<span
-                                            class="star">*</span></label>
-                                        <select class="form-select" aria-label="Default select example"
-                                            name="financial_year" id="financial_year">
-                                            <option value=""> Select
-                                            </option>
-                                            <option value='yes'<?php if($expenditure->financial_year == 'yes'){ echo 'selected'; }else{ echo '';} ?>>Yes</option>
-                                            <option value='no'<?php if($expenditure->financial_year == 'no'){ echo 'selected'; }else{ echo '';} ?>>No</option>
-                                        </select>
+                                        <label for="state">Financial Year<span class="star">*</span></label>
+                                        <input type="date" class="form-control" aria-label="Default select example" name="financial_year" id="financial_year" value="{{$expenditure->financial_year}}">
                                         @error('financial_year') 
                                           <span class="form-text text-muted">{{ $message }}</span>
                                        @enderror 
@@ -38,8 +31,8 @@
                                             name="fund_recieved" id="fund_recieved">
                                             <option value=""> Select
                                             </option>
-                                            <option value='yes'<?php if($expenditure->fund_recieved == 'yes'){ echo 'selected'; }else{ echo '';} ?>>Yes</option>
-                                            <option value='no'<?php if($expenditure->fund_recieved == 'no'){ echo 'selected'; }else{ echo '';} ?>>No</option>
+                                            <option value='Yes'<?php if($expenditure->fund_recieved == 'Yes'){ echo 'selected'; }else{ echo '';} ?>>Yes</option>
+                                            <option value='No'<?php if($expenditure->fund_recieved == 'No'){ echo 'selected'; }else{ echo '';} ?>>No</option>
                                         </select>
                                         @error('fund_recieved') 
                                           <span class="form-text text-muted">{{ $message }}</span>
@@ -48,14 +41,16 @@
                                 </div>
                                 <div class="col-lg-4 col-md-4 col-6">
                                     <div class="form-group">
-                                        <label for="fromYear">Equipment Purchase(Financial Year
-                                        Wise)<span class="star">*</span></label>
-                                        <select class="form-select" aria-label="Default select example"
-                                            name="equipment_purchase" id="equipment_purchase">
-                                            <option value=""> Select
-                                            </option>
-                                            <option value='yes'<?php if($expenditure->equipment_purchase == 'yes'){ echo 'selected'; }else{ echo '';} ?>>Yes</option>
-                                            <option value='no'<?php if($expenditure->equipment_purchase == 'no'){ echo 'selected'; }else{ echo '';} ?>>No</option>
+                                        <label for="fromYear">Equipment Purchase(Financial Year Wise)<span class="star">*</span></label>
+                                        <select class="form-select" aria-label="Default select example" name="equipment_purchase" id="equipment_purchase">
+                                        <option value=""> Select </option>
+                                        @foreach($equipment_purchase_masters as $equipment_purchase_master)
+                                        @if($expenditure->equipment_purchase == $equipment_purchase_master->name)
+                                            <option value='{{$expenditure->equipment_purchase}}' selected>{{$equipment_purchase_master->name}}</option>
+                                        @else
+                                            <option value='{{$equipment_purchase_master->name}}'>{{$equipment_purchase_master->name}}</option>
+                                       @endif
+                                        @endforeach
                                         </select>
                                         @error('equipment_purchase') 
                                           <span class="form-text text-muted">{{ $message }}</span>

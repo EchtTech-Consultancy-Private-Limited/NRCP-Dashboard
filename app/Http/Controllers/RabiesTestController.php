@@ -25,7 +25,36 @@ class RabiesTestController extends Controller
     {
         $rabiestest = RabiesTest::findOrFail($id);
 
-        return view('rabies_test_edit', compact('rabiestest'));
+       // dd($rabiestest->typea);
+        if($rabiestest->type =='For diagnosis'){
+            $typea = array(
+                'Anti-mortem'  => 'Anti-mortem',
+                'Post-Mortem' => 'Post-Mortem',
+            );
+        }elseif($rabiestest->type =='Titre estimation'){
+            $typea = array(
+                'Serum' => 'Serum',
+                'ISF' => 'ISF',
+            );
+        }
+        if($rabiestest->typea =='Anti-mortem'){
+            $typebs = array(
+                'Saliva' => 'Saliva',
+                'Skin' => 'Skin',
+                'Serum' => 'Serum',
+                'CSF' => 'CSF',
+                'Others' => 'Others',
+            );
+        }elseif($rabiestest->typea =='Post-Mortem'){
+            $typebs = array(
+                'CSF' => 'CSF',
+                'Brain' => 'Brain',
+            );
+        }
+        $typeb =isset($typebs)?$typebs:'';
+        
+       //dd($typea);
+        return view('rabies_test_edit', compact('rabiestest','typea','typeb'));
 
 
       //  return response()->json(['rabies_test' => $rabies_test]);
@@ -37,18 +66,20 @@ class RabiesTestController extends Controller
             $request->validate([
                 'date' => 'required',
                 'number_of_patients' => 'required',
-                'type' => 'required',
+                'typefdte' => 'required',
             ],[
                 'date.required' => 'Date Required',
                 'number_of_patients.required' => 'number of patients Required',
-                'type.required' => 'Type Required',
+                'typefdte.required' => 'Type Required',
             ]);
         
             RabiesTest::insert([
                 'date' => $request->date,
                 'number_of_patients' => $request->number_of_patients,
                 'numbers_of_sample_recieved' => $request->numbers_of_sample_recieved,
-                'type' => $request->type,
+                'type' => $request->typefdte,
+                'typea' => $request->typea,
+                'typeb' => $request->typeb,
                 'method_of_diagnosis' => $request->method_of_diagnosis,
                 'numbers_of_test' => $request->numbers_of_test,
                 'numbers_of_positives' => $request->numbers_of_positives,
@@ -75,18 +106,20 @@ class RabiesTestController extends Controller
                 $request->validate([
                     'date' => 'required',
                     'number_of_patients' => 'required',
-                    'type' => 'required',
+                    'typefdte' => 'required',
                 ],[
                     'date.required' => 'Date Required',
                     'number_of_patients.required' => 'number of patients Required',
-                    'type.required' => 'Type Required',
+                    'typefdte.required' => 'Type Required',
                 ]);
             
                 RabiesTest::where('id',$request->id)->update([
                     'date' => $request->date,
                     'number_of_patients' => $request->number_of_patients,
                     'numbers_of_sample_recieved' => $request->numbers_of_sample_recieved,
-                    'type' => $request->type,
+                    'type' => $request->typefdte,
+                    'typea' => $request->typea,
+                    'typeb' => $request->typeb,
                     'method_of_diagnosis' => $request->method_of_diagnosis,
                     'numbers_of_test' => $request->numbers_of_test,
                     'numbers_of_positives' => $request->numbers_of_positives,

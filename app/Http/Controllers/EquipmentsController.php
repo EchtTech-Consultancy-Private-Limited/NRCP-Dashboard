@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Equipments;
 use Illuminate\Support\Facades\Validator;
+use DB;
 
 class EquipmentsController extends Controller
 {
@@ -18,13 +19,15 @@ class EquipmentsController extends Controller
     public function create()
     {
         $equipment = Equipments::where(['soft_delete' => 0])->get();
-        return view('equipment', compact('equipment'));
+        $equipment_masters = DB::table('equipment_masters')->get();
+        return view('equipment', compact('equipment','equipment_masters'));
     }
 
     public function edit($id)
     {
         $equipment = Equipments::findOrFail($id);
-        return view('equipment_edit', compact('equipment'));
+        $equipment_masters = DB::table('equipment_masters')->get();
+        return view('equipment_edit', compact('equipment','equipment_masters'));
         //return response()->json(['equipment_edit' => $equipment_edit]);
     }
 
