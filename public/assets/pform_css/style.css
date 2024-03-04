@@ -261,6 +261,7 @@ textarea.valid {
 
 .sform .form-control {
   border: 1px solid #ced4da;
+  height: 35px;
 }
 
 .error {
