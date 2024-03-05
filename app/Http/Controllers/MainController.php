@@ -29,6 +29,11 @@ class MainController extends Controller
         return view("form.sform");
     }
 
+    public function patientrecordsform()
+    {
+        return view("form.patient_records_form");
+    }
+
     public function patientAdd(Request $request)
     {
 
