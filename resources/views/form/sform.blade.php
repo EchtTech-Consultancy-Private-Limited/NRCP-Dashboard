@@ -133,8 +133,7 @@
                                                             <td><b>Total</b></td>
                                                             <td><b>Male</b></td>
                                                             <td><b>Female</b></td>
-                                                            <td><b>Total<br>Death
-                                                                </b>
+                                                            <td><b>Total<br>Death</b>
                                                             </td>
                                                         </tr>
                                                         <tr>
