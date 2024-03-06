@@ -14,7 +14,7 @@ body {
   display: none;
 }
 .box {
-  width: 250px;
+  width: 200px;
   height: 111px;
   background-color: #0078d7;
   padding: 10px;
@@ -43,7 +43,9 @@ body {
 .box:nth-child(3) {
   background: linear-gradient(180deg, #1CB5E0 0%, #000851 100%);
 }
-
+#laboratory-map {
+  height: 600px;
+}
 .map-text {
   text-align: left;
   background-color: #3090C7;

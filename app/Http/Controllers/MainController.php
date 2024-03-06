@@ -489,7 +489,6 @@ class MainController extends Controller
         $total_death_google_graph = ($dogbite_cases_male_death +  $dogbite_cases_female_death);
         $male_percentage_death = ($dogbite_cases_male_death / $total_death_google_graph) * 100;
         $female_percentage_death = ($dogbite_cases_female_death / $total_death_google_graph) * 100;
-
         return response()->json([
             'array' => $array, 'total_cases' => $total_cases, 'total_deaths' => $total_deaths, 'total_rabies_record' => $total_rabies_record, 'human_rabies_record' => $human_rabies_record, 'dogbite_cases_male' => $dogbite_cases_male, 'dogbite_cases_female' => $dogbite_cases_female, 'total' => $total, 'male_percentage' => $male_percentage, 'female_percentage' => $female_percentage,
             'male_percentage_death' => $male_percentage_death, 'female_percentage_death' => $female_percentage_death, 'total_death_google_graph' => $total_death_google_graph

@@ -1,4 +1,4 @@
- //const BASE_URL = window.location.origin;
+//  const BASE_URL = window.location.origin;
 const BASE_URL =window.location.origin+"/public";
 
 /*handle Form Type*/
@@ -299,7 +299,7 @@ const apply_filter = () => {
                 const tableBody = $('.detailsDatas tbody');
                 // Clear any existing rows in the table
                 tableBody.empty();
-const selectedType = $('#type').val();
+            const selectedType = $('#type').val();
 
                 // Loop through the entries and add rows to the table
                 entries.forEach(function (entry) {
@@ -309,21 +309,21 @@ const selectedType = $('#type').val();
                     console.log("test data")
                     if (l_dropdown == "") {
                         const row = `
-            <tr>
-                <td>${capitalizeFirstLetter(state)}</td>
-                <td>${sessionValue == 0 ? cases : 0}</td>
-                <td>${sessionValue == 1 ? cases : 0}</td>
-            </tr>
-        `;
+                            <tr>
+                                <td>${capitalizeFirstLetter(state)}</td>
+                                <td>${sessionValue == 0 ? cases : 0}</td>
+                                <td>${sessionValue == 1 ? cases : 0}</td>
+                            </tr>
+                        `;
                         tableBody.append(row);
                     } else {
                         let row = `<tr><td>${capitalizeFirstLetter(state)}</td>`;
                         if (case_type_col) {
                             row += `
-                <td>${case_type_col === 1 ? cases : 0}</td>
-                <td>${case_type_col === 2 ? cases : 0}</td>
-                <td>${case_type_col === 3 ? cases : 0}</td>
-            `;
+                                <td>${case_type_col === 1 ? cases : 0}</td>
+                                <td>${case_type_col === 2 ? cases : 0}</td>
+                                <td>${case_type_col === 3 ? cases : 0}</td>
+                            `;
                         } else {
                             if (selectedType == 1){
                                 row += `<td>0</td>`;
@@ -339,8 +339,6 @@ const selectedType = $('#type').val();
                         tableBody.append(row);
                     }
                 });
-
-
                 let options = {
                     chart: {
                         map: topology
@@ -1208,34 +1206,6 @@ $(document).ready(function () {
     });
 });
 
-
-// print map
-
-// function printDiv(divId) {
-//     var printContents = document.getElementById(divId).innerHTML;
-//     var originalContents = document.body.innerHTML;
-
-//     document.body.innerHTML = printContents;
-
-//     window.print();
-
-//     document.body.innerHTML = originalContents;
-// }
-
-
-// function printContent(printMap1) {
-//     var printContents = document.getElementById(printMap1).innerHTML;
-//     var originalContents = document.body.innerHTML;
-
-
-//     document.body.innerHTML = printContents;
-
-//     window.print();
-
-//     document.body.innerHTML = originalContents;
-// }
-
-
 function printContent(printMap1) {
     // Get the content of the element to be printed
     var printContents = document.getElementById(printMap1).innerHTML;
@@ -1282,3 +1252,176 @@ function printContent(printMap1) {
     // Restore the original content of the body
     document.body.innerHTML = originalContents;
 }
+
+
+// laboratory dashboard
+$(document).ready(function () {
+    defaultLaboratoryMapData();
+});
+
+const defaultLaboratoryMapData = () => {
+    year = $('#year').val();    
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+    let sessionValue = $("#session_value").val();
+    if (!sessionValue) {
+        sessionValue = 0
+    }
+    $.ajax({
+        url: BASE_URL + "/human-rabies",
+        type: "get",
+        success: function (result) {
+            (async () => {
+                const topology = await fetch(
+                    'https://code.highcharts.com/mapdata/countries/in/custom/in-all-disputed.topo.json'
+                ).then(response => response.json());
+
+                const statesData = result.array;
+                const entries = Object.entries(statesData);
+                const data = entries;
+                const tableBody = $('.laboratoryDetailsDatas tbody');
+
+                // Clear any existing rows in the table
+                tableBody.empty();
+                $('#laboratoryDetailsData').hide();
+                // Loop through the entries and add rows to the table
+                entries.forEach(function (entry) {
+                    const state = entry[0];
+                    const cases = entry[1];
+                    const row = `
+                      <tr>
+                          <td>${capitalizeFirstLetter(state)}</td>
+                          <td>${sessionValue == 0 ? cases : 0}</td>
+                          <td>${sessionValue == 1 ? cases : 0}</td>
+                      </tr>
+                  `;
+                    tableBody.append(row);
+                });
+
+                Highcharts.mapChart('laboratory-map', {
+                    chart: {
+                        map: topology,
+                    },
+                    title: {
+                        text: ''
+                    },
+                    subtitle: {
+                        text: ''
+                    },
+                    mapNavigation: {
+                        enabled: true,
+                        buttonOptions: {
+                            verticalAlign: 'bottom'
+                        }
+                    },
+                    colorAxis: {
+                        min: 0,
+                        max: 100,
+                        minColor: '#fcad95',
+                        maxColor: '#ab4024',
+                        labels: {
+                            format: '{value}',
+                        },
+                    },
+                    plotOptions: {
+                        series: {
+                            events: {
+                                click: function (e) {
+                                    //  console.log(e.point)
+                                    let nameState = e.point.name
+                                    laboratory_apply_filter();
+                                }
+                            },
+                            dataLabels: {
+                                enabled: false,
+                                format: '{point.value}' // Customize the format as needed
+                            }
+                        }
+                    },
+                    series: [{
+                        data: data,
+                        name: '',
+                        allowPointSelect: true,
+                        cursor: 'pointer',
+                        color: "#fff",
+                        states: {
+                            select: {
+                                color: '#fcad95'
+                            }
+                        }
+                    }],
+                    exporting: {
+                        enabled: true,
+                        buttons: {
+                            contextButton: {
+                                menuItems: ['printChart', 'separator', 'downloadPNG', 'downloadJPEG', 'downloadPDF', 'downloadSVG']
+                            }
+                        }
+                    }
+                });
+
+            })();
+        }
+    });
+}
+
+$("#laboratory_apply_filter").on('click', function () {
+    laboratory_apply_filter();
+});
+$("#laboratory_reset_button").on('click', function () {
+    laboratoryResetButton()
+});
+const laboratory_apply_filter = () => {
+    const filter_month = $('#month').find(":selected").val();
+    const filter_year = $('#year').find(":selected").val();    
+    const session_value = $('#session_value').val();
+    const search_btn = $("#laboratory_apply_filter");
+    search_btn.attr("disabled", true);
+    let loading_content = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Loading...';
+    search_btn.html(loading_content);
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+    $.ajax({
+        url: BASE_URL + "/get-filter-laboratory-data",
+        type: "get",
+        data: {
+            month: filter_month,
+            year: filter_year,
+            session_value: session_value
+        },
+        success: function (result) {
+            defaultLaboratoryMapData();
+            search_btn.html("Search");
+            search_btn.attr("disabled", false);
+            search_btn.html("Search");
+            search_btn.attr("disabled", false);            
+            $('#rabiesbox1').html("Number of Patients-" + " " + result.total_records.number_of_patients);
+            $('#rabiesbox2').html("Numbers of Sample Received-" + " " + result.total_records.numbers_of_sample_received);
+            $('#rabiesbox3').html("Total numbers of Positives-" + " " + result.total_records.numbers_of_positives);
+            $('#rabiesbox4').html("No. Entered into IHIP-" + " " + result.total_records.numbers_of_intered_ihip);
+            $('#text1').html("Syndromic Surveillance Cases");
+            $('#text2').html("Syndromic Surveillance Cases");
+        },
+        error: (xhr, status) => {
+            search_btn.html("Search");
+            search_btn.attr("disabled", false);
+        }
+    });
+}
+function laboratoryResetButton() {
+    $('#month option[value=""]').prop('selected', 'selected').change();
+    $('#year option[value=""]').prop('selected', 'selected').change();
+    const search_btn = $("#laboratory_apply_filter");
+    search_btn.attr("disabled", false);
+    let loading_content = 'Search';
+    search_btn.html(loading_content);
+    laboratory_apply_filter();
+    defaultLaboratoryMapData();
+}
+// end LAboratory dashboard

@@ -73,6 +73,9 @@
             <div class="link bg-primary text-white dashboard-title {{ (Request::segment(1) == 'lform')?'active':'' }}">
                 <a href="{{ url('/lform') }}">L Form</a> </i>
             </div>
+            <div class="link bg-primary text-white dashboard-title {{ (Request::routeIs('laboratory-dashboard') == 'laboratory-dashboard')?'active':'' }}">
+                <a href="{{ url('/laboratory-dashboard') }}">Laboratory Dashboard</a> </i>
+            </div>
         @endif
         <!-- <div class="link bg-primary text-white dashboard-title">
             <a href="{{ url('/dashboard') }}">Dashboard</a> </i>
