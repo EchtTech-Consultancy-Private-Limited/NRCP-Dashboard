@@ -1244,3 +1244,4 @@ function printContent(printMap1) {
     // Restore the original content of the body
     document.body.innerHTML = originalContents;
 }
+

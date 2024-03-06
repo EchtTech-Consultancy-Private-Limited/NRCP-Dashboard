@@ -22,8 +22,48 @@ var map = {
             $("#typeb").append('<option value="'+e.id+'">'+e.name+'</option>');
         });
     });
+
+
+    $(".hide-th").addClass('d-none');
+    $(".hide-th1").addClass('d-none');
 });
 
 function baseDropdown(e){
     alert(e);
 }
+
+$("#village").change(function(){
+    if($(this).val() == "select") {
+       $('#data-view').addClass('d-none');
+       $('#D-number').addClass('d-none');
+    } else {
+       $('#data-view').removeClass('d-none');
+       $('#D-number').removeClass('d-none');
+    }
+});
+
+
+$(".arrow-r").click(function(){
+    $(this).toggleClass('d-none');
+    $(".arrow-l").toggleClass('d-none');
+    $(".hide-th").toggleClass('d-none');
+});
+
+$(".arrow-l").click(function(){
+    $(this).toggleClass('d-none');
+    $(".arrow-r").toggleClass('d-none');
+    $(".hide-th").toggleClass('d-none');
+});
+
+$(".arrow-r1").click(function(){
+    $(this).toggleClass('d-none');
+    $(".arrow-l1").toggleClass('d-none');
+    $(".hide-th1").toggleClass('d-none');
+});
+
+$(".arrow-l1").click(function(){
+    $(this).toggleClass('d-none');
+    $(".arrow-r1").toggleClass('d-none');
+    $(".hide-th1").toggleClass('d-none');
+});
+

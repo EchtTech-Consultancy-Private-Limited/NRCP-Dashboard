@@ -11,6 +11,7 @@ use App\Http\Controllers\QualityAssuranceController;
 use App\Http\Controllers\EquipmentsController;
 use App\Http\Controllers\RabiesTestController;
 use App\Http\Controllers\ExpenditureController;
+use App\Http\Controllers\LaboratoryDashboardController;
 use App\Http\Controllers\ReportGenerateControllerController;
 
 
@@ -39,7 +40,8 @@ Route::middleware(['Admin'])->group(function () {
         Route::get('pform', [PFormController::class, 'index'])->name('pform');
         Route::get('sform', [SFormController::class, 'index'])->name('sform');
         Route::get('lform', [LFormController::class, 'index'])->name('lform');
-
+        Route::get('laboratory-dashboard', [LaboratoryDashboardController::class, 'index'])->name('laboratory-dashboard');        
+        Route::get('get-filter-laboratory-data',[LaboratoryDashboardController::class,'getFilterLaboratoryData'])->name('get-filter-laboratory-data');
 
         Route::get('Human-rabies-map', [MainController::class, 'HumanRabiesView'])->name('pform2');
         Route::post('patient-Record',[MainController::class,'patientAdd']);

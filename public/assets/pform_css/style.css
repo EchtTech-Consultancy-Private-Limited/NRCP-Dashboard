@@ -251,10 +251,10 @@ textarea.valid {
 .sform .span-text {
   height: 35px;
   display: flex;
-  justify-content: center;
+  justify-content: left;
   align-items: center;
-  border: 1px solid;
-  padding: 0 16px;
+  border: 0;
+  padding: 0 0px;
   margin-top: 5px;
   border-radius: 4px;
 }
@@ -388,4 +388,11 @@ p.or {
   color: #ab4024;
   background: #fff;
   margin-bottom: 10px;
+}
+
+span.fa.printhide {
+  color: #fff;
+  font-size: 18px;
+  vertical-align: middle;
+  cursor: pointer;
 }
