@@ -42,7 +42,7 @@
                                                             ng-change="getSformUnsubmittedData();getDocumentId();"
                                                             ng-options="v as v.villagename for v in villageSubcenterList  | orderBy:'villagename'"
                                                             required="required">
-                                                            <option value="" class="">-----Select-----</option>
+                                                            <option value="select" class="">-----Select-----</option>
                                                             <option label="Acharapalya" value="object:160">Acharapalya
                                                             </option>
                                                             <option label="Adlapura" value="object:161">Adlapura
@@ -85,8 +85,8 @@
                                                             Select Ward</small>
                                                     </div>
                                                 </div> -->
-                                                <div class="form-group col-md-8"
-                                                    ng-show="villageSubcenter || wardSubcenter">
+                                                <div class="form-group col-md-8 d-none"
+                                                    ng-show="villageSubcenter || wardSubcenter" id="D-number">
                                                     <label class="labelchange">
                                                         <div class="tooltipid tooltipstered" data-placement="right">
                                                             Document Number:
@@ -98,7 +98,7 @@
                                                 </div>
                                             </div>
 
-                                            <div class="col-md-12 table-responsive d-none" id="data-view ">
+                                            <div class="col-md-12 table-responsive d-none" id="data-view">
                                                 <table class="table table-condensed table-bordered" id="tableId">
                                                     <tbody>
                                                         <tr>

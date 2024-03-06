@@ -34,5 +34,14 @@ function baseDropdown(e){
     alert(e);
 }
 
+$("#village").change(function(){
+    if($(this).val() == "select") {
+       $('#data-view').addClass('d-none');
+       $('#D-number').addClass('d-none');
+    } else {
+       $('#data-view').removeClass('d-none');
+       $('#D-number').removeClass('d-none');
+    }
+});
 
 
