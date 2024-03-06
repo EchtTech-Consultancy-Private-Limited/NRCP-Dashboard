@@ -42,7 +42,7 @@
                                                             ng-change="getSformUnsubmittedData();getDocumentId();"
                                                             ng-options="v as v.villagename for v in villageSubcenterList  | orderBy:'villagename'"
                                                             required="required">
-                                                            <option value="" class="">-----Select-----</option>
+                                                            <option value="select" class="">-----Select-----</option>
                                                             <option label="Acharapalya" value="object:160">Acharapalya
                                                             </option>
                                                             <option label="Adlapura" value="object:161">Adlapura
@@ -85,8 +85,8 @@
                                                             Select Ward</small>
                                                     </div>
                                                 </div> -->
-                                                <div class="form-group col-md-4"
-                                                    ng-show="villageSubcenter || wardSubcenter">
+                                                <div class="form-group col-md-8 d-none"
+                                                    ng-show="villageSubcenter || wardSubcenter" id="D-number">
                                                     <label class="labelchange">
                                                         <div class="tooltipid tooltipstered" data-placement="right">
                                                             Document Number:
@@ -98,7 +98,7 @@
                                                 </div>
                                             </div>
 
-                                            <div class="col-md-12 table-responsive">
+                                            <div class="col-md-12 table-responsive d-none" id="data-view">
                                                 <table class="table table-condensed table-bordered" id="tableId">
                                                     <tbody>
                                                         <tr>
@@ -133,8 +133,7 @@
                                                             <td><b>Total</b></td>
                                                             <td><b>Male</b></td>
                                                             <td><b>Female</b></td>
-                                                            <td><b>Total<br>Death
-                                                                </b>
+                                                            <td><b>Total<br>Death</b>
                                                             </td>
                                                         </tr>
                                                         <tr>
@@ -860,10 +859,11 @@
                                                     </tbody>
                                                 </table>
                                             </div>
-                                            <div class="alert alert-success" role="alert">Data Saved Successfully
+                                            <div class="alert alert-success d-none" role="alert">Data Saved Successfully
                                             </div>
                                             <div class="col-md-12 d-flex justify-content-center">
-                                               <button class="btn search-patient-btn mr-3 bg-primary text-light">save</button>
+                                                <button
+                                                    class="btn search-patient-btn mr-3 bg-primary text-light">save</button>
                                             </div>
                                         </div>
                                     </div>
@@ -1173,8 +1173,10 @@
                                                 </div>
 
                                                 <div class="button d-flex justify-content-center mt-3 w-100">
-                                                    <button class="btn search-patient-btn mr-3 bg-primary text-light">save</button>
-                                                    <button class="btn search-patient-btn bg-danger text-light">Reset</button>
+                                                    <button
+                                                        class="btn search-patient-btn mr-3 bg-primary text-light">save</button>
+                                                    <button
+                                                        class="btn search-patient-btn bg-danger text-light">Reset</button>
                                                 </div>
                                             </div>
 
@@ -1199,7 +1201,22 @@
                                 <thead>
                                     <tr>
                                         <th>Sl#</th>
-                                        <th>Person Name</th>
+                                        <th>Person Name
+                                            <span>
+                                                <a class="btn-arrow">
+                                                    <span class="fa fa-long-arrow-right printhide arrow-r"></span>
+                                                    <span class="fa fa-long-arrow-left printhide arrow-l d-none"></span>
+                                                </a>
+                                            </span>
+                                        </th>
+                                        <th class="hide-th">Age </th>
+                                        <th class="hide-th">Gender</th>
+                                        <th class="hide-th">ID Type/Id No</th>
+                                        <th class="hide-th">State</th>
+                                        <th class="hide-th">District</th>
+                                        <th class="hide-th">Sub District</th>
+                                        <th class="hide-th">Village</th>
+                                        <th class="hide-th">Address</th>
                                         <th>Probable Cause Of Death</th>
                                         <th>Date of Death</th>
                                         <th>Remark</th>
@@ -1210,9 +1227,17 @@
                                     <tr>
                                         <td>1</td>
                                         <td>Manish</td>
+                                        <td class="hide-th"></td>
+                                        <td class="hide-th"></td>
+                                        <td class="hide-th"></td>
+                                        <td class="hide-th"></td>
+                                        <td class="hide-th"></td>
+                                        <td class="hide-th"></td>
+                                        <td class="hide-th"></td>
+                                        <td class="hide-th"></td>
                                         <td>Dengue (A97)</td>
                                         <td>27/02/2024</td>
-                                        <td></td>
+                                        <td></td>                                       
                                         <td class="text-nowrap">
                                             <a href="javascript:void();" class="btn bg-danger action-btn"
                                                 title="Delete"> <i class="fa fa-trash-o"></i> </a>
