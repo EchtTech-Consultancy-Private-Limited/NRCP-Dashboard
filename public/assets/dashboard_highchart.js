@@ -1420,8 +1420,8 @@ function laboratoryResetButton() {
     const search_btn = $("#laboratory_apply_filter");
     search_btn.attr("disabled", false);
     let loading_content = 'Search';
-    search_btn.html(loading_content);
-    laboratory_apply_filter();
+    search_btn.html(loading_content);   
     defaultLaboratoryMapData();
+    laboratory_apply_filter();
 }
 // end LAboratory dashboard
