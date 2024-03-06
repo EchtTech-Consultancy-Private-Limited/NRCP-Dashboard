@@ -531,20 +531,20 @@
                                                             <th>Sl#</th>
                                                             <th>Person Name
                                                                 <span>
-                                                                    <a class="btn-arrow">
-                                                                        <span class="fa fa-long-arrow-right printhide arrow-r"></span>
-                                                                        <span class="fa fa-long-arrow-left printhide arrow-l d-none"></span>
+                                                                    <a class="btn-arrow3">
+                                                                        <span class="fa fa-long-arrow-right printhide arrow-r1"></span>
+                                                                        <span class="fa fa-long-arrow-left printhide arrow-l1 d-none"></span>
                                                                     </a>
                                                                 </span>
                                                             </th>
-                                                            <th class="hide-th">Age </th>
-                                                            <th class="hide-th">Gender</th>
-                                                            <th class="hide-th">ID Type/Id No</th>
-                                                            <th class="hide-th">State</th>
-                                                            <th class="hide-th">District</th>
-                                                            <th class="hide-th">Sub District</th>
-                                                            <th class="hide-th">Village</th>
-                                                            <th class="hide-th">Address</th>
+                                                            <th class="hide-th1">Age </th>
+                                                            <th class="hide-th1">Gender</th>
+                                                            <th class="hide-th1">ID Type/Id No</th>
+                                                            <th class="hide-th1">State</th>
+                                                            <th class="hide-th1">District</th>
+                                                            <th class="hide-th1">Sub District</th>
+                                                            <th class="hide-th1">Village</th>
+                                                            <th class="hide-th1">Address</th>
                                                             <th>Probable Cause Of Death</th>
                                                             <th>Date of Death</th>
                                                             <th>Remark</th>                                                            
@@ -555,14 +555,14 @@
                                                         <tr>
                                                             <td>1</td>                                                           
                                                             <td>Manish</td>
-                                                            <td class="hide-th"></td>
-                                                            <td class="hide-th"></td>
-                                                            <td class="hide-th"></td>
-                                                            <td class="hide-th"></td>
-                                                            <td class="hide-th"></td>
-                                                            <td class="hide-th"></td>
-                                                            <td class="hide-th"></td>
-                                                            <td class="hide-th"></td>
+                                                            <td class="hide-th1"></td>
+                                                            <td class="hide-th1"></td>
+                                                            <td class="hide-th1"></td>
+                                                            <td class="hide-th1"></td>
+                                                            <td class="hide-th1"></td>
+                                                            <td class="hide-th1"></td>
+                                                            <td class="hide-th1"></td>
+                                                            <td class="hide-th1"></td>
                                                             <td>Dengue (A97)</td>
                                                             <td>27/02/2024</td>
                                                             <td></td>

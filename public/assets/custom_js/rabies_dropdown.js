@@ -25,6 +25,7 @@ var map = {
 
 
     $(".hide-th").addClass('d-none');
+    $(".hide-th1").addClass('d-none');
 });
 
 function baseDropdown(e){
@@ -52,5 +53,17 @@ $(".arrow-l").click(function(){
     $(this).toggleClass('d-none');
     $(".arrow-r").toggleClass('d-none');
     $(".hide-th").toggleClass('d-none');
+});
+
+$(".arrow-r1").click(function(){
+    $(this).toggleClass('d-none');
+    $(".arrow-l1").toggleClass('d-none');
+    $(".hide-th1").toggleClass('d-none');
+});
+
+$(".arrow-l1").click(function(){
+    $(this).toggleClass('d-none');
+    $(".arrow-r1").toggleClass('d-none');
+    $(".hide-th1").toggleClass('d-none');
 });
 
