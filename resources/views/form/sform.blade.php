@@ -85,7 +85,7 @@
                                                             Select Ward</small>
                                                     </div>
                                                 </div> -->
-                                                <div class="form-group col-md-4"
+                                                <div class="form-group col-md-8"
                                                     ng-show="villageSubcenter || wardSubcenter">
                                                     <label class="labelchange">
                                                         <div class="tooltipid tooltipstered" data-placement="right">
@@ -98,7 +98,7 @@
                                                 </div>
                                             </div>
 
-                                            <div class="col-md-12 table-responsive">
+                                            <div class="col-md-12 table-responsive d-none" id="data-view ">
                                                 <table class="table table-condensed table-bordered" id="tableId">
                                                     <tbody>
                                                         <tr>
@@ -859,10 +859,11 @@
                                                     </tbody>
                                                 </table>
                                             </div>
-                                            <div class="alert alert-success" role="alert">Data Saved Successfully
+                                            <div class="alert alert-success d-none" role="alert">Data Saved Successfully
                                             </div>
                                             <div class="col-md-12 d-flex justify-content-center">
-                                               <button class="btn search-patient-btn mr-3 bg-primary text-light">save</button>
+                                                <button
+                                                    class="btn search-patient-btn mr-3 bg-primary text-light">save</button>
                                             </div>
                                         </div>
                                     </div>
@@ -1172,8 +1173,10 @@
                                                 </div>
 
                                                 <div class="button d-flex justify-content-center mt-3 w-100">
-                                                    <button class="btn search-patient-btn mr-3 bg-primary text-light">save</button>
-                                                    <button class="btn search-patient-btn bg-danger text-light">Reset</button>
+                                                    <button
+                                                        class="btn search-patient-btn mr-3 bg-primary text-light">save</button>
+                                                    <button
+                                                        class="btn search-patient-btn bg-danger text-light">Reset</button>
                                                 </div>
                                             </div>
 
@@ -1198,7 +1201,14 @@
                                 <thead>
                                     <tr>
                                         <th>Sl#</th>
-                                        <th>Person Name</th>
+                                        <th>Person Name
+                                            <span>
+                                                <a class="btn-arrow">
+                                                    <span class="fa fa-long-arrow-right printhide"></span>
+                                                    <span class="fa fa-long-arrow-left printhide d-none"></span>
+                                                </a>
+                                            </span>
+                                        </th>
                                         <th>Probable Cause Of Death</th>
                                         <th>Date of Death</th>
                                         <th>Remark</th>

@@ -22,8 +22,17 @@ var map = {
             $("#typeb").append('<option value="'+e.id+'">'+e.name+'</option>');
         });
     });
+
+
+    $(".btn-arrow").click(function(){
+        $(".printhide").toggleclass('d-none');
+    })
+
 });
 
 function baseDropdown(e){
     alert(e);
 }
+
+
+
