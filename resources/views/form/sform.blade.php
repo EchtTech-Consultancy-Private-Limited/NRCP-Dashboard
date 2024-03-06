@@ -1204,11 +1204,19 @@
                                         <th>Person Name
                                             <span>
                                                 <a class="btn-arrow">
-                                                    <span class="fa fa-long-arrow-right printhide"></span>
-                                                    <span class="fa fa-long-arrow-left printhide d-none"></span>
+                                                    <span class="fa fa-long-arrow-right printhide arrow-r"></span>
+                                                    <span class="fa fa-long-arrow-left printhide arrow-l d-none"></span>
                                                 </a>
                                             </span>
                                         </th>
+                                        <th class="hide-th">Age </th>
+                                        <th class="hide-th">Gender</th>
+                                        <th class="hide-th">ID Type/Id No</th>
+                                        <th class="hide-th">State</th>
+                                        <th class="hide-th">District</th>
+                                        <th class="hide-th">Sub District</th>
+                                        <th class="hide-th">Village</th>
+                                        <th class="hide-th">Address</th>
                                         <th>Probable Cause Of Death</th>
                                         <th>Date of Death</th>
                                         <th>Remark</th>
@@ -1219,9 +1227,17 @@
                                     <tr>
                                         <td>1</td>
                                         <td>Manish</td>
+                                        <td class="hide-th"></td>
+                                        <td class="hide-th"></td>
+                                        <td class="hide-th"></td>
+                                        <td class="hide-th"></td>
+                                        <td class="hide-th"></td>
+                                        <td class="hide-th"></td>
+                                        <td class="hide-th"></td>
+                                        <td class="hide-th"></td>
                                         <td>Dengue (A97)</td>
                                         <td>27/02/2024</td>
-                                        <td></td>
+                                        <td></td>                                       
                                         <td class="text-nowrap">
                                             <a href="javascript:void();" class="btn bg-danger action-btn"
                                                 title="Delete"> <i class="fa fa-trash-o"></i> </a>

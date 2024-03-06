@@ -12,7 +12,7 @@
                 icon: 'success',
                 title: 'Patient record saved successfully',
                 showConfirmButton: false,
-                timer: 3000
+                timer: 3000 
             })
             </script>
             @endif
@@ -431,7 +431,22 @@
                                                     <thead>
                                                         <tr>
                                                             <th>Sl#</th>                                                            
-                                                            <th>Person Name</th>
+                                                            <th>Person Name
+                                                                <span>
+                                                                    <a class="btn-arrow">
+                                                                        <span class="fa fa-long-arrow-right printhide arrow-r"></span>
+                                                                        <span class="fa fa-long-arrow-left printhide arrow-l d-none"></span>
+                                                                    </a>
+                                                                </span>
+                                                            </th>
+                                                            <th class="hide-th">Age </th>
+                                                            <th class="hide-th">Gender</th>
+                                                            <th class="hide-th">ID Type/Id No</th>
+                                                            <th class="hide-th">State</th>
+                                                            <th class="hide-th">District</th>
+                                                            <th class="hide-th">Sub District</th>
+                                                            <th class="hide-th">Village</th>
+                                                            <th class="hide-th">Address</th>
                                                             <th>Provisional Diagnosis</th>
                                                             <th>Date of Onset</th>
                                                             <th>OPD/IPD</th>
@@ -448,6 +463,14 @@
                                                         <tr>
                                                             <td>1</td>                                                           
                                                             <td>Pranali Gadge</td>
+                                                            <td class="hide-th">31</td>
+                                                            <td class="hide-th">Female</td>
+                                                            <td class="hide-th">Not Available</td>
+                                                            <td class="hide-th">Maharashtra	</td>
+                                                            <td class="hide-th">Raigad</td>
+                                                            <td class="hide-th"></td>
+                                                            <td class="hide-th"></td>
+                                                            <td class="hide-th"></td>
                                                             <td>Only Fever >= 7 days</td>
                                                             <td>21/02/2024</td>
                                                             <td>OPD</td>
@@ -465,6 +488,14 @@
                                                         <tr>
                                                             <td>2</td>                                                           
                                                             <td>Amruta Sanjay Upasani</td>
+                                                            <td class="hide-th">31</td>
+                                                            <td class="hide-th">Female</td>
+                                                            <td class="hide-th">Not Available</td>
+                                                            <td class="hide-th">Maharashtra	</td>
+                                                            <td class="hide-th">Raigad</td>
+                                                            <td class="hide-th"></td>
+                                                            <td class="hide-th"></td>
+                                                            <td class="hide-th"></td>
                                                             <td>Malaria (B54)</td>
                                                             <td>21/02/2024</td>
                                                             <td>OPD</td>
@@ -498,7 +529,22 @@
                                                     <thead>
                                                         <tr>
                                                             <th>Sl#</th>
-                                                            <th>Person Name</th>
+                                                            <th>Person Name
+                                                                <span>
+                                                                    <a class="btn-arrow">
+                                                                        <span class="fa fa-long-arrow-right printhide arrow-r"></span>
+                                                                        <span class="fa fa-long-arrow-left printhide arrow-l d-none"></span>
+                                                                    </a>
+                                                                </span>
+                                                            </th>
+                                                            <th class="hide-th">Age </th>
+                                                            <th class="hide-th">Gender</th>
+                                                            <th class="hide-th">ID Type/Id No</th>
+                                                            <th class="hide-th">State</th>
+                                                            <th class="hide-th">District</th>
+                                                            <th class="hide-th">Sub District</th>
+                                                            <th class="hide-th">Village</th>
+                                                            <th class="hide-th">Address</th>
                                                             <th>Probable Cause Of Death</th>
                                                             <th>Date of Death</th>
                                                             <th>Remark</th>                                                            
@@ -509,6 +555,14 @@
                                                         <tr>
                                                             <td>1</td>                                                           
                                                             <td>Manish</td>
+                                                            <td class="hide-th"></td>
+                                                            <td class="hide-th"></td>
+                                                            <td class="hide-th"></td>
+                                                            <td class="hide-th"></td>
+                                                            <td class="hide-th"></td>
+                                                            <td class="hide-th"></td>
+                                                            <td class="hide-th"></td>
+                                                            <td class="hide-th"></td>
                                                             <td>Dengue (A97)</td>
                                                             <td>27/02/2024</td>
                                                             <td></td>

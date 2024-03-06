@@ -24,10 +24,7 @@ var map = {
     });
 
 
-    $(".btn-arrow").click(function(){
-        $(".printhide").toggleclass('d-none');
-    })
-
+    $(".hide-th").addClass('d-none');
 });
 
 function baseDropdown(e){
@@ -44,4 +41,16 @@ $("#village").change(function(){
     }
 });
 
+
+$(".arrow-r").click(function(){
+    $(this).toggleClass('d-none');
+    $(".arrow-l").toggleClass('d-none');
+    $(".hide-th").toggleClass('d-none');
+});
+
+$(".arrow-l").click(function(){
+    $(this).toggleClass('d-none');
+    $(".arrow-r").toggleClass('d-none');
+    $(".hide-th").toggleClass('d-none');
+});
 
