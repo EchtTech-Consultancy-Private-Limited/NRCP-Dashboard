@@ -1279,13 +1279,10 @@ const defaultLaboratoryMapData = () => {
                     'https://code.highcharts.com/mapdata/countries/in/custom/in-all-disputed.topo.json'
                 ).then(response => response.json());                
                 const statesData = result.finalMapData;
-                const data = statesData.map(
-                    item => [
-                        item.state,
-                        item.numberReceived === 0 ? 0 : item.numberReceived.toString(),
-                        item.institute
-                    ]);
-                console.log(data);
+                const arr = [];
+                statesData.forEach((item)=>{
+                    arr.push({"hc-key":item.state,value:item.numberReceived,extraValue:item.institute?item.institute:'N/A',extraValue2:item.institute_id})
+                })
                 const tableBody = $('.laboratoryDetailsDatas tbody');
                 // Clear any existing rows in the table
                 tableBody.empty();
@@ -1332,9 +1329,9 @@ const defaultLaboratoryMapData = () => {
                         series: {
                             events: {
                                 click: function (e) {
-                                     console.log(e.point)
+                                    //  console.log(e.point.name)
                                     let nameState = e.point.name
-                                    laboratory_apply_filter();
+                                    laboratory_apply_filter(e.point.extraValue2);
                                 }
                             },
                             dataLabels: {
@@ -1344,20 +1341,7 @@ const defaultLaboratoryMapData = () => {
                         }
                     },
                     series: [{
-                        mapData: Highcharts.maps['countries/in/custom/in-all-disputed'],
-                        data: [
-                            {
-                                'hc-key': 'uttar pradesh',
-                                value: 0,
-                                extraValue: 'Institute Name 1'
-                            },
-                            {
-                                'hc-key': 'tripura',
-                                value: 0,
-                                extraValue: 'Institute Name 2'
-                            },
-                            // Add more data points as needed
-                        ],
+                        data:arr,
                         name: '',
                         allowPointSelect: true,
                         cursor: 'pointer',
@@ -1374,9 +1358,7 @@ const defaultLaboratoryMapData = () => {
                             shared: true,
                             useHTML: true
                         }
-                    }],                
-                    
-                    
+                    }],              
                     
                     exporting: {
                         enabled: true,
@@ -1399,7 +1381,7 @@ $("#laboratory_apply_filter").on('click', function () {
 $("#laboratory_reset_button").on('click', function () {
     laboratoryResetButton()
 });
-const laboratory_apply_filter = () => {
+const laboratory_apply_filter = (mapFilter = '') => {
     const filter_month = $('#month').find(":selected").val();
     const filter_institute = $('#institute').find(":selected").val();
     const filter_year = $('#year').find(":selected").val();    
@@ -1424,6 +1406,7 @@ const laboratory_apply_filter = () => {
             month: filter_month,
             year: filter_year,
             institute: filter_institute,
+            mapFilter: mapFilter,
             session_value: session_value
         },
         success: function (result) {            
@@ -1431,10 +1414,10 @@ const laboratory_apply_filter = () => {
             search_btn.attr("disabled", false);
             search_btn.html("Search");
             search_btn.attr("disabled", false);            
-            $('#rabiesbox1').html("Number of Patients-" + " " + result.total_records.number_of_patients);
-            $('#rabiesbox2').html("Numbers of Sample Received-" + " " + result.total_records.numbers_of_sample_received);
-            $('#rabiesbox3').html("Total numbers of Positives-" + " " + result.total_records.numbers_of_positives);
-            $('#rabiesbox4').html("No. Entered into IHIP-" + " " + result.total_records.numbers_of_intered_ihip);
+            $('#rabiesbox1').html(result.total_records.number_of_patients);
+            $('#rabiesbox2').html(result.total_records.numbers_of_sample_received);
+            $('#rabiesbox3').html(result.total_records.numbers_of_positives);
+            $('#rabiesbox4').html(result.total_records.numbers_of_intered_ihip);
             $('#text1').html("Syndromic Surveillance Cases");
             $('#text2').html("Syndromic Surveillance Cases");            
             (async () => {
@@ -1443,7 +1426,11 @@ const laboratory_apply_filter = () => {
                 ).then(response => response.json());                
                 const statesData = result.finalMapData;
                 console.log(statesData);
-                const data = statesData.map(item => [item.state, item.numberReceived.toString()]);
+                const arr = [];
+                statesData.forEach((item)=>{
+                    arr.push({"hc-key":item.state,value:item.numberReceived,extraValue:item.institute?item.institute:'N/A',extraValue2:item.institute_id})
+                })
+                console.log(arr);
                 const tableBody = $('.laboratoryDetailsDatas tbody');
                 // Clear any existing rows in the table
                 tableBody.empty();
@@ -1492,7 +1479,7 @@ const laboratory_apply_filter = () => {
                                 click: function (e) {
                                     //  console.log(e.point)
                                     let nameState = e.point.name
-                                    laboratory_apply_filter();
+                                    laboratory_apply_filter(e.point.extraValue2);
                                 }
                             },
                             dataLabels: {
@@ -1502,15 +1489,22 @@ const laboratory_apply_filter = () => {
                         }
                     },
                     series: [{
-                        data: data,
+                        data:arr,
                         name: '',
                         allowPointSelect: true,
                         cursor: 'pointer',
-                        color: "#fff",
                         states: {
                             select: {
                                 color: '#fcad95'
                             }
+                        },
+                        tooltip: {
+                            headerFormat: '',
+                            pointFormat: '<b>{point.name}</b><br>' +
+                                         'Value: {point.value}<br>' +
+                                         'Institute Name: {point.extraValue}',
+                            shared: true,
+                            useHTML: true
                         }
                     }],
                     exporting: {

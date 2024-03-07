@@ -94,32 +94,33 @@
                                                                     </small>
                                                                 </div>
                                                             </div>
-                                                        </div>
-
-                                                        <div class="col-lg-2 col-md-2 col-4">
-                                                            <div class="form-group">
-                                                                <label for="fromYear">From Year</label>
-                                                                <select class="form-select p-1 year click-function"
-                                                                    name="year" aria-label="Default select example"
-                                                                    id="year" required=""
-                                                                    onChange="handleFilterValue()">
-                                                                    <option value="" disabled selected year-name="">
-                                                                        Select Year
-                                                                    </option>
-                                                                    <?php
-                                                                        $currentYear = date('Y');
-                                                                        for ($year = $currentYear; $year >= 2015; $year--) {
-                                                                            $selected = $year == 2022 ? '' : '';
-                                                                            echo "<option value='$year' $selected>$year</option>";
-                                                                        }
-                                                                        ?>
-                                                                </select>
-                                                                <span class="calender"><i class="fa fa-calendar"
-                                                                        aria-hidden="true"></i></span>
-                                                                <small id="fromYear-error" class="form-text text-muted">
-                                                                </small>
+                                                            <div class="col-lg-2 col-md-2 col-4">
+                                                                <div class="form-group">
+                                                                    <label for="fromYear">From Year</label>
+                                                                    <select class="form-select p-1 year click-function"
+                                                                        name="year" aria-label="Default select example"
+                                                                        id="year" required=""
+                                                                        onChange="handleFilterValue()">
+                                                                        <option value="" disabled selected year-name="">
+                                                                            Select Year
+                                                                        </option>
+                                                                        <?php
+                                                                            $currentYear = date('Y');
+                                                                            for ($year = $currentYear; $year >= 2015; $year--) {
+                                                                                $selected = $year == 2022 ? '' : '';
+                                                                                echo "<option value='$year' $selected>$year</option>";
+                                                                            }
+                                                                            ?>
+                                                                    </select>
+                                                                    <span class="calender"><i class="fa fa-calendar"
+                                                                            aria-hidden="true"></i></span>
+                                                                    <small id="fromYear-error" class="form-text text-muted">
+                                                                    </small>
+                                                                </div>
                                                             </div>
                                                         </div>
+
+                                                        
                                                         <div class="col-lg-4 col-md-3 col-4 pt-5">
                                                             <button id="laboratory_apply_filter"
                                                                 class="btn bg-primary text-light laboratory_apply_filter button border-0 mr-2">Search</button>
@@ -137,9 +138,9 @@
                                                                 </span>
                                                                 <div class="cases">
                                                                     <div class="d-inline-block ml-2">
-                                                                        <span id="rabiesbox1" class="">Number of
+                                                                        <span id="rabiestext1" class="">Number of
                                                                             Patients </span>
-                                                                        </br><span id="rabiestext1" class="case-title">
+                                                                        </br><span id="rabiesbox1" class="case-title">
                                                                             {{ $numberOfPatient }}
                                                                         </span>
                                                                     </div>
@@ -155,9 +156,9 @@
                                                                 </span>
                                                                 <div class="cases">
                                                                     <div class="d-inline-block ml-2">
-                                                                        <span id="rabiesbox2" class="">Numbers of
+                                                                        <span id="rabietext2" class="">Numbers of
                                                                             Sample Received </span>
-                                                                        <br><span id="rabiestext2"
+                                                                        <br><span id="rabiesbox2"
                                                                             class="case-title">{{ $numberOfSampleReceived }}
                                                                         </span>
                                                                     </div>
@@ -173,9 +174,9 @@
                                                                 </span>
                                                                 <div class="cases">
                                                                     <div class="d-inline-block ml-2">
-                                                                        <span id="rabiesbox3" class="">Total numbers of
+                                                                        <span id="rabiestext3" class="">Total numbers of
                                                                             Positives </span>
-                                                                        <br><span id="rabiestext3" class="case-title">
+                                                                        <br><span id="rabiesbox3" class="case-title">
                                                                             {{ $numbersOfPositives }}
                                                                         </span>
                                                                     </div>
@@ -191,11 +192,11 @@
                                                                 </span>
                                                                 <div class="cases">
                                                                     <div class="d-inline-block ml-2">
-                                                                        <span id="rabiesbox4" class="cases">No. Entered
+                                                                        <span id="rabiestext" class="cases">No. Entered
                                                                             into
                                                                             IHIP </span>
                                                                         </br>
-                                                                        <span id="rabiestext4"
+                                                                        <span id="rabiesbox4"
                                                                             class="case-title">{{ $numbersOfInteredIhip }}
                                                                         </span>
                                                                     </div>
