@@ -50,26 +50,49 @@
                                             <form action="#" method="post" class="myForm"> --}}
                                                 {{-- @csrf --}}
 
-                                                <div class="dashboard-filter" id="dashboard-filter">
-                                                    <div class="row">
-                                                        <div class="col-lg-2 col-md-2 col-4">
-                                                            <div class="form-group">
-                                                                <label for="state">Month</label>
-                                                                <select class="form-select month click-function"
-                                                                    aria-label="Default select example" id="month"
-                                                                    name="month_name"
-                                                                    onChange="handleFilterValue();handleDistrict()">
-                                                                    <option value="" disabled selected month-name="">
-                                                                        Select Month
-                                                                    </option>
-                                                                    @foreach ($months as $key => $month)
-                                                                    <option value="{{ $key + 1 }}">
-                                                                        {{ $month }}
-                                                                    </option>
-                                                                    @endforeach
-                                                                </select>
-                                                                <small id="month-error" class="form-text text-muted">
-                                                                </small>
+                                                    <div class="dashboard-filter" id="dashboard-filter">
+                                                        <div class="row">
+                                                            <div class="col-lg-2 col-md-2 col-4">
+                                                                <div class="form-group">
+                                                                    <label for="state">Institute Name</label>
+                                                                    <select class="form-select month click-function"
+                                                                        aria-label="Default select example"
+                                                                        id="institute" name="institute"
+                                                                        onChange="handleFilterValue();handleDistrict()">
+                                                                        <option value="" disabled selected
+                                                                            institute-name=""> Select Institute
+                                                                        </option>
+                                                                        @foreach ($institutes as $key => $institute)
+                                                                            <option value="{{ $institute->id }}">
+                                                                                {{ $institute->name }}
+                                                                            </option>
+                                                                        @endforeach
+                                                                    </select>
+                                                                    <small id="institute-error"
+                                                                        class="form-text text-muted">
+                                                                    </small>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-2 col-md-2 col-4">
+                                                                <div class="form-group">
+                                                                    <label for="state">Month</label>
+                                                                    <select class="form-select month click-function"
+                                                                        aria-label="Default select example"
+                                                                        id="month" name="month_name"
+                                                                        onChange="handleFilterValue();handleDistrict()">
+                                                                        <option value="" disabled selected
+                                                                            month-name=""> Select Month
+                                                                        </option>
+                                                                        @foreach ($months as $key => $month)
+                                                                            <option value="{{ $key + 1 }}">
+                                                                                {{ $month }}
+                                                                            </option>
+                                                                        @endforeach
+                                                                    </select>
+                                                                    <small id="month-error"
+                                                                        class="form-text text-muted">
+                                                                    </small>
+                                                                </div>
                                                             </div>
                                                         </div>
 
@@ -220,26 +243,22 @@
                                                                         id="laboratoryDetailsData">
                                                                     </div>
 
-                                                                    <div
-                                                                        class="table-responsive laboratoryDetailsDatas dashboard-table">
-                                                                        <table
-                                                                            class='table table-bordered s-p-form-map'>
-                                                                            <thead>
-                                                                                <tr>
-                                                                                    <th rowspan='2'
-                                                                                        class="state_filter_district">
-                                                                                        State
-                                                                                    </th>
-                                                                                    <th colspan='2'>
-                                                                                        Presumptive
-                                                                                    </th>
-                                                                                </tr>
-                                                                                <tr>
-                                                                                    <th>Cases</th>
-                                                                                    <th>Deaths</th>
-                                                                                </tr>
-                                                                            </thead>
-                                                                            <tbody id="tableBody">
+                                                                        <div
+                                                                            class="table-responsive laboratoryDetailsDatas dashboard-table">
+                                                                            <table
+                                                                                class='table table-bordered s-p-form-map'>
+                                                                                <thead>
+                                                                                    <tr>
+                                                                                        <th rowspan='2'
+                                                                                            class="state_filter_district">
+                                                                                            State
+                                                                                        </th>
+                                                                                        <th colspan='2'>
+                                                                                            No. of Test Conducted
+                                                                                        </th>
+                                                                                    </tr>                                                                                    
+                                                                                </thead>
+                                                                                <tbody id="tableBody">
 
                                                                             </tbody>
                                                                         </table>

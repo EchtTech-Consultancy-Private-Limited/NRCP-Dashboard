@@ -16,6 +16,36 @@
                               <input type="hidden" name="id" value="{{$rabiestest->id}}" >
                                  <div class="col-lg-2 col-md-2 col-6">
                                     <div class="form-group">
+                                       <label for="diseasesSyndromes">Institute Name<span
+                                          class="star">*</span></label>
+                                       <select class="form-control" name="institute" id="institute">
+                                          <option value="">Select Institute</option>
+                                          @foreach($institutes as $institute)
+                                             <option value='{{ $rabiestest->institute_id == $institute->id ? $institute->id:$institute->id }}' {{ $rabiestest->institute_id == $institute->id ? "selected":'' }} >{{ $rabiestest->institute_id == $institute->id ? $institute->name:$institute->name }}</option>
+                                          @endforeach
+                                       </select>
+                                       @error('institute') 
+                                          <span class="form-text text-muted">{{ $message }}</span>
+                                       @enderror 
+                                    </div>
+                                 </div>   
+                                 <div class="col-lg-2 col-md-2 col-6">
+                                    <div class="form-group">
+                                       <label for="diseasesSyndromes">Select State<span
+                                          class="star">*</span></label>
+                                       <select class="form-control" name="state" id="state">
+                                          <option value="">Select State</option>
+                                          @foreach($states as $state)
+                                             <option value='{{ $rabiestest->state_id == $state->id ? $state->id:$state->id }}' {{ $rabiestest->state_id == $state->id ? "selected":'' }} >{{ $rabiestest->state_id == $state->id ? $state->state_name:$state->state_name }}</option>
+                                          @endforeach
+                                       </select>
+                                       @error('state') 
+                                          <span class="form-text text-muted">{{ $message }}</span>
+                                       @enderror 
+                                    </div>
+                                 </div>
+                                 <div class="col-lg-2 col-md-2 col-6">
+                                    <div class="form-group">
                                        <label for="state">Date<span class="star">*</span></label>
                                        <input type="date" class="form-control" aria-label="Default select example" name="date" id="date" value="{{$rabiestest->date}}">
                                        @error('date') 
