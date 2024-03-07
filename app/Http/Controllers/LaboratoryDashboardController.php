@@ -40,7 +40,7 @@ class LaboratoryDashboardController extends Controller
     {
         $filter_month = $request->month ?? '';
         $filter_year = $request->year ?? '';
-        $filter_institute = $request->institute ?? '';
+        $filter_institute = $request->institute ?? $request->mapFilter ?? '';
         $rabiesData = RabiesTest::query();
 
         if ($filter_month || $filter_year || $filter_institute) {
@@ -75,11 +75,13 @@ class LaboratoryDashboardController extends Controller
         foreach($states as $key => $state)
         {
             $rabiesMapData = RabiesTest::with('state')->where('state_id',$state->id)->get();
+            $instituteData = RabiesTest::with('institute')->where('state_id',$state->id)->first();
             $numberReceived = $rabiesMapData->sum('numbers_of_sample_recieved');
             $finalMapData[] = [
                 'state' => $state->state_name,
                 'numberReceived' => $numberReceived,
-                'institute' => 'institute name', 
+                'institute' => $instituteData?->institute->name,
+                'institute_id' => $instituteData?->institute->id, 
             ];
         }
         
