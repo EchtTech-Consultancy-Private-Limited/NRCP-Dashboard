@@ -1,5 +1,4 @@
 @import url("https://fonts.googleapis.com/css2?family=Belanosima&family=Kanit:wght@300;400;500;600&family=Merriweather:wght@400;700&family=Oswald:wght@300;400;500;600&family=Poppins:wght@300;400;500;600&family=Roboto+Slab:wght@300;400;500;600&family=Roboto:wght@400;500;700&display=swap");
-
 * {
   margin: 0;
   padding: 0;
@@ -36,8 +35,8 @@ body {
   overflow: hidden;
 }
 
-.input-group:not(.has-validation)>.dropdown-toggle:nth-last-child(n+3),
-.input-group:not(.has-validation)> :not(:last-child):not(.dropdown-toggle):not(.dropdown-menu) {
+.input-group:not(.has-validation) > .dropdown-toggle:nth-last-child(n+3),
+.input-group:not(.has-validation) > :not(:last-child):not(.dropdown-toggle):not(.dropdown-menu) {
   border-top-right-radius: unset;
   border-bottom-right-radius: unset;
 }
@@ -64,7 +63,7 @@ body {
 .form-group input,
 .form-group select {
   font-size: 13px;
-  margin: 0px 0px ;
+  margin: 0px 0px;
   /* box-shadow: inset 0 0px 8px 0px #e3e0e0; */
   box-shadow: inset 0 0px 8px 0px #fff !important;
   width: 100%;
@@ -73,6 +72,10 @@ body {
 
 .form-group input::-moz-placeholder,
 .form-group select::-moz-placeholder {
+  color: #97999b;
+}
+
+.form-group input::-moz-placeholder, .form-group select::-moz-placeholder {
   color: #97999b;
 }
 
@@ -129,7 +132,7 @@ body {
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   margin: 5px 0;
   text-transform: capitalize;
-  padding: 8px 3px 6px;  
+  padding: 8px 3px 6px;
   border-radius: 50px;
 }
 
@@ -162,7 +165,6 @@ input[type=date]::-webkit-datetime-edit-year-field {
   background: #f9f9f9;
   padding: 10px 0px;
 } */
-
 .form-control:focus {
   color: #212529;
   background-color: #fff;
@@ -205,12 +207,10 @@ input[type=date]::-webkit-datetime-edit-year-field {
   .tab-content .tab-pane {
     padding: 40px 20px;
   }
-
   .form-tab {
     margin: 0px !important;
   }
 }
-
 input.invalid,
 textarea.invalid {
   border: 2px solid red;
@@ -287,21 +287,17 @@ textarea.valid {
     background: #f9f9f9;
     padding: 10px 10px;
   }
-
   .pform2 .search-patient-btn {
     width: auto !important;
   }
-
   .pform2 .form-group label {
     padding: 0 0px;
     font-size: 14px;
   }
-
   .pform2 .apply-filter button.search-patient-btn {
     margin: 0;
   }
 }
-
 .deathcaseform .form-group .radio label {
   margin: 0;
   padding-right: 10px;
@@ -314,10 +310,9 @@ textarea.valid {
   border-radius: 5px;
 }
 
-/*# sourceMappingURL=style.css.map */
 
 .bg-c-gray {
-  background:#f0f8ff;
+  background: #f0f8ff;
   margin: 0px 20px;
   padding: 10px 10px;
   border-radius: 10px;
@@ -327,9 +322,12 @@ textarea.valid {
   font-weight: 500 !important;
   font-size: 15px !important;
 }
-.w-140{width: 140px;}
 
-.date-box{
+.w-140 {
+  width: 140px;
+}
+
+.date-box {
   display: flex;
   align-items: center;
 }
@@ -354,27 +352,28 @@ textarea.valid {
 }
 
 .accordian-pform .card {
-  box-shadow: 0 0 1px rgba(0,0,0,.125), 0 1px 3px rgba(0,0,0,.2) !important;
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.125), 0 1px 3px rgba(0, 0, 0, 0.2) !important;
   margin-bottom: 1rem;
 }
 
 .accordian-pform .card-header {
-  background-color:#f0f8ff;
+  background-color: #f0f8ff;
   padding: 0.4rem 0.5rem;
 }
 
-.accordian-pform .card-header .btn-link{
+.accordian-pform .card-header .btn-link {
   font-size: 15px;
   font-weight: bold;
 }
 
-.heading-text{
+.heading-text {
   font-size: 18px;
   margin: 0;
   font-weight: bold;
   line-height: 1;
   padding: 10px 0;
 }
+
 p.or {
   margin-top: 10px;
   border: 1px solid #ab4024;
@@ -396,3 +395,81 @@ span.fa.printhide {
   vertical-align: middle;
   cursor: pointer;
 }
+
+.sidebarAccordion {
+  border: 1px solid #fff;
+  border-radius: 5px;
+}
+.sidebarAccordion .dashboard-title {
+  margin: 0 !important;
+  border-radius: 2px 2px 0 0;
+}
+.sidebarAccordion .accordion-heading {
+  font-size: 16px;
+}
+.sidebarAccordion .accordion-heading::after {
+  content: "\f107";
+  font-family: "fontAwesome";
+  position: absolute;
+  right: 7%;
+  color: #ab4024;
+  transform: rotate(-90deg);
+  font-size: 22px;
+  top: 5px;
+}
+.sidebarAccordion .multi-collapse .card.card-body {
+  background: transparent;
+  padding: 5px;
+  border-top: 0;
+  border-radius: 0 0 5px 5px;
+  margin-top: -5px;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+.sidebarAccordion .multi-collapse .card.card-body p {
+  color: #000;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.sidebarAccordion:has(.show) .dashboard-title {
+  margin-bottom: 5px !important;
+}
+.sidebarAccordion:has(.show) .accordion-heading {
+  font-size: 16px;
+}
+.sidebarAccordion:has(.show) .accordion-heading::after {
+  content: "\f107";
+  font-family: "fontAwesome";
+  position: absolute;
+  right: 7%;
+  color: #ab4024;
+  transform: rotate(0deg);
+  font-size: 22px;
+  top: 5px;
+}
+
+.link.dashboard-title.active {
+  border: 1px solid #ab4024;
+  margin: 5px 0;
+}
+
+.link.dashboard-title {
+  margin: 5px 0;
+}
+
+.box.box1 {
+  background-image: linear-gradient(96.5deg, rgb(39, 103, 187) 10.4%, rgb(16, 72, 144) 87.7%);
+}
+
+.box.box2 {
+  background-image: linear-gradient(109.6deg, rgb(118, 12, 99) 11.2%, rgb(71, 11, 75) 98.6%);
+}
+
+.box.box3 {
+  background-image: radial-gradient(circle 931px at 97.4% 48.3%, rgb(0, 8, 120) 0%, rgb(95, 184, 224) 99.7%);
+}
+
+.box.box4 {
+  background-image: radial-gradient(circle farthest-corner at 10% 20%, rgb(0, 152, 155) 0.1%, rgb(0, 94, 120) 94.2%);
+}/*# sourceMappingURL=style.css.map */
