@@ -54,6 +54,27 @@
                                                         <div class="row">
                                                             <div class="col-lg-2 col-md-2 col-4">
                                                                 <div class="form-group">
+                                                                    <label for="state">Institute Name</label>
+                                                                    <select class="form-select month click-function"
+                                                                        aria-label="Default select example"
+                                                                        id="institute" name="institute"
+                                                                        onChange="handleFilterValue();handleDistrict()">
+                                                                        <option value="" disabled selected
+                                                                            institute-name=""> Select Institute
+                                                                        </option>
+                                                                        @foreach ($institutes as $key => $institute)
+                                                                            <option value="{{ $institute->id }}">
+                                                                                {{ $institute->name }}
+                                                                            </option>
+                                                                        @endforeach
+                                                                    </select>
+                                                                    <small id="institute-error"
+                                                                        class="form-text text-muted">
+                                                                    </small>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-2 col-md-2 col-4">
+                                                                <div class="form-group">
                                                                     <label for="state">Month</label>
                                                                     <select class="form-select month click-function"
                                                                         aria-label="Default select example"
@@ -199,13 +220,9 @@
                                                                                             State
                                                                                         </th>
                                                                                         <th colspan='2'>
-                                                                                            Presumptive
+                                                                                            No. of Test Conducted
                                                                                         </th>
-                                                                                    </tr>
-                                                                                    <tr>
-                                                                                        <th>Cases</th>
-                                                                                        <th>Deaths</th>
-                                                                                    </tr>
+                                                                                    </tr>                                                                                    
                                                                                 </thead>
                                                                                 <tbody id="tableBody">
 

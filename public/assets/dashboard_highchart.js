@@ -1,5 +1,5 @@
-//  const BASE_URL = window.location.origin;
-const BASE_URL =window.location.origin+"/public";
+ const BASE_URL = window.location.origin;
+// const BASE_URL =window.location.origin+"/public";
 
 /*handle Form Type*/
 const handleFormType = () => {
@@ -305,8 +305,8 @@ const apply_filter = () => {
                 entries.forEach(function (entry) {
                     const state = entry[0];
                     const cases = entry[1];
-                    console.log(state, cases);
-                    console.log("test data")
+                    // console.log(state, cases);
+                    // console.log("test data")
                     if (l_dropdown == "") {
                         const row = `
                             <tr>
@@ -1271,31 +1271,191 @@ const defaultLaboratoryMapData = () => {
         sessionValue = 0
     }
     $.ajax({
-        url: BASE_URL + "/human-rabies",
+        url: BASE_URL + "/get-filter-laboratory-data",
         type: "get",
         success: function (result) {
             (async () => {
                 const topology = await fetch(
                     'https://code.highcharts.com/mapdata/countries/in/custom/in-all-disputed.topo.json'
-                ).then(response => response.json());
-
-                const statesData = result.array;
-                const entries = Object.entries(statesData);
-                const data = entries;
+                ).then(response => response.json());                
+                const statesData = result.finalMapData;
+                const data = statesData.map(
+                    item => [
+                        item.state,
+                        item.numberReceived === 0 ? 0 : item.numberReceived.toString(),
+                        item.institute
+                    ]);
+                console.log(data);
                 const tableBody = $('.laboratoryDetailsDatas tbody');
-
                 // Clear any existing rows in the table
                 tableBody.empty();
-                $('#laboratoryDetailsData').hide();
+                $('#laboratoryDetailsData').hide();                
                 // Loop through the entries and add rows to the table
-                entries.forEach(function (entry) {
-                    const state = entry[0];
-                    const cases = entry[1];
+                statesData.forEach(function (entry) {                    
+                    const state = entry.state;
+                    const testConducted = entry.numberReceived;
                     const row = `
                       <tr>
-                          <td>${capitalizeFirstLetter(state)}</td>
-                          <td>${sessionValue == 0 ? cases : 0}</td>
-                          <td>${sessionValue == 1 ? cases : 0}</td>
+                        <td>${capitalizeFirstLetter(state)}</td>
+                        <td>${sessionValue == 0 ? testConducted : 0}</td>
+                      </tr>
+                  `;
+                    tableBody.append(row);
+                });
+
+                Highcharts.mapChart('laboratory-map', {
+                    chart: {
+                        map: topology,
+                    },
+                    title: {
+                        text: ''
+                    },
+                    subtitle: {
+                        text: ''
+                    },
+                    mapNavigation: {
+                        enabled: true,
+                        buttonOptions: {
+                            verticalAlign: 'bottom'
+                        }
+                    },
+                    colorAxis: {
+                        min: 0,
+                        max: 100,
+                        minColor: '#fcad95',
+                        maxColor: '#ab4024',
+                        labels: {
+                            format: '{value}',
+                        },
+                    },
+                    plotOptions: {
+                        series: {
+                            events: {
+                                click: function (e) {
+                                     console.log(e.point)
+                                    let nameState = e.point.name
+                                    laboratory_apply_filter();
+                                }
+                            },
+                            dataLabels: {
+                                enabled: false,
+                                format: '{point.value}' // Customize the format as needed
+                            }
+                        }
+                    },
+                    series: [{
+                        mapData: Highcharts.maps['countries/in/custom/in-all-disputed'],
+                        data: [
+                            {
+                                'hc-key': 'uttar pradesh',
+                                value: 0,
+                                extraValue: 'Institute Name 1'
+                            },
+                            {
+                                'hc-key': 'tripura',
+                                value: 0,
+                                extraValue: 'Institute Name 2'
+                            },
+                            // Add more data points as needed
+                        ],
+                        name: '',
+                        allowPointSelect: true,
+                        cursor: 'pointer',
+                        states: {
+                            select: {
+                                color: '#fcad95'
+                            }
+                        },
+                        tooltip: {
+                            headerFormat: '',
+                            pointFormat: '<b>{point.name}</b><br>' +
+                                         'Value: {point.value}<br>' +
+                                         'Institute Name: {point.extraValue}',
+                            shared: true,
+                            useHTML: true
+                        }
+                    }],                
+                    
+                    
+                    
+                    exporting: {
+                        enabled: true,
+                        buttons: {
+                            contextButton: {
+                                menuItems: ['printChart', 'separator', 'downloadPNG', 'downloadJPEG', 'downloadPDF', 'downloadSVG']
+                            }
+                        }
+                    }
+                });
+
+            })();
+        }
+    });
+}
+
+$("#laboratory_apply_filter").on('click', function () {
+    laboratory_apply_filter();
+});
+$("#laboratory_reset_button").on('click', function () {
+    laboratoryResetButton()
+});
+const laboratory_apply_filter = () => {
+    const filter_month = $('#month').find(":selected").val();
+    const filter_institute = $('#institute').find(":selected").val();
+    const filter_year = $('#year').find(":selected").val();    
+    const session_value = $('#session_value').val();
+    const search_btn = $("#laboratory_apply_filter");
+    search_btn.attr("disabled", true);
+    let loading_content = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Loading...';
+    search_btn.html(loading_content);
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+    let sessionValue = $("#session_value").val();
+    if (!sessionValue) {
+        sessionValue = 0
+    }
+    $.ajax({
+        url: BASE_URL + "/get-filter-laboratory-data",
+        type: "get",
+        data: {
+            month: filter_month,
+            year: filter_year,
+            institute: filter_institute,
+            session_value: session_value
+        },
+        success: function (result) {            
+            search_btn.html("Search");
+            search_btn.attr("disabled", false);
+            search_btn.html("Search");
+            search_btn.attr("disabled", false);            
+            $('#rabiesbox1').html("Number of Patients-" + " " + result.total_records.number_of_patients);
+            $('#rabiesbox2').html("Numbers of Sample Received-" + " " + result.total_records.numbers_of_sample_received);
+            $('#rabiesbox3').html("Total numbers of Positives-" + " " + result.total_records.numbers_of_positives);
+            $('#rabiesbox4').html("No. Entered into IHIP-" + " " + result.total_records.numbers_of_intered_ihip);
+            $('#text1').html("Syndromic Surveillance Cases");
+            $('#text2').html("Syndromic Surveillance Cases");            
+            (async () => {
+                const topology = await fetch(
+                    'https://code.highcharts.com/mapdata/countries/in/custom/in-all-disputed.topo.json'
+                ).then(response => response.json());                
+                const statesData = result.finalMapData;
+                console.log(statesData);
+                const data = statesData.map(item => [item.state, item.numberReceived.toString()]);
+                const tableBody = $('.laboratoryDetailsDatas tbody');
+                // Clear any existing rows in the table
+                tableBody.empty();
+                $('#laboratoryDetailsData').hide();                
+                // Loop through the entries and add rows to the table
+                statesData.forEach(function (entry) {                    
+                    const state = entry.state;
+                    const testConducted = entry.numberReceived;
+                    const row = `
+                      <tr>
+                        <td>${capitalizeFirstLetter(state)}</td>
+                        <td>${sessionValue == 0 ? testConducted : 0}</td>
                       </tr>
                   `;
                     tableBody.append(row);
@@ -1364,49 +1524,6 @@ const defaultLaboratoryMapData = () => {
                 });
 
             })();
-        }
-    });
-}
-
-$("#laboratory_apply_filter").on('click', function () {
-    laboratory_apply_filter();
-});
-$("#laboratory_reset_button").on('click', function () {
-    laboratoryResetButton()
-});
-const laboratory_apply_filter = () => {
-    const filter_month = $('#month').find(":selected").val();
-    const filter_year = $('#year').find(":selected").val();    
-    const session_value = $('#session_value').val();
-    const search_btn = $("#laboratory_apply_filter");
-    search_btn.attr("disabled", true);
-    let loading_content = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Loading...';
-    search_btn.html(loading_content);
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-    });
-    $.ajax({
-        url: BASE_URL + "/get-filter-laboratory-data",
-        type: "get",
-        data: {
-            month: filter_month,
-            year: filter_year,
-            session_value: session_value
-        },
-        success: function (result) {
-            defaultLaboratoryMapData();
-            search_btn.html("Search");
-            search_btn.attr("disabled", false);
-            search_btn.html("Search");
-            search_btn.attr("disabled", false);            
-            $('#rabiesbox1').html("Number of Patients-" + " " + result.total_records.number_of_patients);
-            $('#rabiesbox2').html("Numbers of Sample Received-" + " " + result.total_records.numbers_of_sample_received);
-            $('#rabiesbox3').html("Total numbers of Positives-" + " " + result.total_records.numbers_of_positives);
-            $('#rabiesbox4').html("No. Entered into IHIP-" + " " + result.total_records.numbers_of_intered_ihip);
-            $('#text1').html("Syndromic Surveillance Cases");
-            $('#text2').html("Syndromic Surveillance Cases");
         },
         error: (xhr, status) => {
             search_btn.html("Search");
@@ -1417,6 +1534,7 @@ const laboratory_apply_filter = () => {
 function laboratoryResetButton() {
     $('#month option[value=""]').prop('selected', 'selected').change();
     $('#year option[value=""]').prop('selected', 'selected').change();
+    $('#institute option[value=""]').prop('selected', 'selected').change();
     const search_btn = $("#laboratory_apply_filter");
     search_btn.attr("disabled", false);
     let loading_content = 'Search';

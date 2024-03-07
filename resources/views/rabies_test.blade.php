@@ -15,6 +15,36 @@
                               <div class="row">
                                  <div class="col-lg-2 col-md-2 col-6">
                                     <div class="form-group">
+                                       <label for="diseasesSyndromes">Institute Name<span
+                                          class="star">*</span></label>
+                                       <select class="form-control" name="institute" id="institute">
+                                          <option value=""> Select Institute</option>
+                                          @foreach($institutes as $institute)
+                                             <option value='{{ $institute->id }}'>{{ $institute->name }}</option>
+                                          @endforeach
+                                       </select>
+                                       @error('institute') 
+                                          <span class="form-text text-muted">{{ $message }}</span>
+                                       @enderror 
+                                    </div>
+                                 </div>
+                                 <div class="col-lg-2 col-md-2 col-6">
+                                    <div class="form-group">
+                                       <label for="diseasesSyndromes">Select State<span
+                                          class="star">*</span></label>
+                                       <select class="form-control" name="state" id="state">
+                                          <option value="">Select State</option>
+                                          @foreach($states as $state)
+                                             <option value='{{ $state->id }}'>{{ $state->state_name }}</option>
+                                          @endforeach
+                                       </select>
+                                       @error('state') 
+                                          <span class="form-text text-muted">{{ $message }}</span>
+                                       @enderror 
+                                    </div>
+                                 </div>
+                                 <div class="col-lg-2 col-md-2 col-6">
+                                    <div class="form-group">
                                        <label for="state">Date<span class="star">*</span></label>
                                        <input type="date" class="form-control" aria-label="Default select example" name="date" id="date">
                                        @error('date') 
@@ -171,6 +201,7 @@
                                  <th>Test</th>
                                  <th>Positives</th>
                                  <th>IHIP</th>
+                                 <th>State</th>
                                  <th>Action</th>
                               </tr>
                            </thead>
@@ -186,6 +217,7 @@
                                  <td>{{$data->numbers_of_test}}</td>
                                  <td>{{$data->numbers_of_positives}}</td>
                                  <td>{{$data->numbers_of_intered_ihip}}</td>
+                                 <td>{{@$data->state->state_name}}</td>
                                  <td>
                                  <a href="{{ url('rabies-test-edit',$data->id) }}" class="btn btn-primary editbtn btn-sm" title="Edit Data"><i class="fa fa-pencil"></i> </a>
                                  <a href="javascript:void(0)" data-url="{{ route('rabies-test-destroy', $data->id) }}" class="btn btn-danger deletebtn btn-sm delete-user" title="Delete Data" id="delete">
