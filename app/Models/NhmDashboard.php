@@ -17,4 +17,14 @@ class NhmDashboard extends Model
         'supplementary_rops',
         'supplementary_rops_size',
     ];
+    
+    /**
+     * state relation b/w nhm and state
+     *
+     * @return void
+     */
+    public function state()
+    {
+        return $this->belongsTo(State::class);
+    }
 }

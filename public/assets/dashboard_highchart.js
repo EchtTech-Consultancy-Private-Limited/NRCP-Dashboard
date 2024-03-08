@@ -1537,3 +1537,4 @@ function laboratoryResetButton() {
     laboratory_apply_filter();
 }
 // end LAboratory dashboard
+

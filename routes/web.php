@@ -12,6 +12,7 @@ use App\Http\Controllers\EquipmentsController;
 use App\Http\Controllers\RabiesTestController;
 use App\Http\Controllers\ExpenditureController;
 use App\Http\Controllers\LaboratoryDashboardController;
+use App\Http\Controllers\NhmDashboardController;
 use App\Http\Controllers\ReportGenerateControllerController;
 
 
@@ -40,9 +41,16 @@ Route::middleware(['Admin'])->group(function () {
         Route::get('pform', [PFormController::class, 'index'])->name('pform');
         Route::get('sform', [SFormController::class, 'index'])->name('sform');
         Route::get('lform', [LFormController::class, 'index'])->name('lform');
-        Route::get('laboratory-dashboard', [LaboratoryDashboardController::class, 'index'])->name('laboratory-dashboard');        
+        Route::get('laboratory-dashboard', [LaboratoryDashboardController::class, 'index'])->name('laboratory-dashboard');
         Route::get('get-filter-laboratory-data',[LaboratoryDashboardController::class,'getFilterLaboratoryData'])->name('get-filter-laboratory-data');
-
+        // nhm dashboard
+        Route::group(['prefix' => 'nhms', 'as' => 'nhm.'], function () {
+            Route::get('/', [NhmDashboardController::class, 'index'])->name('index');
+            Route::get('/create', [NhmDashboardController::class, 'create'])->name('create');
+            Route::post('/store', [NhmDashboardController::class, 'store'])->name('store');
+            Route::get('/view/{id}', [NhmDashboardController::class, 'view'])->name('view');
+        });
+        // end nhm dashboard
         Route::get('Human-rabies-map', [MainController::class, 'HumanRabiesView'])->name('pform2');
         Route::post('patient-Record',[MainController::class,'patientAdd']);
          
