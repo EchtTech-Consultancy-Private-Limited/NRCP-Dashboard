@@ -1,5 +1,8 @@
 @extends('layouts.main')
 @section("content")
+@section('title')
+{{__('Create NHM')}}
+@endsection
 <!-- Main content -->
 <section class="content sform">
     <div class="container-fluid">
