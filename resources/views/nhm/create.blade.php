@@ -70,6 +70,9 @@
                                                     <label for="identification">ROPs</label>
                                                     <input type="file" class="form-control" name="rops"
                                                         id="rops" aria-describedby="rops">
+                                                    @if ($errors->has('rops'))
+                                                        <span class="text-danger">{{ $errors->first('rops') }}</span>
+                                                    @endif
                                                     <small id="rops-error" class="form-text text-muted">
                                                     </small>
                                                 </div>
@@ -79,7 +82,10 @@
                                                     <label for="identification">Supplementary ROPs</label>
                                                     <input type="file" class="form-control" name="supplementary_rops"
                                                         id="supplementary_rops" aria-describedby="supplementary_rops">
-                                                    <small id="supplementary_rops-error" class="form-text text-muted">
+                                                    @if ($errors->has('supplementary_rops'))
+                                                    <span class="text-danger">{{ $errors->first('supplementary_rops') }}</span>
+                                                    @endif
+                                                        <small id="supplementary_rops-error" class="form-text text-muted">
                                                     </small>
                                                 </div>
                                             </div>
