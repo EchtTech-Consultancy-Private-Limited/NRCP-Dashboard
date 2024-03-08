@@ -7,6 +7,7 @@ use App\Models\Institute;
 use Illuminate\Http\Request;
 use App\Models\RabiesTest;
 use App\Models\State;
+use Auth;
 use Illuminate\Support\Facades\Validator;
 
 class RabiesTestController extends Controller
@@ -19,10 +20,8 @@ class RabiesTestController extends Controller
 
     public function create()
     {
-        $rabies_test = RabiesTest::with('state')->where(['soft_delete' => 0])->get();
-        $institutes = Institute::get();
-        $states = State::get();
-        return view('rabies_test', compact('rabies_test','institutes','states'));
+        $rabies_test = RabiesTest::with('state')->where(['soft_delete' => 0,'institute_id' => Auth::user()->lab_id])->get();
+        return view('rabies_test', compact('rabies_test'));
     }
 
     public function edit($id)
@@ -83,8 +82,8 @@ class RabiesTestController extends Controller
                 'numbers_of_test' => $request->numbers_of_test,
                 'numbers_of_positives' => $request->numbers_of_positives,
                 'numbers_of_intered_ihip' => $request->numbers_of_intered_ihip,
-                'institute_id' => $request->institute,
-                'state_id' => $request->state,
+                'institute_id' => Auth::user()->lab_id ?? '',
+                'state_id' => Auth::user()->state_id ?? '',
             ]);
         
                 $notification = array(
@@ -125,8 +124,8 @@ class RabiesTestController extends Controller
                     'numbers_of_test' => $request->numbers_of_test,
                     'numbers_of_positives' => $request->numbers_of_positives,
                     'numbers_of_intered_ihip' => $request->numbers_of_intered_ihip,
-                    'institute_id' => $request->institute,
-                    'state_id' => $request->state,
+                    'institute_id' => Auth::user()->lab_id ?? '',
+                'state_id' => Auth::user()->state_id ?? '',
                 ]);
             
                     $notification = array(
