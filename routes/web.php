@@ -69,6 +69,7 @@ Route::middleware(['Admin'])->group(function () {
 
         /**  Use For laboratory*/
         Route::middleware(['AccessUrlPermission','preventBackHistory'])->group(function () {
+            Route::get('lab-dashboard',[MainController::class,'labDashboard'])->name('lab-dashboard');
             Route::get('general-laboratory',[GeneralProfileController::class,'create'])->name('general-laboratory');
             Route::get('general-profile',[GeneralProfileController::class,'index']);
             Route::post('general-save', [GeneralProfileController::class, 'store'])->name('general-save');
