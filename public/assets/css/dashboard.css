@@ -734,4 +734,63 @@ h1.text-dark.text-left.main-title {
   background: #eee;
 }
 
+section.content.sform .table {
+  display: flex;
+  flex-wrap: wrap;
+}
+section.content.sform .table .table-title {
+  text-align: center;
+  font-size: 16px;
+  font-weight: 600;
+  background: #21235b;
+  color: #fff;
+}
+section.content.sform .table .table-title::before {
+  content: " ";
+}
+section.content.sform .table div {
+  width: 25%;
+  border: 1px solid #dadada;
+  padding: 12px;
+  background: #edfbff;
+  font-size: 14px;
+  font-weight: 500;
+}
+section.content.sform .table div::before {
+  content: "\f101";
+  font-family: "fontAwesome";
+  font-size: 15px;
+  padding-right: 8px;
+  color: #6bcffc;
+}
+
+.view-blade table th {
+  background: #2788a8;
+  padding: 10px;
+  color: #fff;
+  border-right: 1px solid #fff;
+}
+.view-blade table th:last-child {
+  border: none;
+}
+.view-blade table td {
+  background: #b7e0ed;
+  border: 1px solid #fff;
+  padding: 10px;
+  font-size: 14px;
+  color: #000;
+}
+.view-blade .table-title {
+  text-align: center;
+  font-size: 16px;
+  font-weight: 600;
+  background: #21235b;
+  color: #fff;
+  padding: 11px;
+  margin-bottom: 10px;
+}
+.view-blade .nhm-file {
+  color: #000;
+}
+
 /* .card-category-1{text-align: left;} *//*# sourceMappingURL=dashboard.css.map */

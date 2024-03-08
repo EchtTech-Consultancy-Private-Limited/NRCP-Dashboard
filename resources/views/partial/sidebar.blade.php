@@ -115,6 +115,10 @@
             class="link bg-primary text-white dashboard-title {{ (Request::routeIs('laboratory-dashboard') == 'laboratory-dashboard')?'active':'' }}">
             <a href="{{ url('/laboratory-dashboard') }}">Laboratory Dashboard</a> </i>
         </div>
+        <div
+            class="link bg-primary text-white dashboard-title {{ (Request::routeIs('nhm.index') == 'nhm.index')?'active':'' }}">
+            <a href="{{ route('nhm.index') }}">NHM Dashboard</a> </i>
+        </div>
         <!-- ********************* -->
 
         @endif
