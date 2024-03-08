@@ -267,7 +267,7 @@
   .accordion .link {
 	cursor: pointer;
   display: block;
-  padding: 10px 14px;
+//   padding: 10px 14px;
   color: #4D4D4D;
   font-size: 16px;
   font-weight: 700;
@@ -526,7 +526,7 @@
 	color: #fff !important;
   }
   .side-link a{
-	margin-left: 10px;
+	margin-left: 31px;
   }
   
   .iconmargin-set{
@@ -758,6 +758,19 @@ section.content.sform{
 	.nhm-file{
 		color: #000;
 	}
+}
+
+.accordion.laboratory-sidebar .link a{
+	// width: 100%;
+    display: block;
+    // height: 100%;
+	padding: 10px 14px;
+}
+.accordion .link a{
+	// width: 100%;
+    display: block;
+    // height: 100%;
+	padding: 10px 14px;
 }
 
 /* .card-category-1{text-align: left;} */

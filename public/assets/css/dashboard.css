@@ -289,7 +289,6 @@ body {
 .accordion .link {
   cursor: pointer;
   display: block;
-  padding: 10px 14px;
   color: #4D4D4D;
   font-size: 16px;
   font-weight: 700;
@@ -572,7 +571,7 @@ h1.text-dark.text-left.main-title {
 }
 
 .side-link a {
-  margin-left: 10px;
+  margin-left: 31px;
 }
 
 .iconmargin-set {
@@ -791,6 +790,16 @@ section.content.sform .table div::before {
 }
 .view-blade .nhm-file {
   color: #000;
+}
+
+.accordion.laboratory-sidebar .link a {
+  display: block;
+  padding: 10px 14px;
+}
+
+.accordion .link a {
+  display: block;
+  padding: 10px 14px;
 }
 
 /* .card-category-1{text-align: left;} *//*# sourceMappingURL=dashboard.css.map */
