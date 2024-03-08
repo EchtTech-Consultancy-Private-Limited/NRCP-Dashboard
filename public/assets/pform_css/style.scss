@@ -413,7 +413,7 @@ span.fa.printhide {
     font-family: "fontAwesome";
     position: absolute;
     right: 7%;
-    color: #ab4024;
+    color: #fff;
     transform: rotate(-90deg);
     font-size: 22px;
     top: 5px;
@@ -458,7 +458,7 @@ span.fa.printhide {
       font-family: "fontAwesome";
       position: absolute;
       right: 7%;
-      color: #ab4024;
+      color: #fff;
       transform: rotate(0deg);
       font-size: 22px;
       top: 5px;
@@ -475,6 +475,9 @@ span.fa.printhide {
 .link.dashboard-title.active{
   border: 1px solid #ab4024;
   margin: 5px 0;
+  i{
+    color: #fff !important;
+  }
 }
 .link.dashboard-title{
   // border: 1px solid #ab4024;
