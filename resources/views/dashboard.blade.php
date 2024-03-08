@@ -1,5 +1,8 @@
 @extends('layouts.main')
 @section('content')
+@section('title')
+{{__('Rabies')}}
+@endsection
     <style>
         @media print {
 

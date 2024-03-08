@@ -1,5 +1,8 @@
 @extends('layouts.main')
 @section("content")
+@section('title')
+{{__('NHM View')}}
+@endsection
 <!-- Main content -->
 <section class="content sform view-blade">
     <div class="container-fluid">
