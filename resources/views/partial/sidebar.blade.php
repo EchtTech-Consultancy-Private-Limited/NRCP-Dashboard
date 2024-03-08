@@ -84,8 +84,8 @@
             </div>
 
             <div class="row">
-                <div class="col">
-                    <div class="collapse multi-collapse" id="multiCollapseExample1">
+                <div class="col">                    
+                    <div class="collapse multi-collapse {{ (in_array(Request::segment(1), ['dashboard','pform','sform','lform'])) ? 'show':'' }}" id="multiCollapseExample1">
                         <div class="card card-body">
                             <div
                                 class="link bg-primary text-white dashboard-title {{ (Request::segment(1) == 'dashboard')?'active':'' }}">

@@ -24,6 +24,8 @@ class NhmRequest extends FormRequest
         return [
             'year' => 'required',
             'state' => 'required',
+            'rops' => 'mimes:jpeg,bmp,png,gif,svg,pdf',
+            'supplementary_rops' => 'mimes:jpeg,bmp,png,gif,svg,pdf',
         ];
     }
 }
