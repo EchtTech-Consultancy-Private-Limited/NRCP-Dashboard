@@ -35,12 +35,12 @@ Route::get('refresh_captcha',[authController::class, 'refreshCaptcha'])->name('r
 
 Route::middleware(['Admin'])->group(function () {
         Route::get('/logout',[authController::class,'logout'])->name('logout');
-        Route::get('dashboard', [MainController::class, 'dashboard'])->name('dashboard');
-
         /** Form Routes */
+        Route::get('dashboard', [MainController::class, 'dashboard'])->name('dashboard');
         Route::get('pform', [PFormController::class, 'index'])->name('pform');
         Route::get('sform', [SFormController::class, 'index'])->name('sform');
         Route::get('lform', [LFormController::class, 'index'])->name('lform');
+
         Route::get('laboratory-dashboard', [LaboratoryDashboardController::class, 'index'])->name('laboratory-dashboard');
         Route::get('get-filter-laboratory-data',[LaboratoryDashboardController::class,'getFilterLaboratoryData'])->name('get-filter-laboratory-data');
         // nhm dashboard
