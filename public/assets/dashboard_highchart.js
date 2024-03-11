@@ -1,5 +1,5 @@
- const BASE_URL = window.location.origin;
-// const BASE_URL =window.location.origin+"/public";
+//  const BASE_URL = window.location.origin;
+const BASE_URL =window.location.origin+"/public";
 
 /*handle Form Type*/
 const handleFormType = () => {
@@ -1311,7 +1311,6 @@ const defaultLaboratoryMapData = () => {
                 `;
                 $("#tableGraphBody").append(graphTableRow);
                 });
-                
                 const gaugeOptions = {
                     chart: {
                         type: 'solidgauge'
@@ -1367,53 +1366,48 @@ const defaultLaboratoryMapData = () => {
                 const chartSpeed = Highcharts.chart('container-speed', Highcharts.merge(gaugeOptions, {
                     yAxis: {
                         min: 0,
-                        max: 200,
+                        max: result.total_records.number_of_patients,
                         title: {
-                            text: 'Speed'
+                            text: 'Current Ratio'
                         }
                     },
-                    credits: {
-                        enabled: false
-                    },
                     series: [{
-                        name: 'Speed',
-                        data: [80],
+                        name: 'Current Ratio',
+                        data: [result.total_records.number_of_patients],
                         dataLabels: {
                             format:
                                 '<div style="text-align:center">' +
-                                '<span style="font-size:25px">{y}</span><br/>' +
-                                '<span style="font-size:12px;opacity:0.4">km/h</span>' +
+                                '<span style="font-size:20px">{y}</span><br/>' +
+                                '<span style="font-size:12px;opacity:0.4">%</span>' +
                                 '</div>'
                         },
                         tooltip: {
-                            valueSuffix: ' km/h'
+                            valueSuffix: '%'
                         }
                     }]
                 }));
             
-                // The RPM gauge
+                // The sample pie chart
                 const chartRpm = Highcharts.chart('container-rpm', Highcharts.merge(gaugeOptions, {
                     yAxis: {
                         min: 0,
-                        max: 5,
+                        max: 500,
                         title: {
-                            text: 'RPM'
+                            text: 'Days sales inventory (DSI)'
                         }
                     },
                     series: [{
-                        name: 'RPM',
-                        data: [1],
+                        name: 'Days sales inventory (DSI)',
+                        data: [result.total_records.numbers_of_sample_received],
                         dataLabels: {
                             format:
-                                '<div style="text-align:center">' +
-                                '<span style="font-size:25px">{y:.1f}</span><br/>' +
-                                '<span style="font-size:12px;opacity:0.4">' +
-                                '* 1000 / min' +
-                                '</span>' +
-                                '</div>'
+                                `<div style="text-align:center">
+                                <span style="font-size:25px">${result.total_records.numbers_of_sample_received}<br/>
+                                <span style="font-size:12px;opacity:0.4">Days</span>
+                                </div>`
                         },
                         tooltip: {
-                            valueSuffix: ' revolutions/min'
+                            valueSuffix: ' Days'
                         }
                     }]
                 }));
@@ -1471,54 +1465,6 @@ const defaultLaboratoryMapData = () => {
                         }
                     }]
                 }));
-            
-                // Bring life to the dials
-                setInterval(function () {
-                    // Speed
-                    let point, newVal, inc;
-                    if (chartSpeed) {
-                        point = chartSpeed.series[0].points[0];
-                        inc = Math.round((Math.random() - 0.5) * 100);
-                        newVal = point.y + inc;
-                        if (newVal < 0 || newVal > 200) {
-                            newVal = point.y - inc;
-                        }
-                        point.update(newVal);
-                    }
-            
-                    // RPM
-                    if (chartRpm) {
-                        point = chartRpm.series[0].points[0];
-                        inc = Math.random() - 0.5;
-                        newVal = point.y + inc;
-                        if (newVal < 0 || newVal > 5) {
-                            newVal = point.y - inc;
-                        }
-                        point.update(newVal);
-                    }
-            
-                    // RPM - First
-                    if (chartRpmFirst) {
-                        point = chartRpmFirst.series[0].points[0];
-                        inc = Math.random() - 0.5;
-                        newVal = point.y + inc;
-                        if (newVal < 0 || newVal > 5) {
-                            newVal = point.y - inc;
-                        }
-                        point.update(newVal);
-                    }
-            
-                    // RPM - Second
-                    if (chartRpmSecond) {
-                        point = chartRpmSecond.series[0].points[0];
-                        inc = Math.random() - 0.5;
-                        newVal = point.y + inc;
-                        if (newVal < 0 || newVal > 5) {
-                            newVal = point.y - inc;
-                        }
-                        point.update(newVal);
-                    }
-                }, 2000);
                 
                 // map code 
                 Highcharts.mapChart('laboratory-map', {

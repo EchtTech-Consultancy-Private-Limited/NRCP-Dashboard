@@ -66,11 +66,13 @@ class LaboratoryDashboardController extends Controller
         ->get();
         $numberOfPatient = $rabiesData->sum('number_of_patients');
         $numberOfSampleReceived = $rabiesData->sum('numbers_of_sample_recieved');
+        $testConducted = $rabiesData->sum('numbers_of_test');
         $numbersOfPositives = $rabiesData->sum('numbers_of_positives');
         $numbersOfInteredIhip = $rabiesData->sum('numbers_of_intered_ihip');
         $total_records = [
             'number_of_patients' => $numberOfPatient,
             'numbers_of_sample_received' => $numberOfSampleReceived,
+            'testConducted' => $testConducted,
             'numbers_of_positives' => $numbersOfPositives,
             'numbers_of_intered_ihip' => $numbersOfInteredIhip,
         ];

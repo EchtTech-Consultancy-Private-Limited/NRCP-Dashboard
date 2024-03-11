@@ -67,7 +67,7 @@
                                                                         </option>
                                                                         @foreach ($institutes as $key => $institute)
                                                                             <option value="{{ $institute->id }}">
-                                                                                {{ $institute->name }}
+                                                                                {{ $institute->name }} 
                                                                             </option>
                                                                         @endforeach
                                                                     </select>
@@ -286,15 +286,14 @@
                                                                     </tr>                                                                                    
                                                                 </thead>
                                                                 <tbody id="tableGraphBody"></tbody>
-                                                                <tbody>
+                                                                {{-- <tbody>
                                                                     <tr>
                                                                        <td> <div id="container-speed" class="chart-container"></div> </td>
                                                                        <td> <div id="container-rpm" class="chart-container"></div> </td>
                                                                        <td> <div id="container-rpm-first" class="chart-container"></div> </td>
                                                                        <td> <div id="container-rpm-second" class="chart-container"></div> </td>
                                                                     </tr>
-
-                                                            </tbody>
+                                                                </tbody> --}}
                                                         </table>
                                                     </div>
 
