@@ -37,7 +37,7 @@ class authController extends Controller
             return redirect()->back()->with('error', 'User do not match for this user type');
         }else{
             if($request->user_type == '2'){
-                $redirect = 'general-laboratory';
+                $redirect = 'lab-dashboard';
             }else{
                 $redirect = 'dashboard';
             }
