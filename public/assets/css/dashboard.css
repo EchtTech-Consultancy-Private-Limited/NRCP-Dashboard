@@ -734,7 +734,6 @@ h1.text-dark.text-left.main-title {
 }
 
 section.content.sform .table {
-  display: flex;
   flex-wrap: wrap;
 }
 section.content.sform .table .table-title {
