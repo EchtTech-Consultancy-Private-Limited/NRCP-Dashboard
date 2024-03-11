@@ -15,36 +15,6 @@
                               <div class="row">
                                  <div class="col-lg-2 col-md-2 col-6">
                                     <div class="form-group">
-                                       <label for="diseasesSyndromes">Institute Name<span
-                                          class="star">*</span></label>
-                                       <select class="form-control" name="institute" id="institute">
-                                          <option value=""> Select Institute</option>
-                                          @foreach($institutes as $institute)
-                                             <option value='{{ $institute->id }}'>{{ $institute->name }}</option>
-                                          @endforeach
-                                       </select>
-                                       @error('institute') 
-                                          <span class="form-text text-muted">{{ $message }}</span>
-                                       @enderror 
-                                    </div>
-                                 </div>
-                                 <div class="col-lg-2 col-md-2 col-6">
-                                    <div class="form-group">
-                                       <label for="diseasesSyndromes">Select State<span
-                                          class="star">*</span></label>
-                                       <select class="form-control" name="state" id="state">
-                                          <option value="">Select State</option>
-                                          @foreach($states as $state)
-                                             <option value='{{ $state->id }}'>{{ $state->state_name }}</option>
-                                          @endforeach
-                                       </select>
-                                       @error('state') 
-                                          <span class="form-text text-muted">{{ $message }}</span>
-                                       @enderror 
-                                    </div>
-                                 </div>
-                                 <div class="col-lg-2 col-md-2 col-6">
-                                    <div class="form-group">
                                        <label for="state">Date<span class="star">*</span></label>
                                        <input type="date" class="form-control" aria-label="Default select example" name="date" id="date">
                                        @error('date') 
@@ -55,11 +25,6 @@
                                  <div class="col-lg-2 col-md-2 col-6">
                                     <div class="form-group">
                                        <label for="district">Number of Patients<span class="star">*</span></label>
-                                       <!-- <select class="form-control" aria-label="Default select example" name="number_of_patients" id="number_of_patients">
-                                          <option value=""> Select</option>
-                                          <option value='yes'>Yes</option>
-                                          <option value='no'>No</option>
-                                       </select> -->
                                        <input type="number" class="form-control" aria-label="Default select example" name="number_of_patients" id="number_of_patients">
                                        @error('number_of_patients') 
                                           <span class="form-text text-muted">{{ $message }}</span>
@@ -69,11 +34,6 @@
                                  <div class="col-lg-3 col-md-3 col-6">
                                     <div class="form-group">
                                        <label for="fromYear">Numbers of Sample Recieves<span class="star">*</span></label>
-                                       <!-- <select class="form-control" aria-label="Default select example" name="numbers_of_sample_recieved" id="numbers_of_sample_recieved">
-                                          <option value=""> Select</option>
-                                          <option value='yes'>Yes</option>
-                                          <option value='no'>No</option>
-                                       </select> -->
                                        <input type="number" class="form-control" aria-label="Default select example" name="numbers_of_sample_recieved" id="numbers_of_sample_recieved">
                                        <small id="supervisors_trained-error"
                                           class="form-text text-muted">

@@ -1,5 +1,8 @@
 @extends('layouts.main')
 @section("content")
+@section('title')
+{{__('Patient Record')}}
+@endsection
 <!-- Main content -->
 <section class="content">
     <div class="container-fluid">

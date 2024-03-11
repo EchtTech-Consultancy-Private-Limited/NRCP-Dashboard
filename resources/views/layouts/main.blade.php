@@ -4,12 +4,12 @@
         <div class="main-title nrcp-main-title">
         <div class="row mb-0 d-flex align-items-center">
             <div class="col-sm-8">
-                <h1 class="text-left">Dashboard for @if(Auth::user()->user_type == 1)Rabies @else Laboratory @endif</h1>
+                <h1 class="text-left">Dashboard for @section('title') {{ config('app.name') }}@show</h1>
             </div>
             <div class="col-sm-4">
                 <ol class="breadcrumb  justify-content-end m-0 p-0 align-items-center" >
                     <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
-                    <li class="breadcrumb-item active">{{ $breadCrum ?? 'Dashboard' }}</li>
+                    <li class="breadcrumb-item active">@section('title') {{ config('app.name') }} @show</li>
                 </ol>
             </div><!-- /.col --> 
                 <aside class="main-sidebar sidebar-dark-primary elevation-4">

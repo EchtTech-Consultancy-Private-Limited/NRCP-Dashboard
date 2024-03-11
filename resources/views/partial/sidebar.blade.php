@@ -42,6 +42,11 @@
     <li>
         @if (Auth::user()->user_type == 2)
         <div
+            class="arrow arrow-right link bg-primary text-white dashboard-title {{ (Request::segment(1) == 'lab-dashboard')?'active':'' }}">
+            <i class="fa fa-dashboard iconmargin-set" aria-hidden="true"></i>  <a href="{{ url('/lab-dashboard') }}">
+                Dashboard</a>
+        </div>
+        <div
             class="arrow arrow-right link bg-primary text-white dashboard-title {{ (Request::segment(1) == 'general-laboratory')?'active':'' }}">
             <i class="fa fa-list iconmargin-set" aria-hidden="true"></i>  <a href="{{ url('/general-laboratory') }}">
                 General</a>
