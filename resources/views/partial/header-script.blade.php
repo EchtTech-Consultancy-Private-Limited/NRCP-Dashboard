@@ -20,11 +20,16 @@
 {{-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> --}}
 <link rel="stylesheet" href="{{ asset('assets/pform_css/style.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/font-awesome-4.7.0/css/font-awesome.min.css') }}">
-<script src="https://code.highcharts.com/maps/highmaps.js"></script>
-<script src="https://code.highcharts.com/maps/modules/exporting.js"></script>
 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" >
 <!-- <link rel="stylesheet" href="{{ asset('assets/css/dataTables.dataTables.css') }}"> -->
 
+{{-- highchart --}}
+<script src="https://code.highcharts.com/maps/highmaps.js"></script>
+<script src="https://code.highcharts.com/maps/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/highcharts-more.js"></script>
+<script src="https://code.highcharts.com/modules/solid-gauge.js"></script>
+<script src="https://code.highcharts.com/modules/accessibility.js"></script>
+{{-- end highchart --}}
 <link rel="stylesheet" href="{{ asset('assets/css/datatablemin.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/css/datatablebuttonmin.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/css/responsive.css') }}">

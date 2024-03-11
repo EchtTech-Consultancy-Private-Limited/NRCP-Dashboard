@@ -218,9 +218,7 @@
                                                         <div class="col-md-12 ">
                                                             <div
                                                                 class="map-text m-0 mb-2 d-flex align-items-center justify-content-between">
-                                                                <h1 class="m-0 mr-3 d-inline-block">Deaths
-                                                                    cases state
-                                                                    wise </h1>
+                                                                <h1 class="m-0 mr-3 d-inline-block">Institute state wise</h1>
                                                                 <button class="buttons-print float-right" type="button"
                                                                     onclick="printContent('printMap1')"><span>
                                                                         <i class="fa fa-print"></i></span></button>
@@ -255,7 +253,7 @@
                                                                                     <tr>
                                                                                         <th rowspan='2'
                                                                                             class="state_filter_district">
-                                                                                            State
+                                                                                            Institute list
                                                                                         </th>
                                                                                         <th colspan='2'>
                                                                                             No. of Test Conducted
@@ -273,6 +271,42 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                                <!-- graph start-->
+                                                <div id="graphical_view">
+                                                    <div class="row">
+                                                        <div class="table-responsive laboratoryDetailsDatas dashboard-table">
+                                                            <table
+                                                                class='table table-bordered s-p-form-map'>
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th>No. of Patients</th>
+                                                                        <th>No. of Sample Received</th>
+                                                                        <th>No. of Test Conducted</th>
+                                                                        <th>Total numbers of Positives</th>
+                                                                    </tr>                                                                                    
+                                                                </thead>
+                                                                <tbody id="tableGraphBody"></tbody>
+                                                                <tbody>
+                                                                    <tr>
+                                                                       <td> <div id="container-speed" class="chart-container"></div> </td>
+                                                                       <td> <div id="container-rpm" class="chart-container"></div> </td>
+                                                                       <td> <div id="container-rpm-first" class="chart-container"></div> </td>
+                                                                       <td> <div id="container-rpm-second" class="chart-container"></div> </td>
+                                                                    </tr>
+
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+
+                                                    <div class="row">
+                                                        
+                                                        <div id="container-speed" class="chart-container"></div>
+                                                        <div id="container-rpm" class="chart-container"></div>
+                                                        <div id="container-rpm-first" class="chart-container"></div>
+                                                        <div id="container-rpm-second" class="chart-container"></div>
+                                                    </div>
+                                                </div>
+                                                <!-- end here -->
                                         </div>
                                     </div>
                                 </div>
