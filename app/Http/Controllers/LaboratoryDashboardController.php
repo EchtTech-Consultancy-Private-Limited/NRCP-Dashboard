@@ -22,7 +22,7 @@ class LaboratoryDashboardController extends Controller
             $months[] = date('F', mktime(0,0,0,$m, 1, date('Y')));
         }
         $rabiesData = RabiesTest::get();
-        $institutes = Institute::get();
+        $institutes = Institute::with('state')->get();
         $numberOfPatient = $rabiesData->sum('number_of_patients');
         $numberOfSampleReceived = $rabiesData->sum('numbers_of_sample_recieved');
         $numbersOfPositives = $rabiesData->sum('numbers_of_positives');

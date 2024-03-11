@@ -67,7 +67,7 @@
                                                                         </option>
                                                                         @foreach ($institutes as $key => $institute)
                                                                             <option value="{{ $institute->id }}">
-                                                                                {{ $institute->name }} 
+                                                                                {{ $institute->name }} ({{ $institute->state->state_name }}) 
                                                                             </option>
                                                                         @endforeach
                                                                     </select>
@@ -218,7 +218,7 @@
                                                         <div class="col-md-12 ">
                                                             <div
                                                                 class="map-text m-0 mb-2 d-flex align-items-center justify-content-between">
-                                                                <h1 class="m-0 mr-3 d-inline-block">Institute state wise</h1>
+                                                                <h1 class="m-0 mr-3 d-inline-block">Institute list</h1>
                                                                 <button class="buttons-print float-right" type="button"
                                                                     onclick="printContent('printMap1')"><span>
                                                                         <i class="fa fa-print"></i></span></button>
@@ -253,7 +253,7 @@
                                                                                     <tr>
                                                                                         <th rowspan='2'
                                                                                             class="state_filter_district">
-                                                                                            Institute list
+                                                                                            Institute
                                                                                         </th>
                                                                                         <th colspan='2'>
                                                                                             No. of Test Conducted
@@ -286,24 +286,15 @@
                                                                     </tr>                                                                                    
                                                                 </thead>
                                                                 <tbody id="tableGraphBody"></tbody>
-                                                                {{-- <tbody>
-                                                                    <tr>
-                                                                       <td> <div id="container-speed" class="chart-container"></div> </td>
-                                                                       <td> <div id="container-rpm" class="chart-container"></div> </td>
-                                                                       <td> <div id="container-rpm-first" class="chart-container"></div> </td>
-                                                                       <td> <div id="container-rpm-second" class="chart-container"></div> </td>
-                                                                    </tr>
-                                                                </tbody> --}}
                                                         </table>
                                                     </div>
-
-                                                    <div class="row">
+                                                    {{-- <div class="row">
                                                         
                                                         <div id="container-speed" class="chart-container"></div>
                                                         <div id="container-rpm" class="chart-container"></div>
                                                         <div id="container-rpm-first" class="chart-container"></div>
                                                         <div id="container-rpm-second" class="chart-container"></div>
-                                                    </div>
+                                                    </div> --}}
                                                 </div>
                                                 <!-- end here -->
                                         </div>
