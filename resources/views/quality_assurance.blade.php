@@ -26,7 +26,7 @@
                                             @enderror 
                                        </div>
                                     </div>
-                                    <div class="col-lg-2 col-md-2 col-6">
+                                    <div class="col-lg-3 col-md-3 col-6">
                                        <div class="form-group">
                                           <label for="district">PTPNABL(ISO 17043)<span class="star">*</span></label>
                                           <select class="form-select" aria-label="Default select example" name="accredited_pt" id="accredited_pt">
@@ -61,9 +61,9 @@
                                           <small id="lims-error" class="form-text text-muted"></small>
                                        </div>
                                     </div>
-                                    <div class="col-lg-3 col-md-3 col-6 search-reset">
+                                    <div class="col-lg-2 col-md-2 col-6 search-reset">
                                         <div class="apply-filter mt-4 pt-1">
-                                            <button type="submit" class="btn bg-primary mr-3">Save</button>
+                                            <button type="submit" class="btn bg-primary mr-2">Save</button>
                                             <button type="reset" class="btn bg-danger">Reset</button>
                                         </div>
                                     </div>
