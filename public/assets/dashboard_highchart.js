@@ -1289,17 +1289,184 @@ const defaultLaboratoryMapData = () => {
                 $('#laboratoryDetailsData').hide();                
                 // Loop through the entries and add rows to the table
                 statesData.forEach(function (entry) {                    
-                    const state = entry.state;
-                    const testConducted = entry.numberReceived;
-                    const row = `
+                    const institute = entry.institute;
+                    const testSampleRecevied = entry.numberReceived;
+                    const numberPatients = entry.numberPatients;
+                    const numberTestConducted = entry.numberTestConducted;
+                    const numberPositives = entry.numberPositives;
+                    const mapRow = `
                       <tr>
-                        <td>${capitalizeFirstLetter(state)}</td>
-                        <td>${sessionValue == 0 ? testConducted : 0}</td>
+                        <td>${capitalizeFirstLetter(institute)}</td>
+                        <td>${sessionValue == 0 ? testSampleRecevied : 0}</td>
                       </tr>
-                  `;
-                    tableBody.append(row);
+                    `;
+                    $("#tableBody").append(mapRow);
+                    const graphTableRow = `
+                    <tr>
+                    <td>${sessionValue == 0 ? numberPatients : 0}</td>
+                    <td>${sessionValue == 0 ? testSampleRecevied : 0}</td>
+                    <td>${sessionValue == 0 ? numberTestConducted : 0}</td>
+                    <td>${sessionValue == 0 ? numberPositives : 0}</td>
+                    </tr>
+                `;
+                $("#tableGraphBody").append(graphTableRow);
                 });
-
+                const gaugeOptions = {
+                    chart: {
+                        type: 'solidgauge'
+                    },
+                    title: null,
+                    pane: {
+                        center: ['50%', '85%'],
+                        size: '140%',
+                        startAngle: -90,
+                        endAngle: 90,
+                        background: {
+                            backgroundColor: Highcharts.defaultOptions.legend.backgroundColor || '#EEE',
+                            innerRadius: '60%',
+                            outerRadius: '100%',
+                            shape: 'arc'
+                        }
+                    },
+                    exporting: {
+                        enabled: false
+                    },
+                    tooltip: {
+                        enabled: false
+                    },
+                    yAxis: {
+                        stops: [
+                            [0.1, '#55BF3B'], // green
+                            [0.5, '#DDDF0D'], // yellow
+                            [0.9, '#DF5353'] // red
+                        ],
+                        lineWidth: 0,
+                        tickWidth: 0,
+                        minorTickInterval: null,
+                        tickAmount: 2,
+                        title: {
+                            y: -70
+                        },
+                        labels: {
+                            y: 16
+                        }
+                    },
+                    plotOptions: {
+                        solidgauge: {
+                            dataLabels: {
+                                y: 5,
+                                borderWidth: 0,
+                                useHTML: true
+                            }
+                        }
+                    }
+                };
+            
+                // The speed gauge
+                const chartSpeed = Highcharts.chart('container-speed', Highcharts.merge(gaugeOptions, {
+                    yAxis: {
+                        min: 0,
+                        max: result.total_records.number_of_patients,
+                        title: {
+                            text: 'Current Ratio'
+                        }
+                    },
+                    series: [{
+                        name: 'Current Ratio',
+                        data: [result.total_records.number_of_patients],
+                        dataLabels: {
+                            format:
+                                '<div style="text-align:center">' +
+                                '<span style="font-size:20px">{y}</span><br/>' +
+                                '<span style="font-size:12px;opacity:0.4">%</span>' +
+                                '</div>'
+                        },
+                        tooltip: {
+                            valueSuffix: '%'
+                        }
+                    }]
+                }));
+            
+                // The sample pie chart
+                const chartRpm = Highcharts.chart('container-rpm', Highcharts.merge(gaugeOptions, {
+                    yAxis: {
+                        min: 0,
+                        max: 500,
+                        title: {
+                            text: 'Days sales inventory (DSI)'
+                        }
+                    },
+                    series: [{
+                        name: 'Days sales inventory (DSI)',
+                        data: [result.total_records.numbers_of_sample_received],
+                        dataLabels: {
+                            format:
+                                `<div style="text-align:center">
+                                <span style="font-size:25px">${result.total_records.numbers_of_sample_received}<br/>
+                                <span style="font-size:12px;opacity:0.4">Days</span>
+                                </div>`
+                        },
+                        tooltip: {
+                            valueSuffix: ' Days'
+                        }
+                    }]
+                }));
+            
+                // The RPM gauge - First
+                const chartRpmFirst = Highcharts.chart('container-rpm-first', Highcharts.merge(gaugeOptions, {
+                    yAxis: {
+                        min: 0,
+                        max: 5,
+                        title: {
+                            text: 'RPM - First'
+                        }
+                    },
+                    series: [{
+                        name: 'RPM - First',
+                        data: [2],
+                        dataLabels: {
+                            format:
+                                '<div style="text-align:center">' +
+                                '<span style="font-size:25px">{y:.1f}</span><br/>' +
+                                '<span style="font-size:12px;opacity:0.4">' +
+                                '* 1000 / min' +
+                                '</span>' +
+                                '</div>'
+                        },
+                        tooltip: {
+                            valueSuffix: ' revolutions/min'
+                        }
+                    }]
+                }));
+            
+                // The RPM gauge - Second
+                const chartRpmSecond = Highcharts.chart('container-rpm-second', Highcharts.merge(gaugeOptions, {
+                    yAxis: {
+                        min: 0,
+                        max: 5,
+                        title: {
+                            text: 'RPM - Second'
+                        }
+                    },
+                    series: [{
+                        name: 'RPM - Second',
+                        data: [3],
+                        dataLabels: {
+                            format:
+                                '<div style="text-align:center">' +
+                                '<span style="font-size:25px">{y:.1f}</span><br/>' +
+                                '<span style="font-size:12px;opacity:0.4">' +
+                                '* 1000 / min' +
+                                '</span>' +
+                                '</div>'
+                        },
+                        tooltip: {
+                            valueSuffix: ' revolutions/min'
+                        }
+                    }]
+                }));
+                
+                // map code 
                 Highcharts.mapChart('laboratory-map', {
                     chart: {
                         map: topology,
@@ -1437,15 +1604,27 @@ const laboratory_apply_filter = (mapFilter = '') => {
                 $('#laboratoryDetailsData').hide();                
                 // Loop through the entries and add rows to the table
                 statesData.forEach(function (entry) {                    
-                    const state = entry.state;
-                    const testConducted = entry.numberReceived;
-                    const row = `
+                    const institute = entry.institute;
+                    const testSampleRecevied = entry.numberReceived;
+                    const numberPatients = entry.numberPatients;
+                    const numberTestConducted = entry.numberTestConducted;
+                    const numberPositives = entry.numberPositives;
+                    const mapRow = `
                       <tr>
-                        <td>${capitalizeFirstLetter(state)}</td>
-                        <td>${sessionValue == 0 ? testConducted : 0}</td>
+                        <td>${capitalizeFirstLetter(institute)}</td>
+                        <td>${sessionValue == 0 ? testSampleRecevied : 0}</td>
                       </tr>
-                  `;
-                    tableBody.append(row);
+                    `;
+                    $("#tableBody").append(mapRow);
+                    const graphTableRow = `
+                    <tr>
+                    <td>${sessionValue == 0 ? numberPatients : 0}</td>
+                    <td>${sessionValue == 0 ? testSampleRecevied : 0}</td>
+                    <td>${sessionValue == 0 ? numberTestConducted : 0}</td>
+                    <td>${sessionValue == 0 ? numberPositives : 0}</td>
+                    </tr>
+                `;
+                $("#tableGraphBody").append(graphTableRow);
                 });
 
                 Highcharts.mapChart('laboratory-map', {
