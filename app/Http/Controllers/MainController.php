@@ -10,15 +10,31 @@ use Redirect;
 use File;
 use DB;
 use Illuminate\Http\Request;
+use App\Models\Equipments;
+use App\Models\Expenditure;
+use App\Models\GeneralProfile;
+use App\Models\QualityAssurance;
+use App\Models\RabiesTest;
 
 class MainController extends Controller
 {
-
+    
     public function dashboard(Request $request)
     {
         return view("dashboard");
     }
-
+    public function labDashboard(Request $request)
+    {
+        $EquipmentsTotal = Equipments::count();
+        $ExpenditureTotal = Expenditure::count();
+        $GeneralProfileTotal = GeneralProfile::count();
+        $QualityAssuranceTotal = QualityAssurance::count();
+        $RabiesTestTotal = RabiesTest::count();
+        
+        return view('lab-dashboard',['EquipmentsTotal'=>$EquipmentsTotal,'ExpenditureTotal'=>$ExpenditureTotal,
+        'GeneralProfileTotal'=>$GeneralProfileTotal,
+        'QualityAssuranceTotal'=>$QualityAssuranceTotal,'RabiesTestTotal'=>$RabiesTestTotal]);
+    }
     public function pformView()
     {
         return view("form.pform");
