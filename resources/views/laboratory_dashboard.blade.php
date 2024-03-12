@@ -67,7 +67,7 @@
                                                                         </option>
                                                                         @foreach ($institutes as $key => $institute)
                                                                             <option value="{{ $institute->id }}">
-                                                                                {{ $institute->name }} ({{ $institute->state->state_name }}) 
+                                                                                {{ $institute->name }} ({{ @$institute->state->state_name }}) 
                                                                             </option>
                                                                         @endforeach
                                                                     </select>
