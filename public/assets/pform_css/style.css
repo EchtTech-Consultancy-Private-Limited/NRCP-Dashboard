@@ -100,7 +100,7 @@ body {
 
 .form-group label {
   padding: 0 0px;
-  font-size: 15px;
+  font-size: 13px;
 }
 
 .form-group .form-select {
@@ -475,4 +475,15 @@ span.fa.printhide {
 
 .box.box4 {
   background-image: radial-gradient(circle farthest-corner at 10% 20%, rgb(0, 152, 155) 0.1%, rgb(0, 94, 120) 94.2%);
+}
+
+.chart-container {
+  border: 1px solid #ddd;
+  border-radius: 9px;
+}
+
+tspan.highChartTitle {
+  font-size: 18px;
+  font-weight: 700;
+  color: #000 !important;
 }/*# sourceMappingURL=style.css.map */

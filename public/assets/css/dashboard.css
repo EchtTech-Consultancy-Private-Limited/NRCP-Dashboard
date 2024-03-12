@@ -734,7 +734,6 @@ h1.text-dark.text-left.main-title {
 }
 
 section.content.sform .table {
-  display: flex;
   flex-wrap: wrap;
 }
 section.content.sform .table .table-title {
@@ -800,6 +799,11 @@ section.content.sform .table div::before {
 .accordion .link a {
   display: block;
   padding: 10px 14px;
+}
+
+.chart-container {
+  border: 1px solid #ddd;
+  border-radius: 9px;
 }
 
 /* .card-category-1{text-align: left;} *//*# sourceMappingURL=dashboard.css.map */

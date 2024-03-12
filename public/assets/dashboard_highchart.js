@@ -1313,12 +1313,13 @@ const defaultLaboratoryMapData = () => {
                 });
                 const gaugeOptions = {
                     chart: {
-                        type: 'solidgauge'
+                        type: 'solidgauge',
+                        height: '100%'
                     },
                     title: null,
                     pane: {
-                        center: ['50%', '85%'],
-                        size: '140%',
+                        center: ['50%', '65%'],
+                        size: '100%',
                         startAngle: -90,
                         endAngle: 90,
                         background: {
@@ -1345,10 +1346,10 @@ const defaultLaboratoryMapData = () => {
                         minorTickInterval: null,
                         tickAmount: 2,
                         title: {
-                            y: -70
+                            y: -120
                         },
                         labels: {
-                            y: 16
+                            // y: 16
                         }
                     },
                     plotOptions: {
@@ -1368,7 +1369,8 @@ const defaultLaboratoryMapData = () => {
                         min: 0,
                         max: result.total_records.number_of_patients,
                         title: {
-                            text: 'Current Ratio'
+                            text: '<h3 class="highChartTitle">Current Ratio</h3>',
+                            
                         }
                     },
                     series: [{
@@ -1393,7 +1395,8 @@ const defaultLaboratoryMapData = () => {
                         min: 0,
                         max: 500,
                         title: {
-                            text: 'Days sales inventory (DSI)'
+                            text: '<h3 class="highChartTitle">Days sales inventory (DSI)</h3> ',
+                           
                         }
                     },
                     series: [{
@@ -1404,13 +1407,15 @@ const defaultLaboratoryMapData = () => {
                                 `<div style="text-align:center">
                                 <span style="font-size:25px">${result.total_records.numbers_of_sample_received}<br/>
                                 <span style="font-size:12px;opacity:0.4">Days</span>
-                                </div>`
+                                </div>`,
+                          
                         },
                         tooltip: {
                             valueSuffix: ' Days'
                         }
                     }]
                 }));
+                
             
                 // The RPM gauge - First
                 const chartRpmFirst = Highcharts.chart('container-rpm-first', Highcharts.merge(gaugeOptions, {
@@ -1418,7 +1423,7 @@ const defaultLaboratoryMapData = () => {
                         min: 0,
                         max: 5,
                         title: {
-                            text: 'RPM - First'
+                            text: '<h3 class="highChartTitle">RPM - First</h3>'
                         }
                     },
                     series: [{
@@ -1445,7 +1450,7 @@ const defaultLaboratoryMapData = () => {
                         min: 0,
                         max: 5,
                         title: {
-                            text: 'RPM - Second'
+                            text: '<h3 class="highChartTitle">RPM - Second</h3>'
                         }
                     },
                     series: [{
