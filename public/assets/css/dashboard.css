@@ -801,4 +801,9 @@ section.content.sform .table div::before {
   padding: 10px 14px;
 }
 
+.chart-container {
+  border: 1px solid #ddd;
+  border-radius: 9px;
+}
+
 /* .card-category-1{text-align: left;} *//*# sourceMappingURL=dashboard.css.map */

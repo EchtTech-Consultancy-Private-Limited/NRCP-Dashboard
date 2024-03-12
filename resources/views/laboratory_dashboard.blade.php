@@ -272,7 +272,8 @@
                                                     </div>
                                                 </div>
                                                 <!-- graph start-->
-                                                <div id="graphical_view">
+                                                <div class="card-body p-3 my-5 dashboard-filter">
+                                                <div id="graphical_view" class="">
                                                     <div class="row">
                                                         <div class="table-responsive laboratoryDetailsDatas dashboard-table">
                                                             <table
@@ -289,15 +290,18 @@
                                                         </table>
                                                     </div>
 
-                                                    <!-- <div class="row">
-                                                        
-                                                        <div id="container-speed" class="chart-container"></div>
-                                                        <div id="container-rpm" class="chart-container"></div>
-                                                        <div id="container-rpm-first" class="chart-container"></div>
-                                                        <div id="container-rpm-second" class="chart-container"></div>
-                                                    </div> -->
+                                                   
                                                 </div>
                                                 <!-- end here -->
+                                                <div class="row">
+                                                        
+                                                        <div class="col-md-3"> <div id="container-speed" class="chart-container"></div> </div>
+                                                        <div class="col-md-3"> <div id="container-rpm" class="chart-container"></div> </div>
+                                                        <div class="col-md-3"> <div id="container-rpm-first" class="chart-container"></div> </div>
+                                                        <div class="col-md-3"> <div id="container-rpm-second" class="chart-container"></div> </div>
+                                                     </div>
+                                                </div>
+                                               
                                         </div>
                                     </div>
                                 </div>
