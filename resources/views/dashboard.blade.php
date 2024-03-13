@@ -1,8 +1,5 @@
 @extends('layouts.main')
 @section('content')
-@section('title')
-{{__('Rabies')}}
-@endsection
     <style>
         @media print {
 
@@ -67,7 +64,7 @@
                                                     <select class="form-select state click-function"
                                                             aria-label="Default select example" id="state" name="state_name"
                                                             onChange="handleFilterValue();handleDistrict()">
-                                                        <option value="" disabled selected state-name=""> Select Your
+                                                        <option value=""  selected state-name=""> Select 
                                                             State
                                                         </option>
                                                         @foreach (state_list() as $state)
@@ -88,7 +85,7 @@
                                                     <select class="form-select click-function"
                                                             aria-label="Default select example" id="district"
                                                             name="district_name" onChange="handleFilterValue()">
-                                                        <option value="" dist-name="">Enter your District </option>
+                                                        <option value="" dist-name="">Enter  District </option>
                                                     </select>
                                                     <small id="district-error" class="form-text text-muted">
                                                     </small>
@@ -100,7 +97,7 @@
                                                     <select class="form-select p-1 year click-function" name="year"
                                                             aria-label="Default select example" id="year" required=""
                                                             onChange="handleFilterValue()">
-                                                        <option value="yyyy" disabled>yyyy</option>
+                                                        <option value="yyyy" >yyyy</option>
                                                         <?php
                                                         $currentYear = date('Y');
                                                         for ($year = $currentYear; $year >= 2015; $year--) {
@@ -133,7 +130,7 @@
                                                     <label for="formType">Form Type<span class="star">*</span></label>
                                                     <select class="form-select " aria-label="Default select example"
                                                             id="formType" onChange="handleFormType()">
-                                                        <option value="" disabled> Select Form Type
+                                                        <option value="" > Select Form Type
                                                         </option>
                                                         <option value="1" form-type="l-form">L Form</option>
                                                         <option value="2" form-type="p-form" selected>P Form</option>

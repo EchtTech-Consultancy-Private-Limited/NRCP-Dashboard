@@ -1015,8 +1015,6 @@ const highchartMapcase = (total_records) => {
         $("#is_graph_data_available").val("");
     }
 
-    console.log(" Bar Chart" + total_records[0].year);
-
     var jsData = [['Year', 'Cases']]; // Initialize the data array with column headers
 
     for (var i = 0; i < total_records.length; i++) {
@@ -1031,9 +1029,6 @@ const highchartMapcase = (total_records) => {
     } else {
         mapFilterTypeText = "Death";
     }
-
-
-    console.log(total_records)
     const filteredRecords = total_records.filter(record => record["case"]);
 
 
@@ -1313,12 +1308,13 @@ const defaultLaboratoryMapData = () => {
                 });
                 const gaugeOptions = {
                     chart: {
-                        type: 'solidgauge'
+                        type: 'solidgauge',
+                        height: '100%'
                     },
                     title: null,
                     pane: {
-                        center: ['50%', '85%'],
-                        size: '140%',
+                        center: ['50%', '65%'],
+                        size: '100%',
                         startAngle: -90,
                         endAngle: 90,
                         background: {
@@ -1345,10 +1341,10 @@ const defaultLaboratoryMapData = () => {
                         minorTickInterval: null,
                         tickAmount: 2,
                         title: {
-                            y: -70
+                            y: -65
                         },
                         labels: {
-                            y: 16
+                            // y: 16
                         }
                     },
                     plotOptions: {
@@ -1368,7 +1364,8 @@ const defaultLaboratoryMapData = () => {
                         min: 0,
                         max: result.total_records.number_of_patients,
                         title: {
-                            text: 'Current Ratio'
+                            text: '<h3 class="highChartTitle">Current Ratio</h3>',
+                            
                         }
                     },
                     series: [{
@@ -1393,7 +1390,8 @@ const defaultLaboratoryMapData = () => {
                         min: 0,
                         max: 500,
                         title: {
-                            text: 'Days sales inventory (DSI)'
+                            text: '<h3 class="highChartTitle">DSI</h3> ',
+                           
                         }
                     },
                     series: [{
@@ -1402,15 +1400,17 @@ const defaultLaboratoryMapData = () => {
                         dataLabels: {
                             format:
                                 `<div style="text-align:center">
-                                <span style="font-size:25px">${result.total_records.numbers_of_sample_received}<br/>
+                                <span style="font-size:25px">10<br/>
                                 <span style="font-size:12px;opacity:0.4">Days</span>
-                                </div>`
+                                </div>`,
+                          
                         },
                         tooltip: {
                             valueSuffix: ' Days'
                         }
                     }]
                 }));
+                
             
                 // The RPM gauge - First
                 const chartRpmFirst = Highcharts.chart('container-rpm-first', Highcharts.merge(gaugeOptions, {
@@ -1418,23 +1418,21 @@ const defaultLaboratoryMapData = () => {
                         min: 0,
                         max: 5,
                         title: {
-                            text: 'RPM - First'
+                            text: '<h3 class="highChartTitle">DSO</h3>'
                         }
                     },
                     series: [{
-                        name: 'RPM - First',
-                        data: [2],
+                        name: 'Days sales outstanding (DSO)',
+                        data: [7],
                         dataLabels: {
                             format:
-                                '<div style="text-align:center">' +
-                                '<span style="font-size:25px">{y:.1f}</span><br/>' +
-                                '<span style="font-size:12px;opacity:0.4">' +
-                                '* 1000 / min' +
-                                '</span>' +
-                                '</div>'
+                                `<div style="text-align:center">
+                                <span style="font-size:25px">7<br/>
+                                <span style="font-size:12px;opacity:0.4">Days</span>
+                                </div>`,
                         },
                         tooltip: {
-                            valueSuffix: ' revolutions/min'
+                            valueSuffix: 'Days'
                         }
                     }]
                 }));
@@ -1443,28 +1441,178 @@ const defaultLaboratoryMapData = () => {
                 const chartRpmSecond = Highcharts.chart('container-rpm-second', Highcharts.merge(gaugeOptions, {
                     yAxis: {
                         min: 0,
-                        max: 5,
+                        max: 28,
                         title: {
-                            text: 'RPM - Second'
+                            text: '<h3 class="highChartTitle">DPO</h3>'
                         }
                     },
                     series: [{
-                        name: 'RPM - Second',
-                        data: [3],
+                        name: 'Days payable outstanding (DPO)',
+                        data: [28],
                         dataLabels: {
                             format:
-                                '<div style="text-align:center">' +
-                                '<span style="font-size:25px">{y:.1f}</span><br/>' +
-                                '<span style="font-size:12px;opacity:0.4">' +
-                                '* 1000 / min' +
-                                '</span>' +
-                                '</div>'
+                                `<div style="text-align:center">
+                                <span style="font-size:25px">28<br/>
+                                <span style="font-size:12px;opacity:0.4">Days</span>
+                                </div>`,
                         },
                         tooltip: {
-                            valueSuffix: ' revolutions/min'
+                            valueSuffix: 'Days'
                         }
                     }]
                 }));
+
+                // yearReport
+                const chart = Highcharts.chart('yearReport', {
+                    title: {
+                        text: 'Institute wise Yearly data',
+                        align: 'left'
+                    },
+                    subtitle: {
+                        text: 'Chart option: Plain | Source: ' +
+                            '<a href="https://www.nav.no/no/nav-og-samfunn/statistikk/arbeidssokere-og-stillinger-statistikk/helt-ledige"' +
+                            'target="_blank">NAV</a>',
+                        align: 'left'
+                    },
+                    colors: [
+                        '#4caefe',
+                        '#3fbdf3',
+                        '#35c3e8',
+                        '#2bc9dc',
+                        '#20cfe1',
+                        '#16d4e6',
+                        '#0dd9db',
+                        '#03dfd0',
+                        '#00e4c5',
+                        '#00e9ba',
+                        '#00eeaf',
+                        '#23e274'
+                    ],
+                    xAxis: {
+                        categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+                    },
+                    series: [{
+                        type: 'column',
+                        name: 'Rabies data',
+                        borderRadius: 5,
+                        colorByPoint: true,
+                        data: [4420, 700, 500, 380, 3947, 3456, 4143, 3609,
+                            1320, 3072, 1022, 800],
+                        showInLegend: false
+                    }]
+                });
+                // monthlyReport
+                Highcharts.chart('monthlyReport', {
+                    chart: {
+                        type: 'column'
+                    },
+                    title: {
+                        text: 'Institute wise Monthly data'
+                    },
+                    xAxis: {
+                        categories: [
+                            'Current',
+                            'Due Date',
+                            'Rabies'
+                        ]
+                    },
+                    yAxis: [{
+                        min: 0,
+                        title: {
+                            text: 'Ravies Received'
+                        }
+                    }, {
+                        title: {
+                            text: 'Total Conducted'
+                        },
+                        opposite: true
+                    }],
+                    legend: {
+                        shadow: false
+                    },
+                    tooltip: {
+                        shared: true
+                    },
+                    plotOptions: {
+                        column: {
+                            grouping: false,
+                            shadow: false,
+                            borderWidth: 0
+                        }
+                    },
+                    series: [{
+                        name: 'Patients',
+                        color: 'rgba(165,170,217,1)',
+                        data: [150, 73, 20],
+                        pointPadding: 0.3,
+                        pointPlacement: -0.2
+                    }, {
+                        name: 'Sample Received',
+                        color: 'rgba(126,86,134,.9)',
+                        data: [140, 90, 40],
+                        pointPadding: 0.4,
+                        pointPlacement: -0.2
+                    }, {
+                        name: 'Test Conducted',
+                        color: 'rgba(248,161,63,1)',
+                        data: [183.6, 178.8, 198.5],
+                        tooltip: {
+                            valuePrefix: '$',
+                            valueSuffix: ' M'
+                        },
+                        pointPadding: 0.3,
+                        pointPlacement: 0.2,
+                        yAxis: 1
+                    }, {
+                        name: 'Numbers of Positives',
+                        color: 'rgba(186,60,61,.9)',
+                        data: [203.6, 198.8, 208.5],
+                        tooltip: {
+                            valuePrefix: '$',
+                            valueSuffix: ' M'
+                        },
+                        pointPadding: 0.4,
+                        pointPlacement: 0.2,
+                        yAxis: 1
+                    }]
+                });               
+                // monthlysampleReport
+                Highcharts.chart('monthlySampleReport', {
+                    chart: {
+                        type: 'line'
+                    },
+                    title: {
+                        text: 'Institute wise Patients / Sample Received'
+                    },
+                    subtitle: {
+                        text: 'Source: ' +
+                            'Sample Received'
+                    },
+                    xAxis: {
+                        categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+                    },
+                    yAxis: {
+                        title: {
+                            text: 'Institute wise Patients / Sample Received'
+                        }
+                    },
+                    plotOptions: {
+                        line: {
+                            dataLabels: {
+                                enabled: true
+                            },
+                            enableMouseTracking: false
+                        }
+                    },
+                    series: [{
+                        name: 'Ravies',
+                        data: [16.0, 18.2, 23.1, 27.9, 32.2, 36.4, 39.8, 38.4, 35.5, 29.2,
+                            22.0, 17.8]
+                    }, {
+                        name: 'Sample Received',
+                        data: [1,3,6,9,11,13,43,11,9]
+                    }]
+                });
                 
                 // map code 
                 Highcharts.mapChart('laboratory-map', {
@@ -1592,12 +1740,10 @@ const laboratory_apply_filter = (mapFilter = '') => {
                     'https://code.highcharts.com/mapdata/countries/in/custom/in-all-disputed.topo.json'
                 ).then(response => response.json());                
                 const statesData = result.finalMapData;
-                console.log(statesData);
                 const arr = [];
                 statesData.forEach((item)=>{
                     arr.push({"hc-key":item.state,value:item.numberReceived,extraValue:item.institute?item.institute:'N/A',extraValue2:item.institute_id})
                 })
-                console.log(arr);
                 const tableBody = $('.laboratoryDetailsDatas tbody');
                 // Clear any existing rows in the table
                 tableBody.empty();

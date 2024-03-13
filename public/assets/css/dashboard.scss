@@ -697,7 +697,7 @@
 
 section.content.sform{
 	.table{
-		display: flex;
+		// display: ;
 		flex-wrap: wrap;
 		.table-title{
 			text-align: center;
@@ -757,7 +757,10 @@ section.content.sform{
 	}
 	.nhm-file{
 		color: #000;
-	}
+	}	
+}
+#nhm-list{
+	display: flex;
 }
 
 .accordion.laboratory-sidebar .link a{
@@ -773,4 +776,8 @@ section.content.sform{
 	padding: 10px 14px;
 }
 
+.chart-container {
+    border: 1px solid #ddd;
+    border-radius: 9px;
+} 
 /* .card-category-1{text-align: left;} */

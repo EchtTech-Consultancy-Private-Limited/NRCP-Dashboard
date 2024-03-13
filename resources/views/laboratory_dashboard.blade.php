@@ -67,7 +67,7 @@
                                                                         </option>
                                                                         @foreach ($institutes as $key => $institute)
                                                                             <option value="{{ $institute->id }}">
-                                                                                {{ $institute->name }} ({{ $institute->state->state_name }}) 
+                                                                                {{ $institute->name }} ({{ @$institute->state->state_name }}) 
                                                                             </option>
                                                                         @endforeach
                                                                     </select>
@@ -272,7 +272,8 @@
                                                     </div>
                                                 </div>
                                                 <!-- graph start-->
-                                                <div id="graphical_view">
+                                                <div class="card-body p-3 my-5 dashboard-filter">
+                                                <div id="graphical_view" class="">
                                                     <div class="row">
                                                         <div class="table-responsive laboratoryDetailsDatas dashboard-table">
                                                             <table
@@ -288,15 +289,39 @@
                                                                 <tbody id="tableGraphBody"></tbody>
                                                         </table>
                                                     </div>
-                                                    <div class="row">
-                                                        
-                                                        <div id="container-speed" class="chart-container"></div>
-                                                        <div id="container-rpm" class="chart-container"></div>
-                                                        <div id="container-rpm-first" class="chart-container"></div>
-                                                        <div id="container-rpm-second" class="chart-container"></div>
-                                                    </div>
+
+                                                   
                                                 </div>
                                                 <!-- end here -->
+                                                <div class="row">
+                                                        
+                                                        <div class="col-md-3"> <div id="container-speed" class="chart-container"></div> </div>
+                                                        <div class="col-md-3"> <div id="container-rpm" class="chart-container"></div> </div>
+                                                        <div class="col-md-3"> <div id="container-rpm-first" class="chart-container"></div> </div>
+                                                        <div class="col-md-3"> <div id="container-rpm-second" class="chart-container"></div> </div>
+                                                     </div>
+                                                </div>
+                                                <div id="graphical_view">
+                                                    <div class="row">
+                                                        <div class="col-md-6 pr-4">
+                                                            <div id="yearReport" class="dashboard-filter mt-5"></div>
+                                                        </div>
+                                                        <div class="col-md-6 pl-4">
+                                                            <div class="dashboard-filter mt-5">
+                                                                <div id="monthlyReport" style="height: 400px;"></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div id="graphical_view">
+                                                    <div class="row">
+                                                        <div class="col-md-12 pl-4">
+                                                            <div class="dashboard-filter mt-5">
+                                                                <div id="monthlySampleReport" style="height: 400px;"></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                         </div>
                                     </div>
                                 </div>
