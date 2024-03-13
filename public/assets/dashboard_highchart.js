@@ -856,12 +856,12 @@ const pyramidChart = (result) => {
     let categories = result.map(item => item.pyramid_age_group);
 
     let females = {
-        name: 'Females',
+        name: 'Female',
         data: result.map(item => item.pyramid_female_percentage)
     };
 
     let males = {
-        name: 'Males',
+        name: 'Male',
         data: result.map(item => -item.pyramid_male_percentage)
     };
 
@@ -958,11 +958,11 @@ const barChart = (result) => {
     var categories = result.map(item => item.pyramid_age_group);
 
     var males = {
-        name: 'Males',
+        name: 'Male',
         data: result.map(item => item.pyramid_male_death_percentage)
     };
     var females = {
-        name: 'Females',
+        name: 'Female',
         data: result.map(item => item.pyramid_female_death_percentage)
     };
     Highcharts.chart('chartContainer', {
@@ -1311,6 +1311,8 @@ const defaultLaboratoryMapData = () => {
                 `;
                 $("#tableGraphBody").append(graphTableRow);
                 });
+
+                
                 const gaugeOptions = {
                     chart: {
                         type: 'solidgauge',
@@ -1346,8 +1348,8 @@ const defaultLaboratoryMapData = () => {
                         minorTickInterval: null,
                         tickAmount: 2,
                         title: {
-                            y: -120
-                        },
+                            y: window.innerWidth <= 1300 ? -65 : (window.innerWidth >= 1550 ? -110 : -90)
+                        },                        
                         labels: {
                             // y: 16
                         }

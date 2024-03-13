@@ -1,7 +1,7 @@
 @extends('layouts.main')
 @section('content')
 @section('title')
-{{__('Labotratory Dashboard')}}
+{{__('Laboratory Dashboard')}}
 @endsection
 <style>
 @media print {
@@ -115,21 +115,21 @@
                                                                             }
                                                                             ?>
                                                                     </select>
-                                                                    <span class="calender"><i class="fa fa-calendar"
-                                                                            aria-hidden="true"></i></span>
+                                                                    <span class="calender"></span>
                                                                     <small id="fromYear-error" class="form-text text-muted">
                                                                     </small>
                                                                 </div>
                                                             </div>
-                                                        </div>
-
-                                                        
-                                                        <div class="col-lg-4 col-md-3 col-4 pt-5">
+                                                            <div class="col-lg-4 col-md-3 col-4 pt-5">
                                                             <button id="laboratory_apply_filter"
                                                                 class="btn bg-primary text-light laboratory_apply_filter button border-0 mr-2">Search</button>
                                                             <button id="laboratory_reset_button"
                                                                 class="btn bg-primary text-light laboratory_apply_filter button border-0 mr-2">Reset</button>
                                                         </div>
+                                                        </div>
+
+                                                        
+                                                       
                                                     </div>
                                                 </div>
                                                 <div class="presumptive-cases dashboard-filter mt-5 laboratory-card">
@@ -159,7 +159,7 @@
                                                                 </span>
                                                                 <div class="cases">
                                                                     <div class="d-inline-block ml-2">
-                                                                        <span id="rabietext2" class="">Numbers of
+                                                                        <span id="rabietext2" class="">Number of
                                                                             Sample Received </span>
                                                                         <br><span id="rabiesbox2"
                                                                             class="case-title">{{ $numberOfSampleReceived }}
@@ -177,7 +177,7 @@
                                                                 </span>
                                                                 <div class="cases">
                                                                     <div class="d-inline-block ml-2">
-                                                                        <span id="rabiestext3" class="">Total numbers of
+                                                                        <span id="rabiestext3" class="">Total number of
                                                                             Positives </span>
                                                                         <br><span id="rabiesbox3" class="case-title">
                                                                             {{ $numbersOfPositives }}
@@ -283,7 +283,7 @@
                                                                         <th>No. of Patients</th>
                                                                         <th>No. of Sample Received</th>
                                                                         <th>No. of Test Conducted</th>
-                                                                        <th>Total numbers of Positives</th>
+                                                                        <th>Total number of Positives</th>
                                                                     </tr>                                                                                    
                                                                 </thead>
                                                                 <tbody id="tableGraphBody"></tbody>

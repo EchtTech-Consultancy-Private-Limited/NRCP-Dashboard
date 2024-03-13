@@ -172,11 +172,11 @@ body {
 
 .dashboard .form-group select {
   font-size: 13px;
-  margin: 5px 0px;
   color: #404040;
   border: 1px solid #dfdfdf;
   border-radius: 0.25rem;
   width: 100%;
+  text-transform: capitalize;
 }
 
 .dashboard .dashboard-table {
@@ -468,9 +468,8 @@ h1.text-dark.text-left.main-title {
 }
 
 .table-responsive {
-  overflow-y: scroll;
+  overflow-y: auto;
   scrollbar-width: thin;
-  scrollbar-color: #ddd #999;
 }
 
 .table-responsive::-webkit-scrollbar {

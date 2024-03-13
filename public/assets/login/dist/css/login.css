@@ -1,0 +1,7 @@
+i.fa.fa-refresh1:before {
+    content: "\f021";
+}
+
+.captcha.row img{
+    width: 100%;
+}
