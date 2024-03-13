@@ -415,7 +415,7 @@ span.fa.printhide {
   font-family: "fontAwesome";
   position: absolute;
   right: 7%;
-  color: #fff;
+  color: #111111;
   transform: rotate(-90deg);
   font-size: 22px;
   top: 5px;
@@ -509,6 +509,9 @@ tspan.highChartTitle {
   border-bottom: 1px solid #ddd;
   padding: 8px 0;
   list-style: none;
+}
+.dropdown.profile .dropdown-menu ul li .dropdown-item {
+  font-size: 14px;
 }
 .dropdown.profile .dropdown-menu ul li .dropdown-item i {
   padding-right: 10px;
