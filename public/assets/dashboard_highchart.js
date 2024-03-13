@@ -448,7 +448,7 @@ const defaultLoadMapData = () => {
         type: "get",
         success: function (result) {
             $('#text1').html("Presumptive Cases");
-            $('#text2').html("Presumptive Cases");
+            $('#text2').html("Presumptive Deaths");
             $('#box1').html("Total Cases -" + " " + result.total_cases);
             $('#box2').html("Total Deaths -" + " " + result.total_deaths);
             /*Google Chart Pie Chart*/
@@ -789,8 +789,8 @@ const googlePieChart = (result) => {
         series: [{
             name: `${mapFilterTypeText}`,
             data: [
-                ['Male', result.male_percentage],
-                ['Female', result.female_percentage]
+                ['Male', Math.trunc(result.male_percentage)],
+                ['Female', Math.trunc(result.female_percentage)]
             ]
         }]
     });
@@ -823,8 +823,8 @@ const googlePieChart = (result) => {
         series: [{
             name: `${mapFilterTypeText}`,
             data: [
-                ['Male', result.male_percentage_death],
-                ['Female', result.female_percentage_death]
+                ['Male', Math.trunc(result.male_percentage_death)],
+                ['Female', Math.trunc(result.female_percentage_death)]
             ]
         }]
     });
@@ -1295,19 +1295,24 @@ const defaultLaboratoryMapData = () => {
                         <td>${sessionValue == 0 ? testSampleRecevied : 0}</td>
                       </tr>
                     `;
-                    $("#tableBody").append(mapRow);
+                    $("#tableBody").append(mapRow);           
+                });
+                // Graph total row table         
                     const graphTableRow = `
                     <tr>
-                    <td>${sessionValue == 0 ? numberPatients : 0}</td>
-                    <td>${sessionValue == 0 ? testSampleRecevied : 0}</td>
-                    <td>${sessionValue == 0 ? numberTestConducted : 0}</td>
-                    <td>${sessionValue == 0 ? numberPositives : 0}</td>
+                    <td>${result.total_records.number_of_patients}</td>
+                    <td>${result.total_records.numbers_of_sample_received}</td>
+                    <td>${result.total_records.testConducted}</td>
+                    <td>${result.total_records.numbers_of_positives}</td>
                     </tr>
-                `;
+                    <tr>
+                    <td>${result.total_records.number_of_patients/result.total_records.number_of_patients*100}%</td>
+                    <td>${Math.trunc(result.total_records.numbers_of_sample_received/result.total_records.number_of_patients*100)}%</td>
+                    <td>${Math.trunc(result.total_records.testConducted/result.total_records.number_of_patients*100)}%</td>
+                    <td>${Math.trunc(result.total_records.numbers_of_positives/result.total_records.number_of_patients*100)}%</td>
+                    </tr>
+                    `;
                 $("#tableGraphBody").append(graphTableRow);
-                });
-
-                
                 const gaugeOptions = {
                     chart: {
                         type: 'solidgauge',
@@ -1364,25 +1369,21 @@ const defaultLaboratoryMapData = () => {
                 const chartSpeed = Highcharts.chart('container-speed', Highcharts.merge(gaugeOptions, {
                     yAxis: {
                         min: 0,
-                        max: result.total_records.number_of_patients,
+                        max: 100,
                         title: {
-                            text: '<h3 class="highChartTitle">Current Ratio</h3>',
+                            text: '<h3 class="highChartTitle" style="font-size:12px">Number Of Sample Received</h3>',
                             
                         }
                     },
                     series: [{
-                        name: 'Current Ratio',
-                        data: [result.total_records.number_of_patients],
+                        name: 'Number Of Sample Received',
+                        data: [Math.trunc(result.total_records.numbers_of_sample_received/result.total_records.number_of_patients*100)],
                         dataLabels: {
                             format:
                                 '<div style="text-align:center">' +
-                                '<span style="font-size:20px">{y}</span><br/>' +
-                                '<span style="font-size:12px;opacity:0.4">%</span>' +
+                                '<span style="font-size:20px">{y}%</span><br/>' +
                                 '</div>'
-                        },
-                        tooltip: {
-                            valueSuffix: '%'
-                        }
+                        },                       
                     }]
                 }));
             
@@ -1390,26 +1391,22 @@ const defaultLaboratoryMapData = () => {
                 const chartRpm = Highcharts.chart('container-rpm', Highcharts.merge(gaugeOptions, {
                     yAxis: {
                         min: 0,
-                        max: 500,
+                        max: 100,
                         title: {
-                            text: '<h3 class="highChartTitle">DSI</h3> ',
+                            text: '<h3 class="highChartTitle" style="font-size:12px">Number Of Test Conducted</h3>',
                            
                         }
                     },
                     series: [{
-                        name: 'Days sales inventory (DSI)',
-                        data: [result.total_records.numbers_of_sample_received],
+                        name: 'Number Of Test Conducted',
+                        data: [Math.trunc(result.total_records.testConducted/result.total_records.number_of_patients*100)],
                         dataLabels: {
                             format:
                                 `<div style="text-align:center">
-                                <span style="font-size:25px">10<br/>
-                                <span style="font-size:12px;opacity:0.4">Days</span>
+                                <span style="font-size:25px">${Math.trunc(result.total_records.testConducted/result.total_records.number_of_patients*100)}%<br/>
                                 </div>`,
                           
                         },
-                        tooltip: {
-                            valueSuffix: ' Days'
-                        }
                     }]
                 }));
                 
@@ -1418,19 +1415,18 @@ const defaultLaboratoryMapData = () => {
                 const chartRpmFirst = Highcharts.chart('container-rpm-first', Highcharts.merge(gaugeOptions, {
                     yAxis: {
                         min: 0,
-                        max: 5,
+                        max: 100,
                         title: {
-                            text: '<h3 class="highChartTitle">DSO</h3>'
+                            text: '<h3 class="highChartTitle" style="font-size:12px">Total Number Of Positives</h3>'
                         }
                     },
                     series: [{
-                        name: 'Days sales outstanding (DSO)',
-                        data: [7],
+                        name: 'Total Number Of Positives',
+                        data: [Math.trunc(result.total_records.numbers_of_positives/result.total_records.number_of_patients*100)],
                         dataLabels: {
                             format:
                                 `<div style="text-align:center">
-                                <span style="font-size:25px">7<br/>
-                                <span style="font-size:12px;opacity:0.4">Days</span>
+                                <span style="font-size:25px">${Math.trunc(result.total_records.numbers_of_positives/result.total_records.number_of_patients*100)}%<br/>
                                 </div>`,
                         },
                         tooltip: {
@@ -1443,19 +1439,18 @@ const defaultLaboratoryMapData = () => {
                 const chartRpmSecond = Highcharts.chart('container-rpm-second', Highcharts.merge(gaugeOptions, {
                     yAxis: {
                         min: 0,
-                        max: 28,
+                        max: 100,
                         title: {
-                            text: '<h3 class="highChartTitle">DPO</h3>'
+                            text: '<h3 class="highChartTitle" style="font-size:12px">Number Entered into IHIP</h3>'
                         }
                     },
                     series: [{
-                        name: 'Days payable outstanding (DPO)',
-                        data: [28],
+                        name: 'Number Entered into IHIP',
+                        data: [Math.trunc(result.total_records.numbers_of_intered_ihip/result.total_records.number_of_patients*100)],
                         dataLabels: {
                             format:
                                 `<div style="text-align:center">
-                                <span style="font-size:25px">28<br/>
-                                <span style="font-size:12px;opacity:0.4">Days</span>
+                                <span style="font-size:25px">${Math.trunc(result.total_records.numbers_of_intered_ihip/result.total_records.number_of_patients*100)}%<br/>
                                 </div>`,
                         },
                         tooltip: {
@@ -1463,7 +1458,6 @@ const defaultLaboratoryMapData = () => {
                         }
                     }]
                 }));
-
                 // yearReport
                 const chart = Highcharts.chart('yearReport', {
                     title: {
@@ -1471,9 +1465,7 @@ const defaultLaboratoryMapData = () => {
                         align: 'left'
                     },
                     subtitle: {
-                        text: 'Chart option: Plain | Source: ' +
-                            '<a href="https://www.nav.no/no/nav-og-samfunn/statistikk/arbeidssokere-og-stillinger-statistikk/helt-ledige"' +
-                            'target="_blank">NAV</a>',
+                        text: '',
                         align: 'left'
                     },
                     colors: [
@@ -1491,15 +1483,14 @@ const defaultLaboratoryMapData = () => {
                         '#23e274'
                     ],
                     xAxis: {
-                        categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+                        categories: result.graphFilterData.monthName,
                     },
                     series: [{
                         type: 'column',
                         name: 'Rabies data',
                         borderRadius: 5,
                         colorByPoint: true,
-                        data: [4420, 700, 500, 380, 3947, 3456, 4143, 3609,
-                            1320, 3072, 1022, 800],
+                        data: result.graphFilterData.record,
                         showInLegend: false
                     }]
                 });
@@ -1764,17 +1755,205 @@ const laboratory_apply_filter = (mapFilter = '') => {
                       </tr>
                     `;
                     $("#tableBody").append(mapRow);
-                    const graphTableRow = `
-                    <tr>
-                    <td>${sessionValue == 0 ? numberPatients : 0}</td>
-                    <td>${sessionValue == 0 ? testSampleRecevied : 0}</td>
-                    <td>${sessionValue == 0 ? numberTestConducted : 0}</td>
-                    <td>${sessionValue == 0 ? numberPositives : 0}</td>
-                    </tr>
-                `;
-                $("#tableGraphBody").append(graphTableRow);
                 });
-
+                // Graph total row table         
+                const graphTableRow = `
+                    <tr>
+                    <td>${result.total_records.number_of_patients}</td>
+                    <td>${result.total_records.numbers_of_sample_received}</td>
+                    <td>${result.total_records.testConducted}</td>
+                    <td>${result.total_records.numbers_of_positives}</td>
+                    </tr>
+                    <tr>
+                    <td>${result.total_records.number_of_patients/result.total_records.number_of_patients*100}%</td>
+                    <td>${Math.trunc(result.total_records.numbers_of_sample_received/result.total_records.number_of_patients*100)}%</td>
+                    <td>${Math.trunc(result.total_records.testConducted/result.total_records.number_of_patients*100)}%</td>
+                    <td>${Math.trunc(result.total_records.numbers_of_positives/result.total_records.number_of_patients*100)}%</td>
+                    </tr>
+                    `;
+                $("#tableGraphBody").append(graphTableRow);
+                const gaugeOptions = {
+                    chart: {
+                        type: 'solidgauge',
+                        height: '100%'
+                    },
+                    title: null,
+                    pane: {
+                        center: ['50%', '65%'],
+                        size: '100%',
+                        startAngle: -90,
+                        endAngle: 90,
+                        background: {
+                            backgroundColor: Highcharts.defaultOptions.legend.backgroundColor || '#EEE',
+                            innerRadius: '60%',
+                            outerRadius: '100%',
+                            shape: 'arc'
+                        }
+                    },
+                    exporting: {
+                        enabled: false
+                    },
+                    tooltip: {
+                        enabled: false
+                    },
+                    yAxis: {
+                        stops: [
+                            [0.1, '#55BF3B'], // green
+                            [0.5, '#DDDF0D'], // yellow
+                            [0.9, '#DF5353'] // red
+                        ],
+                        lineWidth: 0,
+                        tickWidth: 0,
+                        minorTickInterval: null,
+                        tickAmount: 2,
+                        title: {
+                            y: -65
+                        },
+                        labels: {
+                            // y: 16
+                        }
+                    },
+                    plotOptions: {
+                        solidgauge: {
+                            dataLabels: {
+                                y: 5,
+                                borderWidth: 0,
+                                useHTML: true
+                            }
+                        }
+                    }
+                };
+            
+                // The speed gauge
+                const chartSpeed = Highcharts.chart('container-speed', Highcharts.merge(gaugeOptions, {
+                    yAxis: {
+                        min: 0,
+                        max: 100,
+                        title: {
+                            text: '<h3 class="highChartTitle" style="font-size:12px">Number Of Sample Received</h3>',
+                            
+                        }
+                    },
+                    series: [{
+                        name: 'Number Of Sample Received',
+                        data: [Math.trunc(result.total_records.numbers_of_sample_received/result.total_records.number_of_patients*100)],
+                        dataLabels: {
+                            format:
+                                '<div style="text-align:center">' +
+                                '<span style="font-size:20px">{y}%</span><br/>' +
+                                '</div>'
+                        },                       
+                    }]
+                }));
+            
+                // The sample pie chart
+                const chartRpm = Highcharts.chart('container-rpm', Highcharts.merge(gaugeOptions, {
+                    yAxis: {
+                        min: 0,
+                        max: 100,
+                        title: {
+                            text: '<h3 class="highChartTitle" style="font-size:12px">Number Of Test Conducted</h3>',
+                           
+                        }
+                    },
+                    series: [{
+                        name: 'Number Of Test Conducted',
+                        data: [Math.trunc(result.total_records.testConducted/result.total_records.number_of_patients*100)],
+                        dataLabels: {
+                            format:
+                                `<div style="text-align:center">
+                                <span style="font-size:25px">${Math.trunc(result.total_records.testConducted/result.total_records.number_of_patients*100)}%<br/>
+                                </div>`,
+                          
+                        },
+                    }]
+                }));
+                
+            
+                // The RPM gauge - First
+                const chartRpmFirst = Highcharts.chart('container-rpm-first', Highcharts.merge(gaugeOptions, {
+                    yAxis: {
+                        min: 0,
+                        max: 100,
+                        title: {
+                            text: '<h3 class="highChartTitle" style="font-size:12px">Total Number Of Positives</h3>'
+                        }
+                    },
+                    series: [{
+                        name: 'Total Number Of Positives',
+                        data: [Math.trunc(result.total_records.numbers_of_positives/result.total_records.number_of_patients*100)],
+                        dataLabels: {
+                            format:
+                                `<div style="text-align:center">
+                                <span style="font-size:25px">${Math.trunc(result.total_records.numbers_of_positives/result.total_records.number_of_patients*100)}%<br/>
+                                </div>`,
+                        },
+                        tooltip: {
+                            valueSuffix: 'Days'
+                        }
+                    }]
+                }));
+            
+                // The RPM gauge - Second
+                const chartRpmSecond = Highcharts.chart('container-rpm-second', Highcharts.merge(gaugeOptions, {
+                    yAxis: {
+                        min: 0,
+                        max: 100,
+                        title: {
+                            text: '<h3 class="highChartTitle" style="font-size:12px">Number Entered into IHIP</h3>'
+                        }
+                    },
+                    series: [{
+                        name: 'Number Entered into IHIP',
+                        data: [Math.trunc(result.total_records.numbers_of_intered_ihip/result.total_records.number_of_patients*100)],
+                        dataLabels: {
+                            format:
+                                `<div style="text-align:center">
+                                <span style="font-size:25px">${Math.trunc(result.total_records.numbers_of_intered_ihip/result.total_records.number_of_patients*100)}%<br/>
+                                </div>`,
+                        },
+                        tooltip: {
+                            valueSuffix: 'Days'
+                        }
+                    }]
+                }));
+                // yearReport
+                const chart = Highcharts.chart('yearReport', {
+                    title: {
+                        text: 'Institute wise Yearly data',
+                        align: 'left'
+                    },
+                    subtitle: {
+                        text: '',
+                        align: 'left'
+                    },
+                    colors: [
+                        '#4caefe',
+                        '#3fbdf3',
+                        '#35c3e8',
+                        '#2bc9dc',
+                        '#20cfe1',
+                        '#16d4e6',
+                        '#0dd9db',
+                        '#03dfd0',
+                        '#00e4c5',
+                        '#00e9ba',
+                        '#00eeaf',
+                        '#23e274'
+                    ],
+                    xAxis: {
+                        categories: result.graphFilterData.monthName,
+                    },
+                    series: [{
+                        type: 'column',
+                        name: 'Rabies data',
+                        borderRadius: 5,
+                        colorByPoint: true,
+                        data: result.graphFilterData.record,
+                        showInLegend: false
+                    }]
+                });
+                // map chart
                 Highcharts.mapChart('laboratory-map', {
                     chart: {
                         map: topology,
