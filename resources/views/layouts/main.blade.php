@@ -4,7 +4,7 @@
         <div class="main-title nrcp-main-title">
         <div class="row mb-0 d-flex align-items-center">
             <div class="col-sm-8">
-                <h1 class="text-left">Dashboard for @section('title') {{ config('app.name') }}@show</h1>
+                <h1 class="text-left"> @section('title') {{ config('app.name') }}@show</h1>
             </div>
             <div class="col-sm-4">
                 <ol class="breadcrumb  justify-content-end m-0 p-0 align-items-center" >

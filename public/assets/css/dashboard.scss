@@ -161,11 +161,12 @@
   }
   .dashboard .form-group select {
 	font-size: 13px;
-	margin: 5px 0px;
+	// margin: 5px 0px;
 	color: #404040;
 	border: 1px solid #dfdfdf;
 	border-radius: 0.25rem;
 	width: 100%;
+	text-transform: capitalize;
   }
   .dashboard .dashboard-table {
 	max-height: 590px;
@@ -428,9 +429,9 @@
   }
   
   .table-responsive {
-	overflow-y: scroll;
+	overflow-y: auto;
 	scrollbar-width: thin;
-	scrollbar-color: #ddd #999;
+	// scrollbar-color: #ddd #999;
   }
   .table-responsive::-webkit-scrollbar {
 	width: 7px;

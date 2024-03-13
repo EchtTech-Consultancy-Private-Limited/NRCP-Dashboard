@@ -85,7 +85,7 @@
                                        <option value='ELISA'>ELISA</option>
                                        <option value='PFFIT'>PFFIT</option>
                                        <option value='DFAT'>DFAT</option>
-                                       <option value='OTHERS'>OTHERS</option>
+                                       <option value='OTHERS'>Others</option>
                                     </select>
                                     <small id="lims-error" class="form-text text-muted">
                                     </small>
@@ -118,7 +118,7 @@
                                  </div>
                                  <div class="col-lg-3 col-md-3 col-6">
                                     <div class="form-group">
-                                       <label for="diseasesSyndromes">Numbers Entered into theIHIP<span class="star">*</span></label>
+                                       <label for="diseasesSyndromes">Numbers Entered into the IHIP<span class="star">*</span></label>
                                        <!-- <select class="form-control" name="numbers_of_intered_ihip" id="numbers_of_intered_ihip">
                                           <option value=""> Select</option>
                                           <option value='yes'>Yes</option>
@@ -148,31 +148,31 @@
             <div class="form-tab">
                <div class="bootstrap-tab">
                   <div class="tab-content" id="myTabContent">
-                     <div class="" id="nav-add-patient-record" role="tabpanel" aria-labelledby="home-tab">
-                     <table id="general_profiles_TABLE" class="display">
+                     <div class="table-responsive" id="nav-add-patient-record" role="tabpanel" aria-labelledby="home-tab">
+                     <table id="general_profiles_TABLE" class="display ">
                            <thead>
                               <tr>
-                                 <th>Sr.No.</th>
-                                 <th>Date</th>
-                                 <th>Patients No.</th>
-                                 <th>Sample Recieved</th>
-                                 <th>Type</th>
-                                 <th>Diagnosis</th>
-                                 <th>Test</th>
-                                 <th>Positives</th>
-                                 <th>IHIP</th>
-                                 <th>State</th>
-                                 <th>Action</th>
+                                 <th class="text-nowrap">Sr.No.</th>
+                                 <th class="text-nowrap">Date</th>
+                                 <th class="text-nowrap">Patients No.</th>
+                                 <th class="text-nowrap">Sample Recieved</th>
+                                 <th class="text-nowrap">Type</th>
+                                 <th class="text-nowrap">Diagnosis</th>
+                                 <th class="text-nowrap">Test</th>
+                                 <th class="text-nowrap">Positives</th>
+                                 <th class="text-nowrap">IHIP</th>
+                                 <th class="text-nowrap">State</th>
+                                 <th class="text-nowrap">Action</th>
                               </tr>
                            </thead>
                            <tbody>
                               @foreach($rabies_test as $data)
                               <tr>
                                  <td>{{$data->id}}</td>
-                                 <td>{{$data->date}}</td>
+                                 <td class="text-nowrap">{{$data->date}}</td>
                                  <td>{{$data->number_of_patients}}</td>
                                  <td>{{$data->numbers_of_sample_recieved}}</td>
-                                 <td>{{($data->type =='For diagnosis')?'For diagnosis':'Titre estimation'}}</td>
+                                 <td class="text-nowrap">{{($data->type =='For diagnosis')?'For diagnosis':'Titre estimation'}}</td>
                                  <td>{{$data->method_of_diagnosis}}</td>
                                  <td>{{$data->numbers_of_test}}</td>
                                  <td>{{$data->numbers_of_positives}}</td>
