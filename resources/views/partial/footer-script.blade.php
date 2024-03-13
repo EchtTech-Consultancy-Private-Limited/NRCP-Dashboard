@@ -33,10 +33,6 @@
 <script src="{{ asset('assets/login/plugins/jquery-mapael/jquery.mapael.min.js') }}"></script>
 <script src="{{ asset('assets/login/plugins/jquery-mapael/maps/usa_states.min.js') }}"></script>
 <!-- ChartJS -->
-<script src="{{ asset('assets/login/plugins/chart.js/Chart.min.js') }}"></script>
-
-<script type="text/javascript" src="{{ asset('gstatic.com_charts_loader.js') }}"></script>
-
 <script type="text/javascript" src="{{ asset('jsdelivr.net_npm_apexcharts.js') }}"></script>
 
 <!-- AdminLTE for demo purposes -->
@@ -49,11 +45,6 @@
 <script src="{{ asset('assets/district_map.js') }}"></script>
 <script src="{{ asset('assets/indiaMap.js') }}"></script>
 <script src="{{ asset('assets/js/deletejsfile.js') }}"></script>
-
-<script src="{{ asset('assets/highchartsPrint.js')}}"></script>
-<script src="{{ asset('assets/exportingPrint.js') }}"></script>
-{{-- highchart --}}
-<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
 <!-- datatable js -->
 
@@ -87,16 +78,6 @@
  @endif 
 </script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-<!-- 
-<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
-<script src="https://cdn.datatables.net/2.0.0/js/dataTables.js"></script>
-<script src="https://cdn.datatables.net/buttons/3.0.0/js/dataTables.buttons.js"></script>
-<script src="https://cdn.datatables.net/buttons/3.0.0/js/buttons.dataTables.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script>
-<script src="https://cdn.datatables.net/buttons/3.0.0/js/buttons.html5.min.js"></script>
-<script src="https://cdn.datatables.net/buttons/3.0.0/js/buttons.print.min.js"></script> -->
 
 
 

@@ -790,6 +790,10 @@ section.content.sform .table div::before {
   color: #000;
 }
 
+#nhm-list {
+  display: flex;
+}
+
 .accordion.laboratory-sidebar .link a {
   display: block;
   padding: 10px 14px;
