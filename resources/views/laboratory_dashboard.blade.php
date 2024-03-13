@@ -301,7 +301,27 @@
                                                         <div class="col-md-3"> <div id="container-rpm-second" class="chart-container"></div> </div>
                                                      </div>
                                                 </div>
-                                               
+                                                <div id="graphical_view">
+                                                    <div class="row">
+                                                        <div class="col-md-6 pr-4">
+                                                            <div id="yearReport" class="dashboard-filter mt-5"></div>
+                                                        </div>
+                                                        <div class="col-md-6 pl-4">
+                                                            <div class="dashboard-filter mt-5">
+                                                                <div id="monthlyReport" style="height: 400px;"></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div id="graphical_view">
+                                                    <div class="row">
+                                                        <div class="col-md-12 pl-4">
+                                                            <div class="dashboard-filter mt-5">
+                                                                <div id="monthlySampleReport" style="height: 400px;"></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                         </div>
                                     </div>
                                 </div>

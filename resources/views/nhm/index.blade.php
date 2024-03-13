@@ -10,7 +10,7 @@
             <div>
                 <a href="{{ route('nhm.create') }}" class="btn bg-primary text-light float-right m-2">Create NHM</a>
             </div>
-            <div class="table">
+            <div class="table" id="nhm-list">
                 <div class="w-100 table-title">
                     State Annual Plan
                 </div>
