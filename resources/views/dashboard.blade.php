@@ -60,7 +60,7 @@
                                             <div class="row">
                                             <div class="col-lg-2 col-md-2 col-4">
                                                 <div class="form-group">
-                                                    <label for="state">State<span class="star">*</span></label>
+                                                    <label for="state">State<span class="star"></span></label>
                                                     <select class="form-select state click-function"
                                                             aria-label="Default select example" id="state" name="state_name"
                                                             onChange="handleFilterValue();handleDistrict()">
@@ -81,7 +81,7 @@
                                             </div>
                                             <div class="col-lg-2 col-md-2 col-4">
                                                 <div class="form-group">
-                                                    <label for="district">District<span class="star">*</span></label>
+                                                    <label for="district">District<span class="star"></span></label>
                                                     <select class="form-select click-function"
                                                             aria-label="Default select example" id="district"
                                                             name="district_name" onChange="handleFilterValue()">
@@ -93,7 +93,7 @@
                                             </div>
                                             <div class="col-lg-2 col-md-2 col-4">
                                                 <div class="form-group">
-                                                    <label for="fromYear">From Year<span class="star">*</span></label>
+                                                    <label for="fromYear">From Year<span class="star"></span></label>
                                                     <select class="form-select p-1 year click-function" name="year"
                                                             aria-label="Default select example" id="year" required=""
                                                             onChange="handleFilterValue()">
@@ -115,7 +115,7 @@
 
                                             <div class="col-lg-2 col-md-2 col-4">
                                                 <div class="form-group">
-                                                    <label for="toYear">To Year<span class="star">*</span></label>
+                                                    <label for="toYear">To Year<span class="star"></span></label>
                                                     <select class="form-select p-1 year click-function" name="toYear"
                                                             aria-label="To Year" id="yearto" onChange="handleFilterValue()">
                                                         <!-- Options will be populated dynamically using JavaScript -->
@@ -127,7 +127,7 @@
                                             </div>
                                             <div class="col-lg-2 col-md-2 col-4">
                                                 <div class="form-group">
-                                                    <label for="formType">Form Type<span class="star">*</span></label>
+                                                    <label for="formType">Form Type<span class="star"></span></label>
                                                     <select class="form-select " aria-label="Default select example"
                                                             id="formType" onChange="handleFormType()">
                                                         <option value="" > Select Form Type
@@ -143,7 +143,7 @@
                                             <div class="col-lg-2 col-md-2 col-4">
                                                 <div class="form-group">
                                                     <label for="diseasesSyndromes">Diseases Syndromes<span
-                                                            class="star">*</span></label>
+                                                            class="star"></span></label>
                                                     <select class="form-select" aria-label="Default select example"
                                                             id="diseasesSyndromes" onChange="handleFilterValue()">
                                                         <option value=""> Select Diseases Syndromes

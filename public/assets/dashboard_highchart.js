@@ -1,5 +1,5 @@
-//  const BASE_URL = window.location.origin;
-const BASE_URL =window.location.origin+"/public";
+ const BASE_URL = window.location.origin;
+// const BASE_URL =window.location.origin+"/public";
 
 /*handle Form Type*/
 const handleFormType = () => {
@@ -448,7 +448,7 @@ const defaultLoadMapData = () => {
         type: "get",
         success: function (result) {
             $('#text1').html("Presumptive Cases");
-            $('#text2').html("Presumptive Cases");
+            $('#text2').html("Presumptive Deaths");
             $('#box1').html("Total Cases -" + " " + result.total_cases);
             $('#box2').html("Total Deaths -" + " " + result.total_deaths);
             /*Google Chart Pie Chart*/
