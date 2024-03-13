@@ -68,6 +68,7 @@ body {
   box-shadow: inset 0 0px 8px 0px #fff !important;
   width: 100%;
   padding: 7px 1rem 7px 0.75rem !important;
+  height: 38px;
 }
 
 .form-group input::-moz-placeholder,
@@ -96,11 +97,12 @@ body {
 
 .form-group label {
   padding: 0 0px;
-  font-size: 13px;
+  font-size: 14px;
 }
 
 .form-group .form-select {
   padding: 4px 2.25rem 4px 0.75rem;
+  color: #000;
 }
 
 .form-group .form-select:focus {
@@ -171,9 +173,9 @@ input[type=date]::-webkit-datetime-edit-year-field {
 }
 
 .form-control {
-  border: 1px solid #acadaf;
+  border: 1px solid #ddd;
   padding: 4px 0.75rem;
-  height: inherit;
+  // height: inherit;
 }
 
 .tab-content {
@@ -222,6 +224,8 @@ textarea.valid {
 
 .form-text {
   color: #ff0000 !important;
+  font-size: 11px;
+  text-transform: capitalize;
 }
 
 .panel-body {
@@ -412,7 +416,7 @@ span.fa.printhide {
     font-family: "fontAwesome";
     position: absolute;
     right: 7%;
-    color: #fff;
+    color: #111111;
     transform: rotate(-90deg);
     font-size: 22px;
     top: 5px;
@@ -507,3 +511,111 @@ tspan.highChartTitle {
   font-weight: 700;
   color: #000 !important;
 }
+
+.dropdown.profile {
+  .dropdown-menu{
+    padding: 0;
+    top: 50px;
+    border-top: 0;
+    &::before{
+      content: '';
+      border-bottom: 20px solid #fff;
+      border-left: 20px solid transparent;
+      border-right: 20px solid transparent;
+      position: absolute;
+      top: -20px;
+      right: 0;
+    }
+    ul{
+      li{
+        border-bottom: 1px solid #ddd;
+        padding: 8px 0;
+        list-style: none;
+        .dropdown-item{
+          font-size: 14px;
+          i{
+            padding-right: 10px;
+          }
+        }
+      }
+    }
+  }
+  .btndropdown-toggle i {
+
+    font-size: 38px; 
+    color: #fff;
+  }
+}
+
+// datatable or table style 
+
+.display.dataTable{
+  
+  tr.even{
+    background-color: #3f51b508 !important;
+    
+  }
+  td{
+    border-left: 1px solid #ddd;
+    &:last-child{
+      border-right: 1px solid #ddd;
+    }
+  }
+  td,th{
+    font-size: 14px;
+  }
+  th{
+    white-space: nowrap;
+    background: #3f51b5;
+    color: #fff;
+    border-right: 1px solid #fff;
+    &:last-child{
+      border: none;
+    }
+  }
+}
+
+table.dataTable.display>tbody>tr.odd>.sorting_1, table.dataTable.order-column.stripe>tbody>tr.odd>.sorting_1 {
+  box-shadow: none !important;
+  background: none;
+}
+table.dataTable.stripe>tbody>tr.odd>*, table.dataTable.display>tbody>tr.odd>* {
+  box-shadow: none !important;
+}
+table.dataTable.stripe>tbody>tr.odd>*, table.dataTable.display>tbody>tr.even>* {
+  box-shadow: none !important;
+}
+
+.dataTables_wrapper .dataTables_length{
+  // background-color: #dddddd40;
+  padding: 0px 7px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  label{
+    margin: 0;
+    font-size: 14px;
+    select{
+      font-size: 14px !important;
+    }
+  }
+}
+.dataTables_info{
+  border: 1px solid #ddd;
+  padding: 0;
+  margin-top: 20px;
+  padding: 4px 9px !important;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.dataTables_wrapper .dataTables_length select {
+  padding: 4px 0 !important;
+  border-top: 0 !important;
+  border-bottom: 0 !important;
+  border-radius: 0 !important;
+}
+
+.dataTables_filter label{
+  font-size: 14px;
+}
+

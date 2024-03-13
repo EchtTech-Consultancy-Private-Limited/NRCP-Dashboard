@@ -13,7 +13,7 @@
                             <form action="{{ route('quality-add') }}" method="post" class="" id="quality_assurance">
                                  @csrf
                                  <div class="row">
-                                    <div class="col-lg-2 col-md-2 col-6">
+                                    <div class="col-xl-2 col-lg-2 col-md-2 col-6">
                                        <div class="form-group">
                                           <label for="state">PTILCPR<span class="star" tooltip>*</span></label>
                                           <select class="form-select" aria-label="Default select example" name="pt" id="pt">
@@ -26,7 +26,7 @@
                                             @enderror 
                                        </div>
                                     </div>
-                                    <div class="col-lg-3 col-md-3 col-6">
+                                    <div class="col-xl-3 col-lg-4 col-md-3 col-6">
                                        <div class="form-group">
                                           <label for="district">PTPNABL(ISO 17043)<span class="star">*</span></label>
                                           <select class="form-select" aria-label="Default select example" name="accredited_pt" id="accredited_pt">
@@ -39,7 +39,7 @@
                                             @enderror 
                                        </div>
                                     </div>
-                                    <div class="col-lg-3 col-md-3 col-6">
+                                    <div class="col-xl-3 col-lg-4 col-md-3 col-6">
                                        <div class="form-group">
                                           <label for="fromYear">LSPTISO 15189/ISO17025<span class="star">*</span></label>
                                           <select class="form-select" aria-label="Default select example" name="supervisors_trained" id="supervisors_trained">
@@ -50,7 +50,7 @@
                                           <small id="supervisors_trained-error" class="form-text text-muted"></small>
                                        </div>
                                     </div>
-                                    <div class="col-lg-2 col-md-2 col-6">
+                                    <div class="col-xl-2 col-lg-2 col-md-2 col-6">
                                        <div class="form-group">
                                           <label for="diseasesSyndromes">LIMS available<span class="star">*</span></label>
                                           <select class="form-select" name="lims" id="lims">
@@ -61,8 +61,8 @@
                                           <small id="lims-error" class="form-text text-muted"></small>
                                        </div>
                                     </div>
-                                    <div class="col-lg-2 col-md-2 col-6 search-reset">
-                                        <div class="apply-filter mt-4 pt-1">
+                                    <div class="col-xl-2 col-lg-12 col-md-2 col-6 search-reset">
+                                        <div class="apply-filter mt-xl-4 mt-lg-3 pt-1">
                                             <button type="submit" class="btn bg-primary mr-2">Save</button>
                                             <button type="reset" class="btn bg-danger">Reset</button>
                                         </div>
@@ -105,7 +105,7 @@
                                     <td>{{$data->lims}}</td>
                                     <td>
                                     <a href="{{ url('quality-edit',$data->id) }}" class="btn btn-primary editbtn btn-sm" title="Edit Data"><i class="fa fa-pencil"></i> </a>
-                                    <a href="javascript:void(0)" data-url="{{ route('quality-destroy', $data->id) }}" class="btn btn-danger deletebtn btn-sm delete-user" title="Delete Data" id="delete">
+                                    <a href="javascript:void(0)" data-url="{{ route('quality-destroy', $data->id) }}" class="btn btn-danger deletebtn btn-sm delete-user mt-xl-0 mt-lg-2" title="Delete Data" id="delete">
                                         <i class="fa fa-trash"></i>
                                     </a>
                                     </td>

@@ -17,11 +17,12 @@
                                             <div class="form-group">
                                                 <label for="state">Module<span class="star">*</span></label>
                                                 <select class="form-select" aria-label="Default select example" name="modulename" id="modulename">
-                                                    <option value='1'>General</option>
-                                                    <option value='2'>Quality</option>
-                                                    <option value='3'>Equipment</option>
-                                                    <option value='4'>Rabies</option>
-                                                    <option value='5'>Expenditure</option>
+                                                    <option value='1'>Select Module</option>
+                                                    <option value='2'>General</option>
+                                                    <option value='3'>Quality</option>
+                                                    <option value='4'>Equipment</option>
+                                                    <option value='5'>Rabies</option>
+                                                    <option value='6'>Expenditure</option>
                                                 </select>
                                                 @error('modulename') 
                                                     <span class="form-text text-muted">{{ $message }}</span>

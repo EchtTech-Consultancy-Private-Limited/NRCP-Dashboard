@@ -161,11 +161,12 @@
   }
   .dashboard .form-group select {
 	font-size: 13px;
-	margin: 5px 0px;
+	// margin: 5px 0px;
 	color: #404040;
 	border: 1px solid #dfdfdf;
 	border-radius: 0.25rem;
 	width: 100%;
+	text-transform: capitalize;
   }
   .dashboard .dashboard-table {
 	max-height: 590px;
@@ -428,9 +429,9 @@
   }
   
   .table-responsive {
-	overflow-y: scroll;
+	overflow-y: auto;
 	scrollbar-width: thin;
-	scrollbar-color: #ddd #999;
+	// scrollbar-color: #ddd #999;
   }
   .table-responsive::-webkit-scrollbar {
 	width: 7px;
@@ -565,33 +566,38 @@
   
 	/* Basic Card */
 	.basic-card {
-		/* width:300px; */
-		width: 235px;
+		width:100%; 
+		// width: 235px;
 		position: relative;
 		
 		-webkit-box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.3);
 		-moz-box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.3);
 		-o-box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.3);
 		box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.3);
+		border-radius: 9px;
 	}
 	
 		.basic-card .card-content {
-			padding: 15px;
+			padding: 10px 15px;
 			color: #ffffff;
 		}
   
 		.basic-card .card-title {
-			font-size: 25px;
-			font-family: 'Open Sans', sans-serif;
+			font-size: 16px;
+			font-family: "Open Sans", sans-serif;
+			padding-bottom: 8px;
+			font-weight: 600;
 		}
   
 		.basic-card .card-text {
-			line-height: 1.6;
+			line-height: 1.5;
+    		font-size: 14px;
 		}
   
 		.basic-card .card-link {
-			padding: 25px 15px;
-			width: -webkit-fill-available;
+			padding: 9px 12px;
+    		width: -webkit-fill-available;
+			border-top: 1px solid #ddd;
 		}
   
 			.basic-card .card-link a {
@@ -622,7 +628,8 @@
 	
 	
 	.basic-card-aqua {
-		background-image: linear-gradient(to bottom right, #00bfad, #99a3d4);
+		// background-image: linear-gradient(to bottom right, #00bfad, #99a3d4);
+		background-image: linear-gradient(to bottom right, #088579, #99a3d4);
 	}
   
 		.basic-card-aqua .card-content, .basic-card .card-link a {
@@ -631,6 +638,10 @@
 		
 		.basic-card-aqua .card-link {
 			border-top:1px solid #82c1bb;
+			span{
+				font-size: 15px;
+					font-weight: 600;
+			}
 		}
   
 			.basic-card-aqua .card-link a:after {
@@ -638,7 +649,8 @@
 			}
   
 	.basic-card-lips {
-		background-image: linear-gradient(to bottom right, #ec407b, #ff7d94);
+		// background-image: linear-gradient(to bottom right, #ec407b, #ff7d94);
+		background-image: linear-gradient(to bottom right, #a11142, #ff7d94);
 	}
   
 		.basic-card-lips .card-content {

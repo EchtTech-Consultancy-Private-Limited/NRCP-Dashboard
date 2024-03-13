@@ -7,4 +7,20 @@
         border-radius: 100%;
         padding: 8px;
     }
+
+    tspan.highChartTitle {
+        font-size: 15px;
+        font-weight: 700;
+        color: #000 !important;
+    }
+
+    .basic-card .card-content {
+        padding: 10px 7px;
+    }
+    .basic-card .card-title {
+        font-size: 15px;
+    }
+    .basic-card .card-link {
+        padding: 9px 7px;
+    }
 }

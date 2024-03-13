@@ -35,7 +35,7 @@
                                  </div>
                                  <div class="col-lg-3 col-md-3 col-6">
                                     <div class="form-group">
-                                       <label for="fromYear">Numbers of Sample Recieves<span class="star">*</span></label>
+                                       <label for="fromYear">Number of Sample Recieves<span class="star">*</span></label>
                                        <input type="number" class="form-control" aria-label="Default select example" name="numbers_of_sample_recieved" id="numbers_of_sample_recieved" value="{{$rabiestest->numbers_of_sample_recieved}}">
                                        <small id="supervisors_trained-error"
                                           class="form-text text-muted">
@@ -111,7 +111,7 @@
                                  </div>
                                  <div class="col-lg-3 col-md-3 col-6">
                                     <div class="form-group">
-                                       <label for="diseasesSyndromes">Numbers of Test Conducted<span class="star">*</span></label>
+                                       <label for="diseasesSyndromes">Number of Test Conducted<span class="star">*</span></label>
                                        <!-- <select class="form-control" name="numbers_of_test" id="numbers_of_test">
                                           <option value=""> Select</option>
                                           <option value='yes'>Yes</option>
@@ -123,7 +123,7 @@
                                  </div>
                                  <div class="col-lg-3 col-md-3 col-6">
                                     <div class="form-group">
-                                       <label for="diseasesSyndromes">Total Numbers of Positives<span class="star">*</span></label>
+                                       <label for="diseasesSyndromes">Total Number of Positives<span class="star">*</span></label>
                                        <!-- <select class="form-control" name="numbers_of_positives" id="numbers_of_positives">
                                           <option value=""> Select</option>
                                           <option value='yes'>Yes</option>
