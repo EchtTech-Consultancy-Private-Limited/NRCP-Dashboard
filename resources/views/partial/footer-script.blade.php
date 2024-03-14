@@ -11,6 +11,7 @@
 <script src="{{ asset('assets/login/plugins/jquery/jquery.min.js') }}"></script>
 <script src="{{ asset('assets/custom_js/rabies_dropdown.js') }}"></script>
 <script src="{{ asset('assets/js/pform.js') }}"></script>
+<script src="{{ asset('assets/js/main.js') }}"></script>
 <script src="{{ asset('assets/js/sform.js') }}"></script>
 <script src="{{ asset('assets/js/general_profile.js') }}"></script>
 <script src="{{ asset('assets/js/quality_assurance.js') }}"></script>
