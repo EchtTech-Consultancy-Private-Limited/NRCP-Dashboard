@@ -1,5 +1,5 @@
-//  const BASE_URL = window.location.origin;
-const BASE_URL =window.location.origin+"/public";
+ const BASE_URL = window.location.origin;
+// const BASE_URL =window.location.origin+"/public";
 
 /*handle Form Type*/
 const handleFormType = () => {
@@ -1292,7 +1292,7 @@ const defaultLaboratoryMapData = () => {
                     const mapRow = `
                       <tr>
                         <td>${capitalizeFirstLetter(institute)}</td>
-                        <td>${sessionValue == 0 ? testSampleRecevied : 0}</td>
+                        <td>${sessionValue == 0 ? numberTestConducted : 0}</td>
                       </tr>
                     `;
                     $("#tableBody").append(mapRow);           
@@ -1458,10 +1458,10 @@ const defaultLaboratoryMapData = () => {
                         }
                     }]
                 }));
-                // yearReport
+                // monthlyReport Graph
                 const chart = Highcharts.chart('yearReport', {
                     title: {
-                        text: 'Institute wise Yearly data',
+                        text: 'Institute wise Monthly data',
                         align: 'left'
                     },
                     subtitle: {
@@ -1483,92 +1483,66 @@ const defaultLaboratoryMapData = () => {
                         '#23e274'
                     ],
                     xAxis: {
-                        categories: result.graphFilterData.monthName,
+                        categories: result.monthGraphFilterData.monthNameGraph,
                     },
                     series: [{
                         type: 'column',
                         name: 'Rabies data',
                         borderRadius: 5,
                         colorByPoint: true,
-                        data: result.graphFilterData.record,
+                        data: result.monthGraphFilterData.MonthRecord,
                         showInLegend: false
                     }]
                 });
-                // monthlyReport
+                // yearlyReport graph
                 Highcharts.chart('monthlyReport', {
                     chart: {
                         type: 'column'
                     },
                     title: {
-                        text: 'Institute wise Monthly data'
+                        text: 'Institute wise Yearly data',
+                        align: 'left'
+                    },
+                    subtitle: {
+                        text: '',
+                        align: 'left'
                     },
                     xAxis: {
-                        categories: [
-                            'Current',
-                            'Due Date',
-                            'Rabies'
-                        ]
+                        categories: result.yearGraphFilterData.year
                     },
-                    yAxis: [{
+                    yAxis: {
                         min: 0,
                         title: {
-                            text: 'Ravies Received'
+                            text: 'Percent'
                         }
-                    }, {
-                        title: {
-                            text: 'Total Conducted'
-                        },
-                        opposite: true
-                    }],
-                    legend: {
-                        shadow: false
                     },
                     tooltip: {
+                        pointFormat: '<span style="color:{series.color}">{series.name}</span>: <b>{point.y}</b><br/>',
                         shared: true
                     },
                     plotOptions: {
                         column: {
-                            grouping: false,
-                            shadow: false,
-                            borderWidth: 0
+                            stacking: 'Values',
+                            dataLabels: {
+                                enabled: true,
+                                format: '{point.y}'
+                            }
                         }
                     },
                     series: [{
                         name: 'Patients',
-                        color: 'rgba(165,170,217,1)',
-                        data: [150, 73, 20],
-                        pointPadding: 0.3,
-                        pointPlacement: -0.2
+                        data: result.yearGraphFilterData.sumNumbernumber_of_patients
                     }, {
                         name: 'Sample Received',
-                        color: 'rgba(126,86,134,.9)',
-                        data: [140, 90, 40],
-                        pointPadding: 0.4,
-                        pointPlacement: -0.2
+                        data: result.yearGraphFilterData.sumNumbernumbers_of_sample_recieved
                     }, {
                         name: 'Test Conducted',
-                        color: 'rgba(248,161,63,1)',
-                        data: [183.6, 178.8, 198.5],
-                        tooltip: {
-                            valuePrefix: '$',
-                            valueSuffix: ' M'
-                        },
-                        pointPadding: 0.3,
-                        pointPlacement: 0.2,
-                        yAxis: 1
+                        data: result.yearGraphFilterData.sumNumbernumbers_of_test
                     }, {
                         name: 'Numbers of Positives',
-                        color: 'rgba(186,60,61,.9)',
-                        data: [203.6, 198.8, 208.5],
-                        tooltip: {
-                            valuePrefix: '$',
-                            valueSuffix: ' M'
-                        },
-                        pointPadding: 0.4,
-                        pointPlacement: 0.2,
-                        yAxis: 1
+                        data: result.yearGraphFilterData.sumNumbernumbers_of_positives
                     }]
-                });               
+                });            
                 // monthlysampleReport
                 Highcharts.chart('monthlySampleReport', {
                     chart: {
@@ -1582,7 +1556,7 @@ const defaultLaboratoryMapData = () => {
                             'Sample Received'
                     },
                     xAxis: {
-                        categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+                        categories: result.graphFilterData.monthName
                     },
                     yAxis: {
                         title: {
@@ -1598,13 +1572,22 @@ const defaultLaboratoryMapData = () => {
                         }
                     },
                     series: [{
-                        name: 'Ravies',
-                        data: [16.0, 18.2, 23.1, 27.9, 32.2, 36.4, 39.8, 38.4, 35.5, 29.2,
-                            22.0, 17.8]
-                    }, {
-                        name: 'Sample Received',
-                        data: [1,3,6,9,11,13,43,11,9]
-                    }]
+                        name: 'Patients',
+                        data: result.graphFilterData.sumNumbernumber_of_patients
+                        }, 
+                        {
+                            name: 'Test Conducted',
+                            data: result.graphFilterData.sumNumbernumbers_of_test
+                        },
+                        {
+                            name: 'Sample Received',
+                            data: result.graphFilterData.sumNumbernumbers_of_sample_recieved
+                        },
+                        {
+                            name: 'Numbers Of Positives',
+                            data: result.graphFilterData.sumNumbernumbers_of_positives
+                        }
+                    ]
                 });
                 
                 // map code 
@@ -1689,12 +1672,21 @@ $("#laboratory_apply_filter").on('click', function () {
 $("#laboratory_reset_button").on('click', function () {
     laboratoryResetButton()
 });
-const laboratory_apply_filter = (mapFilter = '') => {
+$("#institute_year_filter").on('change', function () {
+    var instituteVal = $(this).val();
+    laboratory_apply_filter(instituteVal);
+});
+const laboratory_apply_filter = (rabiesfilter = '') => {
     const filter_month = $('#month').find(":selected").val();
     const filter_institute = $('#institute').find(":selected").val();
     const filter_year = $('#year').find(":selected").val();    
     const session_value = $('#session_value').val();
     const search_btn = $("#laboratory_apply_filter");
+    if(Number.isInteger(rabiesfilter)){
+        var mapFilter = rabiesfilter; 
+    }else{
+        var instituteYearFilter = rabiesfilter; 
+    }
     search_btn.attr("disabled", true);
     let loading_content = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Loading...';
     search_btn.html(loading_content);
@@ -1715,6 +1707,7 @@ const laboratory_apply_filter = (mapFilter = '') => {
             year: filter_year,
             institute: filter_institute,
             mapFilter: mapFilter,
+            instituteYearFilter: instituteYearFilter,
             session_value: session_value
         },
         success: function (result) {            
@@ -1751,7 +1744,7 @@ const laboratory_apply_filter = (mapFilter = '') => {
                     const mapRow = `
                       <tr>
                         <td>${capitalizeFirstLetter(institute)}</td>
-                        <td>${sessionValue == 0 ? testSampleRecevied : 0}</td>
+                        <td>${sessionValue == 0 ? numberTestConducted : 0}</td>
                       </tr>
                     `;
                     $("#tableBody").append(mapRow);
@@ -1917,10 +1910,10 @@ const laboratory_apply_filter = (mapFilter = '') => {
                         }
                     }]
                 }));
-                // yearReport
+                // monthly Report Graph
                 const chart = Highcharts.chart('yearReport', {
                     title: {
-                        text: 'Institute wise Yearly data',
+                        text: 'Institute wise Monthly data',
                         align: 'left'
                     },
                     subtitle: {
@@ -1942,16 +1935,113 @@ const laboratory_apply_filter = (mapFilter = '') => {
                         '#23e274'
                     ],
                     xAxis: {
-                        categories: result.graphFilterData.monthName,
+                        categories: result.monthGraphFilterData.monthNameGraph,
                     },
                     series: [{
                         type: 'column',
                         name: 'Rabies data',
                         borderRadius: 5,
                         colorByPoint: true,
-                        data: result.graphFilterData.record,
+                        data: result.monthGraphFilterData.MonthRecord,
                         showInLegend: false
                     }]
+                });
+
+                // yearlyReport graph
+                Highcharts.chart('monthlyReport', {
+                    chart: {
+                        type: 'column'
+                    },
+                    title: {
+                        text: 'Institute wise Yearly data',
+                        align: 'left'
+                    },
+                    subtitle: {
+                        text: '',
+                        align: 'left'
+                    },
+                    xAxis: {
+                        categories: result.yearGraphFilterData.year
+                    },
+                    yAxis: {
+                        min: 0,
+                        title: {
+                            text: 'Percent'
+                        }
+                    },
+                    tooltip: {
+                        pointFormat: '<span style="color:{series.color}">{series.name}</span>: <b>{point.y}</b><br/>',
+                        shared: true
+                    },
+                    plotOptions: {
+                        column: {
+                            stacking: 'Values',
+                            dataLabels: {
+                                enabled: true,
+                                format: '{point.y}'
+                            }
+                        }
+                    },
+                    series: [{
+                        name: 'Patients',
+                        data: result.yearGraphFilterData.sumNumbernumber_of_patients
+                    }, {
+                        name: 'Sample Received',
+                        data: result.yearGraphFilterData.sumNumbernumbers_of_sample_recieved
+                    }, {
+                        name: 'Test Conducted',
+                        data: result.yearGraphFilterData.sumNumbernumbers_of_test
+                    }, {
+                        name: 'Numbers of Positives',
+                        data: result.yearGraphFilterData.sumNumbernumbers_of_positives
+                    }]
+                });
+
+                // line month chart
+                Highcharts.chart('monthlySampleReport', {
+                    chart: {
+                        type: 'line'
+                    },
+                    title: {
+                        text: 'Institute wise Patients / Sample Received'
+                    },
+                    subtitle: {
+                        text: 'Source: ' +
+                            'Sample Received'
+                    },
+                    xAxis: {
+                        categories: result.graphFilterData.monthName
+                    },
+                    yAxis: {
+                        title: {
+                            text: 'Institute wise Patients / Sample Received'
+                        }
+                    },
+                    plotOptions: {
+                        line: {
+                            dataLabels: {
+                                enabled: true
+                            },
+                            enableMouseTracking: false
+                        }
+                    },
+                    series: [{
+                        name: 'Patients',
+                        data: result.graphFilterData.sumNumbernumber_of_patients
+                        }, 
+                        {
+                            name: 'Test Conducted',
+                            data: result.graphFilterData.sumNumbernumbers_of_test
+                        },
+                        {
+                            name: 'Sample Received',
+                            data: result.graphFilterData.sumNumbernumbers_of_sample_recieved
+                        },
+                        {
+                            name: 'Numbers Of Positives',
+                            data: result.graphFilterData.sumNumbernumbers_of_positives
+                        }
+                    ]
                 });
                 // map chart
                 Highcharts.mapChart('laboratory-map', {

@@ -41,6 +41,7 @@ class LaboratoryDashboardController extends Controller
         $filter_month = $request->month ?? '';
         $filter_year = $request->year ?? '';
         $filter_institute = $request->institute ?? $request->mapFilter ?? '';
+        $instituteYearFilter = $request->instituteYearFilter ?? 'numbers_of_sample_recieved';
         $rabiesTestData = RabiesTest::query();
 
         if ($filter_month || $filter_year || $filter_institute) {
@@ -54,31 +55,99 @@ class LaboratoryDashboardController extends Controller
                 $rabiesTestData->where('institute_id', $filter_institute);
             }
         }
-        // year wise filter
-        $graphDatas = $rabiesTestData->pluck('numbers_of_intered_ihip')->toArray();
+        // yearly Filter graph
+        $attributes = ['numbers_of_sample_recieved','numbers_of_positives', 'number_of_patients', 'numbers_of_test'];
+        $yearGraphFilterData = [
+            'year' => [],
+            'record' => [],
+            'sumNumberpositive' => [],
+            'sumNumberpatient' => [],
+            'sumNumbertest' => []
+        ];
+
+        foreach ($attributes as $attribute) {
+            $graphDatas = $rabiesTestData->pluck($attribute)->toArray();
+            $dates = $rabiesTestData->pluck('date')->toArray();
+            $groupedYears = [];
+            $years = [];
+            $sumNumbers = [];
+
+            foreach ($dates as $date) {
+                $year = date('Y', strtotime($date));
+                if (!isset($sumNumbers[$year])) {
+                    $sumNumbers[$year] = 0;
+                }
+            }
+
+            foreach ($dates as $index => $date) {
+                $year = date('Y', strtotime($date));
+                $sumNumbers[$year] += $graphDatas[$index];
+                if (!in_array($year, $years)) {
+                    $years[] = $year;
+                }
+            }
+            $yearGraphFilterData["sumNumber$attribute"] = array_values($sumNumbers) ?? [];
+            $yearGraphFilterData['year'] = $years;
+        }
+        // monthly wise filter
+        $monthGraphData = $rabiesTestData->pluck($instituteYearFilter)->toArray();
         $dates = $rabiesTestData->pluck('date')->toArray();
-        $groupedDates = [];
-        $months = [];
-        $sumByMonth = [];
+        $monthGroupedDates = [];
+        $Monthmonths = [];
+        $monthsumByMonth = [];
         foreach ($dates as $date) {
             $month = date('M', strtotime($date));
-            if (!isset($sumByMonth[$month])) {
-                $sumByMonth[$month] = 0;
+            if (!isset($monthsumByMonth[$month])) {
+                $monthsumByMonth[$month] = 0;
             }
         }
         foreach ($dates as $index => $date) {
             $month = date('M', strtotime($date));
-            $sumByMonth[$month] += $graphDatas[$index];
-            $groupedDates[$month][] = $date;
-            if (!in_array($month, $months)) {
-                $months[] = $month;
+            $monthsumByMonth[$month] += $monthGraphData[$index];
+            $monthGroupedDates[$month][] = $date;
+            if (!in_array($month, $Monthmonths)) {
+                $Monthmonths[] = $month;
             }
         }
-        $graphFilterData = [
-            'monthName' => $months,
-            'record' => array_values($sumByMonth), // Extract values of the associative array
+        $monthGraphFilterData = [
+            'monthNameGraph' => $Monthmonths,
+            'MonthRecord' => array_values($monthsumByMonth), // Extract values of the associative array
         ];
-        // end year wise filter
+        // line graph data
+        $attributes = [$instituteYearFilter,'numbers_of_positives', 'number_of_patients', 'numbers_of_test'];
+        $graphFilterData = [
+            'monthName' => [],
+            'record' => [],
+            'sumNumberpositive' => [],
+            'sumNumberpatient' => [],
+            'sumNumbertest' => []
+        ];
+
+        foreach ($attributes as $attribute) {
+            $graphDatas = $rabiesTestData->pluck($attribute)->toArray();
+            $dates = $rabiesTestData->pluck('date')->toArray();
+            $groupedDates = [];
+            $months = [];
+            $sumNumbers = [];
+
+            foreach ($dates as $date) {
+                $month = date('M', strtotime($date));
+                if (!isset($sumNumbers[$month])) {
+                    $sumNumbers[$month] = 0;
+                }
+            }
+
+            foreach ($dates as $index => $date) {
+                $month = date('M', strtotime($date));
+                $sumNumbers[$month] += $graphDatas[$index];
+                $groupedDates[$month][] = $date;
+                if (!in_array($month, $months)) {
+                    $months[] = $month;
+                }
+            }
+            $graphFilterData["sumNumber$attribute"] = array_values($sumNumbers) ?? [];
+            $graphFilterData['monthName'] = $months;
+        }
         $rabiesData = $rabiesTestData->select(
             'institute_id','state_id',
             \DB::raw('SUM(number_of_patients) as number_of_patients'),
@@ -121,6 +190,6 @@ class LaboratoryDashboardController extends Controller
                 'institute_id' => $rabiesInstitute->institute->id ?? '',
             ];
         }
-        return response()->json(['total_records'=>$total_records,'finalMapData' => $finalMapData,'graphFilterData' => $graphFilterData], 200);
+        return response()->json(['total_records'=>$total_records,'finalMapData' => $finalMapData,'graphFilterData' => $graphFilterData,'monthGraphFilterData' => $monthGraphFilterData,'yearGraphFilterData' => $yearGraphFilterData], 200);
     }
 }
