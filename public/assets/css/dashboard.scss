@@ -868,3 +868,17 @@ section.content.sform{
 		// padding: 0 14px;
 	}
 }
+.dashboard-filter{
+	.institute_year_filter{
+		position: absolute;
+		position: absolute;
+		top: 61px;
+		right: 36px;
+		z-index: 99;
+		select{
+			font-size: 15px;
+    padding: 0;
+    height: 30px;
+		}
+	}
+}

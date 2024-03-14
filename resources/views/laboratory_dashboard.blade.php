@@ -303,7 +303,16 @@
                                                 </div>
                                                 <div id="graphical_view">
                                                     <div class="row">
+                                                       
                                                         <div class="col-md-6 pr-4">
+                                                        <div class="institute_year_filter">
+                                                        <select class="form-control w-auto" name="institute_year" id="institute_year_filter">
+                                                                <option value="numbers_of_sample_recieved">No. of Sample Received</option>
+                                                                <option value="numbers_of_positives">Total numbers of Positives</option>
+                                                                <option value="numbers_of_test">Number of Test Conducted</option>
+                                                                <option value="numbers_of_intered_ihip">No. of Entered into IHIP</option>
+                                                            </select>
+                                                        </div>
                                                             <div id="yearReport" class="dashboard-filter mt-5"></div>
                                                         </div>
                                                         <div class="col-md-6 pl-4">
