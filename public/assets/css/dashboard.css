@@ -864,4 +864,17 @@ section.content.sform .table div::before {
 .accordion.side-link.laboratory-sidebar .link {
   display: flex;
   align-items: center;
+}
+
+.dashboard-filter .institute_year_filter {
+  position: absolute;
+  position: absolute;
+  top: 61px;
+  right: 36px;
+  z-index: 99;
+}
+.dashboard-filter .institute_year_filter select {
+  font-size: 15px;
+  padding: 0;
+  height: 30px;
 }/*# sourceMappingURL=dashboard.css.map */

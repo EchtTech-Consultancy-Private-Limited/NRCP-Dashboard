@@ -23,4 +23,8 @@
     .basic-card .card-link {
         padding: 9px 7px;
     }
+    .dashboard-filter .institute_year_filter select {
+        font-size: 13px;
+       
+    }
 }

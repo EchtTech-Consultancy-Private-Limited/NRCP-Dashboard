@@ -1,5 +1,5 @@
- const BASE_URL = window.location.origin;
-// const BASE_URL =window.location.origin+"/public";
+//  const BASE_URL = window.location.origin;
+const BASE_URL =window.location.origin+"/public";
 
 /*handle Form Type*/
 const handleFormType = () => {
@@ -1485,6 +1485,10 @@ const defaultLaboratoryMapData = () => {
                 const chart = Highcharts.chart('yearReport', {
                     title: {
                         text: 'Institute wise Monthly data',
+                        style:{
+                              fontSize: innerWidth<=1350  ? "15px" :( innerWidth>=1350  ? "20px" : "15px"),
+                              marginBottom:'20px'
+                        },
                         align: 'left'
                     },
                     subtitle: {
@@ -1524,6 +1528,10 @@ const defaultLaboratoryMapData = () => {
                     },
                     title: {
                         text: 'Institute wise Yearly data',
+                        style:{
+                            fontSize: innerWidth<=1350  ? "15px" :( innerWidth>=1350  ? "20px" : "15px"),
+                            marginBottom:'20px'
+                      },
                         align: 'left'
                     },
                     subtitle: {
@@ -1937,6 +1945,10 @@ const laboratory_apply_filter = (rabiesfilter = '') => {
                 const chart = Highcharts.chart('yearReport', {
                     title: {
                         text: 'Institute wise Monthly data',
+                        style:{
+                            fontSize: innerWidth<=1350  ? "15px" :( innerWidth>=1350  ? "20px" : "15px"),
+                            marginBottom:'20px'
+                      },
                         align: 'left'
                     },
                     subtitle: {
@@ -1977,6 +1989,10 @@ const laboratory_apply_filter = (rabiesfilter = '') => {
                     },
                     title: {
                         text: 'Institute wise Yearly data',
+                        style:{
+                            fontSize: innerWidth<=1350  ? "15px" :( innerWidth>=1350  ? "20px" : "15px"),
+                            marginBottom:'20px'
+                      },
                         align: 'left'
                     },
                     subtitle: {
