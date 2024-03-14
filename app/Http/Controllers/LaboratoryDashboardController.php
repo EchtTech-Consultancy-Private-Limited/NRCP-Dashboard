@@ -41,29 +41,56 @@ class LaboratoryDashboardController extends Controller
         $filter_month = $request->month ?? '';
         $filter_year = $request->year ?? '';
         $filter_institute = $request->institute ?? $request->mapFilter ?? '';
-        $rabiesData = RabiesTest::query();
+        $rabiesTestData = RabiesTest::query();
 
         if ($filter_month || $filter_year || $filter_institute) {
             if ($filter_month) {
-                $rabiesData->whereMonth('date', '=', $filter_month);
+                $rabiesTestData->whereMonth('date', '=', $filter_month);
             }
             if ($filter_year) {
-                $rabiesData->whereYear('date', '=', $filter_year);
+                $rabiesTestData->whereYear('date', '=', $filter_year);
             }
             if ($filter_institute) {
-                $rabiesData->where('institute_id', $filter_institute);
+                $rabiesTestData->where('institute_id', $filter_institute);
             }
         }
-        $rabiesData = $rabiesData->select(
+        // year wise filter
+        $graphDatas = $rabiesTestData->pluck('numbers_of_intered_ihip')->toArray();
+        $dates = $rabiesTestData->pluck('date')->toArray();
+        $groupedDates = [];
+        $months = [];
+        $sumByMonth = [];
+        foreach ($dates as $date) {
+            $month = date('M', strtotime($date));
+            if (!isset($sumByMonth[$month])) {
+                $sumByMonth[$month] = 0;
+            }
+        }
+        foreach ($dates as $index => $date) {
+            $month = date('M', strtotime($date));
+            $sumByMonth[$month] += $graphDatas[$index];
+            $groupedDates[$month][] = $date;
+            if (!in_array($month, $months)) {
+                $months[] = $month;
+            }
+        }
+        $graphFilterData = [
+            'monthName' => $months,
+            'record' => array_values($sumByMonth), // Extract values of the associative array
+        ];
+        // end year wise filter
+        $rabiesData = $rabiesTestData->select(
             'institute_id','state_id',
             \DB::raw('SUM(number_of_patients) as number_of_patients'),
             \DB::raw('SUM(numbers_of_sample_recieved) as numbers_of_sample_recieved'),
             \DB::raw('SUM(numbers_of_positives) as numbers_of_positives'),
-            \DB::raw('SUM(numbers_of_intered_ihip) as numbers_of_intered_ihip')
+            \DB::raw('SUM(numbers_of_intered_ihip) as numbers_of_intered_ihip'),
+            \DB::raw('SUM(numbers_of_test) as numbers_of_test')
         )
         ->with('institute', 'state')
         ->groupBy('institute_id','state_id')
         ->get();
+        
         $numberOfPatient = $rabiesData->sum('number_of_patients');
         $numbersOfPositives = $rabiesData->sum('numbers_of_positives');
         $numbersOfInteredIhip = $rabiesData->sum('numbers_of_intered_ihip');
@@ -94,6 +121,6 @@ class LaboratoryDashboardController extends Controller
                 'institute_id' => $rabiesInstitute->institute->id ?? '',
             ];
         }
-        return response()->json(['total_records'=>$total_records,'finalMapData' => $finalMapData], 200);
+        return response()->json(['total_records'=>$total_records,'finalMapData' => $finalMapData,'graphFilterData' => $graphFilterData], 200);
     }
 }
