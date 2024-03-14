@@ -28,7 +28,7 @@
             <div class="col-md-12">
 
                 <!-- general form elements -->
-                <div class="card card-primary dashboard">
+                <div class=" card-primary dashboard">
                     <!-- <div class=" apply-filter">
 
                             <button id="printButton" class="btn apply-filter text-white button">Print</button>
@@ -157,7 +157,7 @@
                                             </div>
 
 
-                                            <div class="col-lg-2 col-md-2 col-4" id="test_performed">
+                                            <div class="col-lg-12 col-md-12 col-4" id="test_performed">
                                                 <div class="form-group">
                                                     <label for="testPerformed" class="d-block">Test Performed<span
                                                             class="star">*</span></label>

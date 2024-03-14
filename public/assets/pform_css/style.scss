@@ -86,7 +86,7 @@ body {
   margin: 0px 0px;
   color: #97999b;
   box-shadow: inset 0 0px 8px 0px #e3e0e0;
-  border: 1px solid #acadaf;
+  border: 1px solid #ddd;
   border-radius: 0.25rem;
   width: 100%;
 }
@@ -103,7 +103,16 @@ body {
 .form-group .form-select {
   padding: 4px 2.25rem 4px 0.75rem;
   color: #000;
-}
+  &::placeholder{
+    color: red !important;
+  }
+  option{
+    &:first-child{
+      // color: red;
+    }
+  }
+} 
+
 
 .form-group .form-select:focus {
   border-color: #ced4da;
@@ -179,7 +188,7 @@ input[type=date]::-webkit-datetime-edit-year-field {
 }
 
 .tab-content {
-  background: #fff;
+  // background: #fff;
 }
 
 .search-patient-btn:hover {
@@ -401,11 +410,11 @@ span.fa.printhide {
 }
 
 .sidebarAccordion{
-  border: 1px solid #fff;
+  // border: 1px solid #fff;
     border-radius: 5px;
 
     .dashboard-title{
-      margin: 0 !important;
+      // margin: 0 !important;
       border-radius: 2px 2px 0 0;
       // margin-bottom: 5px;
     }
@@ -416,7 +425,7 @@ span.fa.printhide {
     font-family: "fontAwesome";
     position: absolute;
     right: 7%;
-    color: #111111;
+    color: #ebeef3;
     transform: rotate(-90deg);
     font-size: 22px;
     top: 5px;
@@ -451,6 +460,8 @@ span.fa.printhide {
 }
 
 .sidebarAccordion:has(.show){
+  // border-left: 3px solid #42a5f5;
+  border-radius: 0;
   .dashboard-title{
     margin-bottom: 5px !important;
   }
@@ -461,7 +472,7 @@ span.fa.printhide {
       font-family: "fontAwesome";
       position: absolute;
       right: 7%;
-      color: #fff;
+      color: #ebeef3;
       transform: rotate(0deg);
       font-size: 22px;
       top: 5px;
@@ -475,8 +486,12 @@ span.fa.printhide {
 
 
 
+.sidebarAccordion .link.dashboard-title.active{
+  border: none;
+  background-color: #1d2531 !important;
+}
 .link.dashboard-title.active{
-  border: 1px solid #ab4024;
+  background: #1d2531 !important;
   margin: 5px 0;
   i{
     color: #fff !important;
@@ -541,8 +556,8 @@ tspan.highChartTitle {
     }
   }
   .btndropdown-toggle i {
-
-    font-size: 38px; 
+    margin-top: 2px;
+    font-size: 29px; 
     color: #fff;
   }
 }
@@ -619,3 +634,14 @@ table.dataTable.stripe>tbody>tr.odd>*, table.dataTable.display>tbody>tr.even>* {
   font-size: 14px;
 }
 
+.form-group input[type="radio"]{
+  height: auto !important;
+}
+
+.content-wrapper {
+  background-color: #f2f7fb;
+}
+.select2-container--default .select2-selection--multiple .select2-selection__rendered {
+  padding: 0;
+  margin-bottom: -9px;
+}
