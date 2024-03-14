@@ -774,7 +774,10 @@ const googlePieChart = (result) => {
         },
         title: {
             text: `Cases by Gender in India ${filter_state !== undefined ? filter_state + ' >' : ''} ${filter_district !== undefined ? filter_district + ' >' : ''} ${filter_from_year !== "" ? filter_from_year + ' >' : ''} ${filter_to_year !== "" ? filter_to_year + ' >' : ''}    n=(${result.total})`,
-            align: 'left'
+            align: 'left',
+            style: {
+                fontSize: '15px' // Set the font size here
+            }
         },
         subtitle: {
             text: 'Gender Percentage',
@@ -808,7 +811,11 @@ const googlePieChart = (result) => {
         },
         title: {
             text: `Death by Gender in India ${filter_state !== undefined ? filter_state + ' >' : ''} ${filter_district !== undefined ? filter_district + ' >' : ''} ${filter_from_year !== "" ? filter_from_year + ' >' : ''} ${filter_to_year !== "" ? filter_to_year + ' >' : ''}  n=(${result.total_death_google_graph})`,
-            align: 'left'
+            align: 'left',
+            style: {
+                fontSize: '15px' // Set the font size here
+            }
+          
         },
         subtitle: {
             text: 'Gender Percentage',
@@ -913,10 +920,19 @@ const pyramidChart = (result) => {
                 }
             }
         },
-        title: options_val,
-        subtitle: {
-            text: is_graph_data_available
+        title: {
+            text: options_val.text,
+            style: {
+                fontSize: '15px' // Set the font size here
+            }
         },
+        subtitle: {
+            text: is_graph_data_available,
+            style: {
+                fontSize: '20px' // Set the font size here
+            }
+        },
+        
         xaxis: {
             categories: categories,
             title: {
@@ -953,6 +969,7 @@ const barChart = (result) => {
 
     var options_val = {
         text: `Death by age group in India ${filter_state !== undefined ? filter_state + ' >' : ''} ${filter_district !== undefined ? filter_district + ' >' : ''} ${filter_from_year !== "" ? filter_from_year + ' >' : ''} ${filter_to_year !== "" ? filter_to_year + ' >' : ''}  `,
+       
 
     };
     var categories = result.map(item => item.pyramid_age_group);
@@ -969,7 +986,13 @@ const barChart = (result) => {
         chart: {
             type: 'bar'
         },
-        title: options_val,
+        title: {
+            text: options_val.text,
+            style: {
+                fontSize: '15px' // Set the font size here
+            }
+        },
+        
         subtitle: {
             text: is_graph_data_available,
         },
@@ -1348,7 +1371,7 @@ const defaultLaboratoryMapData = () => {
                         minorTickInterval: null,
                         tickAmount: 2,
                         title: {
-                            y: window.innerWidth <= 1300 ? -65 : (window.innerWidth >= 1550 ? -110 : -90)
+                            y: window.innerWidth <= 1400 ? -65 : (window.innerWidth >= 1550 ? -110 : -90)
                         },                        
                         labels: {
                             // y: 16

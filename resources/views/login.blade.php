@@ -19,7 +19,7 @@
                 <p class="login-box-msg">Sign in to start your session</p>
 
 
-                <!-- @if ($errors->any())
+                @if ($errors->any())
                     <div class="alert alert-danger">
                         <ul>
                             @foreach ($errors->all() as $error)
@@ -40,7 +40,7 @@
                     <div class="alert alert-danger">
                         {{ session('error') }}
                     </div>
-                @endif -->
+                @endif
 
                 <form action="{{ url('/login') }}" method="post">
                     @csrf

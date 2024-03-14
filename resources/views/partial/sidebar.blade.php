@@ -80,9 +80,9 @@
         <div class="sidebarAccordion">
 
             <div
-                class="link bg-primary text-white dashboard-title {{ (Request::segment(1) == 'dashboard')?'active':'' }}">
+                class="link bg-primary text-white dashboard-title">
                 <a class="accordion-heading" data-toggle="collapse" href="#multiCollapseExample1" role="button"
-                    aria-expanded="false" aria-controls="multiCollapseExample1">Rabies Dashboard </a>
+                    aria-expanded="false" aria-controls="multiCollapseExample1"><i class="fa fa-home" aria-hidden="true"></i> Rabies Dashboard </a>
 
 
 
@@ -118,11 +118,11 @@
         </div>
         <div
             class="link bg-primary text-white dashboard-title {{ (Request::routeIs('laboratory-dashboard') == 'laboratory-dashboard')?'active':'' }}">
-            <a href="{{ url('/laboratory-dashboard') }}">Laboratory Dashboard</a> </i>
+            <a href="{{ url('/laboratory-dashboard') }}"><i class="fa fa-flask" aria-hidden="true"></i> Laboratory Dashboard</a> </i>
         </div>
         <div
             class="link bg-primary text-white dashboard-title {{ (Request::routeIs('nhm.index') == 'nhm.index')?'active':'' }}">
-            <a href="{{ route('nhm.index') }}">NHM Dashboard</a> </i>
+            <a href="{{ route('nhm.index') }}"><i class="fa fa-hospital-o" aria-hidden="true"></i> NHM Dashboard</a> </i>
         </div>
         <!-- ********************* -->
 
