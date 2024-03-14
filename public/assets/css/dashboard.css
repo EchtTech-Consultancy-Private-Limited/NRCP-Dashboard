@@ -336,6 +336,7 @@ body {
 }
 .sidebar .accordion .link a i {
   padding-right: 10px;
+  font-size: 13px;
 }
 
 .laboratory-card .accordion .link {
@@ -863,5 +864,4 @@ section.content.sform .table div::before {
 .accordion.side-link.laboratory-sidebar .link {
   display: flex;
   align-items: center;
-  padding: 0 14px;
 }/*# sourceMappingURL=dashboard.css.map */

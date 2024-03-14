@@ -417,6 +417,9 @@ span.fa.printhide {
       // margin: 0 !important;
       border-radius: 2px 2px 0 0;
       // margin-bottom: 5px;
+      &:has(.accordion-heading){
+        background-color: #1d2531  !important;
+      }
     }
   .accordion-heading{
     font-size: 16px;
