@@ -6,7 +6,7 @@
 <script src="{{ asset('assets/login/dist/js/adminlte.min.js') }}"></script>
 <script src="{{ asset('assets/login/dist/js/login.js') }}"></script>
 
-<script src="{{ asset('jquery.min.js') }}"></script>
+<script src="{{ asset('assets/js/jquery.min.js') }}"></script>
 </body>
 
 </html>
