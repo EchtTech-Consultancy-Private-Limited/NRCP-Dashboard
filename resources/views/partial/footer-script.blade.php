@@ -8,6 +8,7 @@
 </div>
 <!-- ./wrapper -->
 <!-- jQuery -->
+
 <script src="{{ asset('assets/login/plugins/jquery/jquery.min.js') }}"></script>
 <script src="{{ asset('assets/custom_js/rabies_dropdown.js') }}"></script>
 <script src="{{ asset('assets/js/pform.js') }}"></script>

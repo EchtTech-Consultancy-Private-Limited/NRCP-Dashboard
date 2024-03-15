@@ -6,7 +6,7 @@
 <!-- Main content -->
 <section class="content sform view-blade">
     <div class="container-fluid">
-        <div class="panel-body ">
+        <div class="panel-body nhmView">
             <div class="row">
                 <div class="col-md-12">
 
@@ -31,8 +31,8 @@
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ @$nhm->year }}</td>
                             <td>{{ @$nhm->state->state_name }}</td>
-                            <td><a class="nhm-file" href="{{ asset('images/uploads/nhm/'.$nhm->rops) }}" download><i class="fa fa-file"> ({{ $nhm->rops_size }})</i></a></td>
-                            <td><a class="nhm-file" href="{{ asset('images/uploads/nhm/'.$nhm->supplementary_rops) }}" download><i class="fa fa-file"> ({{ $nhm->supplementary_rops_size }})</i></a></td>
+                            <td><a class="nhm-file" href="{{ asset('images/uploads/nhm/'.$nhm->rops) }}" download><i class="fa fa-file-pdf-o" aria-hidden="true"></i> <span>({{ $nhm->rops_size }})</span> <i class="fa fa-download" aria-hidden="true"></i></a></td>
+                            <td><a class="nhm-file" href="{{ asset('images/uploads/nhm/'.$nhm->supplementary_rops) }}" download> <i class="fa fa-file-pdf-o" aria-hidden="true"></i>  <span>({{ $nhm->supplementary_rops_size }}) </span> <i class="fa fa-download" aria-hidden="true"></i>  </a></td>
                         </tr>
                         @endforeach
                     @else

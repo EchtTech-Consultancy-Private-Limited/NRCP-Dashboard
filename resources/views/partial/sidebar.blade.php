@@ -62,7 +62,7 @@
         <div
             class="link bg-primary text-white dashboard-title {{ (Request::segment(1) == 'rabies-test')?'active':'' }}">
            <a href="{{ url('/rabies-test') }}"> <i class="fa fa-registered iconmargin-set" aria-hidden="true"></i>
-                Rabies</a>
+                Rabies Test</a>
         </div>
         <div
             class="link bg-primary text-white dashboard-title {{ (Request::segment(1) == 'expenditure')?'active':'' }}">
