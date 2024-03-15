@@ -17,8 +17,7 @@ class DeviceMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        $agent = new Agent();
-        // Check if the device is mobile
+        $agent = new Agent();        
         if ($agent->isMobile()) {
             Auth::logout();
             session()->forget('loggedIn');

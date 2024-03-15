@@ -8,6 +8,7 @@ use Symfony\Component\HttpFoundation\Response;
 
 class Admin
 {
+    
     /**
      * Handle an incoming request.
      *
