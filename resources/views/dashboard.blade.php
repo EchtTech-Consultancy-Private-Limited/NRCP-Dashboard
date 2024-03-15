@@ -129,12 +129,12 @@
                                             </div>
 
 
-                                            <div class="col-lg-12 col-md-12 col-4" id="test_performed">
+                                            <div class="col-lg-12 col-md-2 col-4" id="test_performed">
                                                 <div class="form-group">
                                                     <label for="testPerformed" class="d-block">Test Performed<span
                                                             class="star">*</span></label>
                                                     <select class="form-control" id="mySelect2" multiple="multiple"
-                                                            aria-label="Default select">
+                                                            aria-label="Default select" onKeyPress = "handleTest(event)">
                                                         <!-- <option value="" selected>--All--</option> -->
                                                         <option name="test-performed" value="direct_fat_post">Direct FAT
                                                             (Postmortem)</option>

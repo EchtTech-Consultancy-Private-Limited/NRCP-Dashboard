@@ -91,7 +91,7 @@
                         <div class="input-group-append">
 
                             <div class="input-group-text">
-                                <i class="fa fa-eye pr-3" aria-hidden="true" id="togglePassword"></i>
+                                <i class="fa fa-eye-slash pr-3" aria-hidden="true" id="togglePassword"></i>
                                 <span class="fas fa-lock"></span>
                             </div>
                         </div>
@@ -171,10 +171,20 @@
 
         let password = document.querySelector('#password');
         let togglePassword = document.querySelector('#togglePassword');
+        console.log(togglePassword.classList.contains('fa-eye-slash'));
+
         togglePassword.addEventListener('click', (e) => {
         const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
         password.setAttribute('type', type);
-        togglePassword.classList.toggle('fa-eye-slash');
+       let eye = togglePassword.classList.contains('fa-eye-slash')
+       if(eye== true){
+        togglePassword.classList.remove('fa-eye-slash');
+        togglePassword.classList.add('fa-eye');
+       }else{
+        togglePassword.classList.remove('fa-eye');
+        togglePassword.classList.add('fa-eye-slash');
+       }
+        // togglePassword.classList.toggle('fa-eye-slash');
 });
 
     </script>

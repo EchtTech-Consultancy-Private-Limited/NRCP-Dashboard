@@ -237,7 +237,7 @@ body {
   margin-left: -30px;
   width: 85.3%;
   background: #fff;
-  z-index: 99999999;
+  z-index: 999;
   box-shadow: 0px 5px 15px #cdcdcd !important;
   padding: 10px 15px !important;
 }
@@ -274,7 +274,7 @@ body {
 }
 .main-sidebar .accordion .sidebarAccordion .link a {
   margin-left: 0;
-  padding: 7px 10px;
+  padding: 10px 10px;
   transition: 0.3s;
 }
 .main-sidebar .accordion .sidebarAccordion .link a:hover {
@@ -796,7 +796,7 @@ section.content.sform .table div {
   width: 25%;
   border: 1px solid #dadada;
   padding: 12px;
-  background: #edfbff;
+  background: rgba(237, 251, 255, 0.6392156863);
   font-size: 14px;
   font-weight: 500;
 }
@@ -805,7 +805,7 @@ section.content.sform .table div::before {
   font-family: "fontAwesome";
   font-size: 15px;
   padding-right: 8px;
-  color: #6bcffc;
+  color: #1aabed;
 }
 
 .view-blade table th {
@@ -818,7 +818,7 @@ section.content.sform .table div::before {
   border: none;
 }
 .view-blade table td {
-  background: #b7e0ed;
+  background: #d7f5ff;
   border: 1px solid #fff;
   padding: 10px;
   font-size: 14px;
@@ -839,6 +839,10 @@ section.content.sform .table div::before {
 
 #nhm-list {
   display: flex;
+}
+
+a.nhm-file i {
+  color: rgba(255, 0, 0, 0.7411764706);
 }
 
 .accordion.laboratory-sidebar .link a {
@@ -866,15 +870,31 @@ section.content.sform .table div::before {
   align-items: center;
 }
 
-.dashboard-filter .institute_year_filter {
+.institute_year_filter .institute_year_filter {
   position: absolute;
   position: absolute;
   top: 61px;
   right: 36px;
   z-index: 99;
 }
-.dashboard-filter .institute_year_filter select {
+.institute_year_filter .institute_year_filter select {
   font-size: 15px;
   padding: 0;
   height: 30px;
+}
+
+.table.nhmDashboard div a {
+  text-transform: capitalize;
+}
+
+select[name=state] {
+  text-transform: capitalize;
+}
+
+.nhmView table td {
+  text-transform: capitalize;
+}
+
+.generalDashboard table tr td {
+  text-transform: capitalize;
 }/*# sourceMappingURL=dashboard.css.map */

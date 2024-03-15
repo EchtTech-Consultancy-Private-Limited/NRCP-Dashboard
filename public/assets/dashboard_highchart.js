@@ -1,5 +1,5 @@
-//  const BASE_URL = window.location.origin;
-const BASE_URL =window.location.origin+"/public";
+ const BASE_URL = window.location.origin;
+// const BASE_URL =window.location.origin+"/public";
 
 /*handle Form Type*/
 const handleFormType = () => {
@@ -776,7 +776,7 @@ const googlePieChart = (result) => {
             text: `Cases by Gender in India ${filter_state !== undefined ? filter_state + ' >' : ''} ${filter_district !== undefined ? filter_district + ' >' : ''} ${filter_from_year !== "" ? filter_from_year + ' >' : ''} ${filter_to_year !== "" ? filter_to_year + ' >' : ''}    n=(${result.total})`,
             align: 'left',
             style: {
-                fontSize: '15px' // Set the font size here
+                fontSize: innerWidth<=1350 ? '15px' : (innerWidth>=1350 ? '18px': '15px') // Set the font size here
             }
         },
         subtitle: {
@@ -813,7 +813,7 @@ const googlePieChart = (result) => {
             text: `Death by Gender in India ${filter_state !== undefined ? filter_state + ' >' : ''} ${filter_district !== undefined ? filter_district + ' >' : ''} ${filter_from_year !== "" ? filter_from_year + ' >' : ''} ${filter_to_year !== "" ? filter_to_year + ' >' : ''}  n=(${result.total_death_google_graph})`,
             align: 'left',
             style: {
-                fontSize: '15px' // Set the font size here
+                fontSize:  innerWidth<=1350 ? '15px' : (innerWidth>=1350 ? '18px': '15px') // Set the font size here
             }
           
         },
@@ -856,7 +856,7 @@ const pyramidChart = (result) => {
     let is_graph_data_available = $("#is_graph_data_available").val();
     is_graph_data_available = is_graph_data_available !== "" ? is_graph_data_available : "";
     var options_val = {
-        text: `Case by age group in India ${filter_state !== undefined ? filter_state + ' >' : ''} ${filter_district !== undefined ? filter_district + ' >' : ''} ${filter_from_year !== "" ? filter_from_year + ' >' : ''} ${filter_to_year !== "" ? filter_to_year + ' >' : ''}`,
+        text: `Case by age group in India  ${filter_state !== undefined ? filter_state + ' >' : ''} ${filter_district !== undefined ? filter_district + ' >' : ''} ${filter_from_year !== "" ? filter_from_year + ' >' : ''} ${filter_to_year !== "" ? filter_to_year + ' >' : ''}`,
     };
 
 
@@ -923,7 +923,8 @@ const pyramidChart = (result) => {
         title: {
             text: options_val.text,
             style: {
-                fontSize: '15px' // Set the font size here
+                fontSize: innerWidth<=1350 ? '15px' : (innerWidth>=1350 ? '19px': '15px'), // Set the font size here
+               
             }
         },
         subtitle: {
@@ -968,7 +969,7 @@ const barChart = (result) => {
     is_graph_data_available = is_graph_data_available !== "" ? is_graph_data_available : "";
 
     var options_val = {
-        text: `Death by age group in India ${filter_state !== undefined ? filter_state + ' >' : ''} ${filter_district !== undefined ? filter_district + ' >' : ''} ${filter_from_year !== "" ? filter_from_year + ' >' : ''} ${filter_to_year !== "" ? filter_to_year + ' >' : ''}  `,
+        text:  `<h3 class="text-left"> Death by age group in India ${filter_state !== undefined ? filter_state + ' >' : ''} ${filter_district !== undefined ? filter_district + ' >' : ''} ${filter_from_year !== "" ? filter_from_year + ' >' : ''} ${filter_to_year !== "" ? filter_to_year + ' >' : ''}  </h3>`,
        
 
     };
@@ -984,12 +985,17 @@ const barChart = (result) => {
     };
     Highcharts.chart('chartContainer', {
         chart: {
-            type: 'bar'
+            type: 'bar',
+            
         },
         title: {
             text: options_val.text,
+            // x:-100,
+            margin:30,
             style: {
-                fontSize: '15px' // Set the font size here
+                fontSize:  innerWidth<=1350 ? '15px' : (innerWidth>=1350 ? '19px': '15px'), // Set the font size here
+                textAlign:'left',
+               
             }
         },
         
@@ -1005,7 +1011,16 @@ const barChart = (result) => {
         yAxis: {
             min: 0,
             title: {
-                text: 'Number of Cases',
+                text: 'Number of Deaths',
+                x: -300,
+                margin:20,
+                style: {
+                    color: '#000',
+                    textAlign: 'center', // Adjust horizontal alignment
+                    verticalAlign: 'bottom', // Adjust vertical alignment
+                    y: innerWidth <= 1350 ? -30 : (innerWidth >= 1350 ? -90 : -30) // Adjust vertical position
+                },
+               
                 align: 'high'
             },
             labels: {
@@ -1522,21 +1537,28 @@ const defaultLaboratoryMapData = () => {
                             stacking: 'Values',
                             dataLabels: {
                                 enabled: true,
-                                format: '{point.y}'
+                                // format: '{point.y}',
+                                style: {
+                                    fontSize: '5px', // Adjust the font size here
+                                    fontWeight: 'normal', // Optionally, set font weight
+                                    whiteSpace: 'nowrap', // Prevent text wrapping
+                                    textOverflow: 'ellipsis', // Add ellipsis for overflow
+                                    overflow: 'hidden' // Hide overflow
+                                }
                             }
                         }
                     },
                     series: [{
-                        name: 'Patients',
+                        name: "<span class='series'> Patients </span>",
                         data: result.yearGraphFilterData.sumNumbernumber_of_patients
                     }, {
-                        name: 'Sample Received',
+                        name:  "<span class='series'> Sample Received </span>",
                         data: result.yearGraphFilterData.sumNumbernumbers_of_sample_recieved
                     }, {
-                        name: 'Test Conducted',
+                        name:  "<span class='series'>Test Conducted </span>",
                         data: result.yearGraphFilterData.sumNumbernumbers_of_test
                     }, {
-                        name: 'Numbers of Positives',
+                        name: "<span class='series'> Numbers of Positives </span>",
                         data: result.yearGraphFilterData.sumNumbernumbers_of_positives
                     }]
                 });            
