@@ -7,7 +7,6 @@ $(document).ready(function () {
             url: 'equipment-add',
             data: $(this).serialize(),
             success: function (data) {
-                console.log(data);
                 if (data.status == 201) {
                     $('#equipment-error').html("");
                     $.each(data.errors, function (key, err_value) {
@@ -67,7 +66,6 @@ $(document).ready(function () {
             type: 'put',
             data: formData,
             success: function (response) {
-                console.log(formData);
                 if (response.status == 201) {
                     $('#update_msgList').html("");
                     $('#update_msgList').addClass('alert alert-danger');

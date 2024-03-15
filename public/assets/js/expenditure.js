@@ -7,7 +7,6 @@ $(document).ready(function () {
             url: 'expenditure-add',
             data: $(this).serialize(),
             success: function (data) {
-                console.log(data);
                 $('#item-list').append('<li>' + data.name + ' <button type="button" class="edit-item" data-id="' + data.id + '">Edit</button> <a href="#" class="delete-item" value="' + data.id + '">Delete</a></li>');
             }
         });
