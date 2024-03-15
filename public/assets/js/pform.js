@@ -265,7 +265,6 @@ $(document).ready(function() {
     $('#contact_message').keyup(function(event) {
         var input = $(this);
         var message = $(this).val();
-        console.log(message);
         if (message) {
             input.removeClass("invalid").addClass("valid");
         } else {

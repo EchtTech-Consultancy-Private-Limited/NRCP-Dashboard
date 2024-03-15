@@ -1,25 +1,5 @@
 @extends('layouts.main')
 @section('content')
-    <style>
-        @media print {
-
-            /* Add styles for print here */
-            #container {
-                /* Adjust map styles for print */
-                width: 100%;
-                /* Adjust as needed */
-            }
-
-            .detailsDatas {
-                /* Adjust table styles for print */
-                width: 100%;
-                /* Adjust as needed */
-            }
-
-            /* Add other print-specific styles as needed */
-        }
-    </style>
-
     <div class="container-fluid">
         <!-- Info boxes -->
         <div class="row">
@@ -40,14 +20,6 @@
                         </div> -->
 @if (Auth::user()->user_type == 1)
                     <div class="form-tab">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="text-right">
-                                    <button id="printButton"  onclick="printDiv('printableArea')" class="btn  bg-primary text-light apply-filter button border-0 mb-2">Print</button>
-                                <div>
-                            </div>
-                        </div>
-                        <div id="printableArea">
                         <div class="bootstrap-tab">
                             <div class="tab-content" id="myTabContent">
                                
@@ -290,7 +262,7 @@
                                                     class="map-text m-0 mb-2 d-flex align-items-center justify-content-between">
                                                     <h1 class="m-0 mr-3 d-inline-block">Deaths cases state wise </h1>
                                                     <button class="buttons-print float-right" type="button"
-                                                            onclick="printContent('printMap1')"><span> <i
+                                                            onclick="printDiv('dashboardMap')"><span> <i
                                                                 class="fa fa-print"></i></span></button>
                                                 </div>
 
@@ -302,23 +274,13 @@
                                         </div>
                                         <div >
                                             <div class="row bg-white">
-                                                <div class="col-md-6 pr-4" id="printMap1">
+                                                <div class="col-md-6 pr-4" id="dashboardMap">
                                                     <div class="country-map " id="country-map">
                                                         <div class="case-type">
                                                             <select class="form-control w-auto" name="type" id="type">
                                                                 <option value="0">Cases</option>
                                                                 <option value="1">Deaths</option>
                                                             </select>
-{{--                                                            <div class="chart-print">--}}
-{{--                                                                <a class="chart-print-new" href="#">Chart Print</a>--}}
-{{--                                                            </div>--}}
-                                                            <!-- <select class="form-control" id="l-dropdown"
-                                                                onChange="handleFilterValue(); getLFormData();">
-                                                                <option value="">Select test type</option>
-                                                                <option value="person_tested">Person Tested</option>
-                                                                <option value="sample_tested">Sample Tested</option>
-                                                                <option value="positive_tested">Positive</option>
-                                                            </select> -->
                                                         </div>
                                                         <div class="year-selector p-3"> </div>
                                                         <div id="container" class="map"></div>
@@ -442,16 +404,4 @@
 @endif
             </div>
             </div>
-            <script>
-                function printDiv(divName) {
-                    var printContents = document.getElementById(divName).innerHTML;
-                    var originalContents = document.body.innerHTML;
-
-                    document.body.innerHTML = printContents;
-
-                    window.print();
-
-                    document.body.innerHTML = originalContents;
-                }
-            </script>
 @endsection
