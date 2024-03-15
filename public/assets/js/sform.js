@@ -21,32 +21,14 @@ $(document).ready(function() {
         if($(this).val()){
             data[$(this).attr("id")]=$(this).val();
         }
-//         $(this).on('keyup',function(e){
-// //      if(e.target.id=='only_fever_greater_7_days_form_count_male'){
-// //            console.log(e.target.value);
-// //      }
-//   });
     });
     data['_token']= $('meta[name="csrf-token"]').attr('content')
-    console.log(data);
-//         let onlyfevergreaterthanequal7days_form_count_male_age_less_5 = $('#onlyfevergreaterthanequal7days_form_count_male_age_less_5').val();
-//    let onlyfevergreaterthanequal7days_form_count_male_age_greater_5 = $('#onlyfevergreaterthanequal7days_form_count_male_age_greater_5').val();
-//    let onlyfevergreaterthanequal7days_form_count_female_age_less_5 = $('#onlyfevergreaterthanequal7days_form_count_female_age_less_5').val();
-//    let onlyfevergreaterthanequal7days_form_count_female_age_greater_5 = $('#onlyfevergreaterthanequal7days_form_count_female_age_greater_5').val();
-// {
-//     onlyfevergreaterthanequal7days_form_count_male_age_less_5 : onlyfevergreaterthanequal7days_form_count_male_age_less_5,
-//     onlyfevergreaterthanequal7days_form_count_male_age_greater_5 : onlyfevergreaterthanequal7days_form_count_male_age_greater_5,
-//     onlyfevergreaterthanequal7days_form_count_female_age_less_5 : onlyfevergreaterthanequal7days_form_count_female_age_less_5,
-//     onlyfevergreaterthanequal7days_form_count_female_age_greater_5 : onlyfevergreaterthanequal7days_form_count_female_age_greater_5,
-//     _token: $('meta[name="csrf-token"]').attr('content')
-// },
    $.ajax({ 
             type: "POST",
             url: "{{ url('addpatient') }}", 
             data:data, 
             dataType: 'json',
             success: function(res) {
-                console.log(res);
             }
         });
     })

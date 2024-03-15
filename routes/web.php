@@ -30,10 +30,10 @@ use App\Http\Controllers\ReportGenerateControllerController;
 //login
 Route::middleware(['preventBackHistory'])->group(function () {
 Route::get('/',[authController::class,'login']);
-Route::post('/login',[authController::class,'loginSubmit']);
+Route::post('/login',[authController::class,'loginSubmit'])->middleware('device');
 Route::get('refresh_captcha',[authController::class, 'refreshCaptcha'])->name('refresh_captcha');
 
-Route::middleware(['Admin'])->group(function () {
+Route::middleware(['Admin','device'])->group(function () {
         Route::get('/logout',[authController::class,'logout'])->name('logout');
         /** Form Routes */
         Route::get('dashboard', [MainController::class, 'dashboard'])->name('dashboard');

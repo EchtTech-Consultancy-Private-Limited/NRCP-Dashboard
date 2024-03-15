@@ -67,5 +67,6 @@ class Kernel extends HttpKernel
         'Admin' => \App\Http\Middleware\Admin::class,
         'preventBackHistory' => \App\Http\Middleware\PreventBackHistory::class,
         'AccessUrlPermission' => \App\Http\Middleware\AccessUrlPermission::class,
+        'device' => \App\Http\Middleware\DeviceMiddleware::class,
     ];
 }

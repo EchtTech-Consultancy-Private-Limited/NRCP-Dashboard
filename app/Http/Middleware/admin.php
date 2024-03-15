@@ -18,7 +18,7 @@ class Admin
         if(\Auth::check()){
             return $next($request);
         }
-             return redirect('/')->with('error','Permission Denied!!! Login First');
+        return redirect('/')->with('error','Permission Denied!!! Login First');
 
     }
 }
