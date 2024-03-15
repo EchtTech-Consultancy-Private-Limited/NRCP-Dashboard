@@ -1116,7 +1116,7 @@ const highchartMapDeath = (total_records) => {
 
 
 // sticky nav script
-window.onscroll = function () { myFunction() };
+// window.onscroll = function () { myFunction() };
 
 // Get the navbar
 // var navbar = document.getElementById("dashboard-filter");
