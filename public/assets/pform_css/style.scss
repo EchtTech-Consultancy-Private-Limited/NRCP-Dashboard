@@ -234,7 +234,7 @@ textarea.valid {
 .form-text {
   color: #ff0000 !important;
   font-size: 11px;
-  text-transform: capitalize;
+  // text-transform: capitalize;
 }
 
 .panel-body {
@@ -535,6 +535,7 @@ tspan.highChartTitle {
     padding: 0;
     top: 50px;
     border-top: 0;
+    z-index: 99999;
     &::before{
       content: '';
       border-bottom: 20px solid #fff;
@@ -612,6 +613,7 @@ table.dataTable.stripe>tbody>tr.odd>*, table.dataTable.display>tbody>tr.even>* {
   label{
     margin: 0;
     font-size: 14px;
+    text-transform: capitalize;
     select{
       font-size: 14px !important;
     }

@@ -67,7 +67,7 @@ class RabiesTestController extends Controller
                 'typefdte' => 'required',
             ],[
                 'date.required' => 'Date Required',
-                'number_of_patients.required' => 'number of patients Required',
+                'number_of_patients.required' => 'Number of Patients Required',
                 'typefdte.required' => 'Type Required',
             ]);
         
@@ -109,7 +109,7 @@ class RabiesTestController extends Controller
                     'typefdte' => 'required',
                 ],[
                     'date.required' => 'Date Required',
-                    'number_of_patients.required' => 'number of patients Required',
+                    'number_of_patients.required' => 'Number of Patients Required',
                     'typefdte.required' => 'Type Required',
                 ]);
             

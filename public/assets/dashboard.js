@@ -421,9 +421,9 @@ const defaultLoadMapData = () => {
     $("#stateMap").hide();
 
 
-    $("#mySelect2").select2({
-        tags: true,
-    });
+    // $("#mySelect2").select2({
+    //     tags: true,
+    // });
 
     $.ajaxSetup({
         headers: {

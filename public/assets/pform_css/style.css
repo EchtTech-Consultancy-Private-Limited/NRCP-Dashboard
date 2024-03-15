@@ -226,7 +226,6 @@ textarea.valid {
 .form-text {
   color: #ff0000 !important;
   font-size: 11px;
-  text-transform: capitalize;
 }
 
 .panel-body {
@@ -505,6 +504,7 @@ tspan.highChartTitle {
   padding: 0;
   top: 50px;
   border-top: 0;
+  z-index: 99999;
 }
 .dropdown.profile .dropdown-menu::before {
   content: "";
@@ -575,6 +575,7 @@ table.dataTable.stripe > tbody > tr.odd > *, table.dataTable.display > tbody > t
 .dataTables_wrapper .dataTables_length label {
   margin: 0;
   font-size: 14px;
+  text-transform: capitalize;
 }
 .dataTables_wrapper .dataTables_length label select {
   font-size: 14px !important;

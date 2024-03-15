@@ -1,9 +1,9 @@
 // adjusting the placeholder  color
 let select = $('select');
-console.log(select);
+
 select.each((index, element) => {
     let selectWord = $(element).find(':selected').text().split(' ');
-    console.log(selectWord);
+    
     $(element).css('color', 'grey')
     $(element).on('change', function () {
         if ($(this).val() !== selectWord[0]) {
@@ -11,7 +11,15 @@ select.each((index, element) => {
             // alert('code is executed');
         } else {
             $(this).css('color', 'grey');
-            alert('code is executed');
+           
         }
     });
 });
+
+
+function handleTest(e) {
+    alert("hellow world")
+    if (e.keyCode === 8) { // keyCode 8 corresponds to the Backspace key
+        e.preventDefault();
+    }
+}

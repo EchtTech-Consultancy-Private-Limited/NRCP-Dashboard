@@ -80,7 +80,7 @@
    <div class="row">
       <div class="clearfix hidden-md-up"></div>
       <div class="col-md-12">
-         <div class="card card-primary dashboard">
+         <div class="card card-primary dashboard generalDashboard">
             <div class="form-tab">
                <div class="bootstrap-tab">
                   <div class="tab-content" id="myTabContent">
@@ -103,13 +103,13 @@
                                 @foreach($general_profile as $general_profiles)
                                 <tr id="tr_{{$general_profiles->id}}">
                                     <td>{{$general_profiles->id}}</td>
-                                    <td>{{$general_profiles->state}}</td>
+                                    <td class= "text-nowrap">{{$general_profiles->state}}</td>
                                     <td>{{$general_profiles->hospital}}</td>
                                     <td>{{$general_profiles->designation}}</td>
                                     <td>{{$general_profiles->contact_number}}</td>
                                     <td>{{$general_profiles->mou}}</td>
                                     <td>{{$general_profiles->date_of_joining}}</td>
-                                    <td>
+                                    <td class= "text-nowrap">
                                     <a href="{{ url('general-edit',$general_profiles->id) }}" class="btn btn-primary editbtn btn-sm" title="Edit Data"><i class="fa fa-pencil"></i> </a>
                                     <a href="javascript:void(0)" data-url="{{ route('general-laboratory-destroy', $general_profiles->id) }}" class="btn btn-danger deletebtn btn-sm delete-user" title="Delete Data" id="delete">
                                         <i class="fa fa-trash"></i>
