@@ -1,5 +1,5 @@
-//  const BASE_URL = window.location.origin;
-const BASE_URL =window.location.origin+"/public";
+ const BASE_URL = window.location.origin;
+// const BASE_URL =window.location.origin+"/public";
 
 /*handle Form Type*/
 const handleFormType = () => {
@@ -76,7 +76,7 @@ const handleTestPerformed = () => {
 
 const handleDistrict = () => {
     const state_id = $('#state').find(":selected").attr('state-id');
-    let option = "<option value=''>Please select district</option>";
+    let option = "<option value=''>Select district</option>";
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -111,14 +111,13 @@ $(document).ready(function () {
     $('#test_performed').hide()
     $('#year').change(function () {
         var fromYear = parseInt($(this).val());
-        var toYearSelect = $('#yearto');
-        //aleart(toYearSelect)
+        var toYearSelect = $('#yearto');   
 
         // Clear existing options
         toYearSelect.empty();
 
         // Add options starting from next year
-        $('#yearto').html('<option value="" selected>Choose Year</option>');
+        $('#yearto').html('<option value="" selected>Select Year</option>');
         for (var year = fromYear; year <= new Date().getFullYear(); year++) {
 
             var option = $('<option></option>');
@@ -130,10 +129,7 @@ $(document).ready(function () {
     });
 
     // Set a default selected option
-    $('#yearto').append('<option value="" selected>Choose Year</option>');
-
-    // Trigger the change event to populate the "to year" dropdown initially
-    // $('#year').change();
+    $('#yearto').append('<option value="" selected>Select From Year</option>');
 
     $("#apply_filter").on('click', function () {
         apply_filter();
@@ -790,7 +786,7 @@ const googlePieChart = (result) => {
             }
         },
         series: [{
-            name: `${mapFilterTypeText}`,
+            name: 'Cases',
             data: [
                 ['Male', Math.trunc(result.male_percentage)],
                 ['Female', Math.trunc(result.female_percentage)]
@@ -800,8 +796,8 @@ const googlePieChart = (result) => {
 
 
     // 2nd pie chart
-
     Highcharts.chart('containerPie2nd', {
+        
         chart: {
             type: 'pie',
             options3d: {
@@ -828,7 +824,7 @@ const googlePieChart = (result) => {
             }
         },
         series: [{
-            name: `${mapFilterTypeText}`,
+            name: 'Death',
             data: [
                 ['Male', Math.trunc(result.male_percentage_death)],
                 ['Female', Math.trunc(result.female_percentage_death)]
@@ -1206,50 +1202,13 @@ function myFunction() {
     }
 }
 
-
-$(document).ready(function () {
-    // Function to populate #yearto dropdown based on the selected year from #year
-    function populateToYearDropdown() {
-        var fromYear = parseInt($('#year').val());
-        var toYearSelect = $('#yearto');
-
-        // Clear existing options
-        toYearSelect.empty();
-
-        // Add options starting from the selected year up to the current year
-        // toYearSelect.html('<option value="" selected>Choose Year</option>');
-        for (var year = fromYear; year <= new Date().getFullYear(); year++) {
-            var option = $('<option></option>');
-            option.val(year);
-            option.text(year);
-            toYearSelect.append(option);
-        }
-    }
-
-    // Trigger the function on page load
-    populateToYearDropdown();
-
-    // Set a default selected option for #yearto
-    // $('#yearto').append('<option value="" selected>Choose Year</option>');
-
-    // Attach the change event to #year dropdown
-    $('#year').change(function () {
-        // Call the function to repopulate #yearto dropdown when #year changes
-        populateToYearDropdown();
-    });
-});
-
-
 // laboratory dashboard
 
 function printDiv(divName) {
     var printContents = document.getElementById(divName).innerHTML;
     var originalContents = document.body.innerHTML;
-
     document.body.innerHTML = printContents;
-
     window.print();
-
     document.body.innerHTML = originalContents;
     location.reload();
 }
@@ -1301,21 +1260,22 @@ const defaultLaboratoryMapData = () => {
                     `;
                     $("#tableBody").append(mapRow);           
                 });
-                // Graph total row table         
-                    const graphTableRow = `
+                // Graph total row table
+                console.log(result.total_records.number_of_patients);      
+                const graphTableRow = `
                     <tr>
-                    <td>${result.total_records.number_of_patients}</td>
-                    <td>${result.total_records.numbers_of_sample_received}</td>
-                    <td>${result.total_records.testConducted}</td>
-                    <td>${result.total_records.numbers_of_positives}</td>
+                        <td>${result.total_records.number_of_patients}</td>
+                        <td>${result.total_records.numbers_of_sample_received}</td>
+                        <td>${result.total_records.testConducted}</td>
+                        <td>${result.total_records.numbers_of_positives}</td>
                     </tr>
                     <tr>
-                    <td>${result.total_records.number_of_patients/result.total_records.number_of_patients*100}%</td>
-                    <td>${Math.trunc(result.total_records.numbers_of_sample_received/result.total_records.number_of_patients*100)}%</td>
-                    <td>${Math.trunc(result.total_records.testConducted/result.total_records.number_of_patients*100)}%</td>
-                    <td>${Math.trunc(result.total_records.numbers_of_positives/result.total_records.number_of_patients*100)}%</td>
-                    </tr>
-                    `;
+                        <td>${result.total_records.number_of_patients !== 0 ? (result.total_records.number_of_patients / result.total_records.number_of_patients * 100) + '%' : '0%'}</td>
+                        <td>${result.total_records.number_of_patients !== 0 ? Math.trunc(result.total_records.numbers_of_sample_received / result.total_records.number_of_patients * 100) + '%' : '0%'}</td>
+                        <td>${result.total_records.number_of_patients !== 0 ? Math.trunc(result.total_records.testConducted / result.total_records.number_of_patients * 100) + '%' : '0%'}</td>
+                        <td>${result.total_records.number_of_patients !== 0 ? Math.trunc(result.total_records.numbers_of_positives / result.total_records.number_of_patients * 100) + '%' : '0%'}</td>
+                    </tr>`;
+
                 $("#tableGraphBody").append(graphTableRow);
                 const gaugeOptions = {
                     chart: {
@@ -1768,21 +1728,20 @@ const laboratory_apply_filter = (rabiesfilter = '') => {
                     `;
                     $("#tableBody").append(mapRow);
                 });
-                // Graph total row table         
+                // Graph total row table     
                 const graphTableRow = `
                     <tr>
-                    <td>${result.total_records.number_of_patients}</td>
-                    <td>${result.total_records.numbers_of_sample_received}</td>
-                    <td>${result.total_records.testConducted}</td>
-                    <td>${result.total_records.numbers_of_positives}</td>
+                        <td>${result.total_records.number_of_patients}</td>
+                        <td>${result.total_records.numbers_of_sample_received}</td>
+                        <td>${result.total_records.testConducted}</td>
+                        <td>${result.total_records.numbers_of_positives}</td>
                     </tr>
                     <tr>
-                    <td>${result.total_records.number_of_patients/result.total_records.number_of_patients*100}%</td>
-                    <td>${Math.trunc(result.total_records.numbers_of_sample_received/result.total_records.number_of_patients*100)}%</td>
-                    <td>${Math.trunc(result.total_records.testConducted/result.total_records.number_of_patients*100)}%</td>
-                    <td>${Math.trunc(result.total_records.numbers_of_positives/result.total_records.number_of_patients*100)}%</td>
-                    </tr>
-                    `;
+                        <td>${result.total_records.number_of_patients !== 0 ? (result.total_records.number_of_patients / result.total_records.number_of_patients * 100) + '%' : '0%'}</td>
+                        <td>${result.total_records.number_of_patients !== 0 ? Math.trunc(result.total_records.numbers_of_sample_received / result.total_records.number_of_patients * 100) + '%' : '0%'}</td>
+                        <td>${result.total_records.number_of_patients !== 0 ? Math.trunc(result.total_records.testConducted / result.total_records.number_of_patients * 100) + '%' : '0%'}</td>
+                        <td>${result.total_records.number_of_patients !== 0 ? Math.trunc(result.total_records.numbers_of_positives / result.total_records.number_of_patients * 100) + '%' : '0%'}</td>
+                    </tr>`;
                 $("#tableGraphBody").append(graphTableRow);
                 const gaugeOptions = {
                     chart: {

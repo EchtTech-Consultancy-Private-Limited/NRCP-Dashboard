@@ -1,14 +1,9 @@
 // adjusting the placeholder  color
 let select = $('select');
-<<<<<<< HEAD
 
 select.each((index, element) => {
     let selectWord = $(element).find(':selected').text().split(' ');
     
-=======
-select.each((index, element) => {
-    let selectWord = $(element).find(':selected').text().split(' ');
->>>>>>> f7b15b73b0694d983ab7ba7cd183c8e2d9cf5209
     $(element).css('color', 'grey')
     $(element).on('change', function () {
         if ($(this).val() !== selectWord[0]) {
@@ -27,4 +22,9 @@ function handleTest(e) {
     if (e.keyCode === 8) { // keyCode 8 corresponds to the Backspace key
         e.preventDefault();
     }
+}
+
+// validate input
+function validateInput(input) {
+    input.value = input.value.replace(/\D/g, '');
 }

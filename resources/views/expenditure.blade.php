@@ -1,6 +1,6 @@
 @extends('layouts.main')
 @section('title')
-{{__('Expenditure')}}
+{{__('Expenditure Form')}}
 @endsection
 @section('content')
 <style>
@@ -108,8 +108,8 @@
                            <tbody>
                               @foreach($expenditure as $data)
                               <tr>
-                                 <td>{{$data->id}}</td>
-                                 <td>{{$data->financial_year}}</td>
+                                 <td>{{$loop->iteration}}</td>
+                                 <td>{{date('d-m-Y',strtotime($data->financial_year))}}</td>
                                  <td>{{$data->fund_recieved}}</td>
                                  @foreach($equipment_purchase_masters as $equipment_purchase_master)
                                  @if($data->equipment_purchase == $equipment_purchase_master->name)

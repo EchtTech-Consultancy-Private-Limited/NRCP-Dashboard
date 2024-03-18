@@ -13,21 +13,10 @@
         <!-- /.login-logo -->
         <div class="card card-outline card-primary">
             <div class="card-header text-center">
-                <a href="../../index2.html" class="h1"><b> Rabies Data Portal</b></a>
+                <a href="#" class="h1"><b> Rabies Data Portal</b></a>
             </div>
             <div class="card-body">
                 <p class="login-box-msg">Sign in to start your session</p>
-
-
-                @if ($errors->any())
-                    <div class="alert alert-danger">
-                        <ul>
-                            @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-                @endif
 
                 @if (session('success'))
                     <div class="alert alert-success">
@@ -64,16 +53,19 @@
                     </div> --}}
                     <div class="input-group mb-3 space-between" >
                         <div class="w-45">
-                            <input type="radio" name="user_type" value='1' class="mr-2" checked>
+                            <input type="radio" name="user_type" value='1' class="mr-2" {{ (old('user_type') == 1) ? 'checked' : ''}}>
                             <label>National User</label>
                         </div>
                         <div class="ml-4">
-                            <input type="radio" name="user_type" value='2' class="mr-2">
+                            <input type="radio" name="user_type" value='2' class="mr-2"  {{ (old('user_type') == 2) ? 'checked' : ''}}>
                             <label>Laboratory User</label>
                         </div>
                     </div>
+                    @error('user_type') 
+                        <span class="form-text text-danger mb-3 ">{{ $message }}</span>
+                    @enderror
                     <div class="input-group mb-3">
-                        <input type="email" name="email" class="form-control" placeholder="Email">                       
+                        <input type="email" name="email" value="{{ old('email') }}" class="form-control" placeholder="Email">                       
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-envelope"></span>
@@ -82,12 +74,10 @@
                        
                     </div>
                     @error('email') 
-                            <span class="form-text text-danger mb-3 ">{{ $message }}</span>
-                         @enderror 
+                        <span class="form-text text-danger mb-3 ">{{ $message }}</span>
+                    @enderror 
                     <div class="input-group mb-3">
-                        <input type="password" name="password" id="password" class="form-control"
-                            placeholder="Password">
-
+                        <input type="password" name="password" value="{{ old('password') }}" id="password" class="form-control" placeholder="Password">
                         <div class="input-group-append">
 
                             <div class="input-group-text">
@@ -103,7 +93,7 @@
                     <div class="col-md-12">
                         <div class="captcha row">
                            <div class="col-md-7 pl-0">
-                           <input id="captcha" type="text" class="form-control "
+                           <input id="captcha" type="text" value="{{ old('captcha') }}" class="form-control "
                                 placeholder="Enter Captcha" name="captcha">
                            </div>
 

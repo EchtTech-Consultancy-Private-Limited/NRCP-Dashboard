@@ -87,7 +87,7 @@ class RabiesTestController extends Controller
             ]);
         
                 $notification = array(
-                    'message' => 'Added successfully',
+                    'message' => 'RabiesTest Added successfully',
                     'alert-type' => 'success'
                 );
             } 
@@ -129,7 +129,7 @@ class RabiesTestController extends Controller
                 ]);
             
                     $notification = array(
-                        'message' => 'Update successfully',
+                        'message' => 'RabiesTest Update successfully',
                         'alert-type' => 'success'
                     );
                 } 
@@ -137,7 +137,7 @@ class RabiesTestController extends Controller
                     return false;
                 } 
             }
-            return redirect()->back()->with($notification);
+            return redirect('rabies-test')->with($notification);
     }
 
     public function destroy($id)

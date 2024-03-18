@@ -39,9 +39,9 @@ class ExpenditureController extends Controller
                 'fund_recieved' => 'required',
                 'equipment_purchase' => 'required',
             ],[
-                'financial_year.required' => 'financial year Required',
-                'fund_recieved.required' => 'fund recieved Required',
-                'equipment_purchase.required' => 'equipment purchase Required',
+                'financial_year.required' => 'Financial year Required',
+                'fund_recieved.required' => 'Fund Recieved Required',
+                'equipment_purchase.required' => 'Equipment Purchase Required',
             ]);
         
             Expenditure::insert([
@@ -51,7 +51,7 @@ class ExpenditureController extends Controller
             ]);
         
                 $notification = array(
-                    'message' => 'Added successfully',
+                    'message' => 'Expenditure Added successfully',
                     'alert-type' => 'success'
                 );
             } 
@@ -72,9 +72,9 @@ class ExpenditureController extends Controller
                     'fund_recieved' => 'required',
                     'equipment_purchase' => 'required',
                 ],[
-                    'financial_year.required' => 'financial year Required',
-                    'fund_recieved.required' => 'fund recieved Required',
-                    'equipment_purchase.required' => 'equipment purchase Required',
+                    'financial_year.required' => 'Financial year Required',
+                    'fund_recieved.required' => 'Fund Recieved Required',
+                    'equipment_purchase.required' => 'Equipment Purchase Required',
                 ]);
             
                 Expenditure::where('id',$request->id)->update([
@@ -84,7 +84,7 @@ class ExpenditureController extends Controller
                 ]);
             
                     $notification = array(
-                        'message' => 'Update successfully',
+                        'message' => 'Expenditure Update successfully',
                         'alert-type' => 'success'
                     );
                 } 
@@ -92,7 +92,7 @@ class ExpenditureController extends Controller
                     return false;
                 } 
             }
-            return redirect()->back()->with($notification);    
+            return redirect('expenditure')->with($notification);    
     }
 
     public function destroy($id)

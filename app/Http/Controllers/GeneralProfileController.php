@@ -92,8 +92,7 @@ class GeneralProfileController extends Controller
                     return false;
                 } 
             }  
-        return redirect()->back()->with($notification);
-        
+            return redirect('/general-profile')->with($notification);        
     }
 
     public function destroy($id)

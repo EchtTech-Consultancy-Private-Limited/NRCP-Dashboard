@@ -1,4 +1,7 @@
 @extends('layouts.main')
+@section('title')
+{{__('NRCP Dashboard')}}
+@endsection
 @section('content')
     <div class="container-fluid">
         <!-- Info boxes -->
@@ -57,7 +60,7 @@
                                                     <select class="form-select click-function"
                                                             aria-label="Default select example" id="district"
                                                             name="district_name" onChange="handleFilterValue()">
-                                                        <option value="" dist-name="">Enter  District </option>
+                                                        <option value="" dist-name="">Select District </option>
                                                     </select>
                                                     <small id="district-error" class="form-text text-muted">
                                                     </small>
@@ -73,8 +76,7 @@
                                                         <?php
                                                         $currentYear = date('Y');
                                                         for ($year = $currentYear; $year >= 2015; $year--) {
-                                                            $selected = $year == 2022 ? 'selected' : '';
-                                                            echo "<option value='$year' $selected>$year</option>";
+                                                            echo "<option value='$year'>$year</option>";
                                                         }
                                                         ?>
                                                     </select>
@@ -105,7 +107,7 @@
                                                         <option value="" > Select Form Type
                                                         </option>
                                                         <option value="1" form-type="l-form">L Form</option>
-                                                        <option value="2" form-type="p-form" selected>P Form</option>
+                                                        <option value="2" form-type="p-form">P Form</option>
                                                         <option value="3" form-type="s-form">S Form</option>
                                                     </select>
                                                     <small id="formType-error" class="form-text text-muted">
@@ -120,7 +122,7 @@
                                                             id="diseasesSyndromes" onChange="handleFilterValue()">
                                                         <option value=""> Select Diseases Syndromes
                                                         </option>
-                                                        <option value='human_rabies' selected>Human Rabies</option>
+                                                        <option value='human_rabies'>Human Rabies</option>
                                                         <option value='animal_bite'>Animal Bite - Dog Bite</option>
                                                     </select>
                                                     <small id="diseasesSyndromes-error" class="form-text text-muted">
@@ -368,7 +370,6 @@
 
                                             <div class="col-md-6 pl-4">
                                                 <div class="dashboard-filter mt-5">
-                                                    <h1>Cases by Age Group in India (Based on Male and Female)</h1>
                                                     <div id="chartContainer" style="height: 400px;"></div>
                                                 </div>
                                             </div>

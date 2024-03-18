@@ -35,7 +35,7 @@
                                  </div>
                                  <div class="col-lg-3 col-md-3 col-6">
                                     <div class="form-group">
-                                       <label for="fromYear">Number of Sample Recieves<span class="star">*</span></label>
+                                       <label for="fromYear">Number of Sample Recieves</label>
                                        <input type="number" class="form-control" aria-label="Default select example" name="numbers_of_sample_recieved" id="numbers_of_sample_recieved" value="{{$rabiestest->numbers_of_sample_recieved}}">
                                        <small id="supervisors_trained-error"
                                           class="form-text text-muted">
@@ -44,8 +44,7 @@
                                  </div>
                                  <div class="col-lg-2 col-md-2 col-6">
                                     <div class="form-group">
-                                       <label for="diseasesSyndromes">Type of Sample<span
-                                          class="star">*</span></label>
+                                       <label for="diseasesSyndromes">Type of Sample</label>
                                        <select class="form-control" name="typefdte" id="typefdte">
                                           <option value=""> Select</option>
                                           <option value='For diagnosis' <?php if($rabiestest->type == 'For diagnosis'){ echo 'selected'; }else{ echo '';} ?>>For diagnosis</option>
@@ -58,7 +57,7 @@
                                  </div>
                                  <div class="col-lg-2 col-md-2 col-6">
                                     <div class="form-group">
-                                       <label for="diseasesSyndromes">Type of Sample A<span class="star">*</span></label>
+                                       <label for="diseasesSyndromes">Type of Sample A</label>
                                           <select class="form-control" name="typea" id="typea">
                                              @foreach($typea as $key=>$value)
                                              @if($rabiestest->typea == $key)
@@ -75,7 +74,7 @@
                                  </div>
                                  <div class="col-lg-2 col-md-2 col-6">
                                     <div class="form-group">
-                                       <label for="diseasesSyndromes">Type of Sample B<span class="star">*</span></label>
+                                       <label for="diseasesSyndromes">Type of Sample B</label>
                                        <select class="form-control" name="typeb" id="typeb">
                                           @if(!empty($typeb))
                                           @foreach($typeb as $key=>$value)
@@ -94,8 +93,7 @@
                                  </div>
                                 <div class="col-lg-3 col-md-3 col-6">
                                  <div class="form-group">
-                                    <label for="diseasesSyndromes">Method of Diagnosis<span
-                                       class="star">*</span></label>
+                                    <label for="diseasesSyndromes">Method of Diagnosis</label>
                                     <select class="form-control" name="method_of_diagnosis" id="method_of_diagnosis">
                                        <option value=""> Select
                                        </option>
@@ -111,7 +109,7 @@
                                  </div>
                                  <div class="col-lg-3 col-md-3 col-6">
                                     <div class="form-group">
-                                       <label for="diseasesSyndromes">Number of Test Conducted<span class="star">*</span></label>
+                                       <label for="diseasesSyndromes">Number of Test Conducted</label>
                                        <!-- <select class="form-control" name="numbers_of_test" id="numbers_of_test">
                                           <option value=""> Select</option>
                                           <option value='yes'>Yes</option>
@@ -123,7 +121,7 @@
                                  </div>
                                  <div class="col-lg-3 col-md-3 col-6">
                                     <div class="form-group">
-                                       <label for="diseasesSyndromes">Total Number of Positives<span class="star">*</span></label>
+                                       <label for="diseasesSyndromes">Total Number of Positives</label>
                                        <!-- <select class="form-control" name="numbers_of_positives" id="numbers_of_positives">
                                           <option value=""> Select</option>
                                           <option value='yes'>Yes</option>
@@ -136,7 +134,7 @@
                                  </div>
                                  <div class="col-lg-3 col-md-3 col-6">
                                     <div class="form-group">
-                                       <label for="diseasesSyndromes">Numbers Entered into theIHIP<span class="star">*</span></label>
+                                       <label for="diseasesSyndromes">Numbers Entered into theIHIP</label>
                                        <!-- <select class="form-control" name="numbers_of_intered_ihip" id="numbers_of_intered_ihip">
                                           <option value=""> Select</option>
                                           <option value='yes'>Yes</option>
