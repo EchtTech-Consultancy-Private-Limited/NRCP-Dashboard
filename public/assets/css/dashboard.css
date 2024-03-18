@@ -897,4 +897,14 @@ select[name=state] {
 
 .generalDashboard table tr td {
   text-transform: capitalize;
+}
+
+.nhmLink {
+  margin: 0;
+}
+.nhmLink a {
+  background-color: #ddd;
+  padding: 11px;
+  border-radius: 5px;
+  font-size: 14px;
 }/*# sourceMappingURL=dashboard.css.map */
