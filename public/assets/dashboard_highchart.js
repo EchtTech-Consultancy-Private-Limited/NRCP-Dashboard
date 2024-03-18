@@ -1,5 +1,5 @@
-//  const BASE_URL = window.location.origin;
-const BASE_URL =window.location.origin+"/public";
+ const BASE_URL = window.location.origin;
+// const BASE_URL =window.location.origin+"/public";
 
 /*handle Form Type*/
 const handleFormType = () => {
@@ -54,7 +54,7 @@ const handleFilterValue = () => {
     filter_state ? $("#filter_state").val(filter_state) : "";
     filter_district ? $("#filter_district").val(filter_district) : "";
     filter_from_year ? $("#filter_from_year").val(filter_from_year) : "";
-    filter_to_year ? $("#filter_to_year").val(filter_to_year) : "";
+    filter_to_year ? $("#filter_to_year").val(filter_to_year) : "Select To Year";
     form_type ? $("#filter_form_type").val(form_type) : "";
     filter_diseasesSyndromes ? $("#filter_diseases").val(filter_diseasesSyndromes) : "";
     l_dropdown ? $("#l-dropdown").val(l_dropdown) : "";
@@ -102,35 +102,30 @@ const handleDistrict = () => {
         }
     });
 }
-
 /*end here*/
 $(document).ready(function () {
     $("#l-dropdown").hide();
-    $('.lform').hide()
-    $('.l-form-map').hide()
-    $('#test_performed').hide()
+    $('.lform').hide();
+    $('.l-form-map').hide();
+    $('#test_performed').hide();
     $('#year').change(function () {
         var fromYear = parseInt($(this).val());
         var toYearSelect = $('#yearto');
-        //aleart(toYearSelect)
-
+        
         // Clear existing options
         toYearSelect.empty();
 
         // Add options starting from next year
-        $('#yearto').html('<option value="" selected>Choose Year</option>');
+        toYearSelect.append('<option value="" selected>Choose Year</option>');
         for (var year = fromYear; year <= new Date().getFullYear(); year++) {
-
-            var option = $('<option></option>');
-            option.val(year);
-            option.text(year);
-
+            var option = $('<option></option>').val(year).text(year);
             toYearSelect.append(option);
         }
     });
 
     // Set a default selected option
-    $('#yearto').append('<option value="" selected>Choose Year</option>');
+    $('#yearto').append('<option value="Choose Year" selected>Choose Year</option>');
+
 
     // Trigger the change event to populate the "to year" dropdown initially
     // $('#year').change();
@@ -1465,10 +1460,12 @@ const defaultLaboratoryMapData = () => {
                 // monthlyReport Graph
                 const chart = Highcharts.chart('yearReport', {
                     title: {
+                        margin:60,
                         text: 'Institute wise Monthly data',
+                        y:50,
                         style:{
-                              fontSize: innerWidth<=1350  ? "15px" :( innerWidth>=1350  ? "20px" : "15px"),
-                              marginBottom:'20px'
+                              fontSize: innerWidth<=1350  ? "15px" :( innerWidth>=1525  ? "20px" : "15px"),
+                              marginBottom:'50px'
                         },
                         align: 'left'
                     },
