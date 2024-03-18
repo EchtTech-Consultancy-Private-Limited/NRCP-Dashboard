@@ -1,4 +1,4 @@
-<!-- <link rel="stylesheet" src="https://netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"> -->
+
 
 <!-- <nav class="mt-2">
     <ul class="nav nav-pills nav-sidebar flex-column"  role="menu" data-accordion="false">
@@ -158,8 +158,6 @@
 
 </ul>
 
-
-<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script> -->
 
 <script>
 // $(function() {

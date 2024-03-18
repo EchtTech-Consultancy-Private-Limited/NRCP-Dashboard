@@ -920,3 +920,13 @@ select[name="state"]{
 		}
 	}
 }
+
+.nhmLink{
+	margin: 0;
+	a{
+		background-color: #ddd;
+		padding: 11px;
+		border-radius: 5px;
+		font-size: 14px;
+	}
+}

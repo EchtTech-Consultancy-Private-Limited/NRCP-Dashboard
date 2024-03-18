@@ -17,10 +17,13 @@
 <link rel="stylesheet" href="{{ asset('assets/login/dist/css/adminlte.min.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/login/dist/css/tempusdominus-bootstrap-4.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/login/dist/css/tempusdominus-bootstrap-4.min.css') }}">
-{{-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> --}}
+
 <link rel="stylesheet" href="{{ asset('assets/pform_css/style.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/font-awesome-4.7.0/css/font-awesome.min.css') }}">
-<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" >
+
+
+<link rel="stylesheet" href="{{ asset('assets/css/toastr.css') }}">
+
 <!-- <link rel="stylesheet" href="{{ asset('assets/css/dataTables.dataTables.css') }}"> -->
 
 {{-- highchart --}}
@@ -36,5 +39,3 @@
 <link rel="stylesheet" href="{{ asset('assets/css/datatablebuttonmin.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/css/responsive.css') }}">
 
-<!-- <link rel="stylesheet" href="https://cdn.datatables.net/2.0.0/css/dataTables.dataTables.css">
-<link rel="stylesheet" href="https://cdn.datatables.net/buttons/3.0.0/css/buttons.dataTables.css"> -->

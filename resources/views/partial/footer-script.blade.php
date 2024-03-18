@@ -10,6 +10,7 @@
 <!-- jQuery -->
 
 <script src="{{ asset('assets/login/plugins/jquery/jquery.min.js') }}"></script>
+<script src="{{ asset('assets/js/jquery.min.js') }}"></script>
 <script src="{{ asset('assets/custom_js/rabies_dropdown.js') }}"></script>
 <script src="{{ asset('assets/js/pform.js') }}"></script>
 <script src="{{ asset('assets/js/main.js') }}"></script>
@@ -39,7 +40,7 @@
 
 <!-- AdminLTE for demo purposes -->
 <script src="{{ asset('assets/login/dist/js/demo.js') }}"></script>
-<!-- <script src="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css"></script> -->
+
 <!-- <script src="{{ asset('assets/js/datatable.js') }}"></script>
 <script src="{{ asset('assets/js/datatable.js') }}"></script> -->
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
@@ -56,7 +57,7 @@
 <script src="{{ asset('assets/js/datatable-js.js') }}"></script>
 
 
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+<script src="{{ asset('assets/js/toastr.min.js') }}"></script>
 <script>
  @if(Session::has('message'))
  var type = "{{ Session::get('alert-type','info') }}"
@@ -79,7 +80,8 @@
  }
  @endif 
 </script>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+<script src="{{ asset('assets/js/sweetalert2@10.js') }}"></script>
 
 
 

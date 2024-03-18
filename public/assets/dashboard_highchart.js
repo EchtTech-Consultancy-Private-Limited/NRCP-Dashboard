@@ -54,7 +54,7 @@ const handleFilterValue = () => {
     filter_state ? $("#filter_state").val(filter_state) : "";
     filter_district ? $("#filter_district").val(filter_district) : "";
     filter_from_year ? $("#filter_from_year").val(filter_from_year) : "";
-    filter_to_year ? $("#filter_to_year").val(filter_to_year) : "";
+    filter_to_year ? $("#filter_to_year").val(filter_to_year) : "Select To Year";
     form_type ? $("#filter_form_type").val(form_type) : "";
     filter_diseasesSyndromes ? $("#filter_diseases").val(filter_diseasesSyndromes) : "";
     l_dropdown ? $("#l-dropdown").val(l_dropdown) : "";
@@ -102,13 +102,12 @@ const handleDistrict = () => {
         }
     });
 }
-
 /*end here*/
 $(document).ready(function () {
     $("#l-dropdown").hide();
-    $('.lform').hide()
-    $('.l-form-map').hide()
-    $('#test_performed').hide()
+    $('.lform').hide();
+    $('.l-form-map').hide();
+    $('#test_performed').hide();
     $('#year').change(function () {
         var fromYear = parseInt($(this).val());
         var toYearSelect = $('#yearto');   
@@ -119,11 +118,7 @@ $(document).ready(function () {
         // Add options starting from next year
         $('#yearto').html('<option value="" selected>Select Year</option>');
         for (var year = fromYear; year <= new Date().getFullYear(); year++) {
-
-            var option = $('<option></option>');
-            option.val(year);
-            option.text(year);
-
+            var option = $('<option></option>').val(year).text(year);
             toYearSelect.append(option);
         }
     });
@@ -1183,24 +1178,24 @@ const highchartMapDeath = (total_records) => {
 
 
 // sticky nav script
-window.onscroll = function () {
-    myFunction()
-};
+// window.onscroll = function () {
+//     myFunction()
+// };
 
 // Get the navbar
-var navbar = document.getElementById("dashboard-filter");
+// var navbar = document.getElementById("dashboard-filter");
 
 // Get the offset position of the navbar
-var sticky = navbar.offsetTop;
+// var sticky = navbar.offsetTop;
 
 // Add the sticky class to the navbar when you reach its scroll position. Remove "sticky" when you leave the scroll position
-function myFunction() {
-    if (window.pageYOffset >= sticky) {
-        navbar.classList.add("sticky")
-    } else {
-        navbar.classList.remove("sticky");
-    }
-}
+// function myFunction() {
+//     if (window.pageYOffset >= sticky) {
+//         navbar.classList.add("sticky")
+//     } else {
+//         navbar.classList.remove("sticky");
+//     }
+// }
 
 // laboratory dashboard
 
@@ -1425,10 +1420,12 @@ const defaultLaboratoryMapData = () => {
                 // monthlyReport Graph
                 const chart = Highcharts.chart('yearReport', {
                     title: {
+                        margin:60,
                         text: 'Institute wise Monthly data',
+                        y:50,
                         style:{
-                              fontSize: innerWidth<=1350  ? "15px" :( innerWidth>=1350  ? "20px" : "15px"),
-                              marginBottom:'20px'
+                              fontSize: innerWidth<=1350  ? "15px" :( innerWidth>=1525  ? "20px" : "15px"),
+                              marginBottom:'50px'
                         },
                         align: 'left'
                     },

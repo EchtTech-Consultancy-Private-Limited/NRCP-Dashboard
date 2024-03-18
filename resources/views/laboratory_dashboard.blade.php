@@ -46,7 +46,7 @@
                                             <form action="#" method="post" class="myForm"> --}}
                                                 {{-- @csrf --}}
 
-                                                <div class="dashboard-filter" id="dashboard-filter">
+                                                <div class="dashboard-filter mb-4" id="dashboard-filter">
                                                     <div class="row">
                                                         <div class="col-lg-2 col-md-2 col-4">
                                                             <div class="form-group">
@@ -125,7 +125,7 @@
 
                                                 </div>
                                         </div>
-                                        <div class="presumptive-cases dashboard-filter mt-5 laboratory-card">
+                                        <div class="presumptive-cases dashboard-filter mb-4 laboratory-card">
                                             <div class="row defaultform justify-content-center">
                                                 <div class="col-md-3">
                                                     <div class="box box1">
@@ -209,7 +209,7 @@
 
 
                                         <!-- /.row -->
-                                        <div class="card-body p-3 my-5 dashboard-filter">
+                                        <div class="card-body p-3 mb-4 dashboard-filter">
                                             <div class="row bg-white">
                                                 <div class="col-md-12 ">
                                                     <div
@@ -267,7 +267,7 @@
                                             </div>
                                         </div>
                                         <!-- graph start-->
-                                        <div class="card-body p-3 my-5 dashboard-filter">
+                                        <div class="card-body p-3 mb-4 dashboard-filter">
                                             <div id="graphical_view" class="">
                                                 <div class="row">
                                                     <div
@@ -310,7 +310,7 @@
                                         <div id="graphical_view ">
                                             <div class="row">
 
-                                                <div class="col-md-6 pr-4 institute_year_filter">
+                                                <div class="col-md-6 pr-3 institute_year_filter">
                                                     <div class="institute_year_filter">
                                                         <select class="form-control w-auto" name="institute_year"
                                                             id="institute_year_filter">
@@ -324,10 +324,10 @@
                                                                 IHIP</option>
                                                         </select>
                                                     </div>
-                                                    <div id="yearReport" class="dashboard-filter mt-5"></div>
+                                                    <div id="yearReport" class="dashboard-filter "></div>
                                                 </div>
-                                                <div class="col-md-6 pl-4">
-                                                    <div class="dashboard-filter mt-5">
+                                                <div class="col-md-6 pl-2">
+                                                    <div class="dashboard-filter ">
                                                         <div id="monthlyReport" style="height: 400px;"></div>
                                                     </div>
                                                 </div>
@@ -335,8 +335,8 @@
                                         </div>
                                         <div id="graphical_view">
                                             <div class="row">
-                                                <div class="col-md-12 pl-4">
-                                                    <div class="dashboard-filter mt-5">
+                                                <div class="col-md-12 ">
+                                                    <div class="dashboard-filter mt-4">
                                                         <div id="monthlySampleReport" style="height: 400px;"></div>
                                                     </div>
                                                 </div>
