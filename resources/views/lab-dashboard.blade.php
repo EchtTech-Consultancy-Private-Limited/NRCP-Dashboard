@@ -10,7 +10,7 @@
 
                 <div class="card-content">
                     <span class="card-title">General</span>
-                    <p class="card-text">{{ $GeneralProfileTotal }}.00</p>
+                    <p class="card-text">{{ $GeneralProfileTotal }}</p>
                 </div>
                 <div class="card-link">
                     <a href="{{ route('general-laboratory') }}" title="Read Full"><span>Read Full <i
