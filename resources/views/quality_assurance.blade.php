@@ -1,6 +1,6 @@
 @extends('layouts.main') 
 @section('title')
-{{__('Quality Assurance')}}
+{{__('Quality Assurance Form')}}
 @endsection
 @section('content')
 <div class="container-fluid">
@@ -41,7 +41,7 @@
                                     </div>
                                     <div class="col-xl-3 col-lg-4 col-md-3 col-6">
                                        <div class="form-group">
-                                          <label for="fromYear">LSPTISO 15189/ISO17025<span class="star">*</span></label>
+                                          <label for="fromYear">LSPTISO 15189/ISO17025</label>
                                           <select class="form-select" aria-label="Default select example" name="supervisors_trained" id="supervisors_trained">
                                              <option value=""> Select</option>
                                              <option value='yes'>Yes</option>
@@ -52,7 +52,7 @@
                                     </div>
                                     <div class="col-xl-2 col-lg-2 col-md-2 col-6">
                                        <div class="form-group">
-                                          <label for="diseasesSyndromes">LIMS available<span class="star">*</span></label>
+                                          <label for="diseasesSyndromes">LIMS available</label>
                                           <select class="form-select" name="lims" id="lims">
                                              <option value=""> Select</option>
                                              <option value='yes'>Yes</option>
@@ -98,7 +98,7 @@
                             <tbody>
                                 @foreach($quality_assurances as $data)
                                 <tr>
-                                    <td>{{$data->id}}</td>
+                                    <td>{{$loop->iteration}}</td>
                                     <td>{{$data->pt}}</td>
                                     <td>{{$data->accredited_pt}}</td>
                                     <td>{{$data->supervisors_trained}}</td>

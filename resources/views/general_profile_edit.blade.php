@@ -17,7 +17,7 @@
                                     <div class="col-lg-3 col-md-3 col-6">
                                         <div class="form-group">
                                             <label for="state">State<span class="star">*</span></label>
-                                            <input type="text" name="state" id="state" value="{{$general_profile->state}}" class="form-control" />
+                                            <input type="text" name="state" maxlength="45" id="state" value="{{$general_profile->state}}" class="form-control" />
                                             @error('state') 
                                                 <span class="form-text text-muted">{{ $message }}</span>
                                             @enderror 
@@ -26,7 +26,7 @@
                                     <div class="col-lg-3 col-md-3 col-6">
                                         <div class="form-group">
                                             <label for="district">Hospital<span class="star">*</span></label>
-                                            <input type="text" name="hospital" id="hospital" value="{{$general_profile->hospital}}" class="form-control" />
+                                            <input type="text" name="hospital" maxlength="45" id="hospital" value="{{$general_profile->hospital}}" class="form-control" />
                                             @error('hospital') 
                                                 <span class="form-text text-muted">{{ $message }}</span>
                                             @enderror 
@@ -34,32 +34,32 @@
                                     </div>
                                     <div class="col-lg-3 col-md-3 col-6">
                                         <div class="form-group">
-                                            <label for="fromYear">Nodal Officer<span class="star">*</span></label>
+                                            <label for="fromYear">Nodal Officer</label>
                                             <input type="text" name="designation" id="designation" value="{{$general_profile->designation}}" class="form-control"/>
-                                            <small id="designation-error" class="form-text text-muted"> </small>
+                                            <small id="designation-error" maxlength="45" class="form-text text-muted"> </small>
                                         </div>
                                     </div>
                                     <div class="col-lg-3 col-md-3 col-6">
                                         <div class="form-group">
-                                            <label for="toYear">Contact Number<span class="star">*</span></label>
+                                            <label for="toYear">Contact Number</label>
                                             <input type="number" name="contact_number" id="contact_number" value="{{$general_profile->contact_number}}" class="form-control"/>
-                                            <small id="contact_number-error" class="form-text text-muted"> </small>
+                                            <small id="contact_number-error" maxlength="12"class="form-text text-muted"> </small>
                                         </div>
                                     </div>
                                     <div class="col-lg-3 col-md-3 col-6">
                                         <div class="form-group">
-                                            <label for="diseasesSyndromes">Mou<span class="star">*</span></label>
+                                            <label for="diseasesSyndromes">Mou</label>
                                             <select class="form-control" aria-label="Default select example" name="mou" id="mou" onChange="handleFilterValue()">
                                                 <option value=""> Select </option>
-                                                <option value="yes" <?php if($general_profile->mou == 'yes'){ echo 'selected'; }else{ echo ''; } ?>>Yes</option>
-                                                <option value="no" <?php if($general_profile->mou == 'yes'){ echo 'selected'; }else{ echo ''; } ?>>No</option>
+                                                <option value="yes" {{ ($general_profile->mou == 'yes') ? 'selected' : '' }}>Yes</option>
+                                                <option value="no" {{ ($general_profile->mou == 'no') ? 'selected' : '' }}>No</option>
                                             </select>
                                             <small id="mou-error" class="form-text text-muted"></small>
                                         </div>
                                     </div>
                                     <div class="col-lg-3 col-md-3 col-6">
                                         <div class="form-group">
-                                            <label for="formType">Joining Date of NRCP<span class="star">*</span></label>
+                                            <label for="formType">Joining Date of NRCP</label>
                                             <input type="date" name="date_of_joining" id="date_of_joining" value="{{$general_profile->date_of_joining}}" class="form-control"/>
                                             <small id="date_of_joining-error" class="form-text text-muted"> </small>
                                         </div>

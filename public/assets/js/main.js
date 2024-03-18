@@ -23,3 +23,8 @@ function handleTest(e) {
         e.preventDefault();
     }
 }
+
+// validate input
+function validateInput(input) {
+    input.value = input.value.replace(/\D/g, '');
+}

@@ -57,7 +57,7 @@
                 Quality</a>
         </div>
         <div class="link bg-primary text-white dashboard-title {{ (Request::segment(1) == 'equipment')?'active':'' }}">
-         <a href="{{ url('/equipment') }}"><i class="fa fa-cogs iconmargin-set" aria-hidden="true"></i> Equipment</a>
+         <a href="{{ url('/equipment') }}"><i class="fa fa-cogs iconmargin-set" aria-hidden="true"></i> Equipments</a>
         </div>
         <div
             class="link bg-primary text-white dashboard-title {{ (Request::segment(1) == 'rabies-test')?'active':'' }}">

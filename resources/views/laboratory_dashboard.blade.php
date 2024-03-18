@@ -216,7 +216,7 @@
                                                         class="map-text m-0 mb-2 d-flex align-items-center justify-content-between">
                                                         <h1 class="m-0 mr-3 d-inline-block">Institute list</h1>
                                                         <button class="buttons-print float-right" type="button"
-                                                            onclick="printContent('printMap1')"><span>
+                                                            onclick="printDiv('dashboardLaboratory')"><span>
                                                                 <i class="fa fa-print"></i></span></button>
                                                     </div>
 
@@ -224,7 +224,7 @@
                                             </div>
                                             <div>
                                                 <div class="row bg-white">
-                                                    <div class="col-md-6 pr-4" id="printMap1">
+                                                    <div class="col-md-6 pr-4" id="dashboardLaboratory">
                                                         {{-- map code html --}}
                                                         <div id="laboratory-map"></div>
                                                     </div>

@@ -1,6 +1,6 @@
 @extends('layouts.main') 
 @section('title')
-{{__('Rabies Test')}}
+{{__('Report')}}
 @endsection
 @section('content')
 <div class="container-fluid">

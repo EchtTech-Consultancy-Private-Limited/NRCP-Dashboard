@@ -37,8 +37,8 @@ class QualityAssuranceController extends Controller
                 'pt' => 'required',
                 'accredited_pt' => 'required',
             ],[
-                'pt.required' => 'PT Name Required',
-                'accredited_pt.required' => 'accredited Name Required',
+                'pt.required' => 'PTILCPR Required',
+                'accredited_pt.required' => 'PTPNABL Required',
             ]);
         
             QualityAssurance::insert([
@@ -49,7 +49,7 @@ class QualityAssuranceController extends Controller
             ]);
         
                 $notification = array(
-                    'message' => 'Added successfully',
+                    'message' => 'Quality Added successfully',
                     'alert-type' => 'success'
                 );
             } 
@@ -70,8 +70,8 @@ class QualityAssuranceController extends Controller
                     'pt' => 'required',
                     'accredited_pt' => 'required',
                 ],[
-                    'pt.required' => 'PT Name Required',
-                    'accredited_pt.required' => 'accredited Name Required',
+                    'pt.required' => 'PTILCPR Required',
+                    'accredited_pt.required' => 'PTPNABL Required',
                 ]);
             
                 QualityAssurance::where('id',$request->id)->update([
@@ -82,7 +82,7 @@ class QualityAssuranceController extends Controller
                 ]);
             
                     $notification = array(
-                        'message' => 'Update successfully',
+                        'message' => 'Quality Update successfully',
                         'alert-type' => 'success'
                     );
                 } 
@@ -90,7 +90,7 @@ class QualityAssuranceController extends Controller
                     return false;
                 } 
             }
-            return redirect()->back()->with($notification);
+            return redirect('quality-assurance')->with($notification);
     }
 
     public function destroy($id)
