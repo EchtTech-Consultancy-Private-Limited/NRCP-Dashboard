@@ -28,4 +28,14 @@ class NhmRequest extends FormRequest
             'supplementary_rops' => 'mimes:jpeg,bmp,png,gif,svg,pdf',
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'year' => 'The year field is required',
+            'state' => 'The state field is required',
+            'rops' => 'Only PDF file required',
+            'supplementary_rops' => 'Only PDF file required',
+        ];
+    }
 }
