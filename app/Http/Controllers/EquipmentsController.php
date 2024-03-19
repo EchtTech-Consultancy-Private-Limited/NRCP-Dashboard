@@ -18,7 +18,7 @@ class EquipmentsController extends Controller
 
     public function create()
     {
-        $equipment = Equipments::where(['soft_delete' => 0])->get();
+        $equipment = Equipments::where(['soft_delete' => 0])->orderBy('created_at','desc')->get();
         $equipment_masters = DB::table('equipment_masters')->get();
         return view('equipment', compact('equipment','equipment_masters'));
     }

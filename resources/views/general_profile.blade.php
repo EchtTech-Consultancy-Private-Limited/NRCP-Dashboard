@@ -41,8 +41,11 @@
                                     <div class="col-lg-3 col-md-3 col-6">
                                         <div class="form-group">
                                             <label for="toYear">Contact Number</label>
-                                            <input type="text" name="contact_number" id="contact_number" maxlength="12" oninput="validateInput(this)" class="form-control"/>
+                                            <input type="text" name="contact_number" id="contact_number"  minlength="10" maxlength="10" oninput="validateInput(this)" class="form-control"/>
                                             <small id="contact_number-error" class="form-text text-muted"> </small>
+                                            @error('contact_number') 
+                                                <span class="form-text text-muted">{{ $message }}</span>
+                                            @enderror 
                                         </div>
                                     </div>
                                     <div class="col-lg-3 col-md-3 col-6">
@@ -104,11 +107,11 @@
                                 <tr id="tr_{{$general_profiles->id}}">
                                     <td>{{$loop->iteration}}</td>
                                     <td class= "text-nowrap">{{$general_profiles->state}}</td>
-                                    <td>{{$general_profiles->hospital}}</td>
-                                    <td>{{$general_profiles->designation}}</td>
-                                    <td>{{$general_profiles->contact_number}}</td>
-                                    <td>{{$general_profiles->mou}}</td>
-                                    <td>{{ date('d-m-Y',strtotime($general_profiles->date_of_joining))}}</td>
+                                    <td>{{@$general_profiles->hospital}}</td>
+                                    <td>{{@$general_profiles->designation}}</td>
+                                    <td>{{@$general_profiles->contact_number}}</td>
+                                    <td>{{@$general_profiles->mou}}</td>
+                                    <td>{{ $general_profiles->date_of_joining ? date('d-m-Y',strtotime($general_profiles->date_of_joining)) : ''}}</td>
                                     <td class= "text-nowrap">
                                     <a href="{{ url('general-edit',$general_profiles->id) }}" class="btn btn-primary editbtn btn-sm" title="Edit Data"><i class="fa fa-pencil"></i> </a>
                                     <a href="javascript:void(0)" data-url="{{ route('general-laboratory-destroy', $general_profiles->id) }}" class="btn btn-danger deletebtn btn-sm delete-user" title="Delete Data" id="delete">

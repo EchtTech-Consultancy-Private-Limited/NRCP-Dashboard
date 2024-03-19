@@ -5,11 +5,11 @@ const BASE_URL =window.location.origin+"/public";
 const handleFormType = () => {
     const formType = $('#formType').find(":selected").attr('form-type');
     $("#diseasesSyndromes").html("");
-    let option = "";
+    let option = "<option value='selected'> Select Diseases Syndromes</option>";
     if (formType === "p-form") {
         $("#filter_form_type").val(2);
         $("#graphical_view").show();
-        option = "<option value='human_rabies'>Human Rabies</option> <option value='animal_bite'>Animal Bite - Dog Bite</option>";
+        option += "<option value='human_rabies'>Human Rabies</option> <option value='animal_bite'>Animal Bite - Dog Bite</option>";
         $("#diseasesSyndromes").append(option);
         $('#l-dropdown option[value=""]').prop('selected', 'selected');
         $("#l-dropdown").hide();
@@ -21,7 +21,7 @@ const handleFormType = () => {
         // $("#graphical_view").hide();
         $('#l-dropdown option[value="person_tested"]').prop('selected', 'selected');
 
-        option = "<option value='laboratary'>Human Rabies</option>";
+        option += "<option value='laboratary'>Human Rabies</option>";
         $("#diseasesSyndromes").append(option);
         $("#l-dropdown").show();
         $("#test_performed").show();
@@ -31,7 +31,7 @@ const handleFormType = () => {
     } else {
         $("#filter_form_type").val(3);
         // $("#graphical_view").hide();
-        option = "<option value='animal_bite'>Animal Bite - Dog Bite</option>";
+        option += "<option value='animal_bite'>Animal Bite - Dog Bite</option>";
         $("#diseasesSyndromes").append(option);
         // $('#l-dropdown option[value=""]').attr("selected", true);
         $('#l-dropdown option[value=""]').prop('selected', 'selected');
@@ -124,7 +124,7 @@ $(document).ready(function () {
     });
 
     // Set a default selected option
-    $('#yearto').append('<option value="" selected>Select From Year</option>');
+    $('#yearto').append('<option value="" selected>Select Year</option>');
 
     $("#apply_filter").on('click', function () {
         apply_filter();
@@ -133,7 +133,6 @@ $(document).ready(function () {
 
     $("#reset_button").on('click', function () {
         resetButton()
-        // apply_filter();
     });
 
 });
@@ -143,10 +142,10 @@ function resetButton() {
     $('#filter_state').val('')
     $('#state option[value=""]').prop('selected', 'selected').change();
     $('#district option[value=""]').prop('selected', 'selected').change();
-    $('#year option[value="2022"]').prop('selected', 'selected').change();
+    $('#year option[value="yyyy"]').prop('selected', 'selected').change();
     $('#yearto option[value=""]').prop('selected', 'selected').change();
-    $('#formType option[value="2"]').prop('selected', 'selected').change();
-    $('#diseasesSyndromes option[value="human_rabies"]').prop('selected', 'selected').change();
+    $('#formType option[value=""]').prop('selected', 'selected').change();
+    $('#diseasesSyndromes option[value="selected"]').prop('selected', 'selected').change();
     const search_btn = $("#apply_filter");
     search_btn.attr("disabled", false);
     let loading_content = 'Search';
@@ -1253,7 +1252,7 @@ const defaultLaboratoryMapData = () => {
                         <td>${sessionValue == 0 ? numberTestConducted : 0}</td>
                       </tr>
                     `;
-                    $("#tableBody").append(mapRow);           
+                    $("#tableBodyLaboratory").append(mapRow);           
                 });
                 // Graph total row table
                 console.log(result.total_records.number_of_patients);      
@@ -1720,10 +1719,10 @@ const laboratory_apply_filter = (rabiesfilter = '') => {
                     const mapRow = `
                       <tr>
                         <td>${capitalizeFirstLetter(institute)}</td>
-                        <td>${sessionValue == 0 ? numberTestConducted : 0}</td>
+                        <td>${result.total_records.testConducted}</td>
                       </tr>
                     `;
-                    $("#tableBody").append(mapRow);
+                    $("#tableBodyLaboratory").append(mapRow);
                 });
                 // Graph total row table     
                 const graphTableRow = `

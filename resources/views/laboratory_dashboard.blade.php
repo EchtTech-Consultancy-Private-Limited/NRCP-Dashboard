@@ -255,7 +255,7 @@
                                                                             </th>
                                                                         </tr>
                                                                     </thead>
-                                                                    <tbody id="tableBody">
+                                                                    <tbody id="tableBodyLaboratory">
 
                                                                     </tbody>
                                                                 </table>

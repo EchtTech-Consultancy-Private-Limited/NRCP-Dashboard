@@ -18,7 +18,7 @@ class QualityAssuranceController extends Controller
     
     public function create()
     {   
-        $quality_assurances = QualityAssurance::where(['soft_delete'=>0])->get();
+        $quality_assurances = QualityAssurance::where(['soft_delete'=>0])->orderBy('created_at','desc')->get();
         return view('quality_assurance', compact('quality_assurances'));
     }
 

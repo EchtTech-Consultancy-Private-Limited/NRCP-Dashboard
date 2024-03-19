@@ -20,7 +20,7 @@ class GeneralProfileController extends Controller
 
     public function create()
     {
-        $general_profile = GeneralProfile::where(['soft_delete' => 0])->get();
+        $general_profile = GeneralProfile::where(['soft_delete' => 0])->orderBy('created_at','desc')->get();
         return view('general_profile', compact('general_profile'));
     }
 
@@ -36,18 +36,21 @@ class GeneralProfileController extends Controller
             $request->validate([
                 'state' => 'required',
                 'hospital' => 'required',
+                'contact_number' => 'nullable|numeric|digits:10', // Make the field nullable
             ],[
                 'state.required' => 'State Name Required',
                 'hospital.required' => 'Hospital Name Required',
-            ]);
+                'contact_number.numeric' => 'Contact Number must be numeric',
+                'contact_number.digits' => 'Contact Number must be 10 digits',
+            ]);           
         
             GeneralProfile::insert([
                 'state' => $request->state,
                 'hospital' => $request->hospital,
-                'designation' => $request->designation??'NULL',
-                'contact_number' => $request->contact_number??'NULL',
-                'mou' => $request->mou??'NULL',
-                'date_of_joining' => $request->date_of_joining??'NULL',
+                'designation' => $request->designation,
+                'contact_number' => $request->contact_number,
+                'mou' => $request->mou,
+                'date_of_joining' => $request->date_of_joining,
             ]);
         
                 $notification = array(
@@ -69,10 +72,13 @@ class GeneralProfileController extends Controller
                 $request->validate([
                     'state' => 'required',
                     'hospital' => 'required',
+                    'contact_number' => 'nullable|numeric|digits:10', // Make the field nullable
                 ],[
                     'state.required' => 'State Name Required',
                     'hospital.required' => 'Hospital Name Required',
-                ]);
+                    'contact_number.numeric' => 'Contact Number must be numeric',
+                    'contact_number.digits' => 'Contact Number must be 10 digits',
+                ]); 
             
                 GeneralProfile::where('id',$request->id)->update([
                     'state' => $request->state,

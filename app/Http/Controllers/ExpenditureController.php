@@ -18,7 +18,7 @@ class ExpenditureController extends Controller
 
     public function create()
     {
-        $expenditure = Expenditure::where(['soft_delete' => 0])->get();
+        $expenditure = Expenditure::where(['soft_delete' => 0])->orderBy('created_at','desc')->get();
         $equipment_purchase_masters = DB::table('equipment_purchase_masters')->get();
         return view('expenditure', compact('expenditure','equipment_purchase_masters'));
     }
