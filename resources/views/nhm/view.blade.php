@@ -31,8 +31,28 @@
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ @$nhm->year }}</td>
                             <td>{{ @$nhm->state->state_name }}</td>
-                            <td><a class="nhm-file" href="{{ asset('images/uploads/nhm/'.$nhm->rops) }}" download><i class="fa fa-file-pdf-o" aria-hidden="true"></i> <span>({{ $nhm->rops_size }})</span> <i class="fa fa-download" aria-hidden="true"></i></a></td>
-                            <td><a class="nhm-file" href="{{ asset('images/uploads/nhm/'.$nhm->supplementary_rops) }}" download> <i class="fa fa-file-pdf-o" aria-hidden="true"></i>  <span>({{ $nhm->supplementary_rops_size }}) </span> <i class="fa fa-download" aria-hidden="true"></i>  </a></td>
+                            <td>
+                                @if ($nhm->rops)
+                                    <a class="nhm-file" href="{{ asset('images/uploads/nhm/'.$nhm->rops) }}" download>
+                                        <i class="fa fa-file-pdf-o" aria-hidden="true"></i> 
+                                        <span>{{ $nhm->rops_size }}</span>
+                                        <i class="fa fa-download" aria-hidden="true"></i>
+                                    </a>
+                                @else
+                                    N/A
+                                @endif
+                            </td>
+                            <td>
+                                @if ($nhm->supplementary_rops)
+                                    <a class="nhm-file" href="{{ asset('images/uploads/nhm/'.$nhm->supplementary_rops) }}" download>
+                                        <i class="fa fa-file-pdf-o" aria-hidden="true"></i>
+                                        <span>({{ $nhm->supplementary_rops_size }})</span>
+                                        <i class="fa fa-download" aria-hidden="true"></i>
+                                    </a>
+                                @else
+                                    N/A
+                                @endif
+                            </td>  
                         </tr>
                         @endforeach
                     @else

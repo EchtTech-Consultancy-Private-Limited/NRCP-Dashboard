@@ -94,7 +94,7 @@
                                             <div class="col-lg-3 col-md-3">
                                                 <div class="form-group">
                                                     <label for="middle-name">Middle Name</label>
-                                                    <input type="text" name="middle_name" id="middle-name"
+                                                    <input type="text" name="middle_name" maxlength="30" id="middle-name"
                                                         class="form-control" placeholder="Enter Your Middle Name">
                                                     <small id=" " class="form-text text-muted">
                                                     </small>

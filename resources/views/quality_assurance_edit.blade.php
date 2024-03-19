@@ -43,7 +43,7 @@
                                     </div>
                                     <div class="col-lg-3 col-md-3 col-6">
                                        <div class="form-group">
-                                          <label for="fromYear">LSPTISO 15189/ISO17025<span class="star">*</span></label>
+                                          <label for="fromYear">LSPTISO 15189/ISO17025</label>
                                           <select class="form-select" aria-label="Default select example" name="supervisors_trained" id="supervisors_trained">
                                              <option value=""> Select</option>
                                              <option value='yes' <?php if($quality_assurance->supervisors_trained == 'yes'){ echo 'selected'; }else{ echo '';} ?>>Yes</option>
@@ -54,7 +54,7 @@
                                     </div>
                                     <div class="col-lg-2 col-md-2 col-6">
                                        <div class="form-group">
-                                          <label for="diseasesSyndromes">LIMS available<span class="star">*</span></label>
+                                          <label for="diseasesSyndromes">LIMS available</label>
                                           <select class="form-select" name="lims" id="lims">
                                              <option value=""> Select</option>
                                              <option value='yes' <?php if($quality_assurance->lims == 'yes'){ echo 'selected'; }else{ echo '';} ?>>Yes</option>

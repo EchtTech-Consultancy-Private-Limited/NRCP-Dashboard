@@ -18,7 +18,7 @@ class EquipmentsController extends Controller
 
     public function create()
     {
-        $equipment = Equipments::where(['soft_delete' => 0])->get();
+        $equipment = Equipments::where(['soft_delete' => 0])->orderBy('created_at','desc')->get();
         $equipment_masters = DB::table('equipment_masters')->get();
         return view('equipment', compact('equipment','equipment_masters'));
     }
@@ -39,7 +39,7 @@ class EquipmentsController extends Controller
                 'quantity' => 'required',
                 'year_of_purchase' => 'required',
             ],[
-                'equipment.required' => 'Equipment Name Required',
+                'equipment.required' => 'Equipment Required',
                 'quantity.required' => 'Quantity Required',
                 'year_of_purchase.required' => 'Year of purchase Required',
             ]);
@@ -51,7 +51,7 @@ class EquipmentsController extends Controller
             ]);
         
                 $notification = array(
-                    'message' => 'Added successfully',
+                    'message' => 'Equipment Added successfully',
                     'alert-type' => 'success'
                 );
             } 
@@ -72,7 +72,7 @@ class EquipmentsController extends Controller
                     'quantity' => 'required',
                     'year_of_purchase' => 'required',
                 ],[
-                    'equipment.required' => 'Equipment Name Required',
+                    'equipment.required' => 'Equipment Required',
                     'quantity.required' => 'Quantity Required',
                     'year_of_purchase.required' => 'Year of purchase Required',
                 ]);
@@ -84,7 +84,7 @@ class EquipmentsController extends Controller
                 ]);
             
                     $notification = array(
-                        'message' => 'Update successfully',
+                        'message' => 'Equipment Update successfully',
                         'alert-type' => 'success'
                     );
                 } 
@@ -92,7 +92,7 @@ class EquipmentsController extends Controller
                     return false;
                 } 
             }
-            return redirect()->back()->with($notification);
+            return redirect('equipment')->with($notification);
     }
 
     public function destroy($id)

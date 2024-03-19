@@ -1,6 +1,6 @@
 @extends('layouts.main') 
 @section('title')
-{{__('Equipments')}}
+{{__('Equipments Form')}}
 @endsection
 @section('content')
 <div class="container-fluid">
@@ -81,14 +81,14 @@
                             <tbody>
                                 @foreach($equipment as $data)
                                 <tr>
-                                    <td>{{$data->id}}</td>
+                                    <td>{{$loop->iteration}}</td>
                                     @foreach($equipment_masters as $datas)
                                      @if($data->equipment ==$datas->name)
                                         <td>{{$datas->name}}</td>
                                      @endif
                                     @endforeach
                                     <td>{{$data->quantity}}</td>
-                                    <td>{{$data->year_of_purchase}}</td>
+                                    <td>{{ date('d-m-Y',strtotime($data->year_of_purchase))}}</td>
                                     <td>
                                     <a href="{{ url('equipment-edit',$data->id) }}" class="btn btn-primary editbtn btn-sm" title="Edit Data"><i class="fa fa-pencil"></i> </a>
                                     <a href="javascript:void(0)" data-url="{{ route('equipment-destroy', $data->id) }}" class="btn btn-danger deletebtn btn-sm delete-user" title="Delete Data" id="delete">

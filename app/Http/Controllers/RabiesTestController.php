@@ -20,7 +20,7 @@ class RabiesTestController extends Controller
 
     public function create()
     {
-        $rabies_test = RabiesTest::with('state')->where(['soft_delete' => 0,'institute_id' => Auth::user()->lab_id])->get();
+        $rabies_test = RabiesTest::with('state')->where(['soft_delete' => 0,'institute_id' => Auth::user()->lab_id])->orderBy('date','desc')->get();
         return view('rabies_test', compact('rabies_test'));
     }
 
@@ -63,7 +63,11 @@ class RabiesTestController extends Controller
         try{
             $request->validate([
                 'date' => 'required',
-                'number_of_patients' => 'required',
+                'number_of_patients' => 'required|numeric|digits:5',
+                'numbers_of_sample_recieved' => 'nullable|numeric|digits:5',
+                'numbers_of_positives' => 'nullable|numeric|digits:5',
+                'numbers_of_test' => 'nullable|numeric|digits:5',
+                'numbers_of_intered_ihip' => 'nullable|numeric|digits:5',
                 'typefdte' => 'required',
             ],[
                 'date.required' => 'Date Required',
@@ -87,7 +91,7 @@ class RabiesTestController extends Controller
             ]);
         
                 $notification = array(
-                    'message' => 'Added successfully',
+                    'message' => 'RabiesTest Added successfully',
                     'alert-type' => 'success'
                 );
             } 
@@ -129,7 +133,7 @@ class RabiesTestController extends Controller
                 ]);
             
                     $notification = array(
-                        'message' => 'Update successfully',
+                        'message' => 'RabiesTest Update successfully',
                         'alert-type' => 'success'
                     );
                 } 
@@ -137,7 +141,7 @@ class RabiesTestController extends Controller
                     return false;
                 } 
             }
-            return redirect()->back()->with($notification);
+            return redirect('rabies-test')->with($notification);
     }
 
     public function destroy($id)

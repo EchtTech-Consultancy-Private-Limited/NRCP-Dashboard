@@ -31,7 +31,6 @@ class authController extends Controller
 
                 ]
         );
-        //dd($request->user_type);
         $exitUser = DB::table('dashboard_login')->where('email',$request->email)->where('user_type',$request->user_type)->first();
         if($exitUser == null){
             return redirect()->back()->with('error', 'User do not match for this user type');

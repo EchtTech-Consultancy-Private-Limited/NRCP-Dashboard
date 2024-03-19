@@ -83,7 +83,6 @@ class MainController extends Controller
     /*dashboard form filter*/
     public function getFilterData(Request $request)
     {
-        //dd($request->all());
         $array = null;
         $state = null;
         $setstateMap = null;
@@ -116,7 +115,6 @@ class MainController extends Controller
                 $animal_bite_query = DB::table('animalbite_dog_sform_bite');
                 $total_cases = $animal_bite_query->sum('cases');
                 $total_deaths = $animal_bite_query->sum('deaths');
-
                 if (!empty($request->setstate)) {
                     $state = DB::table('states')->where('state_name', '=', $filter_state)->get()->toArray();
                     $district_list = DB::table('district')->where('state_name', '=', $filter_state)->get()->toArray();
@@ -474,7 +472,6 @@ class MainController extends Controller
         $human_rabiess = DB::table('pform_human_rabies')->get();
         $currentYear = date('Y');
         $previousYear = $currentYear - 2;
-
 
         $total_human_rabies = 0; // Initialize a variable to hold the total
         $total_rabies_record = 0;
