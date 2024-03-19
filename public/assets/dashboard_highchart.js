@@ -1,5 +1,5 @@
-//  const BASE_URL = window.location.origin;
-const BASE_URL =window.location.origin+"/public";
+ const BASE_URL = window.location.origin;
+// const BASE_URL =window.location.origin+"/public";
 
 /*handle Form Type*/
 const handleFormType = () => {
@@ -41,6 +41,7 @@ const handleFormType = () => {
         $("#map-text").html("Animal Bite - Dog Bite (Syndromic Surveillance) Cases in India")
     }
 }
+
 
 const handleFilterValue = () => {
     const filter_state = $('#state').find(":selected").val();
@@ -428,9 +429,9 @@ const defaultLoadMapData = () => {
     $("#stateMap").hide();
 
 
-    $("#mySelect2").select2({
-        tags: true,
-    });
+    // $("#mySelect2").select2({
+    //     tags: true,
+    // });
 
     $.ajaxSetup({
         headers: {
@@ -2157,4 +2158,18 @@ function laboratoryResetButton() {
     laboratory_apply_filter();
 }
 // end LAboratory dashboard
+
+$(document).ready(function(){
+    let multipleSelect = $('select#mySelect2 + .select2-container--default .select2-selection--multiple .select2-selection__rendered li .select2-search__field');
+   
+    // Bind a keydown event handler to the select2 search field
+    multipleSelect.on('keydown', function(e) {
+      
+        // Prevent the default action if the pressed key is the backspace key
+        if (e.keyCode == 8) { // 8 is the keycode for the backspace key
+            e.preventDefault();
+            alert("asl;dkfa;sldkfjas;lkdjf")
+        }
+    });
+});
 
