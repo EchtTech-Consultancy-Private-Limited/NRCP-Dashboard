@@ -63,7 +63,11 @@ class RabiesTestController extends Controller
         try{
             $request->validate([
                 'date' => 'required',
-                'number_of_patients' => 'required',
+                'number_of_patients' => 'required|numeric|digits:5',
+                'numbers_of_sample_recieved' => 'nullable|numeric|digits:5',
+                'numbers_of_positives' => 'nullable|numeric|digits:5',
+                'numbers_of_test' => 'nullable|numeric|digits:5',
+                'numbers_of_intered_ihip' => 'nullable|numeric|digits:5',
                 'typefdte' => 'required',
             ],[
                 'date.required' => 'Date Required',

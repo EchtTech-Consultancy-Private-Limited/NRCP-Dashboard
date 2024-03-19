@@ -25,7 +25,7 @@
                                  <div class="col-lg-2 col-md-2 col-6">
                                     <div class="form-group">
                                        <label for="district">Number of Patients<span class="star">*</span></label>
-                                       <input type="number" class="form-control" aria-label="Default select example" name="number_of_patients" id="number_of_patients">
+                                       <input type="text" maxlength="5" oninput="validateInput(this)" class="form-control" aria-label="Default select example" name="number_of_patients" id="number_of_patients">
                                        @error('number_of_patients') 
                                           <span class="form-text text-muted">{{ $message }}</span>
                                        @enderror 
@@ -34,7 +34,10 @@
                                  <div class="col-lg-3 col-md-3 col-6">
                                     <div class="form-group">
                                        <label for="fromYear">Numbers of Sample Recieves</label>
-                                       <input type="number" class="form-control" aria-label="Default select example" name="numbers_of_sample_recieved" id="numbers_of_sample_recieved">
+                                       <input type="text" maxlength="5" oninput="validateInput(this)" class="form-control" aria-label="Default select example" name="numbers_of_sample_recieved" id="numbers_of_sample_recieved">
+                                       @error('numbers_of_sample_recieved') 
+                                          <span class="form-text text-muted">{{ $message }}</span>
+                                       @enderror
                                        <small id="supervisors_trained-error"
                                           class="form-text text-muted">
                                        </small>
@@ -92,24 +95,20 @@
                                  <div class="col-lg-3 col-md-3 col-6">
                                     <div class="form-group">
                                        <label for="diseasesSyndromes">Numbers of Test Conducted</label>
-                                       <!-- <select class="form-control" name="numbers_of_test" id="numbers_of_test">
-                                          <option value=""> Select</option>
-                                          <option value='yes'>Yes</option>
-                                          <option value='no'>No</option>
-                                       </select> -->
-                                       <input type="number" class="form-control" aria-label="Default select example" name="numbers_of_test" id="numbers_of_test">
+                                       <input type="text" maxlength="5" oninput="validateInput(this)" class="form-control" aria-label="Default select example" name="numbers_of_test" id="numbers_of_test">
+                                       @error('numbers_of_test') 
+                                          <span class="form-text text-muted">{{ $message }}</span>
+                                       @enderror
                                        <small id="lims-error" class="form-text text-muted"></small>
                                     </div>
                                  </div>
                                  <div class="col-lg-3 col-md-3 col-6">
                                     <div class="form-group">
                                        <label for="diseasesSyndromes">Total Numbers of Positives</label>
-                                       <!-- <select class="form-control" name="numbers_of_positives" id="numbers_of_positives">
-                                          <option value=""> Select</option>
-                                          <option value='yes'>Yes</option>
-                                          <option value='no'>No</option>
-                                       </select> -->
-                                       <input type="number" class="form-control" aria-label="Default select example" name="numbers_of_positives" id="numbers_of_positives">
+                                       <input type="text" maxlength="5" oninput="validateInput(this)" class="form-control" aria-label="Default select example" name="numbers_of_positives" id="numbers_of_positives">
+                                       @error('numbers_of_positives') 
+                                          <span class="form-text text-muted">{{ $message }}</span>
+                                       @enderror
                                        <small id="lims-error" class="form-text text-muted">
                                        </small>
                                     </div>
@@ -117,12 +116,10 @@
                                  <div class="col-lg-3 col-md-3 col-6">
                                     <div class="form-group">
                                        <label for="diseasesSyndromes">Numbers Entered into the IHIP</label>
-                                       <!-- <select class="form-control" name="numbers_of_intered_ihip" id="numbers_of_intered_ihip">
-                                          <option value=""> Select</option>
-                                          <option value='yes'>Yes</option>
-                                          <option value='no'>No</option>
-                                       </select> -->
-                                       <input type="number" class="form-control" aria-label="Default select example" name="numbers_of_intered_ihip" id="numbers_of_intered_ihip">
+                                       <input type="text" maxlength="5" oninput="validateInput(this)" class="form-control" aria-label="Default select example" name="numbers_of_intered_ihip" id="numbers_of_intered_ihip">
+                                       @error('numbers_of_intered_ihip') 
+                                          <span class="form-text text-muted">{{ $message }}</span>
+                                       @enderror
                                     </div>
                                  </div>
                                  <div class="col-lg-3 col-md-3 col-6 search-reset">
