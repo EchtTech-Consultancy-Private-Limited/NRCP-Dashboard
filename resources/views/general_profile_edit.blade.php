@@ -42,8 +42,11 @@
                                     <div class="col-lg-3 col-md-3 col-6">
                                         <div class="form-group">
                                             <label for="toYear">Contact Number</label>
-                                            <input type="number" name="contact_number" id="contact_number" value="{{$general_profile->contact_number}}" class="form-control"/>
-                                            <small id="contact_number-error" maxlength="12"class="form-text text-muted"> </small>
+                                            <input type="text" name="contact_number" id="contact_number" value="{{$general_profile->contact_number}}" minlength="10" maxlength="10" oninput="validateInput(this)" class="form-control"/>
+                                            <small id="contact_number-error" class="form-text text-muted"> </small>
+                                            @error('contact_number') 
+                                                <span class="form-text text-muted">{{ $message }}</span>
+                                            @enderror
                                         </div>
                                     </div>
                                     <div class="col-lg-3 col-md-3 col-6">

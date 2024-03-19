@@ -24,7 +24,7 @@
                                  </div>
                                  <div class="col-lg-2 col-md-2 col-6">
                                     <div class="form-group">
-                                       <label for="district">Number of Patients</label>
+                                       <label for="district">Number of Patients<span class="star">*</span></label>
                                        <input type="number" class="form-control" aria-label="Default select example" name="number_of_patients" id="number_of_patients">
                                        @error('number_of_patients') 
                                           <span class="form-text text-muted">{{ $message }}</span>
@@ -75,8 +75,7 @@
                                  </div>
                                  <div class="col-lg-3 col-md-3 col-6">
                                  <div class="form-group">
-                                    <label for="diseasesSyndromes">Method of Diagnosis<span
-                                       class="star">*</span></label>
+                                    <label for="diseasesSyndromes">Method of Diagnosis</label>
                                     <select class="form-control" name="method_of_diagnosis" id="method_of_diagnosis">
                                        <option value=""> Select
                                        </option>
