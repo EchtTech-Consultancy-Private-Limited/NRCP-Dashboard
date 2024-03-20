@@ -1,5 +1,5 @@
- const BASE_URL = window.location.origin;
 // const BASE_URL =window.location.origin+"/public";
+const BASE_URL = window.location.origin;
 
 /*handle Form Type*/
 const handleFormType = () => {
@@ -423,9 +423,9 @@ const defaultLoadMapData = () => {
     $("#stateMap").hide();
 
 
-    $("#mySelect2").select2({
-        tags: true,
-    });
+    // $("#mySelect2").select2({
+    //     tags: true,
+    // });
 
     $.ajaxSetup({
         headers: {

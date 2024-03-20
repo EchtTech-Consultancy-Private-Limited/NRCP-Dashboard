@@ -37,12 +37,16 @@ Route::middleware(['Admin','device'])->group(function () {
         Route::get('/logout',[authController::class,'logout'])->name('logout');
         /** Form Routes */
         Route::get('dashboard', [MainController::class, 'dashboard'])->name('dashboard');
-        Route::get('pform', [PFormController::class, 'index'])->name('pform');
-        Route::get('sform', [SFormController::class, 'index'])->name('sform');
-        Route::get('lform', [LFormController::class, 'index'])->name('lform');
-
         Route::get('laboratory-dashboard', [LaboratoryDashboardController::class, 'index'])->name('laboratory-dashboard');
         Route::get('get-filter-laboratory-data',[LaboratoryDashboardController::class,'getFilterLaboratoryData'])->name('get-filter-laboratory-data');
+        
+        Route::group(['prefix' => 'pform', 'as' => 'pform.'], function(){
+            Route::get('/', [PFormController::class, 'index'])->name('index');
+            Route::post('create',[PFormController::class, 'create'])->name('create');
+        });
+
+        Route::get('sform', [SFormController::class, 'index'])->name('sform');
+        Route::get('lform', [LFormController::class, 'index'])->name('lform');
         // nhm dashboard
         Route::group(['prefix' => 'nhms', 'as' => 'nhm.'], function () {
             Route::get('/', [NhmDashboardController::class, 'index'])->name('index');
@@ -52,7 +56,6 @@ Route::middleware(['Admin','device'])->group(function () {
         });
         // end nhm dashboard
         Route::get('Human-rabies-map', [MainController::class, 'HumanRabiesView'])->name('pform2');
-        Route::post('patient-Record',[MainController::class,'patientAdd']);
          
         Route::get('patient_records_form',[MainController::class,'patientrecordsform']);
 
