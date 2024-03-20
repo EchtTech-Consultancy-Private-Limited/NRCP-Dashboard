@@ -72,7 +72,7 @@ class RabiesTestController extends Controller
             ],[
                 'date.required' => 'Date Required',
                 'number_of_patients.required' => 'Number of Patients Required',
-                'typefdte.required' => 'Type Required',
+                'typefdte.required' => 'Type of Sample Required',
             ]);
         
             RabiesTest::insert([
@@ -114,7 +114,7 @@ class RabiesTestController extends Controller
                 ],[
                     'date.required' => 'Date Required',
                     'number_of_patients.required' => 'Number of Patients Required',
-                    'typefdte.required' => 'Type Required',
+                    'typefdte.required' => 'Type of Sample Required',
                 ]);
             
                 RabiesTest::where('id',$request->id)->update([

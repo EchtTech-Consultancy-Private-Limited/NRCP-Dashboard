@@ -44,7 +44,7 @@
                                  </div>
                                  <div class="col-lg-2 col-md-2 col-6">
                                     <div class="form-group">
-                                       <label for="diseasesSyndromes">Type of Sample</label>
+                                       <label for="diseasesSyndromes">Type of Sample<span class="star">*</span></label>
                                        <select class="form-control" name="typefdte" id="typefdte">
                                           <option value=""> Select</option>
                                           <option value='For diagnosis' <?php if($rabiestest->type == 'For diagnosis'){ echo 'selected'; }else{ echo '';} ?>>For diagnosis</option>
@@ -58,7 +58,7 @@
                                  <div class="col-lg-2 col-md-2 col-6">
                                     <div class="form-group">
                                        <label for="diseasesSyndromes">Type of Sample A</label>
-                                          <select class="form-control" name="typea" id="typea">
+                                          <select class="form-control" name="typefdte" id="typefdte">
                                              @foreach($typea as $key=>$value)
                                              @if($rabiestest->typea == $key)
                                                 <option value="{{$key}}" selected> {{$value}}</option>
@@ -67,7 +67,7 @@
                                              @endif
                                              @endforeach
                                        </select>
-                                       @error('type') 
+                                       @error('typefdte') 
                                           <span class="form-text text-muted">{{ $message }}</span>
                                        @enderror 
                                     </div>

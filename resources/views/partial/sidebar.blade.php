@@ -71,7 +71,7 @@
         </div>
         <div
             class="link bg-primary text-white dashboard-title {{ (Request::segment(1) == 'report-list')?'active':'' }}">
-             <a href="{{ url('/report-list') }}"> <i class="fa fa-file iconmargin-set" aria-hidden="true"></i>  Reports</a>
+             <a href="{{ url('/report-list') }}"> <i class="fa fa-file iconmargin-set" aria-hidden="true"></i>  Report</a>
             </i>
         </div>
         @endif
