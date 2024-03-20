@@ -8,7 +8,7 @@
 </div>
 <!-- ./wrapper -->
 <!-- jQuery -->
-
+<script src="{{ asset('assets/js/toastr.min.js') }}"></script>
 <script src="{{ asset('assets/login/plugins/jquery/jquery.min.js') }}"></script>
 <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
 <script src="{{ asset('assets/custom_js/rabies_dropdown.js') }}"></script>
@@ -56,8 +56,6 @@
 <script src="{{ asset('assets/js/datatablebuttonprint.js') }}"></script>
 <script src="{{ asset('assets/js/datatable-js.js') }}"></script>
 
-
-<script src="{{ asset('assets/js/toastr.min.js') }}"></script>
 <script>
  @if(Session::has('message'))
  var type = "{{ Session::get('alert-type','info') }}"
