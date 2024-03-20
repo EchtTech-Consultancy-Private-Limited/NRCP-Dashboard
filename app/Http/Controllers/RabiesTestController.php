@@ -20,7 +20,7 @@ class RabiesTestController extends Controller
 
     public function create()
     {
-        $rabies_test = RabiesTest::with('state')->where(['soft_delete' => 0,'institute_id' => Auth::user()->lab_id])->orderBy('date','desc')->get();
+        $rabies_test = RabiesTest::with('state')->where(['soft_delete' => 0,'institute_id' => Auth::user()->lab_id])->orderBy('created_at','desc')->get();
         return view('rabies_test', compact('rabies_test'));
     }
 
@@ -63,11 +63,11 @@ class RabiesTestController extends Controller
         try{
             $request->validate([
                 'date' => 'required',
-                'number_of_patients' => 'required|numeric|digits:5',
-                'numbers_of_sample_recieved' => 'nullable|numeric|digits:5',
-                'numbers_of_positives' => 'nullable|numeric|digits:5',
-                'numbers_of_test' => 'nullable|numeric|digits:5',
-                'numbers_of_intered_ihip' => 'nullable|numeric|digits:5',
+                'number_of_patients' => 'required|numeric|max_digits:5',
+                'numbers_of_sample_recieved' => 'nullable|numeric|max_digits:5',
+                'numbers_of_positives' => 'nullable|numeric|max_digits:5',
+                'numbers_of_test' => 'nullable|numeric|max_digits:5',
+                'numbers_of_intered_ihip' => 'nullable|numeric|max_digits:5',
                 'typefdte' => 'required',
             ],[
                 'date.required' => 'Date Required',
