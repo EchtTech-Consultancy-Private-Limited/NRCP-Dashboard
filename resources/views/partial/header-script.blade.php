@@ -22,7 +22,7 @@
 <link rel="stylesheet" href="{{ asset('assets/font-awesome-4.7.0/css/font-awesome.min.css') }}">
 
 
-<link rel="stylesheet" href="{{ asset('assets/css/toastr.css') }}">
+
 
 <!-- <link rel="stylesheet" href="{{ asset('assets/css/dataTables.dataTables.css') }}"> -->
 
@@ -38,4 +38,5 @@
 <link rel="stylesheet" href="{{ asset('assets/css/datatablemin.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/css/datatablebuttonmin.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/css/responsive.css') }}">
-
+<link rel="stylesheet" href="{{ asset('assets/css/toastr.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/css/toastr.min.css') }}">

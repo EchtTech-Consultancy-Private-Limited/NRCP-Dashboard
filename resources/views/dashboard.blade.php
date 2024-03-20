@@ -3,6 +3,9 @@
 {{ __('NRCP Dashboard') }}
 @endsection
 @section('content')
+<link rel="stylesheet" href="{{ asset('assets/css/filter_multi_select.css') }}">
+
+
 <div class="container-fluid">
     <!-- Info boxes -->
     <div class="row">
@@ -81,13 +84,13 @@
                                                             echo "<option value='$year'>$year</option>";
                                                         }
                                                         ?>
-                                                    </select>
-                                                    <!-- <span class="calender"><i class="fa fa-calendar" aria-hidden="true"></i>
+                                                </select>
+                                                <!-- <span class="calender"><i class="fa fa-calendar" aria-hidden="true"></i>
                                                     </span> -->
-                                                    <small id="fromYear-error" class="form-text text-muted">
-                                                    </small>
-                                                </div>
+                                                <small id="fromYear-error" class="form-text text-muted">
+                                                </small>
                                             </div>
+                                        </div>
 
                                             <div class="col-lg-2 col-md-2 col-4">
                                                 <div class="form-group">
@@ -98,9 +101,9 @@
                                                     </select>
                                                     <!-- <span class="calender"><i class="fa fa-calendar" aria-hidden="true"></i>
                                                     </span> -->
-                                                    <small id="toYear-error" class="form-text text-muted"></small>
-                                                </div>
+                                                <small id="toYear-error" class="form-text text-muted"></small>
                                             </div>
+                                                    </div>
                                             <div class="col-lg-2 col-md-2 col-4">
                                                 <div class="form-group">
                                                     <label for="formType">Form Type<span class="star"></span></label>
@@ -131,13 +134,14 @@
                                                     </small>
                                                 </div>
                                             </div>
+                                        </div>
 
 
                                             <div class="col-lg-12 col-md-2 col-4" id="test_performed">
                                                 <div class="form-group">
                                                     <label for="testPerformed" class="d-block">Test Performed<span
                                                             class="star">*</span></label>
-                                                    <select class="form-control" id="mySelect2" multiple="multiple"
+                                                    <select class="form-control" name="test_performed" id="mySelect2" multiple="multiple"
                                                         aria-label="Default select" onKeyPress = "handleTest(event)">
                                                         <!-- <option value="" selected>--All--</option> -->
                                                         <option name="test-performed" value="direct_fat_post">Direct
@@ -169,7 +173,7 @@
                                                     <button id="apply_filter"
                                                         class="btn  bg-primary text-light apply-filter button border-0 mr-2">Search</button>
 
-                                                </div>
+                                            </div>
 
                                                 <input type="hidden" value="" id="filter_state">
                                                 <input type="hidden" value="" id="filter_district">
@@ -265,10 +269,28 @@
                                             </div>
                                         </div>
                                     </div>
+                                </div>
 
 
-                                    <!-- /.row -->
-                                    <div class="card-body p-3 my-5 dashboard-filter">
+                                <!-- /.row -->
+                                <div class="card-body p-3 my-5 dashboard-filter">
+                                    <div class="row bg-white">
+                                        <div class="col-md-12 ">
+                                            <div
+                                                class="map-text m-0 mb-2 d-flex align-items-center justify-content-between">
+                                                <h1 class="m-0 mr-3 d-inline-block">Deaths cases state wise </h1>
+                                                <button class="buttons-print float-right" type="button"
+                                                    onclick="printDiv('dashboardMap')"><span> <i
+                                                            class="fa fa-print"></i></span></button>
+                                            </div>
+
+                                        </div>
+
+                                        <!-- <div class="col-md-6 d-flex justify-content-end">
+                                            <button class="buttons-print" type="button"><span> <i class="fa fa-print"></i></span></button>
+                                            </div> -->
+                                    </div>
+                                    <div>
                                         <div class="row bg-white">
                                             <div class="col-md-12 ">
                                                 <div
@@ -278,6 +300,7 @@
                                                         onclick="printDiv('dashboardMap')"><span> <i
                                                                 class="fa fa-print"></i></span></button>
                                                 </div>
+
 
                                             </div>
 
@@ -397,23 +420,63 @@
                                                     <div id="barchart_materialcase" style="width: 100%;">
                                                     </div>
                                                 </div>
+
+
                                             </div>
-
-                                            <div class="col-md-6 pl-4">
-                                                <div class="dashboard-filter mt-5">
-                                                    {{-- <h1></h1> --}}
-                                                    <div id="barchart_materialdeaths" style="width: 100%;">
-                                                    </div>
-                                                </div>
-                                            </div>
-
-
-
                                         </div>
                                     </div>
-                                    <!-- end here -->
 
                                 </div>
+
+                                <!-- /.row -->
+                                <!-- graph start-->
+                                <div id="graphical_view">
+                                    <div class="row">
+                                        <div class="col-md-6 pr-4">
+                                            <div id="containerPie" class="piechart dashboard-filter" height="400">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6 pl-4">
+                                            <div id="containerPie2nd" class="piechart dashboard-filter " height="400">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-6 pr-4">
+                                            <div id="chart" class="dashboard-filter mt-5"></div>
+                                        </div>
+
+                                        <div class="col-md-6 pl-4">
+                                            <div class="dashboard-filter mt-5">
+                                                <h1>Cases by Age Group in India (Based on Male and Female)</h1>
+                                                <div id="chartContainer" style="height: 400px;"></div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6 pr-4">
+                                            <div class="dashboard-filter mt-5">
+
+                                                <div id="barchart_materialcase" style="width: 100%;">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6 pl-4">
+                                            <div class="dashboard-filter mt-5">
+                                                {{-- <h1></h1> --}}
+                                                <div id="barchart_materialdeaths" style="width: 100%;">
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+
+                                    </div>
+                                </div>
+                                <!-- end here -->
+
                             </div>
                         </div>
                     </div>
@@ -422,4 +485,8 @@
             @endif
         </div>
     </div>
-@endsection
+    <script src="{{ asset('assets/js/filter-multi-select-bundle.min.js') }}"></script>
+    <script>
+    var mySelect2 = $('#mySelect2').filterMultiSelect();
+    </script>
+    @endsection
