@@ -21,7 +21,7 @@
 <link rel="stylesheet" href="{{ asset('assets/pform_css/style.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/font-awesome-4.7.0/css/font-awesome.min.css') }}">
 
-
+<link rel="stylesheet" href="{{ asset('assets/css/filter_multi_select.css') }}">
 
 
 <!-- <link rel="stylesheet" href="{{ asset('assets/css/dataTables.dataTables.css') }}"> -->

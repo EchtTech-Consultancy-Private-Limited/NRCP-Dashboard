@@ -137,7 +137,7 @@
                                                 <div class="form-group">
                                                     <label for="testPerformed" class="d-block">Test Performed<span
                                                             class="star">*</span></label>
-                                                    <select class="form-control" id="mySelect2" multiple="multiple"
+                                                    <select class="form-control" name= "test_performed" id="mySelect2" multiple="multiple"
                                                         aria-label="Default select" onKeyPress = "handleTest(event)">
                                                         <!-- <option value="" selected>--All--</option> -->
                                                         <option name="test-performed" value="direct_fat_post">Direct
@@ -188,7 +188,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="presumptive-cases dashboard-filter mt-5">
+                                    <div class="presumptive-cases dashboard-filter mt-3">
                                         <h1 id="map-text" class="map-text my-3">Human Rabies (Presumptive Cases) in
                                             India
                                         </h1>
@@ -268,7 +268,7 @@
 
 
                                     <!-- /.row -->
-                                    <div class="card-body p-3 my-5 dashboard-filter">
+                                    <div class="card-body p-3 my-3 dashboard-filter">
                                         <div class="row bg-white">
                                             <div class="col-md-12 ">
                                                 <div
@@ -367,13 +367,13 @@
                                     <!-- graph start-->
                                     <div id="graphical_view">
                                         <div class="row">
-                                            <div class="col-md-6 pr-4">
+                                            <div class="col-md-6 pr-2">
                                                 <div id="containerPie" class="piechart dashboard-filter"
                                                     height="400">
                                                 </div>
                                             </div>
 
-                                            <div class="col-md-6 pl-4">
+                                            <div class="col-md-6 pl-2">
                                                 <div id="containerPie2nd" class="piechart dashboard-filter "
                                                     height="400">
                                                 </div>
@@ -381,28 +381,28 @@
                                         </div>
 
                                         <div class="row">
-                                            <div class="col-md-6 pr-4">
-                                                <div id="chart" class="dashboard-filter mt-5"></div>
+                                            <div class="col-md-6 pr-2">
+                                                <div id="chart" class="dashboard-filter mt-3"></div>
                                             </div>
 
-                                            <div class="col-md-6 pl-4">
-                                                <div class="dashboard-filter mt-5">
+                                            <div class="col-md-6 pl-2">
+                                                <div class="dashboard-filter mt-3">
                                                     <div id="chartContainer" style="height: 400px;"></div>
                                                 </div>
                                             </div>
 
-                                            <div class="col-md-6 pr-4">
-                                                <div class="dashboard-filter mt-5">
+                                            <div class="col-md-6 pr-2">
+                                                <div class="dashboard-filter mt-3">
 
-                                                    <div id="barchart_materialcase" style="width: 100%;">
+                                                    <div id="barchart_materialcase" >
                                                     </div>
                                                 </div>
                                             </div>
 
                                             <div class="col-md-6 pl-4">
-                                                <div class="dashboard-filter mt-5">
+                                                <div class="dashboard-filter mt-3">
                                                     {{-- <h1></h1> --}}
-                                                    <div id="barchart_materialdeaths" style="width: 100%;">
+                                                    <div id="barchart_materialdeaths" >
                                                     </div>
                                                 </div>
                                             </div>
@@ -422,4 +422,5 @@
             @endif
         </div>
     </div>
+   
 @endsection
