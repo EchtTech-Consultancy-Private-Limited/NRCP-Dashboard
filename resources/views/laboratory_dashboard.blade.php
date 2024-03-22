@@ -92,7 +92,7 @@
                                                         </div>
                                                         <div class="col-lg-2 col-md-2 col-4">
                                                             <div class="form-group">
-                                                                <label for="fromYear">From Year</label>
+                                                                <label for="fromYear">Year</label>
                                                                 <select class="form-select p-1 year click-function"
                                                                     name="year" aria-label="Default select example"
                                                                     id="year" required=""

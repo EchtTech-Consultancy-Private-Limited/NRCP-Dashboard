@@ -45,13 +45,13 @@
                                  </div>
                                  <div class="col-lg-2 col-md-2 col-6">
                                     <div class="form-group">
-                                       <label for="diseasesSyndromes">Type of Sample</label>
+                                       <label for="diseasesSyndromes">Type of Sample<span class="star">*</span></label>
                                        <select class="form-control" name="typefdte" id="typefdte">
                                           <option value=""> Select</option>
                                           <option value='For diagnosis'>For diagnosis</option>
                                           <option value='Titre estimation'>Titre estimation</option>
                                        </select>
-                                       @error('type') 
+                                       @error('typefdte') 
                                           <span class="form-text text-muted">{{ $message }}</span>
                                        @enderror 
                                     </div>

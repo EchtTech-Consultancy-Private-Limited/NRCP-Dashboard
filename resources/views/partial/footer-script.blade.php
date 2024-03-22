@@ -8,6 +8,7 @@
 </div>
 <!-- ./wrapper -->
 <!-- jQuery -->
+<script src="{{ asset('assets/js/filter-multi-select-bundle.min.js') }}"></script>
 <script src="{{ asset('assets/js/toastr.min.js') }}"></script>
 <script src="{{ asset('assets/login/plugins/jquery/jquery.min.js') }}"></script>
 <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
@@ -55,8 +56,11 @@
 <script src="{{ asset('assets/js/datatablebutton.js') }}"></script>
 <script src="{{ asset('assets/js/datatablebuttonprint.js') }}"></script>
 <script src="{{ asset('assets/js/datatable-js.js') }}"></script>
+<script src="{{ asset('assets/js/filter-multi-select-bundle.min.js') }}"></script>
+
 
 <script>
+   let cars = $('#mySelect2').filterMultiSelect();
  @if(Session::has('message'))
  var type = "{{ Session::get('alert-type','info') }}"
  switch(type){

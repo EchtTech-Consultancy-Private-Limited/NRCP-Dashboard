@@ -16,7 +16,19 @@
                                     <div class="col-lg-3 col-md-3 col-6">
                                         <div class="form-group">
                                             <label for="state">State<span class="star">*</span></label>
-                                            <input type="text" name="state" id="state" maxlength="45" class="form-control" />
+                                                <select class="form-select state click-function"
+                                                    aria-label="Default select example" id="state"
+                                                    name="state"
+                                                    onChange="handleFilterValue();handleDistrict()">
+                                                    <option value="" selected state-name=""> Select
+                                                        State
+                                                    </option>
+                                                    @foreach (state_list() as $state)
+                                                        <option value="{{ $state->state_name }}">
+                                                            {{ ucfirst($state->state_name) ?? '' }}
+                                                        </option>
+                                                    @endforeach
+                                                </select>
                                             @error('state') 
                                                 <span class="form-text text-muted">{{ $message }}</span>
                                             @enderror 
@@ -48,7 +60,7 @@
                                             @enderror 
                                         </div>
                                     </div>
-                                    <div class="col-lg-3 col-md-3 col-6">
+                                    {{-- <div class="col-lg-3 col-md-3 col-6">
                                         <div class="form-group">
                                             <label for="diseasesSyndromes">Mou</label>
                                             <select class="form-control" aria-label="Default select example" name="mou" id="mou" onChange="handleFilterValue()">
@@ -58,7 +70,7 @@
                                             </select>
                                             <small id="mou-error" class="form-text text-muted"></small>
                                         </div>
-                                    </div>
+                                    </div> --}}
                                     <div class="col-lg-3 col-md-3 col-6">
                                         <div class="form-group">
                                             <label for="formType">Joining Date of NRCP</label>
@@ -97,7 +109,6 @@
                                     <th>Hospital</th>
                                     <th>Nodal Officer</th>
                                     <th>Contact Number</th>
-                                    <th>Mou</th>
                                     <th>Joining Date</th>
                                     <th>Action</th>
                                 </tr>
@@ -106,11 +117,10 @@
                                 @foreach($general_profile as $general_profiles)
                                 <tr id="tr_{{$general_profiles->id}}">
                                     <td>{{$loop->iteration}}</td>
-                                    <td class= "text-nowrap">{{$general_profiles->state}}</td>
+                                    <td class= "text-nowrap">{{ucfirst($general_profiles->state)}}</td>
                                     <td>{{@$general_profiles->hospital}}</td>
                                     <td>{{@$general_profiles->designation}}</td>
                                     <td>{{@$general_profiles->contact_number}}</td>
-                                    <td>{{@$general_profiles->mou}}</td>
                                     <td>{{ $general_profiles->date_of_joining ? date('d-m-Y',strtotime($general_profiles->date_of_joining)) : ''}}</td>
                                     <td class= "text-nowrap">
                                     <a href="{{ url('general-edit',$general_profiles->id) }}" class="btn btn-primary editbtn btn-sm" title="Edit Data"><i class="fa fa-pencil"></i> </a>

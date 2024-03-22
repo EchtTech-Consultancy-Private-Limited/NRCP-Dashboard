@@ -1,6 +1,6 @@
 @extends('layouts.main')
 @section('title')
-{{__('Expenditure Form')}}
+{{__('Financial Form')}}
 @endsection
 @section('content')
 <style>

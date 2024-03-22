@@ -1,5 +1,6 @@
 const BASE_URL =window.location.origin+"/public";
-//  const BASE_URL = window.location.origin;
+// const BASE_URL = window.location.origin;
+
 /*handle Form Type*/
 const handleFormType = () => {
     const formType = $('#formType').find(":selected").attr('form-type');
@@ -40,7 +41,10 @@ const handleFormType = () => {
         $("#map-text").html("Animal Bite - Dog Bite (Syndromic Surveillance) Cases in India")
     }
 }
-
+// State name capitlize
+function capitalizeWords(str) {
+    return str.toLowerCase().replace(/(?:^|\s)\S/g, function(a) { return a.toUpperCase(); });
+}
 
 const handleFilterValue = () => {
     const filter_state = $('#state').find(":selected").val();
@@ -300,14 +304,14 @@ const apply_filter = () => {
                     if (l_dropdown == "") {
                         const row = `
                             <tr>
-                                <td>${capitalizeFirstLetter(state)}</td>
+                                <td>${capitalizeWords(state)}</td>
                                 <td>${sessionValue == 0 ? cases : 0}</td>
                                 <td>${sessionValue == 1 ? cases : 0}</td>
                             </tr>
                         `;
                         tableBody.append(row);
                     } else {
-                        let row = `<tr><td>${capitalizeFirstLetter(state)}</td>`;
+                        let row = `<tr><td>${capitalizeWords(state)}</td>`;
                         if (case_type_col) {
                             row += `
                                 <td>${case_type_col === 1 ? cases : 0}</td>
@@ -317,11 +321,9 @@ const apply_filter = () => {
                         } else {
                             if (selectedType == 1){
                                 row += `<td>0</td>`;
-                                row += `<td>${cases}</td>`;
                             }
                             if (selectedType == 0){
                                 row += `<td>${cases}</td>`;
-                                row += `<td>0</td>`;
                             }
 
                         }
@@ -471,9 +473,8 @@ const defaultLoadMapData = () => {
                     const cases = entry[1];
                     const row = `
                       <tr>
-                          <td>${capitalizeFirstLetter(state)}</td>
+                          <td>${capitalizeWords(state)}</td>
                           <td>${sessionValue == 0 ? cases : 0}</td>
-                          <td>${sessionValue == 1 ? cases : 0}</td>
                       </tr>
                   `;
 
@@ -547,7 +548,6 @@ const defaultLoadMapData = () => {
             })();
         }
     });
-
 
     // pyramid chart
     $.ajax({
@@ -788,44 +788,6 @@ const googlePieChart = (result) => {
         }]
     });
 
-
-    // 2nd pie chart
-    Highcharts.chart('containerPie2nd', {
-        
-        chart: {
-            type: 'pie',
-            options3d: {
-                enabled: true,
-                alpha: 45
-            }
-        },
-        title: {
-            text: `Death by Gender in India ${filter_state !== undefined ? filter_state + ' >' : ''} ${filter_district !== undefined ? filter_district + ' >' : ''} ${filter_from_year !== "" ? filter_from_year + ' >' : ''} ${filter_to_year !== "" ? filter_to_year + ' >' : ''}  n=(${result.total_death_google_graph})`,
-            align: 'left',
-            style: {
-                fontSize:  innerWidth<=1350 ? '15px' : (innerWidth>=1350 ? '18px': '15px') // Set the font size here
-            }
-          
-        },
-        subtitle: {
-            text: 'Gender Percentage',
-            align: 'left'
-        },
-        plotOptions: {
-            pie: {
-                innerSize: 100,
-                depth: 45
-            }
-        },
-        series: [{
-            name: 'Death',
-            data: [
-                ['Male', Math.trunc(result.male_percentage_death)],
-                ['Female', Math.trunc(result.female_percentage_death)]
-            ]
-        }]
-    });
-
     /*end google chart*/
 }
 
@@ -973,59 +935,6 @@ const barChart = (result) => {
         name: 'Female',
         data: result.map(item => item.pyramid_female_death_percentage)
     };
-    Highcharts.chart('chartContainer', {
-        chart: {
-            type: 'bar',
-            
-        },
-        title: {
-            text: options_val.text,
-            // x:-100,
-            margin:30,
-            style: {
-                fontSize:  innerWidth<=1350 ? '15px' : (innerWidth>=1350 ? '19px': '15px'), // Set the font size here
-                textAlign:'left',
-               
-            }
-        },
-        
-        subtitle: {
-            text: is_graph_data_available,
-        },
-        xAxis: {
-            categories: categories,
-            title: {
-                text: null
-            }
-        },
-        yAxis: {
-            min: 0,
-            title: {
-                text: 'Number of Deaths',
-                x: -300,
-                margin:20,
-                style: {
-                    color: '#000',
-                    textAlign: 'center', // Adjust horizontal alignment
-                    verticalAlign: 'bottom', // Adjust vertical alignment
-                    y: innerWidth <= 1350 ? -30 : (innerWidth >= 1350 ? -90 : -30) // Adjust vertical position
-                },
-               
-                align: 'high'
-            },
-            labels: {
-                overflow: 'justify'
-            }
-        },
-        plotOptions: {
-            bar: {
-                dataLabels: {
-                    enabled: true
-                }
-            }
-        },
-        series: [males, females]
-    });
 }
 
 const highchartMapcase = (total_records) => {
@@ -1125,77 +1034,7 @@ const highchartMapDeath = (total_records) => {
     }
 
     const filteredRecords = total_records.filter(record => record["death"]);
-
-    new Highcharts.Chart('barchart_materialdeaths', {
-        chart: {
-            renderTo: 'barchart_materialdeaths',
-            type: 'column',
-            options3d: {
-                enabled: true,
-                alpha: 15,
-                beta: 15,
-                depth: 50,
-                viewDistance: 25
-            }
-        },
-        xAxis: {
-            categories: total_records.map(record => record["year"])
-        },
-        yAxis: {
-            title: {
-                enabled: false
-            }
-        },
-        tooltip: {
-            headerFormat: `Death`,
-            pointFormat: ' {point.y}'
-        },
-        title: {
-            text: ``,
-            align: 'left'
-        },
-        subtitle: {
-            text: 'Death',
-            align: 'left'
-        },
-        legend: {
-            enabled: false
-        },
-        plotOptions: {
-            column: {
-                depth: 25
-            }
-        },
-        series: [{
-            data: filteredRecords.map(record => parseInt(record["death"])),
-            colorByPoint: true
-        }]
-    });
-
-
 }
-
-
-// sticky nav script
-// window.onscroll = function () {
-//     myFunction()
-// };
-
-// Get the navbar
-// var navbar = document.getElementById("dashboard-filter");
-
-// Get the offset position of the navbar
-// var sticky = navbar.offsetTop;
-
-// Add the sticky class to the navbar when you reach its scroll position. Remove "sticky" when you leave the scroll position
-// function myFunction() {
-//     if (window.pageYOffset >= sticky) {
-//         navbar.classList.add("sticky")
-//     } else {
-//         navbar.classList.remove("sticky");
-//     }
-// }
-
 // laboratory dashboard
 
 function printDiv(divName) {
@@ -2115,18 +1954,4 @@ function laboratoryResetButton() {
     laboratory_apply_filter();
 }
 // end LAboratory dashboard
-
-$(document).ready(function(){
-    let multipleSelect = $('select#mySelect2 + .select2-container--default .select2-selection--multiple .select2-selection__rendered li .select2-search__field');
-   
-    // Bind a keydown event handler to the select2 search field
-    multipleSelect.on('keydown', function(e) {
-      
-        // Prevent the default action if the pressed key is the backspace key
-        if (e.keyCode == 8) { // 8 is the keycode for the backspace key
-            e.preventDefault();
-            alert("asl;dkfa;sldkfjas;lkdjf")
-        }
-    });
-});
 

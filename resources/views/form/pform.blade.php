@@ -53,7 +53,7 @@
                                         Accurately and Completely
                                     </div>
 
-                                    <form action="{{ url('/patient-Record') }}" method="post" class="myForm">
+                                    <form action="{{ route('pform.create') }}" method="post" class="myForm">
                                         @csrf
                                         <div class="row bg-c-gray">
                                             <div class="col-lg-12 col-md-12">
@@ -65,13 +65,13 @@
                                                 <div class="form-group d-flex">
                                                     <div class="w-140 mr-3">
                                                         <select name="" id="" class="form-control mt-0">
-                                                            <option value="India">India +91</option>
-                                                            <option value="India">India +91</option>
-                                                            <option value="India">India +91</option>
+                                                            <option value="india">India +91</option>
+                                                            <option value="usa">USA +1</option>
+                                                            <option value="japan">JP +81</option>
                                                         </select>
                                                     </div>
                                                     <div class="w-100">
-                                                        <input type="text" name="fname" id="search-patient"
+                                                        <input type="text" name="mobile_number" maxlength="10" oninput="validateInput(this)" id="mobile_number"
                                                             class="form-control" placeholder="Enter Your Mobile Number">
                                                     </div>
                                                 </div>
@@ -111,27 +111,9 @@
                                             </div>
                                             <div class="col-lg-3 col-md-3">
                                                 <div class="form-group">
-                                                    <div class="lable-box-text">
-                                                        <input type="radio" id="date-b" name="dob" value="date-b"
-                                                            checked>
-                                                        <label for="date-b" class="mr-5">Date of Birth</label>
-                                                        <input type="radio" id="age-b" name="dob" value="age-b">
-                                                        <label for="age-b">Age</label>
-                                                        <span class="star">*</span>
-                                                    </div>
-
-                                                    <input type="date" name="birth_date" id="dob" class="form-control"
+                                                    <label for="date-b" class="mr-5">Date of Birth<span class="star">*</span></label>
+                                                    <input type="date" name="birth_of_date" id="birth_of_date" class="form-control"
                                                         required>
-
-                                                    <div class="date-box d-none" id="Age-inputs">
-                                                        <input type="text" name="year" id="year"
-                                                            class="form-control mr-2" placeholder="Year" required>
-                                                        <input type="text" name="Months" id="Months"
-                                                            class="form-control mr-2" placeholder="Months" required>
-                                                        <input type="text" name="Days" id="Days" class="form-control"
-                                                            placeholder="Days" required>
-                                                    </div>
-
                                                     <small id="dob-eror" class="form-text text-muted">
                                                     </small>
                                                 </div>
@@ -418,11 +400,10 @@
                                         </div>
 
                                         <div class="button d-flex justify-content-center mt-3">
-                                            <button
-                                                class="btn search-patient-btn mr-3 bg-primary text-light">save</button>
+                                            <button type="submit" class="btn search-patient-btn mr-3 bg-primary text-light">save</button>
                                             <button class="btn search-patient-btn bg-danger text-light">Reset</button>
                                         </div>
-
+                                    </form>
                                         <div class="row bg-c-gray bg-white p-0 mt-3">
 
                                             <div class="col-lg-12 col-md-12">
@@ -761,11 +742,9 @@
 
                                         </div>
 
-                                        <div class="button d-flex justify-content-center mt-3">
+                                        {{-- <div class="button d-flex justify-content-center mt-3">
                                             <button class="btn search-patient-btn mr-3 bg-primary text-light">Submit</button>
-                                        </div>
-
-                                    </form>
+                                        </div> --}}
                                 </div>
                                 <div class="tab-pane fade" id="nav-add-death-record" role="tabpanel"
                                     aria-labelledby="nav-profile-tab">
@@ -796,26 +775,4 @@
 <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
-
-<script>
-$(document).ready(function() {
-    $('#age-b').click(function() {
-        $('#dob').addClass('d-none').siblings().removeClass('d-none');
-    });
-    $('#date-b').click(function() {
-        $('#Age-inputs').addClass('d-none').siblings().removeClass('d-none');
-    });
-
-    //     $('select').each(function() {
-    //     if ($(this).val() !== '') {
-    //         $(this).addClass('text-black')
-    //         console.log("hii")
-    //     } else {
-    //         $(this).removeClass('text-black')
-    //     }
-    // })
-
-});
-</script>
-
 @endsection

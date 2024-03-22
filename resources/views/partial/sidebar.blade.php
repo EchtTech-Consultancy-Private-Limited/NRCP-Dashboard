@@ -67,11 +67,11 @@
         <div
             class="link bg-primary text-white dashboard-title {{ (Request::segment(1) == 'expenditure')?'active':'' }}">
             <a href="{{ url('/expenditure') }}"> <i class="fa fa-expand iconmargin-set" aria-hidden="true"></i>
-                Expenditure</a> </i>
+                Finance</a> </i>
         </div>
         <div
             class="link bg-primary text-white dashboard-title {{ (Request::segment(1) == 'report-list')?'active':'' }}">
-             <a href="{{ url('/report-list') }}"> <i class="fa fa-file iconmargin-set" aria-hidden="true"></i>  Reports</a>
+             <a href="{{ url('/report-list') }}"> <i class="fa fa-file iconmargin-set" aria-hidden="true"></i>  Report</a>
             </i>
         </div>
         @endif
@@ -100,10 +100,10 @@
                                 class="link bg-primary text-white dashboard-title {{ (Request::segment(1) == 'pform')?'active':'' }}">
                                 <a href="{{ url('/pform') }}">P Form</a> </i>
                             </div>
-                            <div
+                            {{-- <div
                                 class="link bg-primary text-white dashboard-title {{ (Request::segment(1) == 'sform')?'active':'' }}">
                                 <a href="{{ url('/sform') }}">S Form</a> </i>
-                            </div>
+                            </div> --}}
                             <div
                                 class="link bg-primary text-white dashboard-title {{ (Request::segment(1) == 'lform')?'active':'' }}">
                                 <a href="{{ url('/lform') }}">L Form</a> </i>

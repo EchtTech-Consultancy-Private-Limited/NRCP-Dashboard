@@ -49,7 +49,7 @@ class GeneralProfileController extends Controller
                 'hospital' => $request->hospital,
                 'designation' => $request->designation,
                 'contact_number' => $request->contact_number,
-                'mou' => $request->mou,
+                // 'mou' => $request->mou,
                 'date_of_joining' => $request->date_of_joining,
             ]);
         
@@ -83,10 +83,10 @@ class GeneralProfileController extends Controller
                 GeneralProfile::where('id',$request->id)->update([
                     'state' => $request->state,
                     'hospital' => $request->hospital,
-                    'designation' => $request->designation??'NULL',
-                    'contact_number' => $request->contact_number??'NULL',
-                    'mou' => $request->mou??'NULL',
-                    'date_of_joining' => $request->date_of_joining??'NULL',
+                    'designation' => $request->designation,
+                    'contact_number' => $request->contact_number,
+                    // 'mou' => $request->mou,
+                    'date_of_joining' => $request->date_of_joining,
                 ]);
             
                     $notification = array(
