@@ -180,8 +180,11 @@ class LaboratoryDashboardController extends Controller
             $numberReceived = $rabiesRecords->sum('numbers_of_sample_recieved');
             $numberTestConducted = $rabiesRecords->sum('numbers_of_test');
             $numberPositives = $rabiesRecords->sum('numbers_of_positives');
+            $words = explode(" ", $rabiesInstitute->institute->name ?? '');
+            $districtName = end($words);
             $finalMapData[] = [
                 'state' => $rabiesInstitute->state->state_name ?? '',
+                'district' => [$districtName => $numberTestConducted],
                 'numberPatients' => $numberPatients,
                 'numberReceived' => $numberReceived,
                 'numberTestConducted' => $numberTestConducted,
@@ -189,6 +192,7 @@ class LaboratoryDashboardController extends Controller
                 'institute' => $rabiesInstitute->institute->name ?? '',
                 'institute_id' => $rabiesInstitute->institute->id ?? '',
             ];
+
         }
         return response()->json(['total_records'=>$total_records,'finalMapData' => $finalMapData,'graphFilterData' => $graphFilterData,'monthGraphFilterData' => $monthGraphFilterData,'yearGraphFilterData' => $yearGraphFilterData], 200);
     }

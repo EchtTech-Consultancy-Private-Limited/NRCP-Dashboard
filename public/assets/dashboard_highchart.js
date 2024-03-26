@@ -219,14 +219,12 @@ const apply_filter = () => {
                 //console.log('hiisdfds');
                 return;
             }
-            let statesData = result.array;
+            let statesData = result.array;            
             const entries = Object.entries(statesData);
 
             if (filter_district != '' || filter_state != '') {
                 $('.state_filter_district').html('District')
             }
-
-
             if (filter_state != '') {
                 drilldownHandle(result)
             }
@@ -279,6 +277,7 @@ const apply_filter = () => {
             if (!sessionValue) {
                 sessionValue = 0
             }
+
             $("#detailsData").hide();
             (async () => {
                 const topology = await fetch(
@@ -365,10 +364,8 @@ const apply_filter = () => {
                             events: {
                                 click: function (e) {
                                     let nameState = e.point.name
-
                                     $('#filter_state').val(nameState);
                                     apply_filter();
-
                                 }
                             },
                             dataLabels: {
@@ -577,7 +574,6 @@ $(document).ready(function () {
 });
 
 const getDistrictValue = (s_name, entries) => {
-
     let m = 0;
     entries.map((items) => {
         // console.log(items,' first time')
@@ -590,9 +586,7 @@ const getDistrictValue = (s_name, entries) => {
 
 //state wise map
 async function drilldownHandle(state) {
-
     let statesData = state.array;
-
     const entries = Object.entries(statesData);
     const selectedMapData = DISTRICT_MAPS.find(data => {
         const dataName = data.name.toLowerCase();
@@ -600,7 +594,6 @@ async function drilldownHandle(state) {
         return dataName === stateName;
     });
     const district_list = selectedMapData.data;
-
     const updatedArray = district_list.map((item) => {
         //console.log(item,'item');
         return {
@@ -623,8 +616,6 @@ async function drilldownHandle(state) {
             }),
         };
     });
-
-
     Highcharts.mapChart('container', {
         chart: {
             map: india,
@@ -665,7 +656,6 @@ async function drilldownHandle(state) {
             }
         },
         series: updatedArray,
-
     });
 
 }
@@ -1404,7 +1394,7 @@ const defaultLaboratoryMapData = () => {
                     ]
                 });
                 
-                // map code 
+                // map code
                 Highcharts.mapChart('laboratory-map', {
                     chart: {
                         map: topology,
@@ -1434,9 +1424,8 @@ const defaultLaboratoryMapData = () => {
                         series: {
                             events: {
                                 click: function (e) {
-                                    //  console.log(e.point.name)
                                     let nameState = e.point.name
-                                    laboratory_apply_filter(e.point.extraValue2);
+                                    laboratory_apply_filter(e.point.extraValue2,nameState);
                                 }
                             },
                             dataLabels: {
@@ -1490,7 +1479,7 @@ $("#institute_year_filter").on('change', function () {
     var instituteVal = $(this).val();
     laboratory_apply_filter(instituteVal);
 });
-const laboratory_apply_filter = (rabiesfilter = '') => {
+const laboratory_apply_filter = (rabiesfilter = '',stateName = '') => {
     const filter_month = $('#month').find(":selected").val();
     const filter_institute = $('#institute').find(":selected").val();
     const filter_year = $('#year').find(":selected").val();    
@@ -1500,7 +1489,8 @@ const laboratory_apply_filter = (rabiesfilter = '') => {
         var mapFilter = rabiesfilter; 
     }else{
         var instituteYearFilter = rabiesfilter; 
-    }
+    }   
+
     search_btn.attr("disabled", true);
     let loading_content = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Loading...';
     search_btn.html(loading_content);
@@ -1534,7 +1524,7 @@ const laboratory_apply_filter = (rabiesfilter = '') => {
             $('#rabiesbox3').html(result.total_records.numbers_of_positives);
             $('#rabiesbox4').html(result.total_records.numbers_of_intered_ihip);
             $('#text1').html("Syndromic Surveillance Cases");
-            $('#text2').html("Syndromic Surveillance Cases");            
+            $('#text2').html("Syndromic Surveillance Cases");
             (async () => {
                 const topology = await fetch(
                     'https://code.highcharts.com/mapdata/countries/in/custom/in-all-disputed.topo.json'
@@ -1673,8 +1663,7 @@ const laboratory_apply_filter = (rabiesfilter = '') => {
                           
                         },
                     }]
-                }));
-                
+                }));                
             
                 // The RPM gauge - First
                 const chartRpmFirst = Highcharts.chart('container-rpm-first', Highcharts.merge(gaugeOptions, {
@@ -1864,75 +1853,82 @@ const laboratory_apply_filter = (rabiesfilter = '') => {
                         }
                     ]
                 });
-                // map chart
-                Highcharts.mapChart('laboratory-map', {
-                    chart: {
-                        map: topology,
-                    },
-                    title: {
-                        text: ''
-                    },
-                    subtitle: {
-                        text: ''
-                    },
-                    mapNavigation: {
-                        enabled: true,
-                        buttonOptions: {
-                            verticalAlign: 'bottom'
-                        }
-                    },
-                    colorAxis: {
-                        min: 0,
-                        max: 100,
-                        minColor: '#fcad95',
-                        maxColor: '#ab4024',
-                        labels: {
-                            format: '{value}',
+                // map charts
+                if (stateName != '') {
+                    const stateName = result.finalMapData[0].state;
+                    const data =  result.finalMapData[0].district;
+                    laboratotyDrilldownHandle(data,stateName)
+                }
+                if (stateName === '') {
+                    Highcharts.mapChart('laboratory-map', {
+                        chart: {
+                            map: topology,
                         },
-                    },
-                    plotOptions: {
-                        series: {
-                            events: {
-                                click: function (e) {
-                                    //  console.log(e.point)
-                                    let nameState = e.point.name
-                                    laboratory_apply_filter(e.point.extraValue2);
+                        title: {
+                            text: ''
+                        },
+                        subtitle: {
+                            text: ''
+                        },
+                        mapNavigation: {
+                            enabled: true,
+                            buttonOptions: {
+                                verticalAlign: 'bottom'
+                            }
+                        },
+                        colorAxis: {
+                            min: 0,
+                            max: 100,
+                            minColor: '#fcad95',
+                            maxColor: '#ab4024',
+                            labels: {
+                                format: '{value}',
+                            },
+                        },
+                        plotOptions: {
+                            series: {
+                                events: {
+                                    click: function (e) {
+                                        //  console.log(e.point)
+                                        let nameState = e.point.name
+                                        laboratory_apply_filter(e.point.extraValue2,nameState);
+                                    }
+                                },
+                                dataLabels: {
+                                    enabled: false,
+                                    format: '{point.value}' // Customize the format as needed
+                                }
+                            }
+                        },
+                        series: [{
+                            data:arr,
+                            name: '',
+                            allowPointSelect: true,
+                            cursor: 'pointer',
+                            states: {
+                                select: {
+                                    color: '#fcad95'
                                 }
                             },
-                            dataLabels: {
-                                enabled: false,
-                                format: '{point.value}' // Customize the format as needed
+                            tooltip: {
+                                headerFormat: '',
+                                pointFormat: '<b>{point.name}</b><br>' +
+                                             'Value: {point.value}<br>' +
+                                             'Institute Name: {point.extraValue}',
+                                shared: true,
+                                useHTML: true
+                            }
+                        }],
+                        exporting: {
+                            enabled: true,
+                            buttons: {
+                                contextButton: {
+                                    menuItems: ['printChart', 'separator', 'downloadPNG', 'downloadJPEG', 'downloadPDF', 'downloadSVG']
+                                }
                             }
                         }
-                    },
-                    series: [{
-                        data:arr,
-                        name: '',
-                        allowPointSelect: true,
-                        cursor: 'pointer',
-                        states: {
-                            select: {
-                                color: '#fcad95'
-                            }
-                        },
-                        tooltip: {
-                            headerFormat: '',
-                            pointFormat: '<b>{point.name}</b><br>' +
-                                         'Value: {point.value}<br>' +
-                                         'Institute Name: {point.extraValue}',
-                            shared: true,
-                            useHTML: true
-                        }
-                    }],
-                    exporting: {
-                        enabled: true,
-                        buttons: {
-                            contextButton: {
-                                menuItems: ['printChart', 'separator', 'downloadPNG', 'downloadJPEG', 'downloadPDF', 'downloadSVG']
-                            }
-                        }
-                    }
-                });
+                    });
+                }         
 
             })();
         },
@@ -1941,6 +1937,78 @@ const laboratory_apply_filter = (rabiesfilter = '') => {
             search_btn.attr("disabled", false);
         }
     });
+}
+
+// get laboratory district of state
+async function laboratotyDrilldownHandle(state,nameState) {
+    const entries = Object.entries(state);
+    const selectedMapData = DISTRICT_MAPS.find(data => {
+        const dataName = data.name.toLowerCase();
+        const stateName = String(nameState).toLowerCase();
+        return dataName === stateName;
+    });
+    const district_list = selectedMapData.data;   
+    const updatedArray = district_list.map((item) => {
+        return {
+            ...item,
+            data: item.data.map((mapColor) => {
+                return {
+                    ...mapColor,
+                    color: '#ce4c39'
+                };
+            }),
+
+            mapData: item.mapData.map((mapItem) => {
+                const value = getDistrictValue(mapItem.name.toLowerCase(), entries);
+                return {
+                    ...mapItem,
+                    value: value,
+                };
+            }),
+        };
+    });
+    Highcharts.mapChart('laboratory-map', {
+        chart: {
+            map: india,
+        },
+        title: {
+            text: ''
+        },
+        subtitle: {
+            text: ''
+        },
+        mapNavigation: {
+            enabled: true,
+            buttonOptions: {
+                verticalAlign: 'bottom'
+            }
+        },
+        colorAxis: {
+            min: 0,
+            max: 100,
+            minColor: '#fcad95',
+            maxColor: '#b31404',
+            labels: {
+                format: '{value}',
+            },
+        },
+
+        plotOptions: {
+            series: {
+                dataLabels: {
+                    enabled: false,
+                    format: '{point.value}', // You can customize the format as needed
+                },
+                events: {
+                    click: function (e) {
+                        // Handle click events here
+                    }
+                }
+            }
+        },        
+        series: updatedArray,
+    });
+
 }
 function laboratoryResetButton() {
     $('#month option[value=""]').prop('selected', 'selected').change();
@@ -1951,7 +2019,7 @@ function laboratoryResetButton() {
     let loading_content = 'Search';
     search_btn.html(loading_content);   
     defaultLaboratoryMapData();
-    laboratory_apply_filter();
+    // laboratory_apply_filter();
 }
 // end LAboratory dashboard
 

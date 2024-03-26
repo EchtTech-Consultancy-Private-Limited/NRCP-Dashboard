@@ -315,7 +315,7 @@
                                                                         <th rowspan='2'
                                                                             class="state_filter_district">State
                                                                         </th>
-                                                                        <th colspan='2'>Suspected Human Cases</th>
+                                                                        <th colspan='2'>Suspected Cases</th>
                                                                     </tr>
                                                                     <tr>
                                                                         <th>Cases</th>
@@ -358,18 +358,20 @@
                                     <!-- graph start-->
                                     <div id="graphical_view">
                                         <div class="row">
-                                            <div class="col-md-6 pr-2">
+                                            <div class="col-md-12 pr-2">
                                                 <div id="containerPie" class="piechart dashboard-filter"
                                                     height="400">
                                                 </div>
                                             </div>
-                                            <div class="col-md-6 pr-2">
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12 pr-2">
                                                 <div id="chart" class="dashboard-filter mt-3"></div>
                                             </div>
                                         </div>
 
                                         <div class="row">
-                                            <div class="col-md-6 pr-2">
+                                            <div class="col-md-12 pr-2">
                                                 <div class="dashboard-filter mt-3">
 
                                                     <div id="barchart_materialcase" >
