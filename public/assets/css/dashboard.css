@@ -645,6 +645,10 @@ h1.text-dark.text-left.main-title {
   text-align: left;
 }
 
+g.highcharts-axis-labels.highcharts-yaxis-labels.highcharts-radial-axis-labels text[text-anchor="middle"] {
+  display: none;
+}
+
 /* Basic Card */
 .basic-card {
   width: 100%;
