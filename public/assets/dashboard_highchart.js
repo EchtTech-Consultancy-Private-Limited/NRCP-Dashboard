@@ -1,5 +1,5 @@
-// const BASE_URL =window.location.origin+"/public";
-const BASE_URL = window.location.origin;
+const BASE_URL =window.location.origin+"/public";
+// const BASE_URL = window.location.origin;
 
 /*handle Form Type*/
 const handleFormType = () => {
@@ -40,6 +40,10 @@ const handleFormType = () => {
         $("#type").show();
         $("#map-text").html("Animal Bite - Dog Bite (Syndromic Surveillance) Cases in India")
     }
+}
+// State name capitlize
+function capitalizeWords(str) {
+    return str.toLowerCase().replace(/(?:^|\s)\S/g, function(a) { return a.toUpperCase(); });
 }
 
 const handleFilterValue = () => {
@@ -215,14 +219,12 @@ const apply_filter = () => {
                 //console.log('hiisdfds');
                 return;
             }
-            let statesData = result.array;
+            let statesData = result.array;            
             const entries = Object.entries(statesData);
 
             if (filter_district != '' || filter_state != '') {
                 $('.state_filter_district').html('District')
             }
-
-
             if (filter_state != '') {
                 drilldownHandle(result)
             }
@@ -275,6 +277,7 @@ const apply_filter = () => {
             if (!sessionValue) {
                 sessionValue = 0
             }
+
             $("#detailsData").hide();
             (async () => {
                 const topology = await fetch(
@@ -300,14 +303,14 @@ const apply_filter = () => {
                     if (l_dropdown == "") {
                         const row = `
                             <tr>
-                                <td>${capitalizeFirstLetter(state)}</td>
+                                <td>${capitalizeWords(state)}</td>
                                 <td>${sessionValue == 0 ? cases : 0}</td>
                                 <td>${sessionValue == 1 ? cases : 0}</td>
                             </tr>
                         `;
                         tableBody.append(row);
                     } else {
-                        let row = `<tr><td>${capitalizeFirstLetter(state)}</td>`;
+                        let row = `<tr><td>${capitalizeWords(state)}</td>`;
                         if (case_type_col) {
                             row += `
                                 <td>${case_type_col === 1 ? cases : 0}</td>
@@ -317,11 +320,9 @@ const apply_filter = () => {
                         } else {
                             if (selectedType == 1){
                                 row += `<td>0</td>`;
-                                row += `<td>${cases}</td>`;
                             }
                             if (selectedType == 0){
                                 row += `<td>${cases}</td>`;
-                                row += `<td>0</td>`;
                             }
 
                         }
@@ -363,10 +364,8 @@ const apply_filter = () => {
                             events: {
                                 click: function (e) {
                                     let nameState = e.point.name
-
                                     $('#filter_state').val(nameState);
                                     apply_filter();
-
                                 }
                             },
                             dataLabels: {
@@ -471,9 +470,8 @@ const defaultLoadMapData = () => {
                     const cases = entry[1];
                     const row = `
                       <tr>
-                          <td>${capitalizeFirstLetter(state)}</td>
+                          <td>${capitalizeWords(state)}</td>
                           <td>${sessionValue == 0 ? cases : 0}</td>
-                          <td>${sessionValue == 1 ? cases : 0}</td>
                       </tr>
                   `;
 
@@ -548,7 +546,6 @@ const defaultLoadMapData = () => {
         }
     });
 
-
     // pyramid chart
     $.ajax({
         url: BASE_URL + "/p-form-horizontal-barchart",
@@ -577,7 +574,6 @@ $(document).ready(function () {
 });
 
 const getDistrictValue = (s_name, entries) => {
-
     let m = 0;
     entries.map((items) => {
         // console.log(items,' first time')
@@ -590,9 +586,7 @@ const getDistrictValue = (s_name, entries) => {
 
 //state wise map
 async function drilldownHandle(state) {
-
     let statesData = state.array;
-
     const entries = Object.entries(statesData);
     const selectedMapData = DISTRICT_MAPS.find(data => {
         const dataName = data.name.toLowerCase();
@@ -600,7 +594,6 @@ async function drilldownHandle(state) {
         return dataName === stateName;
     });
     const district_list = selectedMapData.data;
-
     const updatedArray = district_list.map((item) => {
         //console.log(item,'item');
         return {
@@ -623,8 +616,6 @@ async function drilldownHandle(state) {
             }),
         };
     });
-
-
     Highcharts.mapChart('container', {
         chart: {
             map: india,
@@ -665,7 +656,6 @@ async function drilldownHandle(state) {
             }
         },
         series: updatedArray,
-
     });
 
 }
@@ -784,44 +774,6 @@ const googlePieChart = (result) => {
             data: [
                 ['Male', Math.trunc(result.male_percentage)],
                 ['Female', Math.trunc(result.female_percentage)]
-            ]
-        }]
-    });
-
-
-    // 2nd pie chart
-    Highcharts.chart('containerPie2nd', {
-        
-        chart: {
-            type: 'pie',
-            options3d: {
-                enabled: true,
-                alpha: 45
-            }
-        },
-        title: {
-            text: `Death by Gender in India ${filter_state !== undefined ? filter_state + ' >' : ''} ${filter_district !== undefined ? filter_district + ' >' : ''} ${filter_from_year !== "" ? filter_from_year + ' >' : ''} ${filter_to_year !== "" ? filter_to_year + ' >' : ''}  n=(${result.total_death_google_graph})`,
-            align: 'left',
-            style: {
-                fontSize:  innerWidth<=1350 ? '15px' : (innerWidth>=1350 ? '18px': '15px') // Set the font size here
-            }
-          
-        },
-        subtitle: {
-            text: 'Gender Percentage',
-            align: 'left'
-        },
-        plotOptions: {
-            pie: {
-                innerSize: 100,
-                depth: 45
-            }
-        },
-        series: [{
-            name: 'Death',
-            data: [
-                ['Male', Math.trunc(result.male_percentage_death)],
-                ['Female', Math.trunc(result.female_percentage_death)]
             ]
         }]
     });
@@ -973,59 +925,6 @@ const barChart = (result) => {
         name: 'Female',
         data: result.map(item => item.pyramid_female_death_percentage)
     };
-    Highcharts.chart('chartContainer', {
-        chart: {
-            type: 'bar',
-            
-        },
-        title: {
-            text: options_val.text,
-            // x:-100,
-            margin:30,
-            style: {
-                fontSize:  innerWidth<=1350 ? '15px' : (innerWidth>=1350 ? '19px': '15px'), // Set the font size here
-                textAlign:'left',
-               
-            }
-        },
-        
-        subtitle: {
-            text: is_graph_data_available,
-        },
-        xAxis: {
-            categories: categories,
-            title: {
-                text: null
-            }
-        },
-        yAxis: {
-            min: 0,
-            title: {
-                text: 'Number of Deaths',
-                x: -300,
-                margin:20,
-                style: {
-                    color: '#000',
-                    textAlign: 'center', // Adjust horizontal alignment
-                    verticalAlign: 'bottom', // Adjust vertical alignment
-                    y: innerWidth <= 1350 ? -30 : (innerWidth >= 1350 ? -90 : -30) // Adjust vertical position
-                },
-               
-                align: 'high'
-            },
-            labels: {
-                overflow: 'justify'
-            }
-        },
-        plotOptions: {
-            bar: {
-                dataLabels: {
-                    enabled: true
-                }
-            }
-        },
-        series: [males, females]
-    });
 }
 
 const highchartMapcase = (total_records) => {
@@ -1125,77 +1024,7 @@ const highchartMapDeath = (total_records) => {
     }
 
     const filteredRecords = total_records.filter(record => record["death"]);
-
-    new Highcharts.Chart('barchart_materialdeaths', {
-        chart: {
-            renderTo: 'barchart_materialdeaths',
-            type: 'column',
-            options3d: {
-                enabled: true,
-                alpha: 15,
-                beta: 15,
-                depth: 50,
-                viewDistance: 25
-            }
-        },
-        xAxis: {
-            categories: total_records.map(record => record["year"])
-        },
-        yAxis: {
-            title: {
-                enabled: false
-            }
-        },
-        tooltip: {
-            headerFormat: `Death`,
-            pointFormat: ' {point.y}'
-        },
-        title: {
-            text: ``,
-            align: 'left'
-        },
-        subtitle: {
-            text: 'Death',
-            align: 'left'
-        },
-        legend: {
-            enabled: false
-        },
-        plotOptions: {
-            column: {
-                depth: 25
-            }
-        },
-        series: [{
-            data: filteredRecords.map(record => parseInt(record["death"])),
-            colorByPoint: true
-        }]
-    });
-
-
 }
-
-
-// sticky nav script
-// window.onscroll = function () {
-//     myFunction()
-// };
-
-// Get the navbar
-// var navbar = document.getElementById("dashboard-filter");
-
-// Get the offset position of the navbar
-// var sticky = navbar.offsetTop;
-
-// Add the sticky class to the navbar when you reach its scroll position. Remove "sticky" when you leave the scroll position
-// function myFunction() {
-//     if (window.pageYOffset >= sticky) {
-//         navbar.classList.add("sticky")
-//     } else {
-//         navbar.classList.remove("sticky");
-//     }
-// }
-
 // laboratory dashboard
 
 function printDiv(divName) {
@@ -1565,7 +1394,7 @@ const defaultLaboratoryMapData = () => {
                     ]
                 });
                 
-                // map code 
+                // map code
                 Highcharts.mapChart('laboratory-map', {
                     chart: {
                         map: topology,
@@ -1595,9 +1424,8 @@ const defaultLaboratoryMapData = () => {
                         series: {
                             events: {
                                 click: function (e) {
-                                    //  console.log(e.point.name)
                                     let nameState = e.point.name
-                                    laboratory_apply_filter(e.point.extraValue2);
+                                    laboratory_apply_filter(e.point.extraValue2,nameState);
                                 }
                             },
                             dataLabels: {
@@ -1651,7 +1479,7 @@ $("#institute_year_filter").on('change', function () {
     var instituteVal = $(this).val();
     laboratory_apply_filter(instituteVal);
 });
-const laboratory_apply_filter = (rabiesfilter = '') => {
+const laboratory_apply_filter = (rabiesfilter = '',stateName = '') => {
     const filter_month = $('#month').find(":selected").val();
     const filter_institute = $('#institute').find(":selected").val();
     const filter_year = $('#year').find(":selected").val();    
@@ -1661,7 +1489,8 @@ const laboratory_apply_filter = (rabiesfilter = '') => {
         var mapFilter = rabiesfilter; 
     }else{
         var instituteYearFilter = rabiesfilter; 
-    }
+    }   
+
     search_btn.attr("disabled", true);
     let loading_content = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Loading...';
     search_btn.html(loading_content);
@@ -1695,7 +1524,7 @@ const laboratory_apply_filter = (rabiesfilter = '') => {
             $('#rabiesbox3').html(result.total_records.numbers_of_positives);
             $('#rabiesbox4').html(result.total_records.numbers_of_intered_ihip);
             $('#text1').html("Syndromic Surveillance Cases");
-            $('#text2').html("Syndromic Surveillance Cases");            
+            $('#text2').html("Syndromic Surveillance Cases");
             (async () => {
                 const topology = await fetch(
                     'https://code.highcharts.com/mapdata/countries/in/custom/in-all-disputed.topo.json'
@@ -1834,8 +1663,7 @@ const laboratory_apply_filter = (rabiesfilter = '') => {
                           
                         },
                     }]
-                }));
-                
+                }));                
             
                 // The RPM gauge - First
                 const chartRpmFirst = Highcharts.chart('container-rpm-first', Highcharts.merge(gaugeOptions, {
@@ -2025,75 +1853,82 @@ const laboratory_apply_filter = (rabiesfilter = '') => {
                         }
                     ]
                 });
-                // map chart
-                Highcharts.mapChart('laboratory-map', {
-                    chart: {
-                        map: topology,
-                    },
-                    title: {
-                        text: ''
-                    },
-                    subtitle: {
-                        text: ''
-                    },
-                    mapNavigation: {
-                        enabled: true,
-                        buttonOptions: {
-                            verticalAlign: 'bottom'
-                        }
-                    },
-                    colorAxis: {
-                        min: 0,
-                        max: 100,
-                        minColor: '#fcad95',
-                        maxColor: '#ab4024',
-                        labels: {
-                            format: '{value}',
+                // map charts
+                if (stateName != '') {
+                    const stateName = result.finalMapData[0].state;
+                    const data =  result.finalMapData[0].district;
+                    laboratotyDrilldownHandle(data,stateName)
+                }
+                if (stateName === '') {
+                    Highcharts.mapChart('laboratory-map', {
+                        chart: {
+                            map: topology,
                         },
-                    },
-                    plotOptions: {
-                        series: {
-                            events: {
-                                click: function (e) {
-                                    //  console.log(e.point)
-                                    let nameState = e.point.name
-                                    laboratory_apply_filter(e.point.extraValue2);
+                        title: {
+                            text: ''
+                        },
+                        subtitle: {
+                            text: ''
+                        },
+                        mapNavigation: {
+                            enabled: true,
+                            buttonOptions: {
+                                verticalAlign: 'bottom'
+                            }
+                        },
+                        colorAxis: {
+                            min: 0,
+                            max: 100,
+                            minColor: '#fcad95',
+                            maxColor: '#ab4024',
+                            labels: {
+                                format: '{value}',
+                            },
+                        },
+                        plotOptions: {
+                            series: {
+                                events: {
+                                    click: function (e) {
+                                        //  console.log(e.point)
+                                        let nameState = e.point.name
+                                        laboratory_apply_filter(e.point.extraValue2,nameState);
+                                    }
+                                },
+                                dataLabels: {
+                                    enabled: false,
+                                    format: '{point.value}' // Customize the format as needed
+                                }
+                            }
+                        },
+                        series: [{
+                            data:arr,
+                            name: '',
+                            allowPointSelect: true,
+                            cursor: 'pointer',
+                            states: {
+                                select: {
+                                    color: '#fcad95'
                                 }
                             },
-                            dataLabels: {
-                                enabled: false,
-                                format: '{point.value}' // Customize the format as needed
+                            tooltip: {
+                                headerFormat: '',
+                                pointFormat: '<b>{point.name}</b><br>' +
+                                             'Value: {point.value}<br>' +
+                                             'Institute Name: {point.extraValue}',
+                                shared: true,
+                                useHTML: true
+                            }
+                        }],
+                        exporting: {
+                            enabled: true,
+                            buttons: {
+                                contextButton: {
+                                    menuItems: ['printChart', 'separator', 'downloadPNG', 'downloadJPEG', 'downloadPDF', 'downloadSVG']
+                                }
                             }
                         }
-                    },
-                    series: [{
-                        data:arr,
-                        name: '',
-                        allowPointSelect: true,
-                        cursor: 'pointer',
-                        states: {
-                            select: {
-                                color: '#fcad95'
-                            }
-                        },
-                        tooltip: {
-                            headerFormat: '',
-                            pointFormat: '<b>{point.name}</b><br>' +
-                                         'Value: {point.value}<br>' +
-                                         'Institute Name: {point.extraValue}',
-                            shared: true,
-                            useHTML: true
-                        }
-                    }],
-                    exporting: {
-                        enabled: true,
-                        buttons: {
-                            contextButton: {
-                                menuItems: ['printChart', 'separator', 'downloadPNG', 'downloadJPEG', 'downloadPDF', 'downloadSVG']
-                            }
-                        }
-                    }
-                });
+                    });
+                }         
 
             })();
         },
@@ -2102,6 +1937,78 @@ const laboratory_apply_filter = (rabiesfilter = '') => {
             search_btn.attr("disabled", false);
         }
     });
+}
+
+// get laboratory district of state
+async function laboratotyDrilldownHandle(state,nameState) {
+    const entries = Object.entries(state);
+    const selectedMapData = DISTRICT_MAPS.find(data => {
+        const dataName = data.name.toLowerCase();
+        const stateName = String(nameState).toLowerCase();
+        return dataName === stateName;
+    });
+    const district_list = selectedMapData.data;   
+    const updatedArray = district_list.map((item) => {
+        return {
+            ...item,
+            data: item.data.map((mapColor) => {
+                return {
+                    ...mapColor,
+                    color: '#ce4c39'
+                };
+            }),
+
+            mapData: item.mapData.map((mapItem) => {
+                const value = getDistrictValue(mapItem.name.toLowerCase(), entries);
+                return {
+                    ...mapItem,
+                    value: value,
+                };
+            }),
+        };
+    });
+    Highcharts.mapChart('laboratory-map', {
+        chart: {
+            map: india,
+        },
+        title: {
+            text: ''
+        },
+        subtitle: {
+            text: ''
+        },
+        mapNavigation: {
+            enabled: true,
+            buttonOptions: {
+                verticalAlign: 'bottom'
+            }
+        },
+        colorAxis: {
+            min: 0,
+            max: 100,
+            minColor: '#fcad95',
+            maxColor: '#b31404',
+            labels: {
+                format: '{value}',
+            },
+        },
+
+        plotOptions: {
+            series: {
+                dataLabels: {
+                    enabled: false,
+                    format: '{point.value}', // You can customize the format as needed
+                },
+                events: {
+                    click: function (e) {
+                        // Handle click events here
+                    }
+                }
+            }
+        },        
+        series: updatedArray,
+    });
+
 }
 function laboratoryResetButton() {
     $('#month option[value=""]').prop('selected', 'selected').change();
@@ -2112,7 +2019,7 @@ function laboratoryResetButton() {
     let loading_content = 'Search';
     search_btn.html(loading_content);   
     defaultLaboratoryMapData();
-    laboratory_apply_filter();
+    // laboratory_apply_filter();
 }
 // end LAboratory dashboard
 

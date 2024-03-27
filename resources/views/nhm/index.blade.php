@@ -22,7 +22,7 @@
                 @endforeach
                 @endif               
             </div>
-            <p class="nhmLink" target="_blank" onclick = "confirm('This site is external')"> <a href="https://nhm.gov.in/">National Health Mission</a></p>
+            <p target="_blank" onclick = "confirm('This site is external')">Source: <a href="https://nhm.gov.in/">https://nhm.gov.in/</a></p>
         </div>
     </div>
 </section>

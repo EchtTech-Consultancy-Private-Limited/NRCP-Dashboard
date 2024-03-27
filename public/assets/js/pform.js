@@ -273,4 +273,20 @@ $(document).ready(function() {
     });
     // After Form Submitted Validation
 
+    // city filter by state
+    $(document).on('change', '#pform_state', function() {
+        let state_id = $(this).val();
+        $.ajax({
+        type: "GET",
+        url: BASE_URL + "/get-city",
+        data: {
+            'state_id': state_id
+        },
+        success: function(data) {
+            $("#pform_city").html(data);
+        }
+        });
+
+    });
+
 });

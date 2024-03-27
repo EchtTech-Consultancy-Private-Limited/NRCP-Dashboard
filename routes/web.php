@@ -37,12 +37,20 @@ Route::middleware(['Admin','device'])->group(function () {
         Route::get('/logout',[authController::class,'logout'])->name('logout');
         /** Form Routes */
         Route::get('dashboard', [MainController::class, 'dashboard'])->name('dashboard');
-        Route::get('pform', [PFormController::class, 'index'])->name('pform');
-        Route::get('sform', [SFormController::class, 'index'])->name('sform');
-        Route::get('lform', [LFormController::class, 'index'])->name('lform');
-
         Route::get('laboratory-dashboard', [LaboratoryDashboardController::class, 'index'])->name('laboratory-dashboard');
         Route::get('get-filter-laboratory-data',[LaboratoryDashboardController::class,'getFilterLaboratoryData'])->name('get-filter-laboratory-data');
+        
+        Route::get('/get-city', [PFormController::class,'getCityByStateId'])->name('get-city');
+
+        Route::group(['prefix' => 'pform', 'as' => 'pform.'], function(){
+            Route::get('/', [PFormController::class, 'index'])->name('index');
+            Route::post('store',[PFormController::class, 'store'])->name('store');
+            Route::get('edit/{id}',[PFormController::class, 'edit'])->name('edit');
+            Route::get('delete/{id}',[PFormController::class, 'delete'])->name('delete');
+        });
+
+        Route::get('sform', [SFormController::class, 'index'])->name('sform');
+        Route::get('lform', [LFormController::class, 'index'])->name('lform');
         // nhm dashboard
         Route::group(['prefix' => 'nhms', 'as' => 'nhm.'], function () {
             Route::get('/', [NhmDashboardController::class, 'index'])->name('index');
@@ -52,7 +60,6 @@ Route::middleware(['Admin','device'])->group(function () {
         });
         // end nhm dashboard
         Route::get('Human-rabies-map', [MainController::class, 'HumanRabiesView'])->name('pform2');
-        Route::post('patient-Record',[MainController::class,'patientAdd']);
          
         Route::get('patient_records_form',[MainController::class,'patientrecordsform']);
 

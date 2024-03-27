@@ -12,15 +12,6 @@
 
             <!-- general form elements -->
             <div class=" card-primary dashboard">
-                <!-- <div class=" apply-filter">
-
-                            <button id="printButton" class="btn apply-filter text-white button">Print</button>
-                        </div> -->
-                <!-- <div class="row">
-                            <div class="col-sm-8">
-                                <h1 class="text-left  main-title nrcp-main-title">State Dashboard - Human Health Rabies</h1>
-                            </div>
-                        </div> -->
                 @if (Auth::user()->user_type == 1)
                     <div class="form-tab">
                         <div class="bootstrap-tab">
@@ -110,7 +101,7 @@
                                                         </option>
                                                         <option value="1" form-type="l-form">L Form</option>
                                                         <option value="2" form-type="p-form">P Form</option>
-                                                        <option value="3" form-type="s-form">S Form</option>
+                                                        {{-- <option value="3" form-type="s-form">S Form</option> --}}
                                                     </select>
                                                     <small id="formType-error" class="form-text text-muted">
                                                     </small>
@@ -255,13 +246,13 @@
                                                         id="text1" class="case-title"> </span>
                                                 </div>
 
-                                                <div class="box">
+                                                {{-- <div class="box">
                                                     <span class="user-icon">
                                                         <i class="fa fa-users" aria-hidden="true"></i>
                                                     </span>
                                                     <span id="box2" class="cases"> </span> <br><span
                                                         id="text2" class="case-title"> </span>
-                                                </div>
+                                                </div> --}}
                                             </div>
                                         </div>
                                     </div>
@@ -273,7 +264,7 @@
                                             <div class="col-md-12 ">
                                                 <div
                                                     class="map-text m-0 mb-2 d-flex align-items-center justify-content-between">
-                                                    <h1 class="m-0 mr-3 d-inline-block">Deaths cases state wise </h1>
+                                                    <h1 class="m-0 mr-3 d-inline-block">Cases state wise </h1>
                                                     <button class="buttons-print float-right" type="button"
                                                         onclick="printDiv('dashboardMap')"><span> <i
                                                                 class="fa fa-print"></i></span></button>
@@ -293,7 +284,7 @@
                                                             <select class="form-control w-auto" name="type"
                                                                 id="type">
                                                                 <option value="0">Cases</option>
-                                                                <option value="1">Deaths</option>
+                                                                {{-- <option value="1">Deaths</option> --}}
                                                             </select>
                                                         </div>
                                                         <div class="year-selector p-3"> </div>
@@ -324,11 +315,11 @@
                                                                         <th rowspan='2'
                                                                             class="state_filter_district">State
                                                                         </th>
-                                                                        <th colspan='2'>Presumptive </th>
+                                                                        <th colspan='2'>Suspected Cases</th>
                                                                     </tr>
                                                                     <tr>
                                                                         <th>Cases</th>
-                                                                        <th>Deaths</th>
+                                                                        {{-- <th>Deaths</th> --}}
                                                                     </tr>
                                                                 </thead>
                                                                 <tbody id="tableBody">
@@ -367,48 +358,26 @@
                                     <!-- graph start-->
                                     <div id="graphical_view">
                                         <div class="row">
-                                            <div class="col-md-6 pr-2">
+                                            <div class="col-md-12 pr-2">
                                                 <div id="containerPie" class="piechart dashboard-filter"
                                                     height="400">
                                                 </div>
                                             </div>
-
-                                            <div class="col-md-6 pl-2">
-                                                <div id="containerPie2nd" class="piechart dashboard-filter "
-                                                    height="400">
-                                                </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12 pr-2">
+                                                <div id="chart" class="dashboard-filter mt-3"></div>
                                             </div>
                                         </div>
 
                                         <div class="row">
-                                            <div class="col-md-6 pr-2">
-                                                <div id="chart" class="dashboard-filter mt-3"></div>
-                                            </div>
-
-                                            <div class="col-md-6 pl-2">
-                                                <div class="dashboard-filter mt-3">
-                                                    <div id="chartContainer" style="height: 400px;"></div>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-md-6 pr-2">
+                                            <div class="col-md-12 pr-2">
                                                 <div class="dashboard-filter mt-3">
 
                                                     <div id="barchart_materialcase" >
                                                     </div>
                                                 </div>
                                             </div>
-
-                                            <div class="col-md-6 pl-2">
-                                                <div class="dashboard-filter mt-3">
-                                                    {{-- <h1></h1> --}}
-                                                    <div id="barchart_materialdeaths" >
-                                                    </div>
-                                                </div>
-                                            </div>
-
-
-
                                         </div>
                                     </div>
                                     <!-- end here -->
