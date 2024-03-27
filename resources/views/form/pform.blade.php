@@ -483,6 +483,7 @@
                                                             <th>Date of Sample Collection</th>
                                                             <th>Test Requested</th>
                                                         </tr>
+                                                        <t></tr>
                                                     </thead>
                                                     <tbody>
                                                         @if($pForms)
@@ -490,7 +491,7 @@
                                                         <tr>
                                                             <td>{{$loop->iteration}}</td>
                                                             <td class="text-nowrap">
-                                                                <a href="javascript:void();" class="btn bg-success action-btn" title="Edit"> <i class="fa fa-edit"></i> </a>
+                                                                <a href="javascript:void();" id="edit_{{$loop->iteration}}" class="btn bg-success action-btn" title="Edit"> <i class="fa fa-edit"></i> </a>
                                                                 <a href="{{ route('pform.delete',$pForm->id) }}" class="btn bg-danger action-btn" title="Delete"> <i class="fa fa-trash-o"></i> </a>
                                                             </td>
                                                             <td>{{$pForm->first_name}}</td>                                                            
@@ -509,7 +510,28 @@
                                                             <td>{{$pForm->test_suspected}}</td>
                                                             <td>{{$pForm->type_of_sample}}</td>
                                                             <td>{{date('d-m-Y',strtotime($pForm->sample_date))}}</td>
-                                                            <td>{{$pForm->test_resquested}}</td>                                                            
+                                                            <td>{{$pForm->test_resquested}}</td>
+                                                        </tr>
+                                                        <tr id="editTr_{{$loop->iteration}}" class="d-none">
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td colspan="19">this is edit form</td>
                                                         </tr>
                                                         <tr>
                                                             <td colspan="20"> this is edit form</td>
