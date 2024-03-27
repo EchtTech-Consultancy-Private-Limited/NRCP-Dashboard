@@ -511,6 +511,9 @@
                                                             <td>{{date('d-m-Y',strtotime($pForm->sample_date))}}</td>
                                                             <td>{{$pForm->test_resquested}}</td>                                                            
                                                         </tr>
+                                                        <tr>
+                                                            <td colspan="20"> this is edit form</td>
+                                                        </tr>
                                                         @endforeach
                                                     @endif
                                                     </tbody>
