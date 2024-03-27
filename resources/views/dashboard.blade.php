@@ -399,7 +399,7 @@
                                                 </div>
                                             </div>
 
-                                            <div class="col-md-6 pl-4">
+                                            <div class="col-md-6 pl-2">
                                                 <div class="dashboard-filter mt-3">
                                                     {{-- <h1></h1> --}}
                                                     <div id="barchart_materialdeaths" >
