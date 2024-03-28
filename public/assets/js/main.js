@@ -50,3 +50,20 @@ jQuery( document ).ready(function() {
         $(this).siblings(".text-muted").hide();
     });
 });
+
+$(document).ready(function(){
+    $('.pformEdit').click(function() {
+        let clickedElementId = $(this).attr('id');
+        let clickEmentDataId = $(this).attr('data-id');
+        
+        // Remove 'd-content' class from all elements with class 'editForm'
+        $('.editForm').removeClass('d-content');
+        
+        // Add 'd-content' class only to the clicked element
+        $('#editTr_' + clickEmentDataId).addClass('d-content');
+        
+        console.log('Clicked element ID:', clickedElementId);
+        console.log('Clicked element data-id:', clickEmentDataId);
+    });
+});
+
