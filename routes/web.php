@@ -40,9 +40,13 @@ Route::middleware(['Admin','device'])->group(function () {
         Route::get('laboratory-dashboard', [LaboratoryDashboardController::class, 'index'])->name('laboratory-dashboard');
         Route::get('get-filter-laboratory-data',[LaboratoryDashboardController::class,'getFilterLaboratoryData'])->name('get-filter-laboratory-data');
         
+        Route::get('/get-city', [PFormController::class,'getCityByStateId'])->name('get-city');
+
         Route::group(['prefix' => 'pform', 'as' => 'pform.'], function(){
             Route::get('/', [PFormController::class, 'index'])->name('index');
-            Route::post('create',[PFormController::class, 'create'])->name('create');
+            Route::post('store',[PFormController::class, 'store'])->name('store');
+            Route::get('edit/{id}',[PFormController::class, 'edit'])->name('edit');
+            Route::get('delete/{id}',[PFormController::class, 'delete'])->name('delete');
         });
 
         Route::get('sform', [SFormController::class, 'index'])->name('sform');
