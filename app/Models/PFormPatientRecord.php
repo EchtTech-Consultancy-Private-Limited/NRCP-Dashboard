@@ -36,6 +36,7 @@ class PFormPatientRecord extends Model
         'type_of_sample',
         'test_resquested',
         'sample_date',
+        'form_type',
     ];
         
     /**

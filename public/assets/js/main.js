@@ -52,57 +52,30 @@ jQuery( document ).ready(function() {
 });
 
 $(document).ready(function(){
-    // $('.pformEdit').click(function() {
-    //     let clickedElementId = $(this).attr('id');
-    //     let clickEmentDataId = $(this).attr('data-id');
-    //     alert(   $(`#${clickedElementId}`))
-    //     $(`#${clickedElementId}`).on('click', function() {
-    //         if (rowDetailsOpen) {
-    //             // Collapse row details for the clicked row
-    //             $(this).closest('tr').find('td:first-child').trigger('click');
-                
-    //         } else {
-    //             // Expand row details for the clicked row
-    //             $(this).closest('tr').find('td:first-child').trigger('click');
-    //         }
-    //         // Toggle the flag
-    //         rowDetailsOpen = !rowDetailsOpen;
-    //       });
-    //     // Remove 'd-content' class from all elements with class 'editForm'
-    //     $('.editForm').removeClass('d-content');
-    //     $(this).click(function () {
-    //         $('#editTr_' + clickEmentDataId).toggleClass('d-content');
-    //     })
-    //     // Add 'd-content' class only to the clicked element
-       
-        
-       
-    // });
-
     // Define and initialize the rowDetailsOpen variable outside of the click event handler
-let rowDetailsOpen = false;
+    let rowDetailsOpen = false;
 
-$('.pformEdit').click(function() {
-    let clickedElementId = $(this).attr('id');
-    let clickEmentDataId = $(this).attr('data-id');
+    $('.pformEdit').click(function() {
+        let clickedElementId = $(this).attr('id');
+        let clickEmentDataId = $(this).attr('data-id');
 
-    // Toggle the row details open/close state
-    if (rowDetailsOpen) {
-        // Collapse row details for the clicked row
-        $(this).closest('tr').find('td:first-child').trigger('click');
-    } else {
-        // Expand row details for the clicked row
-        $(this).closest('tr').find('td:first-child').trigger('click');
-    }
-    // Toggle the flag
-    rowDetailsOpen = !rowDetailsOpen;
+        // Toggle the row details open/close state
+        if (rowDetailsOpen) {
+            // Collapse row details for the clicked row
+            $(this).closest('tr').find('td:first-child').trigger('click');
+        } else {
+            // Expand row details for the clicked row
+            $(this).closest('tr').find('td:first-child').trigger('click');
+        }
+        // Toggle the flag
+        rowDetailsOpen = !rowDetailsOpen;
 
-    // Remove 'd-content' class from all elements with class 'editForm'
-    $('.editForm').removeClass('d-content');
+        // Remove 'd-content' class from all elements with class 'editForm'
+        $('.editForm').removeClass('d-content');
 
-    // Toggle 'd-content' class for the clicked element
-    $('#editTr_' + clickEmentDataId).toggleClass('d-content');
-});
+        // Toggle 'd-content' class for the clicked element
+        $('#editTr_' + clickEmentDataId).toggleClass('d-content');
+    });
 
 
 
@@ -127,19 +100,7 @@ $(document).ready(function(){
     // Flag to track the state of row details
     var rowDetailsOpen = false;
     
-    // Handle click on specific ID
-    // $('#edit_1').on('click', function() {
-    //     if (rowDetailsOpen) {
-    //         // Collapse row details for the clicked row
-    //         $(this).closest('tr').find('td:first-child').trigger('click');
-            
-    //     } else {
-    //         // Expand row details for the clicked row
-    //         $(this).closest('tr').find('td:first-child').trigger('click');
-    //     }
-    //     // Toggle the flag
-    //     rowDetailsOpen = !rowDetailsOpen;
-    // });
+    
     
     // Handle click on "Collapse All" button
     $('#btn-hide-all').on('click', function() {

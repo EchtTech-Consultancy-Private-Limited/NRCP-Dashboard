@@ -20,16 +20,8 @@ class PFormController extends Controller
     {
         $countryes = Country::get();
         $states = CountryState::get();
-        $pForms = PFormPatientRecord::get();
+        $pForms = PFormPatientRecord::with('city')->where('form_type','p_form')->get();
         return view("form.pform",compact('countryes','states','pForms'));
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create(Request $request)
-    {
-        dd($request->all());
     }
 
     /**
@@ -57,7 +49,7 @@ class PFormController extends Controller
                 'house_no' => $request->house_no,
                 'street_name' => $request->street_name,
                 'landmark' => $request->landmark,
-                'pincode',45 => $request->pincode,
+                'pincode' => $request->pincode,
                 'provisinal_diagnosis' => $request->provisinal_diagnosis,
                 'date_of_onset' => $request->date_of_onset,
                 'opd_ipd' => $request->opd_ipd,
@@ -65,6 +57,7 @@ class PFormController extends Controller
                 'type_of_sample' => $request->type_of_sample,
                 'test_resquested' => $request->test_resquested,
                 'sample_date' => $request->sample_date,
+                'form_type' => $request->form_type,
             ]);
             DB::commit();
             return redirect()->route('pform.index')->with('message', 'PForm Add SuccessFull !');
@@ -75,35 +68,10 @@ class PFormController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     */
-    public function show()
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(PFormPatientRecord $id)
-    {
-        die($id);
-        // try{
-        //     $pform = PFormPatientRecord::with('country','state','city')->where('id', $id)->first();
-        //     $states = CountryState::get();
-        //     return view("form.pform",compact('pform','states'));
-        // }catch (Exception $e) {
-        //     DB::rollBack();
-        //     throw new Exception($e->getMessage());
-        // }
-    }
-
-    /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, $id = '')
+    public function update(PFormPatientRecordRequest $request, $id = '')
     {
-        die($id);
         try {
             PFormPatientRecord::where('id', $id)->update([
                 'country_code' => $request->country_code,
@@ -123,7 +91,7 @@ class PFormController extends Controller
                 'house_no' => $request->house_no,
                 'street_name' => $request->street_name,
                 'landmark' => $request->landmark,
-                'pincode',45 => $request->pincode,
+                'pincode' => $request->pincode,
                 'provisinal_diagnosis' => $request->provisinal_diagnosis,
                 'date_of_onset' => $request->date_of_onset,
                 'opd_ipd' => $request->opd_ipd,
@@ -131,7 +99,10 @@ class PFormController extends Controller
                 'type_of_sample' => $request->type_of_sample,
                 'test_resquested' => $request->test_resquested,
                 'sample_date' => $request->sample_date,
+                'form_type' => $request->form_type,
             ]);
+            DB::commit();
+            return redirect()->route('pform.index')->with('message', 'PForm Update SuccessFull !');
         }catch (Exception $e) {
             DB::rollBack();
             throw new Exception($e->getMessage());
