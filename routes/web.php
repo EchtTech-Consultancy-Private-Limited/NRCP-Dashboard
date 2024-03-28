@@ -45,7 +45,7 @@ Route::middleware(['Admin','device'])->group(function () {
         Route::group(['prefix' => 'pform', 'as' => 'pform.'], function(){
             Route::get('/', [PFormController::class, 'index'])->name('index');
             Route::post('store',[PFormController::class, 'store'])->name('store');
-            Route::get('edit/{id}',[PFormController::class, 'edit'])->name('edit');
+            Route::get('update/{id}',[PFormController::class, 'update'])->name('update');
             Route::get('delete/{id}',[PFormController::class, 'delete'])->name('delete');
         });
 

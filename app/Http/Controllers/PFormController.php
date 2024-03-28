@@ -101,9 +101,41 @@ class PFormController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request)
+    public function update(Request $request, $id = '')
     {
-        //
+        die($id);
+        try {
+            PFormPatientRecord::where('id', $id)->update([
+                'country_code' => $request->country_code,
+                'citizenship' => $request->citizenship,
+                'pform_state' => $request->pform_state,
+                'pform_city' => $request->pform_city,
+                'mobile_number' => $request->mobile_number,
+                'first_name' => $request->first_name,
+                'middle_name' => $request->middle_name,
+                'last_name' => $request->last_name,
+                'birth_of_date' => $request->birth_of_date,
+                'gender' => $request->gender,
+                'id_type' => $request->id_type,
+                'identification_number' => $request->identification_number,
+                'taluka' => $request->taluka,
+                'village' => $request->village,
+                'house_no' => $request->house_no,
+                'street_name' => $request->street_name,
+                'landmark' => $request->landmark,
+                'pincode',45 => $request->pincode,
+                'provisinal_diagnosis' => $request->provisinal_diagnosis,
+                'date_of_onset' => $request->date_of_onset,
+                'opd_ipd' => $request->opd_ipd,
+                'test_suspected' => $request->test_suspected,
+                'type_of_sample' => $request->type_of_sample,
+                'test_resquested' => $request->test_resquested,
+                'sample_date' => $request->sample_date,
+            ]);
+        }catch (Exception $e) {
+            DB::rollBack();
+            throw new Exception($e->getMessage());
+        }
     }
 
     /**

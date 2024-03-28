@@ -288,5 +288,4 @@ $(document).ready(function() {
         });
 
     });
-
 });
