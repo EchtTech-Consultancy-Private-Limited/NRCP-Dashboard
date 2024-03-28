@@ -515,6 +515,9 @@
                                                         <tr id="editTr_{{$loop->iteration}}" class="d-none">
                                                             <td colspan="19">this is edit form</td> <!-- Adjust colspan to match the number of columns in your table -->
                                                         </tr>
+                                                        <tr>
+                                                            <td colspan="20"> this is edit form</td>
+                                                        </tr>
                                                         @endforeach
                                                     @endif
                                                     </tbody>
