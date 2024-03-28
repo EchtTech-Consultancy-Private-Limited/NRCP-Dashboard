@@ -286,7 +286,19 @@ $(document).ready(function() {
             $("#pform_city").html(data);
         }
         });
-
     });
-
+// city filter by state for edit
+    $(document).on('change', '.edit_pform_state', function() {
+        let state_id = $(this).val();
+        $.ajax({
+        type: "GET",
+        url: BASE_URL + "/get-city",
+        data: {
+            'state_id': state_id
+        },
+        success: function(data) {
+            $(".edit_pform_city").html(data);
+        }
+        });
+    });
 });

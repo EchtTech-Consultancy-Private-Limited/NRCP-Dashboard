@@ -45,12 +45,17 @@ Route::middleware(['Admin','device'])->group(function () {
         Route::group(['prefix' => 'pform', 'as' => 'pform.'], function(){
             Route::get('/', [PFormController::class, 'index'])->name('index');
             Route::post('store',[PFormController::class, 'store'])->name('store');
-            Route::get('edit/{id}',[PFormController::class, 'edit'])->name('edit');
+            Route::post('update/{id}',[PFormController::class, 'update'])->name('update');
             Route::get('delete/{id}',[PFormController::class, 'delete'])->name('delete');
+        });
+        Route::group(['prefix' => 'lform', 'as' => 'lform.'], function(){
+            Route::get('/', [LFormController::class, 'index'])->name('index');
+            Route::post('store',[LFormController::class, 'store'])->name('store');
+            Route::post('update/{id}',[LFormController::class, 'update'])->name('update');
+            Route::get('delete/{id}',[LFormController::class, 'delete'])->name('delete');
         });
 
         Route::get('sform', [SFormController::class, 'index'])->name('sform');
-        Route::get('lform', [LFormController::class, 'index'])->name('lform');
         // nhm dashboard
         Route::group(['prefix' => 'nhms', 'as' => 'nhm.'], function () {
             Route::get('/', [NhmDashboardController::class, 'index'])->name('index');

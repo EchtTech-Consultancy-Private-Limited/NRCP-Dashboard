@@ -1,5 +1,5 @@
-// const BASE_URL =window.location.origin+"/public";
-const BASE_URL = window.location.origin;
+// const BASE_URL = window.location.origin;
+const BASE_URL =window.location.origin+"/public";
 
 /*handle Form Type*/
 const handleFormType = () => {
@@ -2019,7 +2019,7 @@ function laboratoryResetButton() {
     let loading_content = 'Search';
     search_btn.html(loading_content);   
     defaultLaboratoryMapData();
-    // laboratory_apply_filter();
+    laboratory_apply_filter();
 }
 // end LAboratory dashboard
 

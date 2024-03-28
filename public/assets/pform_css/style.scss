@@ -666,3 +666,17 @@ table.dataTable.stripe>tbody>tr.odd>*, table.dataTable.display>tbody>tr.even>* {
 .d-content{
   display: contents !important;
 }
+
+table#general_profiles_TABLE2{
+  td.sorting_1{
+   &::before{
+    content: '';
+    background: transparent;
+    width: 0;
+    box-shadow: none;
+    height: 0;
+    border: 0;
+   }
+  }
+}
+
