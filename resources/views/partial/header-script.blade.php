@@ -35,8 +35,9 @@
 <script src="{{ asset('assets/js/highcharts/solid-gauge.js') }}"></script>
 <script src="{{ asset('assets/js/highcharts/accessibility.js') }}"></script>
 {{-- end highchart --}}
-<link rel="stylesheet" href="{{ asset('assets/css/datatablemin.css') }}">
-<link rel="stylesheet" href="{{ asset('assets/css/datatablebuttonmin.css') }}">
+<!-- <link rel="stylesheet" href="{{ asset('assets/css/datatablemin.css') }}"> -->
+<link rel="stylesheet" href="{{ asset('assets/css/datatable.min.css') }}">
+<!-- <link rel="stylesheet" href="{{ asset('assets/css/datatablebuttonmin.css') }}"> -->
 <link rel="stylesheet" href="{{ asset('assets/css/responsive.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/css/toastr.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/css/toastr.min.css') }}">
