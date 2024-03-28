@@ -513,25 +513,7 @@
                                                             <td>{{$pForm->test_resquested}}</td>
                                                         </tr>
                                                         <tr id="editTr_{{$loop->iteration}}" class="d-none">
-                                                            <td></td>
-                                                            <td></td>
-                                                            <td></td>
-                                                            <td></td>
-                                                            <td></td>
-                                                            <td></td>
-                                                            <td></td>
-                                                            <td></td>
-                                                            <td></td>
-                                                            <td></td>
-                                                            <td></td>
-                                                            <td></td>
-                                                            <td></td>
-                                                            <td></td>
-                                                            <td></td>
-                                                            <td></td>
-                                                            <td></td>
-                                                            <td></td>
-                                                            <td colspan="19">this is edit form</td>
+                                                            <td colspan="19">this is edit form</td> <!-- Adjust colspan to match the number of columns in your table -->
                                                         </tr>
                                                         @endforeach
                                                     @endif
