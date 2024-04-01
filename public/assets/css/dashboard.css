@@ -47,7 +47,9 @@ body {
   font-weight: bold;
   color: #fff;
 }
-
+g.highcharts-axis-labels.highcharts-yaxis-labels.highcharts-radial-axis-labels>text {
+	display: none;
+}
 .laboratory-card .box .cases {
   font-size: 14px;
   font-weight: 600;
