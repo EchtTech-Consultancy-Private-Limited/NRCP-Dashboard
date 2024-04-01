@@ -101,7 +101,7 @@
                   <div class="tab-content" id="myTabContent">
                      <div class="" id="nav-add-patient-record" role="tabpanel" aria-labelledby="home-tab">
                         <div id="general_profile_success"></div>
-                        <table id="general_profiles_TABLE" class="display">
+                        <table id="general_profiles_TABLE2" class="display">
                             <thead>
                                 <tr>
                                     <th>Sr.No.</th>

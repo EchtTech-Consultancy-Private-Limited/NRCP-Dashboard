@@ -65,7 +65,7 @@
                                                     <select class="form-select p-1 year click-function" name="year"
                                                         aria-label="Default select example" id="year"
                                                         required="" onChange="handleFilterValue()">
-                                                        <option value="yyyy">Select Year</option>
+                                                        <option value="">Select Year</option>
                                                         <?php
                                                         $currentYear = date('Y');
                                                         for ($year = $currentYear; $year >= 2015; $year--) {
