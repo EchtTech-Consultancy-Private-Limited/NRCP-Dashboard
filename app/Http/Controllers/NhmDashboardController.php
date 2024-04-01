@@ -11,7 +11,7 @@ use Exception;
 use Illuminate\Support\Facades\DB;
 
 class NhmDashboardController extends Controller
-{    
+{
     /**
      *  @ show all list index
      *

@@ -318,9 +318,7 @@ class MainController extends Controller
                     $case_type = 'deaths';
                 }
 
-
                 if (!empty($request->district) &&  !empty($request->setstate)) {
-
                     foreach ($district_list as $key => $value) {
                         if ($value->id == $request->district) {
                             $query = clone $human_rabies_case_query;
@@ -330,7 +328,6 @@ class MainController extends Controller
                         }
                     }
                 } else if ($request->setstate) {
-
                     foreach ($district_list as $key => $value) {
                         $query = clone $human_rabies_case_query;
                         $human_rabies = $query->where('district_id', $value->id)->sum($case_type);
