@@ -98,12 +98,16 @@
                           <label for="id-type">Id Type <span class="star">*</span>
                           </label>
                           <select class="form-select" aria-label="Default select example" name="id_type" id="id-type" required>
-                            <option value="">Select Your id-type</option> @if(old('id_type')) <option value="{{ old('id_type') }}" selected>
+                            <option value="">Select Your ID Type</option> @if(old('id_type')) <option value="{{ old('id_type') }}" selected>
                               {{ old('id_type') }}
-                            </option> @endif <option value="1">First</option>
-                            <option value="2">Second</option>
-                            <option value="3">Third</option>
-                          </select> @if ($errors->has('id_type')) <span class="form-text text-muted">{{ $errors->first('id_type') }}</span> @endif
+                            </option> @endif <option value="Aadhaar">Aadhaar</option>
+                            <option value="Voter ID">Voter ID</option>
+                            <option value="Pan">Pan</option>
+                            <option value="Passsport">Passsport</option>
+                            <option value="ABHA">ABHA</option>
+                            <option value="Other">Other</option>
+                          </select>
+                           @if ($errors->has('id_type')) <span class="form-text text-muted">{{ $errors->first('id_type') }}</span> @endif
                         </div>
                       </div>
                       <div class="col-lg-3 col-md-3">
@@ -294,7 +298,7 @@
                     </div>
                     <div class="button d-flex justify-content-center mt-3">
                       <button type="submit" class="btn search-patient-btn mr-3 bg-primary text-light">save</button>
-                      <button class="btn search-patient-btn bg-danger text-light">Reset</button>
+                      <button type="reset" class="btn search-patient-btn bg-danger text-light">Reset</button>
                     </div>
                   </form>
                   <div class="row bg-c-gray bg-white p-0 mt-3">
@@ -349,7 +353,7 @@
                                   <i class="fa fa-trash-o"></i>
                                 </a>
                               </td>
-                              <td>{{$pForm->first_name}}</td>
+                              <td>{{$pForm->first_name}} {{$pForm->last_name}}</td>
                               <td>{{$pForm->mobile_number}}</td>
                               <td class="hide-th">31</td>
                               <td class="hide-th">Female</td>
@@ -455,9 +459,12 @@
                                                   <label for="id-type">Id Type <span class="star">*</span>
                                                   </label>
                                                   <select class="form-select" aria-label="Default select example" name="id_type" id="id-type" required>
-                                                    <option value="First" @if($pForm->id_type == 'First') selected @endif>First</option>
-                                                    <option value="Second" @if($pForm->id_type == 'Second') selected @endif>Second</option>
-                                                    <option value="Third" @if($pForm->id_type == 'Third') selected @endif>Third</option>
+                                                    <option value="Aadhaar" @if($pForm->id_type == 'Aadhaar') selected @endif>Aadhaar</option>
+                                                    <option value="Voter ID" @if($pForm->id_type == 'Voter ID') selected @endif>Voter ID</option>
+                                                    <option value="Pan" @if($pForm->id_type == 'Pan') selected @endif>Pan</option>
+                                                    <option value="Passsport" @if($pForm->id_type == 'Passsport') selected @endif>Passsport</option>
+                                                    <option value="ABHA" @if($pForm->id_type == 'ABHA') selected @endif>ABHA</option>
+                                                    <option value="Other" @if($pForm->id_type == 'Other') selected @endif>Other</option>
                                                   </select> 
                                                   @if ($errors->has('id_type')) <span class="form-text text-muted">{{ $errors->first('id_type') }}</span> @endif
                                                 </div>
@@ -650,7 +657,7 @@
                                             </div>
                                             <div class="button d-flex justify-content-center mt-3">
                                               <button type="submit" class="btn search-patient-btn mr-3 bg-primary text-light">save</button>
-                                              <button class="btn search-patient-btn bg-danger text-light">Reset</button>
+                                              <button type="reset" class="btn search-patient-btn bg-danger text-light">Reset</button>
                                             </div>
                                           </form>
                                         </div>

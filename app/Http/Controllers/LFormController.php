@@ -20,7 +20,7 @@ class LFormController extends Controller
     {
         $countryes = Country::get();
         $states = CountryState::get();
-        $pForms = PFormPatientRecord::with('city')->where('form_type','l_form')->get();
+        $pForms = PFormPatientRecord::with('city')->where('form_type','l_form')->orderBy('created_at', 'desc')->get();
         return view("form.lform",compact('countryes','states','pForms'));
     }
 

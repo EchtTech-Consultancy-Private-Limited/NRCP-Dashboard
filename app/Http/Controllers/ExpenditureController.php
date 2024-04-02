@@ -12,7 +12,7 @@ class ExpenditureController extends Controller
 {
     public function index()
     {
-        $expenditure = Expenditure::where(['soft_delete' => 0])->get();
+        $expenditure = Expenditure::where(['soft_delete' => 0])->orderBy('desc')->get();
         return response()->json(['expenditure' => $expenditure]);
     }
 

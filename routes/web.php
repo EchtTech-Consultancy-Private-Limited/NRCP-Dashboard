@@ -90,7 +90,7 @@ Route::middleware(['Admin','device'])->group(function () {
             Route::post('general-update', [GeneralProfileController::class, 'update'])->name('general-update');
             Route::delete('general-laboratory-destroy/{id}', [GeneralProfileController::class, 'destroy'])->name('general-laboratory-destroy');
 
-            Route::get('quality-assurance',[QualityAssuranceController::class,'create'])->name('quality-assurance');
+            Route::get('quality',[QualityAssuranceController::class,'create'])->name('quality');
             Route::post('quality-add', [QualityAssuranceController::class, 'store'])->name('quality-add');
             Route::get('quality-profile',[QualityAssuranceController::class,'index']);
             Route::get('quality-assurance-profile/{id}', [QualityAssuranceController::class, 'edit']);
@@ -98,7 +98,7 @@ Route::middleware(['Admin','device'])->group(function () {
             Route::post('quality-update', [QualityAssuranceController::class, 'update'])->name('quality-update');
             Route::delete('quality-destroy/{id}', [QualityAssuranceController::class, 'destroy'])->name('quality-destroy');
 
-            Route::get('equipment',[EquipmentsController::class,'create'])->name('equipment');
+            Route::get('equipments',[EquipmentsController::class,'create'])->name('equipments');
             Route::post('equipment-add', [EquipmentsController::class, 'store'])->name('equipment-add');
             Route::get('equipment-profile', [EquipmentsController::class, 'index']);
             Route::get('equipment-edit/{id}', [EquipmentsController::class, 'edit'])->name('equipment-edit');
@@ -127,6 +127,3 @@ Route::middleware(['Admin','device'])->group(function () {
     });
 
 });
-
-
-
