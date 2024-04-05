@@ -1,5 +1,5 @@
-// const BASE_URL = window.location.origin;
-const BASE_URL =window.location.origin+"/public";
+const BASE_URL = window.location.origin;
+// const BASE_URL =window.location.origin+"/public";
 
 /*handle Form Type*/
 const handleFormType = () => {
@@ -233,13 +233,13 @@ const apply_filter = () => {
             search_btn.attr("disabled", false);
             search_btn.html("Search");
             search_btn.attr("disabled", false);
-            if (form_type == '2') {
+            // if (form_type == '2') {
                 googlePieChart(result);
                 barChart(result[0]);
                 pyramidChart(result[0]);
                 //  highchartMapcase(result.total_records);
                 //  highchartMapDeath(result.total_records);
-            }
+            // }
 
             if (form_type == '1') {
                 $('.defaultform').hide()
@@ -753,7 +753,7 @@ const googlePieChart = (result) => {
             }
         },
         title: {
-            text: `Cases by Gender in India ${filter_state !== undefined ? filter_state + ' >' : ''} ${filter_district !== undefined ? filter_district + ' >' : ''} ${filter_from_year !== "" ? filter_from_year + ' >' : ''} ${filter_to_year !== "" ? filter_to_year + ' >' : ''}    n=(${result.total})`,
+            text: `Cases by Gendersss in India ${filter_state !== undefined ? filter_state + ' >' : ''} ${filter_district !== undefined ? filter_district + ' >' : ''} ${filter_from_year !== "" ? filter_from_year + ' >' : ''} ${filter_to_year !== "" ? filter_to_year + ' >' : ''}    n=(${result.total})`,
             align: 'left',
             style: {
                 fontSize: innerWidth<=1350 ? '15px' : (innerWidth>=1350 ? '18px': '15px') // Set the font size here

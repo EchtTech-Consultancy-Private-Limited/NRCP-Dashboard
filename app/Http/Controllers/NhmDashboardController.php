@@ -56,6 +56,10 @@ class NhmDashboardController extends Controller
     {
         try{
             DB::beginTransaction();
+            $nhmExist = NhmDashboard::where('year', $request->year)->exists();
+            if ($nhmExist) {
+                return redirect()->route('nhm.index')->with('error', 'NHM entry for this year already exists !');
+            }
             $rops = $request->file('rops');
             $supplementaryRops = $request->file('supplementary_rops');
             if ($rops) {
@@ -102,5 +106,77 @@ class NhmDashboardController extends Controller
             DB::rollBack();
             throw new Exception($e->getMessage());
         }
+    }
+    
+    /**
+     *  @edit get nhm record for edit
+     *
+     * @param  mixed $id
+     * @return void
+     */
+    public function edit($id){
+        try{
+            $breadCrum = "NHM Dashboard";
+            DB::beginTransaction();
+            $states = State::get();
+            $nhm = NhmDashboard::with('state')->where('id',$id)->first();
+            DB::commit();
+            return view('nhm.edit',compact('nhm','breadCrum','states'));
+        }catch (Exception $e) {
+            DB::rollBack();
+            throw new Exception($e->getMessage());
+        }
+    }    
+    /**
+     * update nhms record
+     *
+     * @param  mixed $id
+     * @return void
+     */
+    public function update(NhmRequest $request, $id = ''){
+        try{
+            DB::beginTransaction();
+            $rops = $request->file('rops');
+            $supplementaryRops = $request->file('supplementary_rops');
+            if ($rops) {
+                $ropsSize =  FileSizeServices::getFileSize($rops->getSize());
+                $ropsName = $rops->getClientOriginalName();
+                $rops->move(public_path('images/uploads/nhm'), $ropsName);
+            }else{
+                $ropsName = $request->old_rops;
+            }
+            if ($supplementaryRops) {
+                $supplementarySize =  FileSizeServices::getFileSize($supplementaryRops->getSize());
+                $supplementaryRopsName = $supplementaryRops->getClientOriginalName();
+                $supplementaryRops->move(public_path('images/uploads/nhm'), $supplementaryRopsName);
+            }else{
+                $supplementaryRopsName = $request->old_supplementary_rops;
+            }
+            NhmDashboard::where('id', $id)->Update([
+                'year' => $request->year,
+                'state_id' => $request->state,
+                'rops' => $ropsName ?? '',
+                'rops_size' => $ropsSize ?? '',
+                'supplementary_rops' => $supplementaryRopsName ?? '',
+                'supplementary_rops_size' => $supplementarySize ?? '',
+            ]);
+            DB::commit();
+            return redirect()->route('nhm.index')->with('message', 'NHM Update SuccessFull !');
+        }catch (Exception $e) {
+            DB::rollBack();
+            throw new Exception($e->getMessage());
+        }
+    }
+    
+    /**
+     * destroy
+     *
+     * @param  mixed $id
+     * @return void
+     */
+    public function destroy($id)
+    {
+        NhmDashboard::where('id', $id)->delete();
+        return redirect()->route('nhm.index')->with(['error'=>"NHM Deleted successfully.",'alert-type' => 'success','success'=>'1', 'tr'=>'tr_'.$id]);
     }
 }
