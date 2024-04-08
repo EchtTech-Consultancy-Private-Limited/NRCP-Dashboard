@@ -62,6 +62,9 @@ Route::middleware(['Admin','device'])->group(function () {
             Route::get('/create', [NhmDashboardController::class, 'create'])->name('create');
             Route::post('/store', [NhmDashboardController::class, 'store'])->name('store');
             Route::get('/view/{id}', [NhmDashboardController::class, 'view'])->name('view');
+            Route::get('/edit/{id}', [NhmDashboardController::class, 'edit'])->name('edit');
+            Route::post('/update/{id}', [NhmDashboardController::class, 'update'])->name('update');
+            Route::get('delete/{id}',[NhmDashboardController::class, 'destroy'])->name('delete');
         });
         // end nhm dashboard
         Route::get('Human-rabies-map', [MainController::class, 'HumanRabiesView'])->name('pform2');

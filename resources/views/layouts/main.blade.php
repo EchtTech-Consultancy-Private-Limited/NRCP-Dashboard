@@ -40,6 +40,14 @@
                 </div>
             </div>
             @endif
+            @if (session()->has('error'))
+            <div class="container">
+                <div class="alert alert-danger float-end" id="success-alert">
+                    <button type="button" class="close" data-dismiss="alert">x</button>
+                    <strong>Success! </strong> {{ session('error') }}
+                </div>
+            </div>
+            @endif
             @yield('content')
         </section>
     </div>
