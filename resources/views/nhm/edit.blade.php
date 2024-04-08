@@ -71,6 +71,11 @@
                                                     <input type="hidden" value="{{$nhm->rops}}" name="old_rops">
                                                     <input type="file" class="form-control" name="rops" 
                                                         id="rops" aria-describedby="rops">
+                                                    @if ($nhm->rops)
+                                                    <a class="nhm-file" href="{{ asset('images/uploads/nhm/'.$nhm->rops) }}" download>
+                                                        <i class="fa fa-download" aria-hidden="true"></i>
+                                                    </a>
+                                                    @endif
                                                     @if ($errors->has('rops'))
                                                         <span class="form-text text-muted">{{ $errors->first('rops') }}</span>
                                                     @endif
@@ -84,6 +89,11 @@
                                                     <input type="hidden" value="{{$nhm->supplementary_rops}}" name="old_supplementary_rops">
                                                     <input type="file" class="form-control" name="supplementary_rops"
                                                         id="supplementary_rops" aria-describedby="supplementary_rops">
+                                                    @if ($nhm->supplementary_rops)
+                                                    <a class="nhm-file" href="{{ asset('images/uploads/nhm/'.$nhm->supplementary_rops) }}" download>
+                                                        <i class="fa fa-download" aria-hidden="true"></i>
+                                                    </a>
+                                                    @endif
                                                     @if ($errors->has('supplementary_rops'))
                                                     <span class="form-text text-muted">{{ $errors->first('supplementary_rops') }}</span>
                                                     @endif
@@ -96,7 +106,7 @@
                                             <button class="btn search-patient-btn mr-3 bg-primary text-light">Submit</button>
                                         </div>
                                     </form>
-                                </div>                               
+                                </div>
                             </div>
                         </div>
                     </div>

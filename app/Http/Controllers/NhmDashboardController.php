@@ -136,6 +136,10 @@ class NhmDashboardController extends Controller
     public function update(NhmRequest $request, $id = ''){
         try{
             DB::beginTransaction();
+            $nhmExist = NhmDashboard::where('year', $request->year)->exists();
+            if ($nhmExist) {
+                return back()->with('error', 'NHM entry for this year already exists !');
+            }
             $rops = $request->file('rops');
             $supplementaryRops = $request->file('supplementary_rops');
             if ($rops) {
