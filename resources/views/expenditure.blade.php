@@ -37,7 +37,7 @@
                                             <option value='yes'>Yes</option>
                                             <option value='no'>No</option>
                                         </select> -->
-                                        <input type="date" class="form-control" aria-label="Default select example" name="financial_year" id="financial_year">
+                                        <input type="date" class="form-control" value="{{ old('financial_year') }}" aria-label="Default select example" name="financial_year" id="financial_year">
                                         @error('financial_year') 
                                           <span class="form-text text-muted">{{ $message }}</span>
                                        @enderror 
@@ -49,8 +49,11 @@
                                             class="star">*</span></label>
                                         <select class="form-select" aria-label="Default select example"
                                             name="fund_recieved" id="fund_recieved">
-                                            <option value=""> Select
-                                            </option>
+                                            <option value="">Select Your Fund Recieved</option>
+                                             @if(old('fund_recieved')) 
+                                                <option value="{{ old('fund_recieved') }}" selected>
+                                             {{ old('fund_recieved') }}
+                                           </option> @endif 
                                             <option value='Yes'>Yes</option>
                                             <option value='No'>No</option>
                                         </select>
@@ -65,7 +68,7 @@
                                         <select class="form-select" aria-label="Default select example" name="equipment_purchase" id="equipment_purchase">
                                             <option value=""> Select </option>
                                             @foreach($equipment_purchase_masters as $equipment_purchase_master)
-                                            <option value='{{$equipment_purchase_master->name}}'>{{$equipment_purchase_master->name}}</option>
+                                            <option value='{{$equipment_purchase_master->name}}' {{ ($equipment_purchase_master->name == old('equipment_purchase') ? 'selected' : '') }}>{{$equipment_purchase_master->name}}</option>
                                             @endforeach
                                         </select>
                                         @error('equipment_purchase') 

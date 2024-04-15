@@ -24,7 +24,7 @@
                                                         State
                                                     </option>
                                                     @foreach (state_list() as $state)
-                                                        <option value="{{ $state->state_name }}">
+                                                        <option value="{{ $state->state_name }}" {{ ($state->state_name == old('state')) ? 'selected' : ''}}>
                                                             {{ ucfirst($state->state_name) ?? '' }}
                                                         </option>
                                                     @endforeach
@@ -37,7 +37,7 @@
                                     <div class="col-lg-3 col-md-3 col-6">
                                         <div class="form-group">
                                             <label for="district">Hospital<span class="star">*</span></label>
-                                            <input type="text" name="hospital" id="hospital" maxlength="45" class="form-control" />
+                                            <input type="text" name="hospital" value="{{ old('hospital') }}" id="hospital" maxlength="45" class="form-control" />
                                             @error('hospital') 
                                                 <span class="form-text text-muted">{{ $message }}</span>
                                             @enderror 
@@ -46,14 +46,14 @@
                                     <div class="col-lg-3 col-md-3 col-6">
                                         <div class="form-group">
                                             <label for="fromYear">Nodal Officer</label>
-                                            <input type="text" name="designation" id="designation" maxlength="45" class="form-control"/>
+                                            <input type="text" name="designation" value="{{ old('designation') }}" id="designation" maxlength="45" class="form-control"/>
                                             <small id="designation-error" class="form-text text-muted"> </small>
                                         </div>
                                     </div>
                                     <div class="col-lg-3 col-md-3 col-6">
                                         <div class="form-group">
                                             <label for="toYear">Contact Number</label>
-                                            <input type="text" name="contact_number" id="contact_number"  minlength="10" maxlength="10" oninput="validateInput(this)" class="form-control"/>
+                                            <input type="text" name="contact_number" value="{{ old('contact_number') }}" id="contact_number"  minlength="10" maxlength="10" oninput="validateInput(this)" class="form-control"/>
                                             <small id="contact_number-error" class="form-text text-muted"> </small>
                                             @error('contact_number') 
                                                 <span class="form-text text-muted">{{ $message }}</span>
@@ -74,7 +74,7 @@
                                     <div class="col-lg-3 col-md-3 col-6">
                                         <div class="form-group">
                                             <label for="formType">Joining Date of NRCP</label>
-                                            <input type="date" name="date_of_joining" id="date_of_joining" class="form-control"/>
+                                            <input type="date" name="date_of_joining" value="{{ old('date_of_joining') }}" id="date_of_joining" class="form-control"/>
                                             <small id="date_of_joining-error" class="form-text text-muted"> </small>
                                         </div>
                                     </div>
@@ -101,7 +101,7 @@
                   <div class="tab-content" id="myTabContent">
                      <div class="" id="nav-add-patient-record" role="tabpanel" aria-labelledby="home-tab">
                         <div id="general_profile_success"></div>
-                        <table id="general_profiles_TABLE" class="display">
+                        <table id="general_profiles_TABLE2" class="display">
                             <thead>
                                 <tr>
                                     <th>Sr.No.</th>

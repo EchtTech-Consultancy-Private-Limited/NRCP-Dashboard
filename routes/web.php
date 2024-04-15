@@ -45,18 +45,26 @@ Route::middleware(['Admin','device'])->group(function () {
         Route::group(['prefix' => 'pform', 'as' => 'pform.'], function(){
             Route::get('/', [PFormController::class, 'index'])->name('index');
             Route::post('store',[PFormController::class, 'store'])->name('store');
-            Route::get('edit/{id}',[PFormController::class, 'edit'])->name('edit');
+            Route::post('update/{id}',[PFormController::class, 'update'])->name('update');
             Route::get('delete/{id}',[PFormController::class, 'delete'])->name('delete');
+        });
+        Route::group(['prefix' => 'lform', 'as' => 'lform.'], function(){
+            Route::get('/', [LFormController::class, 'index'])->name('index');
+            Route::post('store',[LFormController::class, 'store'])->name('store');
+            Route::post('update/{id}',[LFormController::class, 'update'])->name('update');
+            Route::get('delete/{id}',[LFormController::class, 'delete'])->name('delete');
         });
 
         Route::get('sform', [SFormController::class, 'index'])->name('sform');
-        Route::get('lform', [LFormController::class, 'index'])->name('lform');
         // nhm dashboard
         Route::group(['prefix' => 'nhms', 'as' => 'nhm.'], function () {
             Route::get('/', [NhmDashboardController::class, 'index'])->name('index');
             Route::get('/create', [NhmDashboardController::class, 'create'])->name('create');
             Route::post('/store', [NhmDashboardController::class, 'store'])->name('store');
             Route::get('/view/{id}', [NhmDashboardController::class, 'view'])->name('view');
+            Route::get('/edit/{id}', [NhmDashboardController::class, 'edit'])->name('edit');
+            Route::post('/update/{id}', [NhmDashboardController::class, 'update'])->name('update');
+            Route::get('delete/{id}',[NhmDashboardController::class, 'destroy'])->name('delete');
         });
         // end nhm dashboard
         Route::get('Human-rabies-map', [MainController::class, 'HumanRabiesView'])->name('pform2');
@@ -85,7 +93,7 @@ Route::middleware(['Admin','device'])->group(function () {
             Route::post('general-update', [GeneralProfileController::class, 'update'])->name('general-update');
             Route::delete('general-laboratory-destroy/{id}', [GeneralProfileController::class, 'destroy'])->name('general-laboratory-destroy');
 
-            Route::get('quality-assurance',[QualityAssuranceController::class,'create'])->name('quality-assurance');
+            Route::get('quality',[QualityAssuranceController::class,'create'])->name('quality');
             Route::post('quality-add', [QualityAssuranceController::class, 'store'])->name('quality-add');
             Route::get('quality-profile',[QualityAssuranceController::class,'index']);
             Route::get('quality-assurance-profile/{id}', [QualityAssuranceController::class, 'edit']);
@@ -93,7 +101,7 @@ Route::middleware(['Admin','device'])->group(function () {
             Route::post('quality-update', [QualityAssuranceController::class, 'update'])->name('quality-update');
             Route::delete('quality-destroy/{id}', [QualityAssuranceController::class, 'destroy'])->name('quality-destroy');
 
-            Route::get('equipment',[EquipmentsController::class,'create'])->name('equipment');
+            Route::get('equipments',[EquipmentsController::class,'create'])->name('equipments');
             Route::post('equipment-add', [EquipmentsController::class, 'store'])->name('equipment-add');
             Route::get('equipment-profile', [EquipmentsController::class, 'index']);
             Route::get('equipment-edit/{id}', [EquipmentsController::class, 'edit'])->name('equipment-edit');
@@ -122,6 +130,3 @@ Route::middleware(['Admin','device'])->group(function () {
     });
 
 });
-
-
-

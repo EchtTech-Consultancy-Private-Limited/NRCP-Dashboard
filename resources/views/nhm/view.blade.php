@@ -24,6 +24,7 @@
                         <th>State</th>
                         <th>ROPs</th>
                         <th>Supplementry ROPs</th>
+                        <th>Action</th>
                     </tr>
                     @if($nhms->count())
                         @foreach ($nhms as $nhm)
@@ -52,6 +53,14 @@
                                 @else
                                     N/A
                                 @endif
+                            </td>
+                            <td>
+                              <a href= "{{route('nhm.edit',$nhm->id)}}" id="edit_2" class="btn bg-success action-btn pformEdit" data-id="2" title="Edit">
+                                <i class="fa fa-edit"></i>
+                              </a>
+                              <a href="{{route('nhm.delete',$nhm->id)}}" class="btn bg-danger action-btn" title="Delete">
+                                <i class="fa fa-trash-o"></i>
+                              </a>
                             </td>  
                         </tr>
                         @endforeach

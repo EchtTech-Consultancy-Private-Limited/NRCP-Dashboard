@@ -36,7 +36,15 @@
             <div class="container">
                 <div class="alert alert-success float-end" id="success-alert">
                     <button type="button" class="close" data-dismiss="alert">x</button>
-                    <strong>Success! </strong> Product have added to your wishlist.
+                    <strong>Success! </strong> {{ session('message') }}
+                </div>
+            </div>
+            @endif
+            @if (session()->has('error'))
+            <div class="container">
+                <div class="alert alert-danger float-end" id="success-alert">
+                    <button type="button" class="close" data-dismiss="alert">x</button>
+                    <strong>Success! </strong> {{ session('error') }}
                 </div>
             </div>
             @endif

@@ -52,12 +52,12 @@
                 General</a>
         </div>
         <div
-            class="link bg-primary text-white dashboard-title {{ (Request::segment(1) == 'quality-assurance')?'active':'' }}">
-           <a href="{{ url('/quality-assurance') }}"> <i class="fa fa-check iconmargin-set" aria-hidden="true"></i> 
+            class="link bg-primary text-white dashboard-title {{ (Request::segment(1) == 'quality')?'active':'' }}">
+           <a href="{{ url('/quality') }}"> <i class="fa fa-check iconmargin-set" aria-hidden="true"></i> 
                 Quality</a>
         </div>
-        <div class="link bg-primary text-white dashboard-title {{ (Request::segment(1) == 'equipment')?'active':'' }}">
-         <a href="{{ url('/equipment') }}"><i class="fa fa-cogs iconmargin-set" aria-hidden="true"></i> Equipments</a>
+        <div class="link bg-primary text-white dashboard-title {{ (Request::segment(1) == 'equipments')?'active':'' }}">
+         <a href="{{ url('/equipments') }}"><i class="fa fa-cogs iconmargin-set" aria-hidden="true"></i> Equipments</a>
         </div>
         <div
             class="link bg-primary text-white dashboard-title {{ (Request::segment(1) == 'rabies-test')?'active':'' }}">

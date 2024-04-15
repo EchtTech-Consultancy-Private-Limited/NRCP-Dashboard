@@ -49,7 +49,7 @@
                                             @enderror
                                         </div>
                                     </div>
-                                    <div class="col-lg-3 col-md-3 col-6">
+                                    {{-- <div class="col-lg-3 col-md-3 col-6">
                                         <div class="form-group">
                                             <label for="diseasesSyndromes">Mou</label>
                                             <select class="form-control" aria-label="Default select example" name="mou" id="mou" onChange="handleFilterValue()">
@@ -59,7 +59,7 @@
                                             </select>
                                             <small id="mou-error" class="form-text text-muted"></small>
                                         </div>
-                                    </div>
+                                    </div> --}}
                                     <div class="col-lg-3 col-md-3 col-6">
                                         <div class="form-group">
                                             <label for="formType">Joining Date of NRCP</label>

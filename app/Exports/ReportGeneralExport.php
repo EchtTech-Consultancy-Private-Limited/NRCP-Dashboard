@@ -21,11 +21,6 @@ use Maatwebsite\Excel\Concerns\Exportable;
 class ReportGeneralExport implements FromCollection
 {
 
-    // public function __construct(int $employer_id,$employeeArray)
-    // {
-    // 	$this->employer_id = $employer_id;
-	// }
-
     use Exportable;
 
     private $collection;
@@ -33,18 +28,15 @@ class ReportGeneralExport implements FromCollection
     public function __construct($arrays)
     {
         $output = [];
-
         foreach ($arrays as $array) {
-            // get headers for current dataset
             $output[] = array_keys($array[0]);
-            // store values for each row
             foreach ($array as $row) {
+                // Remove 'created_at' and 'updated_at' keys from each row
+                // unset($row['created_at'], $row['updated_at']);
                 $output[] = array_values($row);
             }
-            // add an empty row before the next dataset
             $output[] = [''];
         }
-
         $this->collection = collect($output);
     }
 
@@ -52,25 +44,4 @@ class ReportGeneralExport implements FromCollection
     {
         return $this->collection;
     }
-    /**
-    * @return \Illuminate\Support\Collection
-    */
-    /**
-    * @return \Illuminate\Support\Collection
-    */
-    // public function collection()
-    // {
-    //     return Equipments::select("id", "equipment", "quantity")->get();
-    //     return GeneralProfile::select("id", "state", "hospital","designation","contact_number","mou","date_of_joining")->get();
-    // }
-  
-    /**
-     * Write code on Method
-     *
-     * @return response()
-     */
-    // public function headings(): array
-    // {
-    //     return ["ID", "Equipment", "Quantity"];
-    // }
 }

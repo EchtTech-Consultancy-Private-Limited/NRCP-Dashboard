@@ -52,10 +52,10 @@
 
 <!-- datatable js -->
 
-<!-- <script src="{{ asset('assets/js/datatablemin.js') }}"></script> -->
-<!-- <script src="{{ asset('assets/js/datatablebutton.js') }}"></script> -->
-<!-- <script src="{{ asset('assets/js/datatablebuttonprint.js') }}"></script> -->
-<!-- <script src="{{ asset('assets/js/datatable-js.js') }}"></script> -->
+<script src="{{ asset('assets/js/datatablemin.js') }}"></script>
+<script src="{{ asset('assets/js/datatablebutton.js') }}"></script>
+<script src="{{ asset('assets/js/datatablebuttonprint.js') }}"></script>
+<script src="{{ asset('assets/js/datatable-js.js') }}"></script>
 <script src="{{ asset('assets/js/datatables.min.js') }}"></script>
 <script src="{{ asset('assets/js/filter-multi-select-bundle.min.js') }}"></script>
 

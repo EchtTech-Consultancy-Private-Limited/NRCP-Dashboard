@@ -9,7 +9,7 @@ $(document).ready(function() {
         var userURL = $(this).data('url');
         var trObj = $(this);
 
-        if (confirm("Are you sure you want to delete this user?") == true) {
+        if (confirm("Are you sure you want to delete this?") == true) {
             $.ajax({
                 url: userURL,
                 type: 'DELETE',
