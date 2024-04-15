@@ -99,9 +99,10 @@
             <div class="form-tab">
                <div class="bootstrap-tab">
                   <div class="tab-content" id="myTabContent">
-                     <div class="" id="nav-add-patient-record" role="tabpanel" aria-labelledby="home-tab">
+                     <div class="table-responsive" id="nav-add-patient-record" role="tabpanel" aria-labelledby="home-tab">
                         <div id="general_profile_success"></div>
-                        <table id="general_profiles_TABLE2" class="display">
+                        
+                        <table id="general_profiles_TABLE2" class="display general">
                             <thead>
                                 <tr>
                                     <th>Sr.No.</th>

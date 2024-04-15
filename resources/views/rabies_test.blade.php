@@ -33,7 +33,7 @@
                                  </div>
                                  <div class="col-lg-3 col-md-3 col-6">
                                     <div class="form-group">
-                                       <label for="fromYear">Numbers of Sample Recieves</label>
+                                       <label for="fromYear">Number of Sample Recieves</label>
                                        <input type="text" maxlength="5" oninput="validateInput(this)" class="form-control" aria-label="Default select example" name="numbers_of_sample_recieved" id="numbers_of_sample_recieved">
                                        @error('numbers_of_sample_recieved') 
                                           <span class="form-text text-muted">{{ $message }}</span>
@@ -94,7 +94,7 @@
                                  </div>
                                  <div class="col-lg-3 col-md-3 col-6">
                                     <div class="form-group">
-                                       <label for="diseasesSyndromes">Numbers of Test Conducted</label>
+                                       <label for="diseasesSyndromes">Number of Test Conducted</label>
                                        <input type="text" maxlength="5" oninput="validateInput(this)" class="form-control" aria-label="Default select example" name="numbers_of_test" id="numbers_of_test">
                                        @error('numbers_of_test') 
                                           <span class="form-text text-muted">{{ $message }}</span>
@@ -104,7 +104,7 @@
                                  </div>
                                  <div class="col-lg-3 col-md-3 col-6">
                                     <div class="form-group">
-                                       <label for="diseasesSyndromes">Total Numbers of Positives</label>
+                                       <label for="diseasesSyndromes">Total Number of Positive</label>
                                        <input type="text" maxlength="5" oninput="validateInput(this)" class="form-control" aria-label="Default select example" name="numbers_of_positives" id="numbers_of_positives">
                                        @error('numbers_of_positives') 
                                           <span class="form-text text-muted">{{ $message }}</span>
@@ -115,7 +115,7 @@
                                  </div>
                                  <div class="col-lg-3 col-md-3 col-6">
                                     <div class="form-group">
-                                       <label for="diseasesSyndromes">Numbers Entered into the IHIP</label>
+                                       <label for="diseasesSyndromes">Number Entered into the IHIP</label>
                                        <input type="text" maxlength="5" oninput="validateInput(this)" class="form-control" aria-label="Default select example" name="numbers_of_intered_ihip" id="numbers_of_intered_ihip">
                                        @error('numbers_of_intered_ihip') 
                                           <span class="form-text text-muted">{{ $message }}</span>

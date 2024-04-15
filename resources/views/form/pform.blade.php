@@ -16,7 +16,7 @@
             <div class="bootstrap-tab">
               <nav>
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
-                  <li class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-add-patient-record" type="button" role="tab" aria-controls="nav-add-patient-record" aria-selected="true">Add Patient Record </li>
+                  <li class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-add-patient-record" type="button" role="tab" aria-controls="nav-add-patient-record" aria-selected="true">Add Patient Record </li>          
                   <li class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-add-death-record" type="button" role="tab" aria-controls="nav-add-death-record" aria-selected="false">Add Death Record</li>
                   <li class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-record-aggregate-data" type="button" role="tab" aria-controls="nav-record-aggregate-data" aria-selected="false">Record Aggregate Data</li>
                   <li class="nav-link" id="nav-submit-tab" data-bs-toggle="tab" data-bs-target="#nav-submit-null-report" type="button" role="tab" aria-controls="nav-submit-null-report" aria-selected="false">Submit Null Report</li>
@@ -34,8 +34,8 @@
                           <b>1. Patient Details:</b>
                         </div>
                       </div>
-                      <div class="col-lg-4 col-md-4">
-                        <label for="search-patient" class="label mb-0 mt-2">Contact Number:</label>
+                      <div class="col-lg-5 col-md-4">
+                        <label for="search-patient" class="label mb-0 mt-2">Contact Number<span class="star">*</span>:</label>
                         <div class="form-group d-flex">
                           <div class="w-100 mr-3">
                             <select name="country_code" id="country_code" class="form-control mt-0">
@@ -45,11 +45,11 @@
                             </select> @if ($errors->has('country_code')) <span class="form-text text-muted">{{ $errors->first('country_code') }}</span> @endif
                           </div>
                           <div class="w-100">
-                            <input type="text" name="mobile_number" value="{{ old('mobile_number') }}" maxlength="10" oninput="validateInput(this)" id="mobile_number" class="form-control" placeholder="Enter Your Mobile Number"> @if ($errors->has('mobile_number')) <span class="form-text text-muted">{{ $errors->first('mobile_number') }}</span> @endif
+                            <input type="text" name="mobile_number" value="{{ old('mobile_number') }}" maxlength="10" oninput="validateInput(this)" id="mobile_number" class="form-control" placeholder="Enter Mobile Number"> @if ($errors->has('mobile_number')) <span class="form-text text-muted">{{ $errors->first('mobile_number') }}</span> @endif
                           </div>
                         </div>
                       </div>
-                      <div class="col-lg-8 col-md-8">
+                      <div class="col-lg-7 col-md-8">
                         <a href="{{ url('patient_records_form') }}" class="search-patient-btn bg-info text-light" id="search-patient-btn">Search Patient</a>
                       </div>
                       <div class="col-lg-3 col-md-3">
@@ -129,7 +129,7 @@
                       </div>
                       <div class="col-lg-12 col-md-12">
                         <div class="label-title">
-                          <b>Present Adderess:</b>
+                          <b>Present Address:</b>
                         </div>
                       </div>
                       <div class="col-lg-3 col-md-3">
@@ -208,7 +208,7 @@
                       </div>
                       <div class="col-lg-3 col-md-3">
                         <div class="form-group">
-                          <label for="provisinal-diagnosis">Provisinal Diagnosis <span class="star">*</span>
+                          <label for="provisinal-diagnosis">Provisional Diagnosis <span class="star">*</span>
                           </label>
                           <select class="form-select" aria-label="Default select example" name="provisinal_diagnosis" id="provisinal_diagnosis" required>
                             <option value=""> Select Your Diagnosis</option> @if(old('provisinal_diagnosis')) <option value="{{ old('provisinal_diagnosis') }}" selected>
@@ -575,7 +575,7 @@
                                               </div>
                                               <div class="col-lg-3 col-md-3">
                                                 <div class="form-group">
-                                                  <label for="provisinal-diagnosis">Provisinal Diagnosis <span class="star">*</span>
+                                                  <label for="provisinal-diagnosis">Provisional Diagnosis <span class="star">*</span>
                                                   </label>
                                                   <select class="form-select" aria-label="Default select example" name="provisinal_diagnosis" id="provisinal_diagnosis" required>
                                                     <option value="Anthrax" @if($pForm->provisinal_diagnosis == 'Anthrax') selected @endif>Anthrax</option>
