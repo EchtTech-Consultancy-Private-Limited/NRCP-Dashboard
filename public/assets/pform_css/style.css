@@ -542,6 +542,47 @@ tspan.highChartTitle {
   color: #fff;
 }
 
+table tr.even {
+  background-color: rgba(63, 81, 181, 0.031372549) !important;
+}
+table td {
+  border-left: 1px solid #ddd;
+}
+table td:last-child {
+  border-right: 1px solid #ddd;
+}
+table td, table th {
+  font-size: 14px;
+}
+table th {
+  white-space: nowrap;
+  background: #3f51b5;
+  color: #fff;
+  border-right: 1px solid #fff;
+}
+table th:last-child {
+  border: none;
+}
+
+table {
+  width: 100%;
+}
+table tr th {
+  white-space: nowrap;
+  background: #3f51b5;
+  color: #fff;
+  border-right: 1px solid #fff;
+  padding: 10px;
+}
+table tr td {
+  border-left: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  padding: 5px 10px;
+}
+table tr td:last-child {
+  border-right: 1px solid #ddd;
+}
+
 .display.dataTable tr.even {
   background-color: rgba(63, 81, 181, 0.031372549) !important;
 }

@@ -576,6 +576,52 @@ tspan.highChartTitle {
 }
 
 // datatable or table style 
+table{
+  
+  tr.even{
+    background-color: #3f51b508 !important;
+    
+  }
+  td{
+    border-left: 1px solid #ddd;
+    &:last-child{
+      border-right: 1px solid #ddd;
+    }
+  }
+  td,th{
+    font-size: 14px;
+  }
+  th{
+    white-space: nowrap;
+    background: #3f51b5;
+    color: #fff;
+    border-right: 1px solid #fff;
+    &:last-child{
+      border: none;
+    }
+  }
+}
+
+table{
+  width: 100%;
+  tr{
+    th{
+      white-space: nowrap;
+      background: #3f51b5;
+      color: #fff;
+      border-right: 1px solid #fff;
+      padding: 10px;
+    }
+    td{
+      border-left: 1px solid #ddd;
+      border-bottom: 1px solid #ddd;
+      padding: 5px 10px;
+      &:last-child{
+        border-right: 1px solid #ddd;
+      }
+    }
+  }
+}
 
 .display.dataTable{
   
