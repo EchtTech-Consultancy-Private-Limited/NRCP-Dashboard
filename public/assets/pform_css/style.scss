@@ -243,7 +243,7 @@ textarea.valid {
 .form-text {
   color: #ff0000 !important;
   font-size: 11px;
-  // text-transform: capitalize;
+  text-transform: capitalize;
 }
 
 .panel-body {
@@ -576,6 +576,52 @@ tspan.highChartTitle {
 }
 
 // datatable or table style 
+table{
+  
+  tr.even{
+    background-color: #3f51b508 !important;
+    
+  }
+  td{
+    border-left: 1px solid #ddd;
+    &:last-child{
+      border-right: 1px solid #ddd;
+    }
+  }
+  td,th{
+    font-size: 14px;
+  }
+  th{
+    white-space: nowrap;
+    background: #3f51b5;
+    color: #fff;
+    border-right: 1px solid #fff;
+    &:last-child{
+      border: none;
+    }
+  }
+}
+
+table{
+  width: 100%;
+  tr{
+    th{
+      white-space: nowrap;
+      background: #3f51b5;
+      color: #fff;
+      border-right: 1px solid #fff;
+      padding: 10px;
+    }
+    td{
+      border-left: 1px solid #ddd;
+      border-bottom: 1px solid #ddd;
+      padding: 5px 10px;
+      &:last-child{
+        border-right: 1px solid #ddd;
+      }
+    }
+  }
+}
 
 .display.dataTable{
   
@@ -603,6 +649,54 @@ tspan.highChartTitle {
   }
 }
 
+
+.dataTables_wrapper .dataTables_paginate .paginate_button {
+  border: 1px solid #630f4314 !important;
+  font-size: 14px;
+}
+
+.scroller-tbl .dataTables_wrapper .dataTables_paginate .paginate_button:active {
+  background-color: #630f4314 !important
+}
+
+.scroller-tbl .dataTables_wrapper .dataTables_paginate .paginate_button.current,.scroller-tbl .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
+  color: #fff!important;
+  background-color: #630f4314 !important
+}
+
+.scroller-tbl .dataTables_wrapper .dataTables_paginate .paginate_button.disabled,.scroller-tbl .dataTables_wrapper .dataTables_paginate .paginate_button.disabled:active,.scroller-tbl .dataTables_wrapper .dataTables_paginate .paginate_button.disabled:hover {
+  cursor: default;
+  color: #fff!important;
+  border: 1px solid #425974!important;
+  box-shadow: none;
+  background: #425974!important
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.next,.dataTables_wrapper .dataTables_paginate .paginate_button.previous {
+  background-color: #3f51b5 !important;
+  color: #fff!important;
+  font-size: 14px;
+}
+.bootstrap-tab .dataTables_wrapper .dataTables_paginate .paginate_button.current{
+  &:hover{
+    color: #fff !important;
+  }
+}
+.dataTables_wrapper .dataTables_paginate .paginate_button.disabled{
+  cursor: default;
+  color: #333 !important;
+  border: 1px solid transparent;
+  background: #3f51b526 !important;
+  box-shadow: none;
+}
+
+.dataTables_wrapper .dataTables_filter input {
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  &:focus-visible{
+    outline: none;
+  }
+}
 table.dataTable.display>tbody>tr.odd>.sorting_1, table.dataTable.order-column.stripe>tbody>tr.odd>.sorting_1 {
   box-shadow: none !important;
   background: none;
@@ -680,3 +774,30 @@ table#general_profiles_TABLE2{
   }
 }
 
+.bootstrap-tab .dataTables_wrapper .dataTables_paginate .paginate_button.current, .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover{
+  background: #3f51b5 !important;
+    color: #fff !important;
+}
+
+.general{
+  tr{
+    td{
+      &:nth-child(4){
+        white-space: nowrap;
+      }
+    }
+  }
+}
+input[type="date"]::placeholder{
+  color: #000 !important;
+}
+input[type="date"]:valid::-webkit-datetime-edit-text,
+input[type="date"]:valid::-webkit-datetime-edit-month-field,
+input[type="date"]:valid::-webkit-datetime-edit-day-field,
+input[type="date"]:valid::-webkit-datetime-edit-year-field {
+  color: #000;
+}
+
+input[type=date].form-control{
+  text-transform: uppercase !important;
+}

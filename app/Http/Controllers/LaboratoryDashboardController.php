@@ -184,6 +184,7 @@ class LaboratoryDashboardController extends Controller
             $districtName = end($words);
             $finalMapData[] = [
                 'state' => $rabiesInstitute->state->state_name ?? '',
+                'state_code' => $rabiesInstitute->state->state_code ?? '',
                 'district' => [$districtName => $numberTestConducted],
                 'numberPatients' => $numberPatients,
                 'numberReceived' => $numberReceived,
@@ -191,6 +192,8 @@ class LaboratoryDashboardController extends Controller
                 'numberPositives' => $numberPositives,
                 'institute' => $rabiesInstitute->institute->name ?? '',
                 'institute_id' => $rabiesInstitute->institute->id ?? '',
+                'institute_lat' => $rabiesInstitute->institute->lat ?? '',
+                'institute_log' => $rabiesInstitute->institute->log ?? '',
             ];
 
         }

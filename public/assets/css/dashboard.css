@@ -47,9 +47,7 @@ body {
   font-weight: bold;
   color: #fff;
 }
-g.highcharts-axis-labels.highcharts-yaxis-labels.highcharts-radial-axis-labels>text {
-	display: none;
-}
+
 .laboratory-card .box .cases {
   font-size: 14px;
   font-weight: 600;
@@ -801,6 +799,7 @@ section.content.sform .table div {
   background: rgba(237, 251, 255, 0.6392156863);
   font-size: 14px;
   font-weight: 500;
+  display: flex;
 }
 section.content.sform .table div::before {
   content: "\f101";
@@ -910,4 +909,8 @@ select[name=state] {
   padding: 11px;
   border-radius: 5px;
   font-size: 14px;
+}
+
+button#reset_button {
+  background: #ab4024 !important;
 }/*# sourceMappingURL=dashboard.css.map */

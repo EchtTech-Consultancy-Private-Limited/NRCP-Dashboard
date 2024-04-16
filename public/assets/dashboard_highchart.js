@@ -1,5 +1,5 @@
-// const BASE_URL = window.location.origin;
 const BASE_URL =window.location.origin+"/public";
+// const BASE_URL = window.location.origin;
 
 /*handle Form Type*/
 const handleFormType = () => {
@@ -1057,12 +1057,16 @@ const defaultLaboratoryMapData = () => {
         success: function (result) {
             (async () => {
                 const topology = await fetch(
-                    'https://code.highcharts.com/mapdata/countries/in/custom/in-all-disputed.topo.json'
+                    'https://code.highcharts.com/mapdata/countries/in/custom/in-all-andaman-and-nicobar.topo.json'
                 ).then(response => response.json());                
                 const statesData = result.finalMapData;
                 const arr = [];
+                const pointerArr = [];
                 statesData.forEach((item)=>{
-                    arr.push({"hc-key":item.state,value:item.numberReceived,extraValue:item.institute?item.institute:'N/A',extraValue2:item.institute_id})
+                    arr.push({"hc-key":item.state_code,color: "#f4a289","state":item.state,value:item.numberReceived,extraValue:item.institute?item.institute:'N/A',extraValue2:item.institute_id,lat:Number(item.institute_lat),lon:Number(item.institute_log)})
+                })
+                statesData.forEach((item)=>{
+                    pointerArr.push({color: "red",extraValue:item.institute?item.institute:'N/A',lat:Number(item.institute_lat),lon:Number(item.institute_log),numberPatients:Number(item.numberPatients),numberReceived:Number(item.numberReceived),numberTestConducted:Number(item.numberTestConducted),numberPositives:Number(item.numberPositives)})
                 })
                 const tableBody = $('.laboratoryDetailsDatas tbody');
                 // Clear any existing rows in the table
@@ -1347,6 +1351,7 @@ const defaultLaboratoryMapData = () => {
                         data: result.yearGraphFilterData.sumNumbernumbers_of_positives
                     }]
                 });            
+                
                 // monthlysampleReport
                 Highcharts.chart('monthlySampleReport', {
                     chart: {
@@ -1398,71 +1403,86 @@ const defaultLaboratoryMapData = () => {
                 Highcharts.mapChart('laboratory-map', {
                     chart: {
                         map: topology,
-                    },
-                    title: {
-                        text: ''
-                    },
-                    subtitle: {
-                        text: ''
-                    },
-                    mapNavigation: {
-                        enabled: true,
-                        buttonOptions: {
-                            verticalAlign: 'bottom'
-                        }
-                    },
-                    colorAxis: {
-                        min: 0,
-                        max: 100,
-                        minColor: '#fcad95',
-                        maxColor: '#ab4024',
-                        labels: {
-                            format: '{value}',
-                        },
-                    },
-                    plotOptions: {
-                        series: {
-                            events: {
-                                click: function (e) {
-                                    let nameState = e.point.name
-                                    laboratory_apply_filter(e.point.extraValue2,nameState);
-                                }
-                            },
-                            dataLabels: {
-                                enabled: false,
-                                format: '{point.value}' // Customize the format as needed
+                        events: {
+                            load: function() {
+                                var chart = this;
+                                chart.mapDiv.addEventListener('mouseover', function (e) {
+                                    var point = chart.series[1].points.filter(function(p) {
+                                        return p.graphic.element === e.target;
+                                    })[0];
+                                    if (point) {
+                                        point.select();
+                                    }
+                                });
                             }
                         }
+                    },
+                
+                    title: {
+                        text: 'List of Institute'
+                    },
+                
+                    accessibility: {
+                        description: 'Map where city locations have been defined using latitude/longitude.'
+                    },
+                
+                    mapNavigation: {
+                        enabled: true
                     },
                     series: [{
-                        data:arr,
-                        name: '',
-                        allowPointSelect: true,
-                        cursor: 'pointer',
+                        // Use the in-all map with no data as a basemap
+                        name: 'India',
+                        borderColor: '#A0A0A0',
+                        nullColor: 'rgba(200, 200, 200, 0.3)',
+                        showInLegend: false
+                    }, {
+                        name: 'States',
+                        type: 'map',
+                        data: arr,
+                        mapData: topology,
+                        joinBy: 'hc-key',
+                        borderColor: '#A0A0A0',
+                        borderWidth: 0.5,
                         states: {
-                            select: {
-                                color: '#fcad95'
+                            hover: {
+                                color: '#a4edba' // Hover color for all states
                             }
                         },
+                        // tooltip: {
+                        //     pointFormat: '{point.extraValue}'
+                        // }
+                    }, {
+                        // Specify points using lat/lon
+                        type: 'mappoint',
+                        name: 'Cities',
+                        accessibility: {
+                            point: {
+                                valueDescriptionFormat: '{xDescription}. Lat: {point.lat:.2f}, lon: {point.lon:.2f}.'
+                            }
+                        },
+                        data: pointerArr,
                         tooltip: {
                             headerFormat: '',
-                            pointFormat: '<b>{point.name}</b><br>' +
-                                         'Value: {point.value}<br>' +
-                                         'Institute Name: {point.extraValue}',
-                            shared: true,
-                            useHTML: true
-                        }
-                    }],              
-                    
-                    exporting: {
-                        enabled: true,
-                        buttons: {
-                            contextButton: {
-                                menuItems: ['printChart', 'separator', 'downloadPNG', 'downloadJPEG', 'downloadPDF', 'downloadSVG']
+                            pointFormatter: function () {
+                                const point = this;
+                                let color = Highcharts.getOptions().colors[1]; // Default color
+                                // Check if a specific color is defined for the point
+                                if (point.color) {
+                                    color = point.color;
+                                }
+                                return `<p>No.of Patient: ${point.numberPatients}</p><br>
+                                <p>No. of Sample Received: ${point.numberReceived}</p><br>
+                                <p>No. of Test Conducted: ${point.numberTestConducted}</p><br>
+                                <p>Total number of Positives: ${point.numberPositives}</p><br>`;
+                                // return `<b>${point.extraValue}</b><br>Lat: ${point.lat}, Lon: ${point.lon}<br>`;
                             }
+                        },
+                        marker: {
+                            symbol: 'circle',
+                            radius: 8
                         }
-                    }
-                });
+                    }]
+                });                                       
 
             })();
         }
@@ -1527,12 +1547,16 @@ const laboratory_apply_filter = (rabiesfilter = '',stateName = '') => {
             $('#text2').html("Syndromic Surveillance Cases");
             (async () => {
                 const topology = await fetch(
-                    'https://code.highcharts.com/mapdata/countries/in/custom/in-all-disputed.topo.json'
+                    'https://code.highcharts.com/mapdata/countries/in/custom/in-all-andaman-and-nicobar.topo.json'
                 ).then(response => response.json());                
                 const statesData = result.finalMapData;
                 const arr = [];
+                const pointerArr = [];
                 statesData.forEach((item)=>{
-                    arr.push({"hc-key":item.state,value:item.numberReceived,extraValue:item.institute?item.institute:'N/A',extraValue2:item.institute_id})
+                    arr.push({"hc-key":item.state_code,color: "#f4a289","state":item.state,value:item.numberReceived,extraValue:item.institute?item.institute:'N/A',extraValue2:item.institute_id,lat:Number(item.institute_lat),lon:Number(item.institute_log)})
+                })
+                statesData.forEach((item)=>{
+                    pointerArr.push({color: "red",extraValue:item.institute?item.institute:'N/A',lat:Number(item.institute_lat),lon:Number(item.institute_log),numberPatients:Number(item.numberPatients),numberReceived:Number(item.numberReceived),numberTestConducted:Number(item.numberTestConducted),numberPositives:Number(item.numberPositives)})
                 })
                 const tableBody = $('.laboratoryDetailsDatas tbody');
                 // Clear any existing rows in the table
@@ -1857,77 +1881,92 @@ const laboratory_apply_filter = (rabiesfilter = '',stateName = '') => {
                 if (stateName != '') {
                     const stateName = result.finalMapData[0].state;
                     const data =  result.finalMapData[0].district;
-                    laboratotyDrilldownHandle(data,stateName)
+                    // laboratotyDrilldownHandle(data,stateName)
                 }
                 if (stateName === '') {
                     Highcharts.mapChart('laboratory-map', {
                         chart: {
                             map: topology,
-                        },
-                        title: {
-                            text: ''
-                        },
-                        subtitle: {
-                            text: ''
-                        },
-                        mapNavigation: {
-                            enabled: true,
-                            buttonOptions: {
-                                verticalAlign: 'bottom'
-                            }
-                        },
-                        colorAxis: {
-                            min: 0,
-                            max: 100,
-                            minColor: '#fcad95',
-                            maxColor: '#ab4024',
-                            labels: {
-                                format: '{value}',
-                            },
-                        },
-                        plotOptions: {
-                            series: {
-                                events: {
-                                    click: function (e) {
-                                        //  console.log(e.point)
-                                        let nameState = e.point.name
-                                        laboratory_apply_filter(e.point.extraValue2,nameState);
-                                    }
-                                },
-                                dataLabels: {
-                                    enabled: false,
-                                    format: '{point.value}' // Customize the format as needed
+                            events: {
+                                load: function() {
+                                    var chart = this;
+                                    chart.mapDiv.addEventListener('mouseover', function (e) {
+                                        var point = chart.series[1].points.filter(function(p) {
+                                            return p.graphic.element === e.target;
+                                        })[0];
+                                        if (point) {
+                                            point.select();
+                                        }
+                                    });
                                 }
                             }
+                        },
+                    
+                        title: {
+                            text: 'List of Institute'
+                        },
+                    
+                        accessibility: {
+                            description: 'Map where city locations have been defined using latitude/longitude.'
+                        },
+                    
+                        mapNavigation: {
+                            enabled: true
                         },
                         series: [{
-                            data:arr,
-                            name: '',
-                            allowPointSelect: true,
-                            cursor: 'pointer',
+                            // Use the in-all map with no data as a basemap
+                            name: 'India',
+                            borderColor: '#A0A0A0',
+                            nullColor: 'rgba(200, 200, 200, 0.3)',
+                            showInLegend: false
+                        }, {
+                            name: 'States',
+                            type: 'map',
+                            data: arr,
+                            mapData: topology,
+                            joinBy: 'hc-key',
+                            borderColor: '#A0A0A0',
+                            borderWidth: 0.5,
                             states: {
-                                select: {
-                                    color: '#fcad95'
+                                hover: {
+                                    color: '#a4edba' // Hover color for all states
                                 }
                             },
+                            // tooltip: {
+                            //     pointFormat: '{point.extraValue}'
+                            // }
+                        }, {
+                            // Specify points using lat/lon
+                            type: 'mappoint',
+                            name: 'Cities',
+                            accessibility: {
+                                point: {
+                                    valueDescriptionFormat: '{xDescription}. Lat: {point.lat:.2f}, lon: {point.lon:.2f}.'
+                                }
+                            },
+                            data: pointerArr,
                             tooltip: {
                                 headerFormat: '',
-                                pointFormat: '<b>{point.name}</b><br>' +
-                                             'Value: {point.value}<br>' +
-                                             'Institute Name: {point.extraValue}',
-                                shared: true,
-                                useHTML: true
-                            }
-                        }],
-                        exporting: {
-                            enabled: true,
-                            buttons: {
-                                contextButton: {
-                                    menuItems: ['printChart', 'separator', 'downloadPNG', 'downloadJPEG', 'downloadPDF', 'downloadSVG']
+                                pointFormatter: function () {
+                                    const point = this;
+                                    let color = Highcharts.getOptions().colors[1]; // Default color
+                                    // Check if a specific color is defined for the point
+                                    if (point.color) {
+                                        color = point.color;
+                                    }
+                                    return `<p>No.of Patient: ${point.numberPatients}</p><br>
+                                    <p>No. of Sample Received: ${point.numberReceived}</p><br>
+                                    <p>No. of Test Conducted: ${point.numberTestConducted}</p><br>
+                                    <p>Total number of Positives: ${point.numberPositives}</p><br>`;
+                                    // return `<b>${point.extraValue}</b><br>Lat: ${point.lat}, Lon: ${point.lon}<br>`;
                                 }
+                            },
+                            marker: {
+                                symbol: 'circle',
+                                radius: 8
                             }
-                        }
-                    });
+                        }]
+                    }); 
                 }         
 
             })();
@@ -1940,76 +1979,76 @@ const laboratory_apply_filter = (rabiesfilter = '',stateName = '') => {
 }
 
 // get laboratory district of state
-async function laboratotyDrilldownHandle(state,nameState) {
-    const entries = Object.entries(state);
-    const selectedMapData = DISTRICT_MAPS.find(data => {
-        const dataName = data.name.toLowerCase();
-        const stateName = String(nameState).toLowerCase();
-        return dataName === stateName;
-    });
-    const district_list = selectedMapData.data;   
-    const updatedArray = district_list.map((item) => {
-        return {
-            ...item,
-            data: item.data.map((mapColor) => {
-                return {
-                    ...mapColor,
-                    color: '#ce4c39'
-                };
-            }),
+// async function laboratotyDrilldownHandle(state,nameState) {
+//     const entries = Object.entries(state);
+//     const selectedMapData = DISTRICT_MAPS.find(data => {
+//         const dataName = data.name.toLowerCase();
+//         const stateName = String(nameState).toLowerCase();
+//         return dataName === stateName;
+//     });
+//     const district_list = selectedMapData.data;   
+//     const updatedArray = district_list.map((item) => {
+//         return {
+//             ...item,
+//             data: item.data.map((mapColor) => {
+//                 return {
+//                     ...mapColor,
+//                     color: '#ce4c39'
+//                 };
+//             }),
 
-            mapData: item.mapData.map((mapItem) => {
-                const value = getDistrictValue(mapItem.name.toLowerCase(), entries);
-                return {
-                    ...mapItem,
-                    value: value,
-                };
-            }),
-        };
-    });
-    Highcharts.mapChart('laboratory-map', {
-        chart: {
-            map: india,
-        },
-        title: {
-            text: ''
-        },
-        subtitle: {
-            text: ''
-        },
-        mapNavigation: {
-            enabled: true,
-            buttonOptions: {
-                verticalAlign: 'bottom'
-            }
-        },
-        colorAxis: {
-            min: 0,
-            max: 100,
-            minColor: '#fcad95',
-            maxColor: '#b31404',
-            labels: {
-                format: '{value}',
-            },
-        },
+//             mapData: item.mapData.map((mapItem) => {
+//                 const value = getDistrictValue(mapItem.name.toLowerCase(), entries);
+//                 return {
+//                     ...mapItem,
+//                     value: value,
+//                 };
+//             }),
+//         };
+//     });
+//     Highcharts.mapChart('laboratory-map', {
+//         chart: {
+//             map: india,
+//         },
+//         title: {
+//             text: ''
+//         },
+//         subtitle: {
+//             text: ''
+//         },
+//         mapNavigation: {
+//             enabled: true,
+//             buttonOptions: {
+//                 verticalAlign: 'bottom'
+//             }
+//         },
+//         colorAxis: {
+//             min: 0,
+//             max: 100,
+//             minColor: '#fcad95',
+//             maxColor: '#b31404',
+//             labels: {
+//                 format: '{value}',
+//             },
+//         },
 
-        plotOptions: {
-            series: {
-                dataLabels: {
-                    enabled: false,
-                    format: '{point.value}', // You can customize the format as needed
-                },
-                events: {
-                    click: function (e) {
-                        // Handle click events here
-                    }
-                }
-            }
-        },        
-        series: updatedArray,
-    });
+//         plotOptions: {
+//             series: {
+//                 dataLabels: {
+//                     enabled: false,
+//                     format: '{point.value}', // You can customize the format as needed
+//                 },
+//                 events: {
+//                     click: function (e) {
+//                         // Handle click events here
+//                     }
+//                 }
+//             }
+//         },        
+//         series: updatedArray,
+//     });
 
-}
+// }
 function laboratoryResetButton() {
     $('#month option[value=""]').prop('selected', 'selected').change();
     $('#year option[value=""]').prop('selected', 'selected').change();

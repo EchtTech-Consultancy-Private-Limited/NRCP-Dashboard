@@ -23,10 +23,19 @@
                 </ul>
               </nav>
               <div class="tab-content" id="myTabContent">
+               
                 <div class="tab-pane fade show active" id="nav-add-patient-record" role="tabpanel" aria-labelledby="nav-home-tab">
-                  <div class="note">
-                    <i class="fa fa-hand-o-right" aria-hidden="true"></i> Enter Data Accurately and Completely
-                  </div>
+                 
+                  <div class="row">
+                    <div class="col-md-8"> 
+                      <div class="note">
+                        <i class="fa fa-hand-o-right" aria-hidden="true"></i> Enter Data Accurately and Completely
+                        </div>
+                    </div>
+                      <div class=" col-md-4 pr-4">
+                        <a href="{{ url('patient_records_form') }}" class="search-patient-btn bg-info text-light" id="search-patient-btn">Search Patient</a>
+                      </div>
+                </div>
                   <form action="{{ route('lform.store') }}" method="post" enctype="multipart/form-data" class="myPForm"> 
                     @csrf 
                     <div class="row bg-c-gray">
@@ -37,7 +46,7 @@
                         </div>
                       </div>
                       <div class="col-lg-4 col-md-4">
-                        <label for="search-patient" class="label mb-0 mt-2">Contact Number:</label>
+                        <label for="country_code" class="label mb-0 mt-2">Contact Number:</label>
                         <div class="form-group d-flex">
                           <div class="w-100 mr-3">
                             <select name="country_code" id="country_code" class="form-control mt-0">
@@ -51,9 +60,7 @@
                           </div>
                         </div>
                       </div>
-                      <div class="col-lg-8 col-md-8">
-                        <a href="{{ url('patient_records_form') }}" class="search-patient-btn bg-info text-light" id="search-patient-btn">Search Patient</a>
-                      </div>
+                     
                       <div class="col-lg-3 col-md-3">
                         <div class="form-group">
                           <label for="first-name">First Name <span class="star">*</span>
@@ -209,7 +216,7 @@
                       </div>
                       <div class="col-lg-3 col-md-3">
                         <div class="form-group">
-                          <label for="provisinal-diagnosis">Provisinal Diagnosis <span class="star">*</span>
+                          <label for="provisinal-diagnosis">Provisional Diagnosis <span class="star">*</span>
                           </label>
                           <select class="form-select" aria-label="Default select example" name="provisinal_diagnosis" id="provisinal_diagnosis" required>
                             <option value=""> Select Your Diagnosis</option> @if(old('provisinal_diagnosis')) <option value="{{ old('provisinal_diagnosis') }}" selected>

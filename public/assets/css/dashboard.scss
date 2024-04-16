@@ -790,7 +790,8 @@ section.content.sform{
 			padding: 12px;
 			background: #edfbffa3;
 			font-size: 14px;
-				font-weight: 500;
+		    font-weight: 500;
+			display: flex;
 			&::before{
 				content: '\f101';
 					font-family: 'fontAwesome';
@@ -930,4 +931,7 @@ select[name="state"]{
 		border-radius: 5px;
 		font-size: 14px;
 	}
+}
+button#reset_button {
+    background: #ab4024 !important;
 }
