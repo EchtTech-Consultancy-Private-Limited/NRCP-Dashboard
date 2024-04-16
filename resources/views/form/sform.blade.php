@@ -101,8 +101,8 @@
                                                 </div>
                                             </div>
 
-                                            <div class="col-md-12 table-responsive d-none" id="data-view">
-                                                <table class="table table-condensed table-bordered" id="tableId">
+                                            <div class="col-md-12  d-none" id="data-view">
+                                                <table class="table table-condensed table-bordered table-responsive" id="tableId">
                                                     <tbody>
                                                         <tr>
                                                             <td rowspan="3"></td>

@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="{{ asset('assets/login/dist/css/login.css') }}">
 
   <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
+  
 
 </head>
 

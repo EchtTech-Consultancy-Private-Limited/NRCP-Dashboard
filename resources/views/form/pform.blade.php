@@ -56,20 +56,20 @@
                         <div class="form-group">
                           <label for="first-name">First Name <span class="star">*</span>
                           </label>
-                          <input type="text" name="first_name" value="{{ old('first_name') }}" id="first-name" class="form-control" placeholder="Enter Your First Name" maxlength="30" required> @if ($errors->has('first_name')) <span class="form-text text-muted">{{ $errors->first('first_name') }}</span> @endif
+                          <input type="text" name="first_name" value="{{ old('first_name') }}" id="first-name" class="form-control" placeholder="Enter  First Name" maxlength="30" required> @if ($errors->has('first_name')) <span class="form-text text-muted">{{ $errors->first('first_name') }}</span> @endif
                         </div>
                       </div>
                       <div class="col-lg-3 col-md-3">
                         <div class="form-group">
                           <label for="middle-name">Middle Name</label>
-                          <input type="text" name="middle_name" value="{{ old('middle_name') }}" maxlength="30" id="middle-name" class="form-control" placeholder="Enter Your Middle Name"> @if ($errors->has('middle_name')) <span class="form-text text-muted">{{ $errors->first('middle_name') }}</span> @endif
+                          <input type="text" name="middle_name" value="{{ old('middle_name') }}" maxlength="30" id="middle-name" class="form-control" placeholder="Enter  Middle Name"> @if ($errors->has('middle_name')) <span class="form-text text-muted">{{ $errors->first('middle_name') }}</span> @endif
                         </div>
                       </div>
                       <div class="col-lg-3 col-md-3">
                         <div class="form-group">
                           <label for="last-name">Last Name <span class="star">*</span>
                           </label>
-                          <input type="text" name="last_name" value="{{ old('last_name') }}" id="last-name" class="form-control" maxlength="30" required placeholder="Enter Your Last Name"> @if ($errors->has('last_name')) <span class="form-text text-muted">{{ $errors->first('last_name') }}</span> @endif
+                          <input type="text" name="last_name" value="{{ old('last_name') }}" id="last-name" class="form-control" maxlength="30" required placeholder="Enter  Last Name"> @if ($errors->has('last_name')) <span class="form-text text-muted">{{ $errors->first('last_name') }}</span> @endif
                         </div>
                       </div>
                       <div class="col-lg-3 col-md-3">
@@ -84,7 +84,7 @@
                           <label for="gander">Gender <span class="star">*</span>
                           </label>
                           <select class="form-select" name="gender" aria-label="Default select example" id="gender" required>
-                            <option value=""> Select Your Gender</option> @if(old('gender')) <option value="{{ old('gender') }}" selected>{{ old('gender') }}
+                            <option value=""> Select Gender</option> @if(old('gender')) <option value="{{ old('gender') }}" selected>{{ old('gender') }}
                             </option> @endif <option value="Male"> Male</option>
                             <option value="Famale"> Famale</option>
                             <option value="Other"> Other</option>
@@ -96,7 +96,7 @@
                           <label for="id-type">Id Type <span class="star">*</span>
                           </label>
                           <select class="form-select" aria-label="Default select example" name="id_type" id="id-type" required>
-                            <option value="">Select Your ID Type</option> @if(old('id_type')) <option value="{{ old('id_type') }}" selected>
+                            <option value="">Select ID Type</option> @if(old('id_type')) <option value="{{ old('id_type') }}" selected>
                               {{ old('id_type') }}
                             </option> @endif 
                             <option value="Aadhaar">Aadhaar</option>
@@ -113,14 +113,14 @@
                         <div class="form-group">
                           <label for="identification">Identification Number <span class="star">*</span>
                           </label>
-                          <input type="text" class="form-control" name="identification_number" id="identification_number" value="{{ old('identification_number') }}" aria-describedby="Identification" placeholder="Enter Your Identification Number" maxlength="16" required> @if ($errors->has('identification_number')) <span class="form-text text-muted">{{ $errors->first('identification_number') }}</span> @endif
+                          <input type="text" class="form-control" name="identification_number" id="identification_number" value="{{ old('identification_number') }}" aria-describedby="Identification" placeholder="Enter  Identification Number" maxlength="16" required> @if ($errors->has('identification_number')) <span class="form-text text-muted">{{ $errors->first('identification_number') }}</span> @endif
                         </div>
                       </div>
                       <div class="col-lg-3 col-md-3">
                         <div class="form-group">
                           <label for="citizenship">Citizenship</label>
                           <select class="form-select" aria-label="Default select example" name="citizenship" id="citizenship">
-                            <option value=""> Select Your Citizenship </option> @foreach ($countryes as $key => $country) <option value="{{ $country->id }}" {{ $country->id == old('country_code') ? 'selected' : '' }}>
+                            <option value=""> Select Citizenship </option> @foreach ($countryes as $key => $country) <option value="{{ $country->id }}" {{ $country->id == old('country_code') ? 'selected' : '' }}>
                               {{ $country->name }}
                             </option> @endforeach
                           </select>
@@ -137,7 +137,7 @@
                           <label for="state">State <span class="star">*</span>
                           </label>
                           <select class="form-select" aria-label="Default select example" name="pform_state" id="pform_state" required>
-                            <option value=""> Select Your state</option> @foreach ($states as $key => $state) <option value="{{ $state->id }}" {{ $state->id == old('state') ? 'selected' : '' }}>
+                            <option value=""> Select state</option> @foreach ($states as $key => $state) <option value="{{ $state->id }}" {{ $state->id == old('state') ? 'selected' : '' }}>
                               {{ $state->name }}
                             </option> @endforeach
                           </select> @if ($errors->has('pform_state')) <span class="form-text text-muted">{{ $errors->first('pform_state') }}</span> @endif <small id="state-error" class="form-text text-muted"></small>
@@ -148,7 +148,7 @@
                           <label for="district">District <span class="star">*</span>
                           </label>
                           <select class="form-select" aria-label="Default select example" name="pform_city" id="pform_city" required>
-                            <option value=""> Select Your district </option>
+                            <option value=""> Select district </option>
                           </select> @if ($errors->has('pform_city')) <span class="form-text text-muted">{{ $errors->first('pform_city') }}</span> @endif <small id="district-error" class="form-text text-muted"></small>
                         </div>
                       </div>
@@ -157,7 +157,7 @@
                           <label for="taluka">Taluka <span class="star">*</span>
                           </label>
                           <select class="form-select" aria-label="Default select example" name="taluka" id="taluka" required>
-                            <option value=""> Select Your taluka</option> @if(old('taluka')) <option value="{{ old('taluka') }}" selected>{{ old('taluka') }}
+                            <option value=""> Select taluka</option> @if(old('taluka')) <option value="{{ old('taluka') }}" selected>{{ old('taluka') }}
                             </option> @endif <option value="1"> Taluka one</option>
                             <option value="2"> Taluka two</option>
                             <option value="3"> Taluka three</option>
@@ -168,32 +168,32 @@
                         <div class="form-group">
                           <label for="village">Village <span class="star">*</span>
                           </label>
-                          <input type="text" class="form-control" name="village" id="village" value="{{ old('village') }}" aria-describedby="Identification" placeholder="Enter Your Identification Number" maxlength="16" required> @if ($errors->has('village')) <span class="form-text text-muted">{{ $errors->first('village') }}</span> @endif <small id="village-error" class="form-text text-muted"></small>
+                          <input type="text" class="form-control" name="village" id="village" value="{{ old('village') }}" aria-describedby="Identification" placeholder="Enter  Identification Number" maxlength="16" required> @if ($errors->has('village')) <span class="form-text text-muted">{{ $errors->first('village') }}</span> @endif <small id="village-error" class="form-text text-muted"></small>
                         </div>
                       </div>
                       <div class="col-lg-3 col-md-3">
                         <div class="form-group">
                           <label for="house-no">House No</label>
-                          <input type="text" class="form-control" name="house_no" id="house_no" value="{{ old('house_no') }}" aria-describedby="house_no" placeholder="Enter Your House No" maxlength="20"> @if ($errors->has('house_no')) <span class="form-text text-muted">{{ $errors->first('house_no') }}</span> @endif
+                          <input type="text" class="form-control" name="house_no" id="house_no" value="{{ old('house_no') }}" aria-describedby="house_no" placeholder="Enter  House No" maxlength="20"> @if ($errors->has('house_no')) <span class="form-text text-muted">{{ $errors->first('house_no') }}</span> @endif
                         </div>
                       </div>
                       <div class="col-lg-3 col-md-3">
                         <div class="form-group">
                           <label for="street-name">Street Name</label>
-                          <input type="text" class="form-control" name="street_name" id="street-name" value="{{ old('street_name') }}" aria-describedby="street-name" placeholder="Enter Your Street Name" maxlength="40">
+                          <input type="text" class="form-control" name="street_name" id="street-name" value="{{ old('street_name') }}" aria-describedby="street-name" placeholder="Enter  Street Name" maxlength="40">
                         </div>
                       </div>
                       <div class="col-lg-3 col-md-3">
                         <div class="form-group">
                           <label for="landmark">Landmark </label>
-                          <input type="text" class="form-control" name="landmark" id="landmark" aria-describedby="landmark" placeholder="Enter Your Landmark" value="{{ old('landmark') }}" maxlength="40">
+                          <input type="text" class="form-control" name="landmark" id="landmark" aria-describedby="landmark" placeholder="Enter  Landmark" value="{{ old('landmark') }}" maxlength="40">
                           <small id="landmark-error" class="form-text text-muted"></small>
                         </div>
                       </div>
                       <div class="col-lg-3 col-md-3">
                         <div class="form-group">
                           <label for="pin-code">PIN Code</label>
-                          <input type="text" class="form-control" name="pincode" id="pincode" value="{{ old('pincode') }}" oninput="validateInput(this)" placeholder="Enter Your PIN Code" maxlength="8">
+                          <input type="text" class="form-control" name="pincode" id="pincode" value="{{ old('pincode') }}" oninput="validateInput(this)" placeholder="Enter  PIN Code" maxlength="8">
                         </div>
                       </div>
                     </div>
@@ -211,7 +211,7 @@
                           <label for="provisinal-diagnosis">Provisional Diagnosis <span class="star">*</span>
                           </label>
                           <select class="form-select" aria-label="Default select example" name="provisinal_diagnosis" id="provisinal_diagnosis" required>
-                            <option value=""> Select Your Diagnosis</option> @if(old('provisinal_diagnosis')) <option value="{{ old('provisinal_diagnosis') }}" selected>
+                            <option value=""> Select Diagnosis</option> @if(old('provisinal_diagnosis')) <option value="{{ old('provisinal_diagnosis') }}" selected>
                               {{ old('provisinal_diagnosis') }}
                             </option> @endif <option value="Anthrax">Anthrax</option>
                             <option value="Others">Others</option>
@@ -222,7 +222,7 @@
                         <div class="form-group">
                           <label for="date-of-onset">Date of Onset <span class="star">*</span>
                           </label>
-                          <input type="date" name="date_of_onset" class="form-control" id="date_of_onset" aria-describedby="Date of Onset" placeholder="Enter Your Date of Onset" required> @if ($errors->has('date_of_onset')) <span class="form-text text-muted">{{ $errors->first('date_of_onset') }}</span> @endif
+                          <input type="date" name="date_of_onset" class="form-control" id="date_of_onset" aria-describedby="Date of Onset" placeholder="Enter  Date of Onset" required> @if ($errors->has('date_of_onset')) <span class="form-text text-muted">{{ $errors->first('date_of_onset') }}</span> @endif
                         </div>
                       </div>
                       <div class="col-lg-3 col-md-3">
@@ -230,7 +230,7 @@
                           <label for="OPD-IPD">OPD/IPD <span class="star">*</span>
                           </label>
                           <select class="form-select" name="opd_ipd" aria-label="Default select example" id="opd_ipd" required>
-                            <option value=""> Select Your OPD-IPD </option> @if(old('opd_ipd')) <option value="{{ old('opd_ipd') }}" selected>
+                            <option value=""> Select OPD-IPD </option> @if(old('opd_ipd')) <option value="{{ old('opd_ipd') }}" selected>
                               {{ old('opd_ipd') }}
                             </option> @endif <option value="OPD">OPD</option>
                             <option value="IPD">IPD</option>
@@ -247,7 +247,7 @@
                           <b>3. Laboratory Details:</b>
                         </div>
                       </div>
-                      <div class="col-lg-3 col-md-3">
+                      <div class="col-xxl-3 col-md-4">
                         <div class="form-group">
                           <label for="provisinal-diagnosis">Test Suspected For <span class="star">*</span>
                           </label>
@@ -259,7 +259,7 @@
                           </select> @if ($errors->has('test_suspected')) <span class="form-text text-muted">{{ $errors->first('test_suspected') }}</span> @endif
                         </div>
                       </div>
-                      <div class="col-lg-3 col-md-3">
+                      <div class="col-xxl-3 col-md-4">
                         <div class="form-group">
                           <label for="provisinal-diagnosis">Type of Sample <span class="star">*</span>
                           </label>
@@ -273,7 +273,7 @@
                           </select> @if ($errors->has('type_of_sample')) <span class="form-text text-muted">{{ $errors->first('type_of_sample') }}</span> @endif
                         </div>
                       </div>
-                      <div class="col-lg-3 col-md-3">
+                      <div class="col-xxl-3 col-md-4">
                         <div class="form-group">
                           <label for="OPD-IPD">Test Requested <span class="star">*</span>
                           </label>
@@ -287,7 +287,7 @@
                           </select> @if ($errors->has('test_resquested')) <span class="form-text text-muted">{{ $errors->first('test_resquested') }}</span> @endif
                         </div>
                       </div>
-                      <div class="col-lg-3 col-md-3">
+                      <div class="col-xxl-3 col-md-4">
                         <div class="form-group">
                           <label for="OPD-IPD">Sample Collection Date (If Collected) <span class="star">*</span>
                           </label>
@@ -402,7 +402,7 @@
                                                     @if ($errors->has('country_code')) <span class="form-text text-muted">{{ $errors->first('country_code') }}</span> @endif
                                                   </div>
                                                   <div class="w-100">
-                                                    <input type="text" name="mobile_number" value="{{ old('mobile_number',$pForm->mobile_number) }}" maxlength="10" oninput="validateInput(this)" id="mobile_number" class="form-control" placeholder="Enter Your Mobile Number"> 
+                                                    <input type="text" name="mobile_number" value="{{ old('mobile_number',$pForm->mobile_number) }}" maxlength="10" oninput="validateInput(this)" id="mobile_number" class="form-control" placeholder="Enter  Mobile Number"> 
                                                     @if ($errors->has('mobile_number')) <span class="form-text text-muted">{{ $errors->first('mobile_number') }}</span> @endif
                                                   </div>
                                                 </div>
@@ -414,14 +414,14 @@
                                                 <div class="form-group">
                                                   <label for="first-name">First Name <span class="star">*</span>
                                                   </label>
-                                                  <input type="text" name="first_name" value="{{ old('first_name',$pForm->first_name) }}" id="first-name" class="form-control" placeholder="Enter Your First Name" maxlength="30" required> 
+                                                  <input type="text" name="first_name" value="{{ old('first_name',$pForm->first_name) }}" id="first-name" class="form-control" placeholder="Enter  First Name" maxlength="30" required> 
                                                   @if ($errors->has('first_name')) <span class="form-text text-muted">{{ $errors->first('first_name') }}</span> @endif
                                                 </div>
                                               </div>
                                               <div class="col-lg-3 col-md-3">
                                                 <div class="form-group">
                                                   <label for="middle-name">Middle Name</label>
-                                                  <input type="text" name="middle_name" value="{{ old('middle_name',$pForm->middle_name) }}" maxlength="30" id="middle-name" class="form-control" placeholder="Enter Your Middle Name"> 
+                                                  <input type="text" name="middle_name" value="{{ old('middle_name',$pForm->middle_name) }}" maxlength="30" id="middle-name" class="form-control" placeholder="Enter  Middle Name"> 
                                                   @if ($errors->has('middle_name')) <span class="form-text text-muted">{{ $errors->first('middle_name') }}</span> @endif
                                                 </div>
                                               </div>
@@ -429,7 +429,7 @@
                                                 <div class="form-group">
                                                   <label for="last-name">Last Name <span class="star">*</span>
                                                   </label>
-                                                  <input type="text" name="last_name" value="{{ old('last_name',$pForm->last_name) }}" id="last-name" class="form-control" maxlength="30" required placeholder="Enter Your Last Name"> 
+                                                  <input type="text" name="last_name" value="{{ old('last_name',$pForm->last_name) }}" id="last-name" class="form-control" maxlength="30" required placeholder="Enter  Last Name"> 
                                                   @if ($errors->has('last_name')) <span class="form-text text-muted">{{ $errors->first('last_name') }}</span> @endif
                                                 </div>
                                               </div>
@@ -472,7 +472,7 @@
                                                 <div class="form-group">
                                                   <label for="identification">Identification Number <span class="star">*</span>
                                                   </label>
-                                                  <input type="text" class="form-control" name="identification_number" id="identification_number" value="{{ old('identification_number',$pForm->identification_number) }}" aria-describedby="Identification" placeholder="Enter Your Identification Number" maxlength="16" required> 
+                                                  <input type="text" class="form-control" name="identification_number" id="identification_number" value="{{ old('identification_number',$pForm->identification_number) }}" aria-describedby="Identification" placeholder="Enter  Identification Number" maxlength="16" required> 
                                                   @if ($errors->has('identification_number')) <span class="form-text text-muted">{{ $errors->first('identification_number') }}</span> @endif
                                                 </div>
                                               </div>
@@ -498,7 +498,7 @@
                                                   <label for="state">State <span class="star">*</span>
                                                   </label>
                                                   <select class="form-select edit_pform_state" aria-label="Default select example" name="pform_state" id="edit_pform_state" required>
-                                                    <option value=""> Select Your state</option> 
+                                                    <option value=""> Select state</option> 
                                                     @foreach ($states as $key => $state) 
                                                     <option value="{{ $state->id }}" {{ $state->id == $pForm->pform_state ? 'selected' : '' }}>
                                                       {{ $state->name }}
@@ -533,34 +533,34 @@
                                                 <div class="form-group">
                                                   <label for="village">Village <span class="star">*</span>
                                                   </label>
-                                                  <input type="text" class="form-control" name="village" id="village" value="{{ old('village',$pForm->village) }}" aria-describedby="Identification" placeholder="Enter Your Identification Number" maxlength="16" required> 
+                                                  <input type="text" class="form-control" name="village" id="village" value="{{ old('village',$pForm->village) }}" aria-describedby="Identification" placeholder="Enter  Identification Number" maxlength="16" required> 
                                                   @if ($errors->has('village')) <span class="form-text text-muted">{{ $errors->first('village') }}</span> @endif <small id="village-error" class="form-text text-muted"></small>
                                                 </div>
                                               </div>
                                               <div class="col-lg-3 col-md-3">
                                                 <div class="form-group">
                                                   <label for="house-no">House No</label>
-                                                  <input type="text" class="form-control" name="house_no" id="house_no" value="{{ old('house_no',$pForm->house_no) }}" aria-describedby="house_no" placeholder="Enter Your House No" maxlength="20"> 
+                                                  <input type="text" class="form-control" name="house_no" id="house_no" value="{{ old('house_no',$pForm->house_no) }}" aria-describedby="house_no" placeholder="Enter  House No" maxlength="20"> 
                                                   @if ($errors->has('house_no')) <span class="form-text text-muted">{{ $errors->first('house_no') }}</span> @endif
                                                 </div>
                                               </div>
                                               <div class="col-lg-3 col-md-3">
                                                 <div class="form-group">
                                                   <label for="street-name">Street Name</label>
-                                                  <input type="text" class="form-control" name="street_name" id="street-name" value="{{ old('street_name',$pForm->street_name) }}" aria-describedby="street-name" placeholder="Enter Your Street Name" maxlength="40">
+                                                  <input type="text" class="form-control" name="street_name" id="street-name" value="{{ old('street_name',$pForm->street_name) }}" aria-describedby="street-name" placeholder="Enter  Street Name" maxlength="40">
                                                 </div>
                                               </div>
                                               <div class="col-lg-3 col-md-3">
                                                 <div class="form-group">
                                                   <label for="landmark">Landmark </label>
-                                                  <input type="text" class="form-control" name="landmark" id="landmark" aria-describedby="landmark" placeholder="Enter Your Landmark" value="{{ old('landmark',$pForm->landmark) }}" maxlength="40">
+                                                  <input type="text" class="form-control" name="landmark" id="landmark" aria-describedby="landmark" placeholder="Enter  Landmark" value="{{ old('landmark',$pForm->landmark) }}" maxlength="40">
                                                   <small id="landmark-error" class="form-text text-muted"></small>
                                                 </div>
                                               </div>
                                               <div class="col-lg-3 col-md-3">
                                                 <div class="form-group">
                                                   <label for="pin-code">PIN Code</label>
-                                                  <input type="text" class="form-control" name="pincode" id="pincode" value="{{ old('pincode',$pForm->pincode) }}" oninput="validateInput(this)" placeholder="Enter Your PIN Code" maxlength="8">
+                                                  <input type="text" class="form-control" name="pincode" id="pincode" value="{{ old('pincode',$pForm->pincode) }}" oninput="validateInput(this)" placeholder="Enter  PIN Code" maxlength="8">
                                                 </div>
                                               </div>
                                             </div>
@@ -587,7 +587,7 @@
                                                 <div class="form-group">
                                                   <label for="date-of-onset">Date of Onset <span class="star">*</span>
                                                   </label>
-                                                  <input type="date" name="date_of_onset" class="form-control" value="{{ old('date_of_onset',$pForm->date_of_onset) }}" id="date_of_onset" aria-describedby="Date of Onset" placeholder="Enter Your Date of Onset" required> 
+                                                  <input type="date" name="date_of_onset" class="form-control" value="{{ old('date_of_onset',$pForm->date_of_onset) }}" id="date_of_onset" aria-describedby="Date of Onset" placeholder="Enter  Date of Onset" required> 
                                                   @if ($errors->has('date_of_onset')) <span class="form-text text-muted">{{ $errors->first('date_of_onset') }}</span> @endif
                                                 </div>
                                               </div>

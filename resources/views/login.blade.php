@@ -31,7 +31,7 @@
                     </div>
                 @endif
 
-                <form action="{{ url('/login') }}" method="post">
+                <form action="{{ url('/login') }}" method="post" id="login">
                     @csrf
                     {{-- <div class="input-group mb-3">
                         <select name="section_type" id="section" class="form-control">
@@ -62,9 +62,9 @@
                         </div>
                     </div>
                     @error('user_type') 
-                        <span class="form-text text-danger mb-3 ">{{ $message }}</span>
+                        <span class="form-text text-danger mb-1 ">{{ $message }}</span>
                     @enderror
-                    <div class="input-group mb-3">
+                    <div class="input-group mb-4">
                         <input type="email" name="email" value="{{ old('email') }}" class="form-control" placeholder="Email">                       
                         <div class="input-group-append">
                             <div class="input-group-text">
@@ -74,9 +74,9 @@
                        
                     </div>
                     @error('email') 
-                        <span class="form-text text-danger mb-3 ">{{ $message }}</span>
+                        <span class="form-text text-danger mb-1 ">{{ $message }}</span>
                     @enderror 
-                    <div class="input-group mb-3">
+                    <div class="input-group mb-4">
                         <input type="password" name="password" value="{{ old('password') }}" id="password" class="form-control" placeholder="Password">
                         <div class="input-group-append">
 
@@ -88,7 +88,7 @@
                       
                     </div>
                     @error('password') 
-                            <span class="form-text text-danger mb-3">{{ $message }}</span>
+                            <span class="form-text text-danger mb-1">{{ $message }}</span>
                          @enderror 
                     <div class="col-md-12">
                         <div class="captcha row">
@@ -105,7 +105,7 @@
 
                         </div>
                         @error('captcha') 
-                            <span class="form-text text-danger mb-3">{{ $message }}</span>
+                            <span class="form-text text-danger mb-1" id="captchaError">{{ $message }}</span>
                          @enderror 
 
                         {{-- @if ($errors->has('captcha'))

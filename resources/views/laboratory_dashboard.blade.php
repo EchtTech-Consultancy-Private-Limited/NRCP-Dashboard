@@ -242,7 +242,7 @@
                                                             </div>
 
                                                             <div
-                                                                class="table-responsive laboratoryDetailsDatas dashboard-table">
+                                                                class=" laboratoryDetailsDatas dashboard-table">
                                                                 <table class='table table-bordered s-p-form-map'>
                                                                     <thead>
                                                                         <tr>
@@ -271,8 +271,8 @@
                                             <div id="graphical_view" class="">
                                                 <div class="row">
                                                     <div
-                                                        class="table-responsive laboratoryDetailsDatas dashboard-table">
-                                                        <table class='table table-bordered s-p-form-map'>
+                                                        class=" laboratoryDetailsDatas dashboard-table">
+                                                        <table class='table table-bordered s-p-form-map '>
                                                             <thead>
                                                                 <tr>
                                                                     <th>No. of Patients</th>
@@ -307,11 +307,12 @@
 
                                         </div>
 
-                                        <div id="graphical_view ">
+                                        <div id="graphical_view " class="dashboard-filter">
+                                      
                                             <div class="row">
-
-                                                <div class="col-md-6 pr-3 institute_year_filter">
-                                                    <div class="institute_year_filter">
+                                            
+                                                <div class="col-md-6 pr-3 institute_year_filter border">
+                                                <div class="institute_year_filter mb-2">
                                                         <select class="form-control w-auto" name="institute_year"
                                                             id="institute_year_filter">
                                                             <option value="numbers_of_sample_recieved">No. of Sample
@@ -324,11 +325,11 @@
                                                                 IHIP</option>
                                                         </select>
                                                     </div>
-                                                    <div id="yearReport" class="dashboard-filter "></div>
+                                                    <div id="yearReport" class=" "></div>
                                                 </div>
-                                                <div class="col-md-6 pl-2">
-                                                    <div class="dashboard-filter ">
-                                                        <div id="monthlyReport" style="height: 400px;"></div>
+                                                <div class="col-md-6 pl-2 border">
+                                                    <div class=" ">
+                                                        <div id="monthlyReport" ></div>
                                                     </div>
                                                 </div>
                                             </div>
