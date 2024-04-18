@@ -5,3 +5,11 @@ i.fa.fa-refresh1:before {
 .captcha.row img{
     width: 100%;
 }
+label.error {
+    position: absolute;
+    bottom: -26px;
+    margin-bottom: 6px;
+    font-size: 14px;
+    color: red;
+    font-weight: 400 !important;
+}

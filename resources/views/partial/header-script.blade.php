@@ -34,6 +34,7 @@
 <script src="{{ asset('assets/js/highcharts/highcharts-more.js') }}"></script>
 <script src="{{ asset('assets/js/highcharts/solid-gauge.js') }}"></script>
 <script src="{{ asset('assets/js/highcharts/accessibility.js') }}"></script>
+<script src="{{ asset('assets/js/jquery.validate.js') }}"></script>
 {{-- end highchart --}}
 <!-- <link rel="stylesheet" href="{{ asset('assets/css/datatablemin.css') }}"> -->
 <link rel="stylesheet" href="{{ asset('assets/css/datatable.min.css') }}">

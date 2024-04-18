@@ -329,8 +329,8 @@
                                                              id="detailsData">
                                                         </div>
 
-                                                        <div class="table-responsive detailsDatas dashboard-table">
-                                                            <table class='table table-bordered s-p-form-map'>
+                                                        <div class=" detailsDatas dashboard-table">
+                                                            <table class='table table-bordered s-p-form-map table-responsive'>
                                                                 <thead>
                                                                 <tr>
                                                                     <th rowspan='2' class="state_filter_district">State

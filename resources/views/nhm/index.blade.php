@@ -22,8 +22,8 @@
                 @endforeach
                 @endif               
             </div>
-            <p target="_blank" onclick = "confirm('This site is external')"><strong>Source:</strong> <a href="https://nhm.gov.in/">https://nhm.gov.in/</a></p>
+            <p ><strong>Source:</strong> <a href="https://nhm.gov.in/" target="_blank" onclick = "confirm('This site is external')">https://nhm.gov.in/</a></p>
         </div>
-    </div>
+    </div> 
 </section>
 @endsection

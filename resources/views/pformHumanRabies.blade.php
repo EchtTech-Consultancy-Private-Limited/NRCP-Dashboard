@@ -330,8 +330,8 @@
 
 
 
-                                                    <div class='table-responsive detailsDatas'>
-                                                        <table class='table table-bordered'>
+                                                    <div class=' detailsDatas'>
+                                                        <table class='table table-bordered table-responsive'>
                                                             <thead>
                                                                 <tr>
                                                                     <th rowspan='2'>State</th>

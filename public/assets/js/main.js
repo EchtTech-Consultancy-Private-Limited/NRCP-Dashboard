@@ -16,6 +16,12 @@ select.each((index, element) => {
     });
 });
 
+function alertMessage(){
+    $('.alert.alert-success').css('display', 'none');
+    $('.alert.alert-danger').css('display', 'none');
+}
+
+setTimeout(alertMessage, 2000);
 
 function handleTest(e) {
     alert("hellow world")
