@@ -33,7 +33,7 @@
                                     </p>
                                 </div>
                                 <div>
-                                    <img src="./nrcpLogo.png">
+                                    <img src="{{ asset('') }}">
                                 </div>
                             </div>
                         </td>

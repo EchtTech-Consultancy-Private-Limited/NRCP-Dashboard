@@ -17,7 +17,7 @@ class StateUserMainController extends Controller
         return view('state-user.investigate-report');
     }
 
-    public function investigateReportStore(Request $request){
+    public function investigateReportStore(InvestigartionReportRequest $request){
         dd($request->all());
         $validates = $request->validated();
         $createdBy = auth()->user()->id;
