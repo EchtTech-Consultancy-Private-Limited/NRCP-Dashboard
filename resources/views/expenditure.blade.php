@@ -98,7 +98,7 @@
                <div class="bootstrap-tab">
                   <div class="tab-content" id="myTabContent">
                      <div class="" id="nav-add-patient-record" role="tabpanel" aria-labelledby="home-tab">
-                     <table id="general_profiles_TABLE" class="display">
+                     <table id="general_profiles_TABLE" class="display ">
                            <thead>
                               <tr>
                                  <th>Sr.No.</th>
@@ -119,7 +119,7 @@
                                     <td>{{$equipment_purchase_master->name}}</td>
                                  @endif
                                  @endforeach
-                                 <td>
+                                 <td class="text-nowrap">
                                  <a href="{{ url('expenditure-edit',$data->id) }}" class="btn btn-primary editbtn btn-sm" title="Edit Data"><i class="fa fa-pencil"></i> </a>
                                  <a href="javascript:void(0)" data-url="{{ route('expenditure-destroy', $data->id) }}" class="btn btn-danger deletebtn btn-sm delete-user" title="Delete Data" id="delete">
                                         <i class="fa fa-trash"></i>

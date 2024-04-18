@@ -36,7 +36,7 @@
             <div class="container">
                 <div class="alert alert-success float-end" id="success-alert">
                     <button type="button" class="close" data-dismiss="alert">x</button>
-                    <strong>Success! </strong> {{ session('message') }}
+                    <strong> </strong> {{ session('message') }}
                 </div>
             </div>
             @endif

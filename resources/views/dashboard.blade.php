@@ -25,7 +25,7 @@
 
                                     <div class="dashboard-filter" id="dashboard-filter">
                                         <div class="row">
-                                            <div class="col-lg-2 col-md-2 col-4">
+                                            <div class=" col-md-3 col-4">
                                                 <div class="form-group">
                                                     <label for="state">State<span class="star"></span></label>
                                                     <select class="form-select state click-function"
@@ -47,7 +47,7 @@
                                                     </small>
                                                 </div>
                                             </div>
-                                            <div class="col-lg-2 col-md-2 col-4">
+                                            <div class="col-md-2 col-4">
                                                 <div class="form-group">
                                                     <label for="district">District<span class="star"></span></label>
                                                     <select class="form-select click-function"
@@ -92,7 +92,7 @@
                                                     <small id="toYear-error" class="form-text text-muted"></small>
                                                 </div>
                                             </div>
-                                            <div class="col-lg-2 col-md-2 col-4">
+                                            <div class="col-lg-3 col-md-3 col-4">
                                                 <div class="form-group">
                                                     <label for="formType">Form Type<span class="star"></span></label>
                                                     <select class="form-select " aria-label="Default select example"
@@ -107,7 +107,7 @@
                                                     </small>
                                                 </div>
                                             </div>
-                                            <div class="col-lg-2 col-md-2 col-4">
+                                            <div class="col-lg-3 col-md-3 col-4">
                                                 <div class="form-group">
                                                     <label for="diseasesSyndromes">Diseases Syndromes<span
                                                             class="star"></span></label>

@@ -1,138 +1,102 @@
-
-
-<!-- <nav class="mt-2">
-    <ul class="nav nav-pills nav-sidebar flex-column"  role="menu" data-accordion="false">
-
-        <li class="nav-item ">
-            <a href="#" class="nav-link active">
-                <i class="nav-icon fas fa-tachometer-alt"></i> Dashboard
-            </a>
-
-        </li>
-
-        <li class="nav-item">
-
-        </li>
-
-        <li class="nav-item">
-            <a href="javascript:void(0)" class="nav-link {{ Request::routeIs('sform') ? 'active' : '' }}">
-                <i class="far fa-circle nav-icon"></i>
-                <p>lform</p>
-            </a>
-        </li>
-
-
-        <li class="nav-item">
-            <a href="{{ url('sform') }}" class="nav-link {{ Request::routeIs('sform') ? 'active' : '' }}">
-                <i class="far fa-circle nav-icon"></i>
-                <p>sform</p>
-            </a>
-        </li>
-
-        <li class="nav-item">
-            <a href="{{ url('Human-rabies-map') }}" class="nav-link {{ Request::routeIs('pform2') ? 'active' : '' }}">
-                <i class="far fa-circle nav-icon"></i>
-                <p>pform map</p>
-            </a>
-        </li>
-    </ul>
-</nav> -->
-
 <ul class="accordion side-link laboratory-sidebar">
     <li>
         @if (Auth::user()->user_type == 2)
-        <div
-            class="arrow arrow-right link bg-primary text-white dashboard-title {{ (Request::segment(1) == 'lab-dashboard')?'active':'' }}">
-            <a href="{{ url('/lab-dashboard') }}">  <i class="fa fa-dashboard iconmargin-set" aria-hidden="true"></i> 
-                Dashboard</a>
-        </div>
-        <div
-            class="arrow arrow-right link bg-primary text-white dashboard-title {{ (Request::segment(1) == 'general-laboratory')?'active':'' }}">
-            <a href="{{ url('/general-laboratory') }}"> <i class="fa fa-list iconmargin-set" aria-hidden="true"></i> 
-                General</a>
-        </div>
-        <div
-            class="link bg-primary text-white dashboard-title {{ (Request::segment(1) == 'quality')?'active':'' }}">
-           <a href="{{ url('/quality') }}"> <i class="fa fa-check iconmargin-set" aria-hidden="true"></i> 
-                Quality</a>
-        </div>
-        <div class="link bg-primary text-white dashboard-title {{ (Request::segment(1) == 'equipments')?'active':'' }}">
-         <a href="{{ url('/equipments') }}"><i class="fa fa-cogs iconmargin-set" aria-hidden="true"></i> Equipments</a>
-        </div>
-        <div
-            class="link bg-primary text-white dashboard-title {{ (Request::segment(1) == 'rabies-test')?'active':'' }}">
-           <a href="{{ url('/rabies-test') }}"> <i class="fa fa-registered iconmargin-set" aria-hidden="true"></i>
-                Rabies Test</a>
-        </div>
-        <div
-            class="link bg-primary text-white dashboard-title {{ (Request::segment(1) == 'expenditure')?'active':'' }}">
-            <a href="{{ url('/expenditure') }}"> <i class="fa fa-expand iconmargin-set" aria-hidden="true"></i>
-                Finance</a> </i>
-        </div>
-        <div
-            class="link bg-primary text-white dashboard-title {{ (Request::segment(1) == 'report-list')?'active':'' }}">
-             <a href="{{ url('/report-list') }}"> <i class="fa fa-file iconmargin-set" aria-hidden="true"></i>  Report</a>
-            </i>
-        </div>
+            <div
+                class="arrow arrow-right link bg-primary text-white dashboard-title {{ Request::segment(1) == 'lab-dashboard' ? 'active' : '' }}">
+                <a href="{{ url('/lab-dashboard') }}"> <i class="fa fa-dashboard iconmargin-set" aria-hidden="true"></i>
+                    Dashboard</a>
+            </div>
+            <div
+                class="arrow arrow-right link bg-primary text-white dashboard-title {{ Request::segment(1) == 'general-laboratory' ? 'active' : '' }}">
+                <a href="{{ url('/general-laboratory') }}"> <i class="fa fa-list iconmargin-set" aria-hidden="true"></i>
+                    General</a>
+            </div>
+            <div class="link bg-primary text-white dashboard-title {{ Request::segment(1) == 'quality' ? 'active' : '' }}">
+                <a href="{{ url('/quality') }}"> <i class="fa fa-check iconmargin-set" aria-hidden="true"></i>
+                    Quality</a>
+            </div>
+            <div
+                class="link bg-primary text-white dashboard-title {{ Request::segment(1) == 'equipments' ? 'active' : '' }}">
+                <a href="{{ url('/equipments') }}"><i class="fa fa-cogs iconmargin-set" aria-hidden="true"></i>
+                    Equipments</a>
+            </div>
+            <div
+                class="link bg-primary text-white dashboard-title {{ Request::segment(1) == 'rabies-test' ? 'active' : '' }}">
+                <a href="{{ url('/rabies-test') }}"> <i class="fa fa-registered iconmargin-set" aria-hidden="true"></i>
+                    Rabies Test</a>
+            </div>
+            <div
+                class="link bg-primary text-white dashboard-title {{ Request::segment(1) == 'expenditure' ? 'active' : '' }}">
+                <a href="{{ url('/expenditure') }}"> <i class="fa fa-expand iconmargin-set" aria-hidden="true"></i>
+                    Finance</a> </i>
+            </div>
+            <div
+                class="link bg-primary text-white dashboard-title {{ Request::segment(1) == 'report-list' ? 'active' : '' }}">
+                <a href="{{ url('/report-list') }}"> <i class="fa fa-file iconmargin-set" aria-hidden="true"></i>
+                    Report</a>
+                </i>
+            </div>
         @endif
         @if (Auth::user()->user_type == 1)
-        <!-- ************** -->
-        <div class="sidebarAccordion">
+            <!-- ************** -->
+            <div class="sidebarAccordion">
 
-            <div
-                class="link bg-primary text-white dashboard-title">
-                <a class="accordion-heading" data-toggle="collapse" href="#multiCollapseExample1" role="button"
-                    aria-expanded="false" aria-controls="multiCollapseExample1"><i class="fa fa-home" aria-hidden="true"></i> Rabies Dashboard </a>
+                <div class="link bg-primary text-white dashboard-title">
+                    <a class="accordion-heading" data-toggle="collapse" href="#multiCollapseExample1" role="button"
+                        aria-expanded="false" aria-controls="multiCollapseExample1"><i class="fa fa-home"
+                            aria-hidden="true"></i> Rabies Dashboard </a>
 
 
 
-            </div>
+                </div>
 
-            <div class="row">
-                <div class="col">                    
-                    <div class="collapse multi-collapse {{ (in_array(Request::segment(1), ['dashboard','pform','sform','lform'])) ? 'show':'' }}" id="multiCollapseExample1">
-                        <div class="card card-body">
-                            <div
-                                class="link bg-primary text-white dashboard-title {{ (Request::segment(1) == 'dashboard')?'active':'' }}">
-                                <a href="{{ url('/dashboard') }}">Dashboard</a> </i>
-                            </div>
-                            <div
-                                class="link bg-primary text-white dashboard-title {{ (Request::segment(1) == 'pform')?'active':'' }}">
-                                <a href="{{ url('/pform') }}">P Form</a> </i>
-                            </div>
-                            {{-- <div
+                <div class="row">
+                    <div class="col">
+                        <div class="collapse multi-collapse {{ in_array(Request::segment(1), ['dashboard', 'pform', 'sform', 'lform']) ? 'show' : '' }}"
+                            id="multiCollapseExample1">
+                            <div class="card card-body">
+                                <div
+                                    class="link bg-primary text-white dashboard-title {{ Request::segment(1) == 'dashboard' ? 'active' : '' }}">
+                                    <a href="{{ url('/dashboard') }}">Dashboard</a> </i>
+                                </div>
+                                <div
+                                    class="link bg-primary text-white dashboard-title {{ Request::segment(1) == 'pform' ? 'active' : '' }}">
+                                    <a href="{{ url('/pform') }}">P Form</a> </i>
+                                </div>
+                                {{-- <div
                                 class="link bg-primary text-white dashboard-title {{ (Request::segment(1) == 'sform')?'active':'' }}">
                                 <a href="{{ url('/sform') }}">S Form</a> </i>
                             </div> --}}
-                            <div
-                                class="link bg-primary text-white dashboard-title {{ (Request::segment(1) == 'lform')?'active':'' }}">
-                                <a href="{{ url('/lform') }}">L Form</a> </i>
-                            </div>
+                                <div
+                                    class="link bg-primary text-white dashboard-title {{ Request::segment(1) == 'lform' ? 'active' : '' }}">
+                                    <a href="{{ url('/lform') }}">L Form</a> </i>
+                                </div>
 
+                            </div>
                         </div>
                     </div>
+
                 </div>
 
             </div>
-
-        </div>
-        <div
-            class="link bg-primary text-white dashboard-title {{ (Request::routeIs('laboratory-dashboard') == 'laboratory-dashboard')?'active':'' }}">
-            <a href="{{ url('/laboratory-dashboard') }}"><i class="fa fa-flask" aria-hidden="true"></i> Laboratory Dashboard</a> </i>
-        </div>
-        <div
-            class="link bg-primary text-white dashboard-title {{ (Request::routeIs('nhm.index') == 'nhm.index')?'active':'' }}">
-            <a href="{{ route('nhm.index') }}"><i class="fa fa-hospital-o" aria-hidden="true"></i> NHM Dashboard</a> </i>
-        </div>
-        <!-- ********************* -->
-
+            <div
+                class="link bg-primary text-white dashboard-title {{ Request::routeIs('laboratory-dashboard') == 'laboratory-dashboard' ? 'active' : '' }}">
+                <a href="{{ url('/laboratory-dashboard') }}"><i class="fa fa-flask" aria-hidden="true"></i> Laboratory
+                    Dashboard</a> </i>
+            </div>
+            <div
+                class="link bg-primary text-white dashboard-title {{ Request::routeIs('nhm.index') == 'nhm.index' ? 'active' : '' }}">
+                <a href="{{ route('nhm.index') }}"><i class="fa fa-hospital-o" aria-hidden="true"></i> NHM
+                    Dashboard</a> </i>
+            </div>
+            <!-- ********************* -->
         @endif
         <!-- <div class="link bg-primary text-white dashboard-title">
             <a href="{{ url('/dashboard') }}">Dashboard</a> </i>
         </div> -->
-    </li>
-    @if (env('SIDE_BAR_SHOW') != '0')
-    <!-- <li>
+
+        @if (env('SIDE_BAR_SHOW') != '0')
+            <!-- <li>
             <div class="link"> <i class="far fa-circle nav-icon"></i>pForm<i class="fa fa-chevron-down"></i></div>
             <ul class="submenu">
                 <li><a href="{{ url('pformDashboard') }}" class="{{ Request::routeIs('pform2') ? 'active' : '' }}">Dashboard</a></li>
@@ -151,5 +115,26 @@
 
             </ul>
         </li> -->
-    @endif
+        @endif
+
+        @if (Auth::user()->user_type == 3)
+            <div
+                class="arrow arrow-right link bg-primary text-white dashboard-title {{ request()->is('state-dashboard') ? 'active' : '' }}">
+                <a href="{{ url('/state-dashboard') }}"> <i class="fa fa-dashboard iconmargin-set"
+                        aria-hidden="true"></i>
+                    Dashboard</a>
+            </div>
+            <div class="arrow arrow-right link bg-primary text-white dashboard-title {{ request()->is('investigate-report') ? 'active' : '' }}">
+                <a href="{{ url('/investigate-report') }}"> <i class="fa fa-dashboard iconmargin-set"
+                    aria-hidden="true"></i>
+                Investigate Report</a>
+            </div>
+            <div class="arrow arrow-right link bg-primary text-white dashboard-title {{ request()->is('monthly-report') ? 'active' : '' }}">
+                <a href="{{ url('/monthly-report') }}"> <i class="fa fa-dashboard iconmargin-set"
+                    aria-hidden="true"></i>
+                Monthly Report</a>
+            </div>
+        @endif
+
+    </li>
 </ul>

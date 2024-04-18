@@ -24,6 +24,6 @@
             </div>
             <p onclick="confirm('This site is external')"><strong>Source:</strong> <a href="https://nhm.gov.in/" target="_blank">https://nhm.gov.in/</a></p>
         </div>
-    </div>
+    </div> 
 </section>
 @endsection

@@ -47,9 +47,7 @@ body {
   font-weight: bold;
   color: #fff;
 }
-g.highcharts-axis-labels.highcharts-yaxis-labels.highcharts-radial-axis-labels>text {
-	display: none;
-}
+
 .laboratory-card .box .cases {
   font-size: 14px;
   font-weight: 600;
@@ -801,6 +799,7 @@ section.content.sform .table div {
   background: rgba(237, 251, 255, 0.6392156863);
   font-size: 14px;
   font-weight: 500;
+  display: flex;
 }
 section.content.sform .table div::before {
   content: "\f101";
@@ -873,12 +872,11 @@ a.nhm-file i {
 }
 
 .institute_year_filter .institute_year_filter {
-  position: absolute;
-  position: absolute;
+  position: static;
   top: 18px;
   right: 29px;
   z-index: 99;
-  z-index: 99;
+  margin: 8px 0px 0 10px;
 }
 .institute_year_filter .institute_year_filter select {
   font-size: 15px;
@@ -910,4 +908,16 @@ select[name=state] {
   padding: 11px;
   border-radius: 5px;
   font-size: 14px;
+}
+
+button#reset_button {
+  background: #ab4024 !important;
+}
+
+div#monthlyReport {
+  height: 500px !important;
+}
+
+div#yearReport {
+  height: 500px !important;
 }/*# sourceMappingURL=dashboard.css.map */
