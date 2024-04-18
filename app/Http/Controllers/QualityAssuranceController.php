@@ -90,7 +90,7 @@ class QualityAssuranceController extends Controller
                     return false;
                 } 
             }
-            return redirect('quality-assurance')->with($notification);
+            return back()->with($notification);
     }
 
     public function destroy($id)
@@ -100,6 +100,10 @@ class QualityAssuranceController extends Controller
             {
                 $quality_assurance= QualityAssurance::where('id',$id)->update(['soft_delete'=>1]);
         }
-        return response()->json(['message'=>"Deleted successfully.",'alert-type' => 'success','success'=>'1', 'tr'=>'tr_'.$id]);
+        $notification = array(
+            'message' => 'Quality Delete successfully',
+            'alert-type' => 'success'
+        );
+        return back()->with($notification);
     }
 }

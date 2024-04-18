@@ -99,7 +99,7 @@ Route::middleware(['Admin','device'])->group(function () {
             Route::get('quality-assurance-profile/{id}', [QualityAssuranceController::class, 'edit']);
             Route::get('quality-edit/{id}', [QualityAssuranceController::class, 'edit'])->name('quality-edit');
             Route::post('quality-update', [QualityAssuranceController::class, 'update'])->name('quality-update');
-            Route::delete('quality-destroy/{id}', [QualityAssuranceController::class, 'destroy'])->name('quality-destroy');
+            Route::get('quality-destroy/{id}', [QualityAssuranceController::class, 'destroy'])->name('quality-destroy');
 
             Route::get('equipments',[EquipmentsController::class,'create'])->name('equipments');
             Route::post('equipment-add', [EquipmentsController::class, 'store'])->name('equipment-add');

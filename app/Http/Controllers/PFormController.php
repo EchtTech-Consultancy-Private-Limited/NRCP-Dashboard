@@ -63,7 +63,7 @@ class PFormController extends Controller
                 'form_type' => $request->form_type,
             ]);
             DB::commit();
-            return redirect()->route('pform.index')->with('message', 'PForm Add SuccessFull !');
+            return redirect()->route('pform.index')->with('message', 'P & Form Add SuccessFull !');
         }catch (Exception $e) {
             DB::rollBack();
             throw new Exception($e->getMessage());
@@ -105,7 +105,7 @@ class PFormController extends Controller
                 'form_type' => $request->form_type,
             ]);
             DB::commit();
-            return redirect()->route('pform.index')->with('message', 'PForm Update SuccessFull !');
+            return redirect()->route('pform.index')->with('message', 'P & Form Update SuccessFull !');
         }catch (Exception $e) {
             DB::rollBack();
             throw new Exception($e->getMessage());
@@ -119,7 +119,7 @@ class PFormController extends Controller
     {
         $pformDelete = PFormPatientRecord::where('id', $id)->delete();
         if($pformDelete){
-            return redirect()->route('pform.index')->with('message', 'PForm Delete SuccessFull !');
+            return redirect()->route('pform.index')->with('message', 'P & Form Delete SuccessFull !');
         }
     }
 
@@ -134,7 +134,7 @@ class PFormController extends Controller
         $cityOption = '';
         $cities = City::where('state_id', $request->state_id)->get();
         foreach ($cities as $city) {
-            $cityOption .= '<option value="' . $city->id . '">' . $city->name . '</option>';
+            $cityOption .= '<option value="' . $city->id . '">' . ucwords($city->name) . '</option>';
         }
         return response()->json($cityOption);
     }

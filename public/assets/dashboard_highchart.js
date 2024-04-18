@@ -1,5 +1,5 @@
-const BASE_URL =window.location.origin+"/public";
-// const BASE_URL = window.location.origin;
+// const BASE_URL =window.location.origin+"/public";
+const BASE_URL = window.location.origin;
 
 /*handle Form Type*/
 const handleFormType = () => {
