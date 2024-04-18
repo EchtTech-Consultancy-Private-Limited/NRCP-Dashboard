@@ -1,4 +1,16 @@
 // adjusting the placeholder  color
+
+let selectBox = $('select');
+select.each(function () {
+    let valueArr = $(this).find(':selected').text().trim().split(' ');
+    if (valueArr[0] !== 'Select') {
+        $(this).css('color', '#000');
+    } else {
+        $(this).css('color', 'grey');
+    }
+    
+});
+
 let select = $('select');
 
 select.each((index, element) => {
@@ -101,6 +113,11 @@ $(document).ready(function(){
         // Handle click on "Expand All" button
      
 });
+    var table = $('#general_profiles_TABLE').DataTable({
+        'responsive': true,
+    });
+        // Handle click on "Expand All" button
+     
 
 $(document).ready(function(){
     // Flag to track the state of row details
