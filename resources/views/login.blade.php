@@ -53,12 +53,16 @@
                     </div> --}}
                     <div class="input-group mb-3 space-between" >
                         <div class="w-45">
-                            <input type="radio" name="user_type" value='1' class="mr-2" {{ (old('user_type') == 1) ? 'checked' : ''}}>
-                            <label>National User</label>
+                            <input id="user_type1" type="radio" name="user_type" value='1' class="mr-2" {{ (old('user_type') == 1) ? 'checked' : ''}}>
+                            <label for="user_type1">National User</label>
                         </div>
                         <div class="ml-4">
-                            <input type="radio" name="user_type" value='2' class="mr-2"  {{ (old('user_type') == 2) ? 'checked' : ''}}>
-                            <label>Laboratory User</label>
+                            <input id="user_type2" type="radio" name="user_type" value='2' class="mr-2"  {{ (old('user_type') == 2) ? 'checked' : ''}}>
+                            <label for="user_type2">Laboratory User</label>
+                        </div>
+                        <div class="ml-4">
+                            <input id="user_type3" type="radio" name="user_type" value='3' class="mr-2"  {{ (old('user_type') == 2) ? 'checked' : ''}}>
+                            <label for="user_type3">State User</label>
                         </div>
                     </div>
                     @error('user_type') 
