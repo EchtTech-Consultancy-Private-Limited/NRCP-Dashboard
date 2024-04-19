@@ -74,8 +74,8 @@
                                         </div>
                                     </div> -->
                                 </div>
-                                <div class="table-responsive">
-                                    <table class="table table-condensed table-bordered" id="tableId">
+                                <div class="">
+                                    <table class="table table-condensed table-bordered table-responsive" id="tableId">
                                         <tbody>
                                             <tr>
                                                 <td rowspan="3"></td>
@@ -1173,7 +1173,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="table-responsive  ">
-                                                    <table class="table table-condensed table-bordered" id="tableId">
+                                                    <table class="table table-condensed table-bordered table-responsive" id="tableId">
                                                         <tbody>
                                                             <tr>
                                                                 <td rowspan="3"></td>

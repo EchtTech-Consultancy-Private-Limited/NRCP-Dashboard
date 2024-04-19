@@ -1,5 +1,5 @@
-const BASE_URL =window.location.origin+"/public";
-// const BASE_URL = window.location.origin;
+// const BASE_URL =window.location.origin+"/public";
+const BASE_URL = window.location.origin;
 
 /*handle Form Type*/
 const handleFormType = () => {
@@ -879,7 +879,7 @@ const pyramidChart = (result) => {
         xaxis: {
             categories: categories,
             title: {
-                text: 'Percent'
+                text: 'Percentage of Cases'
             },
             labels: {
                 formatter: function (val) {
@@ -1252,15 +1252,16 @@ const defaultLaboratoryMapData = () => {
                 // monthlyReport Graph
                 const chart = Highcharts.chart('yearReport', {
                     title: {
-                        margin:60,
+                        margin:20,
                         text: 'Institute wise Monthly data',
-                        y:50,
+                        // y:50,
                         style:{
                               fontSize: innerWidth<=1350  ? "15px" :( innerWidth>=1525  ? "20px" : "15px"),
-                              marginBottom:'50px'
+                              textAlign:"center",
+                            //   marginBottom:'50px'
                         },
-                        align: 'left'
-                    },
+                        align: 'center'
+                    },                   
                     subtitle: {
                         text: '',
                         align: 'left'
@@ -1288,7 +1289,7 @@ const defaultLaboratoryMapData = () => {
                         borderRadius: 5,
                         colorByPoint: true,
                         data: result.monthGraphFilterData.MonthRecord,
-                        showInLegend: false
+                        showInLegend: true
                     }]
                 });
                 // yearlyReport graph
@@ -1297,12 +1298,13 @@ const defaultLaboratoryMapData = () => {
                         type: 'column'
                     },
                     title: {
+                        margin:20,
                         text: 'Institute wise Yearly data',
                         style:{
                             fontSize: innerWidth<=1350  ? "15px" :( innerWidth>=1350  ? "20px" : "15px"),
-                            marginBottom:'20px'
+                            // marginBottom:'20px'
                       },
-                        align: 'left'
+                        align: 'center'
                     },
                     subtitle: {
                         text: '',
@@ -1326,9 +1328,11 @@ const defaultLaboratoryMapData = () => {
                             stacking: 'Values',
                             dataLabels: {
                                 enabled: true,
-                                // format: '{point.y}',
+                                align: 'center',
                                 style: {
-                                    fontSize: '5px', // Adjust the font size here
+                                    fontSize: '8px', // Adjust the font size here
+                                    
+                                    verticalAlign:"center",
                                     fontWeight: 'normal', // Optionally, set font weight
                                     whiteSpace: 'nowrap', // Prevent text wrapping
                                     textOverflow: 'ellipsis', // Add ellipsis for overflow

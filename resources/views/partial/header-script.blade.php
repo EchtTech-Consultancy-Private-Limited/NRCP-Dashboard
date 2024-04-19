@@ -34,6 +34,7 @@
 <script src="{{ asset('assets/js/highcharts/highcharts-more.js') }}"></script>
 <script src="{{ asset('assets/js/highcharts/solid-gauge.js') }}"></script>
 <script src="{{ asset('assets/js/highcharts/accessibility.js') }}"></script>
+<script src="{{ asset('assets/js/jquery.validate.js') }}"></script>
 {{-- end highchart --}}
 <!-- <link rel="stylesheet" href="{{ asset('assets/css/datatablemin.css') }}"> -->
 <link rel="stylesheet" href="{{ asset('assets/css/datatable.min.css') }}">
@@ -41,3 +42,9 @@
 <link rel="stylesheet" href="{{ asset('assets/css/responsive.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/css/toastr.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/css/toastr.min.css') }}">
+
+@if (request()->is('investigate-report'))
+    <link rel="stylesheet" href="{{ asset('state-assets/pdf.css') }}">
+    <link rel="stylesheet" href="{{ asset('state-assets/pdf.css.map') }}">
+    <link rel="stylesheet" href="{{ asset('state-assets/pdf.scss') }}">
+@endif

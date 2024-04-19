@@ -757,4 +757,9 @@ input[type=date]:valid::-webkit-datetime-edit-year-field {
 
 input[type=date].form-control {
   text-transform: uppercase !important;
+}
+
+.alert-success {
+  width: -moz-fit-content;
+  width: fit-content;
 }/*# sourceMappingURL=style.css.map */

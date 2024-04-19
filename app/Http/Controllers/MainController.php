@@ -20,6 +20,9 @@ class MainController extends Controller
     
     public function dashboard(Request $request)
     {
+        if (Auth::user()->user_type == 3) {
+            return redirect()->route('state-dashboard');
+        }
         return view("dashboard");
     }
     public function labDashboard(Request $request)

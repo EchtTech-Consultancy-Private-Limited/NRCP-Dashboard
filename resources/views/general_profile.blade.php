@@ -102,7 +102,7 @@
                      <div class="table-responsive" id="nav-add-patient-record" role="tabpanel" aria-labelledby="home-tab">
                         <div id="general_profile_success"></div>
                         
-                        <table id="general_profiles_TABLE2" class="display general">
+                        <table id="general_profiles_TABLE2" class="display general " >
                             <thead>
                                 <tr>
                                     <th>Sr.No.</th>
@@ -124,7 +124,7 @@
                                     <td>{{@$general_profiles->contact_number}}</td>
                                     <td>{{ $general_profiles->date_of_joining ? date('d-m-Y',strtotime($general_profiles->date_of_joining)) : ''}}</td>
                                     <td class= "text-nowrap">
-                                    <a href="{{ url('general-edit',$general_profiles->id) }}" class="btn btn-primary editbtn btn-sm" title="Edit Data"><i class="fa fa-pencil"></i> </a>
+                                    <a href="{{ url('general-edit',$general_profiles->id) }}" class="btn btn-primary btn-sm" title="Edit Data"><i class="fa fa-pencil"></i> </a>
                                     <a href="javascript:void(0)" data-url="{{ route('general-laboratory-destroy', $general_profiles->id) }}" class="btn btn-danger deletebtn btn-sm delete-user" title="Delete Data" id="delete">
                                         <i class="fa fa-trash"></i>
                                     </a>

@@ -1,0 +1,142 @@
+
+body{
+    // font-family: "Poppins", sans-serif;
+    font-family: Cambria,Georgia,serif; 
+    font-weight: 400;
+    font-style: normal;
+}
+.bglightBlue{
+background-color: rgb(217, 226, 243);
+}
+.bggrey{
+  background-color: rgb(208, 206, 206);
+}
+strong{
+    font-weight: 600 !important;
+}
+input[type="text"] {
+    width: 100%;
+}
+table{
+    margin: auto;
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    .pdfLogo{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0px 10px;
+        p{
+            margin: 0;
+            margin: 0;
+            display: block;
+            text-align: center;
+        }
+    }
+    p {
+        font-size: 15px;
+        margin: 0;
+        color: #000;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        input[type="checkbox"] {
+            width: 11px;
+            margin-right: 12px;
+        }
+    }
+    img{
+        height: 90px;
+    }
+    td {
+        padding: 3px 13px 3px 5px;
+        border-bottom: 1px solid #000;
+        border-top: 0;
+        border-left: 0;
+        border-right: 1px solid #000;
+        &:last-child{
+            border-right: 0;
+        }
+    }
+    td[rowspan="2"]{
+        border-left: 1px solid #000;
+    }
+    table {
+        margin: auto;
+        border-collapse: collapse;
+        width: 100%;
+        tr:first-child td{
+            border-top: 1px solid #000;
+        }
+        tr{
+            td{
+                border-left: 1px solid #000;
+            &:last-child{
+                border-right: 1px solid #000;
+            }
+            }
+        }
+        th{
+            padding: 0 10px;
+        }
+    }
+    border-top: 1px solid #000;
+    border-bottom: 1px solid #000;
+}
+.container{
+    margin: auto;
+    box-shadow: 0px 0px 60px #ddd;
+    padding: 27px;
+}
+
+@media (min-width: 1200px){
+    .container, .container-lg, .container-md, .container-sm, .container-xl {
+        max-width: 1140px;
+    }
+}
+
+@media (min-width: 992px){
+    .container, .container-lg, .container-md, .container-sm {
+        max-width: 960px;
+    
+    }
+}
+
+.w-50{
+    width: 50%;
+}
+.p-0{
+    padding: 0;
+}
+
+.table2{
+    table{
+        border: 0;
+        tr{
+            td{
+                border: 0 !important;
+            }
+        }
+       
+    } 
+}
+.table3{
+    tr{
+        p{
+            display: block;
+            text-align: center;
+        }
+        td{
+            // border: ;
+          
+        }
+        th{
+            border: 1px solid #000;
+            p{
+               
+            font-weight: 800;
+            }
+        }
+    }
+}

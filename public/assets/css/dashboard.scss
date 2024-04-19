@@ -877,12 +877,11 @@ a.nhm-file{
 }
 .institute_year_filter {
 	.institute_year_filter{
-		position: absolute;
-		position: absolute;
+		position: static;
 		top: 18px;
 		right: 29px;
 		z-index: 99;
-		z-index: 99;
+		margin: 8px 0px 0 10px;
 		select{
 			font-size: 15px;
     padding: 0;
@@ -934,4 +933,10 @@ select[name="state"]{
 }
 button#reset_button {
     background: #ab4024 !important;
+}
+div#monthlyReport{
+	height: 500px !important;
+}
+div#yearReport{
+	height: 500px !important;
 }

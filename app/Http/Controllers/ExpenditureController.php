@@ -84,7 +84,7 @@ class ExpenditureController extends Controller
                 ]);
             
                     $notification = array(
-                        'message' => 'Expenditure Update successfully',
+                        'message' => 'Finance Update successfully',
                         'alert-type' => 'success'
                     );
                 } 

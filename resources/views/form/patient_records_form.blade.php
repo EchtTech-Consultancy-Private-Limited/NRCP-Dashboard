@@ -147,7 +147,7 @@
                                 </div>
 
                                 <div class="col-md-12">
-                                <table class="table table-bordered">
+                                <table class="table table-bordered ">
 								<thead>
 									<tr style="background: #D3D3D3">
 										<th>Person Name</th>

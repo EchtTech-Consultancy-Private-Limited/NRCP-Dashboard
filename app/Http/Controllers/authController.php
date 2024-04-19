@@ -37,7 +37,10 @@ class authController extends Controller
         }else{
             if($request->user_type == '2'){
                 $redirect = 'lab-dashboard';
-            }else{
+            }elseif($request->user_type == 3){
+                $redirect = 'state-dashboard';
+            }
+            else{
                 $redirect = 'dashboard';
             }
             if (Auth::attempt($request->only('email','password'))) {

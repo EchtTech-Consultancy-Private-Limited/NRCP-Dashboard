@@ -31,7 +31,7 @@
                     </div>
                 @endif
 
-                <form action="{{ url('/login') }}" method="post">
+                <form action="{{ url('/login') }}" method="post" id="login">
                     @csrf
                     {{-- <div class="input-group mb-3">
                         <select name="section_type" id="section" class="form-control">
@@ -53,18 +53,22 @@
                     </div> --}}
                     <div class="input-group mb-3 space-between" >
                         <div class="w-45">
-                            <input type="radio" name="user_type" value='1' class="mr-2" {{ (old('user_type') == 1) ? 'checked' : ''}}>
-                            <label>National User</label>
+                            <input id="user_type1" type="radio" name="user_type" value='1' class="mr-2" {{ (old('user_type') == 1) ? 'checked' : ''}}>
+                            <label for="user_type1">National User</label>
                         </div>
                         <div class="ml-4">
-                            <input type="radio" name="user_type" value='2' class="mr-2"  {{ (old('user_type') == 2) ? 'checked' : ''}}>
-                            <label>Laboratory User</label>
+                            <input id="user_type2" type="radio" name="user_type" value='2' class="mr-2"  {{ (old('user_type') == 2) ? 'checked' : ''}}>
+                            <label for="user_type2">Laboratory User</label>
+                        </div>
+                        <div class="ml-4">
+                            <input id="user_type3" type="radio" name="user_type" value='3' class="mr-2"  {{ (old('user_type') == 2) ? 'checked' : ''}}>
+                            <label for="user_type3">State User</label>
                         </div>
                     </div>
                     @error('user_type') 
-                        <span class="form-text text-danger mb-3 ">{{ $message }}</span>
+                        <span class="form-text text-danger mb-1 ">{{ $message }}</span>
                     @enderror
-                    <div class="input-group mb-3">
+                    <div class="input-group mb-4">
                         <input type="email" name="email" value="{{ old('email') }}" class="form-control" placeholder="Email">                       
                         <div class="input-group-append">
                             <div class="input-group-text">
@@ -74,9 +78,9 @@
                        
                     </div>
                     @error('email') 
-                        <span class="form-text text-danger mb-3 ">{{ $message }}</span>
+                        <span class="form-text text-danger mb-1 ">{{ $message }}</span>
                     @enderror 
-                    <div class="input-group mb-3">
+                    <div class="input-group mb-4">
                         <input type="password" name="password" value="{{ old('password') }}" id="password" class="form-control" placeholder="Password">
                         <div class="input-group-append">
 
@@ -88,7 +92,7 @@
                       
                     </div>
                     @error('password') 
-                            <span class="form-text text-danger mb-3">{{ $message }}</span>
+                            <span class="form-text text-danger mb-1">{{ $message }}</span>
                          @enderror 
                     <div class="col-md-12">
                         <div class="captcha row">
@@ -105,7 +109,7 @@
 
                         </div>
                         @error('captcha') 
-                            <span class="form-text text-danger mb-3">{{ $message }}</span>
+                            <span class="form-text text-danger mb-1" id="captchaError">{{ $message }}</span>
                          @enderror 
 
                         {{-- @if ($errors->has('captcha'))
