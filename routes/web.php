@@ -14,7 +14,7 @@ use App\Http\Controllers\ExpenditureController;
 use App\Http\Controllers\LaboratoryDashboardController;
 use App\Http\Controllers\NhmDashboardController;
 use App\Http\Controllers\ReportGenerateControllerController;
-
+use App\Http\Controllers\StateUser\StateUserMainController;
 
 /*
 |--------------------------------------------------------------------------
@@ -99,7 +99,7 @@ Route::middleware(['Admin','device'])->group(function () {
             Route::get('quality-assurance-profile/{id}', [QualityAssuranceController::class, 'edit']);
             Route::get('quality-edit/{id}', [QualityAssuranceController::class, 'edit'])->name('quality-edit');
             Route::post('quality-update', [QualityAssuranceController::class, 'update'])->name('quality-update');
-            Route::delete('quality-destroy/{id}', [QualityAssuranceController::class, 'destroy'])->name('quality-destroy');
+            Route::get('quality-destroy/{id}', [QualityAssuranceController::class, 'destroy'])->name('quality-destroy');
 
             Route::get('equipments',[EquipmentsController::class,'create'])->name('equipments');
             Route::post('equipment-add', [EquipmentsController::class, 'store'])->name('equipment-add');
@@ -126,6 +126,13 @@ Route::middleware(['Admin','device'])->group(function () {
             Route::get('report-list', [ReportGenerateControllerController::class, 'index'])->name('report-list');
             Route::post('report-export', [ReportGenerateControllerController::class, 'export'])->name('report-export');
             Route::post('generate-pdf', [ReportGenerateControllerController::class, 'generatePDF'])->name('generate-pdf');
+        });
+
+        Route::middleware(['StateUserPermission','preventBackHistory'])->group(function () {
+            Route::get('state-dashboard',[StateUserMainController::class,'stateDashboard'])->name('state-dashboard');
+            Route::get('investigate-report',[StateUserMainController::class,'investigateReport'])->name('investigate-report');
+            Route::post('investigate-report',[StateUserMainController::class,'investigateReportStore'])->name('investigate-report-save');
+            Route::get('monthly-report',[StateUserMainController::class,'monthlyReport'])->name('monthly-report');
         });
     });
 

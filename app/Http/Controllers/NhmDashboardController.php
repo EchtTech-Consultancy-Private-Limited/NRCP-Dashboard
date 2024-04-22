@@ -56,7 +56,7 @@ class NhmDashboardController extends Controller
     {
         try{
             DB::beginTransaction();
-            $nhmExist = NhmDashboard::where('year', $request->year)->exists();
+            $nhmExist = NhmDashboard::where(['year' => $request->year,'state_id' => $request->state])->exists();
             if ($nhmExist) {
                 return redirect()->route('nhm.index')->with('error', 'NHM entry for this year already exists !');
             }
@@ -136,10 +136,10 @@ class NhmDashboardController extends Controller
     public function update(NhmRequest $request, $id = ''){
         try{
             DB::beginTransaction();
-            $nhmExist = NhmDashboard::where('year', $request->year)->exists();
-            if ($nhmExist) {
-                return back()->with('error', 'NHM entry for this year already exists !');
-            }
+            // $nhmExist = NhmDashboard::where(['year' => $request->year,'state_id' => $request->state])->exists();
+            // if ($nhmExist) {
+            //     return back()->with('error', 'NHM entry for this year already exists !');
+            // }
             $rops = $request->file('rops');
             $supplementaryRops = $request->file('supplementary_rops');
             if ($rops) {

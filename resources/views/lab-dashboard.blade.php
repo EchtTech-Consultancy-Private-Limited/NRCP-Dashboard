@@ -21,7 +21,7 @@
         <div class="col">
             <div class="basic-card basic-card-lips">
                 <div class="card-content">
-                    <span class="card-title">Quality Assurance</span>
+                    <span class="card-title">Quality</span>
                     <b><p class="card-text">{{ $QualityAssuranceTotal }}</p></b>
                 </div>
                 <div class="card-link">
@@ -33,7 +33,7 @@
         <div class="col">
             <div class="basic-card basic-card-light">
                 <div class="card-content">
-                    <span class="card-title">Equipment</span>
+                    <span class="card-title">Equipments</span>
                     <b><p class="card-text">{{ $EquipmentsTotal }}</p></b>
                 </div>
                 <div class="card-link">
@@ -45,7 +45,7 @@
         <div class="col">
             <div class="basic-card basic-card-dark">
                 <div class="card-content">
-                    <span class="card-title">Rabies</span>
+                    <span class="card-title">Rabies Test</span>
                     <b><p class="card-text">{{ $RabiesTestTotal }}</p></b>
                 </div>
                 <div class="card-link">
@@ -57,7 +57,7 @@
         <div class="col">
             <div class="basic-card basic-card-dark-1">
                 <div class="card-content">
-                    <span class="card-title">Expenditure</span>
+                    <span class="card-title">Finance</span>
                     <b><p class="card-text">{{ $ExpenditureTotal }}</p></b>
                 </div>
                 <div class="card-link">

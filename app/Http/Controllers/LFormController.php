@@ -60,7 +60,7 @@ class LFormController extends Controller
                 'form_type' => $request->form_type,
             ]);
             DB::commit();
-            return redirect()->route('lform.index')->with('message', 'LForm Add SuccessFull !');
+            return redirect()->route('lform.index')->with('message', 'L & Form Add SuccessFull !');
         }catch (Exception $e) {
             DB::rollBack();
             throw new Exception($e->getMessage());
@@ -102,7 +102,7 @@ class LFormController extends Controller
                 'form_type' => $request->form_type,
             ]);
             DB::commit();
-            return redirect()->route('lform.index')->with('message', 'LForm Update SuccessFull !');
+            return redirect()->route('lform.index')->with('message', 'L & Form Update SuccessFull !');
         }catch (Exception $e) {
             DB::rollBack();
             throw new Exception($e->getMessage());
@@ -116,7 +116,7 @@ class LFormController extends Controller
     {
         $pformDelete = PFormPatientRecord::where('id', $id)->delete();
         if($pformDelete){
-            return redirect()->route('lform.index')->with('message', 'LForm Delete SuccessFull !');
+            return redirect()->route('lform.index')->with('message', 'L & Form Delete SuccessFull !');
         }
     }
 }

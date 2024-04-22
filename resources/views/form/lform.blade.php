@@ -109,9 +109,10 @@
                               {{ old('id_type') }}
                             </option> @endif <option value="Aadhaar">Aadhaar</option>
                             <option value="Voter ID">Voter ID</option>
-                            <option value="Pan">Pan</option>
-                            <option value="Passsport">Passsport</option>
+                            <option value="PAN">PAN</option>
+                            <option value="Passport">Passport</option>
                             <option value="ABHA">ABHA</option>
+                            <option value="Driving">Driving</option>
                             <option value="Other">Other</option>
                           </select>
                            @if ($errors->has('id_type')) <span class="form-text text-muted">{{ $errors->first('id_type') }}</span> @endif
@@ -145,8 +146,8 @@
                           <label for="state">State <span class="star">*</span>
                           </label>
                           <select class="form-select" aria-label="Default select example" name="pform_state" id="pform_state" required>
-                            <option value=""> Select state</option> @foreach ($states as $key => $state) <option value="{{ $state->id }}" {{ $state->id == old('state') ? 'selected' : '' }}>
-                              {{ $state->name }}
+                            <option value=""> Select Your state</option> @foreach ($states as $key => $state) <option value="{{ $state->id }}" {{ $state->id == old('state') ? 'selected' : '' }}>
+                              {{ ucwords($state->name) }}
                             </option> @endforeach
                           </select> @if ($errors->has('pform_state')) <span class="form-text text-muted">{{ $errors->first('pform_state') }}</span> @endif <small id="state-error" class="form-text text-muted"></small>
                         </div>
@@ -181,8 +182,8 @@
                       </div>
                       <div class="col-lg-3 col-md-3">
                         <div class="form-group">
-                          <label for="house-no">House No</label>
-                          <input type="text" class="form-control" name="house_no" id="house_no" value="{{ old('house_no') }}" aria-describedby="house_no" placeholder="Enter House No" maxlength="20"> @if ($errors->has('house_no')) <span class="form-text text-muted">{{ $errors->first('house_no') }}</span> @endif
+                          <label for="house-no">House No<span class="star">*</span></label>
+                          <input type="text" class="form-control" name="house_no" id="house_no" value="{{ old('house_no') }}" aria-describedby="house_no" placeholder="Enter Your House No" maxlength="20"> @if ($errors->has('house_no')) <span class="form-text text-muted">{{ $errors->first('house_no') }}</span> @endif
                         </div>
                       </div>
                       <div class="col-lg-3 col-md-3">
@@ -468,9 +469,10 @@
                                                   <select class="form-select" aria-label="Default select example" name="id_type" id="id-type" required>
                                                     <option value="Aadhaar" @if($pForm->id_type == 'Aadhaar') selected @endif>Aadhaar</option>
                                                     <option value="Voter ID" @if($pForm->id_type == 'Voter ID') selected @endif>Voter ID</option>
-                                                    <option value="Pan" @if($pForm->id_type == 'Pan') selected @endif>Pan</option>
-                                                    <option value="Passsport" @if($pForm->id_type == 'Passsport') selected @endif>Passsport</option>
+                                                    <option value="PAN" @if($pForm->id_type == 'PAN') selected @endif>PAN</option>
+                                                    <option value="Passport" @if($pForm->id_type == 'Passport') selected @endif>Passport</option>
                                                     <option value="ABHA" @if($pForm->id_type == 'ABHA') selected @endif>ABHA</option>
+                                                    <option value="Driving" @if($pForm->id_type == 'Driving') selected @endif>Driving</option>                                                    
                                                     <option value="Other" @if($pForm->id_type == 'Other') selected @endif>Other</option>
                                                   </select> 
                                                   @if ($errors->has('id_type')) <span class="form-text text-muted">{{ $errors->first('id_type') }}</span> @endif
@@ -509,7 +511,7 @@
                                                     <option value=""> Select state</option> 
                                                     @foreach ($states as $key => $state) 
                                                     <option value="{{ $state->id }}" {{ $state->id == $pForm->pform_state ? 'selected' : '' }}>
-                                                      {{ $state->name }}
+                                                      {{ ucwords($state->name) }}
                                                     </option> 
                                                     @endforeach
                                                   </select> 
@@ -547,8 +549,8 @@
                                               </div>
                                               <div class="col-lg-3 col-md-3">
                                                 <div class="form-group">
-                                                  <label for="house-no">House No</label>
-                                                  <input type="text" class="form-control" name="house_no" id="house_no" value="{{ old('house_no',$pForm->house_no) }}" aria-describedby="house_no" placeholder="Enter House No" maxlength="20"> 
+                                                  <label for="house-no">House No<span class="star">*</span></label>
+                                                  <input type="text" class="form-control" name="house_no" id="house_no" value="{{ old('house_no',$pForm->house_no) }}" aria-describedby="house_no" placeholder="Enter Your House No" maxlength="20"> 
                                                   @if ($errors->has('house_no')) <span class="form-text text-muted">{{ $errors->first('house_no') }}</span> @endif
                                                 </div>
                                               </div>

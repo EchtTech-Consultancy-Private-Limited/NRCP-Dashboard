@@ -2,6 +2,7 @@
 
 namespace App\Http;
 
+use App\Http\Middleware\StateUser;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -68,5 +69,6 @@ class Kernel extends HttpKernel
         'preventBackHistory' => \App\Http\Middleware\PreventBackHistory::class,
         'AccessUrlPermission' => \App\Http\Middleware\AccessUrlPermission::class,
         'device' => \App\Http\Middleware\DeviceMiddleware::class,
+        'StateUserPermission' => StateUser::class,
     ];
 }
