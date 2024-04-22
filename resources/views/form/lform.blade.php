@@ -1,7 +1,7 @@
 @extends('layouts.main') 
 @section("content") 
 @section('title') 
-{{__('LForm')}} @endsection
+{{__('L Form')}} @endsection
 <!-- Main content -->
 <section class="content">
   <div class="container-fluid">
