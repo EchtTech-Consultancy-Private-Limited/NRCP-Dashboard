@@ -1,20 +1,34 @@
 // adjusting the placeholder  color
-let select = $('select');
 
-select.each((index, element) => {
-    let selectWord = $(element).find(':selected').text().split(' ');
+let selectBox = $('select');
+selectBox.each(function () {
+    let valueArr = $(this).find(':selected').text().trim().split(' ');
+    if (valueArr.includes('select') || valueArr.includes('Select')) {
+        $(this).css('color', 'grey');
+    } else {
+        $(this).css('color', '#000');
+    }
     
-    $(element).css('color', 'grey')
-    $(element).on('change', function () {
-        if ($(this).val() !== selectWord[0]) {
-            $(this).css('color', '#000');
-            // alert('code is executed');
-        } else {
+});
+
+let selectBoxes = $("select");
+
+selectBoxes.each((index, element) => {
+    let select = $(element);
+    let selectedText = select.find(':selected').text();
+    let selectWords = selectedText.split(' ');
+
+    select.on('change', function () {
+        let selectedValue = $(this).find(':selected').text();
+        let selectedWords = selectedValue.split(' ');
+        if (selectedWords.includes('select') || selectedWords.includes('Select')) {
             $(this).css('color', 'grey');
-           
+        } else {
+            $(this).css('color', '#000');
         }
     });
 });
+
 
 function alertMessage(){
     $('.alert.alert-success').css('display', 'none');
@@ -30,6 +44,20 @@ function handleTest(e) {
     }
 }
 
+let edit_table = $('div#myTabContent');
+
+// let  actualInnerWidth = edit_table.prop("clientWidth"); // El. width minus scrollbar width
+let  actualInnerWidth = edit_table[0].offsetWidth; // El. width minus scrollbar width
+console.log(actualInnerWidth)
+// Element width including overflow (scrollbar)
+let offset_width = edit_table[0].offsetWidth; // 1280 in your case
+console.log(offset_width)
+// Element width excluding overflow (scrollbar)
+let clientWidth = edit_table[0].clientWidth; // 1280 - scrollbarWidth
+console.log(clientWidth);
+// Scrollbar width
+let scrollbarWidth = edit_table[0].offsetWidth - edit_table[0].clientWidth; // 0 if no scrollbar
+console.log(scrollbarWidth)
 // validate input
 function validateInput(input) {
     input.value = input.value.replace(/\D/g, '');
@@ -101,6 +129,11 @@ $(document).ready(function(){
         // Handle click on "Expand All" button
      
 });
+    var table = $('#general_profiles_TABLE').DataTable({
+        'responsive': true,
+    });
+        // Handle click on "Expand All" button
+     
 
 $(document).ready(function(){
     // Flag to track the state of row details

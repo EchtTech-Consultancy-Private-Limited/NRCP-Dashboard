@@ -102,7 +102,7 @@
                      <div class="table-responsive" id="nav-add-patient-record" role="tabpanel" aria-labelledby="home-tab">
                         <div id="general_profile_success"></div>
                         
-                        <table id="general_profiles_TABLE2" class="display general " >
+                        <table id="general_profiles_TABLE" class="display general " >
                             <thead>
                                 <tr>
                                     <th>Sr.No.</th>

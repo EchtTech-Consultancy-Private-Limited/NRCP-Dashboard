@@ -1,7 +1,7 @@
 @extends('layouts.main')
 @section("content")
 @section('title')
-{{__('SForm')}}
+{{__('S Form')}}
 @endsection
 <!-- Main content -->
 <section class="content sform">
