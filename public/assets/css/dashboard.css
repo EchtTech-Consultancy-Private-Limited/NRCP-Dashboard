@@ -928,7 +928,11 @@ div#yearReport text.highcharts-title {
   display: none;
 }
 
-input[type=date]::-webkit-datetime-edit-text, input[type=date]::-webkit-datetime-edit-month-field, input[type=date]::-webkit-datetime-edit-day-field, input[type=date]::-webkit-datetime-edit-year-field {
+input[type=date]::-webkit-datetime-edit-text {
+  color: grey !important;
+}
+
+input[type=date]:invalid::-webkit-datetime-edit {
   color: grey !important;
 }
 
