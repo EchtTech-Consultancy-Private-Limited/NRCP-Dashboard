@@ -29,7 +29,9 @@ selectBoxes.each((index, element) => {
     });
 });
 
-
+// adjusting width  edit form of edit form 
+let tabPaneWidth = $(".tab-pane.fade.show.active").innerWidth()
+let tableEditFormWidth = $('form.myForm').css('width', `${tabPaneWidth-50}px`)
 function alertMessage(){
     $('.alert.alert-success').css('display', 'none');
     $('.alert.alert-danger').css('display', 'none');
@@ -44,21 +46,9 @@ function handleTest(e) {
     }
 }
 
-let edit_table = $('div#myTabContent');
 
 // let  actualInnerWidth = edit_table.prop("clientWidth"); // El. width minus scrollbar width
-let  actualInnerWidth = edit_table[0].offsetWidth; // El. width minus scrollbar width
-console.log(actualInnerWidth)
-// Element width including overflow (scrollbar)
-let offset_width = edit_table[0].offsetWidth; // 1280 in your case
-console.log(offset_width)
-// Element width excluding overflow (scrollbar)
-let clientWidth = edit_table[0].clientWidth; // 1280 - scrollbarWidth
-console.log(clientWidth);
-// Scrollbar width
-let scrollbarWidth = edit_table[0].offsetWidth - edit_table[0].clientWidth; // 0 if no scrollbar
-console.log(scrollbarWidth)
-// validate input
+
 function validateInput(input) {
     input.value = input.value.replace(/\D/g, '');
 }

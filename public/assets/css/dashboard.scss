@@ -42,6 +42,7 @@
 	display: flex;
     min-height: 91px;
 	align-items: center;
+	margin: 0;
   }
   .box .cases {
 	font-size: 18px;
@@ -881,7 +882,7 @@ a.nhm-file{
 		top: 18px;
 		right: 29px;
 		z-index: 99;
-		margin: 8px 0px 0 10px;
+		// margin: 8px 0px 0 10px;
 		select{
 			font-size: 15px;
     padding: 0;
@@ -936,11 +937,25 @@ button#reset_button {
 }
 div#monthlyReport{
 	height: 500px !important;
+	text.highcharts-title {
+		display: none;
+	}
 }
 div#yearReport{
 	height: 500px !important;
+	text.highcharts-title {
+		display: none;
+	}
 }
 
-input[type="date"]::-webkit-datetime-edit-text, input[type="date"]::-webkit-datetime-edit-month-field, input[type="date"]::-webkit-datetime-edit-day-field, input[type="date"]::-webkit-datetime-edit-year-field {
+input[type="date"]::-webkit-datetime-edit-text{
     color: grey !important;
+}
+input[type=date]:invalid::-webkit-datetime-edit {
+    color: grey !important;
+}
+.title {
+    font-size: 21px;
+    margin-left: 16px;
+    font-weight: 600;
 }
