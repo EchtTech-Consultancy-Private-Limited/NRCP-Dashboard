@@ -1,5 +1,5 @@
 // const BASE_URL =window.location.origin+"/public";
-const BASE_URL = window.location.origin;
+const BASE_URL = $("meta[name='baseURL']").attr('content');
 
 /*handle Form Type*/
 const handleFormType = () => {
@@ -88,7 +88,7 @@ const handleDistrict = () => {
     });
 
     $.ajax({
-        url: BASE_URL + "/get-district",
+        url: BASE_URL + "get-district",
         type: "get",
         data: {
             state_id: state_id,
@@ -199,7 +199,7 @@ const apply_filter = () => {
         }
     });
     $.ajax({
-        url: BASE_URL + "/get-filter-data",
+        url: BASE_URL + "get-filter-data",
         type: "get",
         data: {
             setstate: filter_state,
@@ -433,7 +433,7 @@ const defaultLoadMapData = () => {
     });
 
     $.ajax({
-        url: BASE_URL + "/human-rabies",
+        url: BASE_URL + "human-rabies",
         type: "get",
         success: function (result) {
             $('#text1').html("Presumptive Cases");
@@ -548,7 +548,7 @@ const defaultLoadMapData = () => {
 
     // pyramid chart
     $.ajax({
-        url: BASE_URL + "/p-form-horizontal-barchart",
+        url: BASE_URL + "p-form-horizontal-barchart",
         type: "get",
         success: function (result) {
             pyramidChart(result);
@@ -557,7 +557,7 @@ const defaultLoadMapData = () => {
 
     //high chart
     $.ajax({
-        url: BASE_URL + "/p-form-high-chart",
+        url: BASE_URL + "p-form-high-chart",
         type: "get",
         success: function (result) {
             highchartMapcase(result);
@@ -703,7 +703,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     $.ajax({
-        url: BASE_URL + "/pform-horizontal-barchart-death",
+        url: BASE_URL + "pform-horizontal-barchart-death",
         type: "get",
 
         success: function (result) {
@@ -1052,7 +1052,7 @@ const defaultLaboratoryMapData = () => {
         sessionValue = 0
     }
     $.ajax({
-        url: BASE_URL + "/get-filter-laboratory-data",
+        url: BASE_URL + "get-filter-laboratory-data",
         type: "get",
         success: function (result) {
             (async () => {
@@ -1528,7 +1528,7 @@ const laboratory_apply_filter = (rabiesfilter = '',stateName = '') => {
         sessionValue = 0
     }
     $.ajax({
-        url: BASE_URL + "/get-filter-laboratory-data",
+        url: BASE_URL + "get-filter-laboratory-data",
         type: "get",
         data: {
             month: filter_month,
