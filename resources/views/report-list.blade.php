@@ -31,7 +31,7 @@
                                         </div>
                                         <div class="col-lg-3 col-md-3 col-6">
                                             <div class="form-group">
-                                                <label for="district">From Date<span class="star">*</span></label>
+                                                <label for="district">From Date</label>
                                                 <input type="date" name="startdate" class="form-control">
                                                 @error('startdate') 
                                                     <span class="form-text text-muted">{{ $message }}</span>
@@ -40,7 +40,7 @@
                                         </div>
                                         <div class="col-lg-3 col-md-3 col-6">
                                             <div class="form-group">
-                                                <label for="fromYear">To Date<span class="star">*</span></label>
+                                                <label for="fromYear">To Date</label>
                                                 <input type="date" name="enddate" class="form-control">
                                                 @error('enddate') 
                                                     <span class="form-text text-muted">{{ $message }}</span>

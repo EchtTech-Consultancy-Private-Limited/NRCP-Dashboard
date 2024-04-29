@@ -28,19 +28,19 @@ class RabiesTestController extends Controller
     {
         $rabiestest = RabiesTest::findOrFail($id);
         $institutes = Institute::get();
-        $states = State::get();
-        if($rabiestest->type =='For diagnosis'){
+        $states = State::get();        
+        if($rabiestest->type =='For diagnosis' || $rabiestest->typea === null){
             $typea = array(
                 'Anti-mortem'  => 'Anti-mortem',
                 'Post-Mortem' => 'Post-Mortem',
             );
-        }elseif($rabiestest->type =='Titre estimation'){
+        }elseif($rabiestest->type =='Titre estimation' || $rabiestest->typea === null){
             $typea = array(
                 'Serum' => 'Serum',
                 'ISF' => 'ISF',
             );
         }
-        if($rabiestest->typea =='Anti-mortem'){
+        if($rabiestest->typea =='Anti-mortem' || $rabiestest->typea === null){
             $typebs = array(
                 'Saliva' => 'Saliva',
                 'Skin' => 'Skin',
@@ -48,7 +48,7 @@ class RabiesTestController extends Controller
                 'CSF' => 'CSF',
                 'Others' => 'Others',
             );
-        }elseif($rabiestest->typea =='Post-Mortem'){
+        }elseif($rabiestest->typea =='Post-Mortem' || $rabiestest->typea === null){
             $typebs = array(
                 'CSF' => 'CSF',
                 'Brain' => 'Brain',

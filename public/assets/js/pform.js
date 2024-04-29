@@ -278,7 +278,7 @@ $(document).ready(function() {
         let state_id = $(this).val();
         $.ajax({
         type: "GET",
-        url: BASE_URL + "/get-city",
+        url: BASE_URL + "get-city",
         data: {
             'state_id': state_id
         },
@@ -292,7 +292,7 @@ $(document).ready(function() {
         let state_id = $(this).val();
         $.ajax({
         type: "GET",
-        url: BASE_URL + "/get-city",
+        url: BASE_URL + "get-city",
         data: {
             'state_id': state_id
         },
