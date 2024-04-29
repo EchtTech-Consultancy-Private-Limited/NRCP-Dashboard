@@ -122,9 +122,8 @@ body {
 
 .search-patient-btn {
   /* width: 180px; */
-  /* padding: 5px 0; */
-  display: block;
-  width: 140px;
+  padding: 5px 20px !important;
+  display: inline-block;
   font-size: 15px;
   font-weight: 400;
   line-height: 1.5;
