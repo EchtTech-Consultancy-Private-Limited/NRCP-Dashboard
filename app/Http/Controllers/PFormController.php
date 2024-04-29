@@ -9,6 +9,8 @@ use Illuminate\Http\Request;
 use Exception;
 use Illuminate\Support\Facades\DB;
 use App\Models\PFormPatientRecord;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Imports\PFormPatientRecordImport;
 use App\Http\Requests\PFormPatientRecordRequest;
 
 class PFormController extends Controller
@@ -68,6 +70,11 @@ class PFormController extends Controller
             DB::rollBack();
             throw new Exception($e->getMessage());
         }
+    }    
+
+    public function pform(Request $request){
+        Excel::import(new PFormPatientRecordImport, $request->file('file'));
+        return redirect()->back();
     }
 
     /**
