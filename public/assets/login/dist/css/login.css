@@ -12,4 +12,10 @@ label.error {
     font-size: 14px;
     color: red;
     font-weight: 400 !important;
+    left: 0;
+}
+
+input#user_type1 + label.error {
+    left: 0;
+    margin-bottom: 12px;
 }
