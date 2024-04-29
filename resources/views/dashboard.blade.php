@@ -174,7 +174,7 @@
                                                 <div class=" apply-filter">
                                                     <!-- <label for=""><span class="star"></span></label> -->
                                                     <button id="reset_button"
-                                                        class="btn border-0 text-light apply-filter text-white button">Reset</button>
+                                                        class="btn bg-danger border-0 text-light apply-filter text-white ">Reset</button>
                                                 </div>
                                             </div>
                                         </div>
