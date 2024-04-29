@@ -1,7 +1,7 @@
 @extends('layouts.main') 
 @section("content") 
 @section('title') 
-{{__('LForm')}} @endsection
+{{__('L Form')}} @endsection
 <!-- Main content -->
 <section class="content">
   <div class="container-fluid">
@@ -316,8 +316,8 @@
                       </div>
                     </div>
                     <div class="col-md-12">
-                      <div class="table-responsive" id="nav-add-patient-record" role="tabpanel" aria-labelledby="home-tab">
-                        <table id="general_profiles_TABLE2" class="display ">
+                      <div class="" id="nav-add-patient-record" role="tabpanel" aria-labelledby="home-tab">
+                        <table id="general_profiles_TABLE2" class=" table-responsive">
                           <thead>
                             <tr>
                               <th>Sl#</th>

@@ -40,6 +40,7 @@ body {
   display: flex;
   min-height: 91px;
   align-items: center;
+  margin: 0;
 }
 
 .box .cases {
@@ -876,7 +877,6 @@ a.nhm-file i {
   top: 18px;
   right: 29px;
   z-index: 99;
-  margin: 8px 0px 0 10px;
 }
 .institute_year_filter .institute_year_filter select {
   font-size: 15px;
@@ -910,14 +910,51 @@ select[name=state] {
   font-size: 14px;
 }
 
-button#reset_button {
-  background: #ab4024 !important;
-}
-
 div#monthlyReport {
   height: 500px !important;
+}
+div#monthlyReport text.highcharts-title {
+  display: none;
 }
 
 div#yearReport {
   height: 500px !important;
+}
+div#yearReport text.highcharts-title {
+  display: none;
+}
+
+input[type=date]::-webkit-datetime-edit-text {
+  color: grey !important;
+}
+
+input[type=date]:invalid::-webkit-datetime-edit {
+  color: grey !important;
+}
+
+
+input[type=date]::-webkit-datetime-edit-text,
+input[type=date]::-webkit-datetime-edit-month-field,
+input[type=date]::-webkit-datetime-edit-day-field,
+input[type=date]::-webkit-datetime-edit-year-field {
+  color: #888;
+}
+
+
+.title {
+  font-size: 21px;
+  margin-left: 16px;
+  font-weight: 600;
+}
+
+.btn.bg-danger {
+  border-radius: 32px;
+  padding: 5px 20px;
+  font-size: 14px;
+
+}
+
+.form-group .form-control {
+  color: #000;
+
 }/*# sourceMappingURL=dashboard.css.map */

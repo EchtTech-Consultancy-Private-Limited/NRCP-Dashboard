@@ -139,7 +139,7 @@ body {
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   margin: 5px 0;
   text-transform: capitalize;
-  padding: 8px 3px 6px;  
+  padding: 8px 3px 8px;  
   border-radius: 50px;
 }
 
@@ -725,7 +725,7 @@ table.dataTable.stripe>tbody>tr.odd>*, table.dataTable.display>tbody>tr.even>* {
 .dataTables_info{
   border: 1px solid #ddd;
   padding: 0;
-  margin-top: 20px;
+  margin-top: 04px;
   padding: 4px 9px !important;
   border-radius: 6px;
   font-size: 14px;

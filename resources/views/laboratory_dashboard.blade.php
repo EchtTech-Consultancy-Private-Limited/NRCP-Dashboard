@@ -117,7 +117,7 @@
                                                             <button id="laboratory_apply_filter"
                                                                 class="btn bg-primary text-light laboratory_apply_filter button border-0 mr-2">Search</button>
                                                             <button id="laboratory_reset_button"
-                                                                class="btn bg-primary text-light laboratory_apply_filter button border-0 mr-2">Reset</button>
+                                                                class="btn bg-danger text-light border-0 mr-2">Reset</button>
                                                         </div>
                                                     </div>
 
@@ -312,22 +312,38 @@
                                             <div class="row">
                                             
                                                 <div class="col-md-6 pr-3 institute_year_filter border">
-                                                <div class="institute_year_filter mb-2">
+                                                    <div class="row align-items-center my-3">
+                                                    <div class="col-md-7">
+                                                            <h3 class="title">
+                                                            Institute wise Monthly data
+                                                            </h3>
+                                                        </div>
+                                                        <div class="col-md-5">
+                                                        <div class="institute_year_filter mb-2 d-flex justify-content-end">
                                                         <select class="form-control w-auto" name="institute_year"
                                                             id="institute_year_filter">
-                                                            <option value="numbers_of_sample_recieved">No. of Sample
-                                                                Received</option>
-                                                            <option value="numbers_of_positives">Total numbers of
-                                                                Positives</option>
+                                                            <option value="Select">Select</option>
+                                                            <option value="numbers_of_sample_recieved">No. of Sample  Received</option>
+                                                            <option value="numbers_of_positives">Total numbers of Positives</option>
                                                             <option value="numbers_of_test">Number of Test Conducted
                                                             </option>
-                                                            <option value="numbers_of_intered_ihip">No. of Entered into
-                                                                IHIP</option>
+                                                            <option value="numbers_of_intered_ihip">No. of Entered into IHIP</option>
                                                         </select>
                                                     </div>
+                                                        </div>
+                                                       
+                                                    </div>
+                                                  
                                                     <div id="yearReport" class=" "></div>
                                                 </div>
                                                 <div class="col-md-6 pl-2 border">
+                                                    <div class="row my-3">
+                                                        <div class="col-md-12">
+                                                            <h3 class="title">
+                                                            Institute wise Yearly data
+                                                            </h3>
+                                                        </div>
+                                                    </div>
                                                     <div class=" ">
                                                         <div id="monthlyReport" ></div>
                                                     </div>

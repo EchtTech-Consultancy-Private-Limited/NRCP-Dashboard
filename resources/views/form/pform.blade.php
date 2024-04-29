@@ -27,6 +27,16 @@
                   <div class="note">
                     <i class="fa fa-hand-o-right" aria-hidden="true"></i> Enter Data Accurately and Completely
                   </div>
+                  <form action="{{ route('pform') }}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    <div class="form-group mb-4">
+                        <div class="custom-file text-left">
+                            <input type="file" name="file" class="custom-file-input" id="customFile">
+                            <label class="custom-file-label" for="customFile">Choose file</label>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary">Import Users</button>
+                </form>
                   <form action="{{ route('pform.store') }}" method="post" enctype="multipart/form-data" class="myPForm"> @csrf <div class="row bg-c-gray">
                     <input type="hidden" value="p_form" name="form_type">  
                     <div class="col-lg-12 col-md-12">
@@ -311,8 +321,8 @@
                       </div>
                     </div>
                     <div class="col-md-12">
-                      <div class="table-responsive" id="nav-add-patient-record" role="tabpanel" aria-labelledby="home-tab">
-                        <table id="general_profiles_TABLE2" class="display ">
+                      <div class="" id="nav-add-patient-record" role="tabpanel" aria-labelledby="home-tab">
+                        <table id="general_profiles_TABLE2" class=" table-responsive">
                           <thead>
                             <tr>
                               <th>Sl#</th>

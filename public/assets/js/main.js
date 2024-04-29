@@ -1,26 +1,42 @@
 // adjusting the placeholder  color
-let select = $('select');
 
-select.each((index, element) => {
-    let selectWord = $(element).find(':selected').text().split(' ');
+let selectBox = $('select');
+selectBox.each(function () {
+    let valueArr = $(this).find(':selected').text().trim().split(' ');
+    if (valueArr.includes('select') || valueArr.includes('Select')) {
+        $(this).css('color', 'grey');
+    } else {
+        $(this).css('color', '#000');
+    }
     
-    $(element).css('color', 'grey')
-    $(element).on('change', function () {
-        if ($(this).val() !== selectWord[0]) {
-            $(this).css('color', '#000');
-            // alert('code is executed');
-        } else {
+});
+
+let selectBoxes = $("select");
+
+selectBoxes.each((index, element) => {
+    let select = $(element);
+    let selectedText = select.find(':selected').text();
+    let selectWords = selectedText.split(' ');
+
+    select.on('change', function () {
+        let selectedValue = $(this).find(':selected').text();
+        let selectedWords = selectedValue.split(' ');
+        if (selectedWords.includes('select') || selectedWords.includes('Select')) {
             $(this).css('color', 'grey');
-           
+        } else {
+            $(this).css('color', '#000');
         }
     });
 });
 
+// adjusting width  edit form of edit form 
+let tabPaneWidth = $(".tab-pane.fade.show.active").innerWidth()
+let tableEditFormWidth = $('form.myForm').css('width', `${tabPaneWidth-50}px`)
+// success message and failde message popp 
 function alertMessage(){
     $('.alert.alert-success').css('display', 'none');
     $('.alert.alert-danger').css('display', 'none');
 }
-
 setTimeout(alertMessage, 2000);
 
 function handleTest(e) {
@@ -29,8 +45,26 @@ function handleTest(e) {
         e.preventDefault();
     }
 }
+// css for adjusting table scroll according to screen width
+// $(document).ready(function(){
+    
+// let general_profiles_TABLE_wrapper = document.querySelector("div#nav-add-patient-record").clientWidth;
+// console.log(general_profiles_TABLE_wrapper);
 
-// validate input
+// let responsive  = $("#general_profiles_TABLE");
+// responsive.each((index, item)=>{
+//     let tableWidth = $(item).children().width()
+//     console.log(tableWidth, general_profiles_TABLE_wrapper);
+//     if(tableWidth> general_profiles_TABLE_wrapper){
+//         $(item).css("display", "block")
+//     } else{
+//         $(item).css("display", "table")
+//     }
+// })
+// })
+
+// let  actualInnerWidth = edit_table.prop("clientWidth"); // El. width minus scrollbar width
+
 function validateInput(input) {
     input.value = input.value.replace(/\D/g, '');
 }
@@ -101,6 +135,11 @@ $(document).ready(function(){
         // Handle click on "Expand All" button
      
 });
+    var table = $('#general_profiles_TABLE').DataTable({
+        'responsive': true,
+    });
+        // Handle click on "Expand All" button
+     
 
 $(document).ready(function(){
     // Flag to track the state of row details

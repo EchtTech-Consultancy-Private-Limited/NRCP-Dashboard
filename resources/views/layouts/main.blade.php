@@ -8,7 +8,7 @@
             </div>
             <div class="col-sm-4">
                 <ol class="breadcrumb  justify-content-end m-0 p-0 align-items-center" >
-                    <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
+                    <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a></li>
                     <li class="breadcrumb-item active">@section('title') {{ config('app.name') }} @show</li>
                 </ol>
             </div><!-- /.col --> 

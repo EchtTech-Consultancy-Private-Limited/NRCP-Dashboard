@@ -42,6 +42,7 @@
 	display: flex;
     min-height: 91px;
 	align-items: center;
+	margin: 0;
   }
   .box .cases {
 	font-size: 18px;
@@ -881,7 +882,7 @@ a.nhm-file{
 		top: 18px;
 		right: 29px;
 		z-index: 99;
-		margin: 8px 0px 0 10px;
+		// margin: 8px 0px 0 10px;
 		select{
 			font-size: 15px;
     padding: 0;
@@ -932,11 +933,48 @@ select[name="state"]{
 	}
 }
 button#reset_button {
-    background: #ab4024 !important;
+    // background: #ab4024 !important;
 }
 div#monthlyReport{
 	height: 500px !important;
+	text.highcharts-title {
+		display: none;
+	}
 }
 div#yearReport{
 	height: 500px !important;
+	text.highcharts-title {
+		display: none;
+	}
+}
+
+
+input[type=date]:invalid::-webkit-datetime-edit {
+    color: grey !important;
+}
+input[type="date"]::-webkit-datetime-edit-text,
+input[type="date"]::-webkit-datetime-edit-month-field,
+input[type="date"]::-webkit-datetime-edit-day-field,
+input[type="date"]::-webkit-datetime-edit-year-field {
+  color: #888;
+}
+
+input[type=date]:invalid::-webkit-datetime-edit {
+    color: grey !important;
+}
+
+.title {
+    font-size: 21px;
+    margin-left: 16px;
+    font-weight: 600;
+}
+
+.btn.bg-danger {
+    border-radius: 32px;
+    padding: 5px 20px;
+    font-size: 14px;
+
+}
+.form-group .form-control{
+	color: #000;
 }

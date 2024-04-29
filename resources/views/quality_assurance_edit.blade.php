@@ -1,6 +1,6 @@
 @extends('layouts.main') 
 @section('title')
-{{__('Quality Assurance Edit')}}
+{{__('Quality Edit')}}
 @endsection
 @section('content')
 <div class="container-fluid">

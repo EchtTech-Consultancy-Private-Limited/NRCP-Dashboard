@@ -1,6 +1,6 @@
 @extends('layouts.main')
 @section('title')
-{{__('Financial Edit')}}
+{{__('Finance Edit')}}
 @endsection
 @section('content')
 <div class="container-fluid">

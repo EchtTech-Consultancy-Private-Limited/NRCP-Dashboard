@@ -48,6 +48,7 @@ Route::middleware(['Admin','device'])->group(function () {
             Route::post('update/{id}',[PFormController::class, 'update'])->name('update');
             Route::get('delete/{id}',[PFormController::class, 'delete'])->name('delete');
         });
+        Route::post('pform',[PFormController::class, 'pform'])->name('pform');
         Route::group(['prefix' => 'lform', 'as' => 'lform.'], function(){
             Route::get('/', [LFormController::class, 'index'])->name('index');
             Route::post('store',[LFormController::class, 'store'])->name('store');

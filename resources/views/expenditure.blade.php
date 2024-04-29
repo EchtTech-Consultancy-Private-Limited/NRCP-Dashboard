@@ -1,6 +1,6 @@
 @extends('layouts.main')
 @section('title')
-{{__('Financial Form')}}
+{{__('Finance Form')}}
 @endsection
 @section('content')
 <style>
@@ -45,11 +45,11 @@
                                 </div>
                                 <div class="col-lg-2 col-md-2 col-6">
                                     <div class="form-group">
-                                        <label for="district">Fund Recieved<span
+                                        <label for="district">Fund Received<span
                                             class="star">*</span></label>
                                         <select class="form-select" aria-label="Default select example"
                                             name="fund_recieved" id="fund_recieved">
-                                            <option value="">Select Your Fund Recieved</option>
+                                            <option value="">Select Your Fund Received</option>
                                              @if(old('fund_recieved')) 
                                                 <option value="{{ old('fund_recieved') }}" selected>
                                              {{ old('fund_recieved') }}
@@ -103,7 +103,7 @@
                               <tr>
                                  <th>Sr.No.</th>
                                  <th>Financial Year</th>
-                                 <th>Fund Recieved</th>
+                                 <th>Fund Received</th>
                                  <th>Equipment Purchase</th>
                                  <th>Action</th>
                               </tr>

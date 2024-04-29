@@ -753,7 +753,7 @@ const googlePieChart = (result) => {
             }
         },
         title: {
-            text: `Cases by Gendersss in India ${filter_state !== undefined ? filter_state + ' >' : ''} ${filter_district !== undefined ? filter_district + ' >' : ''} ${filter_from_year !== "" ? filter_from_year + ' >' : ''} ${filter_to_year !== "" ? filter_to_year + ' >' : ''}    n=(${result.total})`,
+            text: `Cases by Gender in India ${filter_state !== undefined ? filter_state + ' >' : ''} ${filter_district !== undefined ? filter_district + ' >' : ''} ${filter_from_year !== "" ? filter_from_year + ' >' : ''} ${filter_to_year !== "" ? filter_to_year + ' >' : ''}    n=(${result.total})`,
             align: 'left',
             style: {
                 fontSize: innerWidth<=1350 ? '15px' : (innerWidth>=1350 ? '18px': '15px') // Set the font size here
