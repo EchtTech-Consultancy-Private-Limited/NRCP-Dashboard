@@ -117,7 +117,7 @@
                                                             <button id="laboratory_apply_filter"
                                                                 class="btn bg-primary text-light laboratory_apply_filter button border-0 mr-2">Search</button>
                                                             <button id="laboratory_reset_button"
-                                                                class="btn bg-primary text-light laboratory_apply_filter button border-0 mr-2">Reset</button>
+                                                                class="btn bg-danger text-light border-0 mr-2">Reset</button>
                                                         </div>
                                                     </div>
 

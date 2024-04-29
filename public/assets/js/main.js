@@ -32,11 +32,11 @@ selectBoxes.each((index, element) => {
 // adjusting width  edit form of edit form 
 let tabPaneWidth = $(".tab-pane.fade.show.active").innerWidth()
 let tableEditFormWidth = $('form.myForm').css('width', `${tabPaneWidth-50}px`)
+// success message and failde message popp 
 function alertMessage(){
     $('.alert.alert-success').css('display', 'none');
     $('.alert.alert-danger').css('display', 'none');
 }
-
 setTimeout(alertMessage, 2000);
 
 function handleTest(e) {
@@ -45,7 +45,23 @@ function handleTest(e) {
         e.preventDefault();
     }
 }
+// css for adjusting table scroll according to screen width
+// $(document).ready(function(){
+    
+// let general_profiles_TABLE_wrapper = document.querySelector("div#nav-add-patient-record").clientWidth;
+// console.log(general_profiles_TABLE_wrapper);
 
+// let responsive  = $("#general_profiles_TABLE");
+// responsive.each((index, item)=>{
+//     let tableWidth = $(item).children().width()
+//     console.log(tableWidth, general_profiles_TABLE_wrapper);
+//     if(tableWidth> general_profiles_TABLE_wrapper){
+//         $(item).css("display", "block")
+//     } else{
+//         $(item).css("display", "table")
+//     }
+// })
+// })
 
 // let  actualInnerWidth = edit_table.prop("clientWidth"); // El. width minus scrollbar width
 

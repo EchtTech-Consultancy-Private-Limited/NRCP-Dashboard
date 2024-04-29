@@ -910,10 +910,6 @@ select[name=state] {
   font-size: 14px;
 }
 
-button#reset_button {
-  background: #ab4024 !important;
-}
-
 div#monthlyReport {
   height: 500px !important;
 }
@@ -940,4 +936,10 @@ input[type=date]:invalid::-webkit-datetime-edit {
   font-size: 21px;
   margin-left: 16px;
   font-weight: 600;
+}
+
+.btn.bg-danger {
+  border-radius: 32px;
+  padding: 5px 20px;
+  font-size: 14px;
 }/*# sourceMappingURL=dashboard.css.map */

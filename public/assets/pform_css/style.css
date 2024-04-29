@@ -139,7 +139,7 @@ body {
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   margin: 5px 0;
   text-transform: capitalize;
-  padding: 8px 3px 6px;
+  padding: 8px 3px 8px;
   border-radius: 50px;
 }
 
