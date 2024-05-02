@@ -17,7 +17,7 @@
                 <div class="w-100 ">
                     <div class="table-title">National Health Mission (NHM) ROPs</div>
                 </div>            
-                <table class="w-100 table-title"> 
+                <table class="w-100 "> 
                     <tr>
                         <th>S No.</th>
                         <th>Year</th>
@@ -66,7 +66,7 @@
                         @endforeach
                     @else
                     <tr> 
-                        <td colspan="5">No Data Available !</td>
+                        <td colspan="6" class="text-center">No Data Available !</td>
                     </tr>
                     @endif
                 </table>

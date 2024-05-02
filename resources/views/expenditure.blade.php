@@ -78,7 +78,7 @@
                                 </div>
                                     <div class="col-lg-3 col-md-3 col-6 search-reset">
                                         <div class="apply-filter mt-4 pt-1">
-                                        <button type="submit" class="btn bg-primary mr-3">Save</button>
+                                        <button type="submit" class="btn bg-primary search-patient-btn mt-0 mr-3">Save</button>
                                         <button type="reset" class="btn bg-danger">Reset</button>
                                         </div>
                                     </div>
