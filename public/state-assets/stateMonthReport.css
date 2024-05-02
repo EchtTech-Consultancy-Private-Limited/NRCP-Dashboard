@@ -1,124 +1,131 @@
 body {
-    font-family: Cambria, Georgia, serif;
-    font-weight: 400;
-    font-style: normal;
-  }
-  
-  .bglightBlue {
-    background-color: rgba(217, 226, 243, 0.3294117647);
-  }
-  
-  .bggrey {
-    background-color: rgb(208, 206, 206);
-  }
-  
-  strong {
-    font-weight: 600 !important;
-  }
-  
-  p {
-    margin: 0;
-  }
-  
-  table {
-    margin: auto;
-    width: 100%;
-    border-collapse: collapse;
-    border-spacing: 0;
-    border: 1px solid #000;
-  }
-  table ul {
-    margin: 0;
-    padding-left: 20px;
-  }
-  table p {
-    font-size: 14px;
-    margin: 0;
-    color: #000;
-    font-weight: 500;
-    display: flex;
-    margin: 0;
-  }
-  table p input[type=checkbox] {
-    width: 11px;
-    margin-right: 12px;
-  }
-  table img {
-    height: 90px;
-  }
-  table td {
-    padding: 3px 10px;
-    border-bottom: 1px solid #000;
-    border-top: 0;
-    border-left: 0;
-    border-right: 1px solid #000;
-  }
-  table td:last-child {
-    border-right: 0;
-  }
-  
-  .container {
-    margin: auto;
-    box-shadow: 0px 0px 60px #ddd;
-    padding: 27px;
-  }
-  
-  @media (min-width: 1200px) {
-    .container, .container-lg, .container-md, .container-sm, .container-xl {
-      max-width: 900px;
-    }
-  }
-  .w-50 {
-    width: 50%;
-  }
-  
-  .p-0 {
-    padding: 0;
-  }
-  
-  .logoHeader {
-    justify-content: space-between;
-    display: flex;
-  }
-  .logoHeader img {
-    height: 75px;
-  }
-  
-  .logoTitle {
-    text-align: center;
-  }
-  .logoTitle p {
-    color: #b50000;
-    font-size: 16px;
-    font-weight: 600;
-    text-decoration: underline;
-  }
-  .logoTitle p:last-child {
-    font-size: 20px;
-    font-weight: 700;
-    color: #000;
-    margin: 12px 0 20px;
-  }
-  
-  .mb-5 {
-    margin-bottom: 40px;
-  }
-  
-  .d-flex {
-    display: flex !important;
-  }
-  
-  .justify-content-between {
-    justify-content: space-between !important;
-  }
-  
-  .footerContent {
-    margin: 40px 0;
-  }
-  .footerContent p em {
-    color: #0093ff;
-  }
-  
-  input[type=text] {
-    width: 100%;
-  }/*# sourceMappingURL=stateMonthReport.css.map */
+  font-family: Cambria, Georgia, serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.bglightBlue {
+  background-color: rgba(217, 226, 243, 0.3294117647);
+}
+
+.bggrey {
+  background-color: rgb(208, 206, 206);
+}
+
+strong {
+  font-weight: 600 !important;
+}
+
+p {
+  margin: 0;
+}
+
+table {
+  margin: auto;
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  border: 1px solid #000;
+}
+table ul {
+  margin: 0;
+  padding-left: 20px;
+}
+table p {
+  font-size: 14px;
+  margin: 0;
+  color: #000;
+  font-weight: 500;
+  display: flex;
+  margin: 0;
+}
+table p input[type=checkbox] {
+  width: 11px;
+  margin-right: 12px;
+}
+table p input[type=radio] {
+  width: 11px;
+  margin-right: 12px;
+}
+table img {
+  height: 90px;
+}
+table td {
+  padding: 3px 10px;
+  border-bottom: 1px solid #000;
+  border-top: 0;
+  border-left: 0;
+  border-right: 1px solid #000;
+}
+table td:last-child {
+  border-right: 0;
+}
+
+.table-container {
+  margin: auto;
+  box-shadow: 0px 0px 60px #ddd;
+  background-color: #fff;
+}
+
+input[name=healthcare_worker_facility_name], input[name=specify_other_name] {
+  display: none;
+}
+
+.w-50 {
+  width: 50%;
+}
+
+.p-0 {
+  padding: 0;
+}
+
+table tr td p label {
+  margin: 0;
+}
+
+.logoHeader {
+  justify-content: space-between;
+  display: flex;
+}
+.logoHeader img {
+  height: 75px;
+}
+
+.logoTitle {
+  text-align: center;
+}
+.logoTitle p {
+  color: #b50000;
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: underline;
+}
+.logoTitle p:last-child {
+  font-size: 20px;
+  font-weight: 700;
+  color: #000;
+  margin: 12px 0 20px;
+}
+
+.mb-5 {
+  margin-bottom: 40px;
+}
+
+.d-flex {
+  display: flex !important;
+}
+
+.justify-content-between {
+  justify-content: space-between !important;
+}
+
+.footerContent {
+  margin: 40px 0;
+}
+.footerContent p em {
+  color: #0093ff;
+}
+
+input[type=text] {
+  width: 100%;
+}/*# sourceMappingURL=stateMonthReport.css.map */

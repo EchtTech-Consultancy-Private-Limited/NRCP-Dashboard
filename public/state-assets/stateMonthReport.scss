@@ -39,6 +39,10 @@ table{
             width: 11px;
             margin-right: 12px;
         }
+        input[type="radio"] {
+            width: 11px;
+            margin-right: 12px;
+        }
     }
     img{
         height: 90px;
@@ -57,19 +61,26 @@ table{
   
   
 }
-.container{
+// .container{
+//     margin: auto;
+//     box-shadow: 0px 0px 60px #ddd;
+//     padding: 27px;
+// }
+
+// @media (min-width: 1200px){
+//     .container, .container-lg, .container-md, .container-sm, .container-xl {
+//         max-width: 900px;
+//     }
+// }
+.table-container {
     margin: auto;
     box-shadow: 0px 0px 60px #ddd;
-    padding: 27px;
+    background-color: #fff;
 }
 
-@media (min-width: 1200px){
-    .container, .container-lg, .container-md, .container-sm, .container-xl {
-        max-width: 900px;
-    }
+input[name='healthcare_worker_facility_name'], input[name="specify_other_name"]{
+    display: none;
 }
-
-
 
 .w-50{
     width: 50%;
@@ -78,6 +89,17 @@ table{
     padding: 0;
 }
 
+table{
+    tr{
+        td{
+            p{
+                label{
+                    margin: 0;
+                }
+            }
+        }
+    }
+}
 
 .logoHeader{
     justify-content: space-between;

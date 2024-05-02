@@ -29,6 +29,26 @@ selectBoxes.each((index, element) => {
     });
 });
 
+
+
+// Add change event listener to all radio buttons
+$("input[type='radio']").change(function() {
+    // Check if the radio button with ID "Health-care-worker1" is checked
+    if ($("#Health-care-worker1").is(":checked")) {
+        // Show the input field if "Health-care-worker1" radio button is checked
+        $("input[name='healthcare_worker_facility_name']").css("display", "block");
+        $("input[name='specify_other_name']").css("display", "none");
+    } else if ( $("#Other1").is(":checked")) {
+        $("input[name='specify_other_name']").css("display", "block");
+        $("input[name='healthcare_worker_facility_name']").css("display", "none");
+    } else {
+        // Hide the input field if any other radio button is checked
+        $("input[name='healthcare_worker_facility_name']").css("display", "none");
+        $("input[name='specify_other_name']").css("display", "none");
+    }
+});
+
+
 // adjusting width  edit form of edit form 
 let tabPaneWidth = $(".tab-pane.fade.show.active").innerWidth()
 let tableEditFormWidth = $('form.myForm').css('width', `${tabPaneWidth-50}px`)
@@ -163,4 +183,5 @@ $(document).ready(function(){
 
 
 });
+
 

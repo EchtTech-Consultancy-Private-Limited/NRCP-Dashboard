@@ -6,8 +6,8 @@
   <form action="{{ route('state.investigate-store') }}" method="post">
     @csrf
     <div class="container-fluid">
-        <div>
-            <table border="1" cellpadding="0" cellspacing="0">
+        <div class="container bg-light mb-4">
+            <table>
                 <tbody>
                     <tr>
                         <td colspan="38">
@@ -193,21 +193,18 @@
                             <p>
                                 <input type="checkbox" id="SecondarySchool" name="suspect_education[][secondary_school]" value="Secondary School">
                                 <label for="SecondarySchool"> Secondary School</label>
-                                    Secondary School</label>
                             </p>
                         </td>
                         <td colspan="9">
                             <p>
                                 <input type="checkbox" name="suspect_education[][postgraduate]" value="Postgraduate">
                                 <label for="Postgraduate"> Postgraduate</label>
-                                    Postgraduate</label>
                             </p>
                         </td>
                         <td colspan="7">
                             <p>
                                 <input type="checkbox" id="Unknown" name="suspect_education[][unknown]" value="Unknown">
-                                <label for="Unknown">
-                                    Unknown</label>
+                                <label for="Unknown">    Unknown</label>
                             </p>
                         </td>
                     </tr>
@@ -272,25 +269,25 @@
                     <tr>
                         <td colspan="4">
                             <p>
-                                <input name="relationship_with_suspect" type="checkbox" id="Parent1" value="Parent">
+                                <input name="relationship_with_suspect" type="radio" id="Parent1" value="Parent">
                                 <label for="Parent1">Parent</label>
                             </p>
                         </td>
                         <td colspan="10">
                             <p>
-                                <input name="relationship_with_suspect" type="checkbox" id="Sibling1" value="Sibling">
+                                <input name="relationship_with_suspect" type="radio" id="Sibling1" value="Sibling">
                                 <label for="Sibling1">Sibling</label>
                             </p>
                         </td>
                         <td colspan="13">
                             <p>
-                                <input name="relationship_with_suspect" type="checkbox" id="Parent-in-law1" value="Parent-in-law">
+                                <input name="relationship_with_suspect" type="radio" id="Parent-in-law1" value="Parent-in-law">
                                 <label for="Parent-in-law1">Parent-in-law</label>
                             </p>
                         </td>
                         <td colspan="11">
                             <p>
-                                <input name="relationship_with_suspect" type="checkbox" id="Community-leader1" value="Community-leader">
+                                <input name="relationship_with_suspect" type="radio" id="Community-leader1" value="Community-leader">
                                 <label for="Community-leader1">Community leader</label>
                             </p>
                         </td>
@@ -298,25 +295,25 @@
                     <tr>
                         <td colspan="4">
                             <p>
-                                <input name="relationship_with_suspect" type="checkbox" id="Husband-wife1" value="Husband-wife">
+                                <input name="relationship_with_suspect" type="radio" id="Husband-wife1" value="Husband-wife">
                                 <label for="Husband-wife1">Husband/wife</label>
                             </p>
                         </td>
                         <td colspan="10">
                             <p>
-                                <input name="relationship_with_suspect" type="checkbox" id="Child1" value="Child">
+                                <input name="relationship_with_suspect" type="radio" id="Child1" value="Child">
                                 <label for="Child1">Child</label>
                             </p>
                         </td>
                         <td colspan="13">
                             <p>
-                                <input name="relationship_with_suspect" type="checkbox" id="Friend-neighbour1" value="Friend-neighbour">
+                                <input name="relationship_with_suspect" type="radio" id="Friend-neighbour1" value="Friend-neighbour">
                                 <label for="Friend-neighbour1">Friend or neighbour</label>
                             </p>
                         </td>
                         <td colspan="11">
                             <p>
-                                <input type="checkbox" name="relationship_with_suspect" id="Son-in-law-daughter-in-law1" value="Son-in-law/daughter-in-law">
+                                <input type="radio" name="relationship_with_suspect" id="Son-in-law-daughter-in-law1" value="Son-in-law/daughter-in-law">
                                 <label for="Son-in-law-daughter-in-law1">Son-in-law/daughter-in-law</label>
                             </p>
                         </td>
@@ -324,7 +321,7 @@
                     <tr>
                         <td colspan="14">
                             <p>
-                                <input type="checkbox" name="relationship_with_suspect" id="Health-care-worker1" value="Health care worker (facility name)">
+                                <input type="radio" name="relationship_with_suspect" id="Health-care-worker1" value="Health care worker (facility name)">
                                 <label for="Health-care-worker1">Health care worker (facility name):</label>
                             </p>
                         </td>
@@ -333,7 +330,7 @@
                         </td>
                         <td colspan="11">
                             <p>
-                                <input type="checkbox" id="Other1" value="Other(specify)">
+                                <input type="radio" id="Other1" name="relationship_with_suspect" value="Other(specify)">
                                 <label for="Other1">Other(specify):</label>
                             </p>
                         </td>
@@ -357,7 +354,7 @@
                     <tr>
                         <td>
                             <p>
-                                <input type="checkbox" id="CategoryI1" name="suspect_contact_with_animals" value="category1">
+                                <input type="radio" id="CategoryI1" name="suspect_contact_with_animals" value="category1">
                                 <label for="CategoryI1">Yes, Category I exposure</label>
                             </p>
                         </td>
@@ -369,7 +366,7 @@
                     <tr>
                         <td>
                             <p>
-                                <input type="checkbox" id="CategoryII1" name="suspect_contact_with_animals" value="category2">
+                                <input type="radio" id="CategoryII1" name="suspect_contact_with_animals" value="category2">
                                 <label for="CategoryII1">Yes, Category II exposure</label>
                             </p>
                         </td>
@@ -381,7 +378,7 @@
                     <tr>
                         <td>
                             <p>
-                                <input type="checkbox" id="CategoryIII1" name="suspect_contact_with_animals" value="category3">
+                                <input type="radio" id="CategoryIII1" name="suspect_contact_with_animals" value="category3">
                                 <label for="CategoryIII1">Yes, Category III exposure</label>
                             </p>
                         </td>
@@ -393,13 +390,13 @@
                     <tr>
                         <td colspan="17">
                             <p>
-                                <input type="checkbox" id="No1" name="suspect_contact_with_animals" value="No">
+                                <input type="radio" id="No1" name="suspect_contact_with_animals" value="No">
                                 <label for="No1">No</label>
                             </p>
                         </td>
                         <td colspan="21">
                             <p>
-                                <input type="checkbox" id="Unknown1" name="suspect_contact_with_animals" value="Unknown">
+                                <input type="radio" id="Unknown1" name="suspect_contact_with_animals" value="Unknown">
                                 <label for="Unknown1">Unknown</label>
                             </p>
                         </td>
@@ -553,17 +550,10 @@
                 </tbody>
             </table>
         </div>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
+        
         <!-- ************************************************************************ -->
-        <div>
-            <table border="1" cellpadding="0" cellspacing="0">
+        <div class="container bg-light mb-4">
+            <table>
                 <tbody>
                     <tr>
                         <td colspan="6">
@@ -1108,14 +1098,9 @@
             </table>
         </div>
         <!-- **************************************************first***********************************  -->
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <div class="container">
-            <table border="1">
+       
+        <div class="container bg-light mb-4">
+            <table >
                 <thead>
                     <tr>
                         <td colspan="4" class="bglightBlue">
@@ -1810,18 +1795,11 @@
                 </tbody>
             </table>
         </div>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
+       
         <!-- **************************************************** -->
         <!-- **************************************************************** -->
-        <div class="container">
-            <table border="1" cellpadding="0" cellspacing="0">
+        <div class="container bg-light mb-4">
+            <table>
                 <tbody>
                     <tr>
                         <td colspan="1">
@@ -2021,10 +1999,8 @@
             </table>
         </div>
         <!-- ****************************************************** -->
-
+        <div class="d-flex justify-content-center">  <button class="btn btn-primary">Save</button> </div>
     </div>
-    <div>
-        <button class="btn btn-primary">Save</button>
-    </div>
+   
   </form>
 @endsection
