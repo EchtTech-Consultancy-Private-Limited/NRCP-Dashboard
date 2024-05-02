@@ -93,11 +93,15 @@
                           <label for="gander">Gender <span class="star">*</span>
                           </label>
                           <select class="form-select" name="gender" aria-label="Default select example" id="gender" required>
-                            <option value=""> Select Gender</option> @if(old('gender')) <option value="{{ old('gender') }}" selected>{{ old('gender') }}
-                            </option> @endif <option value="Male"> Male</option>
+                            <option value=""> Select Gender</option> 
+                            @if(old('gender')) 
+                            <option value="{{ old('gender') }}" selected>{{ old('gender') }}</option> 
+                            @endif 
+                            <option value="Male"> Male</option>
                             <option value="Famale"> Famale</option>
                             <option value="Other"> Other</option>
-                          </select> @if ($errors->has('gender')) <span class="form-text text-muted">{{ $errors->first('gender') }}</span> @endif
+                          </select> 
+                          @if ($errors->has('gender')) <span class="form-text text-muted">{{ $errors->first('gender') }}</span> @endif
                         </div>
                       </div>
                       <div class="col-lg-3 col-md-3">

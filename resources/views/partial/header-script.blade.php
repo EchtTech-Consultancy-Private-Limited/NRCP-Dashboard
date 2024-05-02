@@ -44,8 +44,10 @@
 <link rel="stylesheet" href="{{ asset('assets/css/toastr.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/css/toastr.min.css') }}">
 
-@if (request()->is('investigate-report'))
-    <link rel="stylesheet" href="{{ asset('state-assets/pdf.css') }}">
-    <link rel="stylesheet" href="{{ asset('state-assets/pdf.css.map') }}">
-    <link rel="stylesheet" href="{{ asset('state-assets/pdf.scss') }}">
-@endif
+{{-- state dashboard --}}
+<link rel="stylesheet" href="{{ asset('state-assets/pdf.css') }}">
+<link rel="stylesheet" href="{{ asset('state-assets/pdf.css.map') }}">
+<link rel="stylesheet" href="{{ asset('state-assets/pdf.scss') }}">
+<link rel="stylesheet" href="{{ asset('state-assets/stateMonthReport.css') }}">
+
+

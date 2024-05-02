@@ -119,20 +119,42 @@
 
         @if (Auth::user()->user_type == 3)
             <div
-                class="arrow arrow-right link bg-primary text-white dashboard-title {{ request()->is('state-dashboard') ? 'active' : '' }}">
-                <a href="{{ url('/state-dashboard') }}"> <i class="fa fa-dashboard iconmargin-set"
+                class="arrow arrow-right link bg-primary text-white dashboard-title {{ request()->routeIs('state.dashboard') ? 'active' : '' }}">
+                <a href="{{ route('state.dashboard') }}"> <i class="fa fa-dashboard iconmargin-set"
                         aria-hidden="true"></i>
                     Dashboard</a>
             </div>
-            <div class="arrow arrow-right link bg-primary text-white dashboard-title {{ request()->is('investigate-report') ? 'active' : '' }}">
-                <a href="{{ url('/investigate-report') }}"> <i class="fa fa-dashboard iconmargin-set"
+            <div class="arrow arrow-right link bg-primary text-white dashboard-title {{ request()->routeIs('state.investigate-create') ? 'active' : '' }}">
+                <a href="{{ route('state.investigate-create') }}"> <i class="fa fa-dashboard iconmargin-set"
                     aria-hidden="true"></i>
                 Investigate Report</a>
             </div>
-            <div class="arrow arrow-right link bg-primary text-white dashboard-title {{ request()->is('monthly-report') ? 'active' : '' }}">
-                <a href="{{ url('/monthly-report') }}"> <i class="fa fa-dashboard iconmargin-set"
-                    aria-hidden="true"></i>
-                Monthly Report</a>
+            <div class="sidebarAccordion">
+
+                <div class="link bg-primary text-white dashboard-title">
+                    <a class="accordion-heading" data-toggle="collapse" href="#multiCollapseExample1" role="button"  aria-expanded="false" aria-controls="multiCollapseExample1"><i class="fa fa-dashboard iconmargin-set"  aria-hidden="true"></i>State Monthly Report </a>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <div class="collapse multi-collapse {{ in_array(request()->route()->getName(), ['state.monthly-report', 'state.monthly-report-list']) ? 'show' : '' }}"
+                            id="multiCollapseExample1">
+                        
+                            <div class="card card-body">
+                                <div
+                                    class="link bg-primary text-white dashboard-title {{ request()->routeIs('state.monthly-report-list') ? 'active' : '' }}">
+                                    <a href="{{ route('state.monthly-report-list') }}"> <i class="fa fa-dashboard iconmargin-set"
+                                        aria-hidden="true"></i>List</a>
+                                </div>
+                                <div
+                                    class="link bg-primary text-white dashboard-title {{ request()->routeIs('state.monthly-report') ? 'active' : '' }}">
+                                    <a href="{{ route('state.monthly-report') }}"> <i class="fa fa-dashboard iconmargin-set"
+                                        aria-hidden="true"></i>Create</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         @endif
 

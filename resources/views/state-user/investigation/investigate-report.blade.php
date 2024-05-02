@@ -3,7 +3,7 @@
     {{ 'NRCP State Dashboard | Investigate Report' }}
 @endsection
 @section('content')
-  <form action="{{ route('investigate-report-save') }}" method="post">
+  <form action="{{ route('state.investigate-store') }}" method="post">
     @csrf
     <div class="container-fluid">
         <div>
@@ -33,7 +33,7 @@
                                     </p>
                                 </div>
                                 <div>
-                                    <img src="{{ asset('') }}">
+                                    <img src="{{ asset('state-assets/images/nrcpLogo.png') }}">
                                 </div>
                             </div>
                         </td>
@@ -57,13 +57,19 @@
                             <p>Name of interviewer</p>
                         </td>
                         <td colspan="18" class="bggrey">
-                            <input name="intervewer_name" type="text">
+                            <input type="text" name="intervewer_name" value="{{ old('intervewer_name') }}">
+                            @if ($errors->has('intervewer_name'))
+                                <span class="form-text text-muted">{{ $errors->first('intervewer_name') }}</span>
+                            @endif
                         </td>
                         <td colspan="10">
                             <p>Date of Interview</p>
                         </td>
                         <td colspan="5" class="bggrey">
-                            <input name="interview_date" type="text">
+                            <input name="interview_date" value="{{ old('interview_date') }}" type="date">
+                            @if ($errors->has('interview_date'))
+                                <span class="form-text text-muted">{{ $errors->first('interview_date') }}</span>
+                            @endif
                         </td>
                     </tr>
                     <tr>
@@ -71,13 +77,19 @@
                             <p>Designation</p>
                         </td>
                         <td colspan="18" class="bggrey">
-                            <input name="intervewer_designation" type="text">
+                            <input name="intervewer_designation" value="{{ old('intervewer_designation') }}" type="text">
+                            @if ($errors->has('intervewer_designation'))
+                                <span class="form-text text-muted">{{ $errors->first('intervewer_designation') }}</span>
+                            @endif
                         </td>
                         <td colspan="10">
                             <p>Contact number</p>
                         </td>
                         <td colspan="5" class="bggrey">
-                            <input name="intervewer_contact_number" type="text">
+                            <input name="intervewer_contact_number" value="{{ old('intervewer_contact_number') }}" type="text" oninput="validateInput(this)" maxlength="12">
+                            @if ($errors->has('intervewer_contact_number'))
+                                <span class="form-text text-muted">{{ $errors->first('intervewer_contact_number') }}</span>
+                            @endif
                         </td>
                     </tr>
                     <tr>
@@ -92,30 +104,28 @@
                             <p>&nbsp;Name</p>
                         </td>
                         <td colspan="15" class="bggrey">
-                            <input name="suspected_name" type="text">
+                            <input name="suspected_name" type="text" value="{{ old('suspected_name') }}">
                         </td>
                         <td colspan="4">
                             <p>&nbsp;Sex</p>
                         </td>
                         <td colspan="9" class="bggrey">
-                            <input name="suspect_gender" type="text">
+                            <select class="form-select" name="suspected_gender" aria-label="Default select example" id="gender">
+                                <option value=""> Select Gender</option> 
+                                @if(old('suspected_gender')) 
+                                <option value="{{ old('suspected_gender') }}" selected>{{ old('suspected_gender') }}</option> 
+                                @endif 
+                                <option value="Male"> Male</option>
+                                <option value="Famale"> Famale</option>
+                                <option value="Other"> Other</option>
+                              </select>
+                            @if ($errors->has('suspected_gender')) <span class="form-text text-muted">{{ $errors->first('suspected_gender') }}</span> @endif
                         </td>
                         <td colspan="7">
                             <p>&nbsp;Age</p>
                         </td>
                         <td class="bggrey">
-                            <select name="suspect_education" id="">
-                                <option value="" selected>Select Year</option>
-                                <option value="" selected>2020</option>
-                                <option value="" selected>2021</option>
-                                <option value="" selected>2022</option>
-                                <option value="" selected>2023</option>
-                                <option value="" selected>2024</option>
-                                <option value="" selected>2025</option>
-
-
-                            </select>
-
+                            <input type="text" name="suspect_age" value="{{ old('suspect_age') }}" maxlength="2" oninput="validateInput(this)">
                         </td>
                     </tr>
                     <tr>
@@ -123,13 +133,13 @@
                             <p>Occupation</p>
                         </td>
                         <td colspan="11" class="bggrey">
-                            <input type="text" name="suspect_occupation">
+                            <input type="text" name="suspect_occupation" value="{{ old('suspect_occupation') }}">
                         </td>
                         <td colspan="4">
                             <p>Address</p>
                         </td>
                         <td colspan="21" class="bggrey">
-                            <input name="suspect_address" type="text">
+                            <input name="suspect_address" type="text" value="{{ old('suspect_address') }}">
                         </td>
                     </tr>
                     <tr>
@@ -137,37 +147,37 @@
                             <p>Level of education</p>
                         </td>
                         <td colspan="10">
-                            <input type="text" name="suspect_education[][text]">
+                            <input type="text" name="suspect_education[][level1]">
                         </td>
                         <td colspan="13">
-                            <input type="text" name="suspect_education[][text]">
+                            <input type="text" name="suspect_education[][level2]">
                         </td>
                         <td colspan="8">
-                            <input type="text" name="suspect_education[][text]">
+                            <input type="text" name="suspect_education[][level3]">
                         </td>
                     </tr>
                     <tr>
                         <td colspan="7">
                             <p>
-                                <input type="checkbox" id="Illiterate" name="suspect_education[][level]" value="Illiterate">
+                                <input type="checkbox" id="Illiterate" name="suspect_education[][Illiterate]" value="Illiterate">
                                 <label for="Illiterate">Illiterate</label>
                             </p>
                         </td>
                         <td colspan="15">
                             <p>
-                                <input type="checkbox" id="PrimarySchool" name="suspect_education[][level]" value="Primary School">
+                                <input type="checkbox" id="PrimarySchool" name="suspect_education[][primary_school]" value="Primary School">
                                 <label for="PrimarySchool">Primary School</label>
                             </p>
                         </td>
                         <td colspan="9">
                             <p>
-                                <input type="checkbox" id="Graduate" name="suspect_education[][level]" value="Graduate">
+                                <input type="checkbox" id="Graduate" name="suspect_education[][graduate]" value="Graduate">
                                 <label for="Graduate">Graduate</label>
                             </p>
                         </td>
                         <td colspan="7">
                             <p>
-                                <input type="checkbox" id="ProfessionalDegree" name="suspect_education[][level]" value="Professional Degree">
+                                <input type="checkbox" id="ProfessionalDegree" name="suspect_education[][professional_dgree]" value="Professional Degree">
                                 <label for="ProfessionalDegree">Professional Degree</label>
                             </p>
                         </td>
@@ -175,28 +185,28 @@
                     <tr>
                         <td colspan="7">
                             <p>
-                                <input type="checkbox" id="BelowPrimary">
-                                <label for="BelowPrimary" name="suspect_education[][level]" aria-valuemax="Below Primary"> Below Primary</label>
+                                <input type="checkbox" id="BelowPrimary" name="suspect_education[][below_primary]" aria-valuemax="Below Primary">
+                                <label for="BelowPrimary"> Below Primary</label>
                             </p>
                         </td>
                         <td colspan="15">
                             <p>
-                                <input type="checkbox" id="SecondarySchool">
-                                <label for="SecondarySchool" name="suspect_education[][level]" value="Secondary School"> Secondary School</label>
+                                <input type="checkbox" id="SecondarySchool" name="suspect_education[][secondary_school]" value="Secondary School">
+                                <label for="SecondarySchool"> Secondary School</label>
                                     Secondary School</label>
                             </p>
                         </td>
                         <td colspan="9">
                             <p>
-                                <input type="checkbox" id="Postgraduate">
-                                <label for="Postgraduate" name="suspect_education[][level]" value="Postgraduate"> Postgraduate</label>
+                                <input type="checkbox" name="suspect_education[][postgraduate]" value="Postgraduate">
+                                <label for="Postgraduate"> Postgraduate</label>
                                     Postgraduate</label>
                             </p>
                         </td>
                         <td colspan="7">
                             <p>
-                                <input type="checkbox" id="Unknown">
-                                <label for="Unknown" name="suspect_education[][level]" value="Unknown">
+                                <input type="checkbox" id="Unknown" name="suspect_education[][unknown]" value="Unknown">
+                                <label for="Unknown">
                                     Unknown</label>
                             </p>
                         </td>
@@ -204,17 +214,18 @@
                     <tr>
                         <td colspan="7">
                             <p>
-                                <input type="checkbox" id="Other(Specify)" name="suspect_education[][other]" value="Other(Specify)">
+                                <input type="checkbox" name="suspect_education[][other]" value="Other(Specify)">
                                 <label for="Other(Specify)">Other (Specify)</label>
                             </p>
                         </td>
                         <td colspan="31" class="bggrey">
-                            <input type="text">
+                            <input type="text" name="suspect_education[][other_specify_text]">
                         </td>
                     </tr>
                     <tr>
                         <td colspan="38">
-                            <p>Is/was patient immunocompromised? (if yes, provide details) <input type="text" name="suspect_details"></p>
+                            <p>Is/was patient immunocompromised? (if yes, provide details) 
+                                <input type="text" name="suspect_education[][details]"></p>
                             </p>
                         </td>
                     </tr>
@@ -230,13 +241,13 @@
                             <p>Name of respondent</p>
                         </td>
                         <td colspan="12">
-                            <input type="text" name="respondent_name">
+                            <input type="text" name="respondent_name" value="{{ old('respondent_name') }}">
                         </td>
                         <td colspan="10">
                             <p>Age of respondent</p>
                         </td>
                         <td colspan="11">
-                            <input type="text" name="respondent_age">
+                            <input type="text" name="respondent_age" value="{{ old('respondent_age') }}">
                         </td>
                     </tr>
                     <tr>
@@ -244,13 +255,13 @@
                             <p>Contact number</p>
                         </td>
                         <td colspan="12">
-                            <input type="text" name="respondent_contact">
+                            <input type="text" name="respondent_contact" value="{{ old('respondent_contact') }}">
                         </td>
                         <td colspan="10">
                             <p>Address (if different from patient)</p>
                         </td>
                         <td colspan="11">
-                            <input type="text" name="respondent_address">
+                            <input type="text" name="respondent_address" value="{{ old('respondent_address') }}">
                         </td>
                     </tr>
                     <tr>
