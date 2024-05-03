@@ -201,7 +201,26 @@ function srNo3() {
     });
 }
 
+// 6.4 If deceased, where did deceased die
 
+// deceased_die_health_facility
+// deceased_die_health_facility_input
+
+$("input[type='radio']").change(function() {
+    // Check if the radio button with ID "Health-care-worker1" is checked
+    if ($("#deceased_die_health_facility").is(":checked")) {
+        // Show the input field if "Health-care-worker1" radio button is checked
+        $("#deceased_die_health_facility_input").css("display", "block");
+        $("#deceased_die_other_input").css("display", "none");
+    } else if ( $("#deceased_die_other").is(":checked")) {
+        $("#deceased_die_other_input").css("display", "block");
+        $("#deceased_die_health_facility_input").css("display", "none");
+    } else {
+        // Hide the input field if any other radio button is checked
+        $("#deceased_die_health_facility_input").css("display", "none");
+        $("deceased_die_other_input").css("display", "none");
+    }
+});
 
 
 // Add change event listener to all radio buttons

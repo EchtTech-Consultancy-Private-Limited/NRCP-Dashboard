@@ -1489,8 +1489,15 @@
                         </td>
                         <td colspan="3">
 
-                            <p><input type="checkbox">Home&nbsp;&nbsp;&nbsp;&nbsp; <input type="checkbox">Health facility
-                                <input type="text"> <input type="checkbox">Other <input type="text"></p>
+                            <p>
+                                <label for="deceased_die">Home</label>
+                                <input type="radio" name="deceased_die" id="deceased_die">
+                                 <label for="deceased_die_health_facility">Health facility</label>
+                                <input type="radio" name="deceased_die" id="deceased_die_health_facility">
+                                
+                                <input type="text" class="mr-2" name="deceased_die_health_facility_input" id="deceased_die_health_facility_input">
+
+                                 <label for="deceased_die_other">Other</label><input type="radio" name="deceased_die" id="deceased_die_other"> <input type="text" name="deceased_die_other_input" id="deceased_die_other_input"></p>
                         </td>
                     </tr>
                     <tr>
