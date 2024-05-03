@@ -25,8 +25,8 @@ table {
   width: 100%;
   border-collapse: collapse;
   border-spacing: 0;
-  border-top: 1px solid #000;
-  border-bottom: 1px solid #000;
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
 }
 table .pdfLogo {
   display: flex;
@@ -57,16 +57,16 @@ table img {
 }
 table td {
   padding: 3px 13px 3px 5px;
-  border-bottom: 1px solid #000;
+  border-bottom: 1px solid #ddd;
   border-top: 0;
   border-left: 0;
-  border-right: 1px solid #000;
+  border-right: 1px solid #ddd;
 }
 table td:last-child {
   border-right: 0;
 }
 table td[rowspan="2"] {
-  border-left: 1px solid #000;
+  border-left: 1px solid #ddd;
 }
 table table {
   margin: auto;
@@ -74,16 +74,16 @@ table table {
   width: 100%;
 }
 table table tr:first-child td {
-  border-top: 1px solid #000;
+  border-top: 1px solid #ddd;
 }
 table table tr td {
-  border-left: 1px solid #000;
+  border-left: 1px solid #ddd;
 }
 table table tr td:last-child {
-  border-right: 1px solid #000;
+  border-right: 1px solid #ddd;
 }
 table table th {
-  padding: 0 10px;
+  padding: 5px 8px;
 }
 
 .container {

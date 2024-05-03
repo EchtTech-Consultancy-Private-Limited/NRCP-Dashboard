@@ -25,11 +25,17 @@ table {
   width: 100%;
   border-collapse: collapse;
   border-spacing: 0;
-  border: 1px solid #000;
+  border: 1px solid #ddd;
 }
 table ul {
   margin: 0;
   padding-left: 20px;
+}
+table th {
+  padding: 5px;
+}
+table th p {
+  color: #fff;
 }
 table p {
   font-size: 14px;
@@ -45,17 +51,17 @@ table p input[type=checkbox] {
 }
 table p input[type=radio] {
   width: 11px;
-  margin-right: 12px;
+  margin: 0 12px;
 }
 table img {
   height: 90px;
 }
 table td {
   padding: 3px 10px;
-  border-bottom: 1px solid #000;
+  border-bottom: 1px solid #ddd;
   border-top: 0;
   border-left: 0;
-  border-right: 1px solid #000;
+  border-right: 1px solid #ddd;
 }
 table td:last-child {
   border-right: 0;
