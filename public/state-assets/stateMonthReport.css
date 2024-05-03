@@ -47,7 +47,7 @@ table p {
 }
 table p input[type=checkbox] {
   width: 11px;
-  margin-right: 12px;
+  margin-right: 7px;
 }
 table p input[type=radio] {
   width: 11px;
@@ -67,7 +67,7 @@ table td:last-child {
   border-right: 0;
 }
 
-#deceased_die_health_facility_input, #deceased_die_other_input {
+#deceased_die_health_facility_input, #deceased_die_other_input, #add_more5 {
   display: none;
 }
 

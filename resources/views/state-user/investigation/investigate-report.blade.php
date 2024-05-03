@@ -1763,41 +1763,33 @@
                                     in contact with a patient&#39;s saliva,respiratory secretions, autopsy material, or
                                     other potentially infectious material</em>)
                             </p>
-                            <table>
+                            <p><b>Contact : </b></p>
+                            <p class="mb-3">
+                                <input type="checkbox" name="contact_with_patient" class="contact_with_patient_checkbox" id="contact_with_patient_family">
+                                <label for="contact_with_patient_family" class="mr-3">Family</label>
+                                <input type="checkbox" name="contact_with_patient" class="contact_with_patient_checkbox" id="contact_with_patient_community">
+                                <label for="contact_with_patient_community" class="mr-3">Community</label>
+                                <input type="checkbox" name="contact_with_patient" class="contact_with_patient_checkbox" id="contact_with_patient_hospital_workers">
+                                <label for="contact_with_patient_hospital_workers" class="mr-3">Hospital workers</label>
+                                <input type="checkbox" name="contact_with_patient" class="contact_with_patient_checkbox" id="contact_with_patient_any_other">
+                                <label for="contact_with_patient_any_other" class="mr-3">Any Other</label>
+                            </p>
+                            <a role="button" class="btn btn-primary add-table-row float-right mb-2" onclick="addMore5()" id="add_more5">Add More</a>
+                            <table class="table_8_2">
+                                <thead>
+                                   <tr>
+                                        <th> Relation with Patient</th>
+                                        <th> Name</th>
+                                        <th> Address</th>
+                                        <th> Contact Number</th>
+                                        <th> Action</th>
+                                    </tr>
+                                  
+                                </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>
-                                            <p>Contact</p>
-                                        </td>
-                                        <td>
-                                            <p><input type="checkbox">&nbsp;&nbsp;&nbsp; Family</p>
-                                            <p><input type="checkbox">&nbsp;&nbsp;&nbsp; Community</p>
-                                            <p><input type="checkbox">&nbsp;&nbsp;&nbsp; Hospital workers</p>
-                                            <p><input type="checkbox">&nbsp;&nbsp;&nbsp; Any Other</p>
-                                        </td>
-                                        <td>
-                                            <p><input type="checkbox">&nbsp;&nbsp;&nbsp; Family</p>
-                                            <p><input type="checkbox">&nbsp;&nbsp;&nbsp; Community</p>
-                                            <p><input type="checkbox">&nbsp;&nbsp;&nbsp; Hospital workers</p>
-                                            <p><input type="checkbox">&nbsp;&nbsp;&nbsp; Any Other</p>
-                                        </td>
-                                        <td>
-                                            <p><input type="checkbox">&nbsp;&nbsp;&nbsp; Family</p>
-                                            <p><input type="checkbox">&nbsp;&nbsp;&nbsp; Community</p>
-                                            <p><input type="checkbox">&nbsp;&nbsp;&nbsp; Hospital workers</p>
-                                            <p><input type="checkbox">&nbsp;&nbsp;&nbsp; Any Other</p>
-                                        </td>
-                                        <td>
-                                            <p><input type="checkbox">&nbsp;&nbsp;&nbsp; Family</p>
-                                            <p><input type="checkbox">&nbsp;&nbsp;&nbsp; Community</p>
-                                            <p><input type="checkbox">&nbsp;&nbsp;&nbsp; Hospital workers</p>
-                                            <p><input type="checkbox">&nbsp;&nbsp;&nbsp; Any Other</p>
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <td>
-                                            <p>Name</p>
+                                    <!-- <tr>
+                                        <td class="bggrey">
+                                          
                                         </td>
                                         <td class="bggrey">
                                             <input type="text">
@@ -1808,45 +1800,9 @@
                                         <td class="bggrey">
                                             <input type="text">
                                         </td>
-                                        <td class="bggrey">
-                                            <input type="text">
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <p>Address</p>
-                                        </td>
-                                        <td class="bggrey">
-                                            <input type="text">
-                                        </td>
-                                        <td class="bggrey">
-                                            <input type="text">
-                                        </td>
-                                        <td class="bggrey">
-                                            <input type="text">
-                                        </td>
-                                        <td class="bggrey">
-                                            <input type="text">
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <p>Contact</p>
-                                            <p>Number</p>
-                                        </td>
-                                        <td class="bggrey">
-                                            <input type="text">
-                                        </td>
-                                        <td class="bggrey">
-                                            <input type="text">
-                                        </td>
-                                        <td class="bggrey">
-                                            <input type="text">
-                                        </td>
-                                        <td class="bggrey">
-                                            <input type="text">
-                                        </td>
-                                    </tr>
+                                       
+                                    </tr> -->
+                                  
 
 
                                 </tbody>
