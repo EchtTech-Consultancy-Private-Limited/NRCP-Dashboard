@@ -138,6 +138,11 @@ Route::middleware(['Admin','device'])->group(function () {
                 Route::get('monthly-report-list',[StateController::class,'stateMonthlyList'])->name('monthly-report-list');
                 Route::get('monthly-report',[StateController::class,'stateMonthlyCreate'])->name('monthly-report');
                 Route::post('monthly-report-store',[StateController::class,'stateMonthlystore'])->name('monthly-report-store');
+                Route::get('monthly-report-export',[StateController::class,'stateMonthlyExport'])->name('monthly-report-export');
+                Route::get('line-suspected-list',[StateController::class,'lineSuspectedList'])->name('line-suspected-list');
+                Route::get('line-suspected-create',[StateController::class,'lineSuspectedCreate'])->name('line-suspected-create');
+                Route::post('line-suspected-store',[StateController::class,'lineSuspectedstore'])->name('line-suspected-store');
+                Route::get('line-suspected-export',[StateController::class,'lineSuspectedExport'])->name('line-suspected-export');
             });
         });
     });
