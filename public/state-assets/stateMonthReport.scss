@@ -22,10 +22,16 @@ table{
     width: 100%;
     border-collapse: collapse;
     border-spacing: 0;
-    border: 1px solid #000;
+    border: 1px solid #ddd;
    ul{
     margin: 0;
     padding-left: 20px;
+   }
+   th{
+    padding: 5px;
+    p{
+        color: #fff;
+    }
    }
     p {
         font-size: 14px;
@@ -39,16 +45,20 @@ table{
             width: 11px;
             margin-right: 12px;
         }
+        input[type="radio"] {
+            width: 11px;
+            margin: 0 12px;
+        }
     }
     img{
         height: 90px;
     }
     td {
         padding: 3px 10px;
-        border-bottom: 1px solid #000;
+        border-bottom: 1px solid #ddd;
         border-top: 0;
         border-left: 0;
-        border-right: 1px solid #000;
+        border-right: 1px solid #ddd;
         
         &:last-child{
             border-right: 0;
@@ -57,19 +67,29 @@ table{
   
   
 }
-.container{
+#deceased_die_health_facility_input, #deceased_die_other_input{
+    display: none;
+}
+// .container{
+//     margin: auto;
+//     box-shadow: 0px 0px 60px #ddd;
+//     padding: 27px;
+// }
+
+// @media (min-width: 1200px){
+//     .container, .container-lg, .container-md, .container-sm, .container-xl {
+//         max-width: 900px;
+//     }
+// }
+.table-container {
     margin: auto;
     box-shadow: 0px 0px 60px #ddd;
-    padding: 27px;
+    background-color: #fff;
 }
 
-@media (min-width: 1200px){
-    .container, .container-lg, .container-md, .container-sm, .container-xl {
-        max-width: 900px;
-    }
+input[name='healthcare_worker_facility_name'], input[name="specify_other_name"]{
+    display: none;
 }
-
-
 
 .w-50{
     width: 50%;
@@ -78,6 +98,17 @@ table{
     padding: 0;
 }
 
+table{
+    tr{
+        td{
+            p{
+                label{
+                    margin: 0;
+                }
+            }
+        }
+    }
+}
 
 .logoHeader{
     justify-content: space-between;
