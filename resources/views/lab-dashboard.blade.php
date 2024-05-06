@@ -3,9 +3,9 @@
 {{__('Laboratory Form')}}
 @endsection
 @section('content')
-<div class="card-category-1">
-    <div class="row d-flex justify-content-center">
-        <div class="col">
+<div class="card-category-1 lab-form-d">
+    <div class="row d-flex">
+        <div class="col-md-4 mb-4">
             <div class="basic-card basic-card-aqua">
 
                 <div class="card-content">
@@ -18,7 +18,7 @@
                 </div>
             </div>
         </div>
-        <div class="col">
+        <div class="col-md-4 mb-4">
             <div class="basic-card basic-card-lips">
                 <div class="card-content">
                     <span class="card-title">Quality</span>
@@ -30,7 +30,7 @@
                 </div>
             </div>
         </div>
-        <div class="col">
+        <div class="col-md-4 mb-4">
             <div class="basic-card basic-card-light">
                 <div class="card-content">
                     <span class="card-title">Equipments</span>
@@ -42,7 +42,7 @@
                 </div>
             </div>
         </div>
-        <div class="col">
+        <div class="col-md-4 mb-4">
             <div class="basic-card basic-card-dark">
                 <div class="card-content">
                     <span class="card-title">Rabies Test</span>
@@ -54,7 +54,7 @@
                 </div>
             </div>
         </div>
-        <div class="col">
+        <div class="col-md-4 mb-4">
             <div class="basic-card basic-card-dark-1">
                 <div class="card-content">
                     <span class="card-title">Finance</span>

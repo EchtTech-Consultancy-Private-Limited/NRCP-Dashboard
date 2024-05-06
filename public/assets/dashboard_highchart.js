@@ -753,7 +753,7 @@ const googlePieChart = (result) => {
             }
         },
         title: {
-            text: `Cases by Gender in India ${filter_state !== undefined ? filter_state + ' >' : ''} ${filter_district !== undefined ? filter_district + ' >' : ''} ${filter_from_year !== "" ? filter_from_year + ' >' : ''} ${filter_to_year !== "" ? filter_to_year + ' >' : ''}    n=(${result.total})`,
+            text: `Cases by Gender in India ${filter_state !== undefined ? filter_state + ' >' : ''} ${filter_district !== undefined ? filter_district + 'from' : ''} ${filter_from_year !== "" ? filter_from_year + ' > to' : ''} ${filter_to_year !== "" ? filter_to_year + ' >' : ''}    n=(${result.total})`,
             align: 'left',
             style: {
                 fontSize: innerWidth<=1350 ? '15px' : (innerWidth>=1350 ? '18px': '15px') // Set the font size here
@@ -798,7 +798,7 @@ const pyramidChart = (result) => {
     let is_graph_data_available = $("#is_graph_data_available").val();
     is_graph_data_available = is_graph_data_available !== "" ? is_graph_data_available : "";
     var options_val = {
-        text: `Case by age group in India  ${filter_state !== undefined ? filter_state + ' >' : ''} ${filter_district !== undefined ? filter_district + ' >' : ''} ${filter_from_year !== "" ? filter_from_year + ' >' : ''} ${filter_to_year !== "" ? filter_to_year + ' >' : ''}`,
+        text: `Case by age group in India  ${filter_state !== undefined ? filter_state + ' >' : ''} ${filter_district !== undefined ? filter_district + ' from' : ''} ${filter_from_year !== "" ? filter_from_year + ' > to' : ''} ${filter_to_year !== "" ? filter_to_year + ' >' : ''}`,
     };
 
 
@@ -1162,8 +1162,7 @@ const defaultLaboratoryMapData = () => {
                         min: 0,
                         max: 100,
                         title: {
-                            text: '<h3 class="highChartTitle" style="font-size:12px">Number Of Sample Received</h3>',
-                            
+                            text: '<h3 class="highChartTitle" style="font-size:12px">Number Of Sample Received</h3>',                            
                         }
                     },
                     series: [{
@@ -1171,9 +1170,9 @@ const defaultLaboratoryMapData = () => {
                         data: [Math.trunc(result.total_records.numbers_of_sample_received/result.total_records.number_of_patients*100)],
                         dataLabels: {
                             format:
-                                '<div style="text-align:center">' +
-                                '<span style="font-size:20px">{y}%</span><br/>' +
-                                '</div>'
+                                '<div style="text-align:left;vertical-align: top;">' +
+                                '<span style="font-size:25px">{y}%</span><br/>' +
+                                '</div>',
                         },                       
                     }]
                 }));
