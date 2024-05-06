@@ -129,6 +129,31 @@
                     aria-hidden="true"></i>
                 Investigate Report</a>
             </div>
+
+            <div class="sidebarAccordion">
+                <div class="row">
+                    <div class="col">
+                        <div class="collapse multi-collapse {{ in_array(request()->route()->getName(), ['state.investigate-create', 'state.investigate-report-list']) ? 'show' : '' }}"
+                            id="multiCollapseExample3">
+                        
+                            <div class="card card-body">
+                                <div
+                                    class="link bg-primary text-white dashboard-title {{ request()->routeIs('state.investigate-report-list') ? 'active' : '' }}">
+                                    <a href="{{ route('state.investigate-report-list') }}"> <i class="fa fa-dashboard iconmargin-set"
+                                        aria-hidden="true"></i>List</a>
+                                </div>
+                                <div
+                                    class="link bg-primary text-white dashboard-title {{ request()->routeIs('state.investigate-create') ? 'active' : '' }}">
+                                    <a href="{{ route('state.investigate-create') }}"> <i class="fa fa-dashboard iconmargin-set"
+                                        aria-hidden="true"></i>Create</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
             <div class="sidebarAccordion">
 
                 <div class="link bg-primary text-white dashboard-title">

@@ -134,6 +134,7 @@ Route::middleware(['Admin','device'])->group(function () {
             Route::group(['prefix' => 'states', 'as' => 'state.'], function () {
                 Route::get('dashboard', [StateController::class, 'index'])->name('dashboard');
                 Route::get('investigate-create',[InvestigationController::class,'create'])->name('investigate-create');
+                Route::get('investigate-report-list',[InvestigationController::class,'list'])->name('investigate-report-list');
                 Route::post('investigate-store',[InvestigationController::class,'store'])->name('investigate-store');
                 Route::get('monthly-report-list',[StateController::class,'stateMonthlyList'])->name('monthly-report-list');
                 Route::get('monthly-report',[StateController::class,'stateMonthlyCreate'])->name('monthly-report');
