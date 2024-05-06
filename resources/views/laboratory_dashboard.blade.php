@@ -246,11 +246,10 @@
                                                                 <table class='table table-bordered s-p-form-map'>
                                                                     <thead>
                                                                         <tr>
-                                                                            <th rowspan='2'
-                                                                                class="state_filter_district">
+                                                                            <th class="state_filter_district">
                                                                                 Institute
                                                                             </th>
-                                                                            <th colspan='2'>
+                                                                            <th>
                                                                                 No. of Test Conducted
                                                                             </th>
                                                                         </tr>
@@ -289,7 +288,7 @@
                                                 </div>
                                                 <!-- end here -->
                                                 <div class="row">
-
+                                                                            
                                                     <div class="col-md-3">
                                                         <div id="container-speed" class="chart-container"></div>
                                                     </div>
