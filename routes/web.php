@@ -14,7 +14,8 @@ use App\Http\Controllers\ExpenditureController;
 use App\Http\Controllers\LaboratoryDashboardController;
 use App\Http\Controllers\NhmDashboardController;
 use App\Http\Controllers\ReportGenerateControllerController;
-use App\Http\Controllers\StateUser\StateUserMainController;
+use App\Http\Controllers\StateUser\InvestigationController;
+use App\Http\Controllers\StateUser\StateController;
 
 /*
 |--------------------------------------------------------------------------
@@ -130,10 +131,14 @@ Route::middleware(['Admin','device'])->group(function () {
         });
 
         Route::middleware(['StateUserPermission','preventBackHistory'])->group(function () {
-            Route::get('state-dashboard',[StateUserMainController::class,'stateDashboard'])->name('state-dashboard');
-            Route::get('investigate-report',[StateUserMainController::class,'investigateReport'])->name('investigate-report');
-            Route::post('investigate-report',[StateUserMainController::class,'investigateReportStore'])->name('investigate-report-save');
-            Route::get('monthly-report',[StateUserMainController::class,'monthlyReport'])->name('monthly-report');
+            Route::group(['prefix' => 'states', 'as' => 'state.'], function () {
+                Route::get('dashboard', [StateController::class, 'index'])->name('dashboard');
+                Route::get('investigate-create',[InvestigationController::class,'create'])->name('investigate-create');
+                Route::post('investigate-store',[InvestigationController::class,'store'])->name('investigate-store');
+                Route::get('monthly-report-list',[StateController::class,'stateMonthlyList'])->name('monthly-report-list');
+                Route::get('monthly-report',[StateController::class,'stateMonthlyCreate'])->name('monthly-report');
+                Route::post('monthly-report-store',[StateController::class,'stateMonthlystore'])->name('monthly-report-store');
+            });
         });
     });
 

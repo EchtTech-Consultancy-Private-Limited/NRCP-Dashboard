@@ -3,11 +3,11 @@
     {{ 'NRCP State Dashboard | Investigate Report' }}
 @endsection
 @section('content')
-  <form action="{{ route('investigate-report-save') }}" method="post">
+  <form action="{{ route('state.investigate-store') }}" method="post">
     @csrf
     <div class="container-fluid">
-        <div>
-            <table border="1" cellpadding="0" cellspacing="0">
+        <div class="container bg-light mb-4">
+            <table>
                 <tbody>
                     <tr>
                         <td colspan="38">
@@ -33,7 +33,7 @@
                                     </p>
                                 </div>
                                 <div>
-                                    <img src="{{ asset('') }}">
+                                    <img src="{{ asset('state-assets/images/nrcpLogo.png') }}">
                                 </div>
                             </div>
                         </td>
@@ -57,13 +57,19 @@
                             <p>Name of interviewer</p>
                         </td>
                         <td colspan="18" class="bggrey">
-                            <input name="intervewer_name" type="text">
+                            <input type="text" name="intervewer_name" value="{{ old('intervewer_name') }}">
+                            @if ($errors->has('intervewer_name'))
+                                <span class="form-text text-muted">{{ $errors->first('intervewer_name') }}</span>
+                            @endif
                         </td>
                         <td colspan="10">
                             <p>Date of Interview</p>
                         </td>
                         <td colspan="5" class="bggrey">
-                            <input name="interview_date" type="text">
+                            <input name="interview_date" value="{{ old('interview_date') }}" type="date">
+                            @if ($errors->has('interview_date'))
+                                <span class="form-text text-muted">{{ $errors->first('interview_date') }}</span>
+                            @endif
                         </td>
                     </tr>
                     <tr>
@@ -71,13 +77,19 @@
                             <p>Designation</p>
                         </td>
                         <td colspan="18" class="bggrey">
-                            <input name="intervewer_designation" type="text">
+                            <input name="intervewer_designation" value="{{ old('intervewer_designation') }}" type="text">
+                            @if ($errors->has('intervewer_designation'))
+                                <span class="form-text text-muted">{{ $errors->first('intervewer_designation') }}</span>
+                            @endif
                         </td>
                         <td colspan="10">
                             <p>Contact number</p>
                         </td>
                         <td colspan="5" class="bggrey">
-                            <input name="intervewer_contact_number" type="text">
+                            <input name="intervewer_contact_number" value="{{ old('intervewer_contact_number') }}" type="text" oninput="validateInput(this)" maxlength="12">
+                            @if ($errors->has('intervewer_contact_number'))
+                                <span class="form-text text-muted">{{ $errors->first('intervewer_contact_number') }}</span>
+                            @endif
                         </td>
                     </tr>
                     <tr>
@@ -92,30 +104,28 @@
                             <p>&nbsp;Name</p>
                         </td>
                         <td colspan="15" class="bggrey">
-                            <input name="suspected_name" type="text">
+                            <input name="suspected_name" type="text" value="{{ old('suspected_name') }}">
                         </td>
                         <td colspan="4">
                             <p>&nbsp;Sex</p>
                         </td>
                         <td colspan="9" class="bggrey">
-                            <input name="suspect_gender" type="text">
+                            <select class="form-select" name="suspected_gender" aria-label="Default select example" id="gender">
+                                <option value=""> Select Gender</option> 
+                                @if(old('suspected_gender')) 
+                                <option value="{{ old('suspected_gender') }}" selected>{{ old('suspected_gender') }}</option> 
+                                @endif 
+                                <option value="Male"> Male</option>
+                                <option value="Famale"> Famale</option>
+                                <option value="Other"> Other</option>
+                              </select>
+                            @if ($errors->has('suspected_gender')) <span class="form-text text-muted">{{ $errors->first('suspected_gender') }}</span> @endif
                         </td>
                         <td colspan="7">
                             <p>&nbsp;Age</p>
                         </td>
                         <td class="bggrey">
-                            <select name="suspect_education" id="">
-                                <option value="" selected>Select Year</option>
-                                <option value="" selected>2020</option>
-                                <option value="" selected>2021</option>
-                                <option value="" selected>2022</option>
-                                <option value="" selected>2023</option>
-                                <option value="" selected>2024</option>
-                                <option value="" selected>2025</option>
-
-
-                            </select>
-
+                            <input type="text" name="suspect_age" value="{{ old('suspect_age') }}" maxlength="2" oninput="validateInput(this)">
                         </td>
                     </tr>
                     <tr>
@@ -123,13 +133,13 @@
                             <p>Occupation</p>
                         </td>
                         <td colspan="11" class="bggrey">
-                            <input type="text" name="suspect_occupation">
+                            <input type="text" name="suspect_occupation" value="{{ old('suspect_occupation') }}">
                         </td>
                         <td colspan="4">
                             <p>Address</p>
                         </td>
                         <td colspan="21" class="bggrey">
-                            <input name="suspect_address" type="text">
+                            <input name="suspect_address" type="text" value="{{ old('suspect_address') }}">
                         </td>
                     </tr>
                     <tr>
@@ -137,37 +147,37 @@
                             <p>Level of education</p>
                         </td>
                         <td colspan="10">
-                            <input type="text" name="suspect_education[][text]">
+                            <input type="text" name="suspect_education[][level1]">
                         </td>
                         <td colspan="13">
-                            <input type="text" name="suspect_education[][text]">
+                            <input type="text" name="suspect_education[][level2]">
                         </td>
                         <td colspan="8">
-                            <input type="text" name="suspect_education[][text]">
+                            <input type="text" name="suspect_education[][level3]">
                         </td>
                     </tr>
                     <tr>
                         <td colspan="7">
                             <p>
-                                <input type="checkbox" id="Illiterate" name="suspect_education[][level]" value="Illiterate">
+                                <input type="checkbox" id="Illiterate" name="suspect_education[][Illiterate]" value="Illiterate">
                                 <label for="Illiterate">Illiterate</label>
                             </p>
                         </td>
                         <td colspan="15">
                             <p>
-                                <input type="checkbox" id="PrimarySchool" name="suspect_education[][level]" value="Primary School">
+                                <input type="checkbox" id="PrimarySchool" name="suspect_education[][primary_school]" value="Primary School">
                                 <label for="PrimarySchool">Primary School</label>
                             </p>
                         </td>
                         <td colspan="9">
                             <p>
-                                <input type="checkbox" id="Graduate" name="suspect_education[][level]" value="Graduate">
+                                <input type="checkbox" id="Graduate" name="suspect_education[][graduate]" value="Graduate">
                                 <label for="Graduate">Graduate</label>
                             </p>
                         </td>
                         <td colspan="7">
                             <p>
-                                <input type="checkbox" id="ProfessionalDegree" name="suspect_education[][level]" value="Professional Degree">
+                                <input type="checkbox" id="ProfessionalDegree" name="suspect_education[][professional_dgree]" value="Professional Degree">
                                 <label for="ProfessionalDegree">Professional Degree</label>
                             </p>
                         </td>
@@ -175,46 +185,44 @@
                     <tr>
                         <td colspan="7">
                             <p>
-                                <input type="checkbox" id="BelowPrimary">
-                                <label for="BelowPrimary" name="suspect_education[][level]" aria-valuemax="Below Primary"> Below Primary</label>
+                                <input type="checkbox" id="BelowPrimary" name="suspect_education[][below_primary]" aria-valuemax="Below Primary">
+                                <label for="BelowPrimary"> Below Primary</label>
                             </p>
                         </td>
                         <td colspan="15">
                             <p>
-                                <input type="checkbox" id="SecondarySchool">
-                                <label for="SecondarySchool" name="suspect_education[][level]" value="Secondary School"> Secondary School</label>
-                                    Secondary School</label>
+                                <input type="checkbox" id="SecondarySchool" name="suspect_education[][secondary_school]" value="Secondary School">
+                                <label for="SecondarySchool"> Secondary School</label>
                             </p>
                         </td>
                         <td colspan="9">
                             <p>
-                                <input type="checkbox" id="Postgraduate">
-                                <label for="Postgraduate" name="suspect_education[][level]" value="Postgraduate"> Postgraduate</label>
-                                    Postgraduate</label>
+                                <input type="checkbox" name="suspect_education[][postgraduate]" value="Postgraduate">
+                                <label for="Postgraduate"> Postgraduate</label>
                             </p>
                         </td>
                         <td colspan="7">
                             <p>
-                                <input type="checkbox" id="Unknown">
-                                <label for="Unknown" name="suspect_education[][level]" value="Unknown">
-                                    Unknown</label>
+                                <input type="checkbox" id="Unknown" name="suspect_education[][unknown]" value="Unknown">
+                                <label for="Unknown">    Unknown</label>
                             </p>
                         </td>
                     </tr>
                     <tr>
                         <td colspan="7">
                             <p>
-                                <input type="checkbox" id="Other(Specify)" name="suspect_education[][other]" value="Other(Specify)">
+                                <input type="checkbox" name="suspect_education[][other]" value="Other(Specify)">
                                 <label for="Other(Specify)">Other (Specify)</label>
                             </p>
                         </td>
                         <td colspan="31" class="bggrey">
-                            <input type="text">
+                            <input type="text" name="suspect_education[][other_specify_text]">
                         </td>
                     </tr>
                     <tr>
                         <td colspan="38">
-                            <p>Is/was patient immunocompromised? (if yes, provide details) <input type="text" name="suspect_details"></p>
+                            <p>Is/was patient immunocompromised? (if yes, provide details) 
+                                <input type="text" name="suspect_education[][details]"></p>
                             </p>
                         </td>
                     </tr>
@@ -230,13 +238,13 @@
                             <p>Name of respondent</p>
                         </td>
                         <td colspan="12">
-                            <input type="text" name="respondent_name">
+                            <input type="text" name="respondent_name" value="{{ old('respondent_name') }}">
                         </td>
                         <td colspan="10">
                             <p>Age of respondent</p>
                         </td>
                         <td colspan="11">
-                            <input type="text" name="respondent_age">
+                            <input type="text" name="respondent_age" value="{{ old('respondent_age') }}">
                         </td>
                     </tr>
                     <tr>
@@ -244,13 +252,13 @@
                             <p>Contact number</p>
                         </td>
                         <td colspan="12">
-                            <input type="text" name="respondent_contact">
+                            <input type="text" name="respondent_contact" value="{{ old('respondent_contact') }}">
                         </td>
                         <td colspan="10">
                             <p>Address (if different from patient)</p>
                         </td>
                         <td colspan="11">
-                            <input type="text" name="respondent_address">
+                            <input type="text" name="respondent_address" value="{{ old('respondent_address') }}">
                         </td>
                     </tr>
                     <tr>
@@ -261,25 +269,25 @@
                     <tr>
                         <td colspan="4">
                             <p>
-                                <input name="relationship_with_suspect" type="checkbox" id="Parent1" value="Parent">
+                                <input name="relationship_with_suspect" type="radio" id="Parent1" value="Parent">
                                 <label for="Parent1">Parent</label>
                             </p>
                         </td>
                         <td colspan="10">
                             <p>
-                                <input name="relationship_with_suspect" type="checkbox" id="Sibling1" value="Sibling">
+                                <input name="relationship_with_suspect" type="radio" id="Sibling1" value="Sibling">
                                 <label for="Sibling1">Sibling</label>
                             </p>
                         </td>
                         <td colspan="13">
                             <p>
-                                <input name="relationship_with_suspect" type="checkbox" id="Parent-in-law1" value="Parent-in-law">
+                                <input name="relationship_with_suspect" type="radio" id="Parent-in-law1" value="Parent-in-law">
                                 <label for="Parent-in-law1">Parent-in-law</label>
                             </p>
                         </td>
                         <td colspan="11">
                             <p>
-                                <input name="relationship_with_suspect" type="checkbox" id="Community-leader1" value="Community-leader">
+                                <input name="relationship_with_suspect" type="radio" id="Community-leader1" value="Community-leader">
                                 <label for="Community-leader1">Community leader</label>
                             </p>
                         </td>
@@ -287,25 +295,25 @@
                     <tr>
                         <td colspan="4">
                             <p>
-                                <input name="relationship_with_suspect" type="checkbox" id="Husband-wife1" value="Husband-wife">
+                                <input name="relationship_with_suspect" type="radio" id="Husband-wife1" value="Husband-wife">
                                 <label for="Husband-wife1">Husband/wife</label>
                             </p>
                         </td>
                         <td colspan="10">
                             <p>
-                                <input name="relationship_with_suspect" type="checkbox" id="Child1" value="Child">
+                                <input name="relationship_with_suspect" type="radio" id="Child1" value="Child">
                                 <label for="Child1">Child</label>
                             </p>
                         </td>
                         <td colspan="13">
                             <p>
-                                <input name="relationship_with_suspect" type="checkbox" id="Friend-neighbour1" value="Friend-neighbour">
+                                <input name="relationship_with_suspect" type="radio" id="Friend-neighbour1" value="Friend-neighbour">
                                 <label for="Friend-neighbour1">Friend or neighbour</label>
                             </p>
                         </td>
                         <td colspan="11">
                             <p>
-                                <input type="checkbox" name="relationship_with_suspect" id="Son-in-law-daughter-in-law1" value="Son-in-law/daughter-in-law">
+                                <input type="radio" name="relationship_with_suspect" id="Son-in-law-daughter-in-law1" value="Son-in-law/daughter-in-law">
                                 <label for="Son-in-law-daughter-in-law1">Son-in-law/daughter-in-law</label>
                             </p>
                         </td>
@@ -313,7 +321,7 @@
                     <tr>
                         <td colspan="14">
                             <p>
-                                <input type="checkbox" name="relationship_with_suspect" id="Health-care-worker1" value="Health care worker (facility name)">
+                                <input type="radio" name="relationship_with_suspect" id="Health-care-worker1" value="Health care worker (facility name)">
                                 <label for="Health-care-worker1">Health care worker (facility name):</label>
                             </p>
                         </td>
@@ -322,7 +330,7 @@
                         </td>
                         <td colspan="11">
                             <p>
-                                <input type="checkbox" id="Other1" value="Other(specify)">
+                                <input type="radio" id="Other1" name="relationship_with_suspect" value="Other(specify)">
                                 <label for="Other1">Other(specify):</label>
                             </p>
                         </td>
@@ -346,7 +354,7 @@
                     <tr>
                         <td>
                             <p>
-                                <input type="checkbox" id="CategoryI1" name="suspect_contact_with_animals" value="category1">
+                                <input type="radio" id="CategoryI1" name="suspect_contact_with_animals" value="category1">
                                 <label for="CategoryI1">Yes, Category I exposure</label>
                             </p>
                         </td>
@@ -358,7 +366,7 @@
                     <tr>
                         <td>
                             <p>
-                                <input type="checkbox" id="CategoryII1" name="suspect_contact_with_animals" value="category2">
+                                <input type="radio" id="CategoryII1" name="suspect_contact_with_animals" value="category2">
                                 <label for="CategoryII1">Yes, Category II exposure</label>
                             </p>
                         </td>
@@ -370,7 +378,7 @@
                     <tr>
                         <td>
                             <p>
-                                <input type="checkbox" id="CategoryIII1" name="suspect_contact_with_animals" value="category3">
+                                <input type="radio" id="CategoryIII1" name="suspect_contact_with_animals" value="category3">
                                 <label for="CategoryIII1">Yes, Category III exposure</label>
                             </p>
                         </td>
@@ -382,13 +390,13 @@
                     <tr>
                         <td colspan="17">
                             <p>
-                                <input type="checkbox" id="No1" name="suspect_contact_with_animals" value="No">
+                                <input type="radio" id="No1" name="suspect_contact_with_animals" value="No">
                                 <label for="No1">No</label>
                             </p>
                         </td>
                         <td colspan="21">
                             <p>
-                                <input type="checkbox" id="Unknown1" name="suspect_contact_with_animals" value="Unknown">
+                                <input type="radio" id="Unknown1" name="suspect_contact_with_animals" value="Unknown">
                                 <label for="Unknown1">Unknown</label>
                             </p>
                         </td>
@@ -542,17 +550,10 @@
                 </tbody>
             </table>
         </div>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
+        
         <!-- ************************************************************************ -->
-        <div>
-            <table border="1" cellpadding="0" cellspacing="0">
+        <div class="container bg-light mb-4">
+            <table>
                 <tbody>
                     <tr>
                         <td colspan="6">
@@ -563,79 +564,60 @@
                     </tr>
                     <tr>
                         <td colspan="6">
-                            <table>
+                            <table class="table_4_5_2">
                                 <tbody>
                                     <tr>
-                                        <td colspan="1">
+                                        <th>
                                             <p>
                                                 <strong>Wound no</strong>
                                             </p>
-                                        </td>
-                                        <td colspan="2">
+                                        </th>
+                                        <th>
                                             <p>
                                                 <strong>Anatomical Location</strong>
                                             </p>
-                                        </td>
-                                        <td colspan="1">
+                                        </th>
+                                        <th>
                                             <p>
                                                 <strong>Shape</strong>
                                             </p>
-                                        </td>
-                                        <td colspan="2">
+                                        </th>
+                                        <th>
                                             <p>
                                                 <strong>Dimensions in cm</strong>
                                             </p>
-                                        </td>
+                                        </th>
+                                        <th>
+                                            <p>
+                                                <strong>Action</strong>
+                                            </p>
+                                        </th>
                                     </tr>
                                     <tr>
-                                        <td colspan="1">
+                                        <td>
                                             <p>
                                                 <strong>1</strong>
                                             </p>
                                         </td>
-                                        <td colspan="2">
+                                        <td>
                                             <input type="text">
                                         </td>
-                                        <td colspan="1">
+                                        <td>
                                             <input type="text">
                                         </td>
-                                        <td colspan="2">
+                                        <td>
                                             <input type="text">
+                                        </td>
+                                        <td >
+                                           
+
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <td colspan="1">
-                                            <p>
-                                                <strong>2</strong>
-                                            </p>
-                                        </td>
-                                        <td colspan="2">
-                                            <input type="text">
-                                        </td>
-                                        <td colspan="1">
-                                            <input type="text">
-                                        </td>
-                                        <td colspan="2">
-                                            <input type="text">
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="">
-                                            <p>
-                                                <strong>3</strong>
-                                            </p>
-                                        </td>
-                                        <td colspan="2">
-                                            <input type="text">
-                                        </td>
-                                        <td colspan="1">
-                                            <input type="text">
-                                        </td>
-                                        <td colspan="2">
-                                            <input type="text">
-                                        </td>
-                                    </tr>
+                                   
+                                  
                                 </tbody>
+
+                                <a role="button" class="btn btn-primary add-table-row float-right mb-2" onclick="addMore()">Add More</a>
                             </table>
                         </td>
                     </tr>
@@ -695,25 +677,25 @@
                     <tr>
                         <td>
                             <p>
-                                <input type="checkbox" id="Died1">
+                                <input type="radio" name="animal_die_exposure" id="Died1">
                                 <label for="Died1">Yes, died</label>
                             </p>
                         </td>
                         <td>
                             <p>
-                                <input type="checkbox" id="WasKilled1">
+                                <input type="radio" name="animal_die_exposure" id="WasKilled1">
                                 <label for="WasKilled1">Yes, was killed</label>
                             </p>
                         </td>
                         <td>
                             <p>
-                                <input type="checkbox" id="StillAlive1">
+                                <input type="radio" name="animal_die_exposure" id="StillAlive1">
                                 <label for="StillAlive1">No, still alive</label>
                             </p>
                         </td>
                         <td>
                             <p>
-                                <input type="checkbox" id="DiedLater1">
+                                <input type="radio" name="animal_die_exposure" id="DiedLater1">
                                 <label for="DiedLater1">No, but died later</label>
                             </p>
                         </td>
@@ -723,8 +705,8 @@
                         </td>
                         <td>
                             <p>
-                                <input type="checkbox" id="Unknown1">
-                                <label for="Unknown1">Unknown</label>
+                                <input type="radio" name="animal_die_exposure" id="animal_die_exposure_Unknown1">
+                                <label for="animal_die_exposure_Unknown1">Unknown</label>
                             </p>
                         </td>
                     </tr>
@@ -736,25 +718,25 @@
                     <tr>
                         <td colspan="2">
                             <p>
-                                <input type="checkbox" id="RabiesPositive1">
+                                <input type="radio" name="animal_tested_rabies" id="RabiesPositive1">
                                 <label for="RabiesPositive1">Yes, Rabies Positive</label>
                             </p>
                         </td>
                         <td colspan="2">
                             <p>
-                                <input type="checkbox" id="RabiesNegative1">
+                                <input type="radio" name="animal_tested_rabies" id="RabiesNegative1">
                                 <label for="RabiesNegative1">Yes, Rabies Negative</label>
                             </p>
                         </td>
                         <td colspan="1">
                             <p>
-                                <input type="checkbox" id="NotTested1">
+                                <input type="radio" name="animal_tested_rabies" id="NotTested1">
                                 <label for="NotTested1">No</label>
                             </p>
                         </td>
                         <td colspan="1">
                             <p>
-                                <input type="checkbox" id="RabiesUnknown1">
+                                <input type="radio" name="animal_tested_rabies" id="RabiesUnknown1">
                                 <label for="RabiesUnknown1">Unknown</label>
                             </p>
                         </td>
@@ -767,19 +749,19 @@
                     <tr>
                         <td colspan="2">
                             <p>
-                                <input type="checkbox" id="VaccinatedYes1">
+                                <input type="radio" name="animal_vaccinated" id="VaccinatedYes1">
                                 <label for="VaccinatedYes1">Yes</label>
                             </p>
                         </td>
                         <td colspan="2">
                             <p>
-                                <input type="checkbox" id="VaccinatedNo1">
+                                <input type="radio" name="animal_vaccinated" id="VaccinatedNo1">
                                 <label for="VaccinatedNo1">No</label>
                             </p>
                         </td>
                         <td colspan="2">
                             <p>
-                                <input type="checkbox" id="VaccinatedUnknown1">
+                                <input type="radio" name="animal_vaccinated" id="VaccinatedUnknown1">
                                 <label for="VaccinatedUnknown1">Unknown</label>
                             </p>
                         </td>
@@ -847,9 +829,9 @@
                         </td>
                         <td colspan="2">
                             <p>
-                                <input type="checkbox" id="SuturesAppliedYes1">
+                                <input type="radio" name="SuturesApplied" id="SuturesAppliedYes1">
                                 <label for="SuturesAppliedYes1">Yes</label>&nbsp;&nbsp;
-                                <input type="checkbox" id="SuturesAppliedNo1">
+                                <input type="radio" name="SuturesApplied" id="SuturesAppliedNo1">
                                 <label for="SuturesAppliedNo1">No</label>
                             </p>
                         </td>
@@ -867,11 +849,11 @@
                     <tr>
                         <td colspan="6">
                             <p>5.3 Did the deceased / suspected patient received Rabies Vaccine&nbsp;&nbsp;
-                                <input type="checkbox" id="RabiesVaccineReceivedYes1">
-                                <label for="RabiesVaccineReceivedYes1">Yes</label>&nbsp;&nbsp;
-                                <input type="checkbox" id="RabiesVaccineReceivedNo1">
+                                <input type="radio" name="rabiesVaccineRecieved" id="RabiesVaccineReceivedYes">
+                                <label for="RabiesVaccineReceivedYes">Yes</label>&nbsp;&nbsp;
+                                <input type="radio" name="rabiesVaccineRecieved" id="RabiesVaccineReceivedNo1">
                                 <label for="RabiesVaccineReceivedNo1">No</label>&nbsp;&nbsp;
-                                <input type="checkbox" id="RabiesVaccineReceivedUnknown1">
+                                <input type="radio" name="rabiesVaccineRecieved" id="RabiesVaccineReceivedUnknown1">
                                 <label for="RabiesVaccineReceivedUnknown1">Unknown</label>
                             </p>
                             <p>&nbsp;</p>
@@ -879,13 +861,18 @@
                                 <strong>If Yes,</strong>
                                 Number of doses received
                             </p>
-                            <p style="margin-left:36.0pt">1
-                                <input type="checkbox"> 2
-                                <input type="checkbox"> 3
-                                <input type="checkbox"> 4
-                                <input type="checkbox"> 5
-                                <input type="checkbox">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                <input type="checkbox"> Unknown
+                            <p> <label for="RabiesVaccineReceivedYes1"  >1</label>
+                                <input type="radio" name="RabiesVaccineReceivedYes" class = "ml-2" id="RabiesVaccineReceivedYes1">  
+                                <label for="RabiesVaccineReceivedYes2" > 2</label>
+                                <input type="radio" name="RabiesVaccineReceivedYes" class = "ml-2" id="RabiesVaccineReceivedYes2"> 
+                                 <label for="RabiesVaccineReceivedYes3" > 3</label> 
+                                <input type="radio" name="RabiesVaccineReceivedYes" class = "ml-2" id="RabiesVaccineReceivedYes3"> 
+                                 <label for="RabiesVaccineReceivedYes4" > 4</label> 
+                                <input type="radio" name="RabiesVaccineReceivedYes" class = "ml-2" id="RabiesVaccineReceivedYes4"> 
+                                 <label for="RabiesVaccineReceivedYes5" > 5</label> 
+                                <input type="radio" name="RabiesVaccineReceivedYes" class = "ml-2" id="RabiesVaccineReceivedYes5"> 
+                                <label for="RabiesVaccineReceivedUnknown2">Unknown</label>
+                                <input type="radio" name="RabiesVaccineReceivedYes" class = "ml-2" id="RabiesVaccineReceivedUnknown2"> 
                             </p>
                             <p>&nbsp;</p>
                             <p>Details of Rabies vaccine received</p>
@@ -893,30 +880,31 @@
                     </tr>
                     <tr>
                         <td colspan="6">
-                            <table>
+                            <table class="table_5_3">
                                 <tbody>
                                     <tr>
-                                        <td>
+                                        <th>
                                             <p>Dose No</p>
-                                        </td>
-                                        <td>
+                                        </th>
+                                        <th>
                                             <p>Date of vaccine administration</p>
-                                        </td>
-                                        <td>
+                                        </th>
+                                        <th>
                                             <p>Route of vaccine administration</p>
-                                        </td>
-                                        <td>
+                                        </th>
+                                        <th>
                                             <p>Site of vaccine administration</p>
-                                        </td>
-                                        <td>
+                                        </th>
+                                        <th>
                                             <p>Brand Name of Vaccine</p>
-                                        </td>
+                                        </th>
+                                        <th>
+                                            Action
+                                        </th>
                                     </tr>
                                     <tr>
                                         <td>
-                                            <ol>
-                                                <li>&nbsp;</li>
-                                            </ol>
+                                           1
                                         </td>
                                         <td>
                                             <input type="text">
@@ -930,55 +918,19 @@
                                         <td>
                                             <input type="text">
                                         </td>
+                                        <td></td>
                                     </tr>
-                                    <tr>
-                                        <td>
-                                            <ol>
-                                                <li>&nbsp;</li>
-                                            </ol>
-                                        </td>
-                                        <td>
-                                            <input type="text">
-                                        </td>
-                                        <td>
-                                            <input type="text">
-                                        </td>
-                                        <td>
-                                            <input type="text">
-                                        </td>
-                                        <td>
-                                            <input type="text">
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <ol>
-                                                <li>&nbsp;</li>
-                                            </ol>
-                                        </td>
-                                        <td>
-                                            <input type="text">
-                                        </td>
-                                        <td>
-                                            <input type="text">
-                                        </td>
-                                        <td>
-                                            <input type="text">
-                                        </td>
-                                        <td>
-                                            <input type="text">
-                                        </td>
-                                    </tr>
+                                   
+                                   
                                 </tbody>
+                                <a role="button" class="btn btn-primary add-table-row float-right mb-2" onclick="addMore2()">Add More</a>
                             </table>
                         </td>
                     </tr>
                     <tr>
                         <td colspan="6">
                             <p>
-                                5.4
-                                <strong>If Incomplete PEP,</strong>
-                                reason:
+                                5.4  <b> If Incomplete PEP,</b> reason:
                             </p>
                         </td>
                     </tr>
@@ -1017,9 +969,7 @@
                             <p>5.5 Rabies Immunoglobulin (RIG) (or RmAb) received?</p>
                         </td>
                         <td colspan="4">
-                            <p style="margin-left:3.6pt"><input type="checkbox">
-                                Yes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                <input type="checkbox"> No</p>
+                            <p><input type="radio" name="rabies_immunoglobulin" id="rabies_immunoglobulin1"> <label for="rabies_immunoglobulin1">Yes</label> <input type="radio" name="rabies_immunoglobulin" class="ml-2" id="rabies_immunoglobulin2"> <label for="rabies_immunoglobulin2">No</label></p>
                         </td>
                     </tr>
                     <!-- ***** ***********************************************************-->
@@ -1037,11 +987,11 @@
                         </td>
                         <td colspan="2" rowspan="2">
                             <p>Site:
-                                <input type="checkbox" id="IntoWound1">
+                                <input type="radio" name="rabies_immunoglobulin_site" id="IntoWound1">
                                 <label for="IntoWound1">Into wound</label>
-                                <input type="checkbox" id="IM1">
+                                <input type="radio" name="rabies_immunoglobulin_site" id="IM1">
                                 <label for="IM1">IM (not recommended)</label>
-                                <input type="checkbox" id="Both1">
+                                <input type="radio" name="rabies_immunoglobulin_site" id="Both1">
                                 <label for="Both1">both</label>
                             </p>
                         </td>
@@ -1060,8 +1010,8 @@
                         </td>
                         <td colspan="1">
                             <p>
-                                <input type="checkbox" id="VaccinatedYes1">
-                                <label for="VaccinatedYes1">Yes</label> Year & number of doses:
+                                <input type="radio" name="vaccinated_against_rabies" id="vaccinated_against_rabies_yes">
+                                <label for="vaccinated_against_rabies_yes">Yes</label> Year & number of doses:
                             </p>
                         </td>
                         <td colspan="2" class="bggrey" class="bggrey">
@@ -1069,11 +1019,11 @@
                         </td>
                         <td colspan="1">
                             <p>
-                                <input type="checkbox" id="VaccinatedNo1">
-                                <label for="VaccinatedNo1">No</label>
+                                <input type="radio" name="vaccinated_against_rabies" id="vaccinated_against_rabies_no">
+                                <label for="vaccinated_against_rabies_no">No</label>
                                 <br>
-                                <input type="checkbox" id="VaccinatedUnknown1">
-                                <label for="VaccinatedUnknown1">Unknown</label>
+                                <input type="radio" name="vaccinated_against_rabies" id="vaccinated_against_rabies_unknown" class="ml-2">
+                                <label for="vaccinated_against_rabies_unknown">Unknown</label>
                             </p>
                         </td>
                     </tr>
@@ -1083,13 +1033,13 @@
                         </td>
                         <td colspan="2">
                             <p>
-                                <input type="checkbox" id="TTRcvdYes1">
+                                <input type="radio" name="TT_vaccine" id="TTRcvdYes1">
                                 <label for="TTRcvdYes1">Yes</label>
                             </p>
                         </td>
                         <td colspan="1">
                             <p>
-                                <input type="checkbox" id="TTRcvdNo1">
+                                <input type="radio" name="TT_vaccine" id="TTRcvdNo1">
                                 <label for="TTRcvdNo1">No</label>
                             </p>
                         </td>
@@ -1097,14 +1047,9 @@
             </table>
         </div>
         <!-- **************************************************first***********************************  -->
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <div class="container">
-            <table border="1">
+       
+        <div class="container bg-light mb-4">
+            <table >
                 <thead>
                     <tr>
                         <td colspan="4" class="bglightBlue">
@@ -1151,13 +1096,13 @@
                                             <p>Fever</p>
                                         </td>
                                         <td>
-                                            <input type="checkbox">
+                                            <input type="radio" name="fever">
                                         </td>
                                         <td>
-                                            <input type="checkbox">
+                                            <input type="radio" name="fever">
                                         </td>
                                         <td>
-                                            <input type="checkbox">
+                                            <input type="radio" name="fever">
                                         </td>
                                     </tr>
                                     <tr>
@@ -1165,13 +1110,13 @@
                                             <p>Headache</p>
                                         </td>
                                         <td>
-                                            <input type="checkbox">
+                                            <input type="radio" name="headache">
                                         </td>
                                         <td>
-                                            <input type="checkbox">
+                                            <input type="radio" name="headache">
                                         </td>
                                         <td>
-                                            <input type="checkbox">
+                                            <input type="radio" name="headache">
                                         </td>
                                     </tr>
                                     <tr>
@@ -1179,13 +1124,13 @@
                                             <p>Vomiting</p>
                                         </td>
                                         <td>
-                                            <input type="checkbox">
+                                            <input type="radio" name="vomiting">
                                         </td>
                                         <td>
-                                            <input type="checkbox">
+                                            <input type="radio" name="vomiting">
                                         </td>
                                         <td>
-                                            <input type="checkbox">
+                                            <input type="radio" name="vomiting">
                                         </td>
                                     </tr>
                                     <tr>
@@ -1193,13 +1138,13 @@
                                             <p>Muscle spasm</p>
                                         </td>
                                         <td>
-                                            <input type="checkbox">
+                                            <input type="radio" name="muscle_spasm">
                                         </td>
                                         <td>
-                                            <input type="checkbox">
+                                            <input type="radio" name="muscle_spasm">
                                         </td>
                                         <td>
-                                            <input type="checkbox">
+                                            <input type="radio" name="muscle_spasm">
                                         </td>
                                     </tr>
                                     <tr>
@@ -1207,13 +1152,13 @@
                                             <p>Anorexia</p>
                                         </td>
                                         <td>
-                                            <input type="checkbox">
+                                            <input type="radio" name="anorexia">
                                         </td>
                                         <td>
-                                            <input type="checkbox">
+                                            <input type="radio" name="anorexia">
                                         </td>
                                         <td>
-                                            <input type="checkbox">
+                                            <input type="radio" name="anorexia">
                                         </td>
                                     </tr>
                                     <tr>
@@ -1221,13 +1166,13 @@
                                             <p>Priapism</p>
                                         </td>
                                         <td>
-                                            <input type="checkbox">
+                                            <input type="radio" name="priapism">
                                         </td>
                                         <td>
-                                            <input type="checkbox">
+                                            <input type="radio" name="priapism">
                                         </td>
                                         <td>
-                                            <input type="checkbox">
+                                            <input type="radio" name="priapism">
                                         </td>
                                     </tr>
                                     <tr>
@@ -1235,13 +1180,13 @@
                                             <p>Aerophobia</p>
                                         </td>
                                         <td>
-                                            <input type="checkbox">
+                                            <input type="radio" name="aerophobia">
                                         </td>
                                         <td>
-                                            <input type="checkbox">
+                                            <input type="radio" name="aerophobia">
                                         </td>
                                         <td>
-                                            <input type="checkbox">
+                                            <input type="radio" name="aerophobia">
                                         </td>
                                     </tr>
                                     <tr>
@@ -1249,13 +1194,13 @@
                                             <p>Localized weakness</p>
                                         </td>
                                         <td>
-                                            <input type="checkbox">
+                                            <input type="radio" name="localized_weakness">
                                         </td>
                                         <td>
-                                            <input type="checkbox">
+                                            <input type="radio" name="localized_weakness">
                                         </td>
                                         <td>
-                                            <input type="checkbox">
+                                            <input type="radio" name="localized_weakness">
                                         </td>
                                     </tr>
                                     <tr>
@@ -1263,13 +1208,13 @@
                                             <p>Confusion</p>
                                         </td>
                                         <td>
-                                            <input type="checkbox">
+                                            <input type="radio" name="confusion">
                                         </td>
                                         <td>
-                                            <input type="checkbox">
+                                            <input type="radio" name="confusion">
                                         </td>
                                         <td>
-                                            <input type="checkbox">
+                                            <input type="radio" name="confusion">
                                         </td>
                                     </tr>
                                     <tr>
@@ -1277,13 +1222,13 @@
                                             <p>Agitation</p>
                                         </td>
                                         <td>
-                                            <input type="checkbox">
+                                            <input type="radio" name="agitation">
                                         </td>
                                         <td>
-                                            <input type="checkbox">
+                                            <input type="radio" name="agitation">
                                         </td>
                                         <td>
-                                            <input type="checkbox">
+                                            <input type="radio" name="agitation">
                                         </td>
                                     </tr>
                                     <tr>
@@ -1291,13 +1236,13 @@
                                             <p>Autonomic instability</p>
                                         </td>
                                         <td>
-                                            <input type="checkbox">
+                                            <input type="radio" name="autonomic_instability">
                                         </td>
                                         <td>
-                                            <input type="checkbox">
+                                            <input type="radio" name="autonomic_instability">
                                         </td>
                                         <td>
-                                            <input type="checkbox">
+                                            <input type="radio" name="autonomic_instability">
                                         </td>
                                     </tr>
                                     <tr>
@@ -1305,13 +1250,13 @@
                                             <p>Insomnia</p>
                                         </td>
                                         <td>
-                                            <input type="checkbox">
+                                            <input type="radio" name="insomnia">
                                         </td>
                                         <td>
-                                            <input type="checkbox">
+                                            <input type="radio" name="insomnia">
                                         </td>
                                         <td>
-                                            <input type="checkbox">
+                                            <input type="radio" name="insomnia">
                                         </td>
                                     </tr>
                                 </tbody>
@@ -1347,13 +1292,13 @@
                                             <p>Malaise</p>
                                         </td>
                                         <td>
-                                            <input type="checkbox">
+                                            <input type="radio" name="malaise">
                                         </td>
                                         <td>
-                                            <input type="checkbox">
+                                            <input type="radio" name="malaise">
                                         </td>
                                         <td>
-                                            <input type="checkbox">
+                                            <input type="radio" name="malaise">
                                         </td>
                                     </tr>
                                     <tr>
@@ -1361,13 +1306,13 @@
                                             <p>Nausea</p>
                                         </td>
                                         <td>
-                                            <input type="checkbox">
+                                            <input type="radio" name="nausea">
                                         </td>
                                         <td>
-                                            <input type="checkbox">
+                                            <input type="radio" name="nausea">
                                         </td>
                                         <td>
-                                            <input type="checkbox">
+                                            <input type="radio" name="nausea">
                                         </td>
                                     </tr>
                                     <tr>
@@ -1375,13 +1320,13 @@
                                             <p>Anxiety</p>
                                         </td>
                                         <td>
-                                            <input type="checkbox">
+                                            <input type="radio" name="anxiety">
                                         </td>
                                         <td>
-                                            <input type="checkbox">
+                                            <input type="radio" name="anxiety">
                                         </td>
                                         <td>
-                                            <input type="checkbox">
+                                            <input type="radio" name="anxiety">
                                         </td>
                                     </tr>
                                     <tr>
@@ -1389,13 +1334,13 @@
                                             <p>Dysphasia</p>
                                         </td>
                                         <td>
-                                            <input type="checkbox">
+                                            <input type="radio" name="dysphasia">
                                         </td>
                                         <td>
-                                            <input type="checkbox">
+                                            <input type="radio" name="dysphasia">
                                         </td>
                                         <td>
-                                            <input type="checkbox">
+                                            <input type="radio" name="dysphasia">
                                         </td>
                                     </tr>
                                     <tr>
@@ -1403,13 +1348,13 @@
                                             <p>Ataxia</p>
                                         </td>
                                         <td>
-                                            <input type="checkbox">
+                                            <input type="radio" name="ataxia">
                                         </td>
                                         <td>
-                                            <input type="checkbox">
+                                            <input type="radio" name="ataxia">
                                         </td>
                                         <td>
-                                            <input type="checkbox">
+                                            <input type="radio" name="ataxia">
                                         </td>
                                     </tr>
                                     <tr>
@@ -1417,13 +1362,13 @@
                                             <p>Seizures</p>
                                         </td>
                                         <td>
-                                            <input type="checkbox">
+                                            <input type="radio" name="seizures">
                                         </td>
                                         <td>
-                                            <input type="checkbox">
+                                            <input type="radio" name="seizures">
                                         </td>
                                         <td>
-                                            <input type="checkbox">
+                                            <input type="radio" name="seizures">
                                         </td>
                                     </tr>
                                     <tr>
@@ -1431,13 +1376,13 @@
                                             <p>Hydrophobia</p>
                                         </td>
                                         <td>
-                                            <input type="checkbox">
+                                            <input type="radio" name="hydrophobia">
                                         </td>
                                         <td>
-                                            <input type="checkbox">
+                                            <input type="radio" name="hydrophobia">
                                         </td>
                                         <td>
-                                            <input type="checkbox">
+                                            <input type="radio" name="hydrophobia">
                                         </td>
                                     </tr>
                                     <tr>
@@ -1445,13 +1390,13 @@
                                             <p>Localized pain</p>
                                         </td>
                                         <td>
-                                            <input type="checkbox">
+                                            <input type="radio" name="localized_pain">
                                         </td>
                                         <td>
-                                            <input type="checkbox">
+                                            <input type="radio" name="localized_pain">
                                         </td>
                                         <td>
-                                            <input type="checkbox">
+                                            <input type="radio" name="localized_pain">
                                         </td>
                                     </tr>
                                     <tr>
@@ -1459,13 +1404,13 @@
                                             <p>Delirium</p>
                                         </td>
                                         <td>
-                                            <input type="checkbox">
+                                            <input type="radio" name="delirium">
                                         </td>
                                         <td>
-                                            <input type="checkbox">
+                                            <input type="radio" name="delirium">
                                         </td>
                                         <td>
-                                            <input type="checkbox">
+                                            <input type="radio" name="delirium">
                                         </td>
                                     </tr>
                                     <tr>
@@ -1473,13 +1418,13 @@
                                             <p>Aggressiveness</p>
                                         </td>
                                         <td>
-                                            <input type="checkbox">
+                                            <input type="radio" name="aggressiveness">
                                         </td>
                                         <td>
-                                            <input type="checkbox">
+                                            <input type="radio" name="aggressiveness">
                                         </td>
                                         <td>
-                                            <input type="checkbox">
+                                            <input type="radio" name="aggressiveness">
                                         </td>
                                     </tr>
                                     <tr>
@@ -1487,13 +1432,13 @@
                                             <p>Hyperactivity</p>
                                         </td>
                                         <td>
-                                            <input type="checkbox">
+                                            <input type="radio" name="hyperactivity">
                                         </td>
                                         <td>
-                                            <input type="checkbox">
+                                            <input type="radio" name="hyperactivity">
                                         </td>
                                         <td>
-                                            <input type="checkbox">
+                                            <input type="radio" name="hyperactivity">
                                         </td>
                                     </tr>
                                     <tr>
@@ -1501,13 +1446,13 @@
                                             <p>Hypersalivation Any other:</p>
                                         </td>
                                         <td>
-                                            <input type="checkbox">
+                                            <input type="radio" name="hypersalivation">
                                         </td>
                                         <td>
-                                            <input type="checkbox">
+                                            <input type="radio" name="hypersalivation">
                                         </td>
                                         <td>
-                                            <input type="checkbox">
+                                            <input type="radio" name="hypersalivation">
                                         </td>
                                     </tr>
                                 </tbody>
@@ -1544,8 +1489,15 @@
                         </td>
                         <td colspan="3">
 
-                            <p><input type="checkbox">Home&nbsp;&nbsp;&nbsp;&nbsp; <input type="checkbox">Health facility
-                                <input type="text"> <input type="checkbox">Other <input type="text"></p>
+                            <p>
+                                <label for="deceased_die">Home</label>
+                                <input type="radio" name="deceased_die" id="deceased_die">
+                                 <label for="deceased_die_health_facility">Health facility</label>
+                                <input type="radio" name="deceased_die" id="deceased_die_health_facility">
+                                
+                                <input type="text" class="mr-2" name="deceased_die_health_facility_input" id="deceased_die_health_facility_input">
+
+                                 <label for="deceased_die_other">Other</label><input type="radio" name="deceased_die" id="deceased_die_other"> <input type="text" name="deceased_die_other_input" id="deceased_die_other_input"></p>
                         </td>
                     </tr>
                     <tr>
@@ -1553,11 +1505,15 @@
                             <p>6.5 During the illness did the deceased/ suspected patient seek medical help?</p>
                         </td>
                         <td colspan="2">
-                            <p><input type="checkbox">
-                                Yes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                <input type="checkbox">
-                                No&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                <input type="checkbox"> Unknown</p>
+                            <p><input type="radio" name="medical_help" id="medical_help_yes">
+                            <label for="medical_help_yes">Yes</label>
+                                 
+                                <input type="radio" name="medical_help" id="medical_help_no">
+                                <label for="medical_help_no">No</label>
+                                 
+                                <input type="radio" name="medical_help" id="medical_help_unknown"> 
+                                <label for="medical_help_unknown">Unknown</label>
+                            </p>
                         </td>
                     </tr>
                     <tr>
@@ -1602,89 +1558,64 @@
                         <td colspan="4">
                             <p> 6.7 Was any Laboratory specific test (ELISA/PCR/FAT) performed for lab confirmation of human
                                 Rabies?</p>
-                            <table class="table3">
+                            <table class="table3 table_6_7">
                                 <thead>
                                     <tr>
                                         <th>
+                                            Sr. No.
+                                        </th>
+                                        <th>
                                             <p>
-                                                <u>Test performed</u>
+                                               Test performed
                                             </p>
                                         </th>
                                         <th>
                                             <p>
-                                                <u>Hospital/Lab.</u>
+                                               Hospital/Lab.
                                             </p>
                                         </th>
                                         <th>
                                             <p>
-                                                <u>Date</u>
+                                               Date
                                             </p>
                                         </th>
                                         <th>
                                             <p>
-                                                <u>Result</u>
+                                               Result
                                             </p>
                                         </th>
                                         <th>
                                             <p>
-                                                <u>Comment</u>
+                                               Comment
                                             </p>
                                         </th>
+                                        <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td class="bggrey">
+                                        <td>1</td>
+                                        <td >
                                             <input type="text">
                                         </td>
-                                        <td class="bggrey">
+                                        <td >
                                             <input type="text">
                                         </td>
-                                        <td class="bggrey">
+                                        <td >
                                             <input type="text">
                                         </td>
-                                        <td class="bggrey">
+                                        <td >
                                             <input type="text">
                                         </td>
-                                        <td class="bggrey">
+                                        <td >
                                             <input type="text">
                                         </td>
+                                        <td></td>
                                     </tr>
-                                    <tr>
-                                        <td class="bggrey">
-                                            <input type="text">
-                                        </td>
-                                        <td class="bggrey">
-                                            <input type="text">
-                                        </td>
-                                        <td class="bggrey">
-                                            <input type="text">
-                                        </td>
-                                        <td class="bggrey">
-                                            <input type="text">
-                                        </td>
-                                        <td class="bggrey">
-                                            <input type="text">
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="bggrey">
-                                            <input type="text">
-                                        </td>
-                                        <td class="bggrey">
-                                            <input type="text">
-                                        </td>
-                                        <td class="bggrey">
-                                            <input type="text">
-                                        </td>
-                                        <td class="bggrey">
-                                            <input type="text">
-                                        </td>
-                                        <td class="bggrey">
-                                            <input type="text">
-                                        </td>
-                                    </tr>
+                                 
+                              
                                 </tbody>
+                                <a role="button" class="btn btn-primary add-table-row float-right mb-2" onclick="addMore3()">Add More</a>
                             </table>
                         </td>
                     </tr>
@@ -1693,11 +1624,12 @@
                     <tr>
                         <td colspan="4">
                             <p>
-                                6.8&nbsp; MRI brain done?&nbsp;
-                                <strong>Yes&nbsp;</strong>
-                                &nbsp;<input type="checkbox">
-                                <strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;No</strong>
-                                &nbsp;<input type="checkbox"> if yes&nbsp; write significant finding
+                                6.8 MRI brain done? &nbsp;
+                                <label for="MRI_brain_done_yes">Yes</label>
+                               
+                                <input type="radio" name="MRI_brain_done" id="MRI_brain_done_yes">
+                                <label for="MRI_brain_done_no">No</label>
+                                <input type="radio" name="MRI_brain_done" id="MRI_brain_done_no"> &nbsp;if yes write significant finding
                             </p>
                         </td>
                     </tr>
@@ -1726,13 +1658,15 @@
                     </tr>
                     <tr>
                         <td colspan="4">
-                            <p>7.1 Postmortem done:
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input
-                                    type="checkbox">
-                                Yes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                <input type="checkbox">
-                                No&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                <input type="checkbox"> Unknown</p>
+                            <p>7.1 Postmortem done: &nbsp;
+                                <label for="postmortem_yes">Yes</label>
+                                <input type="radio" name="postmortem" id="postmortem_yes">
+                                
+                                <label for="postmortem_no">No</label>
+                                <input type="radio" name="postmortem" id="postmortem_no">
+                                
+                                <label for="postmortem_unknown">unknown</label>
+                                <input type="radio" name="postmortem" id="postmortem_unknown"> </p>
                         </td>
                     </tr>
                     <tr>
@@ -1740,17 +1674,17 @@
                             <p>
                                 <strong>If Yes,</strong>
                                 Copy of report
-                                available&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                <input type="checkbox">
-                                Yes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                <input type="checkbox">
-                                No&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                available ? &nbsp;
+                                <label for="copy_of_report_yes">Yes</label>
+                                <input type="radio" name="copy_of_report" id="copy_of_report_yes">
+                                <label for="copy_of_report_no">No</label>
+                                <input type="radio" name="copy_of_report" id="copy_of_report_no">
                             </p>
                         </td>
                     </tr>
                     <tr>
                         <td colspan="4">
-                            <p>7.1.1 Did deceased have any evidence of recent wounds?&nbsp; &nbsp;<input type="checkbox">
+                            <p>7.1.1 Did deceased have any evidence of recent wounds? &nbsp;<input type="checkbox">
                                 Yes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                 <input type="checkbox"> No</p>
                         </td>
@@ -1792,25 +1726,22 @@
                     <tr>
                         <td colspan="4">
                             <p>8.1 Did anyone else in the community develop an illness similar to the deceased/ suspected
-                                patient within the past 12 months? <input type="checkbox">Yes <input type="checkbox">No
+                                patient within the past 12 months? 
+                                <label for="contact_tracking_yes">Yes</label>
+                                <input type="radio" name="contact_tracking" id="contact_tracking_yes">
+                                <label for="contact_tracking_no">No</label>
+                                <input type="radio" name="contact_tracking" id="contact_tracking_no">
                             </p>
                         </td>
                     </tr>
                 </tbody>
             </table>
         </div>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
+       
         <!-- **************************************************** -->
         <!-- **************************************************************** -->
-        <div class="container">
-            <table border="1" cellpadding="0" cellspacing="0">
+        <div class="container bg-light mb-4">
+            <table>
                 <tbody>
                     <tr>
                         <td colspan="1">
@@ -1832,41 +1763,33 @@
                                     in contact with a patient&#39;s saliva,respiratory secretions, autopsy material, or
                                     other potentially infectious material</em>)
                             </p>
-                            <table>
+                            <p><b>Contact : </b></p>
+                            <p class="mb-3">
+                                <input type="checkbox" name="contact_with_patient" class="contact_with_patient_checkbox" id="contact_with_patient_family">
+                                <label for="contact_with_patient_family" class="mr-3">Family</label>
+                                <input type="checkbox" name="contact_with_patient" class="contact_with_patient_checkbox" id="contact_with_patient_community">
+                                <label for="contact_with_patient_community" class="mr-3">Community</label>
+                                <input type="checkbox" name="contact_with_patient" class="contact_with_patient_checkbox" id="contact_with_patient_hospital_workers">
+                                <label for="contact_with_patient_hospital_workers" class="mr-3">Hospital workers</label>
+                                <input type="checkbox" name="contact_with_patient" class="contact_with_patient_checkbox" id="contact_with_patient_any_other">
+                                <label for="contact_with_patient_any_other" class="mr-3">Any Other</label>
+                            </p>
+                            <a role="button" class="btn btn-primary add-table-row float-right mb-2" onclick="addMore5()" id="add_more5">Add More</a>
+                            <table class="table_8_2">
+                                <thead>
+                                   <tr>
+                                        <th> Relation with Patient</th>
+                                        <th> Name</th>
+                                        <th> Address</th>
+                                        <th> Contact Number</th>
+                                        <th> Action</th>
+                                    </tr>
+                                  
+                                </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>
-                                            <p>Contact</p>
-                                        </td>
-                                        <td>
-                                            <p><input type="checkbox">&nbsp;&nbsp;&nbsp; Family</p>
-                                            <p><input type="checkbox">&nbsp;&nbsp;&nbsp; Community</p>
-                                            <p><input type="checkbox">&nbsp;&nbsp;&nbsp; Hospital workers</p>
-                                            <p><input type="checkbox">&nbsp;&nbsp;&nbsp; Any Other</p>
-                                        </td>
-                                        <td>
-                                            <p><input type="checkbox">&nbsp;&nbsp;&nbsp; Family</p>
-                                            <p><input type="checkbox">&nbsp;&nbsp;&nbsp; Community</p>
-                                            <p><input type="checkbox">&nbsp;&nbsp;&nbsp; Hospital workers</p>
-                                            <p><input type="checkbox">&nbsp;&nbsp;&nbsp; Any Other</p>
-                                        </td>
-                                        <td>
-                                            <p><input type="checkbox">&nbsp;&nbsp;&nbsp; Family</p>
-                                            <p><input type="checkbox">&nbsp;&nbsp;&nbsp; Community</p>
-                                            <p><input type="checkbox">&nbsp;&nbsp;&nbsp; Hospital workers</p>
-                                            <p><input type="checkbox">&nbsp;&nbsp;&nbsp; Any Other</p>
-                                        </td>
-                                        <td>
-                                            <p><input type="checkbox">&nbsp;&nbsp;&nbsp; Family</p>
-                                            <p><input type="checkbox">&nbsp;&nbsp;&nbsp; Community</p>
-                                            <p><input type="checkbox">&nbsp;&nbsp;&nbsp; Hospital workers</p>
-                                            <p><input type="checkbox">&nbsp;&nbsp;&nbsp; Any Other</p>
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <td>
-                                            <p>Name</p>
+                                    <!-- <tr>
+                                        <td class="bggrey">
+                                          
                                         </td>
                                         <td class="bggrey">
                                             <input type="text">
@@ -1877,45 +1800,9 @@
                                         <td class="bggrey">
                                             <input type="text">
                                         </td>
-                                        <td class="bggrey">
-                                            <input type="text">
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <p>Address</p>
-                                        </td>
-                                        <td class="bggrey">
-                                            <input type="text">
-                                        </td>
-                                        <td class="bggrey">
-                                            <input type="text">
-                                        </td>
-                                        <td class="bggrey">
-                                            <input type="text">
-                                        </td>
-                                        <td class="bggrey">
-                                            <input type="text">
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <p>Contact</p>
-                                            <p>Number</p>
-                                        </td>
-                                        <td class="bggrey">
-                                            <input type="text">
-                                        </td>
-                                        <td class="bggrey">
-                                            <input type="text">
-                                        </td>
-                                        <td class="bggrey">
-                                            <input type="text">
-                                        </td>
-                                        <td class="bggrey">
-                                            <input type="text">
-                                        </td>
-                                    </tr>
+                                       
+                                    </tr> -->
+                                  
 
 
                                 </tbody>
@@ -1930,11 +1817,12 @@
                                 owners.
                             </p>
                             <p>Risk assessments should be conducted with these people to rule out potential exposure.</p>
-                            <table class="table3">
-                                <thead style="    border: 1px solid #000;">
+                            <table class="table3 table_8_3" id="table_8_3">
+                            <a role="button" class="btn btn-primary add-table-row float-right mb-2" onclick="addMore4()">Add More</a>
+                                <thead >
                                     <tr>
                                         <th>
-
+                                             Sr. No.
                                         </th>
                                         <th>
                                             <p>
@@ -1946,44 +1834,26 @@
                                                 <strong>Relation</strong>
                                             </p>
                                         </th>
+                                        <th>Action</th>
                                     </tr>
                                 </thead>
+
                                 <tbody>
                                     <tr>
                                         <td>
                                             <p>1</p>
                                         </td>
-                                        <td class="bggrey">
+                                        <td >
                                             <input type="text">
                                         </td>
-                                        <td class="bggrey">
-                                            <input type="text">
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <p>2</p>
-                                        </td>
-                                        <td class="bggrey">
-                                            <input type="text">
-                                        </td>
-                                        <td class="bggrey">
+                                        <td >
                                             <input type="text">
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <td>
-                                            <p>3</p>
-                                        </td>
-                                        <td class="bggrey">
-                                            <input type="text">
-                                        </td>
-                                        <td class="bggrey">
-                                            <input type="text">
-                                        </td>
-                                    </tr>
+                                    
 
                                 </tbody>
+                               
                             </table>
                         </td>
                     </tr>
@@ -1995,10 +1865,11 @@
                                     <strong>9. Final Impression/ report:</strong>
                                 </p>
                                 <p>
-                                    <strong>Is it a Probable Rabies Case?&nbsp;&nbsp; Yes&nbsp;</strong>
-                                    &nbsp;<input type="checkbox">
-                                    <strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;No</strong>
-                                    &nbsp;<input type="checkbox">
+                                    <strong>Is it a Probable Rabies Case? &nbsp; </strong>
+                                    <label for="probable_rabies_yes">Yes</label>
+                                    <input type="radio" name="probable_rabies" id="probable_rabies_yes">
+                                    <label for="probable_rabies_no">No</label>
+                                    <input type="radio" name="probable_rabies" id="probable_rabies_no">
                                 </p>
                                 <p>&nbsp;</p>
                                 <p>&nbsp;</p>
@@ -2010,10 +1881,8 @@
             </table>
         </div>
         <!-- ****************************************************** -->
-
+        <div class="d-flex justify-content-center">  <button class="btn btn-primary">Save</button> </div>
     </div>
-    <div>
-        <button class="btn btn-primary">Save</button>
-    </div>
+   
   </form>
 @endsection

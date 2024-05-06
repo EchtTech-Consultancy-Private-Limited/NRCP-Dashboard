@@ -924,14 +924,9 @@ div#yearReport text.highcharts-title {
   display: none;
 }
 
-input[type=date]::-webkit-datetime-edit-text {
-  color: grey !important;
-}
-
 input[type=date]:invalid::-webkit-datetime-edit {
   color: grey !important;
 }
-
 
 input[type=date]::-webkit-datetime-edit-text,
 input[type=date]::-webkit-datetime-edit-month-field,
@@ -940,6 +935,9 @@ input[type=date]::-webkit-datetime-edit-year-field {
   color: #888;
 }
 
+input[type=date]:invalid::-webkit-datetime-edit {
+  color: grey !important;
+}
 
 .title {
   font-size: 21px;
@@ -951,10 +949,8 @@ input[type=date]::-webkit-datetime-edit-year-field {
   border-radius: 32px;
   padding: 5px 20px;
   font-size: 14px;
-
 }
 
 .form-group .form-control {
   color: #000;
-
 }/*# sourceMappingURL=dashboard.css.map */

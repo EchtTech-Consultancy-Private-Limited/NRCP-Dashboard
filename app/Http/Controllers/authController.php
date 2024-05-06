@@ -38,7 +38,7 @@ class authController extends Controller
             if($request->user_type == '2'){
                 $redirect = 'lab-dashboard';
             }elseif($request->user_type == 3){
-                $redirect = 'state-dashboard';
+                $redirect = 'states/dashboard';
             }
             else{
                 $redirect = 'dashboard';

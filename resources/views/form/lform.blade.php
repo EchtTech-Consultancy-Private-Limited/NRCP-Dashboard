@@ -25,7 +25,16 @@
               <div class="tab-content" id="myTabContent">
                
                 <div class="tab-pane fade show active" id="nav-add-patient-record" role="tabpanel" aria-labelledby="nav-home-tab">
-                 
+                  <form action="{{ route('pform') }}" method="POST" enctype="multipart/form-data"required>
+                    @csrf
+                    <div class="form-group mb-4">
+                        <div class="custom-file text-left">
+                            <input type="file" name="file" class="custom-file-input" id="customFile">
+                            <label class="custom-file-label" for="customFile">Choose file</label>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary">Import file</button>
+                </form>
                   <div class="row">
                     <div class="col-md-8"> 
                       <div class="note">
@@ -93,11 +102,15 @@
                           <label for="gander">Gender <span class="star">*</span>
                           </label>
                           <select class="form-select" name="gender" aria-label="Default select example" id="gender" required>
-                            <option value=""> Select Gender</option> @if(old('gender')) <option value="{{ old('gender') }}" selected>{{ old('gender') }}
-                            </option> @endif <option value="Male"> Male</option>
+                            <option value=""> Select Gender</option> 
+                            @if(old('gender')) 
+                            <option value="{{ old('gender') }}" selected>{{ old('gender') }}</option> 
+                            @endif 
+                            <option value="Male"> Male</option>
                             <option value="Famale"> Famale</option>
                             <option value="Other"> Other</option>
-                          </select> @if ($errors->has('gender')) <span class="form-text text-muted">{{ $errors->first('gender') }}</span> @endif
+                          </select> 
+                          @if ($errors->has('gender')) <span class="form-text text-muted">{{ $errors->first('gender') }}</span> @endif
                         </div>
                       </div>
                       <div class="col-lg-3 col-md-3">

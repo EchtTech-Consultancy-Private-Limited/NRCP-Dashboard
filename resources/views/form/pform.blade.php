@@ -27,7 +27,7 @@
                   <div class="note">
                     <i class="fa fa-hand-o-right" aria-hidden="true"></i> Enter Data Accurately and Completely
                   </div>
-                  <form action="{{ route('pform') }}" method="POST" enctype="multipart/form-data">
+                  <form action="{{ route('pform') }}" method="POST" enctype="multipart/form-data"required>
                     @csrf
                     <div class="form-group mb-4">
                         <div class="custom-file text-left">
