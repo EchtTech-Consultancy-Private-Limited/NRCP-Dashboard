@@ -240,6 +240,78 @@ $("input[type='radio']").change(function() {
     }
 });
 
+// 8.2 add more button 
+let contact_with_patient_checkbox = $('.contact_with_patient_checkbox');
+
+contact_with_patient_checkbox.on("change", function() {
+    let element = $(this);
+    if (element.is(":checked")) {
+        let id = $(this).attr('id');
+        let contact_with_patient_value = $(`label[for="${id}"]`).text();
+        let table_8_2 = $('.table_8_2 tbody');
+
+        // Create a table row with a unique identifier
+        let create_tr = $('<tr>').addClass(`row-${id}`).append(`
+            <td>${contact_with_patient_value}</td>
+            <td><input type="text"></td>
+            <td><input type="text"></td>
+            <td><input type="text"></td>
+        `);
+
+        // Append the table row to the table
+        table_8_2.append(create_tr);
+        $("#add_more5").css("display", "block");
+    } else {
+        // Remove the corresponding row
+        let id = $(this).attr('id');
+        $('.row-' + id).remove();
+    }
+});
+
+
+// add more for 8.2 relation with patient
+
+let table_8_2 = $('.table_8_2 tbody');
+
+function addMore5() {
+    // Create a table row
+    let create_tr = $('<tr>').append(`
+        <td></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td>
+            <a role="button" class="btn btn-danger remove-table-row float-right">
+                <i class="fa fa-trash" aria-hidden="true"></i>
+            </a>
+        </td>
+    `);
+
+    // Append the table row to the table
+    table_8_2.append(create_tr);
+
+    // Update serial numbers
+    // srNo4();
+}
+
+$('.table_8_2').on('click', '.remove-table-row', function() {
+    // Remove the closest table row
+    $(this).closest('tr').remove();
+
+    // Update serial numbers
+    // srNo4();
+}); 
+
+function srNo4() {
+    // Update serial numbers
+    table_8_2.children().each(function(index, element) {
+        $(element).find('td:first-child').text(index + 1).css("font-weight", "bold");
+    });
+}
+
+
+
+
 
 // adjusting width  edit form of edit form 
 let tabPaneWidth = $(".tab-pane.fade.show.active").innerWidth()
