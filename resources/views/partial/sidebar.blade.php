@@ -124,13 +124,11 @@
                         aria-hidden="true"></i>
                     Dashboard</a>
             </div>
-            <div class="arrow arrow-right link bg-primary text-white dashboard-title {{ request()->routeIs('state.investigate-create') ? 'active' : '' }}">
-                <a href="{{ route('state.investigate-create') }}"> <i class="fa fa-dashboard iconmargin-set"
-                    aria-hidden="true"></i>
-                Investigate Report</a>
-            </div>
 
             <div class="sidebarAccordion">
+                <div class="link bg-primary text-white dashboard-title">
+                    <a class="accordion-heading" data-toggle="collapse" href="#multiCollapseExample3" role="button"  aria-expanded="false" aria-controls="multiCollapseExample3"><i class="fa fa-dashboard iconmargin-set"  aria-hidden="true"></i>Investigate Report</a>
+                </div>
                 <div class="row">
                     <div class="col">
                         <div class="collapse multi-collapse {{ in_array(request()->route()->getName(), ['state.investigate-create', 'state.investigate-report-list']) ? 'show' : '' }}"
@@ -208,6 +206,12 @@
                         </div>
                     </div>
                 </div>
+            </div>
+
+            <div class="arrow arrow-right link bg-primary text-white dashboard-title {{ request()->routeIs('state.excel-report') ? 'active' : '' }}">
+                <a href="{{ route('state.excel-report') }}"> <i class="fa fa-dashboard iconmargin-set"
+                        aria-hidden="true"></i>
+                    Report</a>
             </div>
         @endif
 

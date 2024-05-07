@@ -185,7 +185,7 @@
                     <tr>
                         <td colspan="7">
                             <p>
-                                <input type="checkbox" id="BelowPrimary" name="suspect_education[below_primary]" aria-valuemax="Below Primary" {{ old('suspect_education.below_primary') ? 'checked' : '' }}>
+                                <input type="checkbox" id="BelowPrimary" value="Below Primary" name="suspect_education[below_primary]" aria-valuemax="Below Primary" {{ old('suspect_education.below_primary') ? 'checked' : '' }}>
                                 <label for="BelowPrimary"> Below Primary</label>
                             </p>
                         </td>

@@ -1,9 +1,8 @@
 @extends('layouts.main') 
-@section('title') {{ 'NRCP State Dashboard | Suspected List' }} 
+@section('title') {{ 'NRCP State Dashboard | Investigate List' }} 
 @endsection 
 @section('content') 
 <div class="container-fluid">
-    <a href="{{ route('state.line-suspected-export') }}" class="btn btn-primary">Export</a><br><br>
     <table id="general_profiles_TABLE2" class=" table-responsive">
         <thead>
           <tr>

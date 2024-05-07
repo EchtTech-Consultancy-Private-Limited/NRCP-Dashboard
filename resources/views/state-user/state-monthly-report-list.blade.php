@@ -3,7 +3,6 @@
 @endsection 
 @section('content') 
 <div class="container-fluid">
-  <a href="{{ route('state.monthly-report-export') }}" class="btn btn-primary">Export</a><br><br>
     <table id="general_profiles_TABLE2" class=" table-responsive">
         <thead>
           <tr>

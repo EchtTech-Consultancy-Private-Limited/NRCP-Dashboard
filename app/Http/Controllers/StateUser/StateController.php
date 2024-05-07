@@ -15,6 +15,7 @@ use Carbon\Carbon;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\LineSuspectedExport;
 use App\Exports\StateMonthlyReportExport;
+use App\Models\InvestigateReport;
 
 class StateController extends Controller
 {    
@@ -120,16 +121,6 @@ class StateController extends Controller
             throw new Exception($e->getMessage());
         }
     }
-    
-    /**
-     *  @stateMonthlyExport export excel report
-     *
-     * @return void
-     */
-    public function stateMonthlyExport()
-    {
-        return Excel::download(new StateMonthlyReportExport, 'lime_list.xlsx');
-    }
 
     
     /**
@@ -205,12 +196,60 @@ class StateController extends Controller
     }
     
     /**
-     *  @lineSuspectedExport export in excel all data
+     *  @excelReport model view page
      *
      * @return void
      */
-    public function lineSuspectedExport()
+    public function excelReport()
     {
-        return Excel::download(new LineSuspectedExport, 'lime_list.xlsx');
+        return view('state-user.excel-report');
+    }
+    
+    /**
+     *  @reportExport of satate dashboard module
+     *
+     * @param  mixed $request
+     * @return void
+     */
+    public function reportExport(Request $request)
+    {
+        // Validate the incoming request data
+        $request->validate([
+            'modulename' => 'required',
+        ]);
+
+        // Parse the start and end date if provided
+        if (!empty($request->startdate) && !empty($request->enddate)) {
+            $start_date = Carbon::parse("$request->startdate 00:00:00")->format('Y-m-d H:i:s');
+            $end_date = Carbon::parse("$request->enddate 23:59:59")->format('Y-m-d H:i:s');
+        } else {
+            // Set a wide range if start and end dates are empty
+            $start_date = Carbon::parse("1900-01-01 00:00:00")->format('Y-m-d H:i:s');
+            $end_date = Carbon::now()->addYear(100)->format('Y-m-d H:i:s');
+        }
+        $fileName = '';
+        $arrays = [];
+        switch ($request->modulename) {
+            case '1':
+                $fileName = 'InvestigateReport';
+                $query = InvestigateReport::query();
+                break;
+            case '2':
+                $fileName = 'StateMonthlyReport';
+                $query = StateMonthlyReport::query();
+                break;
+            case '3':
+                $fileName = 'LineSuspected';
+                $query = LineSuspected::query();
+                break;
+            default:
+                return response()->json(['error' => 'Invalid module name'], 400);
+        }
+        if (!empty($request->startdate) && !empty($request->enddate)) {
+            $query->whereBetween('created_at', [$start_date, $end_date]);
+        }
+
+        $arrays = [$query->get()->toArray()];
+        return Excel::download(new StateMonthlyReportExport($arrays), Carbon::now()->format('d-m-Y') . '-' . $fileName . '.xlsx');
     }
 }
