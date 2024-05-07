@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class InvestigartionReportRequest extends FormRequest
+class StateLineSuspectedRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,10 +22,10 @@ class InvestigartionReportRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'interviewer_name' => ['required'],
-            'interview_date' => ['required'],
-            'interviewer_designation' => ['required'],
-            'interviewer_contact_number' => ['required'],            
+            'name_of_health' => ['required'],
+            'address_hospital' => ['required'],
+            'email' => ['required'],
+            'type_of_health' => ['required'],
         ];
     }
 }

@@ -129,6 +129,31 @@
                     aria-hidden="true"></i>
                 Investigate Report</a>
             </div>
+
+            <div class="sidebarAccordion">
+                <div class="row">
+                    <div class="col">
+                        <div class="collapse multi-collapse {{ in_array(request()->route()->getName(), ['state.investigate-create', 'state.investigate-report-list']) ? 'show' : '' }}"
+                            id="multiCollapseExample3">
+                        
+                            <div class="card card-body">
+                                <div
+                                    class="link bg-primary text-white dashboard-title {{ request()->routeIs('state.investigate-report-list') ? 'active' : '' }}">
+                                    <a href="{{ route('state.investigate-report-list') }}"> <i class="fa fa-dashboard iconmargin-set"
+                                        aria-hidden="true"></i>List</a>
+                                </div>
+                                <div
+                                    class="link bg-primary text-white dashboard-title {{ request()->routeIs('state.investigate-create') ? 'active' : '' }}">
+                                    <a href="{{ route('state.investigate-create') }}"> <i class="fa fa-dashboard iconmargin-set"
+                                        aria-hidden="true"></i>Create</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
             <div class="sidebarAccordion">
 
                 <div class="link bg-primary text-white dashboard-title">
@@ -149,6 +174,34 @@
                                 <div
                                     class="link bg-primary text-white dashboard-title {{ request()->routeIs('state.monthly-report') ? 'active' : '' }}">
                                     <a href="{{ route('state.monthly-report') }}"> <i class="fa fa-dashboard iconmargin-set"
+                                        aria-hidden="true"></i>Create</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="sidebarAccordion">
+
+                <div class="link bg-primary text-white dashboard-title">
+                    <a class="accordion-heading" data-toggle="collapse" href="#multiCollapseExample2" role="button"  aria-expanded="false" aria-controls="multiCollapseExample2"><i class="fa fa-dashboard iconmargin-set"  aria-hidden="true"></i>Line List of Suspected</a>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <div class="collapse multi-collapse {{ in_array(request()->route()->getName(), ['state.line-suspected-list', 'state.line-suspected-create']) ? 'show' : '' }}"
+                            id="multiCollapseExample2">
+                        
+                            <div class="card card-body">
+                                <div
+                                    class="link bg-primary text-white dashboard-title {{ request()->routeIs('state.line-suspected-list') ? 'active' : '' }}">
+                                    <a href="{{ route('state.line-suspected-list') }}"> <i class="fa fa-dashboard iconmargin-set"
+                                        aria-hidden="true"></i>List</a>
+                                </div>
+                                <div
+                                    class="link bg-primary text-white dashboard-title {{ request()->routeIs('state.line-suspected-create') ? 'active' : '' }}">
+                                    <a href="{{ route('state.line-suspected-create') }}"> <i class="fa fa-dashboard iconmargin-set"
                                         aria-hidden="true"></i>Create</a>
                                 </div>
                             </div>

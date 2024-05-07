@@ -6,8 +6,15 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Exception;
 use App\Http\Requests\StateMonthlyRequest;
+use App\Http\Requests\StateLineSuspectedRequest;
 use Illuminate\Support\Facades\DB;
 use App\Models\StateMonthlyReport;
+use App\Models\CountryState;
+use App\Models\LineSuspected;
+use Carbon\Carbon;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\LineSuspectedExport;
+use App\Exports\StateMonthlyReportExport;
 
 class StateController extends Controller
 {    
@@ -112,5 +119,98 @@ class StateController extends Controller
             DB::rollBack();
             throw new Exception($e->getMessage());
         }
+    }
+    
+    /**
+     *  @stateMonthlyExport export excel report
+     *
+     * @return void
+     */
+    public function stateMonthlyExport()
+    {
+        return Excel::download(new StateMonthlyReportExport, 'lime_list.xlsx');
+    }
+
+    
+    /**
+     *  @lineSuspectedList show
+     *
+     * @return void
+     */
+    public function lineSuspectedList()
+    {
+        $lineSuspecteds = LineSuspected::orderBy('id', 'desc')->get();
+        return view('state-user.line-suspected-list',compact('lineSuspecteds'));
+    }
+    
+    /**
+     * lineSuspectedCreate show form
+     *
+     * @return void
+     */
+    public function lineSuspectedCreate()
+    {
+        $states = CountryState::get();
+        return view('state-user.line-suspected-create',compact('states'));
+    }
+    
+    /**
+     *  @lineSuspectedstore save
+     *
+     * @param  mixed $request
+     * @return void
+     */
+    public function lineSuspectedstore(StateLineSuspectedRequest $request)
+    {
+        try {
+            DB::beginTransaction();
+            foreach ($request->name as $index => $name) {
+                $lineSuspected = LineSuspected::create([
+                    'suspected_date' => $request->suspected_date,
+                    'name_of_health' => $request->name_of_health,
+                    'address_hospital' => $request->address_hospital,
+                    'designation_name' => $request->designation_name,
+                    'type_of_health' => $request->type_of_health,
+                    'email' => $request->email,
+                    'name' => $request->name[$index],
+                    'age' => $request->age[$index],
+                    'sex' => $request->sex[$index],
+                    'contact_number' => $request->contact_number[$index],
+                    'village' => $request->village[$index],
+                    'sub_district_mandal' => $request->sub_district_mandal[$index],
+                    'district' => $request->district[$index],
+                    'biting_animal' => $request->biting_animal[$index],
+                    'suspected_probable' => $request->suspected_probable[$index],
+                    'bit_incidence_village' => $request->bit_incidence_village[$index],
+                    'bit_incidence_sub_district' => $request->bit_incidence_sub_district[$index],
+                    'bit_incidence_district' => $request->bit_incidence_district[$index],
+                    'category_of_bite' => $request->category_of_bite[$index],
+                    'status_of_pep' => $request->status_of_pep[$index],
+                    'health_facility_name_institute' => $request->health_facility_name_institute[$index],
+                    'health_facility_district' => $request->health_facility_district[$index],
+                    'outcome_of_patient' => $request->outcome_of_patient[$index],
+                    'bite_from_stray' => $request->bite_from_stray[$index],
+                    'mobile_number' => $request->mobile_number[$index],
+                    'date' => $request->date[$index],
+                ]);
+            }
+            DB::commit();
+            if($lineSuspected){
+                return redirect()->route('state.line-suspected-list')->with('message', 'Line Suspected create successfull');
+            }
+        }catch (Exception $e) {
+            DB::rollBack();
+            throw new Exception($e->getMessage());
+        }
+    }
+    
+    /**
+     *  @lineSuspectedExport export in excel all data
+     *
+     * @return void
+     */
+    public function lineSuspectedExport()
+    {
+        return Excel::download(new LineSuspectedExport, 'lime_list.xlsx');
     }
 }
