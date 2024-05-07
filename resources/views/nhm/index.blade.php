@@ -22,7 +22,7 @@
                 @endforeach
                 @endif               
             </div>
-            <p ><strong>Source:</strong> <a href="https://nhm.gov.in/" target="_blank" onclick="confirm('This site is external')">https://nhm.gov.in/</a></p>
+            <p ><strong>Source:</strong> <a href="https://nhm.gov.in/" target="_blank" class="blink_me" title="https://nhm.gov.in/" onclick="confirm('This site is external')">https://nhm.gov.in/</a></p>
         </div>
     </div> 
 </section>

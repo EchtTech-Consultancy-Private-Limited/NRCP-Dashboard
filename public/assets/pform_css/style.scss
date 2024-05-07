@@ -804,3 +804,21 @@ input[type=date].form-control{
 .alert-success{
   width: fit-content;
 }
+
+.blink_me {
+  animation: blinker 1s linear infinite;
+}
+
+
+@keyframes blinker {
+ 
+  0% {
+    color: #fff;
+  }
+  50% {
+    color: #f00;
+  }
+  100% {
+    color: #f00;
+  }
+}

@@ -31,113 +31,94 @@ selectBoxes.each((index, element) => {
 
 // add more 4.5.2
 
-let add_table_row = $(".add-table-row") 
-let table_4_5_2 = $('.table_4_5_2').children();
-function addMore(){
+let add_table_row = $(".add-table-row");
+let table_4_5_2 = $('.table_4_5_2 tbody'); // Select tbody directly
 
-    let table_4_5_2 = $('.table_4_5_2').children();
-// Create a table row
-let create_tr = $('<tr>');
+function addMore() {
+    // Create a table row
+    let create_tr = $('<tr>');
 
-create_tr.append(`
-    <td>
-       
-    </td>
-    <td>
-        <input type="text">
-    </td>
-    <td>
-        <input type="text">
-    </td>
-    <td>
-        <input type="text">
-    </td>
-    <td >
-       <a role="button" class="btn btn-danger remove-table-row float-right" ><i class="fa fa-trash" aria-hidden="true"></i></a>
-    </td>
-`);
+    create_tr.append(`
+        <td></td>
+        <td><input type="text" name="number_of_wounds[anatomical_location][]"></td>
+        <td><input type="text" name="number_of_wounds[shape][]"></td>
+        <td><input type="text" name="number_of_wounds[dimensions_in_cm][]"></td>
+        <td><a role="button" class="btn btn-danger remove-table-row float-right"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
+    `);
 
-table_4_5_2.append(create_tr);
-srNo1()
+    table_4_5_2.append(create_tr);
+    srNo1();
 }
+
 $('.table_4_5_2').on('click', '.remove-table-row', function() {
     // Find the closest table row and remove it
-    let closetTr = 
     $(this).closest('tr').remove();
-    srNo1()
-  });
+    srNo1();
+});
 
-  function srNo1(){
-    let updateCount = table_4_5_2.children();
-    updateCount.each((index, element)=>{
-      let updateCountBOld =  $(element).find('td:first-child').text(index);
-      updateCountBOld.css("font-weight", "bold");
-    })
-   
- }
+function srNo1() {
+    // Update wound number for each row
+    $('.table_4_5_2 tbody tr').each(function(index) {
+        $(this).find('td:first').html('<strong>' + (index + 1) + '</strong>');
+    });
+}
+
+
+function srNo1(){
+let updateCount = table_4_5_2.children();
+updateCount.each((index, element)=>{
+    let updateCountBOld =  $(element).find('td:first-child').text(index);
+    updateCountBOld.css("font-weight", "bold");
+})
+
+}
 
 // add more fuctionality for 5.3
-let table_5_3 = $('.table_5_3').children();
-function addMore2(){
-  
-   
-    let table_5_3 = $('.table_5_3').children();
-// Create a table row
-let create_tr = $('<tr>');
+let table_5_3 = $('.table_5_3 tbody'); // Select tbody directly
 
-create_tr.append(`
-    <td>
-       
-    </td>
-    <td>
-        <input type="text">
-    </td>
-    <td>
-        <input type="text">
-    </td>
-    <td>
-        <input type="text">
-    </td>
-    <td>
-        <input type="text">
-    </td>
-    <td >
-       <a role="button" class="btn btn-danger remove-table-row float-right" ><i class="fa fa-trash" aria-hidden="true"></i></a>
-    </td>
-`);
+function addMore2() {
+    // Create a table row
+    let create_tr = $('<tr>');
 
-table_5_3.append(create_tr);
-srNo2()
+    create_tr.append(`
+        <td></td>
+        <td><input type="text" name="rabies_vaccine_received[date_of_vaccine_administration][]"></td>
+        <td><input type="text" name="rabies_vaccine_received[route_of_vaccine_administration][]"></td>
+        <td><input type="text" name="rabies_vaccine_received[site_of_vaccine_administration][]"></td>
+        <td><input type="text" name="rabies_vaccine_received[brand_vaccine][]"></td>
+        <td><a role="button" class="btn btn-danger remove-table-row float-right"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
+    `);
+
+    table_5_3.append(create_tr);
+    srNo2();
 }
+
 $('.table_5_3').on('click', '.remove-table-row', function() {
     // Find the closest table row and remove it
-    let closetTr = 
     $(this).closest('tr').remove();
-    srNo2()
-  }); 
+    srNo2();
+});
 
-  function srNo2(){
-    let updateCount = table_5_3.children();
-    updateCount.each((index, element)=>{
-      let updateCountBOld =  $(element).find('td:first-child').text(index);
-      updateCountBOld.css("font-weight", "bold");
-    })
-   
- }
+function srNo2() {
+    // Update Dose No for each row
+    $('.table_5_3 tbody tr').each(function(index) {
+        $(this).find('td:first').text(index + 1);
+    });
+}
 
 
-//  6.7  Laboratory specific test add more button functionality
+
 let table_6_7 = $('.table_6_7 tbody');
 
 function addMore3() {
     // Create a table row
     let create_tr = $('<tr>').append(`
         <td></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
+        <td><input type="text" name="laboratory_specific_test[test_performed][]"></td>
+        <td><input type="text" name="laboratory_specific_test[Hospital_lab][]"></td>
+        <td><input type="text" name="laboratory_specific_test[specific_test_date][]"></td>
+        <td><input type="text" name="laboratory_specific_test[result][]"></td>
+        <td><input type="text" name="laboratory_specific_test[comment][]"></td>
         <td>
             <a role="button" class="btn btn-danger remove-table-row float-right">
                 <i class="fa fa-trash" aria-hidden="true"></i>
@@ -162,6 +143,7 @@ function updateSerialNumbers3() {
 }
 
 
+
 // 8.3 add more table
 
 let table_8_3 = $('#table_8_3 tbody');
@@ -170,8 +152,8 @@ function addMore4() {
     // Create a table row
     let create_tr = $('<tr>').append(`
         <td></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
+        <td><input type="text" name="animal_suspected_transmitting[transmitting_rabies_name_address][]"></td>
+        <td><input type="text" name="animal_suspected_transmitting[transmitting_rabies_relation][]"></td>
         <td>
             <a role="button" class="btn btn-danger remove-table-row float-right">
                 <i class="fa fa-trash" aria-hidden="true"></i>
@@ -200,6 +182,7 @@ function srNo3() {
         $(element).find('td:first-child').text(index + 1).css("font-weight", "bold");
     });
 }
+
 
 // 6.4 If deceased, where did deceased die
 
@@ -248,14 +231,15 @@ contact_with_patient_checkbox.on("change", function() {
     if (element.is(":checked")) {
         let id = $(this).attr('id');
         let contact_with_patient_value = $(`label[for="${id}"]`).text();
+        contact_with_patient_value = contact_with_patient_value.replace(/\s+/g, "_").toLowerCase();
         let table_8_2 = $('.table_8_2 tbody');
 
         // Create a table row with a unique identifier
         let create_tr = $('<tr>').addClass(`row-${id}`).append(`
             <td>${contact_with_patient_value}</td>
-            <td><input type="text"></td>
-            <td><input type="text"></td>
-            <td><input type="text"></td>
+            <td><input type="text" name="${contact_with_patient_value}[relation_with_${contact_with_patient_value}_name]"></td>
+            <td><input type="text" name="${contact_with_patient_value}[relation_with_${contact_with_patient_value}_address]"></td>
+            <td><input type="text" name="${contact_with_patient_value}[relation_with_${contact_with_patient_value}_contact_number]"></td>
         `);
 
         // Append the table row to the table
