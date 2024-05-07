@@ -758,12 +758,16 @@ input[type=date].form-control {
   text-transform: uppercase !important;
 }
 
+.alert-success {
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
 .blink_me {
-  animation: blinker .9s linear infinite;
+  animation: blinker 1s linear infinite;
 }
 
 @keyframes blinker {
- 
   0% {
     color: #fff;
   }
@@ -773,9 +777,4 @@ input[type=date].form-control {
   100% {
     color: #f00;
   }
-}
-
-.alert-success {
-  width: -moz-fit-content;
-  width: fit-content;
 }/*# sourceMappingURL=style.css.map */

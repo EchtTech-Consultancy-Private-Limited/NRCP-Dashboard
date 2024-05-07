@@ -104,6 +104,12 @@ input[name='healthcare_worker_facility_name'], input[name="specify_other_name"]{
 table{
     tr{
         td{
+            input[type="text"], select {
+                border: 1px solid #ddd;
+                padding: 4px 10px;
+                line-height: 1;
+                font-size: 13px;
+            }
             p{
                 label{
                     margin: 0;
@@ -112,7 +118,28 @@ table{
         }
     }
 }
+.addressBlock{
+    padding: 0 26px 0px 0px;
+}
+.addressBlock, .emailBlock{
+    input[type="text"], select, input {
+        border: 1px solid #ddd;
+        padding: 4px 10px;
+        line-height: 1;
+        font-size: 13px;
+        margin-top: 6px;
+    }
+}
 
+.signature{
+    input {
+        border: 1px solid #ddd;
+        padding: 4px 10px;
+        line-height: 1;
+        font-size: 13px;
+        margin-top: 6px;
+    }
+}
 .logoHeader{
     justify-content: space-between;
     display: flex;
@@ -155,4 +182,12 @@ table{
 }
 input[type="text"] {
     width: 100%;
+}
+p{
+    font-size: 13px;
+    padding-bottom: 10px;
+}
+
+table{
+    width: auto !important;
 }

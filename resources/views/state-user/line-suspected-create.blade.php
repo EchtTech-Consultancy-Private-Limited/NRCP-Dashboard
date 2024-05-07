@@ -40,22 +40,22 @@
                     <div class="col-md-4">
                         <div class="addressBlock">
 
-                        <p style="font-size: 13px;">
+                        <p >
                             Name of the Health Facility/Block/District/State:
                             <input type="text" name="name_of_health" value="{{ old('name_of_health') }}">
                             @if ($errors->has('name_of_health')) 
                                 <span class="form-text text-muted">{{ $errors->first('name_of_health') }}</span> 
                             @endif
                         </p>
-                        <p style="font-size: 13px;">
-                            Address of the Hospital
+                        <p >
+                            Address of the Hospital :
                             <input type="text" name="address_hospital" value="{{ old('address_hospital') }}">
                             @if ($errors->has('address_hospital')) 
                                 <span class="form-text text-muted">{{ $errors->first('address_hospital') }}</span> 
                             @endif
                         </p>
-                        <p style="font-size: 13px;">
-                            Name &amp; Designation of Nodal Person
+                        <p >
+                            Name &amp; Designation of Nodal Person :
                             <input type="text" name="designation_name" value="{{ old('designation_name') }}">
                         </p>
                     </div> 
@@ -63,7 +63,7 @@
                     </div>
                     <div class="col-md-4">
                         <div class="emailBlock">
-                            <p style="font-size: 13px;">
+                            <p >
                                 Type of Health Facility/Block/District/State:
                                 <select name="type_of_health" id="type_of_health">
                                     <option value=""> Select state</option> 
@@ -77,8 +77,8 @@
                                     <span class="form-text text-muted">{{ $errors->first('type_of_health') }}</span> 
                                 @endif
                             </p>
-                            <p style="font-size: 13px; margin: 24px 0 0;">
-                                Email ID:
+                            <p >
+                                Email ID: <br>
                                 <input type="email" name="email" value="{{ old('email') }}">
                                 @if ($errors->has('email')) 
                                     <span class="form-text text-muted">{{ $errors->first('email') }}</span> 
@@ -95,127 +95,127 @@
             </div>
             <div>
              
-                <table cellpadding="0" cellspacing="0" style="width:100.0%" id="suspected_field">
+                <table class="table-responsive" id="suspected_field">
                     <tbody>
                         <tr>
-                            <td rowspan="2" style="height:35px; width:3.62%">
+                            <td rowspan="2" class="border-left-0">
                                 <p>
                                     <strong>S.No</strong>
                                 </p>
                             </td>
-                            <td rowspan="2" style="height:35px; width:4.32%">
+                            <td rowspan="2" >
                                 <p>
                                     <strong>Name</strong>
                                 </p>
                             </td>
-                            <td rowspan="2" style="height:35px; width:4.28%">
+                            <td rowspan="2" >
                                 <p>
                                     <strong>Age</strong>
                                 </p>
                             </td>
-                            <td rowspan="2" style="height:35px; width:4.28%">
+                            <td rowspan="2" >
                                 <p>
                                     <strong>Sex</strong>
                                 </p>
                             </td>
-                            <td rowspan="2" style="height:35px; width:4.38%">
+                            <td rowspan="2" >
                                 <p>
                                     <strong>Contact Number</strong>
                                 </p>
                             </td>
-                            <td rowspan="2" style="height:35px; width:4.34%">
+                            <td rowspan="2" >
                                 <p>
                                     <strong>Village</strong>
                                 </p>
                             </td>
-                            <td rowspan="2" style="height:35px; width:5.32%">
+                            <td rowspan="2" >
                                 <p>
                                     <strong>Sub District/ Taluk/Block/ Mandal</strong>
                                 </p>
                             </td>
-                            <td rowspan="2" style="height:35px; width:4.36%">
+                            <td rowspan="2" >
                                 <p>
                                     <strong>District</strong>
                                 </p>
                             </td>
-                            <td rowspan="2" style="height:35px; width:4.34%">
+                            <td rowspan="2" >
                                 <p>
                                     <strong>Biting Animal</strong>
                                 </p>
                             </td>
-                            <td rowspan="2" style="height:35px; width:4.86%">
+                            <td rowspan="2" >
                                 <p>
                                     <strong>Suspected / probable/ Confirmed</strong>
                                 </p>
                             </td>
-                            <td colspan="3" style="height:35px; width:13.22%">
+                            <td colspan="3" >
                                 <p>
                                     <strong>Place of bite incidence</strong>
                                 </p>
                             </td>
-                            <td rowspan="2" style="height:35px; width:4.4%">
+                            <td rowspan="2" >
                                 <p>
                                     <strong>Category of Bite</strong>
                                 </p>
                             </td>
-                            <td rowspan="2" style="height:35px; width:5.22%">
+                            <td rowspan="2" >
                                 <p>
                                     <strong>Status of PEP (Complete/ Partial/ Nil/NA)</strong>
                                 </p>
                             </td>
-                            <td colspan="2" style="height:35px; width:14.84%">
+                            <td colspan="2" >
                                 <p>
                                     <strong>Details of reporting health facility</strong>
                                 </p>
                             </td>
-                            <td rowspan="2" style="height:35px; width:5.26%">
+                            <td rowspan="2" >
                                 <p>
                                     <strong>Outcome of patient (Death in Hospital/ LAMA/ Alive)</strong>
                                 </p>
                             </td>
-                            <td rowspan="2" style="height:35px; width:4.32%">
+                            <td rowspan="2" >
                                 <p>
                                     <strong>Bite from Stray Dog/ Pet Dog</strong>
                                 </p>
                             </td>
-                            <td rowspan="2" style="height:35px; width:4.38%">
+                            <td rowspan="2" >
                                 <p>
                                     <strong>Mobile Number</strong>
                                 </p>
                             </td>
-                            <td rowspan="2" style="height:35px; width:4.3%">
+                            <td rowspan="2" >
                                 <p>
                                     <strong>Date Of Bite</strong>
                                 </p>
                             </td>
-                            <td rowspan="2" style="height:35px; width:4.3%">
+                            <td rowspan="2" >
                                 <p>
                                     <strong>Action</strong>
                                 </p>
                             </td>
                         </tr>
                         <tr>
-                            <td style="height:60px; width:4.34%">
+                            <td >
                                 <p>
                                     <strong>Village</strong>
                                 </p>
                             </td>
-                            <td style="height:60px; width:5.12%">
+                            <td >
                                 <p>
                                     <strong>Sub District/ Taluk/Block</strong>
                                 </p>
                             </td>
-                            <td style="height:60px; width:3.76%">
+                            <td >
                                 <p>
                                     <strong>District</strong>
                                 </p>
                             </td>
-                            <td style="height:60px; width:9.02%">
+                            <td >
                                 <p>
                                     <strong>Name of Institute</strong>
                                 </p>
                             </td>
-                            <td style="height:60px; width:5.82%">
+                            <td >
                                 <p>
                                     <strong>District</strong>
                                 </p>
@@ -308,7 +308,7 @@
                             <td>
                                  <input type="date" name="date[]" value="{{ old('date')[$index] ?? '' }}">
                             </td>
-                            <td>
+                            <td class="text-nowrap">
                                 <button type="button" name="add" id="add" class="btn btn-success add_more"><i class="fa fa-plus" style="font-size:16px"></i></button>
                                 </button><button type="button" name="remove" id="{{ $index + 1 }}" class="btn btn-danger btn_remove">X</button>
                            </td>

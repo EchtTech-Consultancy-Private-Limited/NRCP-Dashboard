@@ -127,7 +127,7 @@
 
             <div class="sidebarAccordion">
                 <div class="link bg-primary text-white dashboard-title">
-                    <a class="accordion-heading" data-toggle="collapse" href="#multiCollapseExample3" role="button"  aria-expanded="false" aria-controls="multiCollapseExample3"><i class="fa fa-dashboard iconmargin-set"  aria-hidden="true"></i>Investigate Report</a>
+                    <a class="accordion-heading" data-toggle="collapse" href="#multiCollapseExample3" role="button"  aria-expanded="false" aria-controls="multiCollapseExample3"><i class="fa fa-file-text-o" aria-hidden="true"></i>Investigate Report</a>
                 </div>
                 <div class="row">
                     <div class="col">
@@ -137,13 +137,11 @@
                             <div class="card card-body">
                                 <div
                                     class="link bg-primary text-white dashboard-title {{ request()->routeIs('state.investigate-report-list') ? 'active' : '' }}">
-                                    <a href="{{ route('state.investigate-report-list') }}"> <i class="fa fa-dashboard iconmargin-set"
-                                        aria-hidden="true"></i>List</a>
+                                    <a href="{{ route('state.investigate-report-list') }}"> List</a>
                                 </div>
                                 <div
                                     class="link bg-primary text-white dashboard-title {{ request()->routeIs('state.investigate-create') ? 'active' : '' }}">
-                                    <a href="{{ route('state.investigate-create') }}"> <i class="fa fa-dashboard iconmargin-set"
-                                        aria-hidden="true"></i>Create</a>
+                                    <a href="{{ route('state.investigate-create') }}"> Create</a>
                                 </div>
                             </div>
                         </div>
@@ -155,7 +153,7 @@
             <div class="sidebarAccordion">
 
                 <div class="link bg-primary text-white dashboard-title">
-                    <a class="accordion-heading" data-toggle="collapse" href="#multiCollapseExample1" role="button"  aria-expanded="false" aria-controls="multiCollapseExample1"><i class="fa fa-dashboard iconmargin-set"  aria-hidden="true"></i>State Monthly Report </a>
+                    <a class="accordion-heading" data-toggle="collapse" href="#multiCollapseExample1" role="button"  aria-expanded="false" aria-controls="multiCollapseExample1"><i class="fa fa-file-text-o" aria-hidden="true"></i>State Monthly Report </a>
                 </div>
 
                 <div class="row">
@@ -166,13 +164,11 @@
                             <div class="card card-body">
                                 <div
                                     class="link bg-primary text-white dashboard-title {{ request()->routeIs('state.monthly-report-list') ? 'active' : '' }}">
-                                    <a href="{{ route('state.monthly-report-list') }}"> <i class="fa fa-dashboard iconmargin-set"
-                                        aria-hidden="true"></i>List</a>
+                                    <a href="{{ route('state.monthly-report-list') }}"> List</a>
                                 </div>
                                 <div
                                     class="link bg-primary text-white dashboard-title {{ request()->routeIs('state.monthly-report') ? 'active' : '' }}">
-                                    <a href="{{ route('state.monthly-report') }}"> <i class="fa fa-dashboard iconmargin-set"
-                                        aria-hidden="true"></i>Create</a>
+                                    <a href="{{ route('state.monthly-report') }}"> Create</a>
                                 </div>
                             </div>
                         </div>
@@ -183,7 +179,7 @@
             <div class="sidebarAccordion">
 
                 <div class="link bg-primary text-white dashboard-title">
-                    <a class="accordion-heading" data-toggle="collapse" href="#multiCollapseExample2" role="button"  aria-expanded="false" aria-controls="multiCollapseExample2"><i class="fa fa-dashboard iconmargin-set"  aria-hidden="true"></i>Line List of Suspected</a>
+                    <a class="accordion-heading" data-toggle="collapse" href="#multiCollapseExample2" role="button"  aria-expanded="false" aria-controls="multiCollapseExample2"><i class="fa fa-list" aria-hidden="true"></i>Line List of Suspected</a>
                 </div>
 
                 <div class="row">
@@ -194,13 +190,11 @@
                             <div class="card card-body">
                                 <div
                                     class="link bg-primary text-white dashboard-title {{ request()->routeIs('state.line-suspected-list') ? 'active' : '' }}">
-                                    <a href="{{ route('state.line-suspected-list') }}"> <i class="fa fa-dashboard iconmargin-set"
-                                        aria-hidden="true"></i>List</a>
+                                    <a href="{{ route('state.line-suspected-list') }}">List</a>
                                 </div>
                                 <div
                                     class="link bg-primary text-white dashboard-title {{ request()->routeIs('state.line-suspected-create') ? 'active' : '' }}">
-                                    <a href="{{ route('state.line-suspected-create') }}"> <i class="fa fa-dashboard iconmargin-set"
-                                        aria-hidden="true"></i>Create</a>
+                                    <a href="{{ route('state.line-suspected-create') }}"> Create</a>
                                 </div>
                             </div>
                         </div>
@@ -209,9 +203,7 @@
             </div>
 
             <div class="arrow arrow-right link bg-primary text-white dashboard-title {{ request()->routeIs('state.excel-report') ? 'active' : '' }}">
-                <a href="{{ route('state.excel-report') }}"> <i class="fa fa-dashboard iconmargin-set"
-                        aria-hidden="true"></i>
-                    Report</a>
+                <a href="{{ route('state.excel-report') }}"> <i class="fa fa-file-text-o" aria-hidden="true"></i>  Report</a>
             </div>
         @endif
 
