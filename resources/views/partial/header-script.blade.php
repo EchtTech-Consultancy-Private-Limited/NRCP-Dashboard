@@ -49,5 +49,7 @@
 <link rel="stylesheet" href="{{ asset('state-assets/pdf.css.map') }}">
 <link rel="stylesheet" href="{{ asset('state-assets/pdf.scss') }}">
 <link rel="stylesheet" href="{{ asset('state-assets/stateMonthReport.css') }}">
+<link rel="stylesheet" href="{{ asset('state-assets/pdf2.scss') }}">
+<link rel="stylesheet" href="{{ asset('state-assets/pdf2.css') }}">
 
 

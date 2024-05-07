@@ -36,8 +36,6 @@ class ReportGenerateControllerController extends Controller
         // Validate the incoming request data
         $request->validate([
             'modulename' => 'required',
-            // 'startdate' => 'nullable|date',
-            // 'enddate' => 'nullable|date|after_or_equal:startdate',
         ]);
 
         // Parse the start and end date if provided
@@ -81,7 +79,7 @@ class ReportGenerateControllerController extends Controller
 
         $arrays = [$query->get()->toArray()];
         return Excel::download(new ReportGeneralExport($arrays), Carbon::now()->format('d-m-Y') . '-' . $fileName . '.xlsx');
-    }      
+    }
 
     public function generatePDF()
     {
