@@ -12,7 +12,7 @@
                     </span>
                     <div class="cases">
                         <div class="d-inline-block ml-2">
-                            <span id="rabiestext1" class="">No. of Investigatation Report </span>
+                            <span id="rabiestext1" class="">Total No. of Investigatation Report </span>
                             </br><span id="rabiesbox1" class="case-title">
                                88888
                             </span>
@@ -30,7 +30,7 @@
                     </span>
                     <div class="cases">
                         <div class="d-inline-block ml-2">
-                            <span id="rabietext2" class="">No. of State Monthly Report </span>
+                            <span id="rabietext2" class="">Total No. of State Monthly Report </span>
                             <br><span id="rabiesbox2"
                                 class="case-title">87952
                             </span>
@@ -48,7 +48,7 @@
                     </span>
                     <div class="cases">
                         <div class="d-inline-block ml-2">
-                            <span id="rabiestext3" class="">Total No. Line List Suspected </span>
+                            <span id="rabiestext3" class="">Total No. of Line List Suspected </span>
                             <br><span id="rabiesbox3" class="case-title">
                                958742
                             </span>
