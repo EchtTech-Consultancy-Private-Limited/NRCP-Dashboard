@@ -3,7 +3,9 @@
 {{__('Report List')}}
 @endsection
 @section('content')
-<div class="container-fluid">
+<div class="container-fluid dashboard">
+    <div class="form-tab">
+        <div class="dashboard-filter">
         <div class='row'>
             <div class="col-md-12">
                 <div class="card card-primary dashboard">
@@ -45,9 +47,9 @@
                                                 @enderror 
                                             </div>
                                         </div>
-                                        <div class="col-lg-3 col-md-3 col-6 search-reset">
+                                        <div class="col-lg-3 col-md-3 col-6 search-reset p-0">
                                             <div class="apply-filter mt-4 pt-1">
-                                                <button type="submit" class="btn bg-primary search-patient-btn mt-0 mr-3" name="bthValue" value="excel">Export Excel</button>
+                                                <button type="submit" class="btn bg-primary search-patient-btn mt-0 mr-1" name="bthValue" value="excel">Export Excel</button>
                                                 <!-- <button type="submit" class="btn bg-primary mr-3" name="bthValue" value="pdf">Download PDF</button> -->
                                                 <button type="reset" class="btn bg-danger">Reset</button>
                                             </div>
@@ -60,6 +62,9 @@
                 </div>
             </div>
         </div>
+        </div>
+    </div>
+      
     </div>
     
 @endsection

@@ -29,7 +29,7 @@ table {
   width: 100%;
   border-collapse: collapse;
   border-spacing: 0;
-  border: 1px solid #ddd;
+  border: 1px solid #ddd !important;
 }
 table ul {
   margin: 0;
@@ -66,6 +66,7 @@ table td {
   border-top: 0;
   border-left: 0;
   border-right: 1px solid #ddd;
+  border-color: #ddd !important;
 }
 table td:last-child {
   border-right: 0;
@@ -176,5 +177,14 @@ p {
 }
 
 table {
-  width: auto !important;
+  width: 100% !important;
+}
+table li, table p {
+  font-size: 13px !important;
+}
+
+.state-user-dashboard .box {
+  width: auto;
+  padding: 22px;
+  height: 133px;
 }/*# sourceMappingURL=stateMonthReport.css.map */

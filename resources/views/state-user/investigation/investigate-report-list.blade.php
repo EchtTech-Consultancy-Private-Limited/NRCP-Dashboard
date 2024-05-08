@@ -2,8 +2,10 @@
 @section('title') {{ 'NRCP State Dashboard | Investigate List' }} 
 @endsection 
 @section('content') 
-<div class="container-fluid">
-    <table id="general_profiles_TABLE2" class=" table-responsive">
+<div class="container-fluid dashboard">
+  <div class="form-tab">
+    <div class="dashboard-filter">
+    <table id="general_profiles_TABLE2" class="w-100  ">
         <thead>
           <tr>
             <th>Sl#</th>
@@ -31,5 +33,9 @@
           @endif
         </tbody>
     </table>        
-</div>     
+    
+    </div>
+  </div>
+</div>
+   
 @endsection

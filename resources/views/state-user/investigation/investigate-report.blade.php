@@ -5,8 +5,9 @@
 @section('content')
   <form action="{{ route('state.investigate-store') }}" method="post">
     @csrf
-    <div class="container-fluid">
-        <div class="container bg-light mb-4">
+    <div class="dashboard">
+        <div class="form-tab">
+        <div class="dashboard-filter mb-4">
             <table>
                 <tbody>
                     <tr>
@@ -552,7 +553,7 @@
         </div>
         
         <!-- ************************************************************************ -->
-        <div class="container bg-light mb-4">
+        <div class="dashboard-filter mb-4">
             <table>
                 <tbody>
                     <tr>
@@ -1058,7 +1059,7 @@
         </div>
         <!-- **************************************************first***********************************  -->
        
-        <div class="container bg-light mb-4">
+        <div class="dashboard-filter mb-4">
             <table >
                 <thead>
                     <tr>
@@ -1761,7 +1762,7 @@
        
         <!-- **************************************************** -->
         <!-- **************************************************************** -->
-        <div class="container bg-light mb-4">
+        <div class="dashboard-filter mb-4">
             <table>
                 <tbody>
                     <tr>
@@ -1923,6 +1924,8 @@
         </div>
         <!-- ****************************************************** -->
         <div class="d-flex justify-content-center">  <button class="btn btn-primary">Save</button> </div>
+        </div>
+       
     </div>
    
   </form>
