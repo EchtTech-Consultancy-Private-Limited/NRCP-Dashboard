@@ -2,8 +2,10 @@
 @section('title') {{ 'NRCP State Dashboard | Monthly Report' }} 
 @endsection 
 @section('content') 
-<div class="container-fluid">
-    <div class="container mb-5">
+
+<div class="container-fluid dashboard">
+  <div class="form-tab">
+    <div class="dashboard-filter mb-5">
       <div class="logoHeader">
         <img src="{{ asset('state-assets/images/undp.png') }}" />
         <img src="{{ asset('state-assets/images/emblem.jpg') }}" />
@@ -17,9 +19,9 @@
       </div>
       <form method="POST" action="{{route('state.monthly-report-store')}}" id="monthly_report_store">
         @csrf
-      <table border="1" cellpadding="0" cellspacing="0">
+      <table class="w-auto">
         <tbody>
-          <tr class="bglightBlue">
+          <tr class="">
             <td>
               <p>
                 <strong>State Name </strong>
@@ -32,7 +34,7 @@
               @endif
             </td>
           </tr>
-          <tr class="bglightBlue">
+          <tr class="">
             <td>
               <p>
                 <strong>Name of State Nodal Office</strong>
@@ -45,7 +47,7 @@
               @endif
             </td>
           </tr>
-          <tr class="bglightBlue">
+          <tr class="">
             <td>
               <p>
                 <strong>Office Address</strong>
@@ -58,7 +60,7 @@
                 @endif
             </td>
           </tr>
-          <tr class="bglightBlue">
+          <tr class="">
             <td>
               <p>
                 <strong>Reporting Month &amp; Year</strong>
@@ -74,7 +76,7 @@
         </tbody>
       </table>
       <h3 class="title"> Detailed Monthly report: - </h3>
-      <table border="1" cellpadding="0" cellspacing="0">
+      <table class="">
         <tbody>
           <tr>
             <td colspan="2" class="bglightBlue">
@@ -268,7 +270,7 @@
         </tbody>
       </table>
     </div>
-    <div class="container mb-5">
+    <div class="dashboard-filter mb-5">
       <table class="">
         <tbody>
           <tr>
@@ -571,5 +573,10 @@
       </div>
     </form>
     </div>
-  </div> 
+  </div>
+</div>
+  
+
+
+ 
   @endsection

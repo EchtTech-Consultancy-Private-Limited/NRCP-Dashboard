@@ -17,12 +17,15 @@ strong{
 p{
     margin: 0;
 }
+.container{
+    background-color: #fff;
+}
 table{
     margin: auto;
     width: 100%;
     border-collapse: collapse;
     border-spacing: 0;
-    border: 1px solid #ddd;
+    border: 1px solid #ddd !important;
    ul{
     margin: 0;
     padding-left: 20px;
@@ -59,7 +62,7 @@ table{
         border-top: 0;
         border-left: 0;
         border-right: 1px solid #ddd;
-        
+        border-color: #ddd !important;
         &:last-child{
             border-right: 0;
         }
@@ -101,6 +104,12 @@ input[name='healthcare_worker_facility_name'], input[name="specify_other_name"]{
 table{
     tr{
         td{
+            input[type="text"], select {
+                border: 1px solid #ddd;
+                padding: 4px 10px;
+                line-height: 1;
+                font-size: 13px;
+            }
             p{
                 label{
                     margin: 0;
@@ -109,7 +118,28 @@ table{
         }
     }
 }
+.addressBlock{
+    padding: 0 26px 0px 0px;
+}
+.addressBlock, .emailBlock{
+    input[type="text"], select, input {
+        border: 1px solid #ddd;
+        padding: 4px 10px;
+        line-height: 1;
+        font-size: 13px;
+        margin-top: 6px;
+    }
+}
 
+.signature{
+    input {
+        border: 1px solid #ddd;
+        padding: 4px 10px;
+        line-height: 1;
+        font-size: 13px;
+        margin-top: 6px;
+    }
+}
 .logoHeader{
     justify-content: space-between;
     display: flex;
@@ -152,4 +182,23 @@ table{
 }
 input[type="text"] {
     width: 100%;
+}
+p{
+    font-size: 13px;
+    padding-bottom: 10px;
+}
+
+table{
+    width: 100% !important;
+    li, p{
+       font-size: 13px !important;
+    }
+}
+
+.state-user-dashboard{
+    .box{
+        width: auto;
+        padding: 22px;
+        height: 133px;
+    }
 }

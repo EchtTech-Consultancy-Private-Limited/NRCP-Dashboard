@@ -20,12 +20,16 @@ p {
   margin: 0;
 }
 
+.container {
+  background-color: #fff;
+}
+
 table {
   margin: auto;
   width: 100%;
   border-collapse: collapse;
   border-spacing: 0;
-  border: 1px solid #ddd;
+  border: 1px solid #ddd !important;
 }
 table ul {
   margin: 0;
@@ -62,6 +66,7 @@ table td {
   border-top: 0;
   border-left: 0;
   border-right: 1px solid #ddd;
+  border-color: #ddd !important;
 }
 table td:last-child {
   border-right: 0;
@@ -89,8 +94,34 @@ input[name=healthcare_worker_facility_name], input[name=specify_other_name] {
   padding: 0;
 }
 
+table tr td input[type=text], table tr td select {
+  border: 1px solid #ddd;
+  padding: 4px 10px;
+  line-height: 1;
+  font-size: 13px;
+}
 table tr td p label {
   margin: 0;
+}
+
+.addressBlock {
+  padding: 0 26px 0px 0px;
+}
+
+.addressBlock input[type=text], .addressBlock select, .addressBlock input, .emailBlock input[type=text], .emailBlock select, .emailBlock input {
+  border: 1px solid #ddd;
+  padding: 4px 10px;
+  line-height: 1;
+  font-size: 13px;
+  margin-top: 6px;
+}
+
+.signature input {
+  border: 1px solid #ddd;
+  padding: 4px 10px;
+  line-height: 1;
+  font-size: 13px;
+  margin-top: 6px;
 }
 
 .logoHeader {
@@ -138,4 +169,22 @@ table tr td p label {
 
 input[type=text] {
   width: 100%;
+}
+
+p {
+  font-size: 13px;
+  padding-bottom: 10px;
+}
+
+table {
+  width: 100% !important;
+}
+table li, table p {
+  font-size: 13px !important;
+}
+
+.state-user-dashboard .box {
+  width: auto;
+  padding: 22px;
+  height: 133px;
 }/*# sourceMappingURL=stateMonthReport.css.map */
