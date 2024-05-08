@@ -14,7 +14,7 @@
                         <div class="d-inline-block ml-2">
                             <span id="rabiestext1" class="">No. of Investigatation Report </span>
                             </br><span id="rabiesbox1" class="case-title">
-                               88888
+                               {{ @$investigateReport }}
                             </span>
                         </div>
                     </div>
@@ -32,7 +32,7 @@
                         <div class="d-inline-block ml-2">
                             <span id="rabietext2" class="">No. of State Monthly Report </span>
                             <br><span id="rabiesbox2"
-                                class="case-title">87952
+                                class="case-title">{{ @$stateMonthlyReport }}
                             </span>
                         </div>
                     </div>
@@ -50,7 +50,7 @@
                         <div class="d-inline-block ml-2">
                             <span id="rabiestext3" class="">Total No. Line List Suspected </span>
                             <br><span id="rabiesbox3" class="case-title">
-                               958742
+                                {{ @$lineSuspected }}
                             </span>
                         </div>
                     </div>

@@ -136,12 +136,12 @@
                         
                             <div class="card card-body">
                                 <div
-                                    class="link bg-primary text-white dashboard-title {{ request()->routeIs('state.investigate-report-list') ? 'active' : '' }}">
-                                    <a href="{{ route('state.investigate-report-list') }}"> List</a>
-                                </div>
-                                <div
                                     class="link bg-primary text-white dashboard-title {{ request()->routeIs('state.investigate-create') ? 'active' : '' }}">
                                     <a href="{{ route('state.investigate-create') }}"> Create</a>
+                                </div>
+                                <div
+                                    class="link bg-primary text-white dashboard-title {{ request()->routeIs('state.investigate-report-list') ? 'active' : '' }}">
+                                    <a href="{{ route('state.investigate-report-list') }}"> List</a>
                                 </div>
                             </div>
                         </div>
@@ -163,12 +163,12 @@
                         
                             <div class="card card-body">
                                 <div
-                                    class="link bg-primary text-white dashboard-title {{ request()->routeIs('state.monthly-report-list') ? 'active' : '' }}">
-                                    <a href="{{ route('state.monthly-report-list') }}"> List</a>
-                                </div>
-                                <div
                                     class="link bg-primary text-white dashboard-title {{ request()->routeIs('state.monthly-report') ? 'active' : '' }}">
                                     <a href="{{ route('state.monthly-report') }}"> Create</a>
+                                </div>
+                                <div
+                                    class="link bg-primary text-white dashboard-title {{ request()->routeIs('state.monthly-report-list') ? 'active' : '' }}">
+                                    <a href="{{ route('state.monthly-report-list') }}"> List</a>
                                 </div>
                             </div>
                         </div>
@@ -189,12 +189,12 @@
                         
                             <div class="card card-body">
                                 <div
-                                    class="link bg-primary text-white dashboard-title {{ request()->routeIs('state.line-suspected-list') ? 'active' : '' }}">
-                                    <a href="{{ route('state.line-suspected-list') }}">List</a>
-                                </div>
-                                <div
                                     class="link bg-primary text-white dashboard-title {{ request()->routeIs('state.line-suspected-create') ? 'active' : '' }}">
                                     <a href="{{ route('state.line-suspected-create') }}"> Create</a>
+                                </div>
+                                <div
+                                    class="link bg-primary text-white dashboard-title {{ request()->routeIs('state.line-suspected-list') ? 'active' : '' }}">
+                                    <a href="{{ route('state.line-suspected-list') }}">List</a>
                                 </div>
                             </div>
                         </div>

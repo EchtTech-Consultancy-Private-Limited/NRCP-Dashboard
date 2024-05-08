@@ -26,7 +26,10 @@ class StateController extends Controller
      */
     public function index()
     {
-        return view('state-user.dashboard');
+        $stateMonthlyReport = StateMonthlyReport::count();
+        $lineSuspected = LineSuspected::count();
+        $investigateReport = InvestigateReport::count();
+        return view('state-user.dashboard',compact('stateMonthlyReport','lineSuspected','investigateReport'));
     }
     
     /**
