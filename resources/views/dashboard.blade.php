@@ -281,11 +281,11 @@
                                                 <div class="col-md-6 pr-4" id="dashboardMap">
                                                     <div class="country-map " id="country-map">
                                                         <div class="case-type">
-                                                            <select class="form-control w-auto" name="type"
+                                                            {{-- <select class="form-control w-auto" name="type"
                                                                 id="type">
                                                                 <option value="0">Cases</option>
-                                                                {{-- <option value="1">Deaths</option> --}}
-                                                            </select>
+                                                                <option value="1">Deaths</option>
+                                                            </select> --}}
                                                         </div>
                                                         <div class="year-selector p-3"> </div>
                                                         <div id="container" class="map"></div>

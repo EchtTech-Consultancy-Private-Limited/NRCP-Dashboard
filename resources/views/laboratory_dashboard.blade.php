@@ -255,8 +255,16 @@
                                                                         </tr>
                                                                     </thead>
                                                                     <tbody id="tableBodyLaboratory">
-
                                                                     </tbody>
+                                                                    <thead>
+                                                                        <tr>
+                                                                            <th>No. of Patients</th>
+                                                                            <th>No. of Sample Received</th>
+                                                                            <th>No. of Test Conducted</th>
+                                                                            <th>Total number of Positives</th>
+                                                                        </tr>
+                                                                    </thead>
+                                                                    <tbody id="tableGraphBody"></tbody>
                                                                 </table>
 
                                                             </div>
@@ -269,7 +277,7 @@
                                         <div class="card-body p-3 mb-4 dashboard-filter">
                                             <div id="graphical_view" class="">
                                                 <div class="row">
-                                                    <div
+                                                    {{-- <div
                                                         class=" laboratoryDetailsDatas dashboard-table">
                                                         <table class='table table-bordered s-p-form-map '>
                                                             <thead>
@@ -282,7 +290,7 @@
                                                             </thead>
                                                             <tbody id="tableGraphBody"></tbody>
                                                         </table>
-                                                    </div>
+                                                    </div> --}}
 
 
                                                 </div>
