@@ -273,7 +273,6 @@ const apply_filter = () => {
             }
             let sessionValue = $("#session_value").val();
             let case_type_col = result?.case_type_col;
-
             if (!sessionValue) {
                 sessionValue = 0
             }
@@ -288,11 +287,12 @@ const apply_filter = () => {
 
                 const entries = Object.entries(statesData);
 
-                const data = entries;
+                const data = entries;                
                 const tableBody = $('.detailsDatas tbody');
                 // Clear any existing rows in the table
                 tableBody.empty();
-            const selectedType = $('#type').val();
+                // selectedType case = 1 and deth = 0;
+            const selectedType = 1;
 
                 // Loop through the entries and add rows to the table
                 entries.forEach(function (entry) {
@@ -318,10 +318,10 @@ const apply_filter = () => {
                                 <td>${case_type_col === 3 ? cases : 0}</td>
                             `;
                         } else {
-                            if (selectedType == 1){
+                            if (selectedType == 0){
                                 row += `<td>0</td>`;
                             }
-                            if (selectedType == 0){
+                            if (selectedType == 1){
                                 row += `<td>${cases}</td>`;
                             }
 
@@ -477,7 +477,6 @@ const defaultLoadMapData = () => {
 
                     tableBody.append(row);
                 });
-
                 Highcharts.mapChart('container', {
                     chart: {
                         map: topology,
@@ -586,36 +585,39 @@ const getDistrictValue = (s_name, entries) => {
 
 //state wise map
 async function drilldownHandle(state) {
-    let statesData = state.array;
+    let statesData = state.array;    
     const entries = Object.entries(statesData);
     const selectedMapData = DISTRICT_MAPS.find(data => {
         const dataName = data.name.toLowerCase();
         const stateName = String(state.setstateMap).toLowerCase();
         return dataName === stateName;
-    });
+    });    
     const district_list = selectedMapData.data;
     const updatedArray = district_list.map((item) => {
-        //console.log(item,'item');
         return {
             ...item,
             data: item.data.map((mapColor) => {
-
-                //   console.log(mapColor)
-                return {
-                    ...mapColor,
-                    color: '#ce4c39'
-                };
+                const correspondingMapItem = item.mapData.find(mapItem => mapItem.id === mapColor.id);
+                if (correspondingMapItem) {
+                    const value = parseInt(getDistrictValue(correspondingMapItem.name.toLowerCase(), entries));
+                    return {
+                        ...mapColor,
+                        color: value > 0 ? '#ab4024' : '#e89279',
+                    };
+                }
+                return mapColor;
             }),
-
+    
             mapData: item.mapData.map((mapItem) => {
                 const value = getDistrictValue(mapItem.name.toLowerCase(), entries);
                 return {
                     ...mapItem,
-                    value: value,
+                    value: parseInt(value),
                 };
             }),
         };
     });
+    
     Highcharts.mapChart('container', {
         chart: {
             map: india,
@@ -655,6 +657,10 @@ async function drilldownHandle(state) {
                 }
             }
         },
+        tooltip: {
+            headerFormat: '',
+            pointFormat: '{point.name}: {point.value}'
+        },
         series: updatedArray,
     });
 
@@ -666,7 +672,7 @@ $('#type').on('change', function () {
     apply_filter();
 });
 
-const updateStateListDropdown = (state_name) => {
+const updateStateListDropdown = (state_name) => {    
     const selectElement = document.getElementsByName("state_name");
     let sl = document.querySelector('#state');
     const selectOptions = selectElement[0].children;
@@ -753,7 +759,7 @@ const googlePieChart = (result) => {
             }
         },
         title: {
-            text: `Cases by Gender in India ${filter_state !== undefined ? filter_state + ' >' : ''} ${filter_district !== undefined ? filter_district + 'from' : ''} ${filter_from_year !== "" ? filter_from_year + ' > to' : ''} ${filter_to_year !== "" ? filter_to_year + ' >' : ''}    n=(${result.total})`,
+            text: `Cases by Gender in India ${filter_state !== undefined ? filter_state + ' ' : ''} ${filter_district !== undefined ? filter_district + 'from' : ''} ${filter_from_year !== "" ? filter_from_year + '  to' : ''} ${filter_to_year !== "" ? filter_to_year + ' ' : ''}    n=(${result.total})`,
             align: 'left',
             style: {
                 fontSize: innerWidth<=1350 ? '15px' : (innerWidth>=1350 ? '18px': '15px') // Set the font size here
@@ -928,7 +934,7 @@ const barChart = (result) => {
 }
 
 const highchartMapcase = (total_records) => {
-    // console.log(total_records[0].value);
+    console.log(total_records);
     const filter_state = $('#state').find(":selected").attr('state-name');
     const filter_district = $('#district').find(":selected").attr('dist-name');
     const filter_from_year = $('#year').find(":selected").val();
@@ -948,7 +954,6 @@ const highchartMapcase = (total_records) => {
         jsData.push([total_records[i].year]);
     }
 
-
     var mapFilterType = $('#type').find(":selected").val();
     var mapFilterTypeText = "";
     if (mapFilterType == 0) {
@@ -958,18 +963,10 @@ const highchartMapcase = (total_records) => {
     }
     const filteredRecords = total_records.filter(record => record["case"]);
 
-
     new Highcharts.Chart('barchart_materialcase', {
         chart: {
             renderTo: 'barchart_materialcase',
-            type: 'column',
-            options3d: {
-                enabled: true,
-                alpha: 15,
-                beta: 15,
-                depth: 50,
-                viewDistance: 25
-            }
+            type: 'column'
         },
         xAxis: {
             categories: total_records.map(record => record["year"])
@@ -994,19 +991,13 @@ const highchartMapcase = (total_records) => {
         legend: {
             enabled: false
         },
-        plotOptions: {
-            column: {
-                depth: 25
-            }
-        },
         series: [{
             data: filteredRecords.map(record => parseInt(record["case"])),
             colorByPoint: true
         }]
     });
-
-
 }
+
 
 const highchartMapDeath = (total_records) => {
     // console.log(total_records[0].value);
@@ -1057,13 +1048,13 @@ const defaultLaboratoryMapData = () => {
         success: function (result) {
             (async () => {
                 const topology = await fetch(
-                    'https://code.highcharts.com/mapdata/countries/in/custom/in-all-andaman-and-nicobar.topo.json'
+                    'https://code.highcharts.com/mapdata/countries/in/custom/in-all-disputed.topo.json'
                 ).then(response => response.json());                
                 const statesData = result.finalMapData;
                 const arr = [];
                 const pointerArr = [];
                 statesData.forEach((item)=>{
-                    arr.push({"hc-key":item.state_code,color: "#f4a289","state":item.state,value:item.numberReceived,extraValue:item.institute?item.institute:'N/A',extraValue2:item.institute_id,lat:Number(item.institute_lat),lon:Number(item.institute_log)})
+                    arr.push([item.state,item.numberReceived])
                 })
                 statesData.forEach((item)=>{
                     pointerArr.push({color: "red",extraValue:item.institute?item.institute:'N/A',lat:Number(item.institute_lat),lon:Number(item.institute_log),numberPatients:Number(item.numberPatients),numberReceived:Number(item.numberReceived),numberTestConducted:Number(item.numberTestConducted),numberPositives:Number(item.numberPositives)})
@@ -1095,13 +1086,13 @@ const defaultLaboratoryMapData = () => {
                         <td>${result.total_records.numbers_of_sample_received}</td>
                         <td>${result.total_records.testConducted}</td>
                         <td>${result.total_records.numbers_of_positives}</td>
-                    </tr>
-                    <tr>
-                        <td>${result.total_records.number_of_patients !== 0 ? (result.total_records.number_of_patients / result.total_records.number_of_patients * 100) + '%' : '0%'}</td>
-                        <td>${result.total_records.number_of_patients !== 0 ? Math.trunc(result.total_records.numbers_of_sample_received / result.total_records.number_of_patients * 100) + '%' : '0%'}</td>
-                        <td>${result.total_records.number_of_patients !== 0 ? Math.trunc(result.total_records.testConducted / result.total_records.number_of_patients * 100) + '%' : '0%'}</td>
-                        <td>${result.total_records.number_of_patients !== 0 ? Math.trunc(result.total_records.numbers_of_positives / result.total_records.number_of_patients * 100) + '%' : '0%'}</td>
                     </tr>`;
+                    // <tr>
+                    //     <td>${result.total_records.number_of_patients !== 0 ? (result.total_records.number_of_patients / result.total_records.number_of_patients * 100) + '%' : '0%'}</td>
+                    //     <td>${result.total_records.number_of_patients !== 0 ? Math.trunc(result.total_records.numbers_of_sample_received / result.total_records.number_of_patients * 100) + '%' : '0%'}</td>
+                    //     <td>${result.total_records.number_of_patients !== 0 ? Math.trunc(result.total_records.testConducted / result.total_records.number_of_patients * 100) + '%' : '0%'}</td>
+                    //     <td>${result.total_records.number_of_patients !== 0 ? Math.trunc(result.total_records.numbers_of_positives / result.total_records.number_of_patients * 100) + '%' : '0%'}</td>
+                    // </tr>`;
 
                 $("#tableGraphBody").append(graphTableRow);
                 const gaugeOptions = {
@@ -1403,6 +1394,7 @@ const defaultLaboratoryMapData = () => {
                 });
                 
                 // map code
+                // console.log(arr);
                 Highcharts.mapChart('laboratory-map', {
                     chart: {
                         map: topology,
@@ -1441,7 +1433,7 @@ const defaultLaboratoryMapData = () => {
                     }, {
                         name: 'States',
                         type: 'map',
-                        data: arr,
+                        data:  arr,
                         mapData: topology,
                         joinBy: 'hc-key',
                         borderColor: '#A0A0A0',
@@ -1550,13 +1542,13 @@ const laboratory_apply_filter = (rabiesfilter = '',stateName = '') => {
             $('#text2').html("Syndromic Surveillance Cases");
             (async () => {
                 const topology = await fetch(
-                    'https://code.highcharts.com/mapdata/countries/in/custom/in-all-andaman-and-nicobar.topo.json'
+                    'https://code.highcharts.com/mapdata/countries/in/custom/in-all-disputed.topo.json'
                 ).then(response => response.json());                
                 const statesData = result.finalMapData;
                 const arr = [];
                 const pointerArr = [];
                 statesData.forEach((item)=>{
-                    arr.push({"hc-key":item.state_code,color: "#f4a289","state":item.state,value:item.numberReceived,extraValue:item.institute?item.institute:'N/A',extraValue2:item.institute_id,lat:Number(item.institute_lat),lon:Number(item.institute_log)})
+                    arr.push([item.state,item.numberReceived])
                 })
                 statesData.forEach((item)=>{
                     pointerArr.push({color: "red",extraValue:item.institute?item.institute:'N/A',lat:Number(item.institute_lat),lon:Number(item.institute_log),numberPatients:Number(item.numberPatients),numberReceived:Number(item.numberReceived),numberTestConducted:Number(item.numberTestConducted),numberPositives:Number(item.numberPositives)})
@@ -1587,13 +1579,13 @@ const laboratory_apply_filter = (rabiesfilter = '',stateName = '') => {
                         <td>${result.total_records.numbers_of_sample_received}</td>
                         <td>${result.total_records.testConducted}</td>
                         <td>${result.total_records.numbers_of_positives}</td>
-                    </tr>
-                    <tr>
-                        <td>${result.total_records.number_of_patients !== 0 ? (result.total_records.number_of_patients / result.total_records.number_of_patients * 100) + '%' : '0%'}</td>
-                        <td>${result.total_records.number_of_patients !== 0 ? Math.trunc(result.total_records.numbers_of_sample_received / result.total_records.number_of_patients * 100) + '%' : '0%'}</td>
-                        <td>${result.total_records.number_of_patients !== 0 ? Math.trunc(result.total_records.testConducted / result.total_records.number_of_patients * 100) + '%' : '0%'}</td>
-                        <td>${result.total_records.number_of_patients !== 0 ? Math.trunc(result.total_records.numbers_of_positives / result.total_records.number_of_patients * 100) + '%' : '0%'}</td>
                     </tr>`;
+                    // <tr>
+                    //     <td>${result.total_records.number_of_patients !== 0 ? (result.total_records.number_of_patients / result.total_records.number_of_patients * 100) + '%' : '0%'}</td>
+                    //     <td>${result.total_records.number_of_patients !== 0 ? Math.trunc(result.total_records.numbers_of_sample_received / result.total_records.number_of_patients * 100) + '%' : '0%'}</td>
+                    //     <td>${result.total_records.number_of_patients !== 0 ? Math.trunc(result.total_records.testConducted / result.total_records.number_of_patients * 100) + '%' : '0%'}</td>
+                    //     <td>${result.total_records.number_of_patients !== 0 ? Math.trunc(result.total_records.numbers_of_positives / result.total_records.number_of_patients * 100) + '%' : '0%'}</td>
+                    // </tr>`;
                 $("#tableGraphBody").append(graphTableRow);
                 const gaugeOptions = {
                     chart: {
