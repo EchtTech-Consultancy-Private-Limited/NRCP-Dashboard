@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\LineSuspected;
 
-class LFormController extends Controller
+class FormController extends Controller
 {
     /**
      * lFormList
