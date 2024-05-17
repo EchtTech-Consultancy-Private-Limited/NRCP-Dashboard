@@ -254,26 +254,6 @@ class StateController extends Controller
 
         $arrays = [$query->get()->toArray()];
         return Excel::download(new StateMonthlyReportExport($arrays), Carbon::now()->format('d-m-Y') . '-' . $fileName . '.xlsx');
-    }
+    }    
     
-    /**
-     * lFormList
-     *
-     * @return void
-     */
-    public function lFormList()
-    {
-        $lineSuspecteds = LineSuspected::orderBy('id', 'desc')->get();
-        return view('state-user.lform.list',compact('lineSuspecteds'));
-    }
-
-    /**
-     * lFormList
-     *
-     * @return void
-     */
-    public function lFormCreate()
-    {
-        return view('state-user.lform.create');
-    }
 }
