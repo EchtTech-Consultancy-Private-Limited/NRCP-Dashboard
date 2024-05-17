@@ -144,6 +144,9 @@ Route::middleware(['Admin','device'])->group(function () {
                 Route::post('line-suspected-store',[StateController::class,'lineSuspectedstore'])->name('line-suspected-store');
                 Route::get('excel-report', [StateController::class, 'excelReport'])->name('excel-report');
                 Route::post('report-export',[StateController::class,'reportExport'])->name('report-export');
+                Route::get('lform-list',[StateController::class,'lFormList'])->name('lform-list');
+                Route::get('lform-create',[StateController::class,'lFormCreate'])->name('lform-create');
+                Route::post('lform-store',[StateController::class,'lFormstore'])->name('lform-store');
             });
         });
     });

@@ -639,6 +639,8 @@
 		-o-box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.3);
 		box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.3);
 		border-radius: 9px;
+		// background: linear-gradient(0deg, #d53369 0%, #daae51 100%);
+		background: radial-gradient(circle farthest-corner at 10% 20%, rgb(0, 152, 155) 0.1%, rgb(0, 94, 120) 94.2%);
 	}
 	
 		.basic-card .card-content {
@@ -977,4 +979,13 @@ input[type=date]:invalid::-webkit-datetime-edit {
 }
 .form-group .form-control{
 	color: #000;
+}
+
+.generate-report{
+	border: none;
+    color: #fff;
+    background: #1d7bbe;
+    font-size: 14px;
+    padding: 6px 14px;
+    border-radius: 34px;
 }

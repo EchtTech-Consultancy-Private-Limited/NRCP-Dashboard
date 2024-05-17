@@ -1,6 +1,6 @@
 @extends('layouts.main')
 @section('title')
-{{__('Laboratory Form')}}
+{{__('Laboratory Dashboard')}}
 @endsection
 @section('content')
 <div class="card-category-1 lab-form-d">
@@ -31,7 +31,7 @@
             </div>
         </div>
         <div class="col-md-4 mb-4">
-            <div class="basic-card basic-card-light">
+            <div class="basic-card ">
                 <div class="card-content">
                     <span class="card-title">Equipments</span>
                     <b><p class="card-text">{{ $EquipmentsTotal }}</p></b>

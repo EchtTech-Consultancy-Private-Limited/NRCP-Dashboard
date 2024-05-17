@@ -28,12 +28,15 @@
     <div class="row">
         <!-- fix for small devices only -->
         <div class="clearfix hidden-md-up"></div>
+        <div class="col-md-12 pr-5">
+            <button class="float-right generate-report" onclick="printDiv('report_laboratory')">Generate Report </button>
+        </div>
         <div class="col-md-12">
-
+           
             <!-- general form elements -->
-            <div class=" card-primary dashboard">
+            <div class=" card-primary dashboard" id="report_laboratory">
                 @if (Auth::user()->user_type == 1)
-                <div class="form-tab">
+                <div class="form-tab mt-3">
                     <div class="row">
                         <div class="col-md-12">
                                 <div class="bootstrap-tab">
