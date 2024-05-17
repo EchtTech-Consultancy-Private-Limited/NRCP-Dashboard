@@ -252,22 +252,14 @@
                                                                             <th class="state_filter_district">
                                                                                 Institute
                                                                             </th>
-                                                                            <th>
-                                                                                No. of Test Conducted
-                                                                            </th>
+                                                                            <th>No. of Patients</th>
+                                                                            <th>No. of Sample Received</th>
+                                                                            <th>No. of number of Positives</th>
+                                                                            <th>No. of Test Conducted</th>
                                                                         </tr>
                                                                     </thead>
                                                                     <tbody id="tableBodyLaboratory">
-                                                                    </tbody>
-                                                                    <thead>
-                                                                        <tr>
-                                                                            <th>No. of Patients</th>
-                                                                            <th>No. of Sample Received</th>
-                                                                            <th>No. of Test Conducted</th>
-                                                                            <th>Total number of Positives</th>
-                                                                        </tr>
-                                                                    </thead>
-                                                                    <tbody id="tableGraphBody"></tbody>
+                                                                    </tbody>                                                                    
                                                                 </table>
 
                                                             </div>
