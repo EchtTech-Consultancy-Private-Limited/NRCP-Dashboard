@@ -184,6 +184,11 @@
                                         <strong>Remarks</strong>
                                     </p>
                                 </td>
+                                <td rowspan="2">
+                                    <p>
+                                        <strong>Action</strong>
+                                    </p>
+                                </td>
                                
                             </tr>
                             <tr>
@@ -303,11 +308,21 @@
                                 <input type="date" name="lform_sample_collection_date" value="" id="lform_sample_collection_date">
                                </td>
                                 <td>
+                                <select class="form-select" aria-label="Default select "
+                                        name="lform_speciman_type[]" id="lform_speciman_type">
+                                        <option value="">Please Select</option>
+                                        <option value="Suspected" @if(old('suspected_probable')[$index]
+                                            ?? ''=='Suspected' ) selected @endif>Suspected</option>
+                                        <option value="Probable" @if(old('suspected_probable')[$index] ?? ''=='Probable'
+                                            ) selected @endif>Probable</option>
+                                        <option value="Confirmed" @if(old('suspected_probable')[$index]
+                                            ?? ''=='Confirmed' ) selected @endif>Confirmed</option>
+                                    </select>
                                     <ul>
-                                        <li>  RFFIT (CSF,Serum)</li>
-                                        <li>Real-time PCR (CSF,Saliva, Nuchal skin) </li>
-                                        <li> Rabies Immunohistochemistry</li>
-                                        <li> Other(insert)</li>
+                                        <option value="RFFIT (CSF,Serum)">  RFFIT (CSF,Serum)</option>
+                                        <option value="Real-time PCR (CSF,Saliva, Nuchal skin)">Real-time PCR (CSF,Saliva, Nuchal skin) </option>
+                                        <option value="Rabies Immunohistochemistry"> Rabies Immunohistochemistry</option>
+                                        <option value="Other(insert)"> Other(insert)</option>
                                     </ul>
                                 </td>
                                
@@ -320,6 +335,9 @@
                                 <td>
                                   <input type="text" name="lform_remark" value="" id="lform_remark">
                                </td>
+                               <td class="text-nowrap">
+                                    <button type="button" name="add" id="add" class="btn btn-success add_more"><i class="fa fa-plus" style="font-size:16px"></i></button>
+                                    </button><button type="button" name="remove" id="{{ $index + 1 }}" class="btn btn-danger btn_remove"><i class="fa fa-trash" aria-hidden="true"></i></button>
                             </tr>
                             @endforeach
                         </tbody>
