@@ -202,10 +202,9 @@ table li, table p {
   padding: 0;
 }
 
-.emailBlock p input {
-  width: auto;
+.lform_create .emailBlock {
+  margin: 10px 0 0;
 }
-
 input[type=date] {
   border: 1px solid #ddd !important;
   padding: 2px 10px;
