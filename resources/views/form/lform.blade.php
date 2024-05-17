@@ -25,12 +25,13 @@
               <div class="tab-content" id="myTabContent">
                
                 <div class="tab-pane fade show active" id="nav-add-patient-record" role="tabpanel" aria-labelledby="nav-home-tab">
-                  <form action="{{ route('pform') }}" method="POST" enctype="multipart/form-data"required>
+                  <form action="{{ route('pform') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group mb-4">
                         <div class="custom-file text-left">
                             <input type="file" name="file" class="custom-file-input" id="customFile">
                             <label class="custom-file-label" for="customFile">Choose file</label>
+                            @if ($errors->has('file')) <span class="form-text text-muted">{{ $errors->first('file') }}</span> @endif
                         </div>
                     </div>
                     <button class="btn btn-primary">Import file</button>

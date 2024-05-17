@@ -73,6 +73,9 @@ class PFormController extends Controller
     }    
 
     public function pform(Request $request){
+        $request->validate([
+            'file' => 'required|mimes:pdf'
+        ]);
         Excel::import(new PFormPatientRecordImport, $request->file('file'));
         return redirect()->back();
     }
