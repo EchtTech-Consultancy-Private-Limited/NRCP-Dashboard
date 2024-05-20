@@ -5,7 +5,7 @@
 <div class="container-fluid dashboard">
     <div class="ncdc-container form-tab">
         <div class="dashboard-filter lform_create">
-            <form action="{{ route('state.line-suspected-store') }}" method="post" id="line-suspected-store">
+            <form action="{{ route('state.lform-store') }}" method="post" id="lform-store">
                 @csrf
                 <div class="header lform-create-header d-flex align-items-center justify-content-between">
                     <div>
@@ -42,9 +42,9 @@
                             <div class="emailBlock">
                                 <p>
                                     Name of Nodal Person:
-                                    <input type="text" name="name_of_health" value="{{ old('name_of_health') }}">
-                                    @if ($errors->has('name_of_health'))
-                                    <span class="form-text text-muted">{{ $errors->first('name_of_health') }}</span>
+                                    <input type="text" name="name_nodal_person" value="{{ old('name_nodal_person') }}">
+                                    @if ($errors->has('name_nodal_person'))
+                                    <span class="form-text text-muted">{{ $errors->first('name_nodal_person') }}</span>
                                     @endif
                                 </p>
                             </div>
@@ -54,9 +54,9 @@
                             <div class="emailBlock">
                                 <p>
                                     Designation of Nodal Person :
-                                    <input type="text" name="address_hospital" value="{{ old('address_hospital') }}">
-                                    @if ($errors->has('address_hospital'))
-                                    <span class="form-text text-muted">{{ $errors->first('address_hospital') }}</span>
+                                    <input type="text" name="designation_nodal_person" value="{{ old('designation_nodal_person') }}">
+                                    @if ($errors->has('designation_nodal_person'))
+                                    <span class="form-text text-muted">{{ $errors->first('designation_nodal_person') }}</span>
                                     @endif
                                 </p>
 
@@ -66,11 +66,11 @@
                         <div class="col-md-3">
                             <div class="emailBlock">
                                 <p>
-
                                     Contact Number:
-
-                                    <input type="text" name="contact_number" value="">
-                                    <span class="form-text text-muted"></span>
+                                    <input type="text" name="phone_number" value="{{ old('phone_number') }}">
+                                    @if ($errors->has('phone_number'))
+                                    <span class="form-text text-muted">{{ $errors->first('phone_number') }}</span>
+                                    @endif
 
                                 </p>
                               
@@ -82,8 +82,9 @@
                                 <p>
                                     Email ID: <br>
                                     <input type="email" name="email" value="{{ old('email') }}">
-
-                                    <span class="form-text text-muted"></span>
+                                    @if ($errors->has('email'))
+                                    <span class="form-text text-muted">{{ $errors->first('email') }}</span>
+                                    @endif
 
                                 </p>
                             </div>
@@ -93,8 +94,10 @@
                             <div class="emailBlock">
                                 <p>
                                 Institute Name: <br>
-                                    <input type="text" name="Institute Name" value="">
-                                    <span class="form-text text-muted"></span>
+                                    <input type="text" name="institute_name" value="{{ old('institute_name') }}">
+                                    @if ($errors->has('institute_name'))
+                                    <span class="form-text text-muted">{{ $errors->first('institute_name') }}</span>
+                                    @endif
                                 </p>
                                 <p>
                               
@@ -219,7 +222,7 @@
                                 </td>
                                
                             </tr>
-                            @foreach(old('name', ['']) as $index => $oldValue)
+                            @foreach(old('fname', ['']) as $index => $oldValue)
                             <tr id="row{{ $index + 1 }}">
                                 <td>{{ $index + 1 }}</td>
                                 <td>
@@ -258,23 +261,18 @@
                                     <select class="form-select" aria-label="Default select "
                                         name="lform_district[]" id="lform_district">
                                         <option value="">Please Select</option>
-                                        <option value="district name" @if(old('suspected_probable')[$index]
+                                        <option value="district name" @if(old('lform_district')[$index]
                                             ?? ''=='Suspected' ) selected @endif>district name</option>
                                       
                                     </select>
                                 </td>
                                 <td>
-                                    <select class="form-select" aria-label="Default select "
-                                        name="lform_subdistrict[]" id="lform_subdistrict">
+                                    <select class="form-select" aria-label="Default select" name="lform_subdistrict[]" id="lform_subdistrict">
                                         <option value="">Please Select</option>
-                                        <option value="Sub District" @if(old('suspected_probable')[$index]
-                                            ?? ''=='Suspected' ) selected @endif>Sub District</option>
-                                        <option value="Taluk" @if(old('suspected_probable')[$index] ?? ''=='Probable'
-                                            ) selected @endif>Taluk</option>
-                                        <option value="Block" @if(old('suspected_probable')[$index]
-                                            ?? ''=='Confirmed' ) selected @endif>Block</option>
-                                        <option value="Block" @if(old('suspected_probable')[$index]
-                                            ?? ''=='Confirmed' ) selected @endif>Mandal</option>
+                                        <option value="Sub District" @if((old('lform_subdistrict')[$index] ?? '') == 'Sub District') selected @endif>Sub District</option>
+                                        <option value="Taluk" @if((old('lform_subdistrict')[$index] ?? '') == 'Taluk') selected @endif>Taluk</option>
+                                        <option value="Block" @if((old('lform_subdistrict')[$index] ?? '') == 'Block') selected @endif>Block</option>
+                                        <option value="Mandal" @if((old('lform_subdistrict')[$index] ?? '') == 'Mandal') selected @endif>Mandal</option>
                                     </select>
                                 </td>
                                 <td>
@@ -282,65 +280,49 @@
                                         value="{{ old('bit_incidence_village')[$index] ?? '' }}">
                                 </td>
                                 <td>
-                                <select class="form-select" aria-label="Default select "
-                                        name="lform_biting_animal[]" id="lform_biting_animal">
+                                    <select class="form-select" aria-label="Default select" name="lform_biting_animal[]" id="lform_biting_animal">
                                         <option value="">Please Select</option>
-                                        <option value="Suspected" @if(old('suspected_probable')[$index]
-                                            ?? ''=='Suspected' ) selected @endif>Dog</option>
-                                     
-                                        <option value="Confirmed" @if(old('suspected_probable')[$index]
-                                            ?? ''=='Confirmed' ) selected @endif>Other(input)</option>
+                                        <option value="Suspected" @if((old('lform_biting_animal')[$index] ?? '') == 'Suspected') selected @endif>Dog</option>
+                                        <option value="Confirmed" @if((old('lform_biting_animal')[$index] ?? '') == 'Confirmed') selected @endif>Other(input)</option>
+                                    </select>                                    
+                                </td>
+                                <td>
+                                    <select class="form-select" aria-label="Default select" name="lform_speciman_type[]" id="lform_speciman_type">
+                                        <option value="">Please Select</option>
+                                        <option value="Antemortem" @if((old('lform_speciman_type')[$index] ?? '') == 'Antemortem') selected @endif>Antemortem</option>
+                                        <option value="Postmortem" @if((old('lform_speciman_type')[$index] ?? '') == 'Postmortem') selected @endif>Postmortem</option>
                                     </select>
                                 </td>
                                 <td>
-                                <select class="form-select" aria-label="Default select "
-                                        name="lform_speciman_type[]" id="lform_speciman_detail">
+                                    <select class="form-select" aria-label="Default select" name="lform_speciman_detail[]" id="lform_speciman_detail">
                                         <option value="">Please Select</option>
-                                        <option value="Antemortem" @if(old('suspected_probable')[$index]
-                                            ?? ''=='Suspected' ) selected @endif>Antemortem</option>
-                                        <option value="Postmortem" @if(old('suspected_probable')[$index]
-                                            ?? ''=='Confirmed' ) selected @endif>Postmortem</option>
-                                       
+                                        <option value="Serum" @if((old('lform_speciman_detail')[$index] ?? '') == 'Serum') selected @endif>Serum</option>
+                                        <option value="CSF" @if((old('lform_speciman_detail')[$index] ?? '') == 'CSF') selected @endif>CSF</option>
+                                        <option value="Nuchal skin" @if((old('lform_speciman_detail')[$index] ?? '') == 'Nuchal skin') selected @endif>Nuchal skin</option>
+                                        <option value="Skin" @if((old('lform_speciman_detail')[$index] ?? '') == 'Skin') selected @endif>Skin</option>
                                     </select>
-                                </td>
-                                <td>
-                                <select class="form-select" aria-label="Default select "
-                                        name="lform_speciman_detail[]" id="lform_speciman_type">
-                                        <option value="">Please Select</option>
-                                        <option value="Antemortem" @if(old('suspected_probable')[$index]
-                                            ?? ''=='Suspected' ) selected @endif>Serum</option>
-                                        <option value="Postmortem" @if(old('suspected_probable')[$index]
-                                            ?? ''=='Confirmed' ) selected @endif>CSF</option>
-                                        <option value="Postmortem" @if(old('suspected_probable')[$index]
-                                            ?? ''=='Confirmed' ) selected @endif>Nuchal skin</option>
-                                        <option value="Postmortem" @if(old('suspected_probable')[$index]
-                                            ?? ''=='Confirmed' ) selected @endif>Skin</option>
-                                    </select>
-                                </td>
+                                </td>                                                                
                                <td>
-                                <input type="date" name="lform_sample_collection_date" value="" id="lform_sample_collection_date">
+                                <input type="date" name="lform_sample_collection_date[]" value="{{ old('lform_sample_collection_date')[$index] ?? '' }}" id="lform_sample_collection_date">
                                </td>
-                                <td>
-                                <select class="form-select" aria-label="Default select "
-                                        name="lform_speciman_type[]" id="lform_speciman_type">
+                               <td>
+                                    <select class="form-select" aria-label="Default select" name="lform_speciman_type[]" id="lform_speciman_type">
                                         <option value="">Please Select</option>
-                                        <option value="RFFIT (CSF,Serum)">  RFFIT (CSF,Serum)</option>
-                                        <option value="Real-time PCR (CSF,Saliva, Nuchal skin)">Real-time PCR (CSF,Saliva, Nuchal skin) </option>
-                                        <option value="Rabies Immunohistochemistry"> Rabies Immunohistochemistry</option>
-                                        <option value="Other(insert)"> Other(insert)</option>
+                                        <option value="RFFIT (CSF,Serum)" @if((old('lform_speciman_type')[$index] ?? '') == 'RFFIT (CSF,Serum)') selected @endif>RFFIT (CSF,Serum)</option>
+                                        <option value="Real-time PCR (CSF,Saliva, Nuchal skin)" @if((old('lform_speciman_type')[$index] ?? '') == 'Real-time PCR (CSF,Saliva, Nuchal skin)') selected @endif>Real-time PCR (CSF,Saliva, Nuchal skin)</option>
+                                        <option value="Rabies Immunohistochemistry" @if((old('lform_speciman_type')[$index] ?? '') == 'Rabies Immunohistochemistry') selected @endif>Rabies Immunohistochemistry</option>
+                                        <option value="Other(insert)" @if((old('lform_speciman_type')[$index] ?? '') == 'Other(insert)') selected @endif>Other(insert)</option>
                                     </select>
-                                    
+                                </td>                               
+                                <td>
+                                    <input type="text" name="lform_result[]" value="{{ old('lform_result')[$index] ?? '' }}" id="lform_result">
                                 </td>
-                               
                                 <td>
-                                  <input type="text" name="lform_result" value="" id="lform_result">
-                               </td>
+                                    <input type="text" name="lform_result_declaration_date[]" value="{{ old('lform_result_declaration_date')[$index] ?? '' }}" id="lform_result_declaration_date">
+                                </td>
                                 <td>
-                                  <input type="text" name="lform_result_declaration_date" value="" id="lform_result_declaration_date">
-                               </td>
-                                <td>
-                                  <input type="text" name="lform_remark" value="" id="lform_remark">
-                               </td>
+                                    <input type="text" name="lform_remark[]" value="{{ old('lform_remark')[$index] ?? '' }}" id="lform_remark">
+                                </td>                                
                                <td class="text-nowrap">
                                     <button type="button" name="add" id="add" class="btn btn-success add_more"><i class="fa fa-plus" style="font-size:16px"></i></button>
                                     </button><button type="button" name="remove" id="{{ $index + 1 }}" class="btn btn-danger btn_remove"><i class="fa fa-trash" aria-hidden="true"></i></button>
