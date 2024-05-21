@@ -15,7 +15,10 @@ use Carbon\Carbon;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\LineSuspectedExport;
 use App\Exports\StateMonthlyReportExport;
+use App\Exports\StateLformExport;
 use App\Models\InvestigateReport;
+use App\Models\StateUserLForm;
+use App\Models\LineSuspectedCalculate;
 
 class StateController extends Controller
 {    
@@ -133,7 +136,7 @@ class StateController extends Controller
      */
     public function lineSuspectedList()
     {
-        $lineSuspecteds = LineSuspected::orderBy('id', 'desc')->get();
+        $lineSuspecteds = LineSuspected::with('lineSuspectedCalculate')->orderBy('id', 'desc')->get();
         return view('state-user.line-suspected-list',compact('lineSuspecteds'));
     }
     
@@ -158,40 +161,42 @@ class StateController extends Controller
     {
         try {
             DB::beginTransaction();
-            foreach ($request->name as $index => $name) {
-                $lineSuspected = LineSuspected::create([
+                $lineSuspectedId = LineSuspected::create([
                     'suspected_date' => $request->suspected_date,
                     'name_of_health' => $request->name_of_health,
                     'address_hospital' => $request->address_hospital,
                     'designation_name' => $request->designation_name,
                     'type_of_health' => $request->type_of_health,
                     'email' => $request->email,
-                    'name' => $request->name[$index],
-                    'age' => $request->age[$index],
-                    'sex' => $request->sex[$index],
-                    'contact_number' => $request->contact_number[$index],
-                    'village' => $request->village[$index],
-                    'sub_district_mandal' => $request->sub_district_mandal[$index],
-                    'district' => $request->district[$index],
-                    'biting_animal' => $request->biting_animal[$index],
-                    'suspected_probable' => $request->suspected_probable[$index],
-                    'bit_incidence_village' => $request->bit_incidence_village[$index],
-                    'bit_incidence_sub_district' => $request->bit_incidence_sub_district[$index],
-                    'bit_incidence_district' => $request->bit_incidence_district[$index],
-                    'category_of_bite' => $request->category_of_bite[$index],
-                    'status_of_pep' => $request->status_of_pep[$index],
-                    'health_facility_name_institute' => $request->health_facility_name_institute[$index],
-                    'health_facility_district' => $request->health_facility_district[$index],
-                    'outcome_of_patient' => $request->outcome_of_patient[$index],
-                    'bite_from_stray' => $request->bite_from_stray[$index],
-                    'mobile_number' => $request->mobile_number[$index],
-                    'date' => $request->date[$index],
-                ]);
-            }
+                ])->id;
+                foreach($request->row_count as $index => $value){
+                    LineSuspectedCalculate::Create([
+                        'line_suspected_form_id' => $lineSuspectedId,
+                        'name' => $request->name[$index],
+                        'age' => $request->age[$index],
+                        'sex' => $request->sex[$index],
+                        'contact_number' => $request->contact_number[$index],
+                        'village' => $request->village[$index],
+                        'sub_district_mandal' => $request->sub_district_mandal[$index],
+                        'district' => $request->district[$index],
+                        'biting_animal' => $request->biting_animal[$index],
+                        'suspected_probable' => $request->suspected_probable[$index],
+                        'bit_incidence_village' => $request->bit_incidence_village[$index],
+                        'bit_incidence_sub_district' => $request->bit_incidence_sub_district[$index],
+                        'bit_incidence_district' => $request->bit_incidence_district[$index],
+                        'category_of_bite' => $request->category_of_bite[$index],
+                        'status_of_pep' => $request->status_of_pep[$index],
+                        'health_facility_name_institute' => $request->health_facility_name_institute[$index],
+                        'health_facility_district' => $request->health_facility_district[$index],
+                        'outcome_of_patient' => $request->outcome_of_patient[$index],
+                        'bite_from_stray' => $request->bite_from_stray[$index],
+                        'mobile_number' => $request->mobile_number[$index],
+                        'date' => $request->date[$index],
+                    ]);
+                }
             DB::commit();
-            if($lineSuspected){
-                return redirect()->route('state.line-suspected-list')->with('message', 'Line Suspected create successfull');
-            }
+            return redirect()->route('state.line-suspected-list')->with('message', 'Line Suspected create successfull');
+
         }catch (Exception $e) {
             DB::rollBack();
             throw new Exception($e->getMessage());
@@ -216,22 +221,20 @@ class StateController extends Controller
      */
     public function reportExport(Request $request)
     {
-        // Validate the incoming request data
         $request->validate([
             'modulename' => 'required',
         ]);
 
-        // Parse the start and end date if provided
         if (!empty($request->startdate) && !empty($request->enddate)) {
-            $start_date = Carbon::parse("$request->startdate 00:00:00")->format('Y-m-d H:i:s');
-            $end_date = Carbon::parse("$request->enddate 23:59:59")->format('Y-m-d H:i:s');
+            $start_date = Carbon::parse($request->startdate . ' 00:00:00')->format('Y-m-d H:i:s');
+            $end_date = Carbon::parse($request->enddate . ' 23:59:59')->format('Y-m-d H:i:s');
         } else {
-            // Set a wide range if start and end dates are empty
-            $start_date = Carbon::parse("1900-01-01 00:00:00")->format('Y-m-d H:i:s');
+            $start_date = Carbon::parse('1900-01-01 00:00:00')->format('Y-m-d H:i:s');
             $end_date = Carbon::now()->addYear(100)->format('Y-m-d H:i:s');
         }
+
         $fileName = '';
-        $arrays = [];
+        $query = null;
         switch ($request->modulename) {
             case '1':
                 $fileName = 'InvestigateReport';
@@ -243,17 +246,28 @@ class StateController extends Controller
                 break;
             case '3':
                 $fileName = 'LineSuspected';
-                $query = LineSuspected::query();
+                $query = LineSuspected::with('lineSuspectedCalculate');
+                break;
+            case 'lform':
+                $fileName = 'StateUserlform';
+                $query = StateUserLForm::with([
+                    'stateUserLFormCountCase.states',
+                    'stateUserLFormCountCase.city'
+                ]);
                 break;
             default:
                 return response()->json(['error' => 'Invalid module name'], 400);
         }
+
         if (!empty($request->startdate) && !empty($request->enddate)) {
             $query->whereBetween('created_at', [$start_date, $end_date]);
         }
-
         $arrays = [$query->get()->toArray()];
+        if($request->modulename == 'lform' || $request->modulename == '3'){
+            return Excel::download(new StateLformExport($arrays), Carbon::now()->format('d-m-Y') . '-' . $fileName . '.xlsx');
+        }
         return Excel::download(new StateMonthlyReportExport($arrays), Carbon::now()->format('d-m-Y') . '-' . $fileName . '.xlsx');
-    }    
+    }
+    
     
 }

@@ -23,6 +23,7 @@
                                                     <option value='1'>Investigate Report</option>
                                                     <option value='2'>Monthly Report</option>
                                                     <option value='3'>Line Suspected Report</option>
+                                                    <option value='lform'>L Form Report</option>
                                                 </select>
                                                 @error('modulename') 
                                                     <span class="form-text text-muted">{{ $message }}</span>
