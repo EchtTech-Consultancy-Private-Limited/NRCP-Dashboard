@@ -15,17 +15,14 @@ class StateLformExport implements FromCollection
         $output = [];
         $headerAdded = false;
         $caseHeaderAdded = false;
-
         foreach ($arrays as $array) {
             if (!empty($array) && isset($array[0])) {
                 foreach ($array as $row) {
                     unset($row['created_at'], $row['deleted_at'], $row['updated_at']);
-
                     if (!$headerAdded) {
                         $output[] = array_keys($row); // Add main header row only if not already added
                         $headerAdded = true;
                     }
-
                     $outputRow = [];
                     foreach ($row as $key => $value) {
                         if ($key === 'state_user_l_form_count_case' && is_array($value)) {
@@ -36,7 +33,6 @@ class StateLformExport implements FromCollection
                                 $output[] = array_merge(array_fill(0, count($row), ''), $caseHeaders); // Add case headers
                                 $caseHeaderAdded = true;
                             }
-
                             foreach ($value as $LformCases) {
                                 $caseArray = $this->flattenCaseArray($LformCases);
                                 $output[] = array_merge(array_fill(0, count($row), ''), $caseArray);
