@@ -28,12 +28,15 @@
     <div class="row">
         <!-- fix for small devices only -->
         <div class="clearfix hidden-md-up"></div>
+        <div class="col-md-12 pr-5">
+            <button class="float-right generate-report" onclick="printDiv('report_laboratory')">Generate Report </button>
+        </div>
         <div class="col-md-12">
-
+           
             <!-- general form elements -->
-            <div class=" card-primary dashboard">
+            <div class=" card-primary dashboard" id="report_laboratory">
                 @if (Auth::user()->user_type == 1)
-                <div class="form-tab">
+                <div class="form-tab mt-3">
                     <div class="row">
                         <div class="col-md-12">
                                 <div class="bootstrap-tab">
@@ -249,22 +252,14 @@
                                                                             <th class="state_filter_district">
                                                                                 Institute
                                                                             </th>
-                                                                            <th>
-                                                                                No. of Test Conducted
-                                                                            </th>
+                                                                            <th>No. of Patients</th>
+                                                                            <th>No. of Sample Received</th>
+                                                                            <th>No. of number of Positives</th>
+                                                                            <th>No. of Test Conducted</th>
                                                                         </tr>
                                                                     </thead>
                                                                     <tbody id="tableBodyLaboratory">
-                                                                    </tbody>
-                                                                    <thead>
-                                                                        <tr>
-                                                                            <th>No. of Patients</th>
-                                                                            <th>No. of Sample Received</th>
-                                                                            <th>No. of Test Conducted</th>
-                                                                            <th>Total number of Positives</th>
-                                                                        </tr>
-                                                                    </thead>
-                                                                    <tbody id="tableGraphBody"></tbody>
+                                                                    </tbody>                                                                    
                                                                 </table>
 
                                                             </div>

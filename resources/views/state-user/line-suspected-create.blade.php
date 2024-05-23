@@ -223,7 +223,10 @@
                             </tr>
                             @foreach(old('name', ['']) as $index => $oldValue)
                             <tr id="row{{ $index + 1 }}">
-                                <td>{{ $index + 1 }}</td>
+                                <td>
+                                    {{ $index + 1 }}
+                                    <input type="hidden" name="row_count[]">
+                                </td>
                                 <td>
                                     <input type="text" name="name[]" value="{{ $oldValue }}">
                                 </td>
@@ -344,7 +347,7 @@ $(document).ready(function () {
     var rowHtml =
       '<tr id="row' +
       i +
-      '"><td>' +
+      '"><td><input type="hidden" name="row_count[]">' +
       i +
       '</td><td><input type="text" name="name[]" class="name_list"></td><td><input type="text" name="age[]" class="name_list"></td><td><input type="text" name="sex[]" class="name_list"></td><td><input type="text" name="contact_number[]"  class="name_list"></td><td><input type="text" name="village[]" class="name_list"></td><td><input type="text" name="sub_district_mandal[]" class="name_list"></td><td><input type="text" name="district[]" class="name_list"></td><td><input type="text" name="biting_animal[]" class="name_list"></td><td><select class="form-select" aria-label="Default select example" name="suspected_probable[]" id="suspected_probable' +
       i +

@@ -114,6 +114,7 @@ table tr td p label {
   line-height: 1;
   font-size: 13px;
   margin-top: 6px;
+  border-radius: 3px;
 }
 
 .signature input {
@@ -187,4 +188,26 @@ table li, table p {
   width: auto;
   padding: 22px;
   height: 133px;
+}
+
+.lform-create-header p {
+  font-weight: bold;
+}
+.lform-create-header .content p:nth-child(1) {
+  color: #023c6e;
+  padding: 0;
+}
+.lform-create-header .content p:nth-child(2) {
+  font-size: 16px;
+  padding: 0;
+}
+
+.lform_create .emailBlock {
+  margin: 10px 0 0;
+}
+input[type=date] {
+  border: 1px solid #ddd !important;
+  padding: 2px 10px;
+  color: grey;
+  border-radius: 3px;
 }/*# sourceMappingURL=stateMonthReport.css.map */

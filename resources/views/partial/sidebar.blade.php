@@ -179,7 +179,7 @@
             <div class="sidebarAccordion">
 
                 <div class="link bg-primary text-white dashboard-title">
-                    <a class="accordion-heading" data-toggle="collapse" href="#multiCollapseExample2" role="button"  aria-expanded="false" aria-controls="multiCollapseExample2"><i class="fa fa-list" aria-hidden="true"></i>Line List of Suspected</a>
+                    <a class="accordion-heading" data-toggle="collapse" href="#multiCollapseExample2" role="button"  aria-expanded="false" aria-controls="multiCollapseExample2"><i class="fa fa-list" aria-hidden="true"></i>Line of Suspected (P Form)</a>
                 </div>
 
                 <div class="row">
@@ -195,6 +195,32 @@
                                 <div
                                     class="link bg-primary text-white dashboard-title {{ request()->routeIs('state.line-suspected-list') ? 'active' : '' }}">
                                     <a href="{{ route('state.line-suspected-list') }}">List</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sidebarAccordion">
+
+                <div class="link bg-primary text-white dashboard-title">
+                    <a class="accordion-heading" data-toggle="collapse" href="#multiCollapseExample4" role="button"  aria-expanded="false" aria-controls="multiCollapseExample4"><i class="fa fa-list" aria-hidden="true"></i>L Form</a>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <div class="collapse multi-collapse {{ in_array(request()->route()->getName(), ['state.lform-list', 'state.lform-create']) ? 'show' : '' }}"
+                            id="multiCollapseExample4">
+                        
+                            <div class="card card-body">
+                                <div
+                                    class="link bg-primary text-white dashboard-title {{ request()->routeIs('state.lform-create') ? 'active' : '' }}">
+                                    <a href="{{ route('state.lform-create') }}"> Create</a>
+                                </div>
+                                <div
+                                    class="link bg-primary text-white dashboard-title {{ request()->routeIs('state.lform-list') ? 'active' : '' }}">
+                                    <a href="{{ route('state.lform-list') }}">List</a>
                                 </div>
                             </div>
                         </div>

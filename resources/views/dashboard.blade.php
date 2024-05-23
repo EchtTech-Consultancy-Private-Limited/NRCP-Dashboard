@@ -8,12 +8,15 @@
     <div class="row">
         <!-- fix for small devices only -->
         <div class="clearfix hidden-md-up"></div>
+        <div class="col-md-12 pr-5">
+            <button class="float-right generate-report" onclick="printDiv('report_national')">Generate Report </button>
+        </div>
         <div class="col-md-12">
-
+           
             <!-- general form elements -->
-            <div class=" card-primary dashboard">
+            <div class="card-primary dashboard" id="report_national">
                 @if (Auth::user()->user_type == 1)
-                    <div class="form-tab">
+                    <div class="form-tab mt-3">
                         <div class="bootstrap-tab">
                             <div class="tab-content" id="myTabContent">
 
@@ -68,7 +71,7 @@
                                                         <option>Select Year</option>
                                                         <?php
                                                         $currentYear = date('Y');
-                                                        for ($year = $currentYear; $year >= 2015; $year--) {
+                                                        for ($year = 2015; $year <= $currentYear; $year++) {
                                                             echo "<option value='$year'>$year</option>";
                                                         }
                                                         ?>
@@ -159,7 +162,7 @@
                                         class="star"></span></label> -->
                                                     <button id="apply_filter"
                                                         class="btn  bg-primary text-light apply-filter button border-0 mr-2">Search</button>
-
+                                                    
                                                 </div>
 
                                                 <input type="hidden" value="" id="filter_state">
@@ -175,13 +178,14 @@
                                                     <!-- <label for=""><span class="star"></span></label> -->
                                                     <button id="reset_button"
                                                         class="btn bg-danger border-0 text-light apply-filter text-white ">Reset</button>
+                                                    
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="presumptive-cases dashboard-filter mt-3">
                                         <h1 id="map-text" class="map-text my-3">Human Rabies (Presumptive Cases) in
-                                            India
+                                            India                                           
                                         </h1>
 
                                         <div class="row lform">

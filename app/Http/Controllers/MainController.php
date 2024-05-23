@@ -588,7 +588,10 @@ class MainController extends Controller
     public function pFormHighChart()
     {
 
-        $uniqueYears = DB::table('pform_human_rabies')->distinct()->pluck('year');
+        $uniqueYears = DB::table('pform_human_rabies')
+                        ->distinct()
+                        ->orderBy('year', 'asc')
+                        ->pluck('year');
 
         $total_records = [];
         foreach ($uniqueYears as $year) {

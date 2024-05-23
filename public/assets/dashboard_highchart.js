@@ -759,7 +759,7 @@ const googlePieChart = (result) => {
             }
         },
         title: {
-            text: `Cases by Gender in India ${filter_state !== undefined ? filter_state + ' ' : ''} ${filter_district !== undefined ? filter_district + 'from' : ''} ${filter_from_year !== "" ? filter_from_year + '  to' : ''} ${filter_to_year !== "" ? filter_to_year + ' ' : ''}    n=(${result.total})`,
+            text: `Cases by Gender in India ${filter_state !== undefined ? filter_state + ' from' : ''} ${filter_district !== undefined ? filter_district + ' from' : ''} ${filter_from_year !== "" ? filter_from_year + '  to' : ''} ${filter_to_year !== "" ? filter_to_year + ' ' : ''}    n=(${result.total})`,
             align: 'left',
             style: {
                 fontSize: innerWidth<=1350 ? '15px' : (innerWidth>=1350 ? '18px': '15px') // Set the font size here
@@ -804,7 +804,7 @@ const pyramidChart = (result) => {
     let is_graph_data_available = $("#is_graph_data_available").val();
     is_graph_data_available = is_graph_data_available !== "" ? is_graph_data_available : "";
     var options_val = {
-        text: `Case by age group in India  ${filter_state !== undefined ? filter_state + ' >' : ''} ${filter_district !== undefined ? filter_district + ' from' : ''} ${filter_from_year !== "" ? filter_from_year + ' > to' : ''} ${filter_to_year !== "" ? filter_to_year + ' >' : ''}`,
+        text: `Case by age group in India  ${filter_state !== undefined ? filter_state + ' from' : ''} ${filter_district !== undefined ? filter_district + ' from' : ''} ${filter_from_year !== "" ? filter_from_year + ' to' : ''} ${filter_to_year !== "" ? filter_to_year + ' ' : ''}`,
     };
 
 
@@ -934,7 +934,6 @@ const barChart = (result) => {
 }
 
 const highchartMapcase = (total_records) => {
-    console.log(total_records);
     const filter_state = $('#state').find(":selected").attr('state-name');
     const filter_district = $('#district').find(":selected").attr('dist-name');
     const filter_from_year = $('#year').find(":selected").val();
@@ -954,7 +953,8 @@ const highchartMapcase = (total_records) => {
         jsData.push([total_records[i].year]);
     }
 
-    var mapFilterType = $('#type').find(":selected").val();
+    // var mapFilterType = $('#type').find(":selected").val();
+    mapFilterType = 0;
     var mapFilterTypeText = "";
     if (mapFilterType == 0) {
         mapFilterTypeText = "Cases";
@@ -1073,6 +1073,9 @@ const defaultLaboratoryMapData = () => {
                     const mapRow = `
                       <tr>
                         <td>${capitalizeFirstLetter(institute)}</td>
+                        <td>${sessionValue == 0 ? numberPatients : 0}</td>
+                        <td>${sessionValue == 0 ? testSampleRecevied : 0}</td>                        
+                        <td>${sessionValue == 0 ? numberPositives : 0}</td>                        
                         <td>${sessionValue == 0 ? numberTestConducted : 0}</td>
                       </tr>
                     `;
@@ -1567,7 +1570,10 @@ const laboratory_apply_filter = (rabiesfilter = '',stateName = '') => {
                     const mapRow = `
                       <tr>
                         <td>${capitalizeFirstLetter(institute)}</td>
-                        <td>${result.total_records.testConducted}</td>
+                        <td>${sessionValue == 0 ? numberPatients : 0}</td>
+                        <td>${sessionValue == 0 ? testSampleRecevied : 0}</td>                        
+                        <td>${sessionValue == 0 ? numberPositives : 0}</td>                        
+                        <td>${sessionValue == 0 ? numberTestConducted : 0}</td>
                       </tr>
                     `;
                     $("#tableBodyLaboratory").append(mapRow);
