@@ -2,48 +2,61 @@
 namespace App\Exports;
 
 use Maatwebsite\Excel\Concerns\FromCollection;
+use Maatwebsite\Excel\Concerns\WithStyles;
+use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
 use Maatwebsite\Excel\Concerns\Exportable;
 
-class StateLformExport implements FromCollection
+class StateLformExport implements FromCollection, WithStyles
 {
     use Exportable;
 
     private $collection;
+    private $headerIndexes = [];
 
     public function __construct($arrays)
     {
         $output = [];
         $headerAdded = false;
-        $caseHeaderAdded = false;
+        $stateUserCaseHeaderAdded = false;
+        $lineSuspectedCaseHeaderAdded = false;
+
         foreach ($arrays as $array) {
             if (!empty($array) && isset($array[0])) {
                 foreach ($array as $row) {
                     unset($row['created_at'], $row['deleted_at'], $row['updated_at']);
+
                     if (!$headerAdded) {
-                        $output[] = array_keys($row); // Add main header row only if not already added
+                        $formattedKeys = array_map([$this, 'formatHeader'], array_keys($row));
+                        $output[] = $formattedKeys; // Add main header row only if not already added
+                        $this->headerIndexes[] = count($output); // Track header row index
                         $headerAdded = true;
                     }
+
                     $outputRow = [];
                     foreach ($row as $key => $value) {
                         if ($key === 'state_user_l_form_count_case' && is_array($value)) {
-                            if (!$caseHeaderAdded) {
+                            if (!$stateUserCaseHeaderAdded) {
                                 $caseSample = $value[0];
                                 $caseHeaders = array_keys($this->flattenCaseArray($caseSample));
+                                $formattedCaseHeaders = array_map([$this, 'formatHeader'], $caseHeaders);
                                 $output[] = array_fill(0, count($row), ''); // Add an empty row
-                                $output[] = array_merge(array_fill(0, count($row), ''), $caseHeaders); // Add case headers
-                                $caseHeaderAdded = true;
+                                $output[] = array_merge(array_fill(0, count($row), ''), $formattedCaseHeaders); // Add formatted case headers
+                                $this->headerIndexes[] = count($output); // Track header row index
+                                $stateUserCaseHeaderAdded = true;
                             }
                             foreach ($value as $LformCases) {
                                 $caseArray = $this->flattenCaseArray($LformCases);
                                 $output[] = array_merge(array_fill(0, count($row), ''), $caseArray);
                             }
-                        }elseif($key === 'line_suspected_calculate' && is_array($value)){
-                            if (!$caseHeaderAdded) {
+                        } elseif ($key === 'line_suspected_calculate' && is_array($value)) {
+                            if (!$lineSuspectedCaseHeaderAdded) {
                                 $caseSample = $value[0];
                                 $caseHeaders = array_keys($this->flattenCaseArray($caseSample));
+                                $formattedCaseHeaders = array_map([$this, 'formatHeader'], $caseHeaders);
                                 $output[] = array_fill(0, count($row), ''); // Add an empty row
-                                $output[] = array_merge(array_fill(0, count($row), ''), $caseHeaders); // Add case headers
-                                $caseHeaderAdded = true;
+                                $output[] = array_merge(array_fill(0, count($row), ''), $formattedCaseHeaders); // Add formatted case headers
+                                $this->headerIndexes[] = count($output); // Track header row index
+                                $lineSuspectedCaseHeaderAdded = true;
                             }
                             foreach ($value as $LformCases) {
                                 $caseArray = $this->flattenCaseArray($LformCases);
@@ -53,12 +66,19 @@ class StateLformExport implements FromCollection
                             $outputRow[$key] = $value;
                         }
                     }
+
                     $output[] = $outputRow;
                     $output[] = array_fill(0, count($outputRow), ''); // Add an empty row for separation if needed
                 }
             }
         }
+
         $this->collection = collect($output);
+    }
+
+    private function formatHeader($key)
+    {
+        return ucwords(str_replace('_', ' ', $key));
     }
 
     private function flattenCaseArray($LformCases)
@@ -83,5 +103,22 @@ class StateLformExport implements FromCollection
     {
         return $this->collection;
     }
-}
 
+    public function styles(Worksheet $sheet)
+    {
+        foreach ($this->headerIndexes as $headerIndex) {
+            $sheet->getStyle('A' . $headerIndex . ':' . $sheet->getHighestColumn() . $headerIndex)->applyFromArray([
+                'font' => [
+                    'bold' => true,
+                    'color' => ['argb' => 'FF000000'], // Black color
+                ],
+                'fill' => [
+                    'fillType' => \PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID,
+                    'startColor' => [
+                        'argb' => 'FFFFFF00', // Yellow color
+                    ]
+                ]
+            ]);
+        }
+    }
+}

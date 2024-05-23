@@ -5,8 +5,10 @@ namespace App\Exports;
 use Maatwebsite\Excel\Concerns\Exportable;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\WithHeadings;
+use Maatwebsite\Excel\Concerns\WithStyles;
+use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
 
-class StateMonthlyReportExport implements FromCollection, WithHeadings
+class StateMonthlyReportExport implements FromCollection, WithHeadings, WithStyles
 {
     use Exportable;
 
@@ -61,6 +63,32 @@ class StateMonthlyReportExport implements FromCollection, WithHeadings
                 $keys = array_merge($keys, array_keys($row));
             }
         }
-        return array_unique($keys);
+        $formattedKeys = array_map([$this, 'formatHeader'], array_unique($keys));
+        return $formattedKeys;
+    }
+
+    private function formatHeader($key)
+    {
+        return ucwords(str_replace('_', ' ', $key));
+    }
+
+    public function styles(Worksheet $sheet)
+    {
+        $highestColumn = $sheet->getHighestColumn();
+        $headerRow = 1;
+
+        // Apply styles to the header row
+        $sheet->getStyle("A{$headerRow}:{$highestColumn}{$headerRow}")->applyFromArray([
+            'font' => [
+                'bold' => true,
+                'color' => ['argb' => 'FF000000'], // Black color
+            ],
+            'fill' => [
+                'fillType' => \PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID,
+                'startColor' => [
+                    'argb' => 'FFFFFF00', // Yellow color
+                ],
+            ],
+        ]);
     }
 }
