@@ -40,7 +40,7 @@ class ExpenditureController extends Controller
                 'equipment_purchase' => 'required',
             ],[
                 'financial_year.required' => 'Financial year Required',
-                'fund_recieved.required' => 'Fund Recieved Required',
+                'fund_recieved.required' => 'Fund Received Required',
                 'equipment_purchase.required' => 'Equipment Purchase Required',
             ]);
         

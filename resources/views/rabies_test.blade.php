@@ -143,7 +143,7 @@
             <div class="form-tab">
                <div class="bootstrap-tab">
                   <div class="tab-content" id="myTabContent">
-                     <div class="table-responsive" id="nav-add-patient-record" role="tabpanel" aria-labelledby="home-tab">
+                     <div class="" id="nav-add-patient-record" role="tabpanel" aria-labelledby="home-tab">
                      <table id="general_profiles_TABLE" class="display table-responsive">
                            <thead>
                               <tr>

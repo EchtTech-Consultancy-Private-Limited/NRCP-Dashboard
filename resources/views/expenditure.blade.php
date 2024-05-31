@@ -37,7 +37,7 @@
                                             <option value='yes'>Yes</option>
                                             <option value='no'>No</option>
                                         </select> -->
-                                        <input type="date" class="form-control" value="{{ old('financial_year') }}" aria-label="Default select example" name="financial_year" id="financial_year">
+                                        <input type="text" class="form-control" value="{{ old('financial_year') }}" aria-label="Default select example" data-date= "date"  name="financial_year" id="financial_year" placeholder="DD-MM-YYYY">
                                         @error('financial_year') 
                                           <span class="form-text text-muted">{{ $message }}</span>
                                        @enderror 
