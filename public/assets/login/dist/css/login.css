@@ -17,5 +17,5 @@ label.error {
 
 input#user_type1 + label.error {
     left: 0;
-    margin-bottom: 12px;
+    margin-bottom: 17px;
 }

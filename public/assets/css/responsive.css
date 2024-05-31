@@ -86,3 +86,8 @@
       }
       
 }
+@media(min-width:1592px){
+    table#general_profiles_TABLE {
+        display: table !important;
+    }
+}
