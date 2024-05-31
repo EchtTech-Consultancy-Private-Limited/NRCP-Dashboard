@@ -46,7 +46,7 @@ body {
 }
 
 #search-patient-btn {
-  width: 140px;
+  // width: 140px;
   padding: 8px 3px 6px;
   font-size: 15px;
   float: right;
@@ -122,7 +122,7 @@ body {
 
 .search-patient-btn {
   /* width: 180px; */
-  padding: 5px 20px !important; 
+  padding: 5px 15px !important; 
   display: inline-block;
   // width: 140px;
   font-size: 15px;
@@ -821,4 +821,64 @@ input[type=date].form-control{
   100% {
     color: #f00;
   }
+}
+
+.lform2 .search-btn {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+}
+.pform .search-btn {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+}
+.bg-c-light {
+  background: #fff;
+  margin: 0px 20px;
+  padding: 10px 10px;
+  border-radius: 10px;
+  display: block;
+}
+.import-user .custom-file-label {
+  display: flex;
+  align-items: center;
+  padding: 0 11px !important;
+}
+.col-md-5.import-user{
+  display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+.col-md-5.import-user .form-group{
+  width: calc(100% - 161px);
+}
+
+input[type="date"]::placeholder {
+  color: #ff0000; /* Red color (replace with your preferred color) */
+}
+/* Change placeholder color for WebKit browsers (Chrome, Safari, Edge) */
+input[type="date"]::-webkit-input-placeholder {
+  color: #999999;
+}
+
+/* Change placeholder color for Mozilla Firefox */
+input[type="date"]::-moz-placeholder {
+  color: #999999;
+}
+
+/* Change placeholder color for Internet Explorer 10+ */
+input[type="date"]:-ms-input-placeholder {
+  color: #999999;
+}
+
+/* Change placeholder color for Firefox 18- */
+input[type="date"]:-moz-placeholder {
+  color: #999999;
+}
+
+/* General placeholder color change */
+input[type="date"]::placeholder {
+  color: #999999;
 }

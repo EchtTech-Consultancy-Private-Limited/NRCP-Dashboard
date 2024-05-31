@@ -3,8 +3,8 @@
 @section('title') 
 {{__('L Form')}} @endsection
 <!-- Main content -->
-<section class="content">
-  <div class="container-fluid">
+<section class="content ">
+  <div class="container-fluid lform2">
     <!-- Info boxes -->
     <div class="row">
       <!-- fix for small devices only -->
@@ -21,30 +21,36 @@
                   <li class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-record-aggregate-data" type="button" role="tab" aria-controls="nav-record-aggregate-data" aria-selected="false">Record Aggregate Data</li>
                   <li class="nav-link" id="nav-submit-tab" data-bs-toggle="tab" data-bs-target="#nav-submit-null-report" type="button" role="tab" aria-controls="nav-submit-null-report" aria-selected="false">Submit Null Report</li>
                 </ul>
+                <div class="search-btn">
+                <a href="{{ url('patient_records_form') }}" class="search-patient-btn bg-info text-light" id="search-patient-btn">Search Patient</a>
+                    </div>
               </nav>
               <div class="tab-content" id="myTabContent">
                
                 <div class="tab-pane fade show active" id="nav-add-patient-record" role="tabpanel" aria-labelledby="nav-home-tab">
+                  <div class="bg-c-light">
                   <form action="{{ route('pform') }}" method="POST" enctype="multipart/form-data">
                     @csrf
-                    <div class="form-group mb-4">
-                        <div class="custom-file text-left">
+                    <div class="col-md-5 import-user">
+                      <div class="form-group">
+                      <div class="custom-file text-left">
                             <input type="file" name="file" class="custom-file-input" id="customFile">
                             <label class="custom-file-label" for="customFile">Choose file</label>
                             @if ($errors->has('file')) <span class="form-text text-muted">{{ $errors->first('file') }}</span> @endif
                         </div>
-                    </div>
-                    <button class="btn btn-primary">Import file</button>
-                </form>
+                      </div>
+                      <button class="btn btn-primary">Import file</button>
+                      </div>
+                   </form>
+                  </div>
+                  
                   <div class="row">
                     <div class="col-md-8"> 
                       <div class="note">
                         <i class="fa fa-hand-o-right" aria-hidden="true"></i> Enter Data Accurately and Completely
                         </div>
                     </div>
-                      <div class=" col-md-4 pr-4">
-                        <a href="{{ url('patient_records_form') }}" class="search-patient-btn bg-info text-light" id="search-patient-btn">Search Patient</a>
-                      </div>
+                    
                 </div>
                   <form action="{{ route('lform.store') }}" method="post" enctype="multipart/form-data" class="myPForm"> 
                     @csrf 
@@ -152,7 +158,7 @@
                       </div>
                       <div class="col-lg-12 col-md-12">
                         <div class="label-title">
-                          <b>Present Adderess:</b>
+                          <b>Present Address:</b>
                         </div>
                       </div>
                       <div class="col-lg-3 col-md-3">

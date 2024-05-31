@@ -3,7 +3,7 @@
 @section('title') {{__('P Form')}} 
 @endsection
 <!-- Main content -->
-<section class="content">
+<section class="content pform">
   <div class="container-fluid">
     <!-- Info boxes -->
     <div class="row">
@@ -21,23 +21,35 @@
                   <li class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-record-aggregate-data" type="button" role="tab" aria-controls="nav-record-aggregate-data" aria-selected="false">Record Aggregate Data</li>
                   <li class="nav-link" id="nav-submit-tab" data-bs-toggle="tab" data-bs-target="#nav-submit-null-report" type="button" role="tab" aria-controls="nav-submit-null-report" aria-selected="false">Submit Null Report</li>
                 </ul>
+                    <div class="search-btn">
+                        <a href="{{ url('patient_records_form') }}" class="search-patient-btn bg-info text-light" id="search-patient-btn">Search Patient</a>
+                    </div>
               </nav>
               <div class="tab-content" id="myTabContent">
                 <div class="tab-pane fade show active" id="nav-add-patient-record" role="tabpanel" aria-labelledby="nav-home-tab">
                   <div class="note">
                     <i class="fa fa-hand-o-right" aria-hidden="true"></i> Enter Data Accurately and Completely
                   </div>
+                  <div class="row bg-c-light">
                   <form action="{{ route('pform') }}" method="POST" enctype="multipart/form-data">
                     @csrf
-                    <div class="form-group mb-4">
+                    <div class="row">
+                      <div class="col-md-5 import-user">
+                      <div class="form-group">
                         <div class="custom-file text-left">
-                            <input type="file" name="file" class="custom-file-input" id="customFile">
-                            <label class="custom-file-label" for="customFile">Choose file</label>
+                             <label class="custom-file-label" for="customFile">Choose file</label>
+                            <input type="file" name="file" class="custom-file-input" id="customFile" placeholder="Choose File">
                             @if ($errors->has('file')) <span class="form-text text-muted">{{ $errors->first('file') }}</span> @endif
                         </div>
+                      </div>
+                      <button class="btn btn-primary">Import Users</button>
+                      </div>
                     </div>
-                    <button class="btn btn-primary">Import Users</button>
+                   
+                    
                 </form>
+                  </div>
+                 
                   <form action="{{ route('pform.store') }}" method="post" enctype="multipart/form-data" class="myPForm"> @csrf <div class="row bg-c-gray">
                     <input type="hidden" value="p_form" name="form_type">  
                     <div class="col-lg-12 col-md-12">
@@ -60,9 +72,7 @@
                           </div>
                         </div>
                       </div>
-                      <div class="col-lg-7 col-md-8">
-                        <a href="{{ url('patient_records_form') }}" class="search-patient-btn bg-info text-light" id="search-patient-btn">Search Patient</a>
-                      </div>
+                     
                       <div class="col-lg-3 col-md-3">
                         <div class="form-group">
                           <label for="first-name">First Name <span class="star">*</span>
