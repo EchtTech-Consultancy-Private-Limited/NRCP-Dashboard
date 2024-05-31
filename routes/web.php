@@ -41,7 +41,9 @@ Route::middleware(['Admin','device'])->group(function () {
         Route::get('dashboard', [MainController::class, 'dashboard'])->name('dashboard');
         Route::get('laboratory-dashboard', [LaboratoryDashboardController::class, 'index'])->name('laboratory-dashboard');
         Route::get('get-filter-laboratory-data',[LaboratoryDashboardController::class,'getFilterLaboratoryData'])->name('get-filter-laboratory-data');
-        
+        Route::get('national-report', [LaboratoryDashboardController::class, 'nationalReport'])->name('national-report');
+        Route::post('national-report-export', [LaboratoryDashboardController::class, 'nationalExport'])->name('national-report-export');
+
         Route::get('/get-city', [PFormController::class,'getCityByStateId'])->name('get-city');
 
         Route::group(['prefix' => 'pform', 'as' => 'pform.'], function(){
