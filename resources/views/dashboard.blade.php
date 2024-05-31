@@ -8,9 +8,9 @@
     <div class="row">
         <!-- fix for small devices only -->
         <div class="clearfix hidden-md-up"></div>
-        <div class="col-md-12 pr-5">
+        {{-- <div class="col-md-12 pr-5">
             <button class="float-right generate-report" onclick="printDiv('report_national')">Generate Report </button>
-        </div>
+        </div> --}}
         <div class="col-md-12">
            
             <!-- general form elements -->
@@ -322,7 +322,7 @@
                                                                         <th colspan='2'>Suspected Cases</th>
                                                                     </tr>
                                                                     <tr>
-                                                                        <th>Cases</th>
+                                                                        <th></th>
                                                                         {{-- <th>Deaths</th> --}}
                                                                     </tr>
                                                                 </thead>
