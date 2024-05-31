@@ -7,23 +7,23 @@
         <thead>
           <tr>
             <th>Sl#</th>
-            <th>Name of the Health Facility</th>
-            <th>Address of the Hospital</th>
+            <th>Name of Nodal Person</th>
+            <th>Designation of Nodal Person</th>
             <th>Email ID</th>
-            <th>Type of Health Facility</th>
-            <th>Date</th>
+            <th>Contact Number</th>
+            <th>Institute Name</th>
           </tr>
         </thead>
         <tbody> 
-          @if($lineSuspecteds) 
-          @foreach($lineSuspecteds as $lineSuspected) 
+          @if($stateUserLForms) 
+          @foreach($stateUserLForms as $stateUserLForm) 
           <tr>
             <td>{{$loop->iteration}}</td>
-            <td>{{$lineSuspected->name_of_health}}</td>
-            <td>{{$lineSuspected->address_hospital}}</td>
-            <td>{{$lineSuspected->email}}</td>            
-            <td>{{$lineSuspected->type_of_health}}</td>
-            <td> {{date('d-m-Y',strtotime($lineSuspected->suspected_date))}}</td>
+            <td>{{$stateUserLForm->name_nodal_person}}</td>
+            <td>{{$stateUserLForm->designation_nodal_person}}</td>
+            <td>{{$stateUserLForm->email}}</td>            
+            <td>{{$stateUserLForm->phone_number}}</td>
+            <td> {{ $stateUserLForm->institute_name }}</td>
           </tr>
           @endforeach
           @endif

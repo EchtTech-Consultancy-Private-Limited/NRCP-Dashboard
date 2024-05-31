@@ -71,7 +71,7 @@
                                                         <option>Select Year</option>
                                                         <?php
                                                         $currentYear = date('Y');
-                                                        for ($year = $currentYear; $year >= 2015; $year--) {
+                                                        for ($year = 2015; $year <= $currentYear; $year++) {
                                                             echo "<option value='$year'>$year</option>";
                                                         }
                                                         ?>
