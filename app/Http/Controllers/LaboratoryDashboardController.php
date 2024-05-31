@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 use App\Models\RabiesTest;
 use App\Models\State;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
+use App\Exports\NationalReportExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class LaboratoryDashboardController extends Controller
 {    
@@ -198,5 +201,50 @@ class LaboratoryDashboardController extends Controller
 
         }
         return response()->json(['total_records'=>$total_records,'finalMapData' => $finalMapData,'graphFilterData' => $graphFilterData,'monthGraphFilterData' => $monthGraphFilterData,'yearGraphFilterData' => $yearGraphFilterData], 200);
+    }
+    
+    /**
+     * nationalReport
+     *
+     * @return void
+     */
+    public function nationalReport()
+    {
+        return view('national-report');
+    }
+
+    public function nationalExport(Request $request)
+    {
+        // Validate the incoming request data
+        $request->validate([
+            'modulename' => 'required',
+        ]);
+
+        // Parse the start and end date if provided
+        if (!empty($request->startdate) && !empty($request->enddate)) {
+            $start_date = Carbon::parse("$request->startdate 00:00:00")->format('Y-m-d H:i:s');
+            $end_date = Carbon::parse("$request->enddate 23:59:59")->format('Y-m-d H:i:s');
+        } else {
+            // Set a wide range if start and end dates are empty
+            $start_date = Carbon::parse("1900-01-01 00:00:00")->format('Y-m-d H:i:s');
+            $end_date = Carbon::now()->addYear(100)->format('Y-m-d H:i:s');
+        }
+        $fileName = '';
+        $arrays = [];
+        switch ($request->modulename) {
+            case '1':
+                $fileName = 'LaboratoryDashboard';
+                $query = RabiesTest::with('state','institute')->where('soft_delete', 0);
+                break;
+            default:
+                return response()->json(['error' => 'Invalid module name'], 400);
+        }
+        if (!empty($request->startdate) && !empty($request->enddate)) {
+            $query->whereBetween('created_at', [$start_date, $end_date]);
+        }
+
+        $arrays = [$query->get()->toArray()];
+        // dd($arrays);
+        return Excel::download(new NationalReportExport($arrays), Carbon::now()->format('d-m-Y') . '-' . $fileName . '.xlsx');
     }
 }

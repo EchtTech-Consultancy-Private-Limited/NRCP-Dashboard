@@ -89,6 +89,10 @@
                 <a href="{{ route('nhm.index') }}"><i class="fa fa-hospital-o" aria-hidden="true"></i> NHM
                     Dashboard</a> </i>
             </div>
+            <div
+                class="link bg-primary text-white dashboard-title {{ Request::routeIs('national-report') == 'national-report' ? 'active' : '' }}">
+                <a href="{{ route('national-report') }}"><i class="fa fa-hospital-o" aria-hidden="true"></i>Report Generate</a> </i>
+            </div>
             <!-- ********************* -->
         @endif
         <!-- <div class="link bg-primary text-white dashboard-title">
