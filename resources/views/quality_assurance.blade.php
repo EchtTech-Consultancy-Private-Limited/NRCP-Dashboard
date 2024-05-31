@@ -63,7 +63,7 @@
                                     </div>
                                     <div class="col-xl-2 col-lg-12 col-md-2 col-6 search-reset">
                                         <div class="apply-filter mt-xl-4 mt-lg-3 pt-1">
-                                            <button type="submit" class="btn bg-primary search-patient-btn mt-0 mr-2">Save</button>
+                                            <button type="submit" class="btn bg-primary search-patient-btn mt-0 mr-1">Save</button>
                                             <button type="reset" class="btn bg-danger">Reset</button>
                                         </div>
                                     </div>
