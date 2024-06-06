@@ -153,5 +153,4 @@ Route::middleware(['Admin','device'])->group(function () {
             });
         });
     });
-
 });
