@@ -168,6 +168,7 @@ class StateController extends Controller
                     'designation_name' => $request->designation_name,
                     'type_of_health' => $request->type_of_health,
                     'email' => $request->email,
+                    'aadhar_number' => $request->aadhar_number,
                 ])->id;
                 foreach($request->row_count as $index => $value){
                     LineSuspectedCalculate::Create([

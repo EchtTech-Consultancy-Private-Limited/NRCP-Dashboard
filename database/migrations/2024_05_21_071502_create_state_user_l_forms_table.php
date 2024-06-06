@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('designation_nodal_person')->nullable();
             $table->string('phone_number')->nullable();
             $table->string('email')->nullable();
+            $table->string('aadhar_number')->nullable();
             $table->string('institute_name')->nullable();
             $table->softDeletes();
             $table->timestamps();

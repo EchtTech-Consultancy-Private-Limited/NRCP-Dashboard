@@ -31,7 +31,6 @@
                     <div class="row">
                         <div class="col-md-12">
                             <p style="text-align: right; margin-right: 15%; font-size: 14px; margin-top: 5px;">
-                                <strong>Date:</strong>
                                 <input type="date" name="suspected_date" value="{{ old('suspected_date') }}">
                             </p>
                         </div>
@@ -82,6 +81,13 @@
                                     <input type="email" name="email" value="{{ old('email') }}">
                                     @if ($errors->has('email')) 
                                         <span class="form-text text-muted">{{ $errors->first('email') }}</span> 
+                                    @endif
+                                </p>
+                                <p >
+                                    Aadhar Number: <br>
+                                    <input type="text" name="aadhar_number" value="{{ old('aadhar_number') }}" maxlength="12" oninput="validateInput(this)">
+                                    @if ($errors->has('aadhar_number')) 
+                                        <span class="form-text text-muted">{{ $errors->first('aadhar_number') }}</span> 
                                     @endif
                                 </p>
                             </div>
@@ -237,7 +243,7 @@
                                     <input type="text" name="sex[]" value="{{ old('sex')[$index] ?? '' ?? '' }}">
                                 </td>
                                 <td>
-                                    <input type="text" name="contact_number[]" value="{{ old('contact_number')[$index] ?? '' }}">
+                                    <input type="text" name="contact_number[]" value="{{ old('contact_number')[$index] ?? '' }}" maxlength="10" oninput="validateInput(this)">
                                 </td>
                                 <td>
                                     <input type="text" name="village[]" value="{{ old('village')[$index] ?? '' }}">
@@ -306,7 +312,7 @@
                                     </select>
                                 </td>
                                 <td>
-                                    <input type="text" name="mobile_number[]" value="{{ old('mobile_number')[$index] ?? '' }}">
+                                    <input type="text" name="mobile_number[]" value="{{ old('mobile_number')[$index] ?? '' }}" maxlength="10" oninput="validateInput(this)">
                                 </td>
                                 <td>
                                     <input type="date" name="date[]" value="{{ old('date')[$index] ?? '' }}">
@@ -349,7 +355,7 @@ $(document).ready(function () {
       i +
       '"><td><input type="hidden" name="row_count[]">' +
       i +
-      '</td><td><input type="text" name="name[]" class="name_list"></td><td><input type="text" name="age[]" class="name_list"></td><td><input type="text" name="sex[]" class="name_list"></td><td><input type="text" name="contact_number[]"  class="name_list"></td><td><input type="text" name="village[]" class="name_list"></td><td><input type="text" name="sub_district_mandal[]" class="name_list"></td><td><input type="text" name="district[]" class="name_list"></td><td><input type="text" name="biting_animal[]" class="name_list"></td><td><select class="form-select" aria-label="Default select example" name="suspected_probable[]" id="suspected_probable' +
+      '</td><td><input type="text" name="name[]" class="name_list"></td><td><input type="text" name="age[]" class="name_list"></td><td><input type="text" name="sex[]" class="name_list"></td><td><input type="text" name="contact_number[]"  class="name_list" maxlength="10" oninput="validateInput(this)"></td><td><input type="text" name="village[]" class="name_list"></td><td><input type="text" name="sub_district_mandal[]" class="name_list"></td><td><input type="text" name="district[]" class="name_list"></td><td><input type="text" name="biting_animal[]" class="name_list"></td><td><select class="form-select" aria-label="Default select example" name="suspected_probable[]" id="suspected_probable' +
       i +
       '"><option value="">Please Select</option><option value="Suspected">Suspected</option><option value="Probable">Probable</option><option value="Confirmed">Confirmed</option></select></td><td><input type="text" name="bit_incidence_village[]" class="name_list"></td><td><input type="text" name="bit_incidence_sub_district[]" class="name_list"></td><td><input type="text" name="bit_incidence_district[]" class="name_list"></td><td><select class="form-select" aria-label="Default select example" name="category_of_bite[]" id="category_of_bite' +
       i +
@@ -359,7 +365,7 @@ $(document).ready(function () {
       i +
       '"><option value="">Please Select</option><option value="Death in Hospital">Death in Hospital</option><option value="LAMA">LAMA</option></select></td><td><select class="form-select" aria-label="Default select example" name="bite_from_stray[]" id="bite_from_stray' +
       i +
-      '"><option value="">Please Select</option><option value="Bite from Stray Dog">Bite from Stray Dog</option><option value="Pet Dog">Pet Dog</option></select></td><td><input type="text" name="mobile_number[]" class="name_list"></td><td><input type="date" name="date[]" class="name_list"></td><td><button type="button" name="add" id="add' +
+      '"><option value="">Please Select</option><option value="Bite from Stray Dog">Bite from Stray Dog</option><option value="Pet Dog">Pet Dog</option></select></td><td><input type="text" name="mobile_number[]" class="name_list" maxlength="10" oninput="validateInput(this)"></td><td><input type="date" name="date[]" class="name_list"></td><td><button type="button" name="add" id="add' +
       i +
       '" class="btn btn-success add_more"><i class="fa fa-plus" style="font-size:16px"></i></button><button type="button" name="remove" id="' +
       i +

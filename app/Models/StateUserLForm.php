@@ -16,6 +16,7 @@ class StateUserLForm extends Model
         'phone_number',
         'email',
         'institute_name',
+        'aadhar_number',
     ];
 
     /**

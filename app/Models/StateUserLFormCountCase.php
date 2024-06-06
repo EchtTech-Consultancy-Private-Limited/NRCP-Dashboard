@@ -50,4 +50,9 @@ class StateUserLFormCountCase extends Model
     {
         return $this->belongsTo(City::class, 'lform_district_id');
     }
+
+    public function lform()
+    {
+        return $this->belongsTo(StateUserLForm::class, 'state_user_l_forms_id');
+    }
 }

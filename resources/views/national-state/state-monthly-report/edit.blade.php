@@ -17,7 +17,7 @@
         <p>State Monthly Report (NRCP-M02) <strong> *</strong>
         </p>
       </div>
-      <form method="POST" action="{{route('state.monthly-report-store')}}" id="monthly_report_store">
+      <form method="POST" action="{{route('national.state-monthly-update', $stateMonthlyReport->id)}}" id="monthly_report_store">
         @csrf
       <table class="w-auto">
         <tbody>
@@ -28,7 +28,7 @@
               </p>
             </td>
             <td>
-              <input type="text" name="state_name" value="{{ old('state_name') }}">
+              <input type="text" name="state_name" value="{{ old('state_name',$stateMonthlyReport->state_name) }}">
               @if ($errors->has('state_name')) 
                 <span class="form-text text-muted">{{ $errors->first('state_name') }}</span>
               @endif
@@ -41,7 +41,7 @@
               </p>
             </td>
             <td>
-              <input type="text" name="state_nodal_office" value="{{ old('state_nodal_office') }}">
+              <input type="text" name="state_nodal_office" value="{{ old('state_nodal_office',$stateMonthlyReport->state_nodal_office) }}">
               @if ($errors->has('state_nodal_office')) 
                 <span class="form-text text-muted">{{ $errors->first('state_nodal_office') }}</span>
               @endif
@@ -54,7 +54,7 @@
               </p>
             </td>
             <td>
-                <input type="text" name="office_address" value="{{ old('office_address') }}">
+                <input type="text" name="office_address" value="{{ old('office_address',$stateMonthlyReport->office_address) }}">
                 @if ($errors->has('office_address')) 
                     <span class="form-text text-muted">{{ $errors->first('office_address') }}</span>
                 @endif
@@ -67,7 +67,7 @@
               </p>
             </td>
             <td>
-                <input type="date" name="reporting_month_year" value="{{ old('reporting_month_year') }}">
+                <input type="date" name="reporting_month_year" value="{{ old('reporting_month_year',$stateMonthlyReport->reporting_month_year) }}">
                 @if ($errors->has('reporting_month_year')) 
                     <span class="form-text text-muted">{{ $errors->first('reporting_month_year') }}</span>
                 @endif
@@ -85,7 +85,7 @@
               </p>
             </td>
             <td colspan="3">
-                <input type="text" name="total_districts" value="{{ old('total_districts') }}">
+                <input type="text" name="total_districts" value="{{ old('total_districts',$stateMonthlyReport->total_districts) }}">
             </td>
           </tr>
           <tr>
@@ -95,7 +95,7 @@
               </p>
             </td>
             <td colspan="3">
-                <input type="text" name="total_health_facilities_anaimal_bite" value="{{ old('total_health_facilities_anaimal_bite') }}">
+                <input type="text" name="total_health_facilities_anaimal_bite" value="{{ old('total_health_facilities_anaimal_bite',$stateMonthlyReport->total_health_facilities_anaimal_bite) }}">
             </td>
           </tr>
           <tr>
@@ -105,7 +105,7 @@
               </p>
             </td>
             <td colspan="3">
-                <input type="text" name="total_health_facilities_submitted_monthly" value="{{ old('total_health_facilities_submitted_monthly') }}">            </td>
+                <input type="text" name="total_health_facilities_submitted_monthly" value="{{ old('total_health_facilities_submitted_monthly',$stateMonthlyReport->total_health_facilities_submitted_monthly) }}">            </td>
           </tr>
           <tr>
             <td colspan="2" class="bglightBlue">
@@ -114,7 +114,7 @@
               </p>
             </td>
             <td colspan="3">
-                <input type="text" name="total_patients_animal_biting" value="{{ old('total_patients_animal_biting') }}">
+                <input type="text" name="total_patients_animal_biting" value="{{ old('total_patients_animal_biting',$stateMonthlyReport->total_patients_animal_biting) }}">
             </td>
           </tr>
           <tr>
@@ -127,7 +127,7 @@
               <p>Bite by Stray dog</p>
             </td>
             <td colspan="3">
-                <input type="text" name="total_stray_dog_bite" value="{{ old('total_stray_dog_bite') }}">
+                <input type="text" name="total_stray_dog_bite" value="{{ old('total_stray_dog_bite',$stateMonthlyReport->total_stray_dog_bite) }}">
             </td>
           </tr>
           <tr>
@@ -135,7 +135,7 @@
               <p>Bite by Pet Dogs</p>
             </td>
             <td colspan="3">
-                <input type="text" name="total_pet_dog_bite" value="{{ old('total_pet_dog_bite') }}">
+                <input type="text" name="total_pet_dog_bite" value="{{ old('total_pet_dog_bite',$stateMonthlyReport->total_pet_dog_bite) }}">
             </td>
           </tr>
           <tr>
@@ -145,7 +145,7 @@
               </ul>
             </td>
             <td colspan="3">
-                <input type="text" name="total_cat_bite" value="{{ old('total_cat_bite') }}">
+                <input type="text" name="total_cat_bite" value="{{ old('total_cat_bite',$stateMonthlyReport->total_cat_bite) }}">
             </td>
           </tr>
           <tr>
@@ -155,7 +155,7 @@
               </ul>
             </td>
             <td colspan="3">
-                <input type="text" name="total_monkey_bite" value="{{ old('total_monkey_bite') }}">
+                <input type="text" name="total_monkey_bite" value="{{ old('total_monkey_bite',$stateMonthlyReport->total_monkey_bite) }}">
             </td>
           </tr>
           <tr>
@@ -165,7 +165,7 @@
               </ul>
             </td>
             <td colspan="3">
-                <input type="text" name="total_others_bite" value="{{ old('total_others_bite') }}">
+                <input type="text" name="total_others_bite" value="{{ old('total_others_bite',$stateMonthlyReport->total_others_bite) }}">
             </td>
           </tr>
           <tr>
@@ -187,7 +187,7 @@
               </ul>
             </td>
             <td colspan="3">
-                <input type="text" name="mention_patient_cateogry_I" value="{{ old('mention_patient_cateogry_I') }}">
+                <input type="text" name="mention_patient_cateogry_I" value="{{ old('mention_patient_cateogry_I',$stateMonthlyReport->mention_patient_cateogry_I) }}">
             </td>
           </tr>
           <tr>
@@ -199,7 +199,7 @@
               </ul>
             </td>
             <td colspan="3">
-                <input type="text" name="mention_patient_cateogry_II" value="{{ old('mention_patient_cateogry_II') }}">
+                <input type="text" name="mention_patient_cateogry_II" value="{{ old('mention_patient_cateogry_II',$stateMonthlyReport->mention_patient_cateogry_II) }}">
             </td>
           </tr>
           <tr>
@@ -211,7 +211,7 @@
               </ul>
             </td>
             <td colspan="3">
-                <input type="text" name="mention_patient_cateogry_III" value="{{ old('mention_patient_cateogry_III') }}">
+                <input type="text" name="mention_patient_cateogry_III" value="{{ old('mention_patient_cateogry_III',$stateMonthlyReport->mention_patient_cateogry_III) }}">
             </td>
           </tr>
           <tr>
@@ -232,7 +232,7 @@
               <p></p>
             </td>
             <td colspan="3">
-                <input type="text" name="rabies_vaccination_im_route" value="{{ old('rabies_vaccination_im_route') }}">
+                <input type="text" name="rabies_vaccination_im_route" value="{{ old('rabies_vaccination_im_route',$stateMonthlyReport->rabies_vaccination_im_route) }}">
             </td>
           </tr>
           <tr>
@@ -242,7 +242,7 @@
               </ul>
             </td>
             <td colspan="3">
-                <input type="text" name="rabies_vaccination_id_route" value="{{ old('rabies_vaccination_id_route') }}">
+                <input type="text" name="rabies_vaccination_id_route" value="{{ old('rabies_vaccination_id_route',$stateMonthlyReport->rabies_vaccination_id_route) }}">
             </td>
           </tr>
           <tr>
@@ -253,7 +253,7 @@
               <p>&nbsp;</p>
             </td>
             <td colspan="3">
-                <input type="text" name="rabies_vaccination_III_victim_ars" value="{{ old('rabies_vaccination_III_victim_ars') }}">
+                <input type="text" name="rabies_vaccination_III_victim_ars" value="{{ old('rabies_vaccination_III_victim_ars',$stateMonthlyReport->rabies_vaccination_III_victim_ars) }}">
             </td>
           </tr>
           <tr>
@@ -264,7 +264,7 @@
               <p>&nbsp;</p>
             </td>
             <td colspan="3">
-                <input type="text" name="rabies_vaccination_completed_pep" value="{{ old('rabies_vaccination_completed_pep') }}">
+                <input type="text" name="rabies_vaccination_completed_pep" value="{{ old('rabies_vaccination_completed_pep',$stateMonthlyReport->rabies_vaccination_completed_pep) }}">
             </td>
           </tr>
         </tbody>
@@ -292,7 +292,7 @@
               </ul>
             </td>
             <td colspan="3">
-                <input type="text" name="confirmed_suspected_rabies_deaths" value="{{ old('confirmed_suspected_rabies_deaths') }}">
+                <input type="text" name="confirmed_suspected_rabies_deaths" value="{{ old('confirmed_suspected_rabies_deaths',$stateMonthlyReport->confirmed_suspected_rabies_deaths) }}">
             </td>
           </tr>
           <tr>
@@ -302,7 +302,7 @@
               </ul>
             </td>
             <td colspan="3">
-                <input type="text" name="suspected_rabies_cases_opd" value="{{ old('suspected_rabies_cases_opd') }}">
+                <input type="text" name="suspected_rabies_cases_opd" value="{{ old('suspected_rabies_cases_opd',$stateMonthlyReport->suspected_rabies_cases_opd) }}">
             </td>
           </tr>
           <tr>
@@ -312,7 +312,7 @@
               </ul>
             </td>
             <td colspan="3">
-                <input type="text" name="suspected_rabies_cases_admitted" value="{{ old('suspected_rabies_cases_admitted') }}">
+                <input type="text" name="suspected_rabies_cases_admitted" value="{{ old('suspected_rabies_cases_admitted',$stateMonthlyReport->suspected_rabies_cases_admitted) }}">
             </td>
           </tr>
           <tr>
@@ -322,7 +322,7 @@
               </ul>
             </td>
             <td colspan="3">
-                <input type="text" name="suspected_rabies_cases_left_against_medical" value="{{ old('suspected_rabies_cases_left_against_medical') }}">
+                <input type="text" name="suspected_rabies_cases_left_against_medical" value="{{ old('suspected_rabies_cases_left_against_medical',$stateMonthlyReport->suspected_rabies_cases_left_against_medical) }}">
             </td>
           </tr>
           <tr>
@@ -332,7 +332,7 @@
               </ul>
             </td>
             <td colspan="3">
-                <input type="text" name="suspected_rabies_deaths" value="{{ old('suspected_rabies_deaths') }}">
+                <input type="text" name="suspected_rabies_deaths" value="{{ old('suspected_rabies_deaths',$stateMonthlyReport->suspected_rabies_deaths) }}">
             </td>
           </tr>
           <tr>
@@ -352,7 +352,7 @@
               </ul>
             </td>
             <td colspan="3">
-                <input type="text" name="arv_opening_balance" value="{{ old('arv_opening_balance') }}">
+                <input type="text" name="arv_opening_balance" value="{{ old('arv_opening_balance',$stateMonthlyReport->arv_opening_balance) }}">
             </td>
           </tr>
           <tr>
@@ -362,7 +362,7 @@
               </ul>
             </td>
             <td colspan="3">
-              <input type="text" name="arv_quantity_received" value="{{ old('arv_quantity_received') }}">
+              <input type="text" name="arv_quantity_received" value="{{ old('arv_quantity_received',$stateMonthlyReport->arv_quantity_received) }}">
             </td>
           </tr>
           <tr>
@@ -372,7 +372,7 @@
               </ul>
             </td>
             <td colspan="3">
-              <input type="text" name="arv_quantity_utilized" value="{{ old('arv_quantity_utilized') }}">
+              <input type="text" name="arv_quantity_utilized" value="{{ old('arv_quantity_utilized',$stateMonthlyReport->arv_quantity_utilized) }}">
             </td>
           </tr>
           <tr>
@@ -382,7 +382,7 @@
               </ul>
             </td>
             <td colspan="3">
-              <input type="text" name="arv_closing_balance" value="{{ old('arv_closing_balance') }}">
+              <input type="text" name="arv_closing_balance" value="{{ old('arv_closing_balance',$stateMonthlyReport->arv_closing_balance) }}">
             </td>
           </tr>
           <tr>
@@ -393,7 +393,7 @@
               <p>(If Yes, please mention in Vials or Doses)</p>
             </td>
             <td colspan="3">
-              <input type="text" name="shortage_of_arv" value="{{ old('shortage_of_arv') }}">
+              <input type="text" name="shortage_of_arv" value="{{ old('shortage_of_arv',$stateMonthlyReport->shortage_of_arv) }}">
             </td>
           </tr>
           <tr>
@@ -413,7 +413,7 @@
               </ul>
             </td>
             <td colspan="3">
-              <input type="text" name="ars_opening_balance" value="{{ old('ars_opening_balance') }}">
+              <input type="text" name="ars_opening_balance" value="{{ old('ars_opening_balance',$stateMonthlyReport->ars_opening_balance) }}">
             </td>
           </tr>
           <tr>
@@ -423,7 +423,7 @@
               </ul>
             </td>
             <td colspan="3">
-              <input type="text" name="ars_quantity_recieved" value="{{ old('ars_quantity_recieved') }}">
+              <input type="text" name="ars_quantity_recieved" value="{{ old('ars_quantity_recieved',$stateMonthlyReport->ars_quantity_recieved) }}">
             </td>
           </tr>
           <tr>
@@ -433,7 +433,7 @@
               </ul>
             </td>
             <td colspan="3">
-              <input type="text" name="ars_quantity_utilized" value="{{ old('ars_quantity_utilized') }}">
+              <input type="text" name="ars_quantity_utilized" value="{{ old('ars_quantity_utilized',$stateMonthlyReport->ars_quantity_utilized) }}">
             </td>
           </tr>
           <tr>
@@ -443,7 +443,7 @@
               </ul>
             </td>
             <td colspan="3">
-              <input type="text" name="ars_closing_balance" value="{{ old('ars_closing_balance') }}">
+              <input type="text" name="ars_closing_balance" value="{{ old('ars_closing_balance',$stateMonthlyReport->ars_closing_balance) }}">
             </td>
           </tr>
           <tr>
@@ -454,7 +454,7 @@
               <p>&nbsp;(If Yes, please mention in Vials or Doses)</p>
             </td>
             <td colspan="3">
-              <input type="text" name="shortage_of_ars" value="{{ old('shortage_of_ars') }}" >
+              <input type="text" name="shortage_of_ars" value="{{ old('shortage_of_ars',$stateMonthlyReport->shortage_of_ars) }}" >
             </td>
           </tr>
           <tr class="bglightBlue">
@@ -485,9 +485,9 @@
                 <li>DH</li>
               </ul>
             </td>
-            <td><input type="text" name="dh_health_of_health_facilties" value="{{ old('dh_health_of_health_facilties') }}"></td>
-            <td><input type="text" name="dh_of_arv" value="{{ old('dh_of_arv') }}"></td>
-            <td><input type="text" name="dh_of_ars" value="{{ old('dh_of_ars') }}"></td>
+            <td><input type="text" name="dh_health_of_health_facilties" value="{{ old('dh_health_of_health_facilties',$stateMonthlyReport->dh_health_of_health_facilties) }}"></td>
+            <td><input type="text" name="dh_of_arv" value="{{ old('dh_of_arv',$stateMonthlyReport->dh_of_arv) }}"></td>
+            <td><input type="text" name="dh_of_ars" value="{{ old('dh_of_ars',$stateMonthlyReport->dh_of_ars) }}"></td>
           </tr>
           <tr>
             <td colspan="2">
@@ -495,9 +495,9 @@
                 <li>SDH</li>
               </ul>
             </td>
-            <td><input type="text" name="sdh_health_of_health_facilties" value="{{ old('sdh_health_of_health_facilties') }}"></td>
-            <td><input type="text" name="sdh_of_arv" value="{{ old('sdh_of_arv') }}"></td>
-            <td><input type="text" name="sdh_of_ars" value="{{ old('sdh_of_ars') }}"></td>
+            <td><input type="text" name="sdh_health_of_health_facilties" value="{{ old('sdh_health_of_health_facilties',$stateMonthlyReport->sdh_health_of_health_facilties) }}"></td>
+            <td><input type="text" name="sdh_of_arv" value="{{ old('sdh_of_arv',$stateMonthlyReport->sdh_of_arv) }}"></td>
+            <td><input type="text" name="sdh_of_ars" value="{{ old('sdh_of_ars',$stateMonthlyReport->sdh_of_ars) }}"></td>
           </tr>
           <tr>
             <td colspan="2">
@@ -505,9 +505,9 @@
                 <li>CHC</li>
               </ul>
             </td>
-            <td><input type="text" name="chc_health_of_health_facilties" value="{{ old('chc_health_of_health_facilties') }}"></td>
-            <td><input type="text" name="chc_of_arv" value="{{ old('chc_of_arv') }}"></td>
-            <td><input type="text" name="chc_of_ars" value="{{ old('chc_of_ars') }}"></td>
+            <td><input type="text" name="chc_health_of_health_facilties" value="{{ old('chc_health_of_health_facilties',$stateMonthlyReport->chc_health_of_health_facilties) }}"></td>
+            <td><input type="text" name="chc_of_arv" value="{{ old('chc_of_arv',$stateMonthlyReport->chc_of_arv) }}"></td>
+            <td><input type="text" name="chc_of_ars" value="{{ old('chc_of_ars',$stateMonthlyReport->chc_of_ars) }}"></td>
           </tr>
           <tr>
             <td colspan="2">
@@ -515,9 +515,9 @@
                 <li>PHC</li>
               </ul>
             </td>
-            <td><input type="text" name="phc_health_of_health_facilties" value="{{ old('phc_health_of_health_facilties') }}"></td>
-            <td><input type="text" name="phc_of_arv" value="{{ old('phc_of_arv') }}"></td>
-            <td><input type="text" name="phc_of_ars" value="{{ old('phc_of_ars') }}"></td>
+            <td><input type="text" name="phc_health_of_health_facilties" value="{{ old('phc_health_of_health_facilties',$stateMonthlyReport->phc_health_of_health_facilties) }}"></td>
+            <td><input type="text" name="phc_of_arv" value="{{ old('phc_of_arv',$stateMonthlyReport->phc_of_arv) }}"></td>
+            <td><input type="text" name="phc_of_ars" value="{{ old('phc_of_ars',$stateMonthlyReport->phc_of_ars) }}"></td>
           </tr>
           <tr>
             <td colspan="2" class="bglightBlue">
@@ -526,7 +526,7 @@
               </p>
             </td>
             <td colspan="3">
-              <input type="text" name="bite_cases_shared_department" value="{{ old('bite_cases_shared_department') }}">
+              <input type="text" name="bite_cases_shared_department" value="{{ old('bite_cases_shared_department',$stateMonthlyReport->bite_cases_shared_department) }}">
             </td>
           </tr>
           <tr>
@@ -537,7 +537,7 @@
               <p>If yes write the details including locality</p>
             </td>
             <td colspan="3">
-              <input type="text" name="bite_cases_observed" value="{{ old('bite_cases_observed') }}">
+              <input type="text" name="bite_cases_observed" value="{{ old('bite_cases_observed',$stateMonthlyReport->bite_cases_observed) }}">
             </td>
           </tr>
           <tr>
@@ -547,14 +547,14 @@
               </p>
             </td>
             <td colspan="3">
-              <input type="text" name="other_remarks" value="{{ old('other_remarks') }}">
+              <input type="text" name="other_remarks" value="{{ old('other_remarks',$stateMonthlyReport->other_remarks) }}">
             </td>
           </tr>
         </tbody>
       </table>
       <div class="footerContent">        
        <div class="d-flex justify-content-center mb-5">
-        <button type="submit" class="btn search-patient-btn mr-3 bg-primary text-light">save</button>
+        <button type="submit" class="btn search-patient-btn mr-3 bg-primary text-light">Update</button>
         <button type="reset" class="btn search-patient-btn bg-danger text-light">Reset</button>
        </div>
         <p>

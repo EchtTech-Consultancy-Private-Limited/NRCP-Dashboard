@@ -52,6 +52,7 @@ class FormController extends Controller
             'phone_number' => 'required',
             'email' => 'required',
             'institute_name' => 'required',
+            'aadhar_number' => 'required|numeric|min_digits:12|max_digits:12',
         ]);
         try {
             DB::beginTransaction();
@@ -62,6 +63,7 @@ class FormController extends Controller
                 'phone_number' => $request->phone_number,
                 'email' => $request->email,
                 'institute_name' => $request->institute_name,
+                'aadhar_number' =>$request->aadhar_number,
             ])->id;
             foreach($request->row_count as $key => $value){
                 StateUserLFormCountCase::Create([

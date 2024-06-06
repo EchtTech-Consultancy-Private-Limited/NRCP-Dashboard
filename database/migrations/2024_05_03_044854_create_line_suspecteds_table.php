@@ -18,7 +18,8 @@ return new class extends Migration
             $table->string('address_hospital', 255)->nullable();
             $table->string('designation_name', 255)->nullable();
             $table->string('type_of_health', 255)->nullable();
-            $table->string('email', 255)->nullable();            
+            $table->string('email', 255)->nullable();
+            $table->string('aadhar_number')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

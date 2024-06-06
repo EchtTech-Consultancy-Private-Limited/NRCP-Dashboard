@@ -17,7 +17,7 @@
                 <a href="{{ url('/') }}" class="brand-link">
                 <img src="{{ asset('AdminLTELogo.png') }}" alt="Logo"
                         class="brand-image img-circle elevation-3" style="opacity: .8">
-                    <span class="brand-text font-weight-bold"><b>{{ (Auth::user()->user_type == 1) ? 'NRCP Dashboard' : 'Laboratory Form'  }}</b></span>
+                    <span class="brand-text font-weight-bold"><b>{{ Auth::user()->user_type == 1 ? 'NRCP Dashboard' : ((Auth::user()->user_type == 2) ? 'Laboratory Form' : 'Monthly Report Form')  }}</b></span>
                 </a>
                 <!-- Sidebar -->
                 <div class="sidebar">
