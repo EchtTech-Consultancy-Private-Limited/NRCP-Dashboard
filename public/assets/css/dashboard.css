@@ -161,7 +161,7 @@ body {
 }
 
 .dashboard .dashboard-filter {
-  padding: 15px;
+  padding: 15px 20px;
   border-radius: 5px;
   background-color: #fff;
   box-shadow: 0 0 5px 0 rgba(43, 43, 43, 0.1), 0 11px 6px -7px rgba(43, 43, 43, 0.1);
@@ -475,8 +475,8 @@ h1.text-dark.text-left.main-title {
   font-size: 24px;
   background: #ab4024;
   color: #fff !important;
-  margin: 74px 6px 18PX !important;
-  padding: 5px 34px !important;
+  margin: 0px 6px 18PX !important;
+  padding: 5px 20px !important;
   border-radius: 5PX;
 }
 
