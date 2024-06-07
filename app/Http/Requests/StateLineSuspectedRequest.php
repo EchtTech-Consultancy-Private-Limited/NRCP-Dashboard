@@ -22,10 +22,11 @@ class StateLineSuspectedRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name_of_health' => ['required'],
-            'address_hospital' => ['required'],
-            'email' => ['required'],
-            'type_of_health' => ['required'],
+            'name_of_health' => 'required',
+            'address_hospital' => 'required',
+            'email' => 'required',
+            'aadhar_number' => 'required|numeric|min_digits:12|max_digits:12',
+            'type_of_health' => 'required',
         ];
     }
 }

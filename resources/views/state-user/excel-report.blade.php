@@ -20,10 +20,10 @@
                                                 <label for="state">Module<span class="star">*</span></label>
                                                 <select class="form-select" aria-label="Default select example" name="modulename" id="modulename">
                                                     <option value="">Select Module</option>
-                                                    <option value='1'>Investigate Report</option>
-                                                    <option value='2'>Monthly Report</option>
-                                                    <option value='3'>Line Suspected Report</option>
-                                                    <option value='lform'>L Form Report</option>
+                                                    <option value='2'>State Monthly Report</option>
+                                                    <option value='lform'>L Form</option>
+                                                    <option value='3'>P Form</option>
+                                                    <option value='1'>Investigation Report</option>
                                                 </select>
                                                 @error('modulename') 
                                                     <span class="form-text text-muted">{{ $message }}</span>

@@ -17,6 +17,7 @@ use App\Http\Controllers\ReportGenerateControllerController;
 use App\Http\Controllers\StateUser\InvestigationController;
 use App\Http\Controllers\StateUser\StateController;
 use App\Http\Controllers\StateUser\FormController;
+use App\Http\Controllers\NationalStateListController;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,8 +44,23 @@ Route::middleware(['Admin','device'])->group(function () {
         Route::get('get-filter-laboratory-data',[LaboratoryDashboardController::class,'getFilterLaboratoryData'])->name('get-filter-laboratory-data');
         Route::get('national-report', [LaboratoryDashboardController::class, 'nationalReport'])->name('national-report');
         Route::post('national-report-export', [LaboratoryDashboardController::class, 'nationalExport'])->name('national-report-export');
-
         Route::get('/get-city', [PFormController::class,'getCityByStateId'])->name('get-city');
+
+        // National dashboard monthly report list
+        Route::group(['prefix' => 'national', 'as' => 'national.'], function () {
+            Route::get('/state-monthly-report', [NationalStateListController::class, 'stateMonthlyReport'])->name('state-monthly-report');
+            Route::get('/state-monthly-view/{id}', [NationalStateListController::class, 'stateMonthlyView'])->name('state-monthly-view');
+            Route::get('/state-monthly-edit/{id}', [NationalStateListController::class, 'stateMonthlyEdit'])->name('state-monthly-edit');
+            Route::post('/update/{id}', [NationalStateListController::class, 'stateMonthlyUpdate'])->name('state-monthly-update');
+            Route::get('state-monthly-delete/{id}',[NationalStateListController::class, 'stateMonthlyDestroy'])->name('state-monthly-delete');
+            // state user L Form
+            Route::get('/l-form', [NationalStateListController::class, 'lForm'])->name('l-form');
+            Route::get('/l-form-view/{id}', [NationalStateListController::class, 'lFormView'])->name('l-form-view');
+            Route::get('/l-form-edit/{id}', [NationalStateListController::class, 'lFormEdit'])->name('l-form-edit');
+            Route::post('/update/{id}', [NationalStateListController::class, 'lFormUpdate'])->name('l-form-update');
+            Route::get('l-form-delete/{id}',[NationalStateListController::class, 'lFormDestroy'])->name('l-form-delete');
+        });
+        // End national dashboard monthly report list
 
         Route::group(['prefix' => 'pform', 'as' => 'pform.'], function(){
             Route::get('/', [PFormController::class, 'index'])->name('index');
@@ -153,5 +169,4 @@ Route::middleware(['Admin','device'])->group(function () {
             });
         });
     });
-
 });
