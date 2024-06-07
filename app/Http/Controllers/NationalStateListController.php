@@ -12,6 +12,9 @@ use App\Models\StateUserLForm;
 use App\Models\CountryState;
 use App\Models\City;
 use App\Models\StateUserLFormCountCase;
+use App\Models\LineSuspected;
+use App\Models\LineSuspectedCalculate;
+use App\Models\InvestigateReport;
 
 class NationalStateListController extends Controller
 {    
@@ -157,7 +160,7 @@ class NationalStateListController extends Controller
     }
 
     /**
-     *  @edit get nhm record for edit
+     *  @edit get lform record for edit
      *
      * @param  mixed $id
      * @return void
@@ -249,5 +252,265 @@ class NationalStateListController extends Controller
             return response()->json(['message' => 'Error: ' . $e->getMessage()], 500);
         }
     }
+    
+    /**
+     * lFormView
+     *
+     * @param  mixed $id
+     * @return void
+     */
+    public function lFormView($id)
+    {
+        try{
+            DB::beginTransaction();
+            $stateUserLForm = StateUserLForm::with(['stateUserLFormCountCase.states', 'stateUserLFormCountCase.city'])->where('id', $id)->first();
+            $states = CountryState::get();
+            $cities = City::get();
+            DB::commit();
+            return view('national-state.lform.view', compact('stateUserLForm','states','cities'));
+        }catch (Exception $e) {
+            DB::rollBack();
+            throw new Exception($e->getMessage());
+        }
+    }
 
+    /**
+     * destroy
+     *
+     * @param  mixed $id
+     * @return void
+     */
+    public function lFormDestroy($id)
+    {
+        StateUserLForm::where('id', $id)->delete();
+        StateUserLFormCountCase::where('state_user_l_forms_id', $id)->delete();
+        return back()->with(['error'=>"Deleted successfully.",'alert-type' => 'success','success'=>'1', 'tr'=>'tr_'.$id]);
+    }
+    
+    /**
+     * pForm
+     *
+     * @return void
+     */
+    public function pForm()
+    {
+        $stateUserpForms = LineSuspected::with('lineSuspectedCalculate')->orderBy('id', 'desc')->get();
+        return view('national-state.pform.index',compact('stateUserpForms'));
+    }
+
+    /**
+     *  @edit get lform record for edit
+     *
+     * @param  mixed $id
+     * @return void
+     */
+    public function pFormEdit($id){
+        try{
+            DB::beginTransaction();
+            $stateUserpForm = LineSuspected::with('lineSuspectedCalculate')->where('id', $id)->first();
+            $states = CountryState::get();
+            DB::commit();
+            return view('national-state.pform.edit', compact('stateUserpForm','states'));
+        }catch (Exception $e) {
+            DB::rollBack();
+            throw new Exception($e->getMessage());
+        }
+    }
+    
+    /**
+     * pFormUpdate
+     *
+     * @param  mixed $request
+     * @param  mixed $id
+     * @return void
+     */
+    public function pFormUpdate(Request $request, $id = '')
+    {
+        $request->validate([
+            'name_of_health' => 'required',
+            'address_hospital' => 'required',
+            'email' => 'required',
+            'aadhar_number' => 'required|numeric|min_digits:12|max_digits:12',
+            'type_of_health' => 'required',
+        ]);
+
+        try {
+            DB::beginTransaction();
+
+            $PForm = LineSuspected::findOrFail($id);
+            $PForm->update([
+                'suspected_date' => $request->suspected_date,
+                'name_of_health' => $request->name_of_health,
+                'address_hospital' => $request->address_hospital,
+                'designation_name' => $request->designation_name,
+                'type_of_health' => $request->type_of_health,
+                'email' => $request->email,
+                'aadhar_number' => $request->aadhar_number,
+            ]);
+
+            $existingCountCases = $PForm->lineSuspectedCalculate()->get()->keyBy('id')->toArray();
+            $newCountCases = [];
+            foreach ($request->row_count as $index => $value) {
+                $newCountCases[] = [
+                    'id' => $request->p_form_count_id[$index] ?? null,
+                    'line_suspected_form_id' => $PForm->id,
+                    'name' => $request->name[$index],
+                    'age' => $request->age[$index],
+                    'sex' => $request->sex[$index],
+                    'contact_number' => $request->contact_number[$index],
+                    'village' => $request->village[$index],
+                    'sub_district_mandal' => $request->sub_district_mandal[$index],
+                    'district' => $request->district[$index],
+                    'biting_animal' => $request->biting_animal[$index],
+                    'suspected_probable' => $request->suspected_probable[$index],
+                    'bit_incidence_village' => $request->bit_incidence_village[$index],
+                    'bit_incidence_sub_district' => $request->bit_incidence_sub_district[$index],
+                    'bit_incidence_district' => $request->bit_incidence_district[$index],
+                    'category_of_bite' => $request->category_of_bite[$index],
+                    'status_of_pep' => $request->status_of_pep[$index],
+                    'health_facility_name_institute' => $request->health_facility_name_institute[$index],
+                    'health_facility_district' => $request->health_facility_district[$index],
+                    'outcome_of_patient' => $request->outcome_of_patient[$index],
+                    'bite_from_stray' => $request->bite_from_stray[$index],
+                    'mobile_number' => $request->mobile_number[$index],
+                    'date' => $request->date[$index],
+                ];
+            }
+
+            $existingIds = array_keys($existingCountCases);
+            $newIds = array_filter(array_column($newCountCases, 'id'));
+            $idsToDelete = array_diff($existingIds, $newIds);
+            LineSuspectedCalculate::destroy($idsToDelete);
+            foreach ($newCountCases as $caseData) {
+                if ($caseData['id']) {
+                    $countCase = LineSuspectedCalculate::find($caseData['id']);
+                    if ($countCase) {
+                        $countCase->update($caseData);
+                    }
+                } else {
+                    LineSuspectedCalculate::create($caseData);
+                }
+            }
+            DB::commit();
+            return redirect()->route('national.p-form')->with('message', 'P Form updated successfully');
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return response()->json(['message' => 'Error: ' . $e->getMessage()], 500);
+        }
+    }
+
+    public function pFormView($id)
+    {
+        try{
+            DB::beginTransaction();
+            $stateUserpForm = LineSuspected::with('lineSuspectedCalculate')->where('id', $id)->first();
+            $states = CountryState::get();
+            DB::commit();
+            return view('national-state.pform.view', compact('stateUserpForm','states'));
+        }catch (Exception $e) {
+            DB::rollBack();
+            throw new Exception($e->getMessage());
+        }
+    }
+
+        /**
+     * destroy
+     *
+     * @param  mixed $id
+     * @return void
+     */
+    public function pFormDestroy($id)
+    {
+        LineSuspected::where('id', $id)->delete();
+        LineSuspectedCalculate::where('line_suspected_form_id', $id)->delete();
+        return back()->with(['error'=>"Deleted successfully.",'alert-type' => 'success','success'=>'1', 'tr'=>'tr_'.$id]);
+    }
+    
+    /**
+     * investigateReport
+     *
+     * @return void
+     */
+    public function investigateReport()
+    {
+        $investigateReports = InvestigateReport::orderBy('id', 'desc')->get();
+        return view('national-state.investigate-report.index', compact('investigateReports'));
+    }
+    
+    /**
+     * investigateReportEdit
+     *
+     * @param  mixed $id
+     * @return void
+     */
+    public function investigateReportEdit($id)
+    {
+        try{
+            DB::beginTransaction();
+            $investigateReport = InvestigateReport::where('id', $id)->first();
+            return view('national-state.investigate-report.edit', compact('investigateReport'));
+        }catch (Exception $e) {
+            DB::rollBack();
+            throw new Exception($e->getMessage());
+        }
+    }
+    
+    /**
+     * investigateReportUpdate
+     *
+     * @param  mixed $request
+     * @param  mixed $id
+     * @return void
+     */
+    public function investigateReportUpdate(Request $request, $id)
+    {
+        $request->validate([
+            'interviewer_name' => ['required'],
+            'interview_date' => ['required'],
+            'interviewer_designation' => ['required'],
+            'interviewer_contact_number' => ['required'],
+        ]);
+
+        try {
+            DB::beginTransaction();
+            $investigateReport = InvestigateReport::findOrFail($id);
+            $investigateReport->fill($request->all());
+            $investigateReport->save();
+            DB::commit();
+            return redirect()->route('national.investigate-report')->with('message', 'Investigate report updated successfully');
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return response()->json(['message' => 'Error: ' . $e->getMessage()], 500);
+        }
+    }
+    
+    /**
+     * investigateReportView
+     *
+     * @param  mixed $id
+     * @return void
+     */
+    public function investigateReportView($id)
+    {
+        try{
+            DB::beginTransaction();
+            $investigateReport = InvestigateReport::where('id', $id)->first();
+            return view('national-state.investigate-report.view', compact('investigateReport'));
+        }catch (Exception $e) {
+            DB::rollBack();
+            throw new Exception($e->getMessage());
+        }
+    }
+    
+    /**
+     * investigateReportDestroy
+     *
+     * @param  mixed $id
+     * @return void
+     */
+    public function investigateReportDestroy($id)
+    {
+        InvestigateReport::where('id', $id)->delete();
+        return back()->with(['error'=>"Deleted successfully.",'alert-type' => 'success','success'=>'1', 'tr'=>'tr_'.$id]);
+    }
 }

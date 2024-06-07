@@ -32,7 +32,7 @@
               <a href="{{route('national.state-monthly-view',$stateMonthlyReport->id)}}" class="btn bg-danger action-btn" title="Delete">
                   <i class="fa fa-eye"></i>
                 </a>
-              <a href="{{route('national.state-monthly-delete',$stateMonthlyReport->id)}}" class="btn bg-danger action-btn" title="Delete">
+              <a href="{{route('national.state-monthly-delete',$stateMonthlyReport->id)}}" class="btn bg-danger action-btn" title="Delete" onclick="return confirmDelete()">
                 <i class="fa fa-trash-o"></i>
               </a>
             </td>

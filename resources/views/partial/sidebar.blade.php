@@ -87,7 +87,7 @@
 
                 <div class="row">
                     <div class="col">
-                        <div class="collapse multi-collapse {{ in_array(Request::segment(2), ['state-monthly-report','l-form', 'sform', 'lform']) ? 'show' : '' }}"
+                        <div class="collapse multi-collapse {{ in_array(Request::segment(2), ['state-monthly-report','l-form', 'p-form', 'investigate-report']) ? 'show' : '' }}"
                             id="multiCollapseExample2">
                             <div class="card card-body">
                                 <div
@@ -99,12 +99,12 @@
                                     <a href="{{ route('national.l-form') }}">L Form</a> </i>
                                 </div>
                                 <div
-                                    class="link bg-primary text-white dashboard-title {{ (Request::segment(2) == 'sform')?'active':'' }}">
-                                    <a href="#">P Form</a> </i>
+                                    class="link bg-primary text-white dashboard-title {{ (Request::segment(2) == 'p-form')?'active':'' }}">
+                                    <a href="{{ route('national.p-form') }}">P Form</a> </i>
                                 </div>
                                 <div
-                                    class="link bg-primary text-white dashboard-title {{ Request::segment(1) == 'lform' ? 'active' : '' }}">
-                                    <a href="#">Investigate Report</a> </i>
+                                    class="link bg-primary text-white dashboard-title {{ Request::segment(2) == 'investigate-report' ? 'active' : '' }}">
+                                    <a href="{{ route('national.investigate-report') }}">Investigate Report</a> </i>
                                 </div>
 
                             </div>
