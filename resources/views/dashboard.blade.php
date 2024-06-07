@@ -5,136 +5,6 @@
 @section('content')
 <div class="container-fluid dashboard">
 
-
-    <div class="dashboard-filter mb-4">
-        <div class="row mb-4">
-            <div class="col-md-4">
-                <div class="form-group d-flex align-items-center">
-                    <label for="state" class="mr-3 text-nowrap mb-0">State <span class="star">*</span></label>
-                    <select name="state" id="state" class="form-control">
-                        <option value="">Select State</option>
-                        <option value="">State 1</option>
-                        <option value="">State 2</option>
-                        <option value="">State 3</option>
-                    </select>
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                <div class="form-group d-flex align-items-center">
-                    <label for="district" class="mr-3 text-nowrap mb-0">Month <span class="star">*</span></label>
-                    <select name="month" id="month" class="form-control">
-                        <option value="">Select Month</option>
-                        <option value="">January</option>
-                        <option value="">February</option>
-                        <option value="">March</option>
-                        <option value="">April</option>
-                        <option value="">May</option>
-                        <option value="">June</option>
-                        <option value="">July</option>
-                        <option value="">August</option>
-                        <option value="">September</option>
-                        <option value="">October</option>
-                        <option value="">November</option>
-                        <option value="">December</option>
-                    </select>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="form-group d-flex align-items-center">
-                    <label for="formType" class="mr-3 text-nowrap mb-0">Year <span class="star">*</span></label>
-                    <select name="year" id="year" class="form-control">
-                        <option value="">Select Year</option>
-                        <option value="">2019-2020</option>
-                        <option value="">2020-2021</option>
-                        <option value="">2021-2022</option>
-                        <option value="">2022-2023</option>
-                        <option value="">2023-2024</option>
-                    </select>
-
-                </div>
-            </div>
-        </div>
-
-        <div class="row card-mm">
-            <div class="col-md-2 col-md-n">
-                <div class="single_crm border-line-1 p-0">
-                    <div class="crm_body">
-                        <h4 id="national-giaReceivedTotal">0</h4>
-                        <p>Total No. of Health Facilities Providing Animal Bite Management in The State </p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-2 col-md-n">
-                <div class="single_crm border-line-2 p-0">
-                    <div class="crm_body">
-                        <h4 id="national-committedLiabilitiesTotal">0
-                        </h4>
-                        <p>Total Number of Facilities Submitted Monthly Report Under NRCP </p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-2 col-md-n">
-                <div class="single_crm border-line-3 p-0">
-                    <div class="crm_body">
-                        <h4 id="national-totalBalanceTotal">0</h4>
-                        <p>Total No. of Patients</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-2 col-md-n">
-                <div class="single_crm border-line-4 p-0">
-                    <div class="crm_body">
-                        <h4 id="national-actualExpenditureTotal">0</h4>
-                        <p>Suspected / Probable / Confirmed Rabies Cases / Deaths Reported </p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-2 col-md-n">
-                <div class="single_crm border-line-5 p-0">
-                    <div class="crm_body">
-                        <h4 id="national-unspentBalance31stTotal">0</h4>
-                        <p>Availability of ARV </p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-2 col-md-n">
-                <div class="single_crm border-line-6 p-0">
-                    <div class="crm_body">
-                        <h4 id="national-unspentBalance31stTotal">0</h4>
-                        <p>Availability of ARS</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </div>
-
-    <div class="dashboard-filter mb-4">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="box-heading">
-                    <h1 class="main-heading">State wise Bar Graph</h1>
-                    <select name="year" id="year" class="form-control">
-                        <option value="">Select Year</option>
-                        <option value="">2019-2020</option>
-                        <option value="">2020-2021</option>
-                        <option value="">2021-2022</option>
-                        <option value="">2022-2023</option>
-                        <option value="">2023-2024</option>
-                    </select>
-                </div>
-            </div>
-            <div class="col-md-12">
-                <div class="white_card_body">
-                    <div id="state-dashboard-data"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-
     <!-- Info boxes -->
     <div class="row">
         <!-- fix for small devices only -->
@@ -147,7 +17,7 @@
             <!-- general form elements -->
             <div class="card-primary dashboard" id="report_national">
                 @if (Auth::user()->user_type == 1)
-                <div class="form-tab mt-3">
+                <div class="form-tab m-0">
                     <div class="bootstrap-tab">
                         <div class="tab-content" id="myTabContent">
 
@@ -156,7 +26,7 @@
                                 <!-- <form action="#" method="post" class="myForm"> -->
                                 <!-- @csrf -->
 
-                                <div class="dashboard-filter" id="dashboard-filter">
+                                <div class="dashboard-filter mb-4" id="dashboard-filter">
                                     <div class="row">
                                         <div class=" col-md-3 col-4">
                                             <div class="form-group">
@@ -312,6 +182,142 @@
                                         </div>
                                     </div>
                                 </div>
+
+                                <div class="dashboard-filter mb-4">
+                                    <div class="row card-mm mt-3">
+                                        <div class="col-md-2 col-md-n">
+                                            <div class="single_crm border-line-1 p-0">
+                                                <div class="crm_body">
+                                                    <h4 id="national-giaReceivedTotal">0</h4>
+                                                    <p>Total No. of Health Facilities Providing Animal Bite Management
+                                                        in The State </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2 col-md-n">
+                                            <div class="single_crm border-line-2 p-0">
+                                                <div class="crm_body">
+                                                    <h4 id="national-committedLiabilitiesTotal">0
+                                                    </h4>
+                                                    <p>Total Number of Facilities Submitted Monthly Report Under NRCP
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2 col-md-n">
+                                            <div class="single_crm border-line-3 p-0">
+                                                <div class="crm_body">
+                                                    <h4 id="national-totalBalanceTotal">0</h4>
+                                                    <p>Total No. of Patients</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2 col-md-n">
+                                            <div class="single_crm border-line-4 p-0">
+                                                <div class="crm_body">
+                                                    <h4 id="national-actualExpenditureTotal">0</h4>
+                                                    <p>Suspected / Probable / Confirmed Rabies Cases / Deaths Reported
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2 col-md-n">
+                                            <div class="single_crm border-line-5 p-0">
+                                                <div class="crm_body">
+                                                    <h4 id="national-unspentBalance31stTotal">0</h4>
+                                                    <p>Availability of ARV </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2 col-md-n">
+                                            <div class="single_crm border-line-6 p-0">
+                                                <div class="crm_body">
+                                                    <h4 id="national-unspentBalance31stTotal">0</h4>
+                                                    <p>Availability of ARS</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="dashboard-filter mb-4 bg-yellow-color">
+                                            <div class="row card-mm mt-3">
+                                               <div class="col-md-6">
+                                                  <div id="national-dashboard-monthly-report-received" class="rounded mb-3 received-chart"></div>
+                                               </div>
+                                               <div class="col-md-6">
+                                                  <div id="national-dashboard-monthly-report-not-received" class="rounded mb-3 received-chart"></div>
+                                               </div>   
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="dashboard-filter mb-4 bg-blue-color">
+                                            <div class="row card-mm mt-3">
+                                               <div class="col-md-6">
+                                                  <div id="national-dashboard-Nos-of-monthly-report-received" class="rounded mb-3 received-chart"></div>
+                                               </div>
+                                               <div class="col-md-6">
+                                                  <div id="national-dashboard-Nos-of-monthly-report-not-received" class="rounded mb-3 received-chart"></div>
+                                               </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="dashboard-filter mb-4">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="box-heading">
+                                                <h1 class="main-heading">State wise Bar Graph</h1>
+
+                                                <div class="d-flex align-items-center">
+                                                    <label for="district" class="mr-3 text-nowrap mb-0">Month <span
+                                                            class="star">*</span></label>
+                                                    <select name="month" id="month" class="form-control">
+                                                        <option value="">Select Month</option>
+                                                        <option value="">January</option>
+                                                        <option value="">February</option>
+                                                        <option value="">March</option>
+                                                        <option value="">April</option>
+                                                        <option value="">May</option>
+                                                        <option value="">June</option>
+                                                        <option value="">July</option>
+                                                        <option value="">August</option>
+                                                        <option value="">September</option>
+                                                        <option value="">October</option>
+                                                        <option value="">November</option>
+                                                        <option value="">December</option>
+                                                    </select>
+                                                    <label for="district" class="mr-3 ml-3 text-nowrap mb-0">Year <span
+                                                            class="star">*</span></label>
+                                                    <select name="year" id="year" class="form-control">
+                                                        <option value="">Select Year</option>
+                                                        <option value="">2019-2020</option>
+                                                        <option value="">2020-2021</option>
+                                                        <option value="">2021-2022</option>
+                                                        <option value="">2022-2023</option>
+                                                        <option value="">2023-2024</option>
+                                                    </select>
+
+                                                    <button class="dt-button buttons-print" type="button" onclick="printDiv('State-wise-bar-graph')"><span><i class="fa fa-print" aria-hidden="true"></i></span></button>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="white_card_body">
+                                                <div id="State-wise-bar-graph"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
                                 <div class="presumptive-cases dashboard-filter mt-3">
                                     <h1 id="map-text" class="map-text my-3">Human Rabies (Presumptive Cases) in
                                         India

@@ -44,10 +44,7 @@
                 <div class="link bg-primary text-white dashboard-title">
                     <a class="accordion-heading" data-toggle="collapse" href="#multiCollapseExample1" role="button"
                         aria-expanded="false" aria-controls="multiCollapseExample1"><i class="fa fa-home"
-                            aria-hidden="true"></i> Rabies Dashboard </a>
-
-
-
+                            aria-hidden="true"></i>MIS Dashboard</a>
                 </div>
 
                 <div class="row">
@@ -59,26 +56,63 @@
                                     class="link bg-primary text-white dashboard-title {{ Request::segment(1) == 'dashboard' ? 'active' : '' }}">
                                     <a href="{{ url('/dashboard') }}">Dashboard</a> </i>
                                 </div>
-                                <div
+                                {{-- <div
                                     class="link bg-primary text-white dashboard-title {{ Request::segment(1) == 'pform' ? 'active' : '' }}">
                                     <a href="{{ url('/pform') }}">P Form</a> </i>
-                                </div>
+                                </div> --}}
                                 {{-- <div
                                 class="link bg-primary text-white dashboard-title {{ (Request::segment(1) == 'sform')?'active':'' }}">
                                 <a href="{{ url('/sform') }}">S Form</a> </i>
                             </div> --}}
-                                <div
+                                {{-- <div
                                     class="link bg-primary text-white dashboard-title {{ Request::segment(1) == 'lform' ? 'active' : '' }}">
                                     <a href="{{ url('/lform') }}">L Form</a> </i>
-                                </div>
+                                </div> --}}
 
                             </div>
                         </div>
                     </div>
 
-                </div>
+                </div>               
 
             </div>
+
+            <div class="sidebarAccordion">
+
+                <div class="link bg-primary text-white dashboard-title">
+                    <a class="accordion-heading" data-toggle="collapse" href="#multiCollapseExample2" role="button"
+                        aria-expanded="false" aria-controls="multiCollapseExample2"><i class="fa fa-home"
+                            aria-hidden="true"></i>Monthly Report Form</a>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <div class="collapse multi-collapse {{ in_array(Request::segment(2), ['state-monthly-report','l-form', 'p-form', 'investigate-report']) ? 'show' : '' }}"
+                            id="multiCollapseExample2">
+                            <div class="card card-body">
+                                <div
+                                    class="link bg-primary text-white dashboard-title {{ Request::segment(2) == 'state-monthly-report' ? 'active' : '' }}">
+                                    <a href="{{ route('national.state-monthly-report') }}">State Monthly Report</a> </i>
+                                </div>
+                                <div
+                                    class="link bg-primary text-white dashboard-title {{ Request::segment(2) == 'l-form' ? 'active' : '' }}">
+                                    <a href="{{ route('national.l-form') }}">L Form</a> </i>
+                                </div>
+                                <div
+                                    class="link bg-primary text-white dashboard-title {{ (Request::segment(2) == 'p-form')?'active':'' }}">
+                                    <a href="{{ route('national.p-form') }}">P Form</a> </i>
+                                </div>
+                                <div
+                                    class="link bg-primary text-white dashboard-title {{ Request::segment(2) == 'investigate-report' ? 'active' : '' }}">
+                                    <a href="{{ route('national.investigate-report') }}">Investigate Report</a> </i>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <div
                 class="link bg-primary text-white dashboard-title {{ Request::routeIs('laboratory-dashboard') == 'laboratory-dashboard' ? 'active' : '' }}">
                 <a href="{{ url('/laboratory-dashboard') }}"><i class="fa fa-flask" aria-hidden="true"></i> Laboratory
@@ -130,31 +164,6 @@
             </div>
 
             <div class="sidebarAccordion">
-                <div class="link bg-primary text-white dashboard-title">
-                    <a class="accordion-heading" data-toggle="collapse" href="#multiCollapseExample3" role="button"  aria-expanded="false" aria-controls="multiCollapseExample3"><i class="fa fa-file-text-o" aria-hidden="true"></i>Investigate Report</a>
-                </div>
-                <div class="row">
-                    <div class="col">
-                        <div class="collapse multi-collapse {{ in_array(request()->route()->getName(), ['state.investigate-create', 'state.investigate-report-list']) ? 'show' : '' }}"
-                            id="multiCollapseExample3">
-                        
-                            <div class="card card-body">
-                                <div
-                                    class="link bg-primary text-white dashboard-title {{ request()->routeIs('state.investigate-create') ? 'active' : '' }}">
-                                    <a href="{{ route('state.investigate-create') }}"> Create</a>
-                                </div>
-                                <div
-                                    class="link bg-primary text-white dashboard-title {{ request()->routeIs('state.investigate-report-list') ? 'active' : '' }}">
-                                    <a href="{{ route('state.investigate-report-list') }}"> List</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="sidebarAccordion">
 
                 <div class="link bg-primary text-white dashboard-title">
                     <a class="accordion-heading" data-toggle="collapse" href="#multiCollapseExample1" role="button"  aria-expanded="false" aria-controls="multiCollapseExample1"><i class="fa fa-file-text-o" aria-hidden="true"></i>State Monthly Report </a>
@@ -173,32 +182,6 @@
                                 <div
                                     class="link bg-primary text-white dashboard-title {{ request()->routeIs('state.monthly-report-list') ? 'active' : '' }}">
                                     <a href="{{ route('state.monthly-report-list') }}"> List</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="sidebarAccordion">
-
-                <div class="link bg-primary text-white dashboard-title">
-                    <a class="accordion-heading" data-toggle="collapse" href="#multiCollapseExample2" role="button"  aria-expanded="false" aria-controls="multiCollapseExample2"><i class="fa fa-list" aria-hidden="true"></i>Line of Suspected (P Form)</a>
-                </div>
-
-                <div class="row">
-                    <div class="col">
-                        <div class="collapse multi-collapse {{ in_array(request()->route()->getName(), ['state.line-suspected-list', 'state.line-suspected-create']) ? 'show' : '' }}"
-                            id="multiCollapseExample2">
-                        
-                            <div class="card card-body">
-                                <div
-                                    class="link bg-primary text-white dashboard-title {{ request()->routeIs('state.line-suspected-create') ? 'active' : '' }}">
-                                    <a href="{{ route('state.line-suspected-create') }}"> Create</a>
-                                </div>
-                                <div
-                                    class="link bg-primary text-white dashboard-title {{ request()->routeIs('state.line-suspected-list') ? 'active' : '' }}">
-                                    <a href="{{ route('state.line-suspected-list') }}">List</a>
                                 </div>
                             </div>
                         </div>
@@ -232,8 +215,58 @@
                 </div>
             </div>
 
+            <div class="sidebarAccordion">
+
+                <div class="link bg-primary text-white dashboard-title">
+                    <a class="accordion-heading" data-toggle="collapse" href="#multiCollapseExample2" role="button"  aria-expanded="false" aria-controls="multiCollapseExample2"><i class="fa fa-list" aria-hidden="true"></i>P Form</a>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <div class="collapse multi-collapse {{ in_array(request()->route()->getName(), ['state.line-suspected-list', 'state.line-suspected-create']) ? 'show' : '' }}"
+                            id="multiCollapseExample2">
+                        
+                            <div class="card card-body">
+                                <div
+                                    class="link bg-primary text-white dashboard-title {{ request()->routeIs('state.line-suspected-create') ? 'active' : '' }}">
+                                    <a href="{{ route('state.line-suspected-create') }}"> Create</a>
+                                </div>
+                                <div
+                                    class="link bg-primary text-white dashboard-title {{ request()->routeIs('state.line-suspected-list') ? 'active' : '' }}">
+                                    <a href="{{ route('state.line-suspected-list') }}">List</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sidebarAccordion">
+                <div class="link bg-primary text-white dashboard-title">
+                    <a class="accordion-heading" data-toggle="collapse" href="#multiCollapseExample3" role="button"  aria-expanded="false" aria-controls="multiCollapseExample3"><i class="fa fa-file-text-o" aria-hidden="true"></i>Investigate Report</a>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="collapse multi-collapse {{ in_array(request()->route()->getName(), ['state.investigate-create', 'state.investigate-report-list']) ? 'show' : '' }}"
+                            id="multiCollapseExample3">
+                        
+                            <div class="card card-body">
+                                <div
+                                    class="link bg-primary text-white dashboard-title {{ request()->routeIs('state.investigate-create') ? 'active' : '' }}">
+                                    <a href="{{ route('state.investigate-create') }}"> Create</a>
+                                </div>
+                                <div
+                                    class="link bg-primary text-white dashboard-title {{ request()->routeIs('state.investigate-report-list') ? 'active' : '' }}">
+                                    <a href="{{ route('state.investigate-report-list') }}"> List</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <div class="arrow arrow-right link bg-primary text-white dashboard-title {{ request()->routeIs('state.excel-report') ? 'active' : '' }}">
-                <a href="{{ route('state.excel-report') }}"> <i class="fa fa-file-text-o" aria-hidden="true"></i>  Report</a>
+                <a href="{{ route('state.excel-report') }}"> <i class="fa fa-file-text-o" aria-hidden="true"></i>Report Generate</a>
             </div>
         @endif
 

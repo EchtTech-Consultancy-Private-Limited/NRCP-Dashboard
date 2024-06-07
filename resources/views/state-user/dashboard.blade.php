@@ -1,6 +1,6 @@
 @extends('layouts.main')
 @section('title')
-{{ 'NRCP State Dashboard' }}
+{{ 'Monthly Report Form' }}
 @endsection
 @section('content')
 <div class="container-fluid state-user-dashboard dashboard mt-4">

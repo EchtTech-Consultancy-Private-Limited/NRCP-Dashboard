@@ -1,11 +1,11 @@
 @extends('layouts.main')
-@section('title') {{ 'NRCP State Dashboard | Line Suspected' }}
+@section('title') {{ 'L Form Edit' }}
 @endsection
 @section('content')
 <div class="container-fluid dashboard">
     <div class="ncdc-container form-tab">
         <div class="dashboard-filter lform_create">
-            <form action="{{ route('state.lform-store') }}" method="post" id="lform-store">
+            <form action="{{ route('national.l-form-update', $stateUserLForm->id) }}" method="post" id="lform-store">
                 @csrf
                 <div class="header lform-create-header d-flex align-items-center justify-content-between">
                     <div>
@@ -33,7 +33,7 @@
                         <div class="col-md-12">
                             <p class="float-right">
                                 <strong>Date:</strong>
-                                <input type="date" name="current_date">
+                                <input type="date" name="current_date" value="{{ old('current_date',$stateUserLForm->current_date) }}">
                             </p>
                         </div>
                     </div>
@@ -42,7 +42,7 @@
                             <div class="emailBlock">
                                 <p>
                                     Name of Nodal Person:
-                                    <input type="text" name="name_nodal_person" value="{{ old('name_nodal_person') }}">
+                                    <input type="text" name="name_nodal_person" value="{{ old('name_nodal_person',$stateUserLForm->name_nodal_person) }}">
                                     @if ($errors->has('name_nodal_person'))
                                     <span class="form-text text-muted">{{ $errors->first('name_nodal_person') }}</span>
                                     @endif
@@ -54,7 +54,7 @@
                             <div class="emailBlock">
                                 <p>
                                     Designation of Nodal Person :
-                                    <input type="text" name="designation_nodal_person" value="{{ old('designation_nodal_person') }}">
+                                    <input type="text" name="designation_nodal_person" value="{{ old('designation_nodal_person',$stateUserLForm->designation_nodal_person) }}">
                                     @if ($errors->has('designation_nodal_person'))
                                     <span class="form-text text-muted">{{ $errors->first('designation_nodal_person') }}</span>
                                     @endif
@@ -67,7 +67,7 @@
                             <div class="emailBlock">
                                 <p>
                                     Contact Number:
-                                    <input type="text" name="phone_number" value="{{ old('phone_number') }}" maxlength="10" oninput="validateInput(this)">
+                                    <input type="text" name="phone_number" value="{{ old('phone_number',$stateUserLForm->phone_number) }}" maxlength="10" oninput="validateInput(this)">
                                     @if ($errors->has('phone_number'))
                                     <span class="form-text text-muted">{{ $errors->first('phone_number') }}</span>
                                     @endif
@@ -81,7 +81,7 @@
                             <div class="emailBlock">
                                 <p>
                                     Email ID: <br>
-                                    <input type="email" name="email" value="{{ old('email') }}">
+                                    <input type="email" name="email" value="{{ old('email',$stateUserLForm->email) }}">
                                     @if ($errors->has('email'))
                                     <span class="form-text text-muted">{{ $errors->first('email') }}</span>
                                     @endif
@@ -94,7 +94,7 @@
                             <div class="emailBlock">
                                 <p >
                                     Aadhar Number: <br>
-                                    <input type="text" name="aadhar_number" value="{{ old('aadhar_number') }}" maxlength="12" oninput="validateInput(this)">
+                                    <input type="text" name="aadhar_number" value="{{ old('aadhar_number',$stateUserLForm->aadhar_number) }}" maxlength="12" oninput="validateInput(this)">
                                     @if ($errors->has('aadhar_number')) 
                                         <span class="form-text text-muted">{{ $errors->first('aadhar_number') }}</span> 
                                     @endif
@@ -106,7 +106,7 @@
                             <div class="emailBlock">
                                 <p>
                                 Institute Name: <br>
-                                    <input type="text" name="institute_name" value="{{ old('institute_name') }}">
+                                    <input type="text" name="institute_name" value="{{ old('institute_name',$stateUserLForm->institute_name) }}">
                                     @if ($errors->has('institute_name'))
                                     <span class="form-text text-muted">{{ $errors->first('institute_name') }}</span>
                                     @endif
@@ -233,37 +233,38 @@
                                 </td>
                                
                             </tr>
-                            @foreach(old('fname', ['']) as $index => $oldValue)
+                            @foreach($stateUserLForm->stateUserLFormCountCase as $index => $statelFormCase)
                             <tr id="row{{ $index + 1 }}">
                                 <td>
                                     {{ $index + 1 }}
                                     <input type="hidden" name="row_count[]">
+                                    <input type="hidden" name="l_form_count_id[]" value="{{ $statelFormCase->id }}">
                                 </td>
                                 <td>
-                                    <input type="text" name="fname[]" value="{{ $oldValue }}">
+                                    <input type="text" name="fname[]" value="{{ @$statelFormCase->fname }}">
                                 </td>
                                 <td>
-                                    <input type="text" name="mname[]" value="{{ $oldValue }}">
+                                    <input type="text" name="mname[]" value="{{ @$statelFormCase->mname }}">
                                 </td>
                                 <td>
-                                    <input type="text" name="lname[]" value="{{ $oldValue }}">
+                                    <input type="text" name="lname[]" value="{{ @$statelFormCase->lname }}">
                                 </td>
                                
                                 <td>
-                                    <input type="text" name="age[]" value="{{ old('age')[$index] ?? '' ?? '' }}">
+                                    <input type="text" name="age[]" value="{{ @$statelFormCase->age }}">
                                 </td>
                                 <td>
-                                    <input type="text" name="sex[]" value="{{ old('sex')[$index] ?? '' ?? '' }}">
+                                    <input type="text" name="sex[]" value="{{ @$statelFormCase->sex }}">
                                 </td>
                                 <td>
                                     <input type="text" name="contact_number[]"
-                                        value="{{ old('contact_number')[$index] ?? '' }}" maxlength="10" oninput="validateInput(this)">
+                                        value="{{ @$statelFormCase->contact_number }}" maxlength="10" oninput="validateInput(this)">
                                 </td>
                                 <td>
                                     <select class="form-select lform_state" aria-label="Default select" name="lform_state[]" id="lform_state">
                                         <option value="">Please Select</option>
                                         @foreach ($states as $state)
-                                            <option value="{{ $state->id }}" @if((old('lform_state')[$index] ?? '') == $state->id) selected @endif>
+                                            <option value="{{ @$state->id }}" @if(@$statelFormCase->states->id == $state->id) selected @endif>
                                                 {{ ucwords($state->name) }}
                                             </option>
                                         @endforeach
@@ -272,72 +273,69 @@
                                 <td>
                                     <select class="form-select lform_district" aria-label="Default select "
                                         name="lform_district[]" id="lform_district">
-                                        <option value="">Please Select</option>
-                                        @if(isset(old('lform_district')[$index]))
-                                        @foreach ($cities as $citie)
-                                            <option value="{{ $citie->id }}" @if((old('lform_district')[$index] ?? '') == $citie->id) selected @endif>
-                                                {{ ucwords($citie->name) }}
+                                        @if(@$statelFormCase->city->id)
+                                            <option value="{{ @$statelFormCase->city->id }}">
+                                                {{ ucwords(@$statelFormCase->city->name) }}
                                             </option>
-                                        @endforeach
                                         @endif
                                     </select>
                                 </td>
                                 <td>
                                     <select class="form-select" aria-label="Default select" name="lform_subdistrict[]" id="lform_subdistrict">
                                         <option value="">Please Select</option>
-                                        <option value="Sub District" @if((old('lform_subdistrict')[$index] ?? '') == 'Sub District') selected @endif>Sub District</option>
-                                        <option value="Taluk" @if((old('lform_subdistrict')[$index] ?? '') == 'Taluk') selected @endif>Taluk</option>
-                                        <option value="Block" @if((old('lform_subdistrict')[$index] ?? '') == 'Block') selected @endif>Block</option>
-                                        <option value="Mandal" @if((old('lform_subdistrict')[$index] ?? '') == 'Mandal') selected @endif>Mandal</option>
+                                        <option value="Sub District" @if($statelFormCase->lform_subdistrict == 'Sub District') selected @endif>Sub District</option>
+                                        <option value="Taluk" @if($statelFormCase->lform_subdistrict == 'Taluk') selected @endif>Taluk</option>
+                                        <option value="Block" @if($statelFormCase->lform_subdistrict == 'Block') selected @endif>Block</option>
+                                        <option value="Mandal" @if($statelFormCase->lform_subdistrict == 'Mandal') selected @endif>Mandal</option>
                                     </select>
                                 </td>
                                 <td>
                                     <input type="text" name="lform_village[]"
-                                        value="{{ old('lform_village')[$index] ?? '' }}">
+                                        value="{{ @$statelFormCase->lform_village }}">
                                 </td>
                                 <td>
                                     <select class="form-select" aria-label="Default select" name="lform_biting_animal[]" id="lform_biting_animal">
                                         <option value="">Please Select</option>
-                                        <option value="Suspected" @if((old('lform_biting_animal')[$index] ?? '') == 'Suspected') selected @endif>Dog</option>
-                                        <option value="Confirmed" @if((old('lform_biting_animal')[$index] ?? '') == 'Confirmed') selected @endif>Other(input)</option>
+                                        <option value="Suspected" @if($statelFormCase->lform_biting_animal == 'Suspected') selected @endif>Dog</option>
+                                        <option value="Confirmed" @if($statelFormCase->lform_biting_animal == 'Confirmed') selected @endif>Other(input)</option>
                                     </select>
                                 </td>
                                 <td>
                                     <select class="form-select" aria-label="Default select" name="lform_speciman_type[]" id="lform_speciman_type">
                                         <option value="">Please Select</option>
-                                        <option value="Antemortem" @if((old('lform_speciman_type')[$index] ?? '') == 'Antemortem') selected @endif>Antemortem</option>
-                                        <option value="Postmortem" @if((old('lform_speciman_type')[$index] ?? '') == 'Postmortem') selected @endif>Postmortem</option>
+                                        <option value="Antemortem" @if($statelFormCase->lform_speciman_type == 'Antemortem') selected @endif>Antemortem</option>
+                                        <option value="Postmortem" @if($statelFormCase->lform_speciman_type == 'Postmortem') selected @endif>Postmortem</option>
                                     </select>
                                 </td>
                                 <td>
                                     <select class="form-select" aria-label="Default select" name="lform_speciman_detail[]" id="lform_speciman_detail">
                                         <option value="">Please Select</option>
-                                        <option value="Serum" @if((old('lform_speciman_detail')[$index] ?? '') == 'Serum') selected @endif>Serum</option>
-                                        <option value="CSF" @if((old('lform_speciman_detail')[$index] ?? '') == 'CSF') selected @endif>CSF</option>
-                                        <option value="Nuchal skin" @if((old('lform_speciman_detail')[$index] ?? '') == 'Nuchal skin') selected @endif>Nuchal skin</option>
-                                        <option value="Skin" @if((old('lform_speciman_detail')[$index] ?? '') == 'Skin') selected @endif>Skin</option>
+                                        <option value="Serum" @if($statelFormCase->lform_speciman_detail == 'Serum') selected @endif>Serum</option>
+                                        <option value="CSF" @if($statelFormCase->lform_speciman_detail == 'CSF') selected @endif>CSF</option>
+                                        <option value="Nuchal skin" @if($statelFormCase->lform_speciman_detail == 'Nuchal skin') selected @endif>Nuchal skin</option>
+                                        <option value="Skin" @if($statelFormCase->lform_speciman_detail == 'Skin') selected @endif>Skin</option>
                                     </select>
                                 </td>                                                                
                                <td>
-                                <input type="date" name="lform_sample_collection_date[]" value="{{ old('lform_sample_collection_date')[$index] ?? '' }}" id="lform_sample_collection_date">
+                                <input type="date" name="lform_sample_collection_date[]" value="{{ @$statelFormCase->lform_sample_collection_date }}" id="lform_sample_collection_date">
                                </td>
                                <td>
                                     <select class="form-select" aria-label="Default select" name="number_of_test_performed[]" id="lform_speciman_type">
                                         <option value="">Please Select</option>
-                                        <option value="RFFIT (CSF,Serum)" @if((old('number_of_test_performed')[$index] ?? '') == 'RFFIT (CSF,Serum)') selected @endif>RFFIT (CSF,Serum)</option>
-                                        <option value="Real-time PCR (CSF,Saliva, Nuchal skin)" @if((old('number_of_test_performed')[$index] ?? '') == 'Real-time PCR (CSF,Saliva, Nuchal skin)') selected @endif>Real-time PCR (CSF,Saliva, Nuchal skin)</option>
-                                        <option value="Rabies Immunohistochemistry" @if((old('number_of_test_performed')[$index] ?? '') == 'Rabies Immunohistochemistry') selected @endif>Rabies Immunohistochemistry</option>
-                                        <option value="Other(insert)" @if((old('number_of_test_performed')[$index] ?? '') == 'Other(insert)') selected @endif>Other(insert)</option>
+                                        <option value="RFFIT (CSF,Serum)" @if($statelFormCase->number_of_test_performed == 'RFFIT (CSF,Serum)') selected @endif>RFFIT (CSF,Serum)</option>
+                                        <option value="Real-time PCR (CSF,Saliva, Nuchal skin)" @if($statelFormCase->number_of_test_performed == 'Real-time PCR (CSF,Saliva, Nuchal skin)') selected @endif>Real-time PCR (CSF,Saliva, Nuchal skin)</option>
+                                        <option value="Rabies Immunohistochemistry" @if($statelFormCase->number_of_test_performed == 'Rabies Immunohistochemistry') selected @endif>Rabies Immunohistochemistry</option>
+                                        <option value="Other(insert)" @if($statelFormCase->number_of_test_performed == 'Other(insert)') selected @endif>Other(insert)</option>
                                     </select>
                                 </td>
                                 <td>
-                                    <input type="text" name="lform_result[]" value="{{ old('lform_result')[$index] ?? '' }}" id="lform_result">
+                                    <input type="text" name="lform_result[]" value="{{ @$statelFormCase->lform_result }}" id="lform_result">
                                 </td>
                                 <td>
-                                    <input type="date" name="lform_result_declaration_date[]" value="{{ old('lform_result_declaration_date')[$index] ?? '' }}" id="lform_result_declaration_date">
+                                    <input type="date" name="lform_result_declaration_date[]" value="{{ @$statelFormCase->lform_result_declaration_date }}" id="lform_result_declaration_date">
                                 </td>
                                 <td>
-                                    <input type="text" name="lform_remark[]" value="{{ old('lform_remark')[$index] ?? '' }}" id="lform_remark">
+                                    <input type="text" name="lform_remark[]" value="{{ @$statelFormCase->lform_remark }}" id="lform_remark">
                                 </td>                                
                                <td class="text-nowrap">
                                     <button type="button" name="add" id="add" class="btn btn-success add_more"><i class="fa fa-plus" style="font-size:16px"></i></button>
@@ -347,7 +345,7 @@
                         </tbody>
                     </table>
                     <div class="d-flex justify-content-center my-4">
-                        <button type="submit" class="btn search-patient-btn mr-3 bg-primary text-light">save</button>
+                        <button type="submit" class="btn search-patient-btn mr-3 bg-primary text-light">Update</button>
                         <button type="reset" class="btn search-patient-btn bg-danger text-light">Reset</button>
                     </div>
                     <p>To be <strong>

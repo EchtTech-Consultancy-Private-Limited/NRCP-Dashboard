@@ -32,4 +32,9 @@ class LineSuspectedCalculate extends Model
         'mobile_number',
         'date'
     ];
+
+    public function pform()
+    {
+        return $this->belongsTo(LineSuspected::class, 'line_suspected_form_id');
+    }
 }

@@ -49,6 +49,7 @@
 <script src="{{ asset('assets/district_map.js') }}"></script>
 <script src="{{ asset('assets/indiaMap.js') }}"></script>
 <script src="{{ asset('assets/js/deletejsfile.js') }}"></script>
+<script src="{{ asset('assets/statedashboard.js') }}"></script>
 
 <!-- datatable js -->
 
