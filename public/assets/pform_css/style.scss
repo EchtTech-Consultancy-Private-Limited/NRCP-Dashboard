@@ -18,7 +18,7 @@ body {
 }
 
 .form-tab {
-  margin: 30px;
+  margin: 30px 0;
 }
 
 .nav {
@@ -993,19 +993,20 @@ input[type="date"]::placeholder {
 }
 
 .border-line-1 {
-  background: linear-gradient(to right, #0162e8 0, #0162e8a3 100%) !important;
+  background: linear-gradient(to right, #05459f 0, rgb(34 118 235) 100%) !important;
 }
 
 .border-line-2 {
-  background: linear-gradient(45deg, #f93a5a, #f7778c) !important;
+  background: linear-gradient(45deg, #c52a44, #ef506a) !important;
 }
 
 .border-line-3 {
-  background: linear-gradient(to left, #47c39b 0, #029666 100%) !important
+  background: linear-gradient(to left, #05b37a 0, #2c7e64 100%) !important;
+  
 }
 
 .border-line-4 {
-  background: linear-gradient(to left, #ff9d3f, #f76a2d) !important;
+  background: linear-gradient(to left, #eb8624, #ed6023) !important;
 }
 
 .border-line-5 {
@@ -1030,4 +1031,27 @@ h1.main-heading {
   width: 300px;
 }
 
+.dt-button.buttons-print {
+  background: #0c72ad !important;
+  border: 0;
+  color: #fff !important;
+  font-size: 20px !important;
+  padding: 0px !important;
+  transition: 0.3s ease-in-out;
+  margin-left: 15px;
 }
+
+}
+
+.bg-yellow-color{  
+  rect.highcharts-background{
+    fill:#ffdada!important;
+  }
+}
+
+.bg-blue-color{  
+  rect.highcharts-background{
+    fill:#caedff!important;
+  }
+}
+

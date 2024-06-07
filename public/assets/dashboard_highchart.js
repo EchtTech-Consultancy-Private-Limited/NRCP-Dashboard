@@ -2064,12 +2064,290 @@ function laboratoryResetButton() {
 // end LAboratory dashboard
 
 
-Highcharts.chart('state-dashboard-data', {
+
+
+
+//  Monthly Report Received
+
+Highcharts.chart('national-dashboard-monthly-report-received', {
+    chart: {
+        type: 'pie',
+        height: 210,
+       //  margin: [0, 0, 0, 0] // Set margins to remove extra space
+    },
+    title: {
+        useHTML: true,
+        text: '90%',
+        floating: true,
+        verticalAlign: 'middle',
+        y: 4,
+        style: {
+            fontSize: '16px'
+        }
+    },
+    credits: {
+        enabled: false
+    },
+    exporting: {
+        enabled: false
+    },
+    subtitle: {
+        useHTML: true,
+        text: '<div style="text-align:center;font-weight: 700;font-size: 14px;">% of Monthly Report Received </div>',
+        align: 'center',
+        verticalAlign: 'bottom',
+        y: 0, // Adjusted position
+        style: {
+            fontSize: '13px',
+            color: '#000'
+        }
+    },
+    legend: {
+        enabled: false
+    },
+    tooltip: {
+       enabled: false,
+    },
+    plotOptions: {
+        pie: {
+            size: '100%',
+            innerSize: '70%', // Adjusted for a larger inner circle
+            dataLabels: {
+                enabled: true,
+                // distance: -30, // Adjusted to move labels closer
+                style: {
+                    fontWeight: 'bold',
+                    fontSize: '16px'
+                },
+                connectorWidth: 0
+            }
+        }
+    },
+    colors: ['#a5a5a5', '#e7e6e6'],
+    series: [
+        {
+            type: 'pie',            
+            data: [
+                ['', 90],
+                ['', 10],
+            ]
+        }
+    ]
+ });
+
+
+Highcharts.chart('national-dashboard-monthly-report-not-received', {
+    chart: {
+        type: 'pie',
+        height: 210,
+       //  margin: [0, 0, 0, 0] // Set margins to remove extra space
+    },
+    title: {
+        useHTML: true,
+        text: '10%',
+        floating: true,
+        verticalAlign: 'middle',
+        y: 4,
+        style: {
+            fontSize: '16px'
+        }
+    },
+    credits: {
+        enabled: false
+    },
+    exporting: {
+        enabled: false
+    },
+    subtitle: {
+        useHTML: true,
+        text: '<div style="text-align:center;font-weight: 700;font-size: 14px;">% of Monthly Report not Received </div>',
+        align: 'center',
+        verticalAlign: 'bottom',
+        y: 0, // Adjusted position
+        style: {
+            fontSize: '13px',
+            color: '#000'
+        }
+    },
+    legend: {
+        enabled: false
+    },
+    tooltip: {
+       enabled: false,
+    },
+    plotOptions: {
+        pie: {
+            size: '100%',
+            innerSize: '70%', // Adjusted for a larger inner circle
+            dataLabels: {
+                enabled: true,
+                // distance: -30, // Adjusted to move labels closer
+                style: {
+                    fontWeight: 'bold',
+                    fontSize: '16px'
+                },
+                connectorWidth: 0
+            }
+        }
+    },
+    colors: ['#a5a5a5', '#e7e6e6'],
+    series: [
+        {
+            type: 'pie',            
+            data: [
+                ['', 10],
+                ['', 90],
+            ]
+        }
+    ]
+ });
+
+Highcharts.chart('national-dashboard-Nos-of-monthly-report-received', {
+    chart: {
+        type: 'pie',
+        height: 210,
+       //  margin: [0, 0, 0, 0] // Set margins to remove extra space
+    },
+    title: {
+        useHTML: true,
+        text: '90 Nos.',
+        floating: true,
+        verticalAlign: 'middle',
+        y: 4,
+        style: {
+            fontSize: '16px'
+        }
+    },
+    credits: {
+        enabled: false
+    },
+    exporting: {
+        enabled: false
+    },
+    subtitle: {
+        useHTML: true,
+        text: '<div style="text-align:center;font-weight: 700;font-size: 14px;"> Nos. of Monthly Report Received </div>',
+        align: 'center',
+        verticalAlign: 'bottom',
+        y: 0, // Adjusted position
+        style: {
+            fontSize: '13px',
+            color: '#000'
+        }
+    },
+    legend: {
+        enabled: false
+    },
+    tooltip: {
+       enabled: false,
+    },
+    plotOptions: {
+        pie: {
+            size: '100%',
+            innerSize: '70%', // Adjusted for a larger inner circle
+            dataLabels: {
+                enabled: true,
+                // distance: -30, // Adjusted to move labels closer
+                style: {
+                    fontWeight: 'bold',
+                    fontSize: '16px'
+                },
+                connectorWidth: 0
+            }
+        }
+    },
+    colors: ['#a5a5a5', '#e7e6e6'],
+    series: [
+        {
+            type: 'pie',            
+            data: [
+                ['', 90],
+                ['', 10],
+            ]
+        }
+    ]
+ });
+
+
+Highcharts.chart('national-dashboard-Nos-of-monthly-report-not-received', {
+    chart: {
+        type: 'pie',
+        height: 210,
+       //  margin: [0, 0, 0, 0] // Set margins to remove extra space
+    },
+    title: {
+        useHTML: true,
+        text: '10 Nos.',
+        floating: true,
+        verticalAlign: 'middle',
+        y: 4,
+        style: {
+            fontSize: '16px'
+        }
+    },
+    credits: {
+        enabled: false
+    },
+    exporting: {
+        enabled: false
+    },
+    subtitle: {
+        useHTML: true,
+        text: '<div style="text-align:center;font-weight: 700;font-size: 14px;">Nos. of Monthly Report not received </div>',
+        align: 'center',
+        verticalAlign: 'bottom',
+        y: 0, // Adjusted position
+        style: {
+            fontSize: '13px',
+            color: '#000'
+        }
+    },
+    legend: {
+        enabled: false
+    },
+    tooltip: {
+       enabled: false,
+    },
+    plotOptions: {
+        pie: {
+            size: '100%',
+            innerSize: '70%', // Adjusted for a larger inner circle
+            dataLabels: {
+                enabled: true,
+                // distance: -30, // Adjusted to move labels closer
+                style: {
+                    fontWeight: 'bold',
+                    fontSize: '16px'
+                },
+                connectorWidth: 0
+            }
+        }
+    },
+    colors: ['#a5a5a5', '#e7e6e6'],
+    series: [
+        {
+            type: 'pie',            
+            data: [
+                ['', 10],
+                ['', 90],
+            ]
+        }
+    ]
+ });
+
+
+ Highcharts.chart('State-wise-bar-graph', {
     chart: {
         type: 'column'
     },
     title: {
         text: ''
+    },
+    credits: {
+        enabled: false
+    },
+    exporting: {
+        enabled: false
     },
     subtitle: {
         text: ''
@@ -2077,69 +2355,87 @@ Highcharts.chart('state-dashboard-data', {
     xAxis: {
         type: 'category',
         labels: {
-            autoRotation: [-45, -45],
+            autoRotation: [-70, -90],
             style: {
                 fontSize: '13px',
                 fontFamily: 'Verdana, sans-serif'
             }
         }
     },
-    exporting: {
-       enabled: false
-   },
-   credits: {
-    enabled: false
- },
     yAxis: {
         min: 0,
         title: {
-            text: 'Values',
-            enabled:false
+            text: null
         }
     },
     legend: {
-        enabled: false
+        enabled: false,
+        useHTML: true,
+        // labelFormatter: function() {
+        //     let symbol = '<span style="color:' + this.color + ';font-size:12px; color:red">&#9644;</span>';
+        //     return '<span style="font-size: 12px;">' + symbol +  ' ' + this.name  +  '</span>';
+        // }
+    
+    allowPointSelect: false,
     },
     tooltip: {
         enabled: false,
-        pointFormat: ''
     },
     series: [{
-        name: '',
-        colors: [
-            '#399def', '#3ebbf0', '#35c3e8', '#2bc9dc', '#20cfe1', '#16d4e6',
-            '#0dd9db', '#03dfd0'
-        ],
-        colorByPoint: true,
-        groupPadding: 0,
+        name: 'Expenditure',
+        type: 'column',
+        color:"#158bec",
+        events: {
+            legendItemClick: function (e) {
+                e.preventDefault();
+            }
+        },
         data: [
-            ['Jan', 4000],
-            ['Fab', 4500],
-            ['Mar', 1000],
-            ['Apr', 2000],
-            ['May', 2500],
-            ['Jun', 3600],
-            ['Jul', 4100],
-            ['Aug', 4500],
-            ['Sep', 5000],
-            ['Oct', 5300],
-            ['Nov', 5700],
-            ['Dec', 6000],
-            
+            ['Uttar Pradesh', 4.3],
+            ['Maharashtra', 2.5],
+            ['Bihar', 3.5],
+            ['West Bengal', 4.5],
+            ['Madhya Pradesh', 2],
+            ['Tamil Nadu', 1.2],
+            ['Rajasthan', 2.4],
+            ['Karnataka', 3.1],
+            ['Gujarat', 3.4],
+            ['Andhra Pradesh', 4],
+            ['Odisha', 4.4],
+            ['Telangana', 2.8],
+            ['Kerala', 4],
+            ['Jharkhand', 4],
+            ['Assam', 2],
+            ['Punjab', 3],
+            ['Chhattisgarh', 1],
+            ['Haryana', 4],
+            ['Uttarakhand', 4],
+            ['Himachal Pradesh', 4],
+            ['Tripura', 4],
+            ['Meghalaya', 4],
+            ['Manipur', 4],
+            ['Nagaland', 4],
+            ['Goa', 4],
+            ['Arunachal Pradesh', 4],
+            ['Mizoram', 4],
+            ['Sikkim', 4],
+            ['Delhi', 5] // Considering Delhi as a Union Territory
         ],
         dataLabels: {
             enabled: true,
-            rotation: 0,
+            rotation: -90,
             color: '#FFFFFF',
             inside: true,
             verticalAlign: 'top',
-          //   format: '{point.y:.1f}', // one decimal
+            format: '{point.y:.1f}', // one decimal
             y: 10, // 10 pixels down from the top
             style: {
-                fontSize: '13px',
-                fontFamily: 'Verdana, sans-serif'
-            }
+                fontSize: '12px',
+                fontFamily: 'Verdana, sans-serif',
+                textShadow: "none",
+                color:"red"
+            },  
+            textShadow: "none"
         }
     }]
- });
-
+});
