@@ -51,14 +51,26 @@ Route::middleware(['Admin','device'])->group(function () {
             Route::get('/state-monthly-report', [NationalStateListController::class, 'stateMonthlyReport'])->name('state-monthly-report');
             Route::get('/state-monthly-view/{id}', [NationalStateListController::class, 'stateMonthlyView'])->name('state-monthly-view');
             Route::get('/state-monthly-edit/{id}', [NationalStateListController::class, 'stateMonthlyEdit'])->name('state-monthly-edit');
-            Route::post('/update/{id}', [NationalStateListController::class, 'stateMonthlyUpdate'])->name('state-monthly-update');
+            Route::post('/state-monthly-update/{id}', [NationalStateListController::class, 'stateMonthlyUpdate'])->name('state-monthly-update');
             Route::get('state-monthly-delete/{id}',[NationalStateListController::class, 'stateMonthlyDestroy'])->name('state-monthly-delete');
             // state user L Form
             Route::get('/l-form', [NationalStateListController::class, 'lForm'])->name('l-form');
             Route::get('/l-form-view/{id}', [NationalStateListController::class, 'lFormView'])->name('l-form-view');
             Route::get('/l-form-edit/{id}', [NationalStateListController::class, 'lFormEdit'])->name('l-form-edit');
-            Route::post('/update/{id}', [NationalStateListController::class, 'lFormUpdate'])->name('l-form-update');
+            Route::post('/l-form-update/{id}', [NationalStateListController::class, 'lFormUpdate'])->name('l-form-update');
             Route::get('l-form-delete/{id}',[NationalStateListController::class, 'lFormDestroy'])->name('l-form-delete');
+            // state user P Form
+            Route::get('/p-form', [NationalStateListController::class, 'pForm'])->name('p-form');
+            Route::get('/p-form-view/{id}', [NationalStateListController::class, 'pFormView'])->name('p-form-view');
+            Route::get('/p-form-edit/{id}', [NationalStateListController::class, 'pFormEdit'])->name('p-form-edit');
+            Route::post('/p-form-update/{id}', [NationalStateListController::class, 'pFormUpdate'])->name('p-form-update');
+            Route::get('/p-form-delete/{id}',[NationalStateListController::class, 'pFormDestroy'])->name('p-form-delete');
+            // Investigate Report
+            Route::get('/investigate-report', [NationalStateListController::class, 'investigateReport'])->name('investigate-report');
+            Route::get('/investigate-report-view/{id}', [NationalStateListController::class, 'investigateReportView'])->name('investigate-report-view');
+            Route::get('/investigate-report-edit/{id}', [NationalStateListController::class, 'investigateReportEdit'])->name('investigate-report-edit');
+            Route::post('/investigate-report-update/{id}', [NationalStateListController::class, 'investigateReportUpdate'])->name('investigate-report-update');
+            Route::get('/investigate-report-delete/{id}',[NationalStateListController::class, 'investigateReportDestroy'])->name('investigate-report-delete');
         });
         // End national dashboard monthly report list
 

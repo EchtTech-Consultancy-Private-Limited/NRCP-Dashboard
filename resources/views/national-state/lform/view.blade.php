@@ -1,12 +1,10 @@
 @extends('layouts.main')
-@section('title') {{ 'L Form Edit' }}
+@section('title') {{ 'NRCP State Dashboard | Line Suspected' }}
 @endsection
 @section('content')
 <div class="container-fluid dashboard">
     <div class="ncdc-container form-tab">
         <div class="dashboard-filter lform_create">
-            <form action="{{ route('national.l-form-update', $stateUserLForm->id) }}" method="post" id="lform-store">
-                @csrf
                 <div class="header lform-create-header d-flex align-items-center justify-content-between">
                     <div>
                         <img src="{{ asset('state-assets/images/undp.png') }}" />
@@ -33,7 +31,7 @@
                         <div class="col-md-12">
                             <p class="float-right">
                                 <strong>Date:</strong>
-                                <input type="date" name="current_date" value="{{ old('current_date',$stateUserLForm->current_date) }}">
+                                <input readonly type="date" name="current_date" value="{{ old('current_date',$stateUserLForm->current_date) }}">
                             </p>
                         </div>
                     </div>
@@ -42,7 +40,7 @@
                             <div class="emailBlock">
                                 <p>
                                     Name of Nodal Person:
-                                    <input type="text" name="name_nodal_person" value="{{ old('name_nodal_person',$stateUserLForm->name_nodal_person) }}">
+                                    <input readonly type="text" name="name_nodal_person" value="{{ old('name_nodal_person',$stateUserLForm->name_nodal_person) }}">
                                     @if ($errors->has('name_nodal_person'))
                                     <span class="form-text text-muted">{{ $errors->first('name_nodal_person') }}</span>
                                     @endif
@@ -54,7 +52,7 @@
                             <div class="emailBlock">
                                 <p>
                                     Designation of Nodal Person :
-                                    <input type="text" name="designation_nodal_person" value="{{ old('designation_nodal_person',$stateUserLForm->designation_nodal_person) }}">
+                                    <input readonly type="text" name="designation_nodal_person" value="{{ old('designation_nodal_person',$stateUserLForm->designation_nodal_person) }}">
                                     @if ($errors->has('designation_nodal_person'))
                                     <span class="form-text text-muted">{{ $errors->first('designation_nodal_person') }}</span>
                                     @endif
@@ -67,7 +65,7 @@
                             <div class="emailBlock">
                                 <p>
                                     Contact Number:
-                                    <input type="text" name="phone_number" value="{{ old('phone_number',$stateUserLForm->phone_number) }}" maxlength="10" oninput="validateInput(this)">
+                                    <input readonly type="text" name="phone_number" value="{{ old('phone_number',$stateUserLForm->phone_number) }}" maxlength="10" oninput="validateInput(this)">
                                     @if ($errors->has('phone_number'))
                                     <span class="form-text text-muted">{{ $errors->first('phone_number') }}</span>
                                     @endif
@@ -81,7 +79,7 @@
                             <div class="emailBlock">
                                 <p>
                                     Email ID: <br>
-                                    <input type="email" name="email" value="{{ old('email',$stateUserLForm->email) }}">
+                                    <input readonly type="email" name="email" value="{{ old('email',$stateUserLForm->email) }}">
                                     @if ($errors->has('email'))
                                     <span class="form-text text-muted">{{ $errors->first('email') }}</span>
                                     @endif
@@ -94,7 +92,7 @@
                             <div class="emailBlock">
                                 <p >
                                     Aadhar Number: <br>
-                                    <input type="text" name="aadhar_number" value="{{ old('aadhar_number',$stateUserLForm->aadhar_number) }}" maxlength="12" oninput="validateInput(this)">
+                                    <input readonly type="text" name="aadhar_number" value="{{ old('aadhar_number',$stateUserLForm->aadhar_number) }}" maxlength="12" oninput="validateInput(this)">
                                     @if ($errors->has('aadhar_number')) 
                                         <span class="form-text text-muted">{{ $errors->first('aadhar_number') }}</span> 
                                     @endif
@@ -106,7 +104,7 @@
                             <div class="emailBlock">
                                 <p>
                                 Institute Name: <br>
-                                    <input type="text" name="institute_name" value="{{ old('institute_name',$stateUserLForm->institute_name) }}">
+                                    <input readonly type="text" name="institute_name" value="{{ old('institute_name',$stateUserLForm->institute_name) }}">
                                     @if ($errors->has('institute_name'))
                                     <span class="form-text text-muted">{{ $errors->first('institute_name') }}</span>
                                     @endif
@@ -208,12 +206,6 @@
                                         <strong>Remarks</strong>
                                     </p>
                                 </td>
-                                <td rowspan="2">
-                                    <p>
-                                        <strong>Action</strong>
-                                    </p>
-                                </td>
-                               
                             </tr>
                             <tr>
                                 <td>
@@ -237,48 +229,34 @@
                             <tr id="row{{ $index + 1 }}">
                                 <td>
                                     {{ $index + 1 }}
-                                    <input type="hidden" name="row_count[]">
-                                    <input type="hidden" name="l_form_count_id[]" value="{{ $statelFormCase->id }}">
+                                    <input readonly type="hidden" name="row_count[]">
+                                    <input readonly type="hidden" name="l_form_count_id[]" value="{{ $statelFormCase->id }}">
                                 </td>
                                 <td>
-                                    <input type="text" name="fname[]" value="{{ @$statelFormCase->fname }}">
+                                    <input readonly type="text" name="fname[]" value="{{ @$statelFormCase->fname }}">
                                 </td>
                                 <td>
-                                    <input type="text" name="mname[]" value="{{ @$statelFormCase->mname }}">
+                                    <input readonly type="text" name="mname[]" value="{{ @$statelFormCase->mname }}">
                                 </td>
                                 <td>
-                                    <input type="text" name="lname[]" value="{{ @$statelFormCase->lname }}">
+                                    <input readonly type="text" name="lname[]" value="{{ @$statelFormCase->lname }}">
                                 </td>
                                
                                 <td>
-                                    <input type="text" name="age[]" value="{{ @$statelFormCase->age }}">
+                                    <input readonly type="text" name="age[]" value="{{ @$statelFormCase->age }}">
                                 </td>
                                 <td>
-                                    <input type="text" name="sex[]" value="{{ @$statelFormCase->sex }}">
+                                    <input readonly type="text" name="sex[]" value="{{ @$statelFormCase->sex }}">
                                 </td>
                                 <td>
-                                    <input type="text" name="contact_number[]"
+                                    <input readonly type="text" name="contact_number[]"
                                         value="{{ @$statelFormCase->contact_number }}" maxlength="10" oninput="validateInput(this)">
                                 </td>
                                 <td>
-                                    <select class="form-select lform_state" aria-label="Default select" name="lform_state[]" id="lform_state">
-                                        <option value="">Please Select</option>
-                                        @foreach ($states as $state)
-                                            <option value="{{ @$state->id }}" @if(@$statelFormCase->states->id == $state->id) selected @endif>
-                                                {{ ucwords($state->name) }}
-                                            </option>
-                                        @endforeach
-                                    </select>
+                                    {{$statelFormCase->states->name}}
                                 </td>
                                 <td>
-                                    <select class="form-select lform_district" aria-label="Default select "
-                                        name="lform_district[]" id="lform_district">
-                                        @if(@$statelFormCase->city->id)
-                                            <option value="{{ @$statelFormCase->city->id }}">
-                                                {{ ucwords(@$statelFormCase->city->name) }}
-                                            </option>
-                                        @endif
-                                    </select>
+                                    {{$statelFormCase->city->name}}
                                 </td>
                                 <td>
                                     <select class="form-select" aria-label="Default select" name="lform_subdistrict[]" id="lform_subdistrict">
@@ -290,7 +268,7 @@
                                     </select>
                                 </td>
                                 <td>
-                                    <input type="text" name="lform_village[]"
+                                    <input readonly type="text" name="lform_village[]"
                                         value="{{ @$statelFormCase->lform_village }}">
                                 </td>
                                 <td>
@@ -317,7 +295,7 @@
                                     </select>
                                 </td>                                                                
                                <td>
-                                <input type="date" name="lform_sample_collection_date[]" value="{{ @$statelFormCase->lform_sample_collection_date }}" id="lform_sample_collection_date">
+                                <input readonly type="date" name="lform_sample_collection_date[]" value="{{ @$statelFormCase->lform_sample_collection_date }}" id="lform_sample_collection_date">
                                </td>
                                <td>
                                     <select class="form-select" aria-label="Default select" name="number_of_test_performed[]" id="lform_speciman_type">
@@ -329,25 +307,18 @@
                                     </select>
                                 </td>
                                 <td>
-                                    <input type="text" name="lform_result[]" value="{{ @$statelFormCase->lform_result }}" id="lform_result">
+                                    <input readonly type="text" name="lform_result[]" value="{{ @$statelFormCase->lform_result }}" id="lform_result">
                                 </td>
                                 <td>
-                                    <input type="date" name="lform_result_declaration_date[]" value="{{ @$statelFormCase->lform_result_declaration_date }}" id="lform_result_declaration_date">
+                                    <input readonly type="date" name="lform_result_declaration_date[]" value="{{ @$statelFormCase->lform_result_declaration_date }}" id="lform_result_declaration_date">
                                 </td>
                                 <td>
-                                    <input type="text" name="lform_remark[]" value="{{ @$statelFormCase->lform_remark }}" id="lform_remark">
-                                </td>                                
-                               <td class="text-nowrap">
-                                    <button type="button" name="add" id="add" class="btn btn-success add_more"><i class="fa fa-plus" style="font-size:16px"></i></button>
-                                    </button><button type="button" name="remove" id="{{ $index + 1 }}" class="btn btn-danger btn_remove"><i class="fa fa-trash" aria-hidden="true"></i></button>
+                                    <input readonly type="text" name="lform_remark[]" value="{{ @$statelFormCase->lform_remark }}" id="lform_remark">
+                                </td>
                             </tr>
                             @endforeach
                         </tbody>
                     </table>
-                    <div class="d-flex justify-content-center my-4">
-                        <button type="submit" class="btn search-patient-btn mr-3 bg-primary text-light">Update</button>
-                        <button type="reset" class="btn search-patient-btn bg-danger text-light">Reset</button>
-                    </div>
                     <p>To be <strong>
                             reported by Health facilities to District Nodal Officer, State Nodal Officer &amp; National
                             Program Division (Delhi) at
@@ -358,94 +329,4 @@
             </form>
         </div>
     </div>
-    <script>
-    $(document).ready(function() {
-        var i = 1;
-        $(document).on('click', '.btn_remove', function() {
-            var button_id = $(this).attr('id');
-            $('#row' + button_id + '').remove();
-        });
-
-        // Handle cloned add buttons
-        $(document).on('click', '.add_more', function() {
-            i++;
-
-            var rowHtml =
-        '<tr id="row' + i + '"><td>' + i + '<input type="hidden" name="row_count[]"></td>' +
-        '<td><input type="text" name="fname[]" value="{{ old('fname')[$index] ?? '' }}"></td>' +
-        '<td><input type="text" name="mname[]" value="{{ old('mname')[$index] ?? '' }}"></td>' +
-        '<td><input type="text" name="lname[]" value="{{ old('lname')[$index] ?? '' }}"></td>' +
-        '<td><input type="text" name="age[]" value="{{ old('age')[$index] ?? '' }}"></td>' +
-        '<td><input type="text" name="sex[]" value="{{ old('sex')[$index] ?? '' }}"></td>' +
-        '<td><input type="text" name="contact_number[]" value="{{ old('contact_number')[$index] ?? '' }}" maxlength="10" oninput="validateInput(this)"></td>' +
-        '<td><select class="form-select lform_state" aria-label="Default select " name="lform_state[]" id="lform_state"><option value="">Please Select</option>' +
-        '@foreach ($states as $key => $state)<option value="{{ $state->id }}" {{ $state->id == old('lform_state') ? 'selected' : '' }}>{{ ucwords($state->name) }}</option>@endforeach</select></td>' +
-        '<td><select class="form-select lform_district" aria-label="Default select " name="lform_district[]" id="lform_district"><option value="">Please Select</option>' +
-        '<option value="district name" @if(old('suspected_probable')[$index] ?? '' == "Suspected") selected @endif>district name</option></select></td>' +
-        '<td><select class="form-select" aria-label="Default select " name="lform_subdistrict[]" id="lform_subdistrict"><option value="">Please Select</option>' +
-        '<option value="Sub District" @if(old('suspected_probable')[$index] ?? '' == "Suspected") selected @endif>Sub District</option>' +
-        '<option value="Taluk" @if(old('suspected_probable')[$index] ?? '' == "Probable") selected @endif>Taluk</option>' +
-        '<option value="Block" @if(old('suspected_probable')[$index] ?? '' == "Confirmed") selected @endif>Block</option>' +
-        '<option value="Mandal" @if(old('suspected_probable')[$index] ?? '' == "Confirmed") selected @endif>Mandal</option></select></td>' +
-        '<td><input type="text" name="lform_village[]" value="{{ old('lform_village')[$index] ?? '' }}"></td>' +
-        '<td><select class="form-select" aria-label="Default select " name="lform_biting_animal[]" id="lform_biting_animal"><option value="">Please Select</option>' +
-        '<option value="Dog" @if(old('suspected_probable')[$index] ?? '' == "Suspected") selected @endif>Dog</option>' +
-        '<option value="Other(input)" @if(old('suspected_probable')[$index] ?? '' == "Confirmed") selected @endif>Other(input)</option></select></td>' +
-        '<td><select class="form-select" aria-label="Default select " name="lform_speciman_type[]" id="lform_speciman_detail"><option value="">Please Select</option>' +
-        '<option value="Antemortem" @if(old('suspected_probable')[$index] ?? '' == "Suspected") selected @endif>Antemortem</option>' +
-        '<option value="Postmortem" @if(old('suspected_probable')[$index] ?? '' == "Confirmed") selected @endif>Postmortem</option></select></td>' +
-        '<td><select class="form-select" aria-label="Default select " name="lform_speciman_detail[]" id="lform_speciman_type"><option value="">Please Select</option>' +
-        '<option value="Serum" @if(old('suspected_probable')[$index] ?? '' == "Suspected") selected @endif>Serum</option>' +
-        '<option value="CSF" @if(old('suspected_probable')[$index] ?? '' == "Confirmed") selected @endif>CSF</option>' +
-        '<option value="Nuchal skin" @if(old('suspected_probable')[$index] ?? '' == "Confirmed") selected @endif>Nuchal skin</option>' +
-        '<option value="Skin" @if(old('suspected_probable')[$index] ?? '' == "Confirmed") selected @endif>Skin</option></select></td>' +
-        '<td><input type="date" name="lform_sample_collection_date[]" value="" id="lform_sample_collection_date"></td>' +
-        '<td><select class="form-select" aria-label="Default select " name="number_of_test_performed[]" id="number_of_test_performed"><option value="">Please Select</option>' +
-        '<option value="RFFIT (CSF,Serum)">RFFIT (CSF,Serum)</option>' +
-        '<option value="Real-time PCR (CSF,Saliva, Nuchal skin)">Real-time PCR (CSF,Saliva, Nuchal skin)</option>' +
-        '<option value="Rabies Immunohistochemistry">Rabies Immunohistochemistry</option>' +
-        '<option value="Other(insert)">Other(insert)</option></select></td>' +
-        '<td><input type="text" name="lform_result[]" value="" id="lform_result"></td>' +
-        '<td><input type="date" name="lform_result_declaration_date[]" value="" id="lform_result_declaration_date"></td>' +
-        '<td><input type="text" name="lform_remark[]" value="" id="lform_remark"></td>' +
-        '<td class="text-nowrap">' +
-        '<button type="button" name="add" id="add" class="btn btn-success add_more mr-1"><i class="fa fa-plus" style="font-size:16px"></i></button>' +
-        '<button type="button" name="remove" id="' + i + '" class="btn btn-danger btn_remove"><i class="fa fa-trash" aria-hidden="true"></i></button>' +
-        '</td></tr>';
-
-        $('#suspected_field').append(rowHtml);
-            });
-        });
-
-        // get district
-        $(document).on('change', '.lform_state', function() {
-            const state_id = $(this).val();
-            let option = "<option value=''>Select district</option>";
-            
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
-            $.ajax({
-                url: BASE_URL + "get-city",
-                type: "get",
-                data: {
-                    state_id: state_id,
-                },
-                success: function(result) {
-                    if (result) {
-                        const districtDropdown = $(this).closest('tr').find('.lform_district');
-                        districtDropdown.html("");
-                        districtDropdown.append(result); // Append the new options
-                    } else {
-                        $(this).closest('tr').find('.lform_district').html(""); // Clear if no result
-                    }
-                }.bind(this), // Bind 'this' to ensure the correct context in the success callback
-                error: function(xhr, status, error) {
-                    console.error('An error occurred:', error);
-                }
-            });
-        });
-    </script>
 @endsection
