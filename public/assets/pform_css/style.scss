@@ -609,7 +609,8 @@ tspan.highChartTitle {
 table {
 
   tr.even {
-    background-color: #3f51b508 !important;
+    // background-color: #3f51b508 !important;
+    background-color: #d1e8f5 !important;
 
   }
 
@@ -653,7 +654,7 @@ table {
     td {
       border-left: 1px solid #ddd;
       border-bottom: 1px solid #ddd;
-      padding: 5px 10px;
+      padding: 5px 07px;
 
       &:last-child {
         border-right: 1px solid #ddd;
@@ -1018,7 +1019,7 @@ input[type="date"]::placeholder {
 }
 
 .box-heading {
-  display: flex;
+  // display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 5px 0 20px;

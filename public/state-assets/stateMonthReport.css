@@ -99,6 +99,7 @@ table tr td input[type=text], table tr td select {
   padding: 4px 10px;
   line-height: 1;
   font-size: 13px;
+  min-width: 80px;
 }
 table tr td p label {
   margin: 0;

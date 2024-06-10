@@ -18,6 +18,23 @@ $(document).ready(function() {
         }
     });
 });
+// js for auto responsive managing table
+
+let theadWidth = $('thead').innerWidth();
+console.log(theadWidth);
+let tableWidth = $('table').innerWidth();
+console.log(tableWidth)
+let containerFluidWidth = $('.container-fluid').innerWidth() -31.4;
+console.log(containerFluidWidth)
+
+if(theadWidth < tableWidth && tableWidth < containerFluidWidth){
+    $('table').css('display', 'table');
+} else{
+    $('table').css('display', 'block');
+}
+
+
+
 
 let selectBox = $('select');
 selectBox.each(function () {
@@ -411,19 +428,19 @@ $(document).ready(function(){
     //   'responsive': true
     // });
     var table = $('#general_profiles_TABLE2').DataTable({
-        'responsive': true,
-        'columnDefs': [
-            {
-                'targets': '.none', // Target the columns with the "none" class
-                'visible': false // Hide the targeted columns
-            }
-        ]
+        // 'responsive': true,
+        // 'columnDefs': [
+        //     {
+        //         'targets': '.none', // Target the columns with the "none" class
+        //         'visible': false // Hide the targeted columns
+        //     }
+        // ]
     });
         // Handle click on "Expand All" button
      
 });
     var table = $('#general_profiles_TABLE').DataTable({
-        'responsive': true,
+        // 'responsive': true,
     });
         // Handle click on "Expand All" button
      

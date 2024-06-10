@@ -81,8 +81,7 @@
 
                 <div class="link bg-primary text-white dashboard-title">
                     <a class="accordion-heading" data-toggle="collapse" href="#multiCollapseExample2" role="button"
-                        aria-expanded="false" aria-controls="multiCollapseExample2"><i class="fa fa-home"
-                            aria-hidden="true"></i>Monthly Report Form</a>
+                        aria-expanded="false" aria-controls="multiCollapseExample2"><i class="fa fa-file-text-o" aria-hidden="true"></i>Monthly Report Form</a>
                 </div>
 
                 <div class="row">
@@ -125,7 +124,7 @@
             </div>
             <div
                 class="link bg-primary text-white dashboard-title {{ Request::routeIs('national-report') == 'national-report' ? 'active' : '' }}">
-                <a href="{{ route('national-report') }}"><i class="fa fa-hospital-o" aria-hidden="true"></i>Report Generate</a> </i>
+                <a href="{{ route('national-report') }}"><i class="fa fa-file-excel-o" aria-hidden="true"></i>Report Generate</a> </i>
             </div>
             <!-- ********************* -->
         @endif
