@@ -11,8 +11,7 @@ class GeneralProfileController extends Controller
 {
     public function index()
     {
-        $general_profile = GeneralProfile::where(['soft_delete' => 0])->get();
-
+        $general_profile = GeneralProfile::where('soft_delete', 0)->orderBy('date_of_joining', 'asc')->get();
         return view('general_profile', compact('general_profile'));
 
         //return response()->json(['general_profile' => $general_profile]);
@@ -98,7 +97,7 @@ class GeneralProfileController extends Controller
                     return false;
                 } 
             }  
-            return redirect('/general-profile')->with($notification);        
+            return redirect('/general-laboratory')->with($notification);        
     }
 
     public function destroy($id)

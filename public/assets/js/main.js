@@ -373,6 +373,10 @@ jQuery( document ).ready(function() {
         $(this).siblings(".text-muted").hide();
     });
 
+    $('form input[type=email]').focus(function(){
+        $(this).siblings(".text-muted").hide();
+    });
+
     $('select').focus(function(){
         $(this).siblings(".text-muted").hide();
     });

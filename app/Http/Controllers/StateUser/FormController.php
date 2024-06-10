@@ -49,11 +49,12 @@ class FormController extends Controller
         $request->validate([
             'name_nodal_person' => 'required',
             'designation_nodal_person' => 'required',
-            'phone_number' => 'required',
-            'email' => 'required',
+            'phone_number' => 'required|unique:state_user_l_forms,phone_number|numeric|digits:10',
+            'email' => 'required|unique:state_user_l_forms,email', 
             'institute_name' => 'required',
-            'aadhar_number' => 'required|numeric|min_digits:12|max_digits:12',
+            'aadhar_number' => 'required|unique:state_user_l_forms,aadhar_number|numeric|digits:12',
         ]);
+
         try {
             DB::beginTransaction();
             $LFormId = StateUserLForm::Create([
