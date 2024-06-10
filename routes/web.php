@@ -155,7 +155,6 @@ Route::middleware(['Admin','device'])->group(function () {
             Route::post('expenditure-update', [ExpenditureController::class, 'update'])->name('expenditure-update');
             Route::delete('expenditure-destroy/{id}', [ExpenditureController::class, 'destroy'])->name('expenditure-destroy');
 
-            
             Route::get('report-list', [ReportGenerateControllerController::class, 'index'])->name('report-list');
             Route::post('report-export', [ReportGenerateControllerController::class, 'export'])->name('report-export');
             Route::post('generate-pdf', [ReportGenerateControllerController::class, 'generatePDF'])->name('generate-pdf');

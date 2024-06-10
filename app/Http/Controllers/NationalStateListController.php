@@ -184,10 +184,10 @@ class NationalStateListController extends Controller
         $request->validate([
             'name_nodal_person' => 'required',
             'designation_nodal_person' => 'required',
-            'phone_number' => 'required',
-            'email' => 'required',
+            'phone_number' => 'required|numeric|digits:10',
+            'email' => 'required', 
             'institute_name' => 'required',
-            'aadhar_number' => 'required|numeric|digits:12',            
+            'aadhar_number' => 'required|numeric|digits:12',
         ]);
 
         try {
@@ -267,7 +267,7 @@ class NationalStateListController extends Controller
             $states = CountryState::get();
             $cities = City::get();
             DB::commit();
-            dd($stateUserLForm);
+            // dd($stateUserLForm);
             return view('national-state.lform.view', compact('stateUserLForm','states','cities'));
         }catch (Exception $e) {
             DB::rollBack();

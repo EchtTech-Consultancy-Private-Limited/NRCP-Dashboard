@@ -8,7 +8,9 @@
             </div>
             <div class="col">
                 <ol class="breadcrumb  justify-content-end m-0 p-0 align-items-center" >
-                    <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a></li>
+                    <li class="breadcrumb-item">
+                        <a href="{{ Auth::user()->user_type == 3 ? route('state.dashboard') : (Auth::user()->user_type == 2 ? route('lab-dashboard') : route('dashboard')) }}">Dashboard</a>
+                    </li>
                     <li class="breadcrumb-item active">@section('title') {{ config('app.name') }} @show</li>
                 </ol>
             </div><!-- /.col --> 

@@ -35,7 +35,7 @@
                                 <div class="col-lg-3 col-md-3 col-6">
                                     <div class="form-group">
                                         <label for="district">Quantity<span class="star">*</span></label>
-                                        <input type="number" class="form-control" aria-label="Default select example" name="quantity" id="quantity" value="{{$equipment->quantity}}" >
+                                        <input type="text" class="form-control" maxlength="5" oninput="validateInput(this)" aria-label="Default select example" name="quantity" id="quantity" value="{{$equipment->quantity}}" >
                                         </select>
                                             @error('quantity') 
                                                 <span class="form-text text-muted">{{ $message }}</span>

@@ -22,7 +22,7 @@
                                                     <option value='2'>Quality</option>
                                                     <option value='3'>Equipment</option>
                                                     <option value='4'>Rabies</option>
-                                                    <option value='5'>Expenditure</option>
+                                                    <option value='5'>Finance</option>
                                                 </select>
                                                 @error('modulename') 
                                                     <span class="form-text text-muted">{{ $message }}</span>

@@ -49,11 +49,12 @@ class FormController extends Controller
         $request->validate([
             'name_nodal_person' => 'required',
             'designation_nodal_person' => 'required',
-            'phone_number' => 'required',
-            'email' => 'required|email',
+            'phone_number' => 'required|unique:state_user_l_forms,phone_number|numeric|digits:10',
+            'email' => 'required|unique:state_user_l_forms,email', 
             'institute_name' => 'required',
-            'aadhar_number' => 'required|numeric|min_digits:12|max_digits:12',
-        ], [
+            'aadhar_number' => 'required|unique:state_user_l_forms,aadhar_number|numeric|digits:12',
+        ],
+        [
             'name_nodal_person.required' => 'Name of the nodal person is required',
             'designation_nodal_person.required' => 'Designation of the nodal person is required',
             'phone_number.required' => 'Phone number is required',
@@ -65,7 +66,6 @@ class FormController extends Controller
             'aadhar_number.min_digits' => 'Aadhar number must be exactly 12 digits',
             'aadhar_number.max_digits' => 'Aadhar number must be exactly 12 digits',
         ]);
-        
         try {
             DB::beginTransaction();
             $LFormId = StateUserLForm::Create([
