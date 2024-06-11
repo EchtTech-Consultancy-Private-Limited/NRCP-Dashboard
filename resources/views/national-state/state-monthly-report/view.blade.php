@@ -1,573 +1,409 @@
-@extends('layouts.main') 
-@section('title') {{ 'NRCP State Dashboard | Monthly Report' }} 
-@endsection 
-@section('content') 
+@extends('layouts.main')
+@section('title') {{ 'NRCP State Dashboard | Monthly Report' }}
+@endsection
+@section('content')
 
 <div class="container-fluid dashboard">
-  <div class="form-tab">
-    <div class="dashboard-filter mb-5">
-      <div class="logoHeader">
-        <img src="{{ asset('state-assets/images/undp.png') }}" />
-        <img src="{{ asset('state-assets/images/emblem.jpg') }}" />
-        <img src="{{ asset('state-assets/images/nrcpLogo.png') }}" />
-      </div>
-      <div class="logoTitle">
-        <p>National Centre for Disease Control</p>
-        <p>Ministry of Health &amp; Family Welfare, Govt. of India</p>
-        <p>State Monthly Report (NRCP-M02) <strong> *</strong>
-        </p>
-      </div>
-      <table class="w-auto">
-        <tbody>
-          <tr class="">
-            <td>
-              <p>
-                <strong>State Name </strong>
-              </p>
-            </td>
-            <td>
-              <input type="text" name="state_name" value="{{ old('state_name',$stateMonthlyReport->state_name) }}" readonly>
-              @if ($errors->has('state_name')) 
-                <span class="form-text text-muted">{{ $errors->first('state_name') }}</span>
-              @endif
-            </td>
-          </tr>
-          <tr class="">
-            <td>
-              <p>
-                <strong>Name of State Nodal Office</strong>
-              </p>
-            </td>
-            <td>
-              <input type="text" name="state_nodal_office" value="{{ old('state_nodal_office',$stateMonthlyReport->state_nodal_office) }}" readonly>
-              @if ($errors->has('state_nodal_office')) 
-                <span class="form-text text-muted">{{ $errors->first('state_nodal_office') }}</span>
-              @endif
-            </td>
-          </tr>
-          <tr class="">
-            <td>
-              <p>
-                <strong>Office Address</strong>
-              </p>
-            </td>
-            <td>
-                <input type="text" name="office_address" value="{{ old('office_address',$stateMonthlyReport->office_address) }}" readonly>
-                @if ($errors->has('office_address')) 
-                    <span class="form-text text-muted">{{ $errors->first('office_address') }}</span>
-                @endif
-            </td>
-          </tr>
-          <tr class="">
-            <td>
-              <p>
-                <strong>Reporting Month &amp; Year</strong>
-              </p>
-            </td>
-            <td>
-                <input type="date" name="reporting_month_year" value="{{ old('reporting_month_year',$stateMonthlyReport->reporting_month_year) }}" readonly>
-                @if ($errors->has('reporting_month_year')) 
-                    <span class="form-text text-muted">{{ $errors->first('reporting_month_year') }}</span>
-                @endif
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      <h3 class="title"> Detailed Monthly report: - </h3>
-      <table class="">
-        <tbody>
-          <tr>
-            <td colspan="2" class="bglightBlue">
-              <p>
-                <strong>Total districts in the state </strong>
-              </p>
-            </td>
-            <td colspan="3">
-                <input type="text" name="total_districts" value="{{ old('total_districts',$stateMonthlyReport->total_districts) }}" readonly>
-            </td>
-          </tr>
-          <tr>
-            <td colspan="2" class="bglightBlue">
-              <p>
-                <strong>Total no. of health facilities providing animal bite management in the state</strong>
-              </p>
-            </td>
-            <td colspan="3">
-                <input type="text" name="total_health_facilities_anaimal_bite" value="{{ old('total_health_facilities_anaimal_bite',$stateMonthlyReport->total_health_facilities_anaimal_bite) }}" readonly>
-            </td>
-          </tr>
-          <tr>
-            <td colspan="2" class="bglightBlue">
-              <p>
-                <strong>Total Number of facilities submitted monthly report under NRCP </strong>
-              </p>
-            </td>
-            <td colspan="3">
-                <input type="text" name="total_health_facilities_submitted_monthly" value="{{ old('total_health_facilities_submitted_monthly',$stateMonthlyReport->total_health_facilities_submitted_monthly) }}" readonly>            </td>
-          </tr>
-          <tr>
-            <td colspan="2" class="bglightBlue">
-              <p>
-                <strong>Mention total no. of patients as per type of biting animal-</strong>
-              </p>
-            </td>
-            <td colspan="3">
-                <input type="text" name="total_patients_animal_biting" value="{{ old('total_patients_animal_biting',$stateMonthlyReport->total_patients_animal_biting) }}" readonly>
-            </td>
-          </tr>
-          <tr>
-            <td rowspan="2">
-              <ul>
-                <li>Dog</li>
-              </ul>
-            </td>
-            <td>
-              <p>Bite by Stray dog</p>
-            </td>
-            <td colspan="3">
-                <input type="text" name="total_stray_dog_bite" value="{{ old('total_stray_dog_bite',$stateMonthlyReport->total_stray_dog_bite) }}" readonly>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <p>Bite by Pet Dogs</p>
-            </td>
-            <td colspan="3">
-                <input type="text" name="total_pet_dog_bite" value="{{ old('total_pet_dog_bite',$stateMonthlyReport->total_pet_dog_bite) }}" readonly>
-            </td>
-          </tr>
-          <tr>
-            <td colspan="2">
-              <ul>
-                <li>Cat</li>
-              </ul>
-            </td>
-            <td colspan="3">
-                <input type="text" name="total_cat_bite" value="{{ old('total_cat_bite',$stateMonthlyReport->total_cat_bite) }}" readonly>
-            </td>
-          </tr>
-          <tr>
-            <td colspan="2">
-              <ul>
-                <li>Monkey</li>
-              </ul>
-            </td>
-            <td colspan="3">
-                <input type="text" name="total_monkey_bite" value="{{ old('total_monkey_bite',$stateMonthlyReport->total_monkey_bite) }}" readonly>
-            </td>
-          </tr>
-          <tr>
-            <td colspan="2">
-              <ul>
-                <li>Others</li>
-              </ul>
-            </td>
-            <td colspan="3">
-                <input type="text" name="total_others_bite" value="{{ old('total_others_bite',$stateMonthlyReport->total_others_bite) }}" readonly>
-            </td>
-          </tr>
-          <tr>
-            <td colspan="2">
-              <p>
-                <strong>Mention no. of patients as per Category of bite-</strong>
-              </p>
-            </td>
-            <td colspan="3">
-                {{-- <input type="text" readonly> --}}
-            </td>
-          </tr>
-          <tr>
-            <td colspan="2">
-              <ul>
-                <li>
-                  <strong>Category -I</strong> (Touching or feeding of animals, Licks on intact skin Contact of intact skin with secretions /excretions of rabid animal/human case)
-                </li>
-              </ul>
-            </td>
-            <td colspan="3">
-                <input type="text" name="mention_patient_cateogry_I" value="{{ old('mention_patient_cateogry_I',$stateMonthlyReport->mention_patient_cateogry_I) }}" readonly>
-            </td>
-          </tr>
-          <tr>
-            <td colspan="2">
-              <ul>
-                <li>
-                  <strong>Category -II</strong> (Nibbling of uncovered skin, Minor scratches or abrasions without bleeding)
-                </li>
-              </ul>
-            </td>
-            <td colspan="3">
-                <input type="text" name="mention_patient_cateogry_II" value="{{ old('mention_patient_cateogry_II',$stateMonthlyReport->mention_patient_cateogry_II) }}" readonly>
-            </td>
-          </tr>
-          <tr>
-            <td colspan="2">
-              <ul>
-                <li>
-                  <strong>Category -III</strong> (Single or multiple transdermal bites or scratches, licks on broken skin Contamination of mucous membrane with saliva i.e. licks)
-                </li>
-              </ul>
-            </td>
-            <td colspan="3">
-                <input type="text" name="mention_patient_cateogry_III" value="{{ old('mention_patient_cateogry_III',$stateMonthlyReport->mention_patient_cateogry_III) }}" readonly>
-            </td>
-          </tr>
-          <tr>
-            <td colspan="2" class="bglightBlue">
-              <p>
-                <strong>Total number of patients as per route of rabies vaccination- </strong>
-              </p>
-            </td>
-            <td colspan="3">
-              {{-- <input type="text"> --}}
-            </td>
-          </tr>
-          <tr>
-            <td colspan="2">
-              <ul>
-                <li>IM route (Essen schedule on day) (0,3,7,14,28)</li>
-              </ul>
-              <p></p>
-            </td>
-            <td colspan="3">
-                <input type="text" name="rabies_vaccination_im_route" value="{{ old('rabies_vaccination_im_route',$stateMonthlyReport->rabies_vaccination_im_route) }}" readonly>
-            </td>
-          </tr>
-          <tr>
-            <td colspan="2">
-              <ul>
-                <li>ID route (update Thai Red Cross Regimen) (2-2-2-0-2)</li>
-              </ul>
-            </td>
-            <td colspan="3">
-                <input type="text" name="rabies_vaccination_id_route" value="{{ old('rabies_vaccination_id_route',$stateMonthlyReport->rabies_vaccination_id_route) }}" readonly>
-            </td>
-          </tr>
-          <tr>
-            <td colspan="2">
-              <ul>
-                <li>No. of Category III victims given ARS</li>
-              </ul>
-              <p>&nbsp;</p>
-            </td>
-            <td colspan="3">
-                <input type="text" name="rabies_vaccination_III_victim_ars" value="{{ old('rabies_vaccination_III_victim_ars',$stateMonthlyReport->rabies_vaccination_III_victim_ars) }}" readonly>
-            </td>
-          </tr>
-          <tr>
-            <td colspan="2">
-              <ul>
-                <li>Number of Patients completed PEP</li>
-              </ul>
-              <p>&nbsp;</p>
-            </td>
-            <td colspan="3">
-                <input type="text" name="rabies_vaccination_completed_pep" value="{{ old('rabies_vaccination_completed_pep',$stateMonthlyReport->rabies_vaccination_completed_pep) }}" readonly>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+    <div class="form-tab">
+        <div class="dashboard-filter mb-5">
+            <div class="logoHeader">
+                <img src="{{ asset('state-assets/images/undp.png') }}" />
+                <img src="{{ asset('state-assets/images/emblem.jpg') }}" />
+                <img src="{{ asset('state-assets/images/nrcpLogo.png') }}" />
+            </div>
+            <div class="logoTitle">
+                <p>National Centre for Disease Control</p>
+                <p>Ministry of Health &amp; Family Welfare, Govt. of India</p>
+                <p>State Monthly Report (NRCP-M02) <strong> *</strong>
+                </p>
+            </div>
+            <table class="w-auto">
+                <tbody>
+                    <tr class="">
+                        <td>
+                            <p>
+                                <strong>State Name</strong>
+                            </p>
+                        </td>
+                        <td>
+                            {{ old('state_name', $stateMonthlyReport->state_name) }}
+                        </td>
+                    </tr>
+                    <tr class="">
+                        <td>
+                            <p>
+                                <strong>Name of State Nodal Office</strong>
+                            </p>
+                        </td>
+                        <td>
+                            {{ old('state_nodal_office', $stateMonthlyReport->state_nodal_office) }}
+                        </td>
+                    </tr>
+                    <tr class="">
+                        <td>
+                            <p>
+                                <strong>Office Address</strong>
+                            </p>
+                        </td>
+                        <td>
+                            {{ old('office_address', $stateMonthlyReport->office_address) }}
+                        </td>
+                    </tr>
+                    <tr class="">
+                        <td>
+                            <p>
+                                <strong>Reporting Month &amp; Year</strong>
+                            </p>
+                        </td>
+                        <td>
+                            {{ old('reporting_month_year', $stateMonthlyReport->reporting_month_year) }}
+                        </td>
+                    </tr>
+                </tbody>
+
+            </table>
+            <h3 class="title ml-0"> Detailed Monthly Report: - </h3>
+            <table class="">
+                <tbody>
+                    <tr>
+                        <td colspan="2" class="bglightBlue">
+                            <p><strong>Total districts in the state </strong></p>
+                        </td>
+                        <td colspan="3">{{ old('total_districts', $stateMonthlyReport->total_districts) }}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" class="bglightBlue">
+                            <p><strong>Total no. of health facilities providing animal bite management in the
+                                    state</strong></p>
+                        </td>
+                        <td colspan="3">
+                            {{ old('total_health_facilities_anaimal_bite', $stateMonthlyReport->total_health_facilities_anaimal_bite) }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" class="bglightBlue">
+                            <p><strong>Total Number of facilities submitted monthly report under NRCP </strong></p>
+                        </td>
+                        <td colspan="3">
+                            {{ old('total_health_facilities_submitted_monthly', $stateMonthlyReport->total_health_facilities_submitted_monthly) }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" class="bglightBlue">
+                            <p><strong>Mention total no. of patients as per type of biting animal-</strong></p>
+                        </td>
+                        <td colspan="3">
+                            {{ old('total_patients_animal_biting', $stateMonthlyReport->total_patients_animal_biting) }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2">
+                            <ul>
+                                <li>Dog</li>
+                            </ul>
+                        </td>
+                        <td>
+                            <p>Bite by Stray dog</p>
+                        </td>
+                        <td colspan="3">{{ old('total_stray_dog_bite', $stateMonthlyReport->total_stray_dog_bite) }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p>Bite by Pet Dogs</p>
+                        </td>
+                        <td colspan="3">{{ old('total_pet_dog_bite', $stateMonthlyReport->total_pet_dog_bite) }}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <ul>
+                                <li>Cat</li>
+                            </ul>
+                        </td>
+                        <td colspan="3">{{ old('total_cat_bite', $stateMonthlyReport->total_cat_bite) }}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <ul>
+                                <li>Monkey</li>
+                            </ul>
+                        </td>
+                        <td colspan="3">{{ old('total_monkey_bite', $stateMonthlyReport->total_monkey_bite) }}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <ul>
+                                <li>Others</li>
+                            </ul>
+                        </td>
+                        <td colspan="3">{{ old('total_others_bite', $stateMonthlyReport->total_others_bite) }}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="5">
+                            <p><strong>Mention no. of patients as per Category of bite-</strong></p>
+                        </td>
+                       
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <ul>
+                                <li><strong>Category -I</strong> (Touching or feeding of animals, Licks on intact skin
+                                    Contact of intact skin with secretions /excretions of rabid animal/human case)</li>
+                            </ul>
+                        </td>
+                        <td colspan="3">
+                            {{ old('mention_patient_cateogry_I', $stateMonthlyReport->mention_patient_cateogry_I) }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <ul>
+                                <li><strong>Category -II</strong> (Nibbling of uncovered skin, Minor scratches or
+                                    abrasions without bleeding)</li>
+                            </ul>
+                        </td>
+                        <td colspan="3">
+                            {{ old('mention_patient_cateogry_II', $stateMonthlyReport->mention_patient_cateogry_II) }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <ul>
+                                <li><strong>Category -III</strong> (Single or multiple transdermal bites or scratches,
+                                    licks on broken skin Contamination of mucous membrane with saliva i.e. licks)</li>
+                            </ul>
+                        </td>
+                        <td colspan="3">
+                            {{  @$stateMonthlyReport->mention_patient_cateogry_III}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="5" class="bglightBlue">
+                            <p><strong>Total number of patients as per route of rabies vaccination- </strong></p>
+                        </td>
+                        
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <ul>
+                                <li>IM route (Essen schedule on day) (0,3,7,14,28)</li>
+                            </ul>
+                            <p></p>
+                        </td>
+                        <td colspan="3">
+                            {{ old('rabies_vaccination_im_route', $stateMonthlyReport->rabies_vaccination_im_route) }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <ul>
+                                <li>ID route (update Thai Red Cross Regimen) (2-2-2-0-2)</li>
+                            </ul>
+                        </td>
+                        <td colspan="3">
+                            {{ old('rabies_vaccination_id_route', $stateMonthlyReport->rabies_vaccination_id_route) }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <ul>
+                                <li>No. of Category III victims given ARS</li>
+                            </ul>
+                            <p>&nbsp;</p>
+                        </td>
+                        <td colspan="3">
+                            {{ old('rabies_vaccination_III_victim_ars', $stateMonthlyReport->rabies_vaccination_III_victim_ars) }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <ul>
+                                <li>Number of Patients completed PEP</li>
+                            </ul>
+                            <p>&nbsp;</p>
+                        </td>
+                        <td colspan="3">
+                            {{ old('rabies_vaccination_completed_pep', $stateMonthlyReport->rabies_vaccination_completed_pep) }}
+                        </td>
+                    </tr>
+                </tbody>
+
+            </table>
+        </div>
+        <div class="dashboard-filter mb-5">
+            <table class="">
+                <tbody>
+                    <tr>
+                        <td colspan="5" class="bglightBlue">
+                            <p>
+                                <strong>Suspected/</strong>
+                                <strong>probable/</strong>
+                                <strong>Confirmed Rabies Cases/ Deaths reported by all the districts-</strong>
+                            </p>
+                        </td>
+                       
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <ul>
+                                <li>No. of human rabies deaths confirmed by laboratory tests</li>
+                            </ul>
+                        </td>
+                        <td colspan="3">
+                            {{ old('confirmed_suspected_rabies_deaths', $stateMonthlyReport->confirmed_suspected_rabies_deaths) }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <ul>
+                                <li>No. of clinically suspected rabies cases seen at OPD &amp; Emergency (who refused
+                                    admission)</li>
+                            </ul>
+                        </td>
+                        <td colspan="3">
+                            {{ old('suspected_rabies_cases_opd', $stateMonthlyReport->suspected_rabies_cases_opd) }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <ul>
+                                <li>No. of clinically suspect rabies cases admitted in the health facilities</li>
+                            </ul>
+                        </td>
+                        <td colspan="3">
+                            {{ old('suspected_rabies_cases_admitted', $stateMonthlyReport->suspected_rabies_cases_admitted) }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <ul>
+                                <li>No. of clinically suspected rabies cases left against medical advice (after
+                                    admission) </li>
+                            </ul>
+                        </td>
+                        <td colspan="3">
+                            {{ old('suspected_rabies_cases_left_against_medical', $stateMonthlyReport->suspected_rabies_cases_left_against_medical) }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <ul>
+                                <li>No. of clinically suspect rabies deaths in hospital</li>
+                            </ul>
+                        </td>
+                        <td colspan="3">
+                            {{ old('suspected_rabies_deaths', $stateMonthlyReport->suspected_rabies_deaths) }}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="5" class="bglightBlue">
+                            <p>
+                                <strong>Status of Anti Rabies Vaccine (ARV) used by all the districts in the month (no.
+                                    of vials)-</strong>
+                            </p>
+                        </td>
+                        
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <ul>
+                                <li>Opening balance</li>
+                            </ul>
+                        </td>
+                        <td colspan="3">{{ old('arv_opening_balance', $stateMonthlyReport->arv_opening_balance) }}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <ul>
+                                <li>Quantity received</li>
+                            </ul>
+                        </td>
+                        <td colspan="3">{{ old('arv_quantity_received', $stateMonthlyReport->arv_quantity_received) }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <ul>
+                                <li>Quantity utilized</li>
+                            </ul>
+                        </td>
+                        <td colspan="3">{{ old('arv_quantity_utilized', $stateMonthlyReport->arv_quantity_utilized) }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <ul>
+                                <li>Closing balance</li>
+                            </ul>
+                        </td>
+                        <td colspan="3">{{ old('arv_closing_balance', $stateMonthlyReport->arv_closing_balance) }}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <ul>
+                                <li>Shortage of ARV - Yes/No</li>
+                            </ul>
+                            <p>(If Yes, please mention in Vials or Doses)</p>
+                        </td>
+                        <td colspan="3">{{ old('shortage_of_arv', $stateMonthlyReport->shortage_of_arv) }}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="5" class="bglightBlue">
+                            <p>
+                                <strong>Status of Anti Rabies Serum (ARS) used by all the districts in the month (no. of
+                                    vials)-</strong>
+                            </p>
+                        </td>
+                        
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <ul>
+                                <li>Opening balance</li>
+                            </ul>
+                        </td>
+                        <td colspan="3">{{ old('ars_opening_balance', $stateMonthlyReport->ars_opening_balance) }}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <ul>
+                                <li>Quantity received</li>
+                            </ul>
+                        </td>
+                        <td colspan="3">{{ old('ars_quantity_recieved', $stateMonthlyReport->ars_quantity_recieved) }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <ul>
+                                <li>Quantity utilized</li>
+                            </ul>
+                        </td>
+                        <td colspan="3">{{ old('ars_quantity_utilized', $stateMonthlyReport->ars_quantity_utilized) }}
+                        </td>
+                    </tr>
+                    <tr>
+
+            </table>
+            <div class="footerContent">
+                <p>
+                    <strong class="d-flex justify-content-between">
+                        <span>Date:</span>
+                        <span> Name &amp; Sign of State Nodal Officer- <br> NRCP or Concerned officer&nbsp; </span>
+                    </strong>
+                </p>
+                <p>
+                    <strong></strong>
+                </p>
+                <p>
+                    <em>*Compiled Monthly report of Animal Bite Victims receiving treatment at all Anti Rabies
+                        Clinics/Health facilities providing animal bite management (T</em>
+                    <em>o be submitted by State Nodal Officer to NRCP division&nbsp; &nbsp;NCDC Delhi before 5th day of
+                        every month)</em>
+                </p>
+            </div>
+            </form>
+        </div>
     </div>
-    <div class="dashboard-filter mb-5">
-      <table class="">
-        <tbody>
-          <tr>
-            <td colspan="2" class="bglightBlue">
-              <p>
-                <strong>Suspected/</strong>
-                <strong>probable/</strong>
-                <strong>Confirmed Rabies Cases/ Deaths reported by all the districts-</strong>
-              </p>
-            </td>
-            <td colspan="3">
-              {{-- <input type="text"> --}}
-            </td>
-          </tr>
-          <tr>
-            <td colspan="2">
-              <ul>
-                <li>No. of human rabies deaths confirmed by laboratory tests</li>
-              </ul>
-            </td>
-            <td colspan="3">
-                <input type="text" name="confirmed_suspected_rabies_deaths" value="{{ old('confirmed_suspected_rabies_deaths',$stateMonthlyReport->confirmed_suspected_rabies_deaths) }}" readonly>
-            </td>
-          </tr>
-          <tr>
-            <td colspan="2">
-              <ul>
-                <li>No. of clinically suspected rabies cases seen at OPD &amp; Emergency (who refused admission)</li>
-              </ul>
-            </td>
-            <td colspan="3">
-                <input type="text" name="suspected_rabies_cases_opd" value="{{ old('suspected_rabies_cases_opd',$stateMonthlyReport->suspected_rabies_cases_opd) }}" readonly>
-            </td>
-          </tr>
-          <tr>
-            <td colspan="2">
-              <ul>
-                <li>No. of clinically suspect rabies cases admitted in the health facilities</li>
-              </ul>
-            </td>
-            <td colspan="3">
-                <input type="text" name="suspected_rabies_cases_admitted" value="{{ old('suspected_rabies_cases_admitted',$stateMonthlyReport->suspected_rabies_cases_admitted) }}" readonly>
-            </td>
-          </tr>
-          <tr>
-            <td colspan="2">
-              <ul>
-                <li>No. of clinically suspected rabies cases left against medical advice (after admission) </li>
-              </ul>
-            </td>
-            <td colspan="3">
-                <input type="text" name="suspected_rabies_cases_left_against_medical" value="{{ old('suspected_rabies_cases_left_against_medical',$stateMonthlyReport->suspected_rabies_cases_left_against_medical) }}" readonly>
-            </td>
-          </tr>
-          <tr>
-            <td colspan="2">
-              <ul>
-                <li>No. of clinically suspect rabies deaths in hospital</li>
-              </ul>
-            </td>
-            <td colspan="3">
-                <input type="text" name="suspected_rabies_deaths" value="{{ old('suspected_rabies_deaths',$stateMonthlyReport->suspected_rabies_deaths) }}" readonly>
-            </td>
-          </tr>
-          <tr>
-            <td colspan="2" class="bglightBlue">
-              <p>
-                <strong>Status of Anti Rabies Vaccine (ARV) used by all the districts in the month (no. of vials)-</strong>
-              </p>
-            </td>
-            <td colspan="3">
-              {{-- <input type="text"> --}}
-            </td>
-          </tr>
-          <tr>
-            <td colspan="2">
-              <ul>
-                <li>Opening balance</li>
-              </ul>
-            </td>
-            <td colspan="3">
-                <input type="text" name="arv_opening_balance" value="{{ old('arv_opening_balance',$stateMonthlyReport->arv_opening_balance) }}" readonly>
-            </td>
-          </tr>
-          <tr>
-            <td colspan="2">
-              <ul>
-                <li>Quantity received</li>
-              </ul>
-            </td>
-            <td colspan="3">
-              <input type="text" name="arv_quantity_received" value="{{ old('arv_quantity_received',$stateMonthlyReport->arv_quantity_received) }}" readonly>
-            </td>
-          </tr>
-          <tr>
-            <td colspan="2">
-              <ul>
-                <li>Quantity utilized</li>
-              </ul>
-            </td>
-            <td colspan="3">
-              <input type="text" name="arv_quantity_utilized" value="{{ old('arv_quantity_utilized',$stateMonthlyReport->arv_quantity_utilized) }}" readonly>
-            </td>
-          </tr>
-          <tr>
-            <td colspan="2">
-              <ul>
-                <li>Closing balance</li>
-              </ul>
-            </td>
-            <td colspan="3">
-              <input type="text" name="arv_closing_balance" value="{{ old('arv_closing_balance',$stateMonthlyReport->arv_closing_balance) }}" readonly>
-            </td>
-          </tr>
-          <tr>
-            <td colspan="2">
-              <ul>
-                <li>Shortage of ARV - Yes/No</li>
-              </ul>
-              <p>(If Yes, please mention in Vials or Doses)</p>
-            </td>
-            <td colspan="3">
-              <input type="text" name="shortage_of_arv" value="{{ old('shortage_of_arv',$stateMonthlyReport->shortage_of_arv) }}" readonly>
-            </td>
-          </tr>
-          <tr>
-            <td colspan="2" class="bglightBlue">
-              <p>
-                <strong>Status of Anti Rabies Serum (ARS) used by all the districts in the month (no. of vials)-</strong>
-              </p>
-            </td>
-            <td colspan="3">
-              {{-- <input type="text"> --}}
-            </td>
-          </tr>
-          <tr>
-            <td colspan="2">
-              <ul>
-                <li>Opening balance</li>
-              </ul>
-            </td>
-            <td colspan="3">
-              <input type="text" name="ars_opening_balance" value="{{ old('ars_opening_balance',$stateMonthlyReport->ars_opening_balance) }}" readonly>
-            </td>
-          </tr>
-          <tr>
-            <td colspan="2">
-              <ul>
-                <li>Quantity received</li>
-              </ul>
-            </td>
-            <td colspan="3">
-              <input type="text" name="ars_quantity_recieved" value="{{ old('ars_quantity_recieved',$stateMonthlyReport->ars_quantity_recieved) }}" readonly>
-            </td>
-          </tr>
-          <tr>
-            <td colspan="2">
-              <ul>
-                <li>Quantity utilized</li>
-              </ul>
-            </td>
-            <td colspan="3">
-              <input type="text" name="ars_quantity_utilized" value="{{ old('ars_quantity_utilized',$stateMonthlyReport->ars_quantity_utilized) }}" readonly>
-            </td>
-          </tr>
-          <tr>
-            <td colspan="2">
-              <ul>
-                <li>Closing balance</li>
-              </ul>
-            </td>
-            <td colspan="3">
-              <input type="text" name="ars_closing_balance" value="{{ old('ars_closing_balance',$stateMonthlyReport->ars_closing_balance) }}" readonly>
-            </td>
-          </tr>
-          <tr>
-            <td colspan="2">
-              <ul>
-                <li>Shortage of ARS - Yes/No</li>
-              </ul>
-              <p>&nbsp;(If Yes, please mention in Vials or Doses)</p>
-            </td>
-            <td colspan="3">
-              <input type="text" name="shortage_of_ars" value="{{ old('shortage_of_ars',$stateMonthlyReport->shortage_of_ars) }}" >
-            </td>
-          </tr>
-          <tr class="bglightBlue">
-            <td colspan="2">
-              <p>
-                <strong>Status of availability of Rabies Vaccine in the state (Health facility wise)-</strong>
-              </p>
-            </td>
-            <td>
-              <p>
-                <strong>Total no of health facilities</strong>
-              </p>
-            </td>
-            <td>
-              <p>
-                <strong>Availability of ARV</strong>
-              </p>
-            </td>
-            <td>
-              <p>
-                <strong>Availability of ARS</strong>
-              </p>
-            </td>
-          </tr>
-          <tr>
-            <td colspan="2">
-              <ul>
-                <li>DH</li>
-              </ul>
-            </td>
-            <td><input type="text" name="dh_health_of_health_facilties" value="{{ old('dh_health_of_health_facilties',$stateMonthlyReport->dh_health_of_health_facilties) }}" readonly></td>
-            <td><input type="text" name="dh_of_arv" value="{{ old('dh_of_arv',$stateMonthlyReport->dh_of_arv) }}" readonly></td>
-            <td><input type="text" name="dh_of_ars" value="{{ old('dh_of_ars',$stateMonthlyReport->dh_of_ars) }}" readonly></td>
-          </tr>
-          <tr>
-            <td colspan="2">
-              <ul>
-                <li>SDH</li>
-              </ul>
-            </td>
-            <td><input type="text" name="sdh_health_of_health_facilties" value="{{ old('sdh_health_of_health_facilties',$stateMonthlyReport->sdh_health_of_health_facilties) }}" readonly></td>
-            <td><input type="text" name="sdh_of_arv" value="{{ old('sdh_of_arv',$stateMonthlyReport->sdh_of_arv) }}" readonly></td>
-            <td><input type="text" name="sdh_of_ars" value="{{ old('sdh_of_ars',$stateMonthlyReport->sdh_of_ars) }}" readonly></td>
-          </tr>
-          <tr>
-            <td colspan="2">
-              <ul>
-                <li>CHC</li>
-              </ul>
-            </td>
-            <td><input type="text" name="chc_health_of_health_facilties" value="{{ old('chc_health_of_health_facilties',$stateMonthlyReport->chc_health_of_health_facilties) }}" readonly></td>
-            <td><input type="text" name="chc_of_arv" value="{{ old('chc_of_arv',$stateMonthlyReport->chc_of_arv) }}" readonly></td>
-            <td><input type="text" name="chc_of_ars" value="{{ old('chc_of_ars',$stateMonthlyReport->chc_of_ars) }}" readonly></td>
-          </tr>
-          <tr>
-            <td colspan="2">
-              <ul>
-                <li>PHC</li>
-              </ul>
-            </td>
-            <td><input type="text" name="phc_health_of_health_facilties" value="{{ old('phc_health_of_health_facilties',$stateMonthlyReport->phc_health_of_health_facilties) }}" readonly></td>
-            <td><input type="text" name="phc_of_arv" value="{{ old('phc_of_arv',$stateMonthlyReport->phc_of_arv) }}" readonly></td>
-            <td><input type="text" name="phc_of_ars" value="{{ old('phc_of_ars',$stateMonthlyReport->phc_of_ars) }}" readonly></td>
-          </tr>
-          <tr>
-            <td colspan="2" class="bglightBlue">
-              <p>
-                <strong>Information on Rabies and Animal Bite cases shared with State Veterinary Officer/department or concerned department </strong>
-              </p>
-            </td>
-            <td colspan="3">
-              <input type="text" name="bite_cases_shared_department" value="{{ old('bite_cases_shared_department',$stateMonthlyReport->bite_cases_shared_department) }}" readonly>
-            </td>
-          </tr>
-          <tr>
-            <td colspan="2" class="bglightBlue">
-              <p>
-                <strong>Any Clustering of Animal Bite Cases observed? </strong>
-              </p>
-              <p>If yes write the details including locality</p>
-            </td>
-            <td colspan="3">
-              <input type="text" name="bite_cases_observed" value="{{ old('bite_cases_observed',$stateMonthlyReport->bite_cases_observed) }}" readonly>
-            </td>
-          </tr>
-          <tr>
-            <td colspan="2" class="bglightBlue">
-              <p>
-                <strong>Any other remarks</strong>
-              </p>
-            </td>
-            <td colspan="3">
-              <input type="text" name="other_remarks" value="{{ old('other_remarks',$stateMonthlyReport->other_remarks) }}" readonly>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      <div class="footerContent">
-        <p>
-          <strong class="d-flex justify-content-between">
-            <span>Date:</span>
-            <span> Name &amp; Sign of State Nodal Officer- <br> NRCP or Concerned officer&nbsp; </span>
-          </strong>
-        </p>
-        <p>
-          <strong></strong>
-        </p>
-        <p>
-          <em>*Compiled Monthly report of Animal Bite Victims receiving treatment at all Anti Rabies Clinics/Health facilities providing animal bite management (T</em>
-          <em>o be submitted by State Nodal Officer to NRCP division&nbsp; &nbsp;NCDC Delhi before 5th day of every month)</em>
-        </p>
-      </div>
-    </form>
-    </div>
-  </div>
 </div>
 
- @endsection
+@endsection

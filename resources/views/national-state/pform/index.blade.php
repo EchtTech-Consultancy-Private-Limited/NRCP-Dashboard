@@ -3,7 +3,7 @@
 @endsection 
 @section('content') 
 <div class="container-fluid">
-    <table id="general_profiles_TABLE2" class="w-100 table-responsive">
+    <table id="general_profiles_TABLE2" class="w-100 p-form-table table-responsive">
         <thead>
           <tr>
             <th>Sl#</th>

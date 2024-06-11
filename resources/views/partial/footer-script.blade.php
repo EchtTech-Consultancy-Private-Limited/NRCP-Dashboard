@@ -1,9 +1,6 @@
-<footer class="main-footer">
-    <strong>Copyright &copy; 2023-{{date('Y')}} <a href="#">NRCP</a>.</strong>
-    All rights reserved.
-    <div class="float-right d-none d-sm-inline-block">
-      <b>Version</b> 1.0.0
-    </div>
+<footer class="main-footer text-center">
+    <strong>Copyright &copy; {{date('Y')}} <a href="#"></a>NRCP. </strong> All rights reserved.
+   
   </footer>
 </div>
 <!-- ./wrapper -->

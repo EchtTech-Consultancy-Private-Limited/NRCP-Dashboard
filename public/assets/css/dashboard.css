@@ -1001,4 +1001,30 @@ i.fa.fa-file-pdf-o {
 
 .main-sidebar .brand-text {
   font-size: 16px;
+}
+
+table td p {
+  padding: 0;
+}
+
+span.td-value {
+  font-weight: 400;
+  color: #323232;
+  display: block;
+}
+
+.btn {
+  border-radius: 18px !important;
+}
+
+table tr td input[type=text]:focus-visible, table tr td select:focus-visible {
+  outline: none;
+}
+
+input[type=date] {
+  text-transform: uppercase;
+}
+
+td.bggrey input {
+  background: #d0cece;
 }/*# sourceMappingURL=dashboard.css.map */

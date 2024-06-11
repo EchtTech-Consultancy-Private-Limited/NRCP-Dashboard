@@ -1137,6 +1137,7 @@ const defaultLaboratoryMapData = () => {
                         },                        
                         labels: {
                             // y: 16
+                            enabled:false
                         }
                     },
                     plotOptions: {
@@ -1280,7 +1281,6 @@ const defaultLaboratoryMapData = () => {
                         type: 'column',
                         name: 'Rabies data',
                         borderRadius: 5,
-                        colorByPoint: true,
                         data: result.monthGraphFilterData.MonthRecord,
                         showInLegend: true
                     }]

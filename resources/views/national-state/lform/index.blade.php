@@ -25,7 +25,7 @@
             <td>{{$stateUserLForm->email}}</td>            
             <td>{{$stateUserLForm->phone_number}}</td>
             <td> {{ $stateUserLForm->institute_name }}</td>
-            <td class="text-nowrap">
+            <td class="text-nowrap text-center">
                 <a href= "{{route('national.l-form-edit',$stateUserLForm->id)}}" id="edit_2" class="btn bg-success action-btn pformEdit" data-id="2" title="Edit">
                   <i class="fa fa-edit"></i>
                 </a>

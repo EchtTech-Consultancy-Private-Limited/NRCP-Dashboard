@@ -75,7 +75,7 @@
           </tr>
         </tbody>
       </table>
-      <h3 class="title"> Detailed Monthly report: - </h3>
+      <h3 class="title ml-0"> Detailed Monthly Report: - </h3>
       <table class="">
         <tbody>
           <tr>
@@ -169,14 +169,12 @@
             </td>
           </tr>
           <tr>
-            <td colspan="2">
+            <td colspan="5">
               <p>
                 <strong>Mention no. of patients as per Category of bite-</strong>
               </p>
             </td>
-            <td colspan="3">
-                {{-- <input type="text" readonly> --}}
-            </td>
+           
           </tr>
           <tr>
             <td colspan="2">
@@ -215,14 +213,12 @@
             </td>
           </tr>
           <tr>
-            <td colspan="2" class="bglightBlue">
+            <td colspan="5" class="bglightBlue">
               <p>
                 <strong>Total number of patients as per route of rabies vaccination- </strong>
               </p>
             </td>
-            <td colspan="3">
-              {{-- <input type="text"> --}}
-            </td>
+           
           </tr>
           <tr>
             <td colspan="2">
@@ -274,16 +270,14 @@
       <table class="">
         <tbody>
           <tr>
-            <td colspan="2" class="bglightBlue">
+            <td colspan="5" class="bglightBlue">
               <p>
                 <strong>Suspected/</strong>
                 <strong>probable/</strong>
                 <strong>Confirmed Rabies Cases/ Deaths reported by all the districts-</strong>
               </p>
             </td>
-            <td colspan="3">
-              {{-- <input type="text"> --}}
-            </td>
+          
           </tr>
           <tr>
             <td colspan="2">
@@ -336,14 +330,12 @@
             </td>
           </tr>
           <tr>
-            <td colspan="2" class="bglightBlue">
+            <td colspan="5" class="bglightBlue">
               <p>
                 <strong>Status of Anti Rabies Vaccine (ARV) used by all the districts in the month (no. of vials)-</strong>
               </p>
             </td>
-            <td colspan="3">
-              {{-- <input type="text"> --}}
-            </td>
+           
           </tr>
           <tr>
             <td colspan="2">
@@ -397,14 +389,12 @@
             </td>
           </tr>
           <tr>
-            <td colspan="2" class="bglightBlue">
+            <td colspan="5" class="bglightBlue">
               <p>
                 <strong>Status of Anti Rabies Serum (ARS) used by all the districts in the month (no. of vials)-</strong>
               </p>
             </td>
-            <td colspan="3">
-              {{-- <input type="text"> --}}
-            </td>
+            
           </tr>
           <tr>
             <td colspan="2">
