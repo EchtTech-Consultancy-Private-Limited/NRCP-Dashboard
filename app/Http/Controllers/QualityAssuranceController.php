@@ -90,7 +90,7 @@ class QualityAssuranceController extends Controller
                     return false;
                 } 
             }
-            return back()->with($notification);
+            return redirect()->route('quality')->with($notification);
     }
 
     public function destroy($id)

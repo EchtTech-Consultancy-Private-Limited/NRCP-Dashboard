@@ -92,7 +92,7 @@ class EquipmentsController extends Controller
                     return false;
                 } 
             }
-            return back()->with($notification);
+            return redirect()->route('equipments')->with($notification);
     }
 
     public function destroy($id)

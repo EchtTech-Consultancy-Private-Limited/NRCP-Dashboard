@@ -27,7 +27,7 @@
             <td>{{$investigateReport->interviewer_contact_number}}</td>
             <td>{{$investigateReport->suspect_age}}</td>
             <td>{{$investigateReport->suspected_gender}}</td>
-            <td>
+            <td class="text-nowrap">
                 <a href= "{{route('national.investigate-report-edit',$investigateReport->id)}}" id="edit_2" class="btn bg-success action-btn pformEdit" data-id="2" title="Edit">
                   <i class="fa fa-edit"></i>
                 </a>

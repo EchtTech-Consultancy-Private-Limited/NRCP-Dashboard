@@ -58,6 +58,23 @@
 .lab-form-d .basic-card .card-link {text-align: center;}
 
 
+@media(max-width:1550px) and (min-width:768px){
+    .row.select-filter .col-md-4 {
+        width: 100% !important;
+        max-width: 100%;
+        flex: 0 0 100%;
+    }
+    .row.select-filter .col-md-8 {
+        width: 100% !important;
+        max-width: 100%;
+        flex: 0 0 100%;
+    }
+    .box-heading h1.main-heading {
+        font-weight: 600 !important;
+        font-size: 20px !important;
+        margin-bottom: 16px;
+    }
+}
 @media(max-width:1599px){
    
     .state-user-dashboard .box {
@@ -106,6 +123,15 @@
     .chart-container {
         height: 300px;
       }
+      .box-heading {
+        display: flex;
+    }
+    .row.select-filter{
+        gap: 0;
+        justify-content: space-between;
+        flex: 0 0 100%;
+    }
+    
       
 }
 @media(min-width:1592px){

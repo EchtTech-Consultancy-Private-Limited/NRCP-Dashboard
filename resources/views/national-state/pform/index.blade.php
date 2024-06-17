@@ -3,7 +3,7 @@
 @endsection 
 @section('content') 
 <div class="container-fluid">
-    <table id="general_profiles_TABLE2" class="w-100">
+    <table id="general_profiles_TABLE2" class="w-100 p-form-table table-responsive">
         <thead>
           <tr>
             <th>Sl#</th>
@@ -25,7 +25,7 @@
             <td>{{$stateUserpForm->email}}</td>            
             <td>{{$stateUserpForm->type_of_health}}</td>
             <td> {{date('d-m-Y',strtotime($stateUserpForm->suspected_date))}}</td>
-            <td>
+            <td class="text-nowrap">
                 <a href= "{{route('national.p-form-edit',$stateUserpForm->id)}}" id="edit_2" class="btn bg-success action-btn pformEdit" data-id="2" title="Edit">
                   <i class="fa fa-edit"></i>
                 </a>

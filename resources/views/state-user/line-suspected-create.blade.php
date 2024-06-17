@@ -36,7 +36,7 @@
                         </div>
                         </div>
                         <div class="row" style="display: flex;justify-content: space-around;">
-                        <div class="col-md-4">
+                        <div class="col-md-5">
                             <div class="addressBlock">
 
                             <p >
@@ -60,7 +60,7 @@
                         </div> 
                         
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-5">
                             <div class="emailBlock">
                                 <p >
                                     Type of Health Facility/Block/District/State:
@@ -93,9 +93,7 @@
                             </div>
                         
                         </div>
-                        <div class="col-md-4">
-
-                        </div>
+                       
                     </div>
                 
                 </div>

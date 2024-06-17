@@ -75,7 +75,7 @@
           </tr>
         </tbody>
       </table>
-      <h3 class="title"> Detailed Monthly report: - </h3>
+      <h3 class="title ml-0"> Detailed Monthly Report: - </h3>
       <table class="">
         <tbody>
           <tr>

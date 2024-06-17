@@ -17,10 +17,22 @@
                                     <div class="col-lg-3 col-md-3 col-6">
                                         <div class="form-group">
                                             <label for="state">State<span class="star">*</span></label>
-                                            <input type="text" name="state" maxlength="45" id="state" value="{{$general_profile->state}}" class="form-control" />
-                                            @error('state') 
-                                                <span class="form-text text-muted">{{ $message }}</span>
-                                            @enderror 
+                                            <select class="form-select state click-function"
+                                            aria-label="Default select example" id="state"
+                                            name="state"
+                                            onChange="handleFilterValue();handleDistrict()">
+                                            <option value="" selected state-name=""> Select
+                                                State
+                                            </option>
+                                            @foreach (state_list() as $state)
+                                                <option value="{{ $state->state_name }}" {{ ($general_profile->state == $state->state_name) ? 'selected' : ''}}>
+                                                    {{ ucfirst($state->state_name) ?? '' }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                        @error('state') 
+                                            <span class="form-text text-muted">{{ $message }}</span>
+                                        @enderror
                                         </div>
                                     </div>
                                     <div class="col-lg-3 col-md-3 col-6">

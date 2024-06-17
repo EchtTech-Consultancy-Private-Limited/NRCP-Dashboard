@@ -18,6 +18,26 @@ $(document).ready(function() {
         }
     });
 });
+// js for auto responsive managing table
+// let theadWidth = $('thead').width();
+// let tbodyWidth = $('tbody').innerWidth();
+// console.log("thead", theadWidth, "tbodywidth",tbodyWidth);
+
+// let tableWidth = $('table').innerWidth();
+// console.log("table",tableWidth);
+
+// let containerFluidWidth = $('.container-fluid').innerWidth() - 31.4;
+// console.log("containerfluidwidth",containerFluidWidth);
+
+// if (theadWidth) { // Ensure theadWidth is defined
+//     if ((theadWidth < tableWidth && tableWidth < containerFluidWidth) && tbodyWidth < tableWidth) {
+//         $('table').css('display', 'table');
+//     } else {
+//         $('table').css('display', 'block');
+//     }
+// }
+
+
 
 let selectBox = $('select');
 selectBox.each(function () {
@@ -171,9 +191,9 @@ function addMore4() {
     // Create a table row
     let create_tr = $('<tr>').append(`
         <td></td>
-        <td><input type="text" name="animal_suspected_transmitting[transmitting_rabies_name_address][]"></td>
-        <td><input type="text" name="animal_suspected_transmitting[transmitting_rabies_relation][]"></td>
-        <td>
+        <td class="bggrey"><input type="text" name="animal_suspected_transmitting[transmitting_rabies_name_address][]"></td>
+        <td class="bggrey"><input type="text" name="animal_suspected_transmitting[transmitting_rabies_relation][]"></td>
+        <td class="">
             <a role="button" class="btn btn-danger remove-table-row float-right">
                 <i class="fa fa-trash" aria-hidden="true"></i>
             </a>
@@ -256,9 +276,9 @@ contact_with_patient_checkbox.on("change", function() {
         // Create a table row with a unique identifier
         let create_tr = $('<tr>').addClass(`row-${id}`).append(`
             <td>${contact_with_patient_value}</td>
-            <td><input type="text" name="${contact_with_patient_value}[relation_with_${contact_with_patient_value}_name]"></td>
-            <td><input type="text" name="${contact_with_patient_value}[relation_with_${contact_with_patient_value}_address]"></td>
-            <td><input type="text" name="${contact_with_patient_value}[relation_with_${contact_with_patient_value}_contact_number]"></td>
+            <td class="bggrey"><input type="text" name="${contact_with_patient_value}[relation_with_${contact_with_patient_value}_name]"></td>
+            <td class="bggrey"><input type="text" name="${contact_with_patient_value}[relation_with_${contact_with_patient_value}_address]"></td>
+            <td class="bggrey"><input type="text" name="${contact_with_patient_value}[relation_with_${contact_with_patient_value}_contact_number]"></td>
         `);
 
         // Append the table row to the table
@@ -280,10 +300,10 @@ function addMore5() {
     // Create a table row
     let create_tr = $('<tr>').append(`
         <td></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td>
+        <td ><input type="text"></td>
+        <td ><input type="text"></td>
+        <td ><input type="text"></td>
+        <td >
             <a role="button" class="btn btn-danger remove-table-row float-right">
                 <i class="fa fa-trash" aria-hidden="true"></i>
             </a>
@@ -373,6 +393,10 @@ jQuery( document ).ready(function() {
         $(this).siblings(".text-muted").hide();
     });
 
+    $('form input[type=email]').focus(function(){
+        $(this).siblings(".text-muted").hide();
+    });
+
     $('select').focus(function(){
         $(this).siblings(".text-muted").hide();
     });
@@ -411,19 +435,19 @@ $(document).ready(function(){
     //   'responsive': true
     // });
     var table = $('#general_profiles_TABLE2').DataTable({
-        'responsive': true,
-        'columnDefs': [
-            {
-                'targets': '.none', // Target the columns with the "none" class
-                'visible': false // Hide the targeted columns
-            }
-        ]
+        // 'responsive': true,
+        // 'columnDefs': [
+        //     {
+        //         'targets': '.none', // Target the columns with the "none" class
+        //         'visible': false // Hide the targeted columns
+        //     }
+        // ]
     });
         // Handle click on "Expand All" button
      
 });
     var table = $('#general_profiles_TABLE').DataTable({
-        'responsive': true,
+        // 'responsive': true,
     });
         // Handle click on "Expand All" button
      
