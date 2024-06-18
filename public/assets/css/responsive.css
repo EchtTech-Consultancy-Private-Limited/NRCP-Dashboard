@@ -1,4 +1,4 @@
-@media(max-width:1300px){
+@media(max-width:1300px) {
     .user-icon i {
         font-size: 19px;
         margin-bottom: 7px;
@@ -17,69 +17,102 @@
     .basic-card .card-content {
         padding: 10px 7px;
     }
+
     .basic-card .card-title {
         font-size: 15px;
     }
+
     .basic-card .card-link {
         padding: 9px 7px;
     }
+
     .dashboard-filter .institute_year_filter select {
         font-size: 13px;
-       
+
     }
-    
-    .lab-form-d .basic-card .card-title, .lab-form-d .basic-card .card-text {
+
+    .lab-form-d .basic-card .card-title,
+    .lab-form-d .basic-card .card-text {
         font-size: 18px;
         text-align: center;
         width: 100%;
     }
 
-    .lab-form-d .basic-card .card-content{width: 100%; padding: 15px 10px; }
-    .lab-form-d .basic-card .card-link a, .lab-form-d .basic-card-aqua .card-link span {
+    .lab-form-d .basic-card .card-content {
+        width: 100%;
+        padding: 15px 10px;
+    }
+
+    .lab-form-d .basic-card .card-link a,
+    .lab-form-d .basic-card-aqua .card-link span {
         font-size: 14px;
         font-weight: 600 !important;
         width: 100%;
     }
-    .lab-form-d .basic-card .card-link {text-align: center;}
+
+    .lab-form-d .basic-card .card-link {
+        text-align: center;
+    }
 }
 
-.lab-form-d .basic-card .card-title, .lab-form-d .basic-card .card-text {
+.lab-form-d .basic-card .card-title,
+.lab-form-d .basic-card .card-text {
     font-size: 26px;
     text-align: center;
     width: 100%;
 }
 
-.lab-form-d .basic-card .card-content{width: 100%; padding: 15px 10px; }
-.lab-form-d .basic-card .card-link a, .lab-form-d .basic-card-aqua .card-link span {
+.lab-form-d .basic-card .card-content {
+    width: 100%;
+    padding: 15px 10px;
+}
+
+.lab-form-d .basic-card .card-link a,
+.lab-form-d .basic-card-aqua .card-link span {
     font-size: 16px;
     font-weight: 600 !important;
     width: 100%;
 }
-.lab-form-d .basic-card .card-link {text-align: center;}
+
+.lab-form-d .basic-card .card-link {
+    text-align: center;
+}
 
 
-@media(max-width:1550px) and (min-width:768px){
+@media(max-width:1550px) and (min-width:768px) {
     .row.select-filter .col-md-4 {
         width: 100% !important;
         max-width: 100%;
         flex: 0 0 100%;
     }
+
     .row.select-filter .col-md-8 {
         width: 100% !important;
         max-width: 100%;
         flex: 0 0 100%;
     }
+
     .box-heading h1.main-heading {
         font-weight: 600 !important;
         font-size: 20px !important;
         margin-bottom: 16px;
     }
 }
-@media(max-width:1599px){
-   
+
+@media(max-width:480px) {
+
+    input[name="aadhar_number"],
+    input[type="email"] {
+        width: 100% !important;
+    }
+}
+
+@media(max-width:1599px) {
+
     .state-user-dashboard .box {
         padding: 7px !important;
     }
+
     .state-user-dashboard .box .cases {
         font-size: 17px;
         font-weight: bold;
@@ -93,11 +126,13 @@
     }
 
 }
-@media(max-width:1399px){
+
+@media(max-width:1399px) {
     .chart-container {
         height: 200px !important;
-      }
-      .title {
+    }
+
+    .title {
         font-size: 17px;
         margin-left: 16px;
         font-weight: 600;
@@ -113,31 +148,44 @@
         max-width: none;
     }
 
-    .single_crm{
+    .single_crm {
         min-height: 109px;
     }
-  
+
 }
 
-@media(min-width:1400px){
+@media(min-width:1400px) {
     .chart-container {
         height: 300px;
-      }
-      .box-heading {
+    }
+
+    .box-heading {
         display: flex;
     }
-    .row.select-filter{
+
+    .row.select-filter {
         gap: 0;
         justify-content: space-between;
         flex: 0 0 100%;
     }
-    
-      
-}
-@media(min-width:1592px){
-    table#general_profiles_TABLE {
-        display: table !important;
-    } 
-    
+
+
 }
 
+@media(min-width:1592px) {
+    table#general_profiles_TABLE {
+        display: table !important;
+    }
+
+}
+
+
+@media print {
+    #container {
+        width: 100%;
+    }
+
+    .detailsDatas {
+        width: 100%;
+    }
+}

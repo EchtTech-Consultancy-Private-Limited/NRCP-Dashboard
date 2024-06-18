@@ -1035,4 +1035,8 @@ td.bggrey input {
 
 table {
   overflow-x: auto;
+}
+
+input[name=aadhar_number], input[type=email] {
+  width: 200px !important;
 }/*# sourceMappingURL=dashboard.css.map */

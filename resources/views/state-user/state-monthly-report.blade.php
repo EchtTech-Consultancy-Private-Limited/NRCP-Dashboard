@@ -19,7 +19,7 @@
       </div>
       <form method="POST" action="{{route('state.monthly-report-store')}}" id="monthly_report_store">
         @csrf
-      <table class="w-auto">
+      <table class="">
         <tbody>
           <tr class="">
             <td>
@@ -75,7 +75,7 @@
           </tr>
         </tbody>
       </table>
-      <h3 class="title ml-0"> Detailed Monthly Report: - </h3>
+      <h3 class="title ml-0 my-3"> Detailed Monthly Report: - </h3>
       <table class="">
         <tbody>
           <tr>

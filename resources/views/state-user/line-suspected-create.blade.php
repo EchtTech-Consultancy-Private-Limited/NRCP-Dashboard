@@ -65,7 +65,7 @@
                         <div class="col-md-5">
                             <div class="emailBlock">
                                 <p>
-                                    Type of Health Facility/Block/District/State <span class="text-danger">*</span>:
+                                    Type of Health Facility/Block/District/State <span class="text-danger">*</span> <br>
                                     <select name="type_of_health" id="type_of_health">
                                         <option value=""> Select state</option>
                                         @foreach ($states as $key => $state)
