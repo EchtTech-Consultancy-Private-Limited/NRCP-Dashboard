@@ -1027,4 +1027,12 @@ input[type=date] {
 
 td.bggrey input {
   background: #d0cece;
+}
+
+.w-30 {
+  width: 30% !important;
+}
+
+table {
+  overflow-x: auto;
 }/*# sourceMappingURL=dashboard.css.map */

@@ -895,6 +895,7 @@ const pyramidChart = (result) => {
         },
     };
     const chartContainer = document.querySelector("#chart");
+    console.log(chartContainer)
     chartContainer.innerHTML = '';
     let chart = new ApexCharts(document.querySelector("#chart"), options);
     chart.render();

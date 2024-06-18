@@ -3,9 +3,9 @@
 @endsection 
 @section('content') 
 
-<div class="container-fluid dashboard">
+<div class="container-fluid dashboard investigate-report">
   <div class="form-tab">
-    <div class="dashboard-filter mb-5">
+    <div class="dashboard-filter mb-5 ">
       <div class="logoHeader">
         <img src="{{ asset('state-assets/images/undp.png') }}" />
         <img src="{{ asset('state-assets/images/emblem.jpg') }}" />
@@ -84,7 +84,7 @@
                 <strong>Total districts in the state </strong>
               </p>
             </td>
-            <td colspan="3">
+            <td colspan="3" class="w-30">
                 <input type="text" name="total_districts" value="{{ old('total_districts') }}">
             </td>
           </tr>
