@@ -5,7 +5,7 @@
 @section('content')
   <form action="{{ route('state.investigate-store') }}" method="post">
     @csrf
-    <div class="dashboard">
+    <div class="dashboard investigate-report">
         <div class="form-tab">
         <div class="dashboard-filter mb-4">
             <table>
@@ -1492,11 +1492,7 @@
                     </tr>
                     <tr>
                         <td colspan="1">
-                            <p>
-                                6.4
-                                <strong>If deceased,</strong>
-                                where did deceased die
-                            </p>
+                            <p class="d-block">     6.4   <strong class="ml-1">If deceased,</strong>    where did deceased die        </p>
                         </td>
                         <td colspan="3">
 
@@ -1531,11 +1527,7 @@
                     </tr>
                     <tr>
                         <td colspan="4">
-                            <p>
-                                6.6
-                                <strong>If Yes,</strong>
-                                please share details of health facilities
-                            </p>
+                            <p> 6.6  <strong class="ml-1">If Yes,</strong>    please share details of health facilities  </p>
                         </td>
                     </tr>
                     <tr>
@@ -1678,7 +1670,7 @@
                     </tr>
                     <tr>
                         <td colspan="4">
-                            <p>7.1 Postmortem done: &nbsp;
+                            <p>7.1 Post - Mortem done: &nbsp;
                                 <label for="postmortem_yes">Yes</label>
                                 <input type="radio" name="postmortem" value="yes" id="postmortem_yes" {{ old('postmortem') == 'yes' ? 'checked' : '' }}>
                                 

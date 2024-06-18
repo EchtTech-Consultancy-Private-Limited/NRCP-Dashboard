@@ -58,7 +58,7 @@ class FormController extends Controller
             'name_nodal_person.required' => 'Name of the nodal person is required',
             'designation_nodal_person.required' => 'Designation of the nodal person is required',
             'phone_number.required' => 'Phone number is required',
-            'email.required' => 'Email address is required.',
+            'email.required' => 'Email address is required',
             'email.email' => 'Email address must be a valid email format',
             'institute_name.required' => 'Institute name is required',
             'aadhar_number.required' => 'Aadhar number is required',

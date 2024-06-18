@@ -2,7 +2,7 @@
 @section('title') {{ 'NRCP State Dashboard | Line Suspected' }}
 @endsection
 @section('content')
-<div class="container-fluid dashboard">
+<div class="container-fluid dashboard investigate-report">
     <div class="ncdc-container form-tab">
         <div class="dashboard-filter lform_create">
             <form action="{{ route('state.lform-store') }}" method="post" id="lform-store">

@@ -1047,3 +1047,12 @@ input[type=date]{
 td.bggrey input {
     background: #d0cece;
 }
+.w-30{
+	width: 30% !important;
+}
+table{
+	overflow-x: auto;
+}
+input[name="aadhar_number"], input[type="email"] {
+    width: 200px !important;
+}

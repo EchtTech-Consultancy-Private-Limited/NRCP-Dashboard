@@ -20,14 +20,17 @@ p {
   margin: 0;
 }
 
-table {
+.investigate-report table {
   margin: auto;
   width: 100%;
   border-collapse: collapse;
   border-spacing: 0;
   border: 1px solid #000;
 }
-table p {
+.investigate-report table th p {
+  color: #fff;
+}
+.investigate-report table p {
   font-size: 11px;
   margin: 0;
   color: #000;
@@ -36,43 +39,49 @@ table p {
   margin: 0;
   align-items: center;
 }
-table p input[type=checkbox] {
+.investigate-report table p input[type=checkbox] {
   width: 11px;
   margin-right: 12px;
 }
-table img {
+.investigate-report table img {
   height: 90px;
 }
-table td {
+.investigate-report table td {
   padding: 3px 13px 3px 5px;
   border-bottom: 1px solid #000 !important;
   border-top: 1px solid #000 !important;
   border-left: 1px solid #000 !important;
   border-right: 1px solid #000 !important;
 }
-table td:last-child {
+.investigate-report table td:last-child {
   border-right: 0;
 }
-table td[rowspan="2"] {
+.investigate-report table td[rowspan="2"] {
   border-left: 1px solid #000 !important;
 }
-table table {
+.investigate-report table table {
   margin: auto;
   border-collapse: collapse;
   width: 100%;
   border: 1px solid #000;
 }
-table table tr:first-child td {
+.investigate-report table table tr:first-child td {
   border-top: 1px solid #000 !important;
 }
-table table tr td {
+.investigate-report table table tr td {
   border-left: 1px solid #000 !important;
 }
-table table tr td:last-child {
+.investigate-report table table tr td:last-child {
   border-right: 1px solid #000;
 }
-table table th {
+.investigate-report table table th {
   padding: 5px 10px;
+}
+.investigate-report table table th:first-child {
+  border-left: 1px solid #000 !important;
+}
+.investigate-report table table th:last-child {
+  border-right: 1px solid #000 !important;
 }
 
 .container {
