@@ -12,7 +12,7 @@
             <th>Designation</th>
             <th>Contact number</th>
             <th>Gender</th>
-            <th>Age</th>
+            {{-- <th>Age</th> --}}
             <th>Action</th>
           </tr>
         </thead>
@@ -25,8 +25,8 @@
             <td> {{date('d-m-Y',strtotime($investigateReport->interview_date))}}</td>
             <td>{{$investigateReport->interviewer_designation}}</td>
             <td>{{$investigateReport->interviewer_contact_number}}</td>
-            <td>{{$investigateReport->suspect_age}}</td>
             <td>{{$investigateReport->suspected_gender}}</td>
+            {{-- <td>{{$investigateReport->suspect_age}}</td> --}}
             <td>
                 <a href= "{{route('national.investigate-report-edit',$investigateReport->id)}}" id="edit_2" class="btn bg-success action-btn pformEdit" data-id="2" title="Edit">
                   <i class="fa fa-edit"></i>

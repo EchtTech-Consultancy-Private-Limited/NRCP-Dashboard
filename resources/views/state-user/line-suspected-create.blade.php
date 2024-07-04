@@ -67,7 +67,7 @@
                                     <select name="type_of_health" id="type_of_health">
                                         <option value=""> Select state</option> 
                                         @foreach ($states as $key => $state) 
-                                        <option value="{{ ucwords($state->name) }}" {{ $state->name == old('type_of_health') ? 'selected' : '' }}>
+                                        <option value="{{ ucwords($state->name) }}" {{ ucwords($state->name) == old('type_of_health') ? 'selected' : '' }}>
                                         {{ ucwords($state->name) }}
                                         </option> 
                                         @endforeach
