@@ -1670,7 +1670,7 @@
                     </tr>
                     <tr>
                         <td colspan="4">
-                            <p>7.1 Post - Mortem done: &nbsp;
+                            <p>7.1 Post-mortem done: &nbsp;
                                 <label for="postmortem_yes">Yes</label>
                                 <input type="radio" name="postmortem" value="yes" id="postmortem_yes" {{ old('postmortem') == 'yes' ? 'checked' : '' }}>
                                 
