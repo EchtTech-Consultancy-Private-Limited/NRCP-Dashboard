@@ -545,14 +545,14 @@
                                 <div class="dashboard-filter mb-4">
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <div class="box-heading d-block">
-                                                <h1 class="main-heading text-center">State wise availability of ARV /
+                                            <div class="box-heading d-block pb-2">
+                                                <h1 class="main-heading mb-0">State wise availability of ARV /
                                                     ARS</h1>
                                             </div>
                                         </div>
                                         <div class="col-md-12">
                                             <div class="box-heading">
-                                                <h1 class="main-heading ">Availability of ARV</h1>
+                                                <h1 class="main-heading-subtitle ">Availability of ARV</h1>
                                             </div>
                                         </div>
                                         <div class="col-md-12">

@@ -63,7 +63,7 @@
 	font-size: 22px;
     width: 100%;
     display: block;
-    text-align: center;
+    // text-align: center;
   }
   
   .laboratory-card .user-icon {
@@ -1055,4 +1055,12 @@ table{
 }
 input[name="aadhar_number"], input[type="email"] {
     width: 200px !important;
+}
+.highchart-title h3 {
+    font-size: 19px;
+    text-align: center;
+    background: #0c72ad;
+    color: #fff;
+    padding: 9px;
+    border-radius: 7px 7px 0px 0px;
 }
