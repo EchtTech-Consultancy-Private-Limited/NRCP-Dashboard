@@ -99,7 +99,7 @@ class NhmDashboardController extends Controller
         try{
             $breadCrum = "NHM Dashboard";
             DB::beginTransaction();
-            $nhms = NhmDashboard::with('state')->where('state_id',$id)->get();
+            $nhms = NhmDashboard::with('state')->where('state_id',$id)->orderBy('year', 'desc')->get();
             DB::commit();
             return view('nhm.view',compact('nhms','breadCrum'));
         }catch (Exception $e) {

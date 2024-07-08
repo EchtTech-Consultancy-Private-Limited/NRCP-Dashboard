@@ -1157,9 +1157,7 @@ const defaultLaboratoryMapData = () => {
                     yAxis: {
                         min: 0,
                         max: 100,
-                        title: {
-                            text: '<h3 class="highChartTitle" style="font-size:12px">Number Of Sample Received</h3>',                            
-                        }
+                        title: null
                     },
                     series: [{
                         name: 'Number Of Sample Received',
@@ -1178,10 +1176,7 @@ const defaultLaboratoryMapData = () => {
                     yAxis: {
                         min: 0,
                         max: 100,
-                        title: {
-                            text: '<h3 class="highChartTitle" style="font-size:12px">Number Of Test Conducted</h3>',
-                           
-                        }
+                        title: null
                     },
                     series: [{
                         name: 'Number Of Test Conducted',
@@ -1202,9 +1197,7 @@ const defaultLaboratoryMapData = () => {
                     yAxis: {
                         min: 0,
                         max: 100,
-                        title: {
-                            text: '<h3 class="highChartTitle" style="font-size:12px">Total Number Of Positives</h3>'
-                        }
+                        title: null
                     },
                     series: [{
                         name: 'Total Number Of Positives',
@@ -1226,9 +1219,7 @@ const defaultLaboratoryMapData = () => {
                     yAxis: {
                         min: 0,
                         max: 100,
-                        title: {
-                            text: '<h3 class="highChartTitle" style="font-size:12px">Number Entered into IHIP</h3>'
-                        }
+                        title: null
                     },
                     series: [{
                         name: 'Number Entered into IHIP',
