@@ -105,6 +105,7 @@ class NhmDashboardController extends Controller
         }catch (Exception $e) {
             DB::rollBack();
             throw new Exception($e->getMessage());
+            
         }
     }
     
