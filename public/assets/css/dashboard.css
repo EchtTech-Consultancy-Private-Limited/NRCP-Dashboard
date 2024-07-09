@@ -65,7 +65,6 @@ body {
   font-size: 22px;
   width: 100%;
   display: block;
-  text-align: center;
 }
 
 .laboratory-card .user-icon img {
@@ -949,7 +948,7 @@ input[type=date]:invalid::-webkit-datetime-edit {
 
 .btn.bg-danger {
   border-radius: 5px;
-  padding: 5px 8px;
+  padding: 5px 20px;
   font-size: 14px;
 }
 
@@ -1039,4 +1038,13 @@ table {
 
 input[name=aadhar_number], input[type=email] {
   width: 200px !important;
+}
+
+.highchart-title h3 {
+  font-size: 19px;
+  text-align: center;
+  background: #0c72ad;
+  color: #fff;
+  padding: 9px;
+  border-radius: 7px 7px 0px 0px;
 }/*# sourceMappingURL=dashboard.css.map */

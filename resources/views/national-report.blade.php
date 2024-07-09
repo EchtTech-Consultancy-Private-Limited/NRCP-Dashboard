@@ -7,7 +7,7 @@
         <div class='row'>
             <div class="col-md-12">
                 <div class="card card-primary dashboard">
-                    <div class="form-tab">
+                    <div class="dashboard-filter">
                         <div class="bootstrap-tab">
                             <div class="tab-content" id="myTabContent">
                                 <form action="{{ route('national-report-export') }}" method="post" class="">

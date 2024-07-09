@@ -109,7 +109,7 @@
                                             </div>
                                         </div>
                                         <div class="col-lg-3 col-md-3 col-4">
-                                            <div class="form-group">
+                                            <div class="form-group mb-0">
                                                 <label for="diseasesSyndromes">Diseases Syndromes<span
                                                         class="star"></span></label>
                                                 <select class="form-select" aria-label="Default select example"
@@ -123,7 +123,29 @@
                                                 </small>
                                             </div>
                                         </div>
+                                        <div class="col search-reset align-items-end">
+                                            <div class=" apply-filter text-center">
+                                                <button id="apply_filter"
+                                                    class="btn  bg-primary text-light apply-filter button border-0 mr-2">Search</button>
 
+                                            </div>
+
+                                            <input type="hidden" value="" id="filter_state">
+                                            <input type="hidden" value="" id="filter_district">
+                                            <input type="hidden" value="2022" id="filter_from_year">
+                                            <input type="hidden" value="" id="filter_to_year">
+                                            <input type="hidden" value="2" id="filter_form_type">
+                                            <input type="hidden" value="" id="filter_diseases">
+                                            <input type="hidden" value="0" id="session_value">
+                                            <input type="hidden" value="" id="is_graph_data_available">
+                                            <!-- </form> -->
+                                            <div class=" apply-filter">
+                                                <!-- <label for=""><span class="star"></span></label> -->
+                                                <button id="reset_button"
+                                                    class="btn bg-danger border-0 text-light apply-filter text-white ">Reset</button>
+
+                                            </div>
+                                        </div>
 
                                         <div class="col-lg-12 col-md-2 col-4" id="test_performed">
                                             <div class="form-group">
@@ -154,32 +176,8 @@
                                                 </small>
                                             </div>
                                         </div>
+                                       
 
-                                        <div class="col-lg-12 col-md-12 col-12 search-reset">
-                                            <div class=" apply-filter text-center">
-                                                <!-- <label for=""><span
-                                        class="star"></span></label> -->
-                                                <button id="apply_filter"
-                                                    class="btn  bg-primary text-light apply-filter button border-0 mr-2">Search</button>
-
-                                            </div>
-
-                                            <input type="hidden" value="" id="filter_state">
-                                            <input type="hidden" value="" id="filter_district">
-                                            <input type="hidden" value="2022" id="filter_from_year">
-                                            <input type="hidden" value="" id="filter_to_year">
-                                            <input type="hidden" value="2" id="filter_form_type">
-                                            <input type="hidden" value="" id="filter_diseases">
-                                            <input type="hidden" value="0" id="session_value">
-                                            <input type="hidden" value="" id="is_graph_data_available">
-                                            <!-- </form> -->
-                                            <div class=" apply-filter">
-                                                <!-- <label for=""><span class="star"></span></label> -->
-                                                <button id="reset_button"
-                                                    class="btn bg-danger border-0 text-light apply-filter text-white ">Reset</button>
-
-                                            </div>
-                                        </div>
                                     </div>
                                 </div>
 
@@ -277,7 +275,7 @@
                                 <div class="dashboard-filter mb-4">
                                     <div class="row">
                                         <div class="col-md-12">
-                                        <div class="box-heading">
+                                            <div class="box-heading">
                                                 <div class="row select-filter">
                                                     <div class="col-md-4 ">
                                                         <h1 class="main-heading">State wise Bar Graph</h1>
@@ -286,8 +284,11 @@
                                                     <div class="col-md-8">
                                                         <div class="d-flex align-items-center justify-content-between">
                                                             <div class="d-flex align-items-center">
-                                                                <label for="district" class="mr-3  text-nowrap mb-0">Year <span class="star">*</span></label>
-                                                                <select name="year" id="year2" class="form-control" style="color: grey;">
+                                                                <label for="district"
+                                                                    class="mr-3  text-nowrap mb-0">Year <span
+                                                                        class="star">*</span></label>
+                                                                <select name="year" id="year2" class="form-control"
+                                                                    style="color: grey;">
                                                                     <option value="">Select Year</option>
                                                                     <option value="">2019-2020</option>
                                                                     <option value="">2020-2021</option>
@@ -295,8 +296,11 @@
                                                                     <option value="">2022-2023</option>
                                                                     <option value="">2023-2024</option>
                                                                 </select>
-                                                                <label for="district" class="mr-3 ml-3 text-nowrap mb-0">Month <span class="star">*</span></label>
-                                                                <select name="month" id="month2" class="form-control" style="color: grey;">
+                                                                <label for="district"
+                                                                    class="mr-3 ml-3 text-nowrap mb-0">Month <span
+                                                                        class="star">*</span></label>
+                                                                <select name="month" id="month2" class="form-control"
+                                                                    style="color: grey;">
                                                                     <option value="">Select Month</option>
                                                                     <option value="">January</option>
                                                                     <option value="">February</option>
@@ -315,7 +319,10 @@
                                                             </div>
 
                                                             <div class="">
-                                                                <button class="dt-button buttons-print" type="button" onclick="printDiv('State-wise-bar-graph' "><span><i class="fa fa-print" aria-hidden="true"></i></span></button>
+                                                                <button class="dt-button buttons-print" type="button"
+                                                                    onclick="printDiv('State-wise-bar-graph' "><span><i
+                                                                            class="fa fa-print"
+                                                                            aria-hidden="true"></i></span></button>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -538,14 +545,14 @@
                                 <div class="dashboard-filter mb-4">
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <div class="box-heading d-block">
-                                                <h1 class="main-heading text-center">State wise availability of ARV /
+                                            <div class="box-heading d-block pb-2">
+                                                <h1 class="main-heading mb-0">State wise availability of ARV /
                                                     ARS</h1>
                                             </div>
                                         </div>
                                         <div class="col-md-12">
                                             <div class="box-heading">
-                                                <h1 class="main-heading ">Availability of ARV</h1>
+                                                <h1 class="main-heading-subtitle ">Availability of ARV</h1>
                                             </div>
                                         </div>
                                         <div class="col-md-12">
@@ -649,54 +656,62 @@
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
-                                                               <tr>
-                                                                <td>NCT of Delhi </td>
-                                                                <td>September 2023 </td>
-                                                                <td class="download-icon-width">
-                                                                    <div class="download ">
-                                                                        <a href="#"><span class="view">View</span></a>
-                                                                        <i class="fa fa-file-pdf-o" aria-hidden="true"></i>
-                                                                        <span class="size">(42.18kb)
-                                                                        </span>
-                                                                    </div>
-                                                                </td>
-                                                               </tr>
-                                                               <tr>
-                                                                <td>Uttar Pradesh    </td>
-                                                                <td>September 2023 </td>
-                                                                <td class="download-icon-width">
-                                                                    <div class="download ">
-                                                                        <a href="#"><span class="view">View</span></a>
-                                                                        <i class="fa fa-file-pdf-o" aria-hidden="true"></i>
-                                                                        <span class="size">(43.20kb)
-                                                                        </span>
-                                                                    </div>
-                                                                </td>
-                                                               </tr>
-                                                               <tr>
-                                                                <td>Tamil Nadu </td>
-                                                                <td>September 2023 </td>
-                                                                <td class="download-icon-width">
-                                                                    <div class="download ">
-                                                                        <a href="#"><span class="view">View</span></a>
-                                                                        <i class="fa fa-file-pdf-o" aria-hidden="true"></i>
-                                                                        <span class="size">(729.83kb)
-                                                                        </span>
-                                                                    </div>
-                                                                </td>
-                                                               </tr>
-                                                               <tr>
-                                                                <td>West Bengal </td>
-                                                                <td>September 2023 </td>
-                                                                <td class="download-icon-width">
-                                                                    <div class="download ">
-                                                                        <a href="#"><span class="view">View</span></a>
-                                                                        <i class="fa fa-file-pdf-o" aria-hidden="true"></i>
-                                                                        <span class="size">(43.14kb)
-                                                                        </span>
-                                                                    </div>
-                                                                </td>
-                                                               </tr>
+                                                                <tr>
+                                                                    <td>NCT of Delhi </td>
+                                                                    <td>September 2023 </td>
+                                                                    <td class="download-icon-width">
+                                                                        <div class="download ">
+                                                                            <a href="#"><span
+                                                                                    class="view">View</span></a>
+                                                                            <i class="fa fa-file-pdf-o"
+                                                                                aria-hidden="true"></i>
+                                                                            <span class="size">(42.18kb)
+                                                                            </span>
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>Uttar Pradesh </td>
+                                                                    <td>September 2023 </td>
+                                                                    <td class="download-icon-width">
+                                                                        <div class="download ">
+                                                                            <a href="#"><span
+                                                                                    class="view">View</span></a>
+                                                                            <i class="fa fa-file-pdf-o"
+                                                                                aria-hidden="true"></i>
+                                                                            <span class="size">(43.20kb)
+                                                                            </span>
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>Tamil Nadu </td>
+                                                                    <td>September 2023 </td>
+                                                                    <td class="download-icon-width">
+                                                                        <div class="download ">
+                                                                            <a href="#"><span
+                                                                                    class="view">View</span></a>
+                                                                            <i class="fa fa-file-pdf-o"
+                                                                                aria-hidden="true"></i>
+                                                                            <span class="size">(729.83kb)
+                                                                            </span>
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>West Bengal </td>
+                                                                    <td>September 2023 </td>
+                                                                    <td class="download-icon-width">
+                                                                        <div class="download ">
+                                                                            <a href="#"><span
+                                                                                    class="view">View</span></a>
+                                                                            <i class="fa fa-file-pdf-o"
+                                                                                aria-hidden="true"></i>
+                                                                            <span class="size">(43.14kb)
+                                                                            </span>
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
                                                             </tbody>
                                                         </table>
                                                     </div>
