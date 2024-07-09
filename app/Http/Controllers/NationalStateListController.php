@@ -267,6 +267,7 @@ class NationalStateListController extends Controller
             $states = CountryState::get();
             $cities = City::get();
             DB::commit();
+            // dd($stateUserLForm);
             return view('national-state.lform.view', compact('stateUserLForm','states','cities'));
         }catch (Exception $e) {
             DB::rollBack();

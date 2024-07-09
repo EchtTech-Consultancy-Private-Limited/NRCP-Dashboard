@@ -3,7 +3,7 @@
 @endsection 
 @section('content') 
 <div class="container-fluid">
-    <table id="general_profiles_TABLE2" class="w-100">
+    <table id="general_profiles_TABLE2 table-responsive" class="w-100">
         <thead>
           <tr>
             <th>Sl#</th>
@@ -25,7 +25,7 @@
             <td>{{$stateUserLForm->email}}</td>            
             <td>{{$stateUserLForm->phone_number}}</td>
             <td> {{ $stateUserLForm->institute_name }}</td>
-            <td>
+            <td class="text-nowrap text-center">
                 <a href= "{{route('national.l-form-edit',$stateUserLForm->id)}}" id="edit_2" class="btn bg-success action-btn pformEdit" data-id="2" title="Edit">
                   <i class="fa fa-edit"></i>
                 </a>

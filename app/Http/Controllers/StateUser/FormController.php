@@ -53,8 +53,19 @@ class FormController extends Controller
             'email' => 'required|unique:state_user_l_forms,email', 
             'institute_name' => 'required',
             'aadhar_number' => 'required|unique:state_user_l_forms,aadhar_number|numeric|digits:12',
+        ],
+        [
+            'name_nodal_person.required' => 'Name of the nodal person is required',
+            'designation_nodal_person.required' => 'Designation of the nodal person is required',
+            'phone_number.required' => 'Phone number is required',
+            'email.required' => 'Email address is required',
+            'email.email' => 'Email address must be a valid email format',
+            'institute_name.required' => 'Institute name is required',
+            'aadhar_number.required' => 'Aadhar number is required',
+            'aadhar_number.numeric' => 'Aadhar number must be a numeric value',
+            'aadhar_number.min_digits' => 'Aadhar number must be exactly 12 digits',
+            'aadhar_number.max_digits' => 'Aadhar number must be exactly 12 digits',
         ]);
-
         try {
             DB::beginTransaction();
             $LFormId = StateUserLForm::Create([

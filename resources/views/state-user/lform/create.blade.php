@@ -2,7 +2,7 @@
 @section('title') {{ 'NRCP State Dashboard | Line Suspected' }}
 @endsection
 @section('content')
-<div class="container-fluid dashboard">
+<div class="container-fluid dashboard investigate-report">
     <div class="ncdc-container form-tab">
         <div class="dashboard-filter lform_create">
             <form action="{{ route('state.lform-store') }}" method="post" id="lform-store">
@@ -33,7 +33,7 @@
                         <div class="col-md-12">
                             <p class="float-right">
                                 <strong>Date:</strong>
-                                <input type="date" name="current_date">
+                                <input type="text" data-date="date" placeholder="dd-mm-yyyy" name="current_date">
                             </p>
                         </div>
                     </div>
@@ -41,7 +41,7 @@
                         <div class="col-md-3">
                             <div class="emailBlock">
                                 <p>
-                                    Name of Nodal Person:
+                                    Name of Nodal Person <span class="text-danger">*</span>
                                     <input type="text" name="name_nodal_person" value="{{ old('name_nodal_person') }}">
                                     @if ($errors->has('name_nodal_person'))
                                     <span class="form-text text-muted">{{ $errors->first('name_nodal_person') }}</span>
@@ -53,7 +53,7 @@
                         <div class="col-md-3">
                             <div class="emailBlock">
                                 <p>
-                                    Designation of Nodal Person :
+                                    Designation of Nodal Person<span class="text-danger">*</span> 
                                     <input type="text" name="designation_nodal_person" value="{{ old('designation_nodal_person') }}">
                                     @if ($errors->has('designation_nodal_person'))
                                     <span class="form-text text-muted">{{ $errors->first('designation_nodal_person') }}</span>
@@ -66,7 +66,7 @@
                         <div class="col-md-3">
                             <div class="emailBlock">
                                 <p>
-                                    Contact Number:
+                                    Contact Number<span class="text-danger">*</span>
                                     <input type="text" name="phone_number" value="{{ old('phone_number') }}" maxlength="10" oninput="validateInput(this)">
                                     @if ($errors->has('phone_number'))
                                     <span class="form-text text-muted">{{ $errors->first('phone_number') }}</span>
@@ -80,7 +80,7 @@
                         <div class="col-md-3">
                             <div class="emailBlock">
                                 <p>
-                                    Email ID: <br>
+                                    Email ID<span class="text-danger">*</span> <br>
                                     <input type="email" name="email" value="{{ old('email') }}">
                                     @if ($errors->has('email'))
                                     <span class="form-text text-muted">{{ $errors->first('email') }}</span>
@@ -93,7 +93,7 @@
                         <div class="col-md-3">
                             <div class="emailBlock">
                                 <p >
-                                    Aadhar Number: <br>
+                                    Aadhar Number<span class="text-danger">*</span> <br>
                                     <input type="text" name="aadhar_number" value="{{ old('aadhar_number') }}" maxlength="12" oninput="validateInput(this)">
                                     @if ($errors->has('aadhar_number')) 
                                         <span class="form-text text-muted">{{ $errors->first('aadhar_number') }}</span> 
@@ -105,7 +105,7 @@
                         <div class="col-md-3">
                             <div class="emailBlock">
                                 <p>
-                                Institute Name: <br>
+                                Institute Name<span class="text-danger">*</span> <br>
                                     <input type="text" name="institute_name" value="{{ old('institute_name') }}">
                                     @if ($errors->has('institute_name'))
                                     <span class="form-text text-muted">{{ $errors->first('institute_name') }}</span>
@@ -319,7 +319,7 @@
                                     </select>
                                 </td>                                                                
                                <td>
-                                <input type="date" name="lform_sample_collection_date[]" value="{{ old('lform_sample_collection_date')[$index] ?? '' }}" id="lform_sample_collection_date">
+                                <input type="text" data-date="date" placeholder="dd-mm-yyyy" name="lform_sample_collection_date[]" value="{{ old('lform_sample_collection_date')[$index] ?? '' }}" id="lform_sample_collection_date">
                                </td>
                                <td>
                                     <select class="form-select" aria-label="Default select" name="number_of_test_performed[]" id="lform_speciman_type">
@@ -334,7 +334,7 @@
                                     <input type="text" name="lform_result[]" value="{{ old('lform_result')[$index] ?? '' }}" id="lform_result">
                                 </td>
                                 <td>
-                                    <input type="date" name="lform_result_declaration_date[]" value="{{ old('lform_result_declaration_date')[$index] ?? '' }}" id="lform_result_declaration_date">
+                                    <input type="text" data-date="date" placeholder="dd-mm-yyyy" name="lform_result_declaration_date[]" value="{{ old('lform_result_declaration_date')[$index] ?? '' }}" id="lform_result_declaration_date">
                                 </td>
                                 <td>
                                     <input type="text" name="lform_remark[]" value="{{ old('lform_remark')[$index] ?? '' }}" id="lform_remark">
@@ -401,14 +401,14 @@
         '<option value="CSF" @if(old('suspected_probable')[$index] ?? '' == "Confirmed") selected @endif>CSF</option>' +
         '<option value="Nuchal skin" @if(old('suspected_probable')[$index] ?? '' == "Confirmed") selected @endif>Nuchal skin</option>' +
         '<option value="Skin" @if(old('suspected_probable')[$index] ?? '' == "Confirmed") selected @endif>Skin</option></select></td>' +
-        '<td><input type="date" name="lform_sample_collection_date[]" value="" id="lform_sample_collection_date"></td>' +
+        '<td><input type="text" data-date="date" placeholder="dd-mm-yyyy" name="lform_sample_collection_date[]" value="" id="lform_sample_collection_date"></td>' +
         '<td><select class="form-select" aria-label="Default select " name="number_of_test_performed[]" id="number_of_test_performed"><option value="">Please Select</option>' +
         '<option value="RFFIT (CSF,Serum)">RFFIT (CSF,Serum)</option>' +
         '<option value="Real-time PCR (CSF,Saliva, Nuchal skin)">Real-time PCR (CSF,Saliva, Nuchal skin)</option>' +
         '<option value="Rabies Immunohistochemistry">Rabies Immunohistochemistry</option>' +
         '<option value="Other(insert)">Other(insert)</option></select></td>' +
         '<td><input type="text" name="lform_result[]" value="" id="lform_result"></td>' +
-        '<td><input type="date" name="lform_result_declaration_date[]" value="" id="lform_result_declaration_date"></td>' +
+        '<td><input type="text" data-date="date" placeholder="dd-mm-yyyy" name="lform_result_declaration_date[]" value="" id="lform_result_declaration_date"></td>' +
         '<td><input type="text" name="lform_remark[]" value="" id="lform_remark"></td>' +
         '<td class="text-nowrap">' +
         '<button type="button" name="add" id="add" class="btn btn-success add_more mr-1"><i class="fa fa-plus" style="font-size:16px"></i></button>' +
@@ -416,6 +416,37 @@
         '</td></tr>';
 
         $('#suspected_field').append(rowHtml);
+
+
+        
+let selectBox = $('select');
+selectBox.each(function () {
+    let valueArr = $(this).find(':selected').text().trim().split(' ');
+    if (valueArr.includes('select') || valueArr.includes('Select')) {
+        $(this).css('color', 'grey');
+    } else {
+        $(this).css('color', '#000');
+    }
+    
+});
+
+let selectBoxes = $("select");
+
+selectBoxes.each((index, element) => {
+    let select = $(element);
+    let selectedText = select.find(':selected').text();
+    let selectWords = selectedText.split(' ');
+
+    select.on('change', function () {
+        let selectedValue = $(this).find(':selected').text();
+        let selectedWords = selectedValue.split(' ');
+        if (selectedWords.includes('select') || selectedWords.includes('Select')) {
+            $(this).css('color', 'grey');
+        } else {
+            $(this).css('color', '#000');
+        }
+    });
+});
             });
         });
 

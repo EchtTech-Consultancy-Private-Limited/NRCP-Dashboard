@@ -64,22 +64,26 @@
                             <input id="user_type3" type="radio" name="user_type" value='3' class="mr-2"  {{ (old('user_type') == 2) ? 'checked' : ''}}>
                             <label for="user_type3">State User</label>
                         </div>
-                    </div>
-                    @error('user_type') 
+                        @error('user_type') 
                         <span class="form-text text-danger mb-1 ">{{ $message }}</span>
-                    @enderror
-                    <div class="input-group mb-4">
+                      @enderror
+                    </div>
+                  <div class="mb-4">
+                  <div class="input-group ">
                         <input type="email" name="email" value="{{ old('email') }}" class="form-control" placeholder="Email">                       
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-envelope"></span>
                             </div>
                         </div>
-                       
+                      
                     </div>
                     @error('email') 
                         <span class="form-text text-danger mb-1 ">{{ $message }}</span>
                     @enderror 
+                  </div>
+                    
+                   
                     <div class="input-group mb-4">
                         <input type="password" name="password" value="{{ old('password') }}" id="password" class="form-control" placeholder="Password">
                         <div class="input-group-append">
@@ -89,11 +93,11 @@
                                 <span class="fas fa-lock"></span>
                             </div>
                         </div>
-                      
-                    </div>
-                    @error('password') 
+                        @error('password') 
                             <span class="form-text text-danger mb-1">{{ $message }}</span>
                          @enderror 
+                    </div>
+                  
                     <div class="col-md-12">
                         <div class="captcha row">
                            <div class="col-md-7 pl-0">

@@ -355,7 +355,11 @@ textarea.valid {
 }
 
 .action-btn {
-  padding: 4px 10px;
+  padding: 5px 0px !important;
+  width: 30px;
+  height: 30px;
+  line-height: 1;
+  text-align: center;
 }
 
 .table td,
@@ -544,7 +548,7 @@ tspan.highChartTitle {
 }
 
 table tr.even {
-  background-color: rgba(63, 81, 181, 0.031372549) !important;
+  background-color: #d1e8f5 !important;
 }
 table td {
   border-left: 1px solid #ddd;
@@ -579,15 +583,12 @@ table tr th {
 table tr td {
   border-left: 1px solid #ddd;
   border-bottom: 1px solid #ddd;
-  padding: 5px 10px;
+  padding: 5px 7px;
 }
 table tr td:last-child {
   border-right: 1px solid #ddd;
 }
 
-.display.dataTable tr.even {
-  background-color: rgba(63, 81, 181, 0.031372549) !important;
-}
 .display.dataTable td {
   border-left: 1px solid #ddd;
 }
@@ -606,6 +607,18 @@ table tr td:last-child {
 }
 .display.dataTable th:last-child {
   border: none;
+}
+
+table.dataTable.display tbody tr.even > .sorting_1, table.dataTable.order-column.stripe tbody tr.even > .sorting_1 {
+  background-color: inherit !important;
+}
+
+table.dataTable.display tbody tr.odd > .sorting_1, table.dataTable.order-column.stripe tbody tr.odd > .sorting_1 {
+  background-color: inherit !important;
+}
+
+table.dataTable.stripe tbody tr.odd, table.dataTable.display tbody tr.odd {
+  background-color: #fff !important;
 }
 
 .dataTables_wrapper .dataTables_paginate .paginate_button {
@@ -641,6 +654,11 @@ table tr td:last-child {
 }
 
 .bootstrap-tab .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
+  color: #fff !important;
+}
+
+.dashboard .dashboard-filter .dataTables_wrapper .dataTables_paginate .paginate_button.current, .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover, .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+  background: #3f51b5 !important;
   color: #fff !important;
 }
 
@@ -919,7 +937,6 @@ input[type=date]::placeholder {
 }
 
 .box-heading {
-  display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 5px 0 20px;

@@ -245,12 +245,14 @@
                                     <div class="col-md-6">
                                         <div class="dashboard-filter mb-4 bg-yellow-color">
                                             <div class="row card-mm mt-3">
-                                               <div class="col-md-6">
-                                                  <div id="national-dashboard-monthly-report-received" class="rounded mb-3 received-chart"></div>
-                                               </div>
-                                               <div class="col-md-6">
-                                                  <div id="national-dashboard-monthly-report-not-received" class="rounded mb-3 received-chart"></div>
-                                               </div>   
+                                                <div class="col-md-6">
+                                                    <div id="national-dashboard-monthly-report-received"
+                                                        class="rounded mb-3 received-chart"></div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div id="national-dashboard-monthly-report-not-received"
+                                                        class="rounded mb-3 received-chart"></div>
+                                                </div>
                                             </div>
 
                                         </div>
@@ -258,12 +260,14 @@
                                     <div class="col-md-6">
                                         <div class="dashboard-filter mb-4 bg-blue-color">
                                             <div class="row card-mm mt-3">
-                                               <div class="col-md-6">
-                                                  <div id="national-dashboard-Nos-of-monthly-report-received" class="rounded mb-3 received-chart"></div>
-                                               </div>
-                                               <div class="col-md-6">
-                                                  <div id="national-dashboard-Nos-of-monthly-report-not-received" class="rounded mb-3 received-chart"></div>
-                                               </div>
+                                                <div class="col-md-6">
+                                                    <div id="national-dashboard-Nos-of-monthly-report-received"
+                                                        class="rounded mb-3 received-chart"></div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div id="national-dashboard-Nos-of-monthly-report-not-received"
+                                                        class="rounded mb-3 received-chart"></div>
+                                                </div>
                                             </div>
 
                                         </div>
@@ -273,42 +277,53 @@
                                 <div class="dashboard-filter mb-4">
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <div class="box-heading">
-                                                <h1 class="main-heading">State wise Bar Graph</h1>
+                                        <div class="box-heading">
+                                                <div class="row select-filter">
+                                                    <div class="col-md-4 ">
+                                                        <h1 class="main-heading">State wise Bar Graph</h1>
 
-                                                <div class="d-flex align-items-center">
-                                                    <label for="district" class="mr-3 text-nowrap mb-0">Month <span
-                                                            class="star">*</span></label>
-                                                    <select name="month" id="month" class="form-control">
-                                                        <option value="">Select Month</option>
-                                                        <option value="">January</option>
-                                                        <option value="">February</option>
-                                                        <option value="">March</option>
-                                                        <option value="">April</option>
-                                                        <option value="">May</option>
-                                                        <option value="">June</option>
-                                                        <option value="">July</option>
-                                                        <option value="">August</option>
-                                                        <option value="">September</option>
-                                                        <option value="">October</option>
-                                                        <option value="">November</option>
-                                                        <option value="">December</option>
-                                                    </select>
-                                                    <label for="district" class="mr-3 ml-3 text-nowrap mb-0">Year <span
-                                                            class="star">*</span></label>
-                                                    <select name="year" id="year" class="form-control">
-                                                        <option value="">Select Year</option>
-                                                        <option value="">2019-2020</option>
-                                                        <option value="">2020-2021</option>
-                                                        <option value="">2021-2022</option>
-                                                        <option value="">2022-2023</option>
-                                                        <option value="">2023-2024</option>
-                                                    </select>
+                                                    </div>
+                                                    <div class="col-md-8">
+                                                        <div class="d-flex align-items-center justify-content-between">
+                                                            <div class="d-flex align-items-center">
+                                                                <label for="district" class="mr-3  text-nowrap mb-0">Year <span class="star">*</span></label>
+                                                                <select name="year" id="year2" class="form-control" style="color: grey;">
+                                                                    <option value="">Select Year</option>
+                                                                    <option value="">2019-2020</option>
+                                                                    <option value="">2020-2021</option>
+                                                                    <option value="">2021-2022</option>
+                                                                    <option value="">2022-2023</option>
+                                                                    <option value="">2023-2024</option>
+                                                                </select>
+                                                                <label for="district" class="mr-3 ml-3 text-nowrap mb-0">Month <span class="star">*</span></label>
+                                                                <select name="month" id="month2" class="form-control" style="color: grey;">
+                                                                    <option value="">Select Month</option>
+                                                                    <option value="">January</option>
+                                                                    <option value="">February</option>
+                                                                    <option value="">March</option>
+                                                                    <option value="">April</option>
+                                                                    <option value="">May</option>
+                                                                    <option value="">June</option>
+                                                                    <option value="">July</option>
+                                                                    <option value="">August</option>
+                                                                    <option value="">September</option>
+                                                                    <option value="">October</option>
+                                                                    <option value="">November</option>
+                                                                    <option value="">December</option>
+                                                                </select>
 
-                                                    <button class="dt-button buttons-print" type="button" onclick="printDiv('State-wise-bar-graph')"><span><i class="fa fa-print" aria-hidden="true"></i></span></button>
+                                                            </div>
 
+                                                            <div class="">
+                                                                <button class="dt-button buttons-print" type="button" onclick="printDiv('State-wise-bar-graph' "><span><i class="fa fa-print" aria-hidden="true"></i></span></button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
+
+
                                             </div>
+
                                         </div>
                                         <div class="col-md-12">
                                             <div class="white_card_body">
@@ -318,6 +333,380 @@
                                     </div>
                                 </div>
 
+                                <div class="dashboard-filter mb-4">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="box-heading">
+                                                <div class="row select-filter">
+                                                    <div class="col-md-4 ">
+                                                        <h1 class="main-heading">State wise Patient Report</h1>
+
+                                                    </div>
+                                                    <div class="col-md-8">
+                                                        <div class="d-flex align-items-center justify-content-between">
+                                                            <div class="d-flex align-items-center">
+                                                                <label for="district"
+                                                                    class="mr-3  text-nowrap mb-0">Year <span
+                                                                        class="star">*</span></label>
+                                                                <select name="year" id="year2" class="form-control">
+                                                                    <option value="">Select Year</option>
+                                                                    <option value="">2019-2020</option>
+                                                                    <option value="">2020-2021</option>
+                                                                    <option value="">2021-2022</option>
+                                                                    <option value="">2022-2023</option>
+                                                                    <option value="">2023-2024</option>
+                                                                </select>
+                                                                <label for="district"
+                                                                    class="mr-3 ml-3 text-nowrap mb-0">Month <span
+                                                                        class="star">*</span></label>
+                                                                <select name="month" id="month2" class="form-control">
+                                                                    <option value="">Select Month</option>
+                                                                    <option value="">January</option>
+                                                                    <option value="">February</option>
+                                                                    <option value="">March</option>
+                                                                    <option value="">April</option>
+                                                                    <option value="">May</option>
+                                                                    <option value="">June</option>
+                                                                    <option value="">July</option>
+                                                                    <option value="">August</option>
+                                                                    <option value="">September</option>
+                                                                    <option value="">October</option>
+                                                                    <option value="">November</option>
+                                                                    <option value="">December</option>
+                                                                </select>
+
+                                                            </div>
+
+                                                            <div class="">
+                                                                <button class="dt-button buttons-print" type="button"
+                                                                    onclick="printDiv('State-wise-bar-graph' "><span><i
+                                                                            class="fa fa-print"
+                                                                            aria-hidden="true"></i></span></button>
+                                                            </div>
+
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="row">
+                                                <div class="col-md-7">
+                                                    <div class="row state-graph-filter">
+                                                        <div class="col">
+                                                            <div class="white_card  ">
+
+                                                                <div class="">
+                                                                    <div id="integrated-dashboard-state1"
+                                                                        class=" state-filter-highchart rounded  ">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col">
+                                                            <div class="white_card  ">
+                                                                <div class="">
+                                                                    <div id="integrated-dashboard-state2"
+                                                                        class=" state-filter-highchart rounded  received-chart">
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col">
+                                                            <div class="">
+                                                                <div id="integrated-dashboard-state3"
+                                                                    class=" state-filter-highchart rounded mb-0 ">
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col">
+                                                            <div class="white_card  ">
+
+                                                                <div class="">
+                                                                    <div id="integrated-dashboard-state4"
+                                                                        class=" state-filter-highchart rounded mb-0 received-chart">
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col">
+                                                            <div class="white_card  ">
+
+                                                                <div class="">
+                                                                    <div id="integrated-dashboard-state5"
+                                                                        class=" state-filter-highchart rounded mb-0 received-chart">
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col">
+                                                            <div class="white_card  ">
+
+                                                                <div class="">
+                                                                    <div id="integrated-dashboard-state6"
+                                                                        class=" state-filter-highchart rounded mb-0 received-chart">
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col">
+                                                            <div class="white_card  ">
+
+                                                                <div class="">
+                                                                    <div id="integrated-dashboard-state7"
+                                                                        class=" state-filter-highchart rounded mb-0 received-chart">
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col">
+                                                            <div class="white_card  ">
+
+                                                                <div class="">
+                                                                    <div id="integrated-dashboard-state8"
+                                                                        class=" state-filter-highchart rounded mb-0 received-chart">
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col">
+                                                            <div class="white_card  ">
+
+                                                                <div class="">
+                                                                    <div id="integrated-dashboard-state9"
+                                                                        class=" state-filter-highchart rounded mb-0 received-chart">
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col">
+                                                            <div class="white_card  ">
+
+                                                                <div class="">
+                                                                    <div id="integrated-dashboard-state10"
+                                                                        class=" state-filter-highchart rounded mb-0 received-chart">
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col">
+                                                            <div class="white_card  ">
+
+                                                                <div class="">
+                                                                    <div id="integrated-dashboard-state11"
+                                                                        class=" state-filter-highchart rounded mb-0 received-chart">
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-5">
+                                                    <div id="state-wise-patient-report-india-map"
+                                                        class="border rounded mb-3"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- State wise availability of ARV / ARS  start-->
+                                <div class="dashboard-filter mb-4">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="box-heading d-block">
+                                                <h1 class="main-heading text-center">State wise availability of ARV /
+                                                    ARS</h1>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="box-heading">
+                                                <h1 class="main-heading ">Availability of ARV</h1>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div id="state-wise-arv-bar-graph" class="border rounded mb-3"></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+
+                                        <div class="col-md-12">
+                                            <div class="box-heading">
+                                                <h1 class="main-heading mb-0">Availability of ARS</h1>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div id="state-wise-ars-bar-graph" class="border rounded mb-3"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- State wise availability of ARV / ARS end -->
+                                <!-- National Dashboard: Report Generate start -->
+                                <div class="dashboard-filter mb-4">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="box-heading pb-1">
+                                                <h1 class="main-heading">Report Generate</h1>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-12">
+                                            <form action="">
+                                                <div class="row align-items-center">
+                                                    <div class="col-md-3">
+                                                        <div class="form-group">
+                                                            <label for="district" class="mr-3 text-nowrap mb-0">State
+                                                                <span class="star">*</span></label>
+                                                            <select name="month" id="month" class="form-control"
+                                                                style="color: grey;">
+                                                                <option value="">Select State</option>
+                                                                <option value="">Uttar Pradesh</option>
+                                                                <option value="">Madhya Pradesh</option>
+                                                                <option value="">Uttarakhand</option>
+                                                                <option value="">Himanchal Pradesh</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <div class="form-group">
+                                                            <label for="district" class="mr-3 text-nowrap mb-0">Month
+                                                                <span class="star">*</span></label>
+                                                            <select name="month" id="month" class="form-control"
+                                                                style="color: grey;">
+                                                                <option value="">Select Month</option>
+                                                                <option value="">January</option>
+                                                                <option value="">February</option>
+                                                                <option value="">March</option>
+                                                                <option value="">April</option>
+                                                                <option value="">May</option>
+                                                                <option value="">June</option>
+                                                                <option value="">July</option>
+                                                                <option value="">August</option>
+                                                                <option value="">September</option>
+                                                                <option value="">October</option>
+                                                                <option value="">November</option>
+                                                                <option value="">December</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <div class="form-group">
+                                                            <label for="formType" class="mr-3 text-nowrap mb-0">Year
+                                                                <span class="star">*</span></label>
+                                                            <select name="year" id="year" class="form-control"
+                                                                style="color: grey;">
+                                                                <option value="">Select Year</option>
+                                                                <option value="">2019-2020</option>
+                                                                <option value="">2020-2021</option>
+                                                                <option value="">2021-2022</option>
+                                                                <option value="">2022-2023</option>
+                                                                <option value="">2023-2024</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-md-3 mt-4">
+                                                        <div class="">
+                                                            <button type="submit" class="btn bg-primary button">Export
+                                                                Excel</button>
+                                                            <button type="reset"
+                                                                class="btn bg-danger me-3">Reset</button>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-md-12 mt-4">
+                                                        <table id="general_profiles_TABLE2" class="w-100 ">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>State</th>
+                                                                    <th>Month | Year</th>
+                                                                    <th>View/Download</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                               <tr>
+                                                                <td>NCT of Delhi </td>
+                                                                <td>September 2023 </td>
+                                                                <td class="download-icon-width">
+                                                                    <div class="download ">
+                                                                        <a href="#"><span class="view">View</span></a>
+                                                                        <i class="fa fa-file-pdf-o" aria-hidden="true"></i>
+                                                                        <span class="size">(42.18kb)
+                                                                        </span>
+                                                                    </div>
+                                                                </td>
+                                                               </tr>
+                                                               <tr>
+                                                                <td>Uttar Pradesh    </td>
+                                                                <td>September 2023 </td>
+                                                                <td class="download-icon-width">
+                                                                    <div class="download ">
+                                                                        <a href="#"><span class="view">View</span></a>
+                                                                        <i class="fa fa-file-pdf-o" aria-hidden="true"></i>
+                                                                        <span class="size">(43.20kb)
+                                                                        </span>
+                                                                    </div>
+                                                                </td>
+                                                               </tr>
+                                                               <tr>
+                                                                <td>Tamil Nadu </td>
+                                                                <td>September 2023 </td>
+                                                                <td class="download-icon-width">
+                                                                    <div class="download ">
+                                                                        <a href="#"><span class="view">View</span></a>
+                                                                        <i class="fa fa-file-pdf-o" aria-hidden="true"></i>
+                                                                        <span class="size">(729.83kb)
+                                                                        </span>
+                                                                    </div>
+                                                                </td>
+                                                               </tr>
+                                                               <tr>
+                                                                <td>West Bengal </td>
+                                                                <td>September 2023 </td>
+                                                                <td class="download-icon-width">
+                                                                    <div class="download ">
+                                                                        <a href="#"><span class="view">View</span></a>
+                                                                        <i class="fa fa-file-pdf-o" aria-hidden="true"></i>
+                                                                        <span class="size">(43.14kb)
+                                                                        </span>
+                                                                    </div>
+                                                                </td>
+                                                               </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <!-- National Dashboard: Report Generate end -->
                                 <div class="presumptive-cases dashboard-filter mt-3">
                                     <h1 id="map-text" class="map-text my-3">Human Rabies (Presumptive Cases) in
                                         India

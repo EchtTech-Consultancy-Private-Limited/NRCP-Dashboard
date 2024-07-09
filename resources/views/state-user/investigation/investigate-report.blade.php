@@ -5,7 +5,7 @@
 @section('content')
   <form action="{{ route('state.investigate-store') }}" method="post">
     @csrf
-    <div class="dashboard">
+    <div class="dashboard investigate-report">
         <div class="form-tab">
         <div class="dashboard-filter mb-4">
             <table>
@@ -40,8 +40,8 @@
                         </td>
                     </tr>
                     <tr>
-                        <td colspan="38" style="text-align: center;">
-                            <p>
+                        <td colspan="38" >
+                            <p class="justify-content-center">
                                 <strong>INVESTIGATION FORM FOR SUSPECTED HUMAN RABIES CASE</strong>
                             </p>
                         </td>
@@ -49,13 +49,13 @@
                     <tr>
                         <td colspan="38" class="bglightBlue">
                             <p>
-                                <strong>1. Information about interviewer</strong>
+                                <strong>1. Information about Interviewer</strong>
                             </p>
                         </td>
                     </tr>
                     <tr>
                         <td colspan="5">
-                            <p>Name of interviewer</p>
+                            <p>Name of Interviewer</p>
                         </td>
                         <td colspan="18" class="bggrey">
                             <input type="text" name="interviewer_name" value="{{ old('interviewer_name') }}">
@@ -67,7 +67,7 @@
                             <p>Date of Interview</p>
                         </td>
                         <td colspan="5" class="bggrey">
-                            <input name="interview_date" value="{{ old('interview_date') }}" type="date">
+                            <input name="interview_date" value="{{ old('interview_date') }}" type="date"  pattern="\d{2}/\d{2}/\d{4}">
                             @if ($errors->has('interview_date'))
                                 <span class="form-text text-muted">{{ $errors->first('interview_date') }}</span>
                             @endif
@@ -84,7 +84,7 @@
                             @endif
                         </td>
                         <td colspan="10">
-                            <p>Contact number</p>
+                            <p>Contact Number</p>
                         </td>
                         <td colspan="5" class="bggrey">
                             <input name="interviewer_contact_number" value="{{ old('interviewer_contact_number') }}" type="text" oninput="validateInput(this)" maxlength="12">
@@ -145,7 +145,7 @@
                     </tr>
                     <tr>
                         <td colspan="7">
-                            <p>Level of education</p>
+                            <p>Level of Education</p>
                         </td>
                         <td colspan="10">
                             <input type="text" name="suspect_education[level1]" value="{{ old('suspect_education')['level1'] ?? '' ?? '' }}">
@@ -222,7 +222,7 @@
                     </tr>
                     <tr>
                         <td colspan="38">
-                            <p>Is/was patient immunocompromised? (if yes, provide details) 
+                            <p>Is/was Patient Immunocompromised? (If yes, provide details) 
                                 <input type="text" name="suspect_education[details]" value="{{ old('suspect_education.details') }}"></p>
                             </p>
                         </td>
@@ -230,41 +230,41 @@
                     <tr>
                         <td colspan="38" class="bglightBlue">
                             <p>
-                                <strong>3. Information about respondent</strong>
+                                <strong>3. Information About Respondent</strong>
                             </p>
                         </td>
                     </tr>
                     <tr>
                         <td colspan="5">
-                            <p>Name of respondent</p>
+                            <p>Name of Respondent</p>
                         </td>
-                        <td colspan="12">
+                        <td colspan="12" class="bggrey">
                             <input type="text" name="respondent_name" value="{{ old('respondent_name') }}">
                         </td>
                         <td colspan="10">
-                            <p>Age of respondent</p>
+                            <p>Age of Respondent</p>
                         </td>
-                        <td colspan="11">
+                        <td colspan="11" class="bggrey">
                             <input type="text" name="respondent_age" value="{{ old('respondent_age') }}">
                         </td>
                     </tr>
                     <tr>
                         <td colspan="5">
-                            <p>Contact number</p>
+                            <p>Contact Number</p>
                         </td>
-                        <td colspan="12">
+                        <td colspan="12" class="bggrey">
                             <input type="text" name="respondent_contact" value="{{ old('respondent_contact') }}">
                         </td>
                         <td colspan="10">
-                            <p>Address (if different from patient)</p>
+                            <p>Address (If Different From Patient)</p>
                         </td>
-                        <td colspan="11">
+                        <td colspan="11" class="bggrey">
                             <input type="text" name="respondent_address" value="{{ old('respondent_address') }}">
                         </td>
                     </tr>
                     <tr>
                         <td colspan="38">
-                            <p>Relationship to deceased / suspected patient</p>
+                            <p>Relationship to Deceased / Suspected Patient</p>
                         </td>
                     </tr>
                     <tr>
@@ -283,13 +283,13 @@
                         <td colspan="13">
                             <p>
                                 <input name="relationship_with_suspect" type="radio" id="Parent-in-law1" value="Parent-in-law" {{ old('relationship_with_suspect') == 'Parent-in-law' ? 'checked' : '' }} >
-                                <label for="Parent-in-law1">Parent-in-law</label>
+                                <label for="Parent-in-law1">Parent-in-Law</label>
                             </p>
                         </td>
                         <td colspan="11">
                             <p>
                                 <input name="relationship_with_suspect" type="radio" id="Community-leader1" value="Community-leader" {{ old('relationship_with_suspect') == 'Community-leader' ? 'checked' : '' }}>
-                                <label for="Community-leader1">Community leader</label>
+                                <label for="Community-leader1">Community Leader</label>
                             </p>
                         </td>
                     </tr>
@@ -297,7 +297,7 @@
                         <td colspan="4">
                             <p>
                                 <input name="relationship_with_suspect" type="radio" id="Husband-wife1" value="Husband-wife" {{ old('relationship_with_suspect') == 'Husband-wife' ? 'checked' : '' }}>
-                                <label for="Husband-wife1">Husband/wife</label>
+                                <label for="Husband-wife1">Husband/Wife</label>
                             </p>
                         </td>
                         <td colspan="10">
@@ -309,13 +309,13 @@
                         <td colspan="13">
                             <p>
                                 <input name="relationship_with_suspect" type="radio" id="Friend-neighbour1" value="Friend-neighbour" {{ old('relationship_with_suspect') == 'Friend-neighbour' ? 'checked' : '' }}>
-                                <label for="Friend-neighbour1">Friend or neighbour</label>
+                                <label for="Friend-neighbour1">Friend or Neighbour</label>
                             </p>
                         </td>
                         <td colspan="11">
                             <p>
                                 <input type="radio" name="relationship_with_suspect" id="Son-in-law-daughter-in-law1" value="Son-in-law/daughter-in-law" {{ old('relationship_with_suspect') == 'Son-in-law/daughter-in-law' ? 'checked' : '' }}>
-                                <label for="Son-in-law-daughter-in-law1">Son-in-law/daughter-in-law</label>
+                                <label for="Son-in-law-daughter-in-law1">Son-in-Law/Daughter-in-Law</label>
                             </p>
                         </td>
                     </tr>
@@ -323,10 +323,10 @@
                         <td colspan="14">
                             <p>
                                 <input type="radio" name="relationship_with_suspect" id="Health-care-worker1" value="Health care worker (facility name)" {{ old('relationship_with_suspect') == 'Health care worker (facility name)' ? 'checked' : '' }}>
-                                <label for="Health-care-worker1">Health care worker (facility name):</label>
+                                <label for="Health-care-worker1">Health Care Worker (Facility Name):</label>
                             </p>
                         </td>
-                        <td colspan="8">
+                        <td colspan="8" class="bggrey">
                             <input type="text" name="healthcare_worker_facility_name" value="{{ old('healthcare_worker_facility_name') }}" {{ old('relationship_with_suspect') == 'Health care worker (facility name)' ? 'style=display:block' : '' }}>
                         </td>
                         <td colspan="11">
@@ -335,20 +335,20 @@
                                 <label for="Other1">Other(specify):</label>
                             </p>
                         </td>
-                        <td colspan="5">
+                        <td colspan="5" class="bggrey">
                             <input type="text" name="specify_other_name" value="{{ old('specify_other_name') }}" {{ old('relationship_with_suspect') == 'Other(specify)' ? 'style=display:block' : '' }}>
                         </td>
                     </tr>
                     <tr>
                         <td colspan="38" class="bglightBlue">
                             <p>
-                                <strong>4. Exposure History (during previous 12 months)</strong>
+                                <strong>4. Exposure History (During previous 12 months)</strong>
                             </p>
                         </td>
                     </tr>
                     <tr>
                         <td colspan="38">
-                            <p>Did deceased / suspected patient have any contacts with animals (bites, scratches, and licks)
+                            <p>Did Deceased / Suspected patient have any contacts with animals (bites, scratches, and licks)
                                 within 12 months before the illness?</p>
                         </td>
                     </tr>
@@ -356,7 +356,7 @@
                         <td>
                             <p>
                                 <input type="radio" id="CategoryI1" name="suspect_contact_with_animals" value="category1" {{ old('suspect_contact_with_animals') == 'category1' ? 'checked' : '' }}>
-                                <label for="CategoryI1">Yes, Category I exposure</label>
+                                <label for="CategoryI1">Yes, Category I Exposure</label>
                             </p>
                         </td>
                         <td colspan="38">
@@ -368,7 +368,7 @@
                         <td>
                             <p>
                                 <input type="radio" id="CategoryII1" name="suspect_contact_with_animals" value="category2" {{ old('suspect_contact_with_animals') == 'category2' ? 'checked' : '' }}>
-                                <label for="CategoryII1">Yes, Category II exposure</label>
+                                <label for="CategoryII1">Yes, Category II Exposure</label>
                             </p>
                         </td>
                         <td colspan="38">
@@ -380,7 +380,7 @@
                         <td>
                             <p>
                                 <input type="radio" id="CategoryIII1" name="suspect_contact_with_animals" value="category3" {{ old('suspect_contact_with_animals') == 'category3' ? 'checked' : '' }}>
-                                <label for="CategoryIII1">Yes, Category III exposure</label>
+                                <label for="CategoryIII1">Yes, Category III Exposure</label>
                             </p>
                         </td>
                         <td colspan="38">
@@ -446,13 +446,13 @@
                                 <label for="Other1">Other (Specify)</label>
                             </p>
                         </td>
-                        <td colspan="8">
+                        <td colspan="8" class="bggrey">
                             <p><input type="text" name="animal_species[other_text]" value="{{ old('animal_species.other_text') }}"></p>
                         </td>
                     </tr>
                     <tr>
                         <td colspan="38">
-                            <p>4.2 Type of animal</p>
+                            <p>4.2 Type of Animal</p>
                             <input type="text" name="type_of_animal[text]" value="{{ old('type_of_animal.text') }}">
                         </td>
                     </tr>
@@ -460,7 +460,7 @@
                         <td colspan="2">
                             <p>
                                 <input type="checkbox" name="type_of_animal[owned_by_deceased]" id="Owned-by-deceased1" {{ old('type_of_animal.owned_by_deceased') ? 'checked' : '' }}>
-                                <label for="Owned-by-deceased1">Owned by deceased</label>
+                                <label for="Owned-by-deceased1">Owned by Deceased</label>
                             </p>
                         </td>
                         <td colspan="10">
@@ -478,7 +478,7 @@
                         <td colspan="8">
                             <p>
                                 <input type="checkbox" name="type_of_animal[wild_animal]" id="Wild-animal1" {{ old('type_of_animal.wild_animal') ? 'checked' : '' }}>
-                                <label for="Wild-animal1">Wild animal</label>
+                                <label for="Wild-animal1">Wild Animal</label>
                             </p>
                         </td>
                         <td colspan="8">
@@ -492,16 +492,16 @@
                         <td colspan="30">
                             <p>4.3 On what date did deceased / suspected patient have contact with this animal?</p>
                         </td>
-                        <td colspan="8">
+                        <td colspan="8" class="bggrey">
                             <input type="date" name="deceased_date" value="{{ old('deceased_date') }}">
                         </td>
                     </tr>
                     <tr>
                         <td colspan="10">
-                            <p>4.4 Place of exposure?</p>
+                            <p>4.4 Place of Exposure?</p>
                             <input type="text" name="place_of_exposure" value="{{ old('place_of_exposure') }}">
                         </td>
-                        <td colspan="28">
+                        <td colspan="28" class="bggrey">
                             <input type="text" name="place_of_exposure_address" value="{{ old('place_of_exposure_address') }}" placeholder="Address">
                         </td>
                     </tr>
@@ -570,7 +570,7 @@
                                     <tr>
                                         <th>
                                             <p>
-                                                <strong>Wound no</strong>
+                                                <strong>Wound No</strong>
                                             </p>
                                         </th>
                                         <th>
@@ -682,25 +682,25 @@
                         <td>
                             <p>
                                 <input type="radio" name="animal_die_exposure" value="Yes/Died" id="Died1" {{ old('animal_die_exposure') == 'Yes/Died' ? 'checked' : '' }}>
-                                <label for="Died1">Yes, died</label>
+                                <label for="Died1">Yes, Died</label>
                             </p>
                         </td>
                         <td>
                             <p>
                                 <input type="radio" name="animal_die_exposure" value="Yes, was killed" id="WasKilled1" {{ old('animal_die_exposure') == 'Yes, was killed' ? 'checked' : '' }}>
-                                <label for="WasKilled1">Yes, was killed</label>
+                                <label for="WasKilled1">Yes, was Killed</label>
                             </p>
                         </td>
                         <td>
                             <p>
                                 <input type="radio" name="animal_die_exposure" value="No, still alive" id="StillAlive1" {{ old('animal_die_exposure') == 'No, still alive' ? 'checked' : '' }}>
-                                <label for="StillAlive1">No, still alive</label>
+                                <label for="StillAlive1">No, Still Alive</label>
                             </p>
                         </td>
                         <td>
                             <p>
                                 <input type="radio" name="animal_die_exposure" value="No, but died later" id="DiedLater1" {{ old('animal_die_exposure') == 'No, but died later' ? 'checked' : '' }}>
-                                <label for="DiedLater1">No, but died later</label>
+                                <label for="DiedLater1">No, but Died Later</label>
                             </p>
                         </td>
                         <td class="bggrey">
@@ -1480,10 +1480,10 @@
                         </td>
                     </tr>
                     <tr>
-                        <td colspan="2">
+                        <td colspan="1">
                             <p>6.3 Date of death</p>
                         </td>
-                        <td colspan="1" class="bggrey">
+                        <td colspan="2" class="bggrey">
                             <input type="date" name="date_of_birth" value="{{ old('date_of_birth') }}">
                         </td>
                         <td colspan="1">
@@ -1492,11 +1492,7 @@
                     </tr>
                     <tr>
                         <td colspan="1">
-                            <p>
-                                6.4
-                                <strong>If deceased,</strong>
-                                where did deceased die
-                            </p>
+                            <p class="d-block">     6.4   <strong class="ml-1">If deceased,</strong>    where did deceased die        </p>
                         </td>
                         <td colspan="3">
 
@@ -1531,24 +1527,20 @@
                     </tr>
                     <tr>
                         <td colspan="4">
-                            <p>
-                                6.6
-                                <strong>If Yes,</strong>
-                                please share details of health facilities
-                            </p>
+                            <p> 6.6  <strong class="ml-1">If Yes,</strong>    please share details of health facilities  </p>
                         </td>
                     </tr>
                     <tr>
-                        <td colspan="1">
+                        <td colspan="1" class="w-25">
                             <p>Name of Hospital/ Health facility (City/Village)</p>
                         </td>
-                        <td colspan="1" class="bggrey">
+                        <td colspan="1" class="bggrey w-25">
                             <p>HF 1</p>
                         </td>
-                        <td colspan="1" class="bggrey">
+                        <td colspan="1" class="bggrey w-25">
                             <p>HF2</p>
                         </td>
-                        <td colspan="1" class="bggrey">
+                        <td colspan="1" class="bggrey w-25">
                             <p>HF3</p>
                         </td>
                     </tr>
@@ -1678,7 +1670,7 @@
                     </tr>
                     <tr>
                         <td colspan="4">
-                            <p>7.1 Postmortem done: &nbsp;
+                            <p>7.1 Post - Mortem done: &nbsp;
                                 <label for="postmortem_yes">Yes</label>
                                 <input type="radio" name="postmortem" value="yes" id="postmortem_yes" {{ old('postmortem') == 'yes' ? 'checked' : '' }}>
                                 
@@ -1749,7 +1741,7 @@
                         <td colspan="4">
                             <p>8.1 Did anyone else in the community develop an illness similar to the deceased/ suspected
                                 patient within the past 12 months? 
-                                <label for="contact_tracking_yes">Yes</label>
+                                <label for="contact_tracking_yes" class="ml-3">Yes</label>
                                 <input type="radio" name="contact_tracking" value="yes" id="contact_tracking_yes" {{ old('contact_tracking') == 'yes' ? 'checked' : '' }}>
                                 <label for="contact_tracking_no">No</label>
                                 <input type="radio" name="contact_tracking" value="no" id="contact_tracking_no" {{ old('contact_tracking') == 'no' ? 'checked' : '' }}>
@@ -1812,33 +1804,33 @@
                                     @if(old('family.relation_with_family_name'))
                                     <tr>
                                         <td>Family</td>
-                                        <td><input type="text" name="family[relation_with_family_name]" value="{{ old('family.relation_with_family_name') }}"></td>
-                                        <td><input type="text" name="family[relation_with_family_address]" value="{{ old('family.relation_with_family_address') }}"></td>
-                                        <td><input type="text" name="family[relation_with_family_contact_number]" value="{{ old('family.relation_with_family_contact_number') }}"></td>
+                                        <td class="bggrey"><input type="text" name="family[relation_with_family_name]" value="{{ old('family.relation_with_family_name') }}"></td>
+                                        <td class="bggrey"><input type="text" name="family[relation_with_family_address]" value="{{ old('family.relation_with_family_address') }}"></td>
+                                        <td class="bggrey"><input type="text" name="family[relation_with_family_contact_number]" value="{{ old('family.relation_with_family_contact_number') }}"></td>
                                     </tr>
                                     @endif
                                     @if(old('community.relation_with_community_name'))
                                     <tr>
                                         <td>Community</td>
-                                        <td><input type="text" name="community[relation_with_community_name]" value="{{ old('community.relation_with_community_name') }}"></td>
-                                        <td><input type="text" name="community[relation_with_community_address]" value="{{ old('community.relation_with_community_address') }}"></td>
-                                        <td><input type="text" name="community[relation_with_community_contact_number]" value="{{ old('community.relation_with_community_contact_number') }}"></td>
+                                        <td class="bggrey"><input type="text" name="community[relation_with_community_name]" value="{{ old('community.relation_with_community_name') }}"></td>
+                                        <td class="bggrey"><input type="text" name="community[relation_with_community_address]" value="{{ old('community.relation_with_community_address') }}"></td>
+                                        <td class="bggrey"><input type="text" name="community[relation_with_community_contact_number]" value="{{ old('community.relation_with_community_contact_number') }}"></td>
                                     </tr>
                                     @endif
                                     @if(old('hospital_workers.relation_with_hospital_workers_name'))
                                     <tr>
                                         <td>Hospital workers</td>
-                                        <td><input type="text" name="hospital_workers[relation_with_hospital_workers_name]" value="{{ old('hospital_workers.relation_with_hospital_workers_name') }}"></td>
-                                        <td><input type="text" name="hospital_workers[relation_with_hospital_workers_address]" value="{{ old('hospital_workers.relation_with_hospital_workers_address') }}"></td>
-                                        <td><input type="text" name="hospital_workers[relation_with_hospital_workers_contact_number]" value="{{ old('hospital_workers.relation_with_hospital_workers_contact_number') }}"></td>
+                                        <td class="bggrey"><input type="text" name="hospital_workers[relation_with_hospital_workers_name]" value="{{ old('hospital_workers.relation_with_hospital_workers_name') }}"></td>
+                                        <td class="bggrey"><input type="text" name="hospital_workers[relation_with_hospital_workers_address]" value="{{ old('hospital_workers.relation_with_hospital_workers_address') }}"></td>
+                                        <td class="bggrey"><input type="text" name="hospital_workers[relation_with_hospital_workers_contact_number]" value="{{ old('hospital_workers.relation_with_hospital_workers_contact_number') }}"></td>
                                     </tr>
                                     @endif
                                     @if(old('any_other.relation_with_any_other_name'))
                                     <tr>
                                         <td>Any Other</td>
-                                        <td><input type="text" name="any_other[relation_with_any_other_name]" value="{{ old('any_other.relation_with_any_other_name') }}"></td>
-                                        <td><input type="text" name="any_other[relation_with_any_other_address]" value="{{ old('any_other.relation_with_any_other_address') }}"></td>
-                                        <td><input type="text" name="any_other[relation_with_any_other_contact_number]" value="{{ old('any_other.relation_with_any_other_contact_number') }}"></td>
+                                        <td class="bggrey"><input type="text" name="any_other[relation_with_any_other_name]" value="{{ old('any_other.relation_with_any_other_name') }}"></td>
+                                        <td class="bggrey"><input type="text" name="any_other[relation_with_any_other_address]" value="{{ old('any_other.relation_with_any_other_address') }}"></td>
+                                        <td class="bggrey"><input type="text" name="any_other[relation_with_any_other_contact_number]" value="{{ old('any_other.relation_with_any_other_contact_number') }}"></td>
                                     </tr>
                                     @endif
                                 </tbody>
@@ -1878,10 +1870,10 @@
                                     @foreach(old('animal_suspected_transmitting.transmitting_rabies_name_address', ['']) as $index => $oldValue)
                                     <tr id="row{{ $index + 1 }}">
                                         <td>{{ $index + 1 }}</td>
-                                        <td >
+                                        <td class="bggrey" >
                                             <input type="text" name="animal_suspected_transmitting[transmitting_rabies_name_address][]" value="{{ $oldValue }}">
                                         </td>
-                                        <td >
+                                        <td class="bggrey" >
                                             <input type="text" name="animal_suspected_transmitting[transmitting_rabies_relation][]" value="{{ old('animal_suspected_transmitting.transmitting_rabies_relation.'.$index) ?? '' ?? '' }}">
                                         </td>
                                         <td>

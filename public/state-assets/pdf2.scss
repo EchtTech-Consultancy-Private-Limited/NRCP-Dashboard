@@ -17,12 +17,17 @@ strong{
 p{
     margin: 0;
 }
-table{
+.investigate-report table{
     margin: auto;
     width: 100%;
     border-collapse: collapse;
     border-spacing: 0;
     border: 1px solid #000;
+    th{
+        p{
+            color: #fff;
+        }
+    }
    
     p {
         font-size: 11px;
@@ -43,36 +48,43 @@ table{
     }
     td {
         padding: 3px 13px 3px 5px;
-        border-bottom: 1px solid #000;
-        border-top: 0;
-        border-left: 0;
-        border-right: 1px solid #000;
+        border-bottom: 1px solid #000 !important;
+        border-top:  1px solid #000 !important;
+        border-left:  1px solid #000 !important;
+        border-right: 1px solid #000 !important;
         
         &:last-child{
             border-right: 0;
         }
     }
     td[rowspan="2"]{
-        border-left: 1px solid #000;
+        border-left: 1px solid #000 !important;
     }
     table {
         margin: auto;
         border-collapse: collapse;
         width: 100%;
-        border: 1px solid #000;
+        border: 1px solid #000 ;
+
         tr:first-child td{
-            border-top: 1px solid #000;
+            border-top: 1px solid #000 !important;
         }
         tr{
             td{
-                border-left: 1px solid #000;
+                border-left: 1px solid #000 !important;
             &:last-child{
                 border-right: 1px solid #000;
             }
             }
         }
         th{
-            padding: 0 10px;
+            padding: 5px 10px;
+            &:first-child{
+                border-left: 1px solid #000 !important;
+            }
+            &:last-child{
+                border-right: 1px solid #000 !important;
+            }
         }
     }
 }

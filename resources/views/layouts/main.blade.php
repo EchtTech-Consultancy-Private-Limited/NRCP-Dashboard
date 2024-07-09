@@ -3,10 +3,10 @@
     <div class="container-fluid">
         <div class="main-title nrcp-main-title">
         <div class="row mb-0 d-flex align-items-center">
-            <div class="col-sm-8">
+            <div class="col">
                 <h1 class="text-left"> @section('title') {{ config('app.name') }}@show</h1>
             </div>
-            <div class="col-sm-4">
+            <div class="col">
                 <ol class="breadcrumb  justify-content-end m-0 p-0 align-items-center" >
                     <li class="breadcrumb-item">
                         <a href="{{ Auth::user()->user_type == 3 ? route('state.dashboard') : (Auth::user()->user_type == 2 ? route('lab-dashboard') : route('dashboard')) }}">Dashboard</a>

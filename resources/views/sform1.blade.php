@@ -74,7 +74,7 @@
                                         </div>
                                     </div> -->
                                 </div>
-                                <div class="">
+                                <div class="QA_table">
                                     <table class="table table-condensed table-bordered table-responsive" id="tableId">
                                         <tbody>
                                             <tr>
@@ -1787,7 +1787,7 @@
                                                 ng-show="deathcaseform.wardlistid.$dirty &amp;&amp; deathcaseform.wardlistid.$invalid">
                                                 <small class="error  "
                                                     ng-show="deathcaseform.wardlistid.$error.required">
-                                                    Ward is required.</small>
+                                                    Ward is required</small>
                                             </div>
                                             <!-- <div ng-show="wardreq">
 												<small  Please select ward. </small>
@@ -1804,7 +1804,7 @@
                                             <div class="error  "
                                                 ng-show="deathcaseform.areaname.$dirty &amp;&amp; deathcaseform.areaname.$invalid">
                                                 <small class="error  " ng-show="deathcaseform.areaname.$error.required">
-                                                    Ward is required.</small>
+                                                    Ward is required</small>
                                             </div>
                                             <!-- <div ng-show="wardreq">
 												<small  Please select ward. </small>

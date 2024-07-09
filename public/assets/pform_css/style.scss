@@ -373,7 +373,11 @@ textarea.valid {
 }
 
 .action-btn {
-  padding: 4px 10px;
+  padding: 5px 0px !important;
+  width: 30px;
+  height: 30px;
+  line-height: 1;
+  text-align: center;
 }
 
 .table td,
@@ -609,7 +613,8 @@ tspan.highChartTitle {
 table {
 
   tr.even {
-    background-color: #3f51b508 !important;
+    // background-color: #3f51b508 !important;
+    background-color: #d1e8f5 !important;
 
   }
 
@@ -653,7 +658,7 @@ table {
     td {
       border-left: 1px solid #ddd;
       border-bottom: 1px solid #ddd;
-      padding: 5px 10px;
+      padding: 5px 07px;
 
       &:last-child {
         border-right: 1px solid #ddd;
@@ -665,7 +670,7 @@ table {
 .display.dataTable {
 
   tr.even {
-    background-color: #3f51b508 !important;
+    // background-color: #3f51b508 !important;
 
   }
 
@@ -694,7 +699,15 @@ table {
   }
 }
 
-
+table.dataTable.display tbody tr.even>.sorting_1, table.dataTable.order-column.stripe tbody tr.even>.sorting_1{
+  background-color: inherit !important;
+}
+table.dataTable.display tbody tr.odd>.sorting_1, table.dataTable.order-column.stripe tbody tr.odd>.sorting_1{
+  background-color: inherit !important;
+}
+table.dataTable.stripe tbody tr.odd, table.dataTable.display tbody tr.odd{
+  background-color: #fff !important;
+}
 .dataTables_wrapper .dataTables_paginate .paginate_button {
   border: 1px solid #630f4314 !important;
   font-size: 14px;
@@ -732,7 +745,10 @@ table {
     color: #fff !important;
   }
 }
-
+.dashboard .dashboard-filter .dataTables_wrapper .dataTables_paginate .paginate_button.current, .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover, .dataTables_wrapper .dataTables_paginate .paginate_button:hover{
+  background:#3f51b5 !important;
+  color: #fff !important;
+}
 .dataTables_wrapper .dataTables_paginate .paginate_button.disabled {
   cursor: default;
   color: #333 !important;
@@ -1018,7 +1034,7 @@ input[type="date"]::placeholder {
 }
 
 .box-heading {
-  display: flex;
+  // display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 5px 0 20px;
