@@ -19,6 +19,7 @@ use App\Exports\StateLformExport;
 use App\Models\InvestigateReport;
 use App\Models\StateUserLForm;
 use App\Models\LineSuspectedCalculate;
+use App\Models\State;
 
 class StateController extends Controller
 {    
@@ -42,7 +43,7 @@ class StateController extends Controller
      */
     public function stateMonthlyList()
     {
-        $stateMonthlyReports = StateMonthlyReport::orderBy('id', 'desc')->get();
+        $stateMonthlyReports = StateMonthlyReport::with('states')->orderBy('id', 'desc')->get();
         return view('state-user.state-monthly-report-list',compact('stateMonthlyReports'));
     }
     
@@ -53,7 +54,8 @@ class StateController extends Controller
      */
     public function stateMonthlyCreate()
     {
-        return view('state-user.state-monthly-report');
+        $states = State::get();
+        return view('state-user.state-monthly-report',compact('states'));
     }
     
     /**
@@ -64,10 +66,19 @@ class StateController extends Controller
      */
     public function stateMonthlystore(StateMonthlyRequest $request)
     {
-        try {
+        try {            
             DB::beginTransaction();
+                $date = Carbon::createFromFormat('Y-m-d', $request->reporting_month_year);
+                $checkExist = StateMonthlyReport::where('state_id', $request->state_id)
+                                ->whereYear('reporting_month_year', $date->year)
+                                ->whereMonth('reporting_month_year', $date->month)
+                                ->exists();
+                if($checkExist){
+                    return back()->with('message', 'A report for this state and month has already been created');
+                }
+
                 $stateMonthlyReport = StateMonthlyReport::create([
-                    'state_name' => $request->state_name,
+                    'state_id' => $request->state_id,
                     'state_nodal_office' => $request->state_nodal_office,
                     'office_address' => $request->office_address,
                     'reporting_month_year' => $request->reporting_month_year,

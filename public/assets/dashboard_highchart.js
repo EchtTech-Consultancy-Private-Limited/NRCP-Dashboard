@@ -895,7 +895,7 @@ const pyramidChart = (result) => {
         },
     };
     const chartContainer = document.querySelector("#chart");
-    console.log(chartContainer)
+    // console.log(chartContainer)
     chartContainer.innerHTML = '';
     let chart = new ApexCharts(document.querySelector("#chart"), options);
     chart.render();
@@ -1083,7 +1083,7 @@ const defaultLaboratoryMapData = () => {
                     $("#tableBodyLaboratory").append(mapRow);           
                 });
                 // Graph total row table
-                console.log(result.total_records.number_of_patients);      
+                // console.log(result.total_records.number_of_patients);      
                 const graphTableRow = `
                     <tr>
                         <td>${result.total_records.number_of_patients}</td>
@@ -2056,277 +2056,295 @@ function laboratoryResetButton() {
 // end LAboratory dashboard
 
 
-
-
-
 //  Monthly Report Received
+$(document).ready(function(){
+    $.ajax({
+        type: "GET",
+        url: BASE_URL + "national-highchart",
+        success: function(data) {
+            nationalHighchart(data);
+        }
+    });
+});
 
-Highcharts.chart('national-dashboard-monthly-report-received', {
-    chart: {
-        type: 'pie',
-        height: 210,
-       //  margin: [0, 0, 0, 0] // Set margins to remove extra space
-    },
-    title: {
-        useHTML: true,
-        text: '90%',
-        floating: true,
-        verticalAlign: 'middle',
-        y: 4,
-        style: {
-            fontSize: '16px'
-        }
-    },
-    credits: {
-        enabled: false
-    },
-    exporting: {
-        enabled: false
-    },
-    subtitle: {
-        useHTML: true,
-        text: '<div style="text-align:center;font-weight: 700;font-size: 14px;">% of Monthly Report Received </div>',
-        align: 'center',
-        verticalAlign: 'bottom',
-        y: 0, // Adjusted position
-        style: {
-            fontSize: '13px',
-            color: '#000'
-        }
-    },
-    legend: {
-        enabled: false
-    },
-    tooltip: {
-       enabled: false,
-    },
-    plotOptions: {
-        pie: {
-            size: '100%',
-            innerSize: '70%', // Adjusted for a larger inner circle
-            dataLabels: {
-                enabled: true,
-                // distance: -30, // Adjusted to move labels closer
-                style: {
-                    fontWeight: 'bold',
-                    fontSize: '16px'
-                },
-                connectorWidth: 0
+// highcharts
+function nationalHighchart(data)
+{
+    Highcharts.chart('national-dashboard-monthly-report-received', {
+        chart: {
+            type: 'pie',
+            height: 210,
+           //  margin: [0, 0, 0, 0] // Set margins to remove extra space
+        },
+        title: {
+            useHTML: true,
+            text: `${data.programUserDetails.totalPrecentage}%`,
+            floating: true,
+            verticalAlign: 'middle',
+            y: 4,
+            style: {
+                fontSize: '16px'
             }
-        }
-    },
-    colors: ['#a5a5a5', '#e7e6e6'],
-    series: [
-        {
-            type: 'pie',            
-            data: [
-                ['', 90],
-                ['', 10],
-            ]
-        }
-    ]
- });
-
-
-Highcharts.chart('national-dashboard-monthly-report-not-received', {
-    chart: {
-        type: 'pie',
-        height: 210,
-       //  margin: [0, 0, 0, 0] // Set margins to remove extra space
-    },
-    title: {
-        useHTML: true,
-        text: '10%',
-        floating: true,
-        verticalAlign: 'middle',
-        y: 4,
-        style: {
-            fontSize: '16px'
-        }
-    },
-    credits: {
-        enabled: false
-    },
-    exporting: {
-        enabled: false
-    },
-    subtitle: {
-        useHTML: true,
-        text: '<div style="text-align:center;font-weight: 700;font-size: 14px;">% of Monthly Report not Received </div>',
-        align: 'center',
-        verticalAlign: 'bottom',
-        y: 0, // Adjusted position
-        style: {
-            fontSize: '13px',
-            color: '#000'
-        }
-    },
-    legend: {
-        enabled: false
-    },
-    tooltip: {
-       enabled: false,
-    },
-    plotOptions: {
-        pie: {
-            size: '100%',
-            innerSize: '70%', // Adjusted for a larger inner circle
-            dataLabels: {
-                enabled: true,
-                // distance: -30, // Adjusted to move labels closer
-                style: {
-                    fontWeight: 'bold',
-                    fontSize: '16px'
-                },
-                connectorWidth: 0
+        },
+        credits: {
+            enabled: false
+        },
+        exporting: {
+            enabled: false
+        },
+        subtitle: {
+            useHTML: true,
+            text: '<div style="text-align:center;font-weight: 700;font-size: 14px;">% of Monthly Report Received </div>',
+            align: 'center',
+            verticalAlign: 'bottom',
+            y: 0, // Adjusted position
+            style: {
+                fontSize: '13px',
+                color: '#000'
             }
-        }
-    },
-    colors: ['#a5a5a5', '#e7e6e6'],
-    series: [
-        {
-            type: 'pie',            
-            data: [
-                ['', 10],
-                ['', 90],
-            ]
-        }
-    ]
- });
-
-Highcharts.chart('national-dashboard-Nos-of-monthly-report-received', {
-    chart: {
-        type: 'pie',
-        height: 210,
-       //  margin: [0, 0, 0, 0] // Set margins to remove extra space
-    },
-    title: {
-        useHTML: true,
-        text: '90 Nos.',
-        floating: true,
-        verticalAlign: 'middle',
-        y: 4,
-        style: {
-            fontSize: '16px'
-        }
-    },
-    credits: {
-        enabled: false
-    },
-    exporting: {
-        enabled: false
-    },
-    subtitle: {
-        useHTML: true,
-        text: '<div style="text-align:center;font-weight: 700;font-size: 14px;"> Nos. of Monthly Report Received </div>',
-        align: 'center',
-        verticalAlign: 'bottom',
-        y: 0, // Adjusted position
-        style: {
-            fontSize: '13px',
-            color: '#000'
-        }
-    },
-    legend: {
-        enabled: false
-    },
-    tooltip: {
-       enabled: false,
-    },
-    plotOptions: {
-        pie: {
-            size: '100%',
-            innerSize: '70%', // Adjusted for a larger inner circle
-            dataLabels: {
-                enabled: true,
-                // distance: -30, // Adjusted to move labels closer
-                style: {
-                    fontWeight: 'bold',
-                    fontSize: '16px'
-                },
-                connectorWidth: 0
+        },
+        legend: {
+            enabled: false
+        },
+        tooltip: {
+            enabled: true,
+            formatter: function() {
+                return '<b>' + this.point.name + '</b>: ' + this.y + '%';
             }
-        }
-    },
-    colors: ['#a5a5a5', '#e7e6e6'],
-    series: [
-        {
-            type: 'pie',            
-            data: [
-                ['', 90],
-                ['', 10],
-            ]
-        }
-    ]
- });
-
-
-Highcharts.chart('national-dashboard-Nos-of-monthly-report-not-received', {
-    chart: {
-        type: 'pie',
-        height: 210,
-       //  margin: [0, 0, 0, 0] // Set margins to remove extra space
-    },
-    title: {
-        useHTML: true,
-        text: '10 Nos.',
-        floating: true,
-        verticalAlign: 'middle',
-        y: 4,
-        style: {
-            fontSize: '16px'
-        }
-    },
-    credits: {
-        enabled: false
-    },
-    exporting: {
-        enabled: false
-    },
-    subtitle: {
-        useHTML: true,
-        text: '<div style="text-align:center;font-weight: 700;font-size: 14px;">Nos. of Monthly Report not received </div>',
-        align: 'center',
-        verticalAlign: 'bottom',
-        y: 0, // Adjusted position
-        style: {
-            fontSize: '13px',
-            color: '#000'
-        }
-    },
-    legend: {
-        enabled: false
-    },
-    tooltip: {
-       enabled: false,
-    },
-    plotOptions: {
-        pie: {
-            size: '100%',
-            innerSize: '70%', // Adjusted for a larger inner circle
-            dataLabels: {
-                enabled: true,
-                // distance: -30, // Adjusted to move labels closer
-                style: {
-                    fontWeight: 'bold',
-                    fontSize: '16px'
-                },
-                connectorWidth: 0
+        },
+        plotOptions: {
+            pie: {
+                size: '100%',
+                innerSize: '70%', // Adjusted for a larger inner circle
+                dataLabels: {
+                    enabled: true,
+                    // distance: -30, // Adjusted to move labels closer
+                    style: {
+                        fontWeight: 'bold',
+                        fontSize: '16px'
+                    },
+                    connectorWidth: 0
+                }
             }
-        }
-    },
-    colors: ['#a5a5a5', '#e7e6e6'],
-    series: [
-        {
-            type: 'pie',            
-            data: [
-                ['', 10],
-                ['', 90],
-            ]
-        }
-    ]
- });
+        },
+        colors: ['#a5a5a5', '#e7e6e6'],
+        series: [
+            {
+                type: 'pie',            
+                data: [
+                    ['Monthly Report Received', data.programUserDetails.totalPrecentage],
+                    ['Monthly Report Not Received', data.programUserDetails.totalPrecentageNot],
+                ]
+            }
+        ]
+    });
 
+    Highcharts.chart('national-dashboard-monthly-report-not-received', {
+        chart: {
+            type: 'pie',
+            height: 210,
+           //  margin: [0, 0, 0, 0] // Set margins to remove extra space
+        },
+        title: {
+            useHTML: true,
+            text: `${data.programUserDetails.totalPrecentageNot}%   `,
+            floating: true,
+            verticalAlign: 'middle',
+            y: 4,
+            style: {
+                fontSize: '16px'
+            }
+        },
+        credits: {
+            enabled: false
+        },
+        exporting: {
+            enabled: false
+        },
+        subtitle: {
+            useHTML: true,
+            text: '<div style="text-align:center;font-weight: 700;font-size: 14px;">% of Monthly Report not Received </div>',
+            align: 'center',
+            verticalAlign: 'bottom',
+            y: 0, // Adjusted position
+            style: {
+                fontSize: '13px',
+                color: '#000'
+            }
+        },
+        legend: {
+            enabled: false
+        },
+        tooltip: {
+            enabled: true,
+            formatter: function() {
+                return '<b>' + this.point.name + '</b>: ' + this.y + '%';
+            }
+        },
+        plotOptions: {
+            pie: {
+                size: '100%',
+                innerSize: '70%', // Adjusted for a larger inner circle
+                dataLabels: {
+                    enabled: true,
+                    // distance: -30, // Adjusted to move labels closer
+                    style: {
+                        fontWeight: 'bold',
+                        fontSize: '16px'
+                    },
+                    connectorWidth: 0
+                }
+            }
+        },
+        colors: ['#a5a5a5', '#e7e6e6'],
+        series: [
+            {
+                type: 'pie',            
+                data: [
+                    ['Monthly Report Not Received', data.programUserDetails.totalPrecentageNot],
+                    ['Monthly Report Received', data.programUserDetails.totalPrecentage],                    
+                ]
+            }
+        ]
+     });
+
+     Highcharts.chart('national-dashboard-Nos-of-monthly-report-received', {
+        chart: {
+            type: 'pie',
+            height: 210,
+           //  margin: [0, 0, 0, 0] // Set margins to remove extra space
+        },
+        title: {
+            useHTML: true,
+            text: `${data.programUserDetails.totalNumRecieved} Nos.`,
+            floating: true,
+            verticalAlign: 'middle',
+            y: 4,
+            style: {
+                fontSize: '16px'
+            }
+        },
+        credits: {
+            enabled: false
+        },
+        exporting: {
+            enabled: false
+        },
+        subtitle: {
+            useHTML: true,
+            text: '<div style="text-align:center;font-weight: 700;font-size: 14px;"> Nos. of Monthly Report Received </div>',
+            align: 'center',
+            verticalAlign: 'bottom',
+            y: 0, // Adjusted position
+            style: {
+                fontSize: '13px',
+                color: '#000'
+            }
+        },
+        legend: {
+            enabled: false
+        },
+        tooltip: {
+            enabled: true,
+            formatter: function() {
+                return '<b>' + this.point.name + '</b>: ' + this.y;
+            }
+        },
+        plotOptions: {
+            pie: {
+                size: '100%',
+                innerSize: '70%', // Adjusted for a larger inner circle
+                dataLabels: {
+                    enabled: true,
+                    // distance: -30, // Adjusted to move labels closer
+                    style: {
+                        fontWeight: 'bold',
+                        fontSize: '16px'
+                    },
+                    connectorWidth: 0
+                }
+            }
+        },
+        colors: ['#a5a5a5', '#e7e6e6'],
+        series: [
+            {
+                type: 'pie',            
+                data: [
+                    ['Nos. of Monthly Report Received', data.programUserDetails.totalNumRecieved],
+                    ['Nos. of Monthly Report not received', data.programUserDetails.totalNumNotRecieved],
+                ]
+            }
+        ]
+     });
+     Highcharts.chart('national-dashboard-Nos-of-monthly-report-not-received', {
+        chart: {
+            type: 'pie',
+            height: 210,
+           //  margin: [0, 0, 0, 0] // Set margins to remove extra space
+        },
+        title: {
+            useHTML: true,
+            text: `${data.programUserDetails.totalNumNotRecieved} Nos.`,
+            floating: true,
+            verticalAlign: 'middle',
+            y: 4,
+            style: {
+                fontSize: '16px'
+            }
+        },
+        credits: {
+            enabled: false
+        },
+        exporting: {
+            enabled: false
+        },
+        subtitle: {
+            useHTML: true,
+            text: '<div style="text-align:center;font-weight: 700;font-size: 14px;">Nos. of Monthly Report not received </div>',
+            align: 'center',
+            verticalAlign: 'bottom',
+            y: 0, // Adjusted position
+            style: {
+                fontSize: '13px',
+                color: '#000'
+            }
+        },
+        legend: {
+            enabled: false
+        },
+        tooltip: {
+            enabled: true,
+            formatter: function() {
+                return '<b>' + this.point.name + '</b>: ' + this.y;
+            }
+        },
+        plotOptions: {
+            pie: {
+                size: '100%',
+                innerSize: '70%', // Adjusted for a larger inner circle
+                dataLabels: {
+                    enabled: true,
+                    // distance: -30, // Adjusted to move labels closer
+                    style: {
+                        fontWeight: 'bold',
+                        fontSize: '16px'
+                    },
+                    connectorWidth: 0
+                }
+            }
+        },
+        colors: ['#a5a5a5', '#e7e6e6'],
+        series: [
+            {
+                type: 'pie',            
+                data: [
+                    ['Nos. of Monthly Report not received', data.programUserDetails.totalNumNotRecieved],
+                    ['Nos. of Monthly Report Received', data.programUserDetails.totalNumRecieved],
+                ]
+            }
+        ]
+     }); 
+}
 
  Highcharts.chart('State-wise-bar-graph', {
     chart: {

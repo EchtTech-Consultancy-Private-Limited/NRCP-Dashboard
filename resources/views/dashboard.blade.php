@@ -180,13 +180,12 @@
 
                                     </div>
                                 </div>
-
                                 <div class="dashboard-filter mb-4">
                                     <div class="row card-mm mt-3">
                                         <div class="col-md-2 col-md-n">
                                             <div class="single_crm border-line-1 p-0">
                                                 <div class="crm_body">
-                                                    <h4 id="national-giaReceivedTotal">0</h4>
+                                                    <h4 id="national-giaReceivedTotal">{{$total->sum_total_health_animal}}</h4>
                                                     <p>Total No. of Health Facilities Providing Animal Bite Management
                                                         in The State </p>
                                                 </div>
@@ -195,7 +194,7 @@
                                         <div class="col-md-2 col-md-n">
                                             <div class="single_crm border-line-2 p-0">
                                                 <div class="crm_body">
-                                                    <h4 id="national-committedLiabilitiesTotal">0
+                                                    <h4 id="national-committedLiabilitiesTotal">{{$total->total_health_facilities_submitted}}
                                                     </h4>
                                                     <p>Total Number of Facilities Submitted Monthly Report Under NRCP
                                                     </p>
@@ -205,7 +204,7 @@
                                         <div class="col-md-2 col-md-n">
                                             <div class="single_crm border-line-3 p-0">
                                                 <div class="crm_body">
-                                                    <h4 id="national-totalBalanceTotal">0</h4>
+                                                    <h4 id="national-totalBalanceTotal">{{$total->total_patients}}</h4>
                                                     <p>Total No. of Patients</p>
                                                 </div>
                                             </div>
@@ -213,7 +212,7 @@
                                         <div class="col-md-2 col-md-n">
                                             <div class="single_crm border-line-4 p-0">
                                                 <div class="crm_body">
-                                                    <h4 id="national-actualExpenditureTotal">0</h4>
+                                                    <h4 id="national-actualExpenditureTotal">{{$total->suspected_death_reports}}</h4>
                                                     <p>Suspected / Probable / Confirmed Rabies Cases / Deaths Reported
                                                     </p>
                                                 </div>
@@ -222,7 +221,7 @@
                                         <div class="col-md-2 col-md-n">
                                             <div class="single_crm border-line-5 p-0">
                                                 <div class="crm_body">
-                                                    <h4 id="national-unspentBalance31stTotal">0</h4>
+                                                    <h4 id="national-unspentBalance31stTotal">{{$total->availability_arv}}</h4>
                                                     <p>Availability of ARV </p>
                                                 </div>
                                             </div>
@@ -230,7 +229,7 @@
                                         <div class="col-md-2 col-md-n">
                                             <div class="single_crm border-line-6 p-0">
                                                 <div class="crm_body">
-                                                    <h4 id="national-unspentBalance31stTotal">0</h4>
+                                                    <h4 id="national-unspentBalance31stTotal">{{$total->availability_ars}}</h4>
                                                     <p>Availability of ARS</p>
                                                 </div>
                                             </div>

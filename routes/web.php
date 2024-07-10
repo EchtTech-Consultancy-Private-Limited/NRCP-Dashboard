@@ -45,6 +45,7 @@ Route::middleware(['Admin','device'])->group(function () {
         Route::get('national-report', [LaboratoryDashboardController::class, 'nationalReport'])->name('national-report');
         Route::post('national-report-export', [LaboratoryDashboardController::class, 'nationalExport'])->name('national-report-export');
         Route::get('/get-city', [PFormController::class,'getCityByStateId'])->name('get-city');
+        Route::get('/national-highchart', [MainController::class,'nationalHighchart'])->name('national-highchart');
 
         // National dashboard monthly report list
         Route::group(['prefix' => 'national', 'as' => 'national.'], function () {

@@ -28,10 +28,23 @@
               </p>
             </td>
             <td>
-              <input type="text" name="state_name" value="{{ old('state_name') }}">
-              @if ($errors->has('state_name')) 
-                <span class="form-text text-muted">{{ $errors->first('state_name') }}</span>
+              <select class="form-select" aria-label="Default select example"
+                  name="state_id" id="state_id">
+                  <option value="" disabled selected
+                      institute-name=""> Select state
+                  </option>
+                  @foreach ($states as $key => $state)
+                      <option value="{{ $state->id }}" {{ $state->id == old('state_id') ? 'selected' : '' }}>
+                          {{ $state->state_name }}
+                      </option>
+                  @endforeach
+              </select>
+              @if ($errors->has('state_id'))
+              <span class="form-text text-muted">{{ $errors->first('state_id') }}</span>
               @endif
+              <small id="state-error"
+                  class="form-text text-muted">
+              </small>
             </td>
           </tr>
           <tr class="">
@@ -67,7 +80,7 @@
               </p>
             </td>
             <td>
-                <input type="date" name="reporting_month_year" value="{{ old('reporting_month_year') }}">
+                <input type="date" name="reporting_month_year" value="{{ date('Y-m-d') }}" readonly>
                 @if ($errors->has('reporting_month_year')) 
                     <span class="form-text text-muted">{{ $errors->first('reporting_month_year') }}</span>
                 @endif
@@ -85,7 +98,7 @@
               </p>
             </td>
             <td colspan="3" class="w-30">
-                <input type="text" name="total_districts" value="{{ old('total_districts') }}">
+                <input type="text" name="total_districts" value="{{ old('total_districts') }}" maxlength="5" oninput="validateInput(this)">
             </td>
           </tr>
           <tr>
@@ -95,7 +108,7 @@
               </p>
             </td>
             <td colspan="3">
-                <input type="text" name="total_health_facilities_anaimal_bite" value="{{ old('total_health_facilities_anaimal_bite') }}">
+                <input type="text" name="total_health_facilities_anaimal_bite" value="{{ old('total_health_facilities_anaimal_bite') }}" maxlength="5" oninput="validateInput(this)">
             </td>
           </tr>
           <tr>
@@ -105,7 +118,7 @@
               </p>
             </td>
             <td colspan="3">
-                <input type="text" name="total_health_facilities_submitted_monthly" value="{{ old('total_health_facilities_submitted_monthly') }}">            </td>
+                <input type="text" name="total_health_facilities_submitted_monthly" value="{{ old('total_health_facilities_submitted_monthly') }}" maxlength="5" oninput="validateInput(this)">            </td>
           </tr>
           <tr>
             <td colspan="2" class="bglightBlue">
@@ -114,7 +127,7 @@
               </p>
             </td>
             <td colspan="3">
-                <input type="text" name="total_patients_animal_biting" value="{{ old('total_patients_animal_biting') }}">
+                <input type="text" name="total_patients_animal_biting" value="{{ old('total_patients_animal_biting') }}" maxlength="10" oninput="validateInput(this)">
             </td>
           </tr>
           <tr>
@@ -127,7 +140,7 @@
               <p>Bite by Stray dog</p>
             </td>
             <td colspan="3">
-                <input type="text" name="total_stray_dog_bite" value="{{ old('total_stray_dog_bite') }}">
+                <input type="text" name="total_stray_dog_bite" value="{{ old('total_stray_dog_bite') }}" maxlength="10" oninput="validateInput(this)">
             </td>
           </tr>
           <tr>
@@ -135,7 +148,7 @@
               <p>Bite by Pet Dogs</p>
             </td>
             <td colspan="3">
-                <input type="text" name="total_pet_dog_bite" value="{{ old('total_pet_dog_bite') }}">
+                <input type="text" name="total_pet_dog_bite" value="{{ old('total_pet_dog_bite') }}" maxlength="10" oninput="validateInput(this)">
             </td>
           </tr>
           <tr>
@@ -145,7 +158,7 @@
               </ul>
             </td>
             <td colspan="3">
-                <input type="text" name="total_cat_bite" value="{{ old('total_cat_bite') }}">
+                <input type="text" name="total_cat_bite" value="{{ old('total_cat_bite') }}" maxlength="10" oninput="validateInput(this)">
             </td>
           </tr>
           <tr>
@@ -155,7 +168,7 @@
               </ul>
             </td>
             <td colspan="3">
-                <input type="text" name="total_monkey_bite" value="{{ old('total_monkey_bite') }}">
+                <input type="text" name="total_monkey_bite" value="{{ old('total_monkey_bite') }}" maxlength="10" oninput="validateInput(this)">
             </td>
           </tr>
           <tr>
@@ -165,7 +178,7 @@
               </ul>
             </td>
             <td colspan="3">
-                <input type="text" name="total_others_bite" value="{{ old('total_others_bite') }}">
+                <input type="text" name="total_others_bite" value="{{ old('total_others_bite') }}" maxlength="10" oninput="validateInput(this)">
             </td>
           </tr>
           <tr>
@@ -232,7 +245,7 @@
               <p></p>
             </td>
             <td colspan="3">
-                <input type="text" name="rabies_vaccination_im_route" value="{{ old('rabies_vaccination_im_route') }}">
+                <input type="text" name="rabies_vaccination_im_route" value="{{ old('rabies_vaccination_im_route') }}" maxlength="10" oninput="validateInput(this)">
             </td>
           </tr>
           <tr>
@@ -242,7 +255,7 @@
               </ul>
             </td>
             <td colspan="3">
-                <input type="text" name="rabies_vaccination_id_route" value="{{ old('rabies_vaccination_id_route') }}">
+                <input type="text" name="rabies_vaccination_id_route" value="{{ old('rabies_vaccination_id_route') }}" maxlength="10" oninput="validateInput(this)">
             </td>
           </tr>
           <tr>
@@ -253,7 +266,7 @@
               <p>&nbsp;</p>
             </td>
             <td colspan="3">
-                <input type="text" name="rabies_vaccination_III_victim_ars" value="{{ old('rabies_vaccination_III_victim_ars') }}">
+                <input type="text" name="rabies_vaccination_III_victim_ars" value="{{ old('rabies_vaccination_III_victim_ars') }}" maxlength="10" oninput="validateInput(this)">
             </td>
           </tr>
           <tr>
@@ -264,7 +277,7 @@
               <p>&nbsp;</p>
             </td>
             <td colspan="3">
-                <input type="text" name="rabies_vaccination_completed_pep" value="{{ old('rabies_vaccination_completed_pep') }}">
+                <input type="text" name="rabies_vaccination_completed_pep" value="{{ old('rabies_vaccination_completed_pep') }}" maxlength="10" oninput="validateInput(this)">
             </td>
           </tr>
         </tbody>
@@ -292,7 +305,7 @@
               </ul>
             </td>
             <td colspan="3">
-                <input type="text" name="confirmed_suspected_rabies_deaths" value="{{ old('confirmed_suspected_rabies_deaths') }}">
+                <input type="text" name="confirmed_suspected_rabies_deaths" value="{{ old('confirmed_suspected_rabies_deaths') }}" maxlength="10" oninput="validateInput(this)">
             </td>
           </tr>
           <tr>
@@ -302,7 +315,7 @@
               </ul>
             </td>
             <td colspan="3">
-                <input type="text" name="suspected_rabies_cases_opd" value="{{ old('suspected_rabies_cases_opd') }}">
+                <input type="text" name="suspected_rabies_cases_opd" value="{{ old('suspected_rabies_cases_opd') }}" maxlength="10" oninput="validateInput(this)">
             </td>
           </tr>
           <tr>
@@ -312,7 +325,7 @@
               </ul>
             </td>
             <td colspan="3">
-                <input type="text" name="suspected_rabies_cases_admitted" value="{{ old('suspected_rabies_cases_admitted') }}">
+                <input type="text" name="suspected_rabies_cases_admitted" value="{{ old('suspected_rabies_cases_admitted') }}" maxlength="10" oninput="validateInput(this)">
             </td>
           </tr>
           <tr>
@@ -322,7 +335,7 @@
               </ul>
             </td>
             <td colspan="3">
-                <input type="text" name="suspected_rabies_cases_left_against_medical" value="{{ old('suspected_rabies_cases_left_against_medical') }}">
+                <input type="text" name="suspected_rabies_cases_left_against_medical" value="{{ old('suspected_rabies_cases_left_against_medical') }}" maxlength="10" oninput="validateInput(this)">
             </td>
           </tr>
           <tr>
@@ -332,7 +345,7 @@
               </ul>
             </td>
             <td colspan="3">
-                <input type="text" name="suspected_rabies_deaths" value="{{ old('suspected_rabies_deaths') }}">
+                <input type="text" name="suspected_rabies_deaths" value="{{ old('suspected_rabies_deaths') }}" maxlength="10" oninput="validateInput(this)">
             </td>
           </tr>
           <tr>
@@ -485,9 +498,9 @@
                 <li>DH</li>
               </ul>
             </td>
-            <td><input type="text" name="dh_health_of_health_facilties" value="{{ old('dh_health_of_health_facilties') }}"></td>
-            <td><input type="text" name="dh_of_arv" value="{{ old('dh_of_arv') }}"></td>
-            <td><input type="text" name="dh_of_ars" value="{{ old('dh_of_ars') }}"></td>
+            <td><input type="text" name="dh_health_of_health_facilties" value="{{ old('dh_health_of_health_facilties') }}" maxlength="10" oninput="validateInput(this)"></td>
+            <td><input type="text" name="dh_of_arv" value="{{ old('dh_of_arv') }}" maxlength="10" oninput="validateInput(this)"></td>
+            <td><input type="text" name="dh_of_ars" value="{{ old('dh_of_ars') }}" maxlength="10" oninput="validateInput(this)"></td>
           </tr>
           <tr>
             <td colspan="2">
@@ -495,9 +508,9 @@
                 <li>SDH</li>
               </ul>
             </td>
-            <td><input type="text" name="sdh_health_of_health_facilties" value="{{ old('sdh_health_of_health_facilties') }}"></td>
-            <td><input type="text" name="sdh_of_arv" value="{{ old('sdh_of_arv') }}"></td>
-            <td><input type="text" name="sdh_of_ars" value="{{ old('sdh_of_ars') }}"></td>
+            <td><input type="text" name="sdh_health_of_health_facilties" value="{{ old('sdh_health_of_health_facilties') }}" maxlength="10" oninput="validateInput(this)"></td>
+            <td><input type="text" name="sdh_of_arv" value="{{ old('sdh_of_arv') }}" maxlength="10" oninput="validateInput(this)"></td>
+            <td><input type="text" name="sdh_of_ars" value="{{ old('sdh_of_ars') }}" maxlength="10" oninput="validateInput(this)"></td>
           </tr>
           <tr>
             <td colspan="2">
@@ -505,9 +518,9 @@
                 <li>CHC</li>
               </ul>
             </td>
-            <td><input type="text" name="chc_health_of_health_facilties" value="{{ old('chc_health_of_health_facilties') }}"></td>
-            <td><input type="text" name="chc_of_arv" value="{{ old('chc_of_arv') }}"></td>
-            <td><input type="text" name="chc_of_ars" value="{{ old('chc_of_ars') }}"></td>
+            <td><input type="text" name="chc_health_of_health_facilties" value="{{ old('chc_health_of_health_facilties') }}" maxlength="10" oninput="validateInput(this)"></td>
+            <td><input type="text" name="chc_of_arv" value="{{ old('chc_of_arv') }}" maxlength="10" oninput="validateInput(this)"></td>
+            <td><input type="text" name="chc_of_ars" value="{{ old('chc_of_ars') }}" maxlength="10" oninput="validateInput(this)"></td>
           </tr>
           <tr>
             <td colspan="2">
@@ -515,9 +528,9 @@
                 <li>PHC</li>
               </ul>
             </td>
-            <td><input type="text" name="phc_health_of_health_facilties" value="{{ old('phc_health_of_health_facilties') }}"></td>
-            <td><input type="text" name="phc_of_arv" value="{{ old('phc_of_arv') }}"></td>
-            <td><input type="text" name="phc_of_ars" value="{{ old('phc_of_ars') }}"></td>
+            <td><input type="text" name="phc_health_of_health_facilties" value="{{ old('phc_health_of_health_facilties') }}" maxlength="10" oninput="validateInput(this)"></td>
+            <td><input type="text" name="phc_of_arv" value="{{ old('phc_of_arv') }}" maxlength="10" oninput="validateInput(this)"></td>
+            <td><input type="text" name="phc_of_ars" value="{{ old('phc_of_ars') }}" maxlength="10" oninput="validateInput(this)"></td>
           </tr>
           <tr>
             <td colspan="2" class="bglightBlue">

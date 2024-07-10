@@ -7,13 +7,15 @@ use App\Models\User;
 use Hash;
 use Redirect;
 use File;
-use DB;
 use Illuminate\Http\Request;
 use App\Models\Equipments;
 use App\Models\Expenditure;
 use App\Models\GeneralProfile;
 use App\Models\QualityAssurance;
 use App\Models\RabiesTest;
+use App\Models\State;
+use App\Models\StateMonthlyReport;
+use Illuminate\Support\Facades\DB;
 
 class MainController extends Controller
 {
@@ -23,8 +25,44 @@ class MainController extends Controller
         if (Auth::user()->user_type == 3) {
             return redirect()->route('state.dashboard');
         }
-        return view("dashboard");
+        
+        $total = StateMonthlyReport::toBase()
+                ->select([
+                    DB::raw('SUM(total_health_facilities_anaimal_bite) as sum_total_health_animal'),
+                    DB::raw('SUM(total_health_facilities_submitted_monthly) as total_health_facilities_submitted'),
+                    DB::raw('SUM(total_patients_animal_biting + total_stray_dog_bite + total_pet_dog_bite + total_cat_bite + total_monkey_bite + total_others_bite) as total_patients'),
+                    DB::raw('SUM(confirmed_suspected_rabies_deaths + suspected_rabies_cases_opd + suspected_rabies_cases_admitted + suspected_rabies_cases_left_against_medical + suspected_rabies_deaths) as suspected_death_reports'),
+                    DB::raw('SUM(dh_of_arv + sdh_of_arv + chc_of_arv + phc_of_arv) as availability_arv'),
+                    DB::raw('SUM(dh_of_ars + sdh_of_ars + chc_of_ars + phc_of_ars) as availability_ars')
+                ])
+                ->first();
+
+        return view("dashboard", compact('total'));
+    }    
+    /**
+     * nationalHighchart
+     *
+     * @return void
+     */
+    public function nationalHighchart(Request $request)
+    {
+        $totalState = State::count();
+        $totalCount = StateMonthlyReport::distinct('state_id')->count();
+        $totalPrecentage = round(($totalCount/$totalState)*100, 1);
+        $totalPrecentageNot = 100-$totalPrecentage;
+        $monthlyReport = [
+                'totalPrecentage' => $totalPrecentage,
+                'totalPrecentageNot' => $totalPrecentageNot,
+                'totalNumRecieved' => $totalCount,
+                'totalNumNotRecieved' => $totalState-$totalCount,
+            ];
+         
+        // return $monthlyReport;
+        return response()->json([
+            'programUserDetails' => $monthlyReport,
+        ], 200);
     }
+    
     public function labDashboard(Request $request)
     {
         $EquipmentsTotal = Equipments::where('soft_delete',0)->count();
