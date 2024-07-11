@@ -16,6 +16,8 @@ use App\Models\RabiesTest;
 use App\Models\State;
 use App\Models\StateMonthlyReport;
 use Illuminate\Support\Facades\DB;
+use DateTime;
+use Carbon\Carbon;
 
 class MainController extends Controller
 {
@@ -25,7 +27,13 @@ class MainController extends Controller
         if (Auth::user()->user_type == 3) {
             return redirect()->route('state.dashboard');
         }
-        
+        $months = [];
+        $currentYear = date('Y');
+        for ($m = 0; $m < 12; $m++) {
+            $month = new DateTime("$currentYear-01-01");
+            $month->modify("+$m months");
+            $months[] = $month->format('F');
+        }
         $total = StateMonthlyReport::toBase()
                 ->select([
                     DB::raw('SUM(total_health_facilities_anaimal_bite) as sum_total_health_animal'),
@@ -37,7 +45,7 @@ class MainController extends Controller
                 ])
                 ->first();
 
-        return view("dashboard", compact('total'));
+        return view("dashboard", compact('total','months'));
     }    
     /**
      * nationalHighchart
@@ -46,22 +54,125 @@ class MainController extends Controller
      */
     public function nationalHighchart(Request $request)
     {
-        $totalState = State::count();
+        $totalStates = State::count();
         $totalCount = StateMonthlyReport::distinct('state_id')->count();
-        $totalPrecentage = round(($totalCount/$totalState)*100, 1);
+        $totalPrecentage = round(($totalCount/$totalStates)*100, 1);
         $totalPrecentageNot = 100-$totalPrecentage;
         $monthlyReport = [
                 'totalPrecentage' => $totalPrecentage,
                 'totalPrecentageNot' => $totalPrecentageNot,
                 'totalNumRecieved' => $totalCount,
-                'totalNumNotRecieved' => $totalState-$totalCount,
+                'totalNumNotRecieved' => $totalStates-$totalCount,
             ];
-         
-        // return $monthlyReport;
+        // State wise Bar Graph
+        $states = State::get();
+        $stateBarGraph = [];
+        foreach($states as $key => $state)
+        {
+            $totalCount = StateMonthlyReport::where('state_id',$state->id)->count();
+            $stateBarGraph[] = [$state->state_name,$totalCount];
+        }
+        // End State wise Bar Graph
+
+        // Availability of ARV
+        $totalArv = [];        
+        foreach ($states as $state) {
+            $totalOpeningBalance = StateMonthlyReport::where('state_id', $state->id)->sum('dh_of_arv');
+            $totalQuantityReceived = StateMonthlyReport::where('state_id', $state->id)->sum('sdh_of_arv');
+            $totalQuantityUtilized = StateMonthlyReport::where('state_id', $state->id)->sum('chc_of_arv');
+            $totalClosingBalance = StateMonthlyReport::where('state_id', $state->id)->sum('phc_of_arv');
+            $totalCount = $totalOpeningBalance + $totalQuantityReceived + $totalQuantityUtilized + $totalClosingBalance;
+            $totalArv[] = [$state->state_name, $totalCount];
+        }
+
+        // Availability of ARS
+        $totalArs = [];        
+        foreach ($states as $state) {
+            $totalOpeningBalance = StateMonthlyReport::where('state_id', $state->id)->sum('dh_of_ars');
+            $totalQuantityReceived = StateMonthlyReport::where('state_id', $state->id)->sum('sdh_of_ars');
+            $totalQuantityUtilized = StateMonthlyReport::where('state_id', $state->id)->sum('chc_of_ars');
+            $totalClosingBalance = StateMonthlyReport::where('state_id', $state->id)->sum('phc_of_ars');
+            $totalCount = $totalOpeningBalance + $totalQuantityReceived + $totalQuantityUtilized + $totalClosingBalance;
+            $totalArs[] = [$state->state_name, $totalCount];
+        }    
+        // End State wise Bar Graph
+
         return response()->json([
             'programUserDetails' => $monthlyReport,
+            'stateBarGraph' => $stateBarGraph,
+            'totalArv' => $totalArv,
+            'totalArs' => $totalArs,
         ], 200);
     }
+    
+    /**
+     * filterNationalHighchart
+     *
+     * @return void
+     */
+    public function filterNationalHighchart(Request $request)
+    {
+        $baseQuery = StateMonthlyReport::query();
+        if ($request->has('state_bar_graph_year') && $request->state_bar_graph_year) {
+            $baseQuery->whereYear('reporting_month_year', $request->state_bar_graph_year);
+        }
+        if ($request->has('state_bar_graph_month') && $request->state_bar_graph_month) {
+            $baseQuery->whereMonth('reporting_month_year', $request->state_bar_graph_month);
+        }
+    
+        // State wise Bar Graph
+        $states = State::all();
+        $stateBarGraph = [];
+        foreach ($states as $state) {
+            $totalCount = $baseQuery->clone()->where('state_id', $state->id)->count();
+            $stateBarGraph[] = [$state->state_name, $totalCount];
+        }
+        // End State wise Bar Graph
+    
+        $states = State::get();
+        $totalArv = [];        
+        foreach ($states as $state) {
+            $totalOpeningBalance = $baseQuery->clone()->where('state_id', $state->id)->sum('dh_of_arv');
+            $totalQuantityReceived = $baseQuery->clone()->where('state_id', $state->id)->sum('sdh_of_arv');
+            $totalQuantityUtilized = $baseQuery->clone()->where('state_id', $state->id)->sum('chc_of_arv');
+            $totalClosingBalance = $baseQuery->clone()->where('state_id', $state->id)->sum('phc_of_arv');
+            $totalCount = $totalOpeningBalance + $totalQuantityReceived + $totalQuantityUtilized + $totalClosingBalance;
+            $totalArv[] = [$state->state_name, $totalCount];
+        }
+        
+        // Availability of ARS
+        $totalArs = [];        
+        foreach ($states as $state) {
+            $totalOpeningBalance = $baseQuery->clone()->where('state_id', $state->id)->sum('dh_of_ars');
+            $totalQuantityReceived = $baseQuery->clone()->where('state_id', $state->id)->sum('sdh_of_ars');
+            $totalQuantityUtilized = $baseQuery->clone()->where('state_id', $state->id)->sum('chc_of_ars');
+            $totalClosingBalance = $baseQuery->clone()->where('state_id', $state->id)->sum('phc_of_ars');
+            $totalCount = $totalOpeningBalance + $totalQuantityReceived + $totalQuantityUtilized + $totalClosingBalance;
+            $totalArs[] = [$state->state_name, $totalCount];
+        }
+
+        return response()->json([
+            'stateBarGraph' => $stateBarGraph,
+            'totalArv' => $totalArv,
+            'totalArs' => $totalArs,
+        ], 200);
+    }
+
+    public function misReportGenerate()
+    {
+        
+        $states = State::get();
+        $months = [];
+        $currentYear = date('Y');
+        for ($m = 0; $m < 12; $m++) {
+            $month = new DateTime("$currentYear-01-01");
+            $month->modify("+$m months");
+            $months[] = $month->format('F');
+        }
+        $stateMonthlyReports = StateMonthlyReport::get();
+        return view('mis-report-generate', compact('states','months','stateMonthlyReports'));
+    }
+    
     
     public function labDashboard(Request $request)
     {

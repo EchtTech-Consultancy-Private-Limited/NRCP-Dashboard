@@ -2067,6 +2067,243 @@ $(document).ready(function(){
     });
 });
 
+$(document).on('change', '.state_bar_graph', function() {
+    let stateBarGraphYear = $('#state-bar-graph-year').find(":selected").val();
+    const stateBarGraphMonth = $('#state-bar-graph-month').find(":selected").val();
+    $.ajax({
+        type: "GET",
+        url: BASE_URL + "filter-national-highchart",
+        data: {
+            'state_bar_graph_year': stateBarGraphYear,
+            'state_bar_graph_month' : stateBarGraphMonth
+        },
+        success: function(data) {
+            nationalFilterHighChart(data);
+        }
+    });
+});
+
+
+
+// filter highcharts
+function nationalFilterHighChart(data){
+        //  State wise Bar Graph
+    Highcharts.chart('State-wise-bar-graph', {
+        chart: {
+            type: 'column'
+        },
+        title: {
+            text: ''
+        },
+        credits: {
+            enabled: false
+        },
+        exporting: {
+            enabled: false
+        },
+        subtitle: {
+            text: ''
+        },
+        xAxis: {
+            type: 'category',
+            labels: {
+                autoRotation: [-70, -90],
+                style: {
+                    fontSize: '13px',
+                    fontFamily: 'Verdana, sans-serif'
+                }
+            }
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: null
+            }
+        },
+        legend: {
+            enabled: false,
+            useHTML: true,
+            // labelFormatter: function() {
+            //     let symbol = '<span style="color:' + this.color + ';font-size:12px; color:red">&#9644;</span>';
+            //     return '<span style="font-size: 12px;">' + symbol +  ' ' + this.name  +  '</span>';
+            // }
+        
+        allowPointSelect: false,
+        },
+        tooltip: {
+            enabled: true,
+        },
+        series: [{
+            name: '',
+            type: 'column',
+            color:"#158bec",
+            events: {
+                legendItemClick: function (e) {
+                    e.preventDefault();
+                }
+            },
+            data: data.stateBarGraph,
+            dataLabels: {
+                enabled: true,
+                rotation: -90,
+                color: '#FFFFFF',
+                inside: true,
+                verticalAlign: 'top',
+                format: '{point.y:.1f}', // one decimal
+                y: 10, // 10 pixels down from the top
+                style: {
+                    fontSize: '12px',
+                    fontFamily: 'Verdana, sans-serif',
+                    textShadow: "none",
+                    color:"red"
+                },  
+                textShadow: "none"
+            }
+        }]
+    });
+    //  State wise availability of ARV graph
+    Highcharts.chart('state-wise-arv-bar-graph', {
+        chart: {
+            type: 'column'
+        },
+        title: {
+            text: ''
+        },
+        credits: {
+            enabled: false
+        },
+        exporting: {
+            enabled: false
+        },
+        subtitle: {
+            text: ''
+        },
+        xAxis: {
+            type: 'category',
+            labels: {
+                autoRotation: [-70, -90],
+                style: {
+                    fontSize: '13px',
+                    fontFamily: 'Verdana, sans-serif'
+                }
+            }
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: null
+            }
+        },
+        legend: {
+            enabled: true,
+            useHTML: true,
+            symbolRadius: 0,
+            allowPointSelect: false,
+        },
+        tooltip: {
+            enabled: true,
+        },
+        series: [{
+            name: 'Availability of ARV',
+            type: 'column',
+            color:"#f4833c",
+            events: {
+                legendItemClick: function (e) {
+                    e.preventDefault();
+                }
+            },
+            data: data.totalArv,
+            dataLabels: {
+                enabled: true,
+                rotation: -90,
+                color: '#FFFFFF',
+                inside: true,
+                verticalAlign: 'top',
+                format: '{point.y:.1f}', // one decimal
+                y: 10, // 10 pixels down from the top
+                style: {
+                    fontSize: '12px',
+                    fontFamily: 'Verdana, sans-serif',
+                    textShadow: "none",
+                    color:"red"
+                },  
+                textShadow: "none"
+            }
+        }]
+    });
+
+    //  State wise availability of ARS graph
+    Highcharts.chart('state-wise-ars-bar-graph', {
+        chart: {
+            type: 'column'
+        },
+        title: {
+            text: ''
+        },
+        credits: {
+            enabled: false
+        },
+        exporting: {
+            enabled: false
+        },
+        subtitle: {
+            text: ''
+        },
+        xAxis: {
+            type: 'category',
+            labels: {
+                autoRotation: [-70, -90],
+                style: {
+                    fontSize: '13px',
+                    fontFamily: 'Verdana, sans-serif'
+                }
+            }
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: null
+            }
+        },
+        legend: {
+            enabled: true,
+            useHTML: true,
+            symbolRadius: 0,
+            allowPointSelect: false,
+        },
+        tooltip: {
+            enabled: true,
+        },
+        series: [{
+            name: 'Availability of ARS',
+            type: 'column',
+            color:"#b64926",
+            events: {
+                legendItemClick: function (e) {
+                    e.preventDefault();
+                }
+            },
+            data: data.totalArs,
+            dataLabels: {
+                enabled: true,
+                rotation: -90,
+                color: '#FFFFFF',
+                inside: true,
+                verticalAlign: 'top',
+                format: '{point.y:.1f}', // one decimal
+                y: 10, // 10 pixels down from the top
+                style: {
+                    fontSize: '12px',
+                    fontFamily: 'Verdana, sans-serif',
+                    textShadow: "none",
+                    color:"red"
+                },  
+                textShadow: "none"
+            }
+        }]
+    });
+}
+
 // highcharts
 function nationalHighchart(data)
 {
@@ -2276,6 +2513,7 @@ function nationalHighchart(data)
             }
         ]
      });
+
      Highcharts.chart('national-dashboard-Nos-of-monthly-report-not-received', {
         chart: {
             type: 'pie',
@@ -2344,111 +2582,227 @@ function nationalHighchart(data)
             }
         ]
      }); 
-}
-
- Highcharts.chart('State-wise-bar-graph', {
-    chart: {
-        type: 'column'
-    },
-    title: {
-        text: ''
-    },
-    credits: {
-        enabled: false
-    },
-    exporting: {
-        enabled: false
-    },
-    subtitle: {
-        text: ''
-    },
-    xAxis: {
-        type: 'category',
-        labels: {
-            autoRotation: [-70, -90],
-            style: {
-                fontSize: '13px',
-                fontFamily: 'Verdana, sans-serif'
-            }
-        }
-    },
-    yAxis: {
-        min: 0,
-        title: {
-            text: null
-        }
-    },
-    legend: {
-        enabled: false,
-        useHTML: true,
-        // labelFormatter: function() {
-        //     let symbol = '<span style="color:' + this.color + ';font-size:12px; color:red">&#9644;</span>';
-        //     return '<span style="font-size: 12px;">' + symbol +  ' ' + this.name  +  '</span>';
-        // }
     
-    allowPointSelect: false,
-    },
-    tooltip: {
-        enabled: false,
-    },
-    series: [{
-        name: 'Expenditure',
-        type: 'column',
-        color:"#158bec",
-        events: {
-            legendItemClick: function (e) {
-                e.preventDefault();
+    //  State wise Bar Graph
+     Highcharts.chart('State-wise-bar-graph', {
+        chart: {
+            type: 'column'
+        },
+        title: {
+            text: ''
+        },
+        credits: {
+            enabled: false
+        },
+        exporting: {
+            enabled: false
+        },
+        subtitle: {
+            text: ''
+        },
+        xAxis: {
+            type: 'category',
+            labels: {
+                autoRotation: [-70, -90],
+                style: {
+                    fontSize: '13px',
+                    fontFamily: 'Verdana, sans-serif'
+                }
             }
         },
-        data: [
-            ['Uttar Pradesh', 4.3],
-            ['Maharashtra', 2.5],
-            ['Bihar', 3.5],
-            ['West Bengal', 4.5],
-            ['Madhya Pradesh', 2],
-            ['Tamil Nadu', 1.2],
-            ['Rajasthan', 2.4],
-            ['Karnataka', 3.1],
-            ['Gujarat', 3.4],
-            ['Andhra Pradesh', 4],
-            ['Odisha', 4.4],
-            ['Telangana', 2.8],
-            ['Kerala', 4],
-            ['Jharkhand', 4],
-            ['Assam', 2],
-            ['Punjab', 3],
-            ['Chhattisgarh', 1],
-            ['Haryana', 4],
-            ['Uttarakhand', 4],
-            ['Himachal Pradesh', 4],
-            ['Tripura', 4],
-            ['Meghalaya', 4],
-            ['Manipur', 4],
-            ['Nagaland', 4],
-            ['Goa', 4],
-            ['Arunachal Pradesh', 4],
-            ['Mizoram', 4],
-            ['Sikkim', 4],
-            ['Delhi', 5] // Considering Delhi as a Union Territory
-        ],
-        dataLabels: {
+        yAxis: {
+            min: 0,
+            title: {
+                text: null
+            }
+        },
+        legend: {
+            enabled: false,
+            useHTML: true,
+            // labelFormatter: function() {
+            //     let symbol = '<span style="color:' + this.color + ';font-size:12px; color:red">&#9644;</span>';
+            //     return '<span style="font-size: 12px;">' + symbol +  ' ' + this.name  +  '</span>';
+            // }
+        
+        allowPointSelect: false,
+        },
+        tooltip: {
             enabled: true,
-            rotation: -90,
-            color: '#FFFFFF',
-            inside: true,
-            verticalAlign: 'top',
-            format: '{point.y:.1f}', // one decimal
-            y: 10, // 10 pixels down from the top
-            style: {
-                fontSize: '12px',
-                fontFamily: 'Verdana, sans-serif',
-                textShadow: "none",
-                color:"red"
-            },  
-            textShadow: "none"
-        }
-    }]
-});
+        },
+        series: [{
+            name: '',
+            type: 'column',
+            color:"#158bec",
+            events: {
+                legendItemClick: function (e) {
+                    e.preventDefault();
+                }
+            },
+            data: data.stateBarGraph,
+            dataLabels: {
+                enabled: true,
+                rotation: -90,
+                color: '#FFFFFF',
+                inside: true,
+                verticalAlign: 'top',
+                format: '{point.y:.1f}', // one decimal
+                y: 10, // 10 pixels down from the top
+                style: {
+                    fontSize: '12px',
+                    fontFamily: 'Verdana, sans-serif',
+                    textShadow: "none",
+                    color:"red"
+                },  
+                textShadow: "none"
+            }
+        }]
+    });
+
+    //  State wise availability of ARV graph
+    Highcharts.chart('state-wise-arv-bar-graph', {
+        chart: {
+            type: 'column'
+        },
+        title: {
+            text: ''
+        },
+        credits: {
+            enabled: false
+        },
+        exporting: {
+            enabled: false
+        },
+        subtitle: {
+            text: ''
+        },
+        xAxis: {
+            type: 'category',
+            labels: {
+                autoRotation: [-70, -90],
+                style: {
+                    fontSize: '13px',
+                    fontFamily: 'Verdana, sans-serif'
+                }
+            }
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: null
+            }
+        },
+        legend: {
+            enabled: true,
+            useHTML: true,
+            symbolRadius: 0,
+            allowPointSelect: false,
+        },
+        tooltip: {
+            enabled: true,
+        },
+        series: [{
+            name: 'Availability of ARV',
+            type: 'column',
+            color:"#f4833c",
+            events: {
+                legendItemClick: function (e) {
+                    e.preventDefault();
+                }
+            },
+            data: data.totalArv,
+            dataLabels: {
+                enabled: true,
+                rotation: -90,
+                color: '#FFFFFF',
+                inside: true,
+                verticalAlign: 'top',
+                format: '{point.y:.1f}', // one decimal
+                y: 10, // 10 pixels down from the top
+                style: {
+                    fontSize: '12px',
+                    fontFamily: 'Verdana, sans-serif',
+                    textShadow: "none",
+                    color:"red"
+                },  
+                textShadow: "none"
+            }
+        }]
+    });
+
+    //  State wise availability of ARS graph
+    Highcharts.chart('state-wise-ars-bar-graph', {
+        chart: {
+            type: 'column'
+        },
+        title: {
+            text: ''
+        },
+        credits: {
+            enabled: false
+        },
+        exporting: {
+            enabled: false
+        },
+        subtitle: {
+            text: ''
+        },
+        xAxis: {
+            type: 'category',
+            labels: {
+                autoRotation: [-70, -90],
+                style: {
+                    fontSize: '13px',
+                    fontFamily: 'Verdana, sans-serif'
+                }
+            }
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: null
+            }
+        },
+        legend: {
+            enabled: true,
+            useHTML: true,
+            symbolRadius: 0,
+            allowPointSelect: false,
+        },
+        tooltip: {
+            enabled: true,
+        },
+        series: [{
+            name: 'Availability of ARS',
+            type: 'column',
+            color:"#b64926",
+            events: {
+                legendItemClick: function (e) {
+                    e.preventDefault();
+                }
+            },
+            data: data.totalArs,
+            dataLabels: {
+                enabled: true,
+                rotation: -90,
+                color: '#FFFFFF',
+                inside: true,
+                verticalAlign: 'top',
+                format: '{point.y:.1f}', // one decimal
+                y: 10, // 10 pixels down from the top
+                style: {
+                    fontSize: '12px',
+                    fontFamily: 'Verdana, sans-serif',
+                    textShadow: "none",
+                    color:"red"
+                },  
+                textShadow: "none"
+            }
+        }]
+    });
+
+
+}
+
 
 
 
@@ -3474,203 +3828,3 @@ Highcharts.chart('integrated-dashboard-state1', {
  })();
 
 
-//  State wise availability of ARV / ARS graph
-Highcharts.chart('state-wise-arv-bar-graph', {
-    chart: {
-        type: 'column'
-    },
-    title: {
-        text: ''
-    },
-    credits: {
-        enabled: false
-    },
-    exporting: {
-        enabled: false
-    },
-    subtitle: {
-        text: ''
-    },
-    xAxis: {
-        type: 'category',
-        labels: {
-            autoRotation: [-70, -90],
-            style: {
-                fontSize: '13px',
-                fontFamily: 'Verdana, sans-serif'
-            }
-        }
-    },
-    yAxis: {
-        min: 0,
-        title: {
-            text: null
-        }
-    },
-    legend: {
-        enabled: true,
-        useHTML: true,
-        symbolRadius: 0,
-        allowPointSelect: false,
-    },
-    tooltip: {
-        enabled: false,
-    },
-    series: [{
-        name: 'Unspent Balance',
-        type: 'column',
-        color:"#f4833c",
-        events: {
-            legendItemClick: function (e) {
-                e.preventDefault();
-            }
-        },
-        data: [
-            ['Uttar Pradesh', 4.3],
-            ['Maharashtra', 2.5],
-            ['Bihar', 3.5],
-            ['West Bengal', 4.5],
-            ['Madhya Pradesh', 2],
-            ['Tamil Nadu', 5.2],
-            ['Rajasthan', 2.4],
-            ['Karnataka', 3.1],
-            ['Gujarat', 3.4],
-            ['Andhra Pradesh', 4],
-            ['Odisha', 4.4],
-            ['Telangana', 2.8],
-            ['Kerala', 4],
-            ['Jharkhand', 4],
-            ['Assam', 2],
-            ['Punjab', 3],
-            ['Chhattisgarh', 1],
-            ['Haryana', 4],
-            ['Uttarakhand', 4],
-            ['Himachal Pradesh', 4],
-            ['Tripura', 4],
-            ['Meghalaya', 4],
-            ['Manipur', 4],
-            ['Nagaland', 4],
-            ['Goa', 4],
-            ['Arunachal Pradesh', 4],
-            ['Mizoram', 4],
-            ['Sikkim', 4],
-            ['Delhi', 5] // Considering Delhi as a Union Territory
-        ],
-        dataLabels: {
-            enabled: true,
-            rotation: -90,
-            color: '#FFFFFF',
-            inside: true,
-            verticalAlign: 'top',
-            format: '{point.y:.1f}', // one decimal
-            y: 10, // 10 pixels down from the top
-            style: {
-                fontSize: '12px',
-                fontFamily: 'Verdana, sans-serif',
-                textShadow: "none",
-                color:"red"
-            },  
-            textShadow: "none"
-        }
-    }]
-});
-
-Highcharts.chart('state-wise-ars-bar-graph', {
-    chart: {
-        type: 'column'
-    },
-    title: {
-        text: ''
-    },
-    credits: {
-        enabled: false
-    },
-    exporting: {
-        enabled: false
-    },
-    subtitle: {
-        text: ''
-    },
-    xAxis: {
-        type: 'category',
-        labels: {
-            autoRotation: [-70, -90],
-            style: {
-                fontSize: '13px',
-                fontFamily: 'Verdana, sans-serif'
-            }
-        }
-    },
-    yAxis: {
-        min: 0,
-        title: {
-            text: null
-        }
-    },
-    legend: {
-        enabled: true,
-        useHTML: true,
-        symbolRadius: 0,
-        allowPointSelect: false,
-    },
-    tooltip: {
-        enabled: false,
-    },
-    series: [{
-        name: 'Unspent Balance',
-        type: 'column',
-        color:"#b64926",
-        events: {
-            legendItemClick: function (e) {
-                e.preventDefault();
-            }
-        },
-        data: [
-            ['Uttar Pradesh', 4.3],
-            ['Maharashtra', 2.5],
-            ['Bihar', 3.5],
-            ['West Bengal', 4.5],
-            ['Madhya Pradesh', 2],
-            ['Tamil Nadu', 1.2],
-            ['Rajasthan', 2.4],
-            ['Karnataka', 3.1],
-            ['Gujarat', 3.4],
-            ['Andhra Pradesh', 4],
-            ['Odisha', 4.4],
-            ['Telangana', 2.8],
-            ['Kerala', 4],
-            ['Jharkhand', 4],
-            ['Assam', 2],
-            ['Punjab', 3],
-            ['Chhattisgarh', 1],
-            ['Haryana', 4],
-            ['Uttarakhand', 4],
-            ['Himachal Pradesh', 4],
-            ['Tripura', 4],
-            ['Meghalaya', 4],
-            ['Manipur', 4],
-            ['Nagaland', 4],
-            ['Goa', 4],
-            ['Arunachal Pradesh', 4],
-            ['Mizoram', 4],
-            ['Sikkim', 4],
-            ['Delhi', 5] // Considering Delhi as a Union Territory
-        ],
-        dataLabels: {
-            enabled: true,
-            rotation: -90,
-            color: '#FFFFFF',
-            inside: true,
-            verticalAlign: 'top',
-            format: '{point.y:.1f}', // one decimal
-            y: 10, // 10 pixels down from the top
-            style: {
-                fontSize: '12px',
-                fontFamily: 'Verdana, sans-serif',
-                textShadow: "none",
-                color:"red"
-            },  
-            textShadow: "none"
-        }
-    }]
-});

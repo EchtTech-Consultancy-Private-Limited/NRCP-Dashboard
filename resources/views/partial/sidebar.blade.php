@@ -49,17 +49,17 @@
 
                 <div class="row">
                     <div class="col">
-                        <div class="collapse multi-collapse {{ in_array(Request::segment(1), ['dashboard', 'pform', 'sform', 'lform']) ? 'show' : '' }}"
+                        <div class="collapse multi-collapse {{ in_array(Request::segment(1), ['dashboard', 'mis-report-generate', 'sform', 'lform']) ? 'show' : '' }}"
                             id="multiCollapseExample1">
                             <div class="card card-body">
                                 <div
                                     class="link bg-primary text-white dashboard-title {{ Request::segment(1) == 'dashboard' ? 'active' : '' }}">
                                     <a href="{{ url('/dashboard') }}">Dashboard</a> </i>
                                 </div>
-                                {{-- <div
-                                    class="link bg-primary text-white dashboard-title {{ Request::segment(1) == 'pform' ? 'active' : '' }}">
-                                    <a href="{{ url('/pform') }}">P Form</a> </i>
-                                </div> --}}
+                                <div
+                                    class="link bg-primary text-white dashboard-title {{ Request::segment(1) == 'mis-report-generate' ? 'active' : '' }}">
+                                    <a href="{{ route('mis-report-generate') }}">MIS Report Generate</a> </i>
+                                </div>
                                 {{-- <div
                                 class="link bg-primary text-white dashboard-title {{ (Request::segment(1) == 'sform')?'active':'' }}">
                                 <a href="{{ url('/sform') }}">S Form</a> </i>
