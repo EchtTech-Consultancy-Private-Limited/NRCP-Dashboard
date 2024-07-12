@@ -131,7 +131,8 @@
             </div>
 
             <div class="col-md-12">
-                <form action="">
+                <form action="{{ route('national-mis-report-export') }}" method="post">
+                    @csrf
                     <div class="row align-items-center">
                         <div class="col-md-4">
                             <div class="form-group d-flex align-items-center">
@@ -139,18 +140,11 @@
                                         class="star">*</span></label>
                                 <select name="month" id="month" class="form-control">
                                     <option value="">Select Month</option>
-                                    <option value="">January</option>
-                                    <option value="">February</option>
-                                    <option value="">March</option>
-                                    <option value="">April</option>
-                                    <option value="">May</option>
-                                    <option value="">June</option>
-                                    <option value="">July</option>
-                                    <option value="">August</option>
-                                    <option value="">September</option>
-                                    <option value="">October</option>
-                                    <option value="">November</option>
-                                    <option value="">December</option>
+                                    @foreach ($months as $key => $month)
+                                        <option value="{{ $key+1 }}">
+                                            {{ $month }}
+                                        </option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
@@ -160,11 +154,9 @@
                                         class="star">*</span></label>
                                 <select name="year" id="year" class="form-control">
                                     <option value="">Select Year</option>
-                                    <option value="">2019-2020</option>
-                                    <option value="">2020-2021</option>
-                                    <option value="">2021-2022</option>
-                                    <option value="">2022-2023</option>
-                                    <option value="">2023-2024</option>
+                                    @for ($i = date("Y")-10; $i <= date("Y")+10; $i++)
+                                        <option value="{{$i}}">{{$i}} - {{$i+1}}</option>
+                                    @endfor
                                 </select>
                             </div>
                         </div>
