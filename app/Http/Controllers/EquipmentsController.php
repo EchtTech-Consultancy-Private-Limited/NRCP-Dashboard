@@ -82,17 +82,16 @@ class EquipmentsController extends Controller
                     'quantity' => $request->quantity,
                     'year_of_purchase' => $request->year_of_purchase
                 ]);
-            
                     $notification = array(
                         'message' => 'Equipment Update successfully',
                         'alert-type' => 'success'
                     );
-                } 
+                }
                 catch(Throwable $e){report($e);
                     return false;
-                } 
+                }
             }
-            return redirect()->route('equipments')->with($notification);
+        return redirect()->route('equipments')->with($notification);
     }
 
     public function destroy($id)

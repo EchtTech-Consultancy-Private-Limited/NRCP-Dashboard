@@ -10,7 +10,7 @@ class StateMonthlyReport extends Model
     use HasFactory;
 
     protected $fillable = [
-        'state_name',
+        'state_id',
         'state_nodal_office',
         'office_address',
         'reporting_month_year',
@@ -61,4 +61,13 @@ class StateMonthlyReport extends Model
         'bite_cases_observed',
         'other_remarks',
     ];
+    
+    /**
+     * states
+     *
+     * @return void
+     */
+    public function states(){
+        return $this->belongsTo(State::class,'state_id');
+    }
 }
