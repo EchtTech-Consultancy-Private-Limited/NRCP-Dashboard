@@ -259,7 +259,7 @@ const apply_filter = () => {
                 //  highchartMapcase(result.total_records);
                 //  highchartMapDeath(result.total_records);
                 if (form_type == '3') {
-                    $('#box1').html("Total Cases-" + " " + result.human_rabies_case);
+                    $('#box1').html( result.human_rabies_case);
                     $('#box2').html("Total Deaths-" + " " + result.human_rabies_deaths);
                     $('#text1').html("Syndromic Surveillance Cases");
                     $('#text2').html("Syndromic Surveillance Cases");
@@ -267,7 +267,7 @@ const apply_filter = () => {
                 } else {
                     $('#text1').html("Presumptive Cases");
                     $('#text2').html("Presumptive Cases");
-                    $('#box1').html("Total Cases-" + " " + result.human_rabies_case);
+                    $('#box1').html( result.human_rabies_case);
                     $('#box2').html("Total Deaths-" + " " + result.human_rabies_deaths);
                 }
             }
@@ -438,7 +438,7 @@ const defaultLoadMapData = () => {
         success: function (result) {
             $('#text1').html("Presumptive Cases");
             $('#text2').html("Presumptive Deaths");
-            $('#box1').html("Total Cases -" + " " + result.total_cases);
+            $('#box1').html( result.total_cases);
             $('#box2').html("Total Deaths -" + " " + result.total_deaths);
             /*Google Chart Pie Chart*/
             googlePieChart(result);

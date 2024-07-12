@@ -5,11 +5,11 @@
 @section('content')
 <div class="container-fluid">
     <div class="dashboard">
-        <div class="dashboard-filter mb-4">
+        <div class="dashboard-filter mb-4 rabies-test">
             <form action="{{ route('rabies-test-carried') }}" method="post" class="" id="rabies_detail_test">
                 @csrf
                 <div class="row">
-                    <div class="col-lg-2 col-md-2 col-6">
+                    <div class="col">
                         <div class="form-group">
                             <label for="state">Date<span class="star">*</span></label>
                             <input type="date" class="form-control" aria-label="Default select example" name="date"
@@ -19,7 +19,7 @@
                             @enderror
                         </div>
                     </div>
-                    <div class="col-lg-2 col-md-2 col-6">
+                    <div class="col">
                         <div class="form-group">
                             <label for="district">Number of Patients<span class="star">*</span></label>
                             <input type="text" maxlength="5" oninput="validateInput(this)" class="form-control"
@@ -29,7 +29,7 @@
                             @enderror
                         </div>
                     </div>
-                    <div class="col-lg-3 col-md-3 col-6">
+                    <div class="col">
                         <div class="form-group">
                             <label for="fromYear">Number of Sample Recieves</label>
                             <input type="text" maxlength="5" oninput="validateInput(this)" class="form-control"
@@ -42,7 +42,7 @@
                             </small>
                         </div>
                     </div>
-                    <div class="col-lg-2 col-md-2 col-6">
+                    <div class="col">
                         <div class="form-group">
                             <label for="diseasesSyndromes">Type of Sample<span class="star">*</span></label>
                             <select class="form-control" name="typefdte" id="typefdte">
@@ -55,7 +55,7 @@
                             @enderror
                         </div>
                     </div>
-                    <div class="col-lg-2 col-md-2 col-6">
+                    <div class="col">
                         <div class="form-group">
                             <label for="diseasesSyndromes">Type of Sample A</label>
                             <select class="form-control" name="typea" id="typea">
@@ -65,7 +65,7 @@
                             @enderror
                         </div>
                     </div>
-                    <div class="col-lg-2 col-md-2 col-6">
+                    <div class="col">
                         <div class="form-group">
                             <label for="diseasesSyndromes">Type of Sample B</label>
                             <select class="form-control" name="typeb" id="typeb">
@@ -75,7 +75,7 @@
                             @enderror
                         </div>
                     </div>
-                    <div class="col-lg-3 col-md-3 col-6">
+                    <div class="col">
                         <div class="form-group">
                             <label for="diseasesSyndromes">Method of Diagnosis</label>
                             <select class="form-control" name="method_of_diagnosis" id="method_of_diagnosis">
@@ -91,7 +91,7 @@
                             </small>
                         </div>
                     </div>
-                    <div class="col-lg-3 col-md-3 col-6">
+                    <div class="col">
                         <div class="form-group">
                             <label for="diseasesSyndromes">Number of Test Conducted</label>
                             <input type="text" maxlength="5" oninput="validateInput(this)" class="form-control"
@@ -102,7 +102,7 @@
                             <small id="lims-error" class="form-text text-muted"></small>
                         </div>
                     </div>
-                    <div class="col-lg-3 col-md-3 col-6">
+                    <div class="col">
                         <div class="form-group">
                             <label for="diseasesSyndromes">Total Number of Positive</label>
                             <input type="text" maxlength="5" oninput="validateInput(this)" class="form-control"
@@ -115,7 +115,7 @@
                             </small>
                         </div>
                     </div>
-                    <div class="col-lg-3 col-md-3 col-6">
+                    <div class="col">
                         <div class="form-group">
                             <label for="diseasesSyndromes">Number Entered into the IHIP</label>
                             <input type="text" maxlength="5" oninput="validateInput(this)" class="form-control"
@@ -126,7 +126,7 @@
                             @enderror
                         </div>
                     </div>
-                    <div class="col-lg-3 col-md-3 col-6 search-reset">
+                    <div class="col search-reset">
                         <div class="apply-filter mt-4 pt-1">
                             <button type="submit" class="btn bg-primary search-patient-btn mt-0  mr-3">Save</button>
                             <button type="reset" class="btn bg-danger">Reset</button>

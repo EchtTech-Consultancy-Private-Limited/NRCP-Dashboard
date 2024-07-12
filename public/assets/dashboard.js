@@ -267,7 +267,7 @@ const apply_filter = () => {
               //  highchartMapcase(result.total_records);
               //  highchartMapDeath(result.total_records);
                 if (form_type == '3') {
-                    $('#box1').html("Total Cases-" + " " + result.human_rabies_case);
+                    $('#box1').html( result.human_rabies_case);
                     $('#box2').html("Total Deaths-" + " " + result.human_rabies_deaths);
                     $('#text1').html("Syndromic Surveillance Cases");
                     $('#text2').html("Syndromic Surveillance Cases");
@@ -275,7 +275,7 @@ const apply_filter = () => {
                 } else {
                     $('#text1').html("Presumptive Cases");
                     $('#text2').html("Presumptive Cases");
-                    $('#box1').html("Total Cases-" + " " + result.human_rabies_case);
+                    $('#box1').html( result.human_rabies_case);
                     $('#box2').html("Total Deaths-" + " " + result.human_rabies_deaths);
                 }
             }
@@ -437,7 +437,7 @@ const defaultLoadMapData = () => {
         success: function (result) {
             $('#text1').html("Presumptive Cases");
             $('#text2').html("Presumptive Cases");
-            $('#box1').html("Total Cases -" + " " + result.total_cases);
+            $('#box1').html( result.total_cases);
             $('#box2').html("Total Deaths -" + " " + result.total_deaths);
             /*Google Chart Pie Chart*/
             googlePieChart(result);
@@ -1168,3 +1168,24 @@ $(document).ready(function () {
 
 
 
+$(document).ready(function() {
+    // Select the input elements with data-date attribute using jQuery
+    const dateInput = $('input[data-date="date"]');
+
+    // Attach focus event using jQuery
+    dateInput.on('focus', function() {
+        this.type = 'date';
+        // Uncomment the alert for debugging purposes
+        // alert("all is well");
+    });
+
+    // Attach blur event using jQuery
+    dateInput.on('blur', function() {
+        if (!this.value) {
+            this.type = 'text';
+        }
+    });
+
+    // let today = new Date().toISOString().split('T')[0];
+    // document.getElementsByName("date")[0].setAttribute('min', today);
+});
