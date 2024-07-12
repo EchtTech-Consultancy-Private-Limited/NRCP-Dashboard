@@ -26,8 +26,8 @@ $(document).on('change', '.state_dashboard_filter', function() {
             $("#total_health_facilities_submitted").text(data.totalCard?.total_health_facilities_submitted ?? '0');
             $("#total_patients").text(data.totalCard?.total_patients ?? '0');
             $("#suspected_death_reports").text(data.totalCard?.suspected_death_reports ?? '0');
-            $("#availability_arv").text(data.totalCard?.availability_arv ?? '0');
             $("#availability_ars").text(data.totalCard?.availability_ars ?? '0');
+            $("#availability_arv").text(data.totalCard?.availability_arv ?? '0');            
             stateHighchart(data);
         }
     });
