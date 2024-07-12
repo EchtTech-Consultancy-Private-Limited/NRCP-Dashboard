@@ -2525,7 +2525,7 @@ function nationalHighchart(data)
                 size: '100%',
                 innerSize: '70%', // Adjusted for a larger inner circle
                 dataLabels: {
-                    enabled: true,
+                    enabled: false,
                     // distance: -30, // Adjusted to move labels closer
                     style: {
                         fontWeight: 'bold',
@@ -2594,7 +2594,7 @@ function nationalHighchart(data)
                 size: '100%',
                 innerSize: '70%', // Adjusted for a larger inner circle
                 dataLabels: {
-                    enabled: true,
+                    enabled: false,
                     // distance: -30, // Adjusted to move labels closer
                     style: {
                         fontWeight: 'bold',
@@ -2663,7 +2663,7 @@ function nationalHighchart(data)
                 size: '100%',
                 innerSize: '70%', // Adjusted for a larger inner circle
                 dataLabels: {
-                    enabled: true,
+                    enabled: false,
                     // distance: -30, // Adjusted to move labels closer
                     style: {
                         fontWeight: 'bold',
@@ -2732,7 +2732,7 @@ function nationalHighchart(data)
                 size: '100%',
                 innerSize: '70%', // Adjusted for a larger inner circle
                 dataLabels: {
-                    enabled: true,
+                    enabled: false,
                     // distance: -30, // Adjusted to move labels closer
                     style: {
                         fontWeight: 'bold',

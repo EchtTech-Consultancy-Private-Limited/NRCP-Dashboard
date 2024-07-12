@@ -973,8 +973,7 @@ input[type=date]:invalid::-webkit-datetime-edit {
 }
 
 .state-graph-filter .col {
-  flex: 0 0 20%;
-  max-width: 20%;
+  flex: 0 1 11% !important;
   padding: 0 0 10px 10px;
 }
 .state-graph-filter .col .white_card {
@@ -1062,7 +1061,7 @@ input[name=aadhar_number], input[type=email] {
 }
 
 .dashboard-col {
-  flex: 0 1 33%;
+  flex: 0 1 33.33%;
   padding: 0 10px;
 }
 

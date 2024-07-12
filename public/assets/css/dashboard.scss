@@ -999,8 +999,7 @@ input[type=date]:invalid::-webkit-datetime-edit {
 }
 
 .state-graph-filter .col {
-	flex: 0 0 20%;
-    max-width: 20%;
+	flex: 0 1 11% !important;
     padding: 0 0 10px 10px;
 	.white_card {
 		border: 1px solid #ddd;
@@ -1079,7 +1078,7 @@ input[name="aadhar_number"], input[type="email"] {
 	border-radius: 5px;
 }
 .dashboard-col {
-    flex: 0 1 33%;
+    flex: 0 1 33.33%;
     padding: 0 10px;
 }
 .col.search-reset{

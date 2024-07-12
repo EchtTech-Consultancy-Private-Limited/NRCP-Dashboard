@@ -405,7 +405,7 @@
                                         </div>
                                         <div class="col-md-12">
                                             <div class="row" id="state-wise-patient-report">
-                                                <div class="col-md-7">
+                                                <div class="col-md-12">
                                                     <div class="row state-graph-filter">
                                                         @for($i=1; $i<= $states; $i++)
                                                         <div class="col">
@@ -421,7 +421,7 @@
                                                     </div>
                                                 </div>
 
-                                                <div class="col-md-5">
+                                                <div class="col-md-7">
                                                     <div id="state-wise-patient-report-india-map"
                                                         class="border rounded mb-3"></div>
                                                 </div>

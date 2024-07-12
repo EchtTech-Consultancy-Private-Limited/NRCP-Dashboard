@@ -201,6 +201,12 @@
         justify-content: end;
     }
 }
+@media(max-width:1550px) {
+    .state-graph-filter .col {
+        flex: 0 1 16.5% !important;
+        padding: 0 0 10px 10px;
+    }
+}
 @media(max-width:1500px) {
     .quality-form .col {
         flex: 0 1 25%;
