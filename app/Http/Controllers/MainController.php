@@ -18,6 +18,8 @@ use App\Models\StateMonthlyReport;
 use Illuminate\Support\Facades\DB;
 use DateTime;
 use Carbon\Carbon;
+use App\Exports\StateMonthlyReportExport;
+use Excel;
 
 class MainController extends Controller
 {
@@ -44,8 +46,8 @@ class MainController extends Controller
                     DB::raw('SUM(dh_of_ars + sdh_of_ars + chc_of_ars + phc_of_ars) as availability_ars')
                 ])
                 ->first();
-
-        return view("dashboard", compact('total','months'));
+        $states = State::count();
+        return view("dashboard", compact('total','months','states'));
     }    
     /**
      * nationalHighchart
@@ -56,7 +58,7 @@ class MainController extends Controller
     {
         $totalStates = State::count();
         $totalCount = StateMonthlyReport::distinct('state_id')->count();
-        $totalPrecentage = round(($totalCount/$totalStates)*100, 1);
+        $totalPrecentage = round(($totalCount/$totalStates)*100, 1);;
         $totalPrecentageNot = 100-$totalPrecentage;
         $monthlyReport = [
                 'totalPrecentage' => $totalPrecentage,
@@ -94,14 +96,36 @@ class MainController extends Controller
             $totalClosingBalance = StateMonthlyReport::where('state_id', $state->id)->sum('phc_of_ars');
             $totalCount = $totalOpeningBalance + $totalQuantityReceived + $totalQuantityUtilized + $totalClosingBalance;
             $totalArs[] = [$state->state_name, $totalCount];
-        }    
+        }
         // End State wise Bar Graph
 
+        // State wise Patient Report
+        $statePatientReport = [];
+        foreach ($states as $state) {
+            $totalPatientCount = StateMonthlyReport::where('state_id', $state->id)->count();
+            $totalPatientPrecentage = round(($totalPatientCount/$totalStates)*100, 1);
+            $totalPatientPrecentageNot = 100-$totalPatientPrecentage;
+            $stateName = strtoupper(str_replace('in-','',$state->state_code));
+            $statePatientReport[] = [
+                'state_name' => $stateName,
+                'total_patient_precentage' => $totalPatientPrecentage,
+                'total_patient_precentage_not' => $totalPatientPrecentageNot,
+            ];
+            $statePatientReportMap[] = [
+                'hc-key' => $state->state_name,
+                'value' => $totalPatientPrecentage,
+                // 'total_patient_precentage_not' => $totalPatientPrecentageNot,
+            ];
+        }
+        //  End State wise Patient Report
+        
         return response()->json([
             'programUserDetails' => $monthlyReport,
             'stateBarGraph' => $stateBarGraph,
             'totalArv' => $totalArv,
             'totalArs' => $totalArs,
+            'statePatientReport' => $statePatientReport,
+            'statePatientReportMap' => $statePatientReportMap,
         ], 200);
     }
     
@@ -112,6 +136,7 @@ class MainController extends Controller
      */
     public function filterNationalHighchart(Request $request)
     {
+        $totalStates = State::count();
         $baseQuery = StateMonthlyReport::query();
         if ($request->has('state_bar_graph_year') && $request->state_bar_graph_year) {
             $baseQuery->whereYear('reporting_month_year', $request->state_bar_graph_year);
@@ -151,16 +176,49 @@ class MainController extends Controller
             $totalArs[] = [$state->state_name, $totalCount];
         }
 
+        // State wise Patient Report
+        $queryPatient = StateMonthlyReport::query();
+        if ($request->has('state_bar_graph_year_patient') && $request->state_bar_graph_year_patient) {
+            $queryPatient->whereYear('reporting_month_year', $request->state_bar_graph_year_patient);
+        }
+        if ($request->has('state_bar_graph_month_patient') && $request->state_bar_graph_month_patient) {
+            $queryPatient->whereMonth('reporting_month_year', $request->state_bar_graph_month_patient);
+        }
+        $statePatientReport = [];
+        foreach ($states as $state) {
+            $totalPatientCount = $queryPatient->clone()->where('state_id', $state->id)->count();
+            $totalPatientPrecentage = round(($totalPatientCount/$totalStates)*100, 1);
+            $totalPatientPrecentageNot = 100-$totalPatientPrecentage;
+            $stateName = strtoupper(str_replace('in-','',$state->state_code));
+            $statePatientReport[] = [
+                'state_name' => $stateName,
+                'total_patient_precentage' => $totalPatientPrecentage,
+                'total_patient_precentage_not' => $totalPatientPrecentageNot,
+            ];
+            $statePatientReportMap[] = [
+                'hc-key' => $state->state_name,
+                'value' => $totalPatientPrecentage,
+                // 'total_patient_precentage_not' => $totalPatientPrecentageNot,
+            ];
+        }
+        //  End State wise Patient Report
+
         return response()->json([
             'stateBarGraph' => $stateBarGraph,
             'totalArv' => $totalArv,
             'totalArs' => $totalArs,
+            'statePatientReport' => $statePatientReport,
+            'statePatientReportMap' => $statePatientReportMap,
         ], 200);
     }
-
+    
+    /**
+     * misReportGenerate
+     *
+     * @return void
+     */
     public function misReportGenerate()
     {
-        
         $states = State::get();
         $months = [];
         $currentYear = date('Y');
@@ -173,6 +231,26 @@ class MainController extends Controller
         return view('mis-report-generate', compact('states','months','stateMonthlyReports'));
     }
     
+    public function nationalMisExport(Request $request)
+    {
+        // dd($request->all());
+        $fileName = '';
+        $query = null;
+        $fileName = 'StateMonthlyReport';
+        $query = StateMonthlyReport::query();
+
+        if (!empty($request->state)) {
+            $query->where('state_id', $request->state);
+        }
+        if (!empty($request->year)) {
+            $query->whereYear('reporting_month_year', $request->year);
+        }
+        if (!empty($request->month)) {
+            $query->whereMonth('reporting_month_year', $request->month);
+        }
+        $arrays = [$query->get()->toArray()];
+        return Excel::download(new StateMonthlyReportExport($arrays), Carbon::now()->format('d-m-Y') . '-' . $fileName . '.xlsx');
+    }
     
     public function labDashboard(Request $request)
     {

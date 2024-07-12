@@ -30,7 +30,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-12">
-                                        <form action="{{url('mis-filter-report-generate')}}">
+                                        <form action="{{url('national-mis-report-export')}}" method="post">
                                             @csrf
                                             <div class="row align-items-center">
                                                 <div class="col-md-3">
@@ -92,6 +92,7 @@
                                                                 <th>Month Year</th>
                                                                 <th>Nodal Office</th>
                                                                 <th>Office Address</th>
+                                                                <th>Action</th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
@@ -101,6 +102,17 @@
                                                                     <td>{{date('F Y', strtotime(@$stateMonthlyReport->reporting_month_year))}}</td>
                                                                     <td>{{@$stateMonthlyReport->state_nodal_office}}</td>
                                                                     <td>{{@$stateMonthlyReport->office_address}}</td>
+                                                                    <td>
+                                                                        {{-- <a href= "{{route('national.state-monthly-edit',$stateMonthlyReport->id)}}" id="edit_2" class="btn bg-success action-btn pformEdit" data-id="2" title="Edit">
+                                                                          <i class="fa fa-edit"></i>
+                                                                        </a> --}}
+                                                                        <a href="{{route('national.state-monthly-view',$stateMonthlyReport->id)}}" class="btn bg-danger action-btn" title="Delete">
+                                                                            <i class="fa fa-eye"></i>
+                                                                          </a>
+                                                                        {{-- <a href="{{route('national.state-monthly-delete',$stateMonthlyReport->id)}}" class="btn bg-danger action-btn" title="Delete" onclick="return confirmDelete()">
+                                                                          <i class="fa fa-trash-o"></i>
+                                                                        </a> --}}
+                                                                      </td>
                                                                 </tr>
                                                              @endforeach
                                                         </tbody>

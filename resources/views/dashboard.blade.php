@@ -310,7 +310,7 @@
 
                                                             <div class="">
                                                                 <button class="dt-button buttons-print" type="button"
-                                                                    onclick="printDiv('State-wise-bar-graph' "><span><i
+                                                                    onclick="printDiv('State-wise-bar-graph') "><span><i
                                                                             class="fa fa-print"
                                                                             aria-hidden="true"></i></span></button>
                                                             </div>
@@ -345,38 +345,31 @@
                                                                 <label for="district"
                                                                     class="mr-3  text-nowrap mb-0">Year <span
                                                                         class="star">*</span></label>
-                                                                <select name="year" id="year2" class="form-control">
-                                                                    <option value="">Select Year</option>
-                                                                    <option value="">2019-2020</option>
-                                                                    <option value="">2020-2021</option>
-                                                                    <option value="">2021-2022</option>
-                                                                    <option value="">2022-2023</option>
-                                                                    <option value="">2023-2024</option>
-                                                                </select>
-                                                                <label for="district"
-                                                                    class="mr-3 ml-3 text-nowrap mb-0">Month <span
-                                                                        class="star">*</span></label>
-                                                                <select name="month" id="month2" class="form-control">
-                                                                    <option value="">Select Month</option>
-                                                                    <option value="">January</option>
-                                                                    <option value="">February</option>
-                                                                    <option value="">March</option>
-                                                                    <option value="">April</option>
-                                                                    <option value="">May</option>
-                                                                    <option value="">June</option>
-                                                                    <option value="">July</option>
-                                                                    <option value="">August</option>
-                                                                    <option value="">September</option>
-                                                                    <option value="">October</option>
-                                                                    <option value="">November</option>
-                                                                    <option value="">December</option>
-                                                                </select>
+                                                                        <select name="state-bar-graph-year-patient" id="state-bar-graph-year-patient" class="form-control state_bar_graph_patient"
+                                                                        style="color: grey;">
+                                                                        <option value="">Select Year</option>
+                                                                        @for ($i = date("Y")-10; $i <= date("Y")+10; $i++)
+                                                                            <option value="{{$i}}">{{$i}} - {{$i+1}}</option>
+                                                                        @endfor
+                                                                    </select>
+                                                                    <label for="district"
+                                                                        class="mr-3 ml-3 text-nowrap mb-0">Month <span
+                                                                            class="star">*</span></label>
+                                                                    <select name="state-bar-graph-month-patient" id="state-bar-graph-month-patient" class="form-control state_bar_graph_patient"
+                                                                        style="color: grey;">
+                                                                        <option value="">Select Month</option>
+                                                                        @foreach ($months as $key => $month)
+                                                                            <option value="{{ $key+1 }}">
+                                                                                {{ $month }}
+                                                                            </option>
+                                                                        @endforeach
+                                                                    </select>
 
                                                             </div>
 
                                                             <div class="">
                                                                 <button class="dt-button buttons-print" type="button"
-                                                                    onclick="printDiv('State-wise-bar-graph' "><span><i
+                                                                    onclick="printDiv('state-wise-patient-report') "><span><i
                                                                             class="fa fa-print"
                                                                             aria-hidden="true"></i></span></button>
                                                             </div>
@@ -390,135 +383,20 @@
                                             </div>
                                         </div>
                                         <div class="col-md-12">
-                                            <div class="row">
+                                            <div class="row" id="state-wise-patient-report">
                                                 <div class="col-md-7">
                                                     <div class="row state-graph-filter">
+                                                        @for($i=1; $i<= $states; $i++)
                                                         <div class="col">
-                                                            <div class="white_card  ">
-
+                                                            <div class="white_card">
                                                                 <div class="">
-                                                                    <div id="integrated-dashboard-state1"
+                                                                    <div id="integrated-dashboard-state{{$i}}"
                                                                         class=" state-filter-highchart rounded  ">
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-
-                                                        <div class="col">
-                                                            <div class="white_card  ">
-                                                                <div class="">
-                                                                    <div id="integrated-dashboard-state2"
-                                                                        class=" state-filter-highchart rounded  received-chart">
-                                                                    </div>
-
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="col">
-                                                            <div class="">
-                                                                <div id="integrated-dashboard-state3"
-                                                                    class=" state-filter-highchart rounded mb-0 ">
-                                                                </div>
-
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="col">
-                                                            <div class="white_card  ">
-
-                                                                <div class="">
-                                                                    <div id="integrated-dashboard-state4"
-                                                                        class=" state-filter-highchart rounded mb-0 received-chart">
-                                                                    </div>
-
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="col">
-                                                            <div class="white_card  ">
-
-                                                                <div class="">
-                                                                    <div id="integrated-dashboard-state5"
-                                                                        class=" state-filter-highchart rounded mb-0 received-chart">
-                                                                    </div>
-
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="col">
-                                                            <div class="white_card  ">
-
-                                                                <div class="">
-                                                                    <div id="integrated-dashboard-state6"
-                                                                        class=" state-filter-highchart rounded mb-0 received-chart">
-                                                                    </div>
-
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="col">
-                                                            <div class="white_card  ">
-
-                                                                <div class="">
-                                                                    <div id="integrated-dashboard-state7"
-                                                                        class=" state-filter-highchart rounded mb-0 received-chart">
-                                                                    </div>
-
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col">
-                                                            <div class="white_card  ">
-
-                                                                <div class="">
-                                                                    <div id="integrated-dashboard-state8"
-                                                                        class=" state-filter-highchart rounded mb-0 received-chart">
-                                                                    </div>
-
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col">
-                                                            <div class="white_card  ">
-
-                                                                <div class="">
-                                                                    <div id="integrated-dashboard-state9"
-                                                                        class=" state-filter-highchart rounded mb-0 received-chart">
-                                                                    </div>
-
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="col">
-                                                            <div class="white_card  ">
-
-                                                                <div class="">
-                                                                    <div id="integrated-dashboard-state10"
-                                                                        class=" state-filter-highchart rounded mb-0 received-chart">
-                                                                    </div>
-
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="col">
-                                                            <div class="white_card  ">
-
-                                                                <div class="">
-                                                                    <div id="integrated-dashboard-state11"
-                                                                        class=" state-filter-highchart rounded mb-0 received-chart">
-                                                                    </div>
-
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
-
+                                                        @endfor                                                        
                                                     </div>
                                                 </div>
 
