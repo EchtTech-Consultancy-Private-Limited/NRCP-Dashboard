@@ -2,9 +2,9 @@
 @section('title') {{'State Monthly Report' }} 
 @endsection 
 @section('content') 
-<div class="container-fluid dashboard">
+<div class="container-fluid dashboard dashnoard">
   <div class="form-tab">
-    <div class="dashboard-filter">
+    <div class="dashboard-filter table-responsive">
     <table id="general_profiles_TABLE2" class="w-100">
         <thead>
           <tr>

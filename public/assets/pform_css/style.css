@@ -66,8 +66,8 @@ body {
   /* box-shadow: inset 0 0px 8px 0px #e3e0e0; */
   box-shadow: inset 0 0px 8px 0px #fff !important;
   width: 100%;
-  padding: 7px 1rem 7px 0.75rem !important;
-  height: 38px;
+  padding: 8px 1rem 7px 0.75rem !important;
+  height: 44px;
 }
 
 .form-group input::-moz-placeholder,
@@ -100,7 +100,8 @@ body {
 
 .form-group label {
   padding: 0 0px;
-  font-size: 14px;
+  font-size: 16px;
+  font-weight: normal !important;
 }
 
 .form-group .form-select {
@@ -121,7 +122,7 @@ body {
 
 .search-patient-btn {
   /* width: 180px; */
-  padding: 5px 10px !important;
+  padding: 8px 23px !important;
   display: inline-block;
   font-size: 15px;
   font-weight: 400;
@@ -505,7 +506,7 @@ span.fa.printhide {
 }
 
 .chart-container {
-  border: 1px solid #ddd;
+  border: 0;
   border-radius: 0 0 9px 9px;
 }
 
@@ -703,9 +704,14 @@ table.dataTable.display > tbody > tr.even > * {
   margin: 0;
   font-size: 14px;
   text-transform: capitalize;
+  font-weight: normal !important;
 }
 .dataTables_wrapper .dataTables_length label select {
   font-size: 14px !important;
+}
+
+label:not(.form-check-label):not(.custom-file-label) {
+  font-weight: normal !important;
 }
 
 .dataTables_info {
@@ -889,7 +895,6 @@ input[type=date]::placeholder {
 .single_crm {
   background: #fff;
   border-radius: 5px;
-  margin-bottom: 18px;
   padding: 5px;
   box-shadow: 0 0px 10px #d3d3d3;
   text-align: center;
@@ -937,13 +942,19 @@ input[type=date]::placeholder {
 }
 
 .box-heading {
+  display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 5px 0 20px;
 }
 .box-heading h1.main-heading {
   font-weight: 600 !important;
-  font-size: 20px !important;
+  font-size: 27px !important;
+  font-weight: 700 !important;
+  font-size: 27px !important;
+  color: #043881;
+  border-bottom: 2px solid #1467a3;
+  padding-bottom: 10px;
 }
 .box-heading .form-control {
   width: 300px;

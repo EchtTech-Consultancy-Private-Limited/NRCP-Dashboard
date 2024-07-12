@@ -259,7 +259,7 @@ const apply_filter = () => {
                 //  highchartMapcase(result.total_records);
                 //  highchartMapDeath(result.total_records);
                 if (form_type == '3') {
-                    $('#box1').html("Total Cases-" + " " + result.human_rabies_case);
+                    $('#box1').html( result.human_rabies_case);
                     $('#box2').html("Total Deaths-" + " " + result.human_rabies_deaths);
                     $('#text1').html("Syndromic Surveillance Cases");
                     $('#text2').html("Syndromic Surveillance Cases");
@@ -267,7 +267,7 @@ const apply_filter = () => {
                 } else {
                     $('#text1').html("Presumptive Cases");
                     $('#text2').html("Presumptive Cases");
-                    $('#box1').html("Total Cases-" + " " + result.human_rabies_case);
+                    $('#box1').html( result.human_rabies_case);
                     $('#box2').html("Total Deaths-" + " " + result.human_rabies_deaths);
                 }
             }
@@ -438,7 +438,7 @@ const defaultLoadMapData = () => {
         success: function (result) {
             $('#text1').html("Presumptive Cases");
             $('#text2').html("Presumptive Deaths");
-            $('#box1').html("Total Cases -" + " " + result.total_cases);
+            $('#box1').html( result.total_cases);
             $('#box2').html("Total Deaths -" + " " + result.total_deaths);
             /*Google Chart Pie Chart*/
             googlePieChart(result);
@@ -895,7 +895,7 @@ const pyramidChart = (result) => {
         },
     };
     const chartContainer = document.querySelector("#chart");
-    console.log(chartContainer)
+    // console.log(chartContainer)
     chartContainer.innerHTML = '';
     let chart = new ApexCharts(document.querySelector("#chart"), options);
     chart.render();
@@ -1083,7 +1083,7 @@ const defaultLaboratoryMapData = () => {
                     $("#tableBodyLaboratory").append(mapRow);           
                 });
                 // Graph total row table
-                console.log(result.total_records.number_of_patients);      
+                // console.log(result.total_records.number_of_patients);      
                 const graphTableRow = `
                     <tr>
                         <td>${result.total_records.number_of_patients}</td>
@@ -2056,1603 +2056,1075 @@ function laboratoryResetButton() {
 // end LAboratory dashboard
 
 
-
-
-
 //  Monthly Report Received
+$(document).ready(function(){
+    $.ajax({
+        type: "GET",
+        url: BASE_URL + "national-highchart",
+        success: function(data) {
+            nationalHighchart(data);
+        }
+    });
+});
 
-Highcharts.chart('national-dashboard-monthly-report-received', {
-    chart: {
-        type: 'pie',
-        height: 210,
-       //  margin: [0, 0, 0, 0] // Set margins to remove extra space
-    },
-    title: {
-        useHTML: true,
-        text: '90%',
-        floating: true,
-        verticalAlign: 'middle',
-        y: 4,
-        style: {
-            fontSize: '16px'
-        }
-    },
-    credits: {
-        enabled: false
-    },
-    exporting: {
-        enabled: false
-    },
-    subtitle: {
-        useHTML: true,
-        text: '<div style="text-align:center;font-weight: 700;font-size: 14px;">% of Monthly Report Received </div>',
-        align: 'center',
-        verticalAlign: 'bottom',
-        y: 0, // Adjusted position
-        style: {
-            fontSize: '13px',
-            color: '#000'
-        }
-    },
-    legend: {
-        enabled: false
-    },
-    tooltip: {
-       enabled: false,
-    },
-    plotOptions: {
-        pie: {
-            size: '100%',
-            innerSize: '70%', // Adjusted for a larger inner circle
-            dataLabels: {
-                enabled: true,
-                // distance: -30, // Adjusted to move labels closer
-                style: {
-                    fontWeight: 'bold',
-                    fontSize: '16px'
-                },
-                connectorWidth: 0
-            }
-        }
-    },
-    colors: ['#a5a5a5', '#e7e6e6'],
-    series: [
-        {
-            type: 'pie',            
-            data: [
-                ['', 90],
-                ['', 10],
-            ]
-        }
-    ]
- });
-
-
-Highcharts.chart('national-dashboard-monthly-report-not-received', {
-    chart: {
-        type: 'pie',
-        height: 210,
-       //  margin: [0, 0, 0, 0] // Set margins to remove extra space
-    },
-    title: {
-        useHTML: true,
-        text: '10%',
-        floating: true,
-        verticalAlign: 'middle',
-        y: 4,
-        style: {
-            fontSize: '16px'
-        }
-    },
-    credits: {
-        enabled: false
-    },
-    exporting: {
-        enabled: false
-    },
-    subtitle: {
-        useHTML: true,
-        text: '<div style="text-align:center;font-weight: 700;font-size: 14px;">% of Monthly Report not Received </div>',
-        align: 'center',
-        verticalAlign: 'bottom',
-        y: 0, // Adjusted position
-        style: {
-            fontSize: '13px',
-            color: '#000'
-        }
-    },
-    legend: {
-        enabled: false
-    },
-    tooltip: {
-       enabled: false,
-    },
-    plotOptions: {
-        pie: {
-            size: '100%',
-            innerSize: '70%', // Adjusted for a larger inner circle
-            dataLabels: {
-                enabled: true,
-                // distance: -30, // Adjusted to move labels closer
-                style: {
-                    fontWeight: 'bold',
-                    fontSize: '16px'
-                },
-                connectorWidth: 0
-            }
-        }
-    },
-    colors: ['#a5a5a5', '#e7e6e6'],
-    series: [
-        {
-            type: 'pie',            
-            data: [
-                ['', 10],
-                ['', 90],
-            ]
-        }
-    ]
- });
-
-Highcharts.chart('national-dashboard-Nos-of-monthly-report-received', {
-    chart: {
-        type: 'pie',
-        height: 210,
-       //  margin: [0, 0, 0, 0] // Set margins to remove extra space
-    },
-    title: {
-        useHTML: true,
-        text: '90 Nos.',
-        floating: true,
-        verticalAlign: 'middle',
-        y: 4,
-        style: {
-            fontSize: '16px'
-        }
-    },
-    credits: {
-        enabled: false
-    },
-    exporting: {
-        enabled: false
-    },
-    subtitle: {
-        useHTML: true,
-        text: '<div style="text-align:center;font-weight: 700;font-size: 14px;"> Nos. of Monthly Report Received </div>',
-        align: 'center',
-        verticalAlign: 'bottom',
-        y: 0, // Adjusted position
-        style: {
-            fontSize: '13px',
-            color: '#000'
-        }
-    },
-    legend: {
-        enabled: false
-    },
-    tooltip: {
-       enabled: false,
-    },
-    plotOptions: {
-        pie: {
-            size: '100%',
-            innerSize: '70%', // Adjusted for a larger inner circle
-            dataLabels: {
-                enabled: true,
-                // distance: -30, // Adjusted to move labels closer
-                style: {
-                    fontWeight: 'bold',
-                    fontSize: '16px'
-                },
-                connectorWidth: 0
-            }
-        }
-    },
-    colors: ['#a5a5a5', '#e7e6e6'],
-    series: [
-        {
-            type: 'pie',            
-            data: [
-                ['', 90],
-                ['', 10],
-            ]
-        }
-    ]
- });
-
-
-Highcharts.chart('national-dashboard-Nos-of-monthly-report-not-received', {
-    chart: {
-        type: 'pie',
-        height: 210,
-       //  margin: [0, 0, 0, 0] // Set margins to remove extra space
-    },
-    title: {
-        useHTML: true,
-        text: '10 Nos.',
-        floating: true,
-        verticalAlign: 'middle',
-        y: 4,
-        style: {
-            fontSize: '16px'
-        }
-    },
-    credits: {
-        enabled: false
-    },
-    exporting: {
-        enabled: false
-    },
-    subtitle: {
-        useHTML: true,
-        text: '<div style="text-align:center;font-weight: 700;font-size: 14px;">Nos. of Monthly Report not received </div>',
-        align: 'center',
-        verticalAlign: 'bottom',
-        y: 0, // Adjusted position
-        style: {
-            fontSize: '13px',
-            color: '#000'
-        }
-    },
-    legend: {
-        enabled: false
-    },
-    tooltip: {
-       enabled: false,
-    },
-    plotOptions: {
-        pie: {
-            size: '100%',
-            innerSize: '70%', // Adjusted for a larger inner circle
-            dataLabels: {
-                enabled: true,
-                // distance: -30, // Adjusted to move labels closer
-                style: {
-                    fontWeight: 'bold',
-                    fontSize: '16px'
-                },
-                connectorWidth: 0
-            }
-        }
-    },
-    colors: ['#a5a5a5', '#e7e6e6'],
-    series: [
-        {
-            type: 'pie',            
-            data: [
-                ['', 10],
-                ['', 90],
-            ]
-        }
-    ]
- });
-
-
- Highcharts.chart('State-wise-bar-graph', {
-    chart: {
-        type: 'column'
-    },
-    title: {
-        text: ''
-    },
-    credits: {
-        enabled: false
-    },
-    exporting: {
-        enabled: false
-    },
-    subtitle: {
-        text: ''
-    },
-    xAxis: {
-        type: 'category',
-        labels: {
-            autoRotation: [-70, -90],
-            style: {
-                fontSize: '13px',
-                fontFamily: 'Verdana, sans-serif'
-            }
-        }
-    },
-    yAxis: {
-        min: 0,
-        title: {
-            text: null
-        }
-    },
-    legend: {
-        enabled: false,
-        useHTML: true,
-        // labelFormatter: function() {
-        //     let symbol = '<span style="color:' + this.color + ';font-size:12px; color:red">&#9644;</span>';
-        //     return '<span style="font-size: 12px;">' + symbol +  ' ' + this.name  +  '</span>';
-        // }
-    
-    allowPointSelect: false,
-    },
-    tooltip: {
-        enabled: false,
-    },
-    series: [{
-        name: 'Expenditure',
-        type: 'column',
-        color:"#158bec",
-        events: {
-            legendItemClick: function (e) {
-                e.preventDefault();
-            }
+$(document).on('change', '.state_bar_graph', function() {
+    let stateBarGraphYear = $('#state-bar-graph-year').find(":selected").val();
+    const stateBarGraphMonth = $('#state-bar-graph-month').find(":selected").val();
+    $.ajax({
+        type: "GET",
+        url: BASE_URL + "filter-national-highchart",
+        data: {
+            'state_bar_graph_year': stateBarGraphYear,
+            'state_bar_graph_month' : stateBarGraphMonth
         },
-        data: [
-            ['Uttar Pradesh', 4.3],
-            ['Maharashtra', 2.5],
-            ['Bihar', 3.5],
-            ['West Bengal', 4.5],
-            ['Madhya Pradesh', 2],
-            ['Tamil Nadu', 1.2],
-            ['Rajasthan', 2.4],
-            ['Karnataka', 3.1],
-            ['Gujarat', 3.4],
-            ['Andhra Pradesh', 4],
-            ['Odisha', 4.4],
-            ['Telangana', 2.8],
-            ['Kerala', 4],
-            ['Jharkhand', 4],
-            ['Assam', 2],
-            ['Punjab', 3],
-            ['Chhattisgarh', 1],
-            ['Haryana', 4],
-            ['Uttarakhand', 4],
-            ['Himachal Pradesh', 4],
-            ['Tripura', 4],
-            ['Meghalaya', 4],
-            ['Manipur', 4],
-            ['Nagaland', 4],
-            ['Goa', 4],
-            ['Arunachal Pradesh', 4],
-            ['Mizoram', 4],
-            ['Sikkim', 4],
-            ['Delhi', 5] // Considering Delhi as a Union Territory
-        ],
-        dataLabels: {
-            enabled: true,
-            rotation: -90,
-            color: '#FFFFFF',
-            inside: true,
-            verticalAlign: 'top',
-            format: '{point.y:.1f}', // one decimal
-            y: 10, // 10 pixels down from the top
-            style: {
-                fontSize: '12px',
-                fontFamily: 'Verdana, sans-serif',
-                textShadow: "none",
-                color:"red"
-            },  
-            textShadow: "none"
+        success: function(data) {
+            nationalFilterHighChart(data);
         }
-    }]
+    });
+});
+
+$(document).on('change', '.state_bar_graph_patient', function() {
+    let stateBarGraphYearPatient = $('#state-bar-graph-year-patient').find(":selected").val();
+    const stateBarGraphMonthPatient = $('#state-bar-graph-month-patient').find(":selected").val();
+    $.ajax({
+        type: "GET",
+        url: BASE_URL + "filter-national-highchart",
+        data: {
+            'state_bar_graph_year_patient': stateBarGraphYearPatient,
+            'state_bar_graph_month_patient' : stateBarGraphMonthPatient
+        },
+        success: function(data) {
+            nationalFilterHighChartPatient(data);
+        }
+    });
 });
 
 
 
-// program wise expenditure state filter highchart
-let stateMarginTop = 0;
-let stateTitleY = 0;
-let stateSubTitleY = 0;
-let stateHeight = window.innerWidth < 1360 ? 130  : 150;
+// filter highcharts
+function nationalFilterHighChartPatient(data)
+{
+    // program wise expenditure state filter highchart
+    let stateMarginTop = 0;
+    let stateTitleY = 0;
+    let stateSubTitleY = 0;
+    let stateHeight = window.innerWidth < 1360 ? 130  : 150;
 
-Highcharts.chart('integrated-dashboard-state1', {
-    chart: {
-       type: 'pie',
-       height: stateHeight,
-       plotBackgroundColor: null,
-       plotBorderWidth: null,
-       plotShadow: false,
-       spacingTop: 0,
-       spacingBottom: 0,
-       spacingLeft: 0,
-       spacingRight: 0,
-       marginTop: stateMarginTop,
-    //  marginBottom: 0,
-   },
-    title: {
-       useHTML: true,
-       text: '57%',
-       floating: true,
-       verticalAlign: 'middle',
-       y: stateTitleY,
-       style: {
-          fontSize:'16px'
-       }
-    },
- 
-  
-    subtitle: {
-       useHTML: true,
-       text: '<div style="text-align:center;">UP</div>', // Add the name at the bottom here
-       align: 'center',
-       fontSize:'16px',
-       verticalAlign: 'bottom', // Align the subtitle to the bottom
-       y: stateSubTitleY, // Adjust the vertical position as needed
-       style: {
-          fontSize: '16px',
-          color:'#000' // Increase the font size as needed
-      }
-    },
- 
-    legend: {
-        enabled: false
-    },
- 
-    tooltip: {
-     enabled: false,
-    },
- 
-    plotOptions: {
-        series: {
-            borderWidth: 0,
-            colorByPoint: true,
+    data.statePatientReport.forEach((statePatientReport, index) => {
+        const chartContainerId = `integrated-dashboard-state${index+1}`;
+        Highcharts.chart(chartContainerId, {
+            chart: {
             type: 'pie',
-            size: '100%',
-            innerSize: '60%',
-            dataLabels: {
-                enabled: true,
-                crop: false,
-                distance: '-10%',
-                style: {
-                    fontWeight: 'bold',
-                    fontSize: '16px'
-                },
-                connectorWidth: 0
+            height: stateHeight,
+            plotBackgroundColor: null,
+            plotBorderWidth: null,
+            plotShadow: false,
+            spacingTop: 0,
+            spacingBottom: 0,
+            spacingLeft: 0,
+            spacingRight: 0,
+            marginTop: stateMarginTop,
+            //  marginBottom: 0,
+        },
+            title: {
+            useHTML: true,
+            text: `${statePatientReport.total_patient_precentage}%`,
+            floating: true,
+            verticalAlign: 'middle',
+            y: stateTitleY,
+            style: {
+                fontSize:'16px'
             }
-        }
-    },
-    colors: ['#b64926', '#eeece1',],
-    series: [
-        {
-            type: 'pie',
+            },  
+            subtitle: {
+            useHTML: true,
+            text: `<div style="text-align:center;">${statePatientReport.state_name}</div>`, // Add the name at the bottom here
+            align: 'center',
+            fontSize:'16px',
+            verticalAlign: 'bottom', // Align the subtitle to the bottom
+            y: stateSubTitleY, // Adjust the vertical position as needed
+            style: {
+                fontSize: '16px',
+                color:'#000' // Increase the font size as needed
+            }
+            },
+        
+            legend: {
+                enabled: false,
+            },
+            tooltip: {
+                enabled: true,
+            },
+        
+            plotOptions: {
+                series: {
+                    borderWidth: 0,
+                    colorByPoint: true,
+                    type: 'pie',
+                    size: '100%',
+                    innerSize: '60%',
+                    dataLabels: {
+                        enabled: true,
+                        crop: false,
+                        distance: '-10%',
+                        style: {
+                            fontWeight: 'bold',
+                            fontSize: '16px'
+                        },
+                        connectorWidth: 0
+                    }
+                }
+            },
+            colors: ['#b64926', '#eeece1',],
+            series: [
+                {
+                    type: 'pie',
+                    
+        data: [
             
-   data: [
-       
-       ['', 57],
-       ['', 43],
-       
-   ]
-        }
-    ],
-    credits: {
-        enabled: false
-    },
-    exporting: {
-     enabled: false
-  },
- });
- 
- Highcharts.chart('integrated-dashboard-state2', {
-    chart: {
-        type: 'pie',
-        height: stateHeight,
-        plotBackgroundColor: null,
-        plotBorderWidth: null,
-        plotShadow: false,
-        spacingTop: 0,
-        spacingBottom: 0,
-        spacingLeft: 0,
-        spacingRight: 0,
-        marginTop: stateMarginTop,
-   },
-    title: {
-       useHTML: true,
-       text: '21%',
-       floating: true,
-       verticalAlign: 'middle',
-       y: stateTitleY,
-       style: {
-          fontSize:'16px'
-       }
-    },
-    credits: {
-       enabled: false
-   },
-   exporting: {
-    enabled: false
- },
-    subtitle: {
-        useHTML: true,
-        text: '21%',
-        floating: true,
-        verticalAlign: 'middle',
-        stateSubTitleY
-    },
-    subtitle: {
-       useHTML: true,
-       text: '<div style="text-align:center;">MP</div>', // Add the name at the bottom here
-       align: 'center',
-       fontSize:'16px',
-       verticalAlign: 'bottom', // Align the subtitle to the bottom
-       y: stateTitleY, // Adjust the vertical position as needed
-       style: {
-          fontSize: '16px',
-          color:'#000' // Increase the font size as needed
-      }
-    },
- 
-    legend: {
-        enabled: false
-    },
- 
-    tooltip: {
-       enabled: false,
-    },
- 
-    plotOptions: {
-        series: {
-            borderWidth: 0,
-            colorByPoint: true,
-            type: 'pie',
-            size: '100%',
-            innerSize: '60%',
-            dataLabels: {
-                enabled: true,
-                crop: false,
-                distance: '-10%',
-                style: {
-                    fontWeight: 'bold',
-                    fontSize: '16px'
-                },
-                connectorWidth: 0
-            }
-        }
-    },
-    colors: ['#b64926', '#eeece1',],
-    series: [
-        {
-            type: 'pie',
+            ['', statePatientReport.total_patient_precentage],
+            ['', statePatientReport.total_patient_precentage_not],
             
-   data: [
-       
-       ['', 21],
-       ['', 79],
-       
-   ]
-        }
-    ]
- });
- 
- Highcharts.chart('integrated-dashboard-state3', {
-    chart: {
-        type: 'pie',
-        height: stateHeight,
-        plotBackgroundColor: null,
-        plotBorderWidth: null,
-        plotShadow: false,
-        spacingTop: 0,
-        spacingBottom: 0,
-        spacingLeft: 0,
-        spacingRight: 0,
-        marginTop: stateMarginTop,
-   },
-    title: {
-       useHTML: true,
-       text: '17%',
-       floating: true,
-       verticalAlign: 'middle',
-       y: stateTitleY,
-       style: {
-          fontSize:'16px'
-       }
-    },
-    credits: {
-       enabled: false
-   },
-   exporting: {
-    enabled: false
- },
-    subtitle: {
-        useHTML: true,
-        text: '17%',
-        floating: true,
-        verticalAlign: 'middle',
-        stateSubTitleY
-    },
-    subtitle: {
-       useHTML: true,
-       text: '<div style="text-align:center;">WB</div>', // Add the name at the bottom here
-       align: 'center',
-       fontSize:'16px',
-       verticalAlign: 'bottom', // Align the subtitle to the bottom
-       y: stateTitleY, // Adjust the vertical position as needed
-       style: {
-          fontSize: '16px',
-          color:'#000' // Increase the font size as needed
-      }
-    },
- 
-    legend: {
-        enabled: false
-    },
- 
-    tooltip: {
-       enabled: false,
-    },
- 
-    plotOptions: {
-        series: {
-            borderWidth: 0,
-            colorByPoint: true,
-            type: 'pie',
-            size: '100%',
-            innerSize: '60%',
-            dataLabels: {
+        ]
+                }
+            ],
+            credits: {
+                enabled: false
+            },
+            exporting: {
+            enabled: false
+        },
+        });
+    });
+
+    // State wise Patient Report Map 
+    (async () => {
+        const topology = await fetch(
+            'https://code.highcharts.com/mapdata/countries/in/custom/in-all-disputed.topo.json'
+        ).then(response => response.json()); 
+        Highcharts.mapChart('state-wise-patient-report-india-map', {
+            chart: {
+                map: topology,
+                height: window.innerWidth <1360 ? 450 : 508
+            },
+            title: {
+                text: ''
+            },
+            credits: {
+            enabled: false
+        },
+            subtitle: {
+                text: ''
+            },
+            mapNavigation: {
                 enabled: true,
-                crop: false,
-                distance: '-10%',
-                style: {
-                    fontWeight: 'bold',
-                    fontSize: '16px'
+                buttonOptions: {
+                    verticalAlign: 'bottom'
+                }
+            },
+            colorAxis: {
+                min: 0,
+                max: 100,
+                minColor: '#fcad95',
+                maxColor: '#ab4024',
+                labels: {
+                    format: '{value}',
                 },
-                connectorWidth: 0
-            }
-        }
-    },
-    colors: ['#b64926', '#eeece1',],
-    series: [
-        {
-            type: 'pie',
+            },
             
-   data: [
-       
-       ['', 17],
-       ['', 83],
-       
-   ]
-        }
-    ]
- });
- 
- Highcharts.chart('integrated-dashboard-state4', {
-    chart: {
-        type: 'pie',
-       height: stateHeight,
-       plotBackgroundColor: null,
-       plotBorderWidth: null,
-       plotShadow: false,
-       spacingTop: 0,
-       spacingBottom: 0,
-       spacingLeft: 0,
-       spacingRight: 0,
-       marginTop: stateMarginTop,
-   },
-    title: {
-       useHTML: true,
-       text: '17%',
-       floating: true,
-       verticalAlign: 'middle',
-       y: stateTitleY,
-       style: {
-          fontSize:'16px'
-       }
-    },
-    credits: {
-       enabled: false
-   },
-   exporting: {
-    enabled: false
- },
-  
-    subtitle: {
-       useHTML: true,
-       text: '<div style="text-align:center;">TN</div>', // Add the name at the bottom here
-       align: 'center',
-       fontSize:'16px',
-       verticalAlign: 'bottom', // Align the subtitle to the bottom
-       y: stateSubTitleY, // Adjust the vertical position as needed
-       style: {
-          fontSize: '16px',
-          color:'#000' // Increase the font size as needed
-      }
-    },
- 
-    legend: {
-        enabled: false
-    },
- 
-    tooltip: {
-       enabled: false,
-    },
- 
-    plotOptions: {
-        series: {
-            borderWidth: 0,
-            colorByPoint: true,
-            type: 'pie',
-            size: '100%',
-            innerSize: '60%',
-            dataLabels: {
-                enabled: true,
-                crop: false,
-                distance: '-10%',
-                style: {
-                    fontWeight: 'bold',
-                    fontSize: '16px'
-                },
-                connectorWidth: 0
+            series: [{
+                data: data.statePatientReportMap,
+                name: '',
+                allowPointSelect: false,
+                cursor: 'pointer',
+                color: "#fff",
+                states: {
+                    select: {
+                        color: '#ab4024'
+                    }
+                }
+            }],
+            exporting: {
+                enabled: false,
+                buttons: {
+                    contextButton: {
+                        menuItems: ['printChart', 'separator', 'downloadPNG', 'downloadJPEG', 'downloadPDF', 'downloadSVG']
+                    }
+                }
             }
-        }
-    },
-    colors: ['#b64926', '#eeece1',],
-    series: [
-        {
-            type: 'pie',
-            
-   data: [
-       
-       ['', 17],
-       ['', 83],
-       
-   ]
-        }
-    ]
- });
- 
- Highcharts.chart('integrated-dashboard-state5', {
-    chart: {
-        type: 'pie',
-       height: stateHeight,
-       plotBackgroundColor: null,
-       plotBorderWidth: null,
-       plotShadow: false,
-       spacingTop: 0,
-       spacingBottom: 0,
-       spacingLeft: 0,
-       spacingRight: 0,
-       marginTop: stateMarginTop,
-   },
-    title: {
-       useHTML: true,
-       text: '57%',
-       floating: true,
-       verticalAlign: 'middle',
-       y: stateTitleY,
-       style: {
-          fontSize:'16px'
-       }
-    },
-    credits: {
-       enabled: false
-   },
-   exporting: {
-    enabled: false
- },
-    subtitle: {
-        useHTML: true,
-        text: '57%',
-        floating: true,
-        verticalAlign: 'middle',
-        y: 0
-    },
-    subtitle: {
-       useHTML: true,
-       text: '<div style="text-align:center;">UK</div>', // Add the name at the bottom here
-       align: 'center',
-       fontSize:'16px',
-       verticalAlign: 'bottom', // Align the subtitle to the bottom
-       y: stateSubTitleY, // Adjust the vertical position as needed
-       style: {
-          fontSize: '16px',
-          color:'#000' // Increase the font size as needed
-      }
-    },
- 
-    legend: {
-        enabled: false
-    },
- 
-    tooltip: {
-       enabled: false,
-    },
- 
-    plotOptions: {
-        series: {
-            borderWidth: 0,
-            colorByPoint: true,
-            type: 'pie',
-            size: '100%',
-            innerSize: '60%',
-            dataLabels: {
-                enabled: true,
-                crop: false,
-                distance: '-10%',
-                style: {
-                    fontWeight: 'bold',
-                    fontSize: '16px'
-                },
-                connectorWidth: 0
-            }
-        }
-    },
-    colors: ['#b64926', '#eeece1',],
-    series: [
-        {
-            type: 'pie',
-   data: [
-       
-       ['', 57],
-       ['', 43],
-       
-   ]
-        }
-    ]
- });
- 
- Highcharts.chart('integrated-dashboard-state6', {
-    chart: {
-        type: 'pie',
-        height: stateHeight,
-        plotBackgroundColor: null,
-        plotBorderWidth: null,
-        plotShadow: false,
-        spacingTop: 0,
-        spacingBottom: 0,
-        spacingLeft: 0,
-        spacingRight: 0,
-        marginTop: stateMarginTop,
-   },
-    title: {
-       useHTML: true,
-       text: '21%',
-       floating: true,
-       verticalAlign: 'middle',
-       y: stateTitleY,
-       style: {
-          fontSize:'16px'
-       }
-    },
-    credits: {
-       enabled: false
-   },
-   exporting: {
-    enabled: false
- },
+        });
     
-    subtitle: {
-       useHTML: true,
-       text: '<div style="text-align:center;">MH</div>', // Add the name at the bottom here
-       align: 'center',
-       fontSize:'16px',
-       verticalAlign: 'bottom', // Align the subtitle to the bottom
-       y: stateSubTitleY, // Adjust the vertical position as needed
-       style: {
-          fontSize: '16px',
-          color:'#000' // Increase the font size as needed
-      }
-    },
- 
-    legend: {
-        enabled: false
-    },
- 
-    tooltip: {
-       enabled: false,
-    },
- 
-    plotOptions: {
-        series: {
-            borderWidth: 0,
-            colorByPoint: true,
-            type: 'pie',
-            size: '100%',
-            innerSize: '60%',
-            dataLabels: {
-                enabled: true,
-                crop: false,
-                distance: '-10%',
-                style: {
-                    fontWeight: 'bold',
-                    fontSize: '16px'
-                },
-                connectorWidth: 0
-            }
-        }
-    },
-    colors: ['#b64926', '#eeece1',],
-    series: [
-        {
-            type: 'pie',
-            
-   data: [
-       
-       ['', 21],
-       ['', 79],
-       
-   ]
-        }
-    ]
- });
- 
- Highcharts.chart('integrated-dashboard-state7', {
-    chart: {
-       type: 'pie',
-       height: stateHeight,
-       plotBackgroundColor: null,
-       plotBorderWidth: null,
-       plotShadow: false,
-       spacingTop: 0,
-       spacingBottom: 0,
-       spacingLeft: 0,
-       spacingRight: 0,
-       marginTop: stateMarginTop,
-   },
-    title: {
-       useHTML: true,
-       text: '17%',
-       floating: true,
-       verticalAlign: 'middle',
-       y: stateTitleY,
-       style: {
-          fontSize:'16px'
-       }
-    },
-    credits: {
-       enabled: false
-   },
-   exporting: {
-    enabled: false
- },
-  
-    subtitle: {
-       useHTML: true,
-       text: '<div style="text-align:center;">BR</div>', // Add the name at the bottom here
-       align: 'center',
-       fontSize:'16px',
-       verticalAlign: 'bottom', // Align the subtitle to the bottom
-       y: stateSubTitleY, // Adjust the vertical position as needed
-       style: {
-          fontSize: '16px',
-          color:'#000' // Increase the font size as needed
-      }
-    },
- 
-    legend: {
-        enabled: false
-    },
- 
-    tooltip: {
-       enabled: false,
-    },
- 
-    plotOptions: {
-        series: {
-            borderWidth: 0,
-            colorByPoint: true,
-            type: 'pie',
-            size: '100%',
-            innerSize: '60%',
-            dataLabels: {
-                enabled: true,
-                crop: false,
-                distance: '-10%',
-                style: {
-                    fontWeight: 'bold',
-                    fontSize: '16px'
-                },
-                connectorWidth: 0
-            }
-        }
-    },
-    colors: ['#b64926', '#eeece1',],
-    series: [
-        {
-            type: 'pie',
-   data: [
-       
-       ['', 17],
-       ['', 83],
-       
-   ]
-        }
-    ]
- });
- 
- Highcharts.chart('integrated-dashboard-state8', {
-    chart: {
-        type: 'pie',
-       height: stateHeight,
-       plotBackgroundColor: null,
-       plotBorderWidth: null,
-       plotShadow: false,
-       spacingTop: 0,
-       spacingBottom: 0,
-       spacingLeft: 0,
-       spacingRight: 0,
-       marginTop: stateMarginTop,
-   },
-    title: {
-       useHTML: true,
-       text: '17%',
-       floating: true,
-       verticalAlign: 'middle',
-       y: stateTitleY,
-       style: {
-          fontSize:'16px'
-       }
-    },
-    credits: {
-       enabled: false
-   },
-   exporting: {
-    enabled: false
- },
-  
-    subtitle: {
-       useHTML: true,
-       text: '<div style="text-align:center;">OR</div>', // Add the name at the bottom here
-       align: 'center',
-       fontSize:'16px',
-       verticalAlign: 'bottom', // Align the subtitle to the bottom
-       y: stateSubTitleY, // Adjust the vertical position as needed
-       style: {
-          fontSize: '16px',
-          color:'#000' // Increase the font size as needed
-      }
-    },
- 
-    legend: {
-        enabled: false
-    },
- 
-    tooltip: {
-       enabled: false,
-    },
- 
-    plotOptions: {
-        series: {
-            borderWidth: 0,
-            colorByPoint: true,
-            type: 'pie',
-            size: '100%',
-            innerSize: '60%',
-            dataLabels: {
-                enabled: true,
-                crop: false,
-                distance: '-10%',
-                style: {
-                    fontWeight: 'bold',
-                    fontSize: '16px'
-                },
-                connectorWidth: 0
-            }
-        }
-    },
-    colors: ['#b64926', '#eeece1',],
-    series: [
-        {
-            type: 'pie',
-            
-   data: [
-       
-       ['', 17],
-       ['', 83],
-       
-   ]
-        }
-    ]
- });
- 
- Highcharts.chart('integrated-dashboard-state9', {
-    chart: {
-        type: 'pie',
-       height: stateHeight,
-       plotBackgroundColor: null,
-       plotBorderWidth: null,
-       plotShadow: false,
-       spacingTop: 0,
-       spacingBottom: 0,
-       spacingLeft: 0,
-       spacingRight: 0,
-       marginTop: stateMarginTop,
-   },
-    title: {
-       useHTML: true,
-       text: '47%',
-       floating: true,
-       verticalAlign: 'middle',
-       y: stateTitleY,
-       style: {
-          fontSize:'16px'
-       }
-    },
-    credits: {
-       enabled: false
-   },
-   exporting: {
-    enabled: false
- },
- 
-    subtitle: {
-       useHTML: true,
-       text: '<div style="text-align:center;">HR</div>', // Add the name at the bottom here
-       align: 'center',
-       fontSize:'16px',
-       verticalAlign: 'bottom', // Align the subtitle to the bottom
-       y: stateSubTitleY, // Adjust the vertical position as needed
-       style: {
-          fontSize: '16px',
-          color:'#000' // Increase the font size as needed
-      }
-    },
- 
-    legend: {
-        enabled: false
-    },
- 
-    tooltip: {
-       enabled: false,
-    },
- 
-    plotOptions: {
-        series: {
-            borderWidth: 0,
-            colorByPoint: true,
-            type: 'pie',
-            size: '100%',
-            innerSize: '60%',
-            dataLabels: {
-                enabled: true,
-                crop: false,
-                distance: '-10%',
-                style: {
-                    fontWeight: 'bold',
-                    fontSize: '16px'
-                },
-                connectorWidth: 0
-            }
-        }
-    },
-    colors: ['#b64926', '#eeece1',],
-    series: [
-        {
-            type: 'pie',
-   data: [
-       
-       ['', 47],
-       ['', 53],
-       
-   ]
-        }
-    ]
- });
- 
- Highcharts.chart('integrated-dashboard-state10', {
-    chart: {
-        type: 'pie',
-       height: stateHeight,
-       plotBackgroundColor: null,
-       plotBorderWidth: null,
-       plotShadow: false,
-       spacingTop: 0,
-       spacingBottom: 0,
-       spacingLeft: 0,
-       spacingRight: 0,
-       marginTop: stateMarginTop,
-   },
-    title: {
-       useHTML: true,
-       text: '21%',
-       floating: true,
-       verticalAlign: 'middle',
-       y: stateTitleY,
-       style: {
-          fontSize:'16px'
-       }
-    },
-    credits: {
-       enabled: false
-   },
-   exporting: {
-    enabled: false
- },
- 
-    subtitle: {
-       useHTML: true,
-       text: '<div style="text-align:center;">RJ</div>', // Add the name at the bottom here
-       align: 'center',
-       fontSize:'16px',
-       verticalAlign: 'bottom', // Align the subtitle to the bottom
-       y: stateSubTitleY, // Adjust the vertical position as needed
-       style: {
-          fontSize: '16px',
-          color:'#000' // Increase the font size as needed
-      }
-    },
- 
-    legend: {
-        enabled: false
-    },
- 
-    tooltip: {
-       enabled: false,
-    },
- 
-    plotOptions: {
-        series: {
-            borderWidth: 0,
-            colorByPoint: true,
-            type: 'pie',
-            size: '100%',
-            innerSize: '60%',
-            dataLabels: {
-                enabled: true,
-                crop: false,
-                distance: '-10%',
-                style: {
-                    fontWeight: 'bold',
-                    fontSize: '16px'
-                },
-                connectorWidth: 0
-            }
-        }
-    },
-    colors: ['#b64926', '#eeece1',],
-    series: [
-        {
-            type: 'pie',
-            
-   data: [
-       
-       ['', 57],
-       ['', 43],
-       
-   ]
-        }
-    ]
- });
- 
- Highcharts.chart('integrated-dashboard-state11', {
-    chart: {
-        type: 'pie',
-       height: stateHeight,
-       plotBackgroundColor: null,
-       plotBorderWidth: null,
-       plotShadow: false,
-       spacingTop: 0,
-       spacingBottom: 0,
-       spacingLeft: 0,
-       spacingRight: 0,
-       marginTop: stateMarginTop,
-   },
-    title: {
-       useHTML: true,
-       text: '17%',
-       floating: true,
-       verticalAlign: 'middle',
-       y: stateTitleY,
-       style: {
-          fontSize:'16px'
-       }
-    },
-    credits: {
-       enabled: false
-   },
-   exporting: {
-    enabled: false
- },
- 
-    subtitle: {
-       useHTML: true,
-       text: '<div style="text-align:center;">GJ</div>', // Add the name at the bottom here
-       align: 'center',
-       fontSize:'16px',
-       verticalAlign: 'bottom', // Align the subtitle to the bottom
-       y: stateSubTitleY, // Adjust the vertical position as needed
-       style: {
-          fontSize: '16px',
-          color:'#000' // Increase the font size as needed
-      }
-    },
- 
-    legend: {
-        enabled: false
-    },
- 
-    tooltip: {
-       enabled: false,
-    },
- 
-    plotOptions: {
-        series: {
-            borderWidth: 0,
-            colorByPoint: true,
-            type: 'pie',
-            size: '100%',
-            innerSize: '60%',
-            dataLabels: {
-                enabled: true,
-                crop: false,
-                distance: '-10%',
-                style: {
-                    fontWeight: 'bold',
-                    fontSize: '16px'
-                },
-                connectorWidth: 0
-            }
-        }
-    },
-    colors: ['#b64926', '#eeece1',],
-    series: [
-        {
-            type: 'pie',
-   data: [
-       
-       ['', 17],
-       ['', 83],
-       
-   ]
-        }
-    ]
- });
- 
+    })();
+}
 
-//  state wise patient report india map
-
-(async () => {
-    const topology = await fetch(
-        'https://code.highcharts.com/mapdata/countries/in/custom/in-all-disputed.topo.json'
-    ).then(response => response.json());
- 
- 
- 
-    Highcharts.mapChart('state-wise-patient-report-india-map', {
+function nationalFilterHighChart(data){
+        //  State wise Bar Graph
+    Highcharts.chart('State-wise-bar-graph', {
         chart: {
-            map: topology,
-            height: window.innerWidth <1360 ? 450 : 508
+            type: 'column'
         },
         title: {
             text: ''
         },
         credits: {
-          enabled: false
-      },
+            enabled: false
+        },
+        exporting: {
+            enabled: false
+        },
         subtitle: {
             text: ''
         },
-        mapNavigation: {
-            enabled: true,
-            buttonOptions: {
-                verticalAlign: 'bottom'
-            }
-        },
-        colorAxis: {
-            min: 0,
-            max: 100,
-            minColor: '#fcad95',
-            maxColor: '#ab4024',
+        xAxis: {
+            type: 'category',
             labels: {
-                format: '{value}',
-            },
-        },
-        
-        series: [{
-          //   data: data,
-            name: '',
-            allowPointSelect: false,
-            cursor: 'pointer',
-            color: "#fff",
-            states: {
-                select: {
-                    color: '#ab4024'
+                autoRotation: [-70, -90],
+                style: {
+                    fontSize: '13px',
+                    fontFamily: 'Verdana, sans-serif'
                 }
             }
-        }],
-        exporting: {
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: null
+            }
+        },
+        legend: {
             enabled: false,
-            buttons: {
-                contextButton: {
-                    menuItems: ['printChart', 'separator', 'downloadPNG', 'downloadJPEG', 'downloadPDF', 'downloadSVG']
+            useHTML: true,
+            // labelFormatter: function() {
+            //     let symbol = '<span style="color:' + this.color + ';font-size:12px; color:red">&#9644;</span>';
+            //     return '<span style="font-size: 12px;">' + symbol +  ' ' + this.name  +  '</span>';
+            // }
+        
+        allowPointSelect: false,
+        },
+        tooltip: {
+            enabled: true,
+        },
+        series: [{
+            name: '',
+            type: 'column',
+            color:"#158bec",
+            events: {
+                legendItemClick: function (e) {
+                    e.preventDefault();
+                }
+            },
+            data: data.stateBarGraph,
+            dataLabels: {
+                enabled: true,
+                rotation: -90,
+                color: '#FFFFFF',
+                inside: true,
+                verticalAlign: 'top',
+                format: '{point.y:.1f}', // one decimal
+                y: 10, // 10 pixels down from the top
+                style: {
+                    fontSize: '12px',
+                    fontFamily: 'Verdana, sans-serif',
+                    textShadow: "none",
+                    color:"red"
+                },  
+                textShadow: "none"
+            }
+        }]
+    });
+    //  State wise availability of ARV graph
+    Highcharts.chart('state-wise-arv-bar-graph', {
+        chart: {
+            type: 'column'
+        },
+        title: {
+            text: ''
+        },
+        credits: {
+            enabled: false
+        },
+        exporting: {
+            enabled: false
+        },
+        subtitle: {
+            text: ''
+        },
+        xAxis: {
+            type: 'category',
+            labels: {
+                autoRotation: [-70, -90],
+                style: {
+                    fontSize: '13px',
+                    fontFamily: 'Verdana, sans-serif'
                 }
             }
-        }
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: null
+            }
+        },
+        legend: {
+            enabled: true,
+            useHTML: true,
+            symbolRadius: 0,
+            allowPointSelect: false,
+        },
+        tooltip: {
+            enabled: true,
+        },
+        series: [{
+            name: 'Availability of ARV',
+            type: 'column',
+            color:"#f4833c",
+            events: {
+                legendItemClick: function (e) {
+                    e.preventDefault();
+                }
+            },
+            data: data.totalArv,
+            dataLabels: {
+                enabled: true,
+                rotation: -90,
+                color: '#FFFFFF',
+                inside: true,
+                verticalAlign: 'top',
+                format: '{point.y:.1f}', // one decimal
+                y: 10, // 10 pixels down from the top
+                style: {
+                    fontSize: '12px',
+                    fontFamily: 'Verdana, sans-serif',
+                    textShadow: "none",
+                    color:"red"
+                },  
+                textShadow: "none"
+            }
+        }]
     });
- 
- })();
 
-
-//  State wise availability of ARV / ARS graph
-Highcharts.chart('state-wise-arv-bar-graph', {
-    chart: {
-        type: 'column'
-    },
-    title: {
-        text: ''
-    },
-    credits: {
-        enabled: false
-    },
-    exporting: {
-        enabled: false
-    },
-    subtitle: {
-        text: ''
-    },
-    xAxis: {
-        type: 'category',
-        labels: {
-            autoRotation: [-70, -90],
-            style: {
-                fontSize: '13px',
-                fontFamily: 'Verdana, sans-serif'
-            }
-        }
-    },
-    yAxis: {
-        min: 0,
+    //  State wise availability of ARS graph
+    Highcharts.chart('state-wise-ars-bar-graph', {
+        chart: {
+            type: 'column'
+        },
         title: {
-            text: null
-        }
-    },
-    legend: {
-        enabled: true,
-        useHTML: true,
-        symbolRadius: 0,
-        allowPointSelect: false,
-    },
-    tooltip: {
-        enabled: false,
-    },
-    series: [{
-        name: 'Unspent Balance',
-        type: 'column',
-        color:"#f4833c",
-        events: {
-            legendItemClick: function (e) {
-                e.preventDefault();
+            text: ''
+        },
+        credits: {
+            enabled: false
+        },
+        exporting: {
+            enabled: false
+        },
+        subtitle: {
+            text: ''
+        },
+        xAxis: {
+            type: 'category',
+            labels: {
+                autoRotation: [-70, -90],
+                style: {
+                    fontSize: '13px',
+                    fontFamily: 'Verdana, sans-serif'
+                }
             }
         },
-        data: [
-            ['Uttar Pradesh', 4.3],
-            ['Maharashtra', 2.5],
-            ['Bihar', 3.5],
-            ['West Bengal', 4.5],
-            ['Madhya Pradesh', 2],
-            ['Tamil Nadu', 5.2],
-            ['Rajasthan', 2.4],
-            ['Karnataka', 3.1],
-            ['Gujarat', 3.4],
-            ['Andhra Pradesh', 4],
-            ['Odisha', 4.4],
-            ['Telangana', 2.8],
-            ['Kerala', 4],
-            ['Jharkhand', 4],
-            ['Assam', 2],
-            ['Punjab', 3],
-            ['Chhattisgarh', 1],
-            ['Haryana', 4],
-            ['Uttarakhand', 4],
-            ['Himachal Pradesh', 4],
-            ['Tripura', 4],
-            ['Meghalaya', 4],
-            ['Manipur', 4],
-            ['Nagaland', 4],
-            ['Goa', 4],
-            ['Arunachal Pradesh', 4],
-            ['Mizoram', 4],
-            ['Sikkim', 4],
-            ['Delhi', 5] // Considering Delhi as a Union Territory
-        ],
-        dataLabels: {
-            enabled: true,
-            rotation: -90,
-            color: '#FFFFFF',
-            inside: true,
-            verticalAlign: 'top',
-            format: '{point.y:.1f}', // one decimal
-            y: 10, // 10 pixels down from the top
-            style: {
-                fontSize: '12px',
-                fontFamily: 'Verdana, sans-serif',
-                textShadow: "none",
-                color:"red"
-            },  
-            textShadow: "none"
-        }
-    }]
-});
-
-Highcharts.chart('state-wise-ars-bar-graph', {
-    chart: {
-        type: 'column'
-    },
-    title: {
-        text: ''
-    },
-    credits: {
-        enabled: false
-    },
-    exporting: {
-        enabled: false
-    },
-    subtitle: {
-        text: ''
-    },
-    xAxis: {
-        type: 'category',
-        labels: {
-            autoRotation: [-70, -90],
-            style: {
-                fontSize: '13px',
-                fontFamily: 'Verdana, sans-serif'
-            }
-        }
-    },
-    yAxis: {
-        min: 0,
-        title: {
-            text: null
-        }
-    },
-    legend: {
-        enabled: true,
-        useHTML: true,
-        symbolRadius: 0,
-        allowPointSelect: false,
-    },
-    tooltip: {
-        enabled: false,
-    },
-    series: [{
-        name: 'Unspent Balance',
-        type: 'column',
-        color:"#b64926",
-        events: {
-            legendItemClick: function (e) {
-                e.preventDefault();
+        yAxis: {
+            min: 0,
+            title: {
+                text: null
             }
         },
-        data: [
-            ['Uttar Pradesh', 4.3],
-            ['Maharashtra', 2.5],
-            ['Bihar', 3.5],
-            ['West Bengal', 4.5],
-            ['Madhya Pradesh', 2],
-            ['Tamil Nadu', 1.2],
-            ['Rajasthan', 2.4],
-            ['Karnataka', 3.1],
-            ['Gujarat', 3.4],
-            ['Andhra Pradesh', 4],
-            ['Odisha', 4.4],
-            ['Telangana', 2.8],
-            ['Kerala', 4],
-            ['Jharkhand', 4],
-            ['Assam', 2],
-            ['Punjab', 3],
-            ['Chhattisgarh', 1],
-            ['Haryana', 4],
-            ['Uttarakhand', 4],
-            ['Himachal Pradesh', 4],
-            ['Tripura', 4],
-            ['Meghalaya', 4],
-            ['Manipur', 4],
-            ['Nagaland', 4],
-            ['Goa', 4],
-            ['Arunachal Pradesh', 4],
-            ['Mizoram', 4],
-            ['Sikkim', 4],
-            ['Delhi', 5] // Considering Delhi as a Union Territory
-        ],
-        dataLabels: {
+        legend: {
             enabled: true,
-            rotation: -90,
-            color: '#FFFFFF',
-            inside: true,
-            verticalAlign: 'top',
-            format: '{point.y:.1f}', // one decimal
-            y: 10, // 10 pixels down from the top
+            useHTML: true,
+            symbolRadius: 0,
+            allowPointSelect: false,
+        },
+        tooltip: {
+            enabled: true,
+        },
+        series: [{
+            name: 'Availability of ARS',
+            type: 'column',
+            color:"#b64926",
+            events: {
+                legendItemClick: function (e) {
+                    e.preventDefault();
+                }
+            },
+            data: data.totalArs,
+            dataLabels: {
+                enabled: true,
+                rotation: -90,
+                color: '#FFFFFF',
+                inside: true,
+                verticalAlign: 'top',
+                format: '{point.y:.1f}', // one decimal
+                y: 10, // 10 pixels down from the top
+                style: {
+                    fontSize: '12px',
+                    fontFamily: 'Verdana, sans-serif',
+                    textShadow: "none",
+                    color:"red"
+                },  
+                textShadow: "none"
+            }
+        }]
+    });
+}
+
+// highcharts
+function nationalHighchart(data)
+{
+    Highcharts.chart('national-dashboard-monthly-report-received', {
+        chart: {
+            type: 'pie',
+            height: 210,
+           //  margin: [0, 0, 0, 0] // Set margins to remove extra space
+        },
+        title: {
+            useHTML: true,
+            text: `${data.programUserDetails.totalPrecentage}%`,
+            floating: true,
+            verticalAlign: 'middle',
+            y: 4,
             style: {
-                fontSize: '12px',
-                fontFamily: 'Verdana, sans-serif',
-                textShadow: "none",
-                color:"red"
+                fontSize: '16px'
+            }
+        },
+        credits: {
+            enabled: false
+        },
+        exporting: {
+            enabled: false
+        },
+        subtitle: {
+            useHTML: true,
+            text: '<div style="text-align:center;font-weight: 700;font-size: 14px;">% of Monthly Report Received </div>',
+            align: 'center',
+            verticalAlign: 'bottom',
+            y: 0, // Adjusted position
+            style: {
+                fontSize: '13px',
+                color: '#000'
+            }
+        },
+        legend: {
+            enabled: false
+        },
+        tooltip: {
+            enabled: true,
+            formatter: function() {
+                return '<b>' + this.point.name + '</b>: ' + this.y + '%';
+            }
+        },
+        plotOptions: {
+            pie: {
+                size: '100%',
+                innerSize: '70%', // Adjusted for a larger inner circle
+                dataLabels: {
+                    enabled: false,
+                    // distance: -30, // Adjusted to move labels closer
+                    style: {
+                        fontWeight: 'bold',
+                        fontSize: '16px'
+                    },
+                    connectorWidth: 0
+                }
+            }
+        },
+        colors: ['#a5a5a5', '#e7e6e6'],
+        series: [
+            {
+                type: 'pie',            
+                data: [
+                    ['Monthly Report Received', data.programUserDetails.totalPrecentage],
+                    ['Monthly Report Not Received', data.programUserDetails.totalPrecentageNot],
+                ]
+            }
+        ]
+    });
+
+    Highcharts.chart('national-dashboard-monthly-report-not-received', {
+        chart: {
+            type: 'pie',
+            height: 210,
+           //  margin: [0, 0, 0, 0] // Set margins to remove extra space
+        },
+        title: {
+            useHTML: true,
+            text: `${data.programUserDetails.totalPrecentageNot}%   `,
+            floating: true,
+            verticalAlign: 'middle',
+            y: 4,
+            style: {
+                fontSize: '16px'
+            }
+        },
+        credits: {
+            enabled: false
+        },
+        exporting: {
+            enabled: false
+        },
+        subtitle: {
+            useHTML: true,
+            text: '<div style="text-align:center;font-weight: 700;font-size: 14px;">% of Monthly Report not Received </div>',
+            align: 'center',
+            verticalAlign: 'bottom',
+            y: 0, // Adjusted position
+            style: {
+                fontSize: '13px',
+                color: '#000'
+            }
+        },
+        legend: {
+            enabled: false
+        },
+        tooltip: {
+            enabled: true,
+            formatter: function() {
+                return '<b>' + this.point.name + '</b>: ' + this.y + '%';
+            }
+        },
+        plotOptions: {
+            pie: {
+                size: '100%',
+                innerSize: '70%', // Adjusted for a larger inner circle
+                dataLabels: {
+                    enabled: false,
+                    // distance: -30, // Adjusted to move labels closer
+                    style: {
+                        fontWeight: 'bold',
+                        fontSize: '16px'
+                    },
+                    connectorWidth: 0
+                }
+            }
+        },
+        colors: ['#a5a5a5', '#e7e6e6'],
+        series: [
+            {
+                type: 'pie',            
+                data: [
+                    ['Monthly Report Not Received', data.programUserDetails.totalPrecentageNot],
+                    ['Monthly Report Received', data.programUserDetails.totalPrecentage],                    
+                ]
+            }
+        ]
+     });
+
+     Highcharts.chart('national-dashboard-Nos-of-monthly-report-received', {
+        chart: {
+            type: 'pie',
+            height: 210,
+           //  margin: [0, 0, 0, 0] // Set margins to remove extra space
+        },
+        title: {
+            useHTML: true,
+            text: `${data.programUserDetails.totalNumRecieved} Nos.`,
+            floating: true,
+            verticalAlign: 'middle',
+            y: 4,
+            style: {
+                fontSize: '16px'
+            }
+        },
+        credits: {
+            enabled: false
+        },
+        exporting: {
+            enabled: false
+        },
+        subtitle: {
+            useHTML: true,
+            text: '<div style="text-align:center;font-weight: 700;font-size: 14px;"> Nos. of Monthly Report Received </div>',
+            align: 'center',
+            verticalAlign: 'bottom',
+            y: 0, // Adjusted position
+            style: {
+                fontSize: '13px',
+                color: '#000'
+            }
+        },
+        legend: {
+            enabled: false
+        },
+        tooltip: {
+            enabled: true,
+            formatter: function() {
+                return '<b>' + this.point.name + '</b>: ' + this.y;
+            }
+        },
+        plotOptions: {
+            pie: {
+                size: '100%',
+                innerSize: '70%', // Adjusted for a larger inner circle
+                dataLabels: {
+                    enabled: false,
+                    // distance: -30, // Adjusted to move labels closer
+                    style: {
+                        fontWeight: 'bold',
+                        fontSize: '16px'
+                    },
+                    connectorWidth: 0
+                }
+            }
+        },
+        colors: ['#a5a5a5', '#e7e6e6'],
+        series: [
+            {
+                type: 'pie',            
+                data: [
+                    ['Nos. of Monthly Report Received', data.programUserDetails.totalNumRecieved],
+                    ['Nos. of Monthly Report not received', data.programUserDetails.totalNumNotRecieved],
+                ]
+            }
+        ]
+     });
+
+     Highcharts.chart('national-dashboard-Nos-of-monthly-report-not-received', {
+        chart: {
+            type: 'pie',
+            height: 210,
+           //  margin: [0, 0, 0, 0] // Set margins to remove extra space
+        },
+        title: {
+            useHTML: true,
+            text: `${data.programUserDetails.totalNumNotRecieved} Nos.`,
+            floating: true,
+            verticalAlign: 'middle',
+            y: 4,
+            style: {
+                fontSize: '16px'
+            }
+        },
+        credits: {
+            enabled: false
+        },
+        exporting: {
+            enabled: false
+        },
+        subtitle: {
+            useHTML: true,
+            text: '<div style="text-align:center;font-weight: 700;font-size: 14px;">Nos. of Monthly Report not received </div>',
+            align: 'center',
+            verticalAlign: 'bottom',
+            y: 0, // Adjusted position
+            style: {
+                fontSize: '13px',
+                color: '#000'
+            }
+        },
+        legend: {
+            enabled: false
+        },
+        tooltip: {
+            enabled: true,
+            formatter: function() {
+                return '<b>' + this.point.name + '</b>: ' + this.y;
+            }
+        },
+        plotOptions: {
+            pie: {
+                size: '100%',
+                innerSize: '70%', // Adjusted for a larger inner circle
+                dataLabels: {
+                    enabled: false,
+                    // distance: -30, // Adjusted to move labels closer
+                    style: {
+                        fontWeight: 'bold',
+                        fontSize: '16px'
+                    },
+                    connectorWidth: 0
+                }
+            }
+        },
+        colors: ['#a5a5a5', '#e7e6e6'],
+        series: [
+            {
+                type: 'pie',            
+                data: [
+                    ['Nos. of Monthly Report not received', data.programUserDetails.totalNumNotRecieved],
+                    ['Nos. of Monthly Report Received', data.programUserDetails.totalNumRecieved],
+                ]
+            }
+        ]
+     }); 
+    
+    //  State wise Bar Graph
+     Highcharts.chart('State-wise-bar-graph', {
+        chart: {
+            type: 'column'
+        },
+        title: {
+            text: ''
+        },
+        credits: {
+            enabled: false
+        },
+        exporting: {
+            enabled: false
+        },
+        subtitle: {
+            text: ''
+        },
+        xAxis: {
+            type: 'category',
+            labels: {
+                autoRotation: [-70, -90],
+                style: {
+                    fontSize: '13px',
+                    fontFamily: 'Verdana, sans-serif'
+                }
+            }
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: null
+            }
+        },
+        legend: {
+            enabled: false,
+            useHTML: true,
+            // labelFormatter: function() {
+            //     let symbol = '<span style="color:' + this.color + ';font-size:12px; color:red">&#9644;</span>';
+            //     return '<span style="font-size: 12px;">' + symbol +  ' ' + this.name  +  '</span>';
+            // }
+        
+        allowPointSelect: false,
+        },
+        tooltip: {
+            enabled: true,
+        },
+        series: [{
+            name: '',
+            type: 'column',
+            color:"#158bec",
+            events: {
+                legendItemClick: function (e) {
+                    e.preventDefault();
+                }
+            },
+            data: data.stateBarGraph,
+            dataLabels: {
+                enabled: true,
+                rotation: -90,
+                color: '#FFFFFF',
+                inside: true,
+                verticalAlign: 'top',
+                format: '{point.y:.1f}', // one decimal
+                y: 10, // 10 pixels down from the top
+                style: {
+                    fontSize: '12px',
+                    fontFamily: 'Verdana, sans-serif',
+                    textShadow: "none",
+                    color:"red"
+                },  
+                textShadow: "none"
+            }
+        }]
+    });
+
+    //  State wise availability of ARV graph
+    Highcharts.chart('state-wise-arv-bar-graph', {
+        chart: {
+            type: 'column'
+        },
+        title: {
+            text: ''
+        },
+        credits: {
+            enabled: false
+        },
+        exporting: {
+            enabled: false
+        },
+        subtitle: {
+            text: ''
+        },
+        xAxis: {
+            type: 'category',
+            labels: {
+                autoRotation: [-70, -90],
+                style: {
+                    fontSize: '13px',
+                    fontFamily: 'Verdana, sans-serif'
+                }
+            }
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: null
+            }
+        },
+        legend: {
+            enabled: true,
+            useHTML: true,
+            symbolRadius: 0,
+            allowPointSelect: false,
+        },
+        tooltip: {
+            enabled: true,
+        },
+        series: [{
+            name: 'Availability of ARV',
+            type: 'column',
+            color:"#f4833c",
+            events: {
+                legendItemClick: function (e) {
+                    e.preventDefault();
+                }
+            },
+            data: data.totalArv,
+            dataLabels: {
+                enabled: true,
+                rotation: -90,
+                color: '#FFFFFF',
+                inside: true,
+                verticalAlign: 'top',
+                format: '{point.y:.1f}', // one decimal
+                y: 10, // 10 pixels down from the top
+                style: {
+                    fontSize: '12px',
+                    fontFamily: 'Verdana, sans-serif',
+                    textShadow: "none",
+                    color:"red"
+                },  
+                textShadow: "none"
+            }
+        }]
+    });
+
+    //  State wise availability of ARS graph
+    Highcharts.chart('state-wise-ars-bar-graph', {
+        chart: {
+            type: 'column'
+        },
+        title: {
+            text: ''
+        },
+        credits: {
+            enabled: false
+        },
+        exporting: {
+            enabled: false
+        },
+        subtitle: {
+            text: ''
+        },
+        xAxis: {
+            type: 'category',
+            labels: {
+                autoRotation: [-70, -90],
+                style: {
+                    fontSize: '13px',
+                    fontFamily: 'Verdana, sans-serif'
+                }
+            }
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: null
+            }
+        },
+        legend: {
+            enabled: true,
+            useHTML: true,
+            symbolRadius: 0,
+            allowPointSelect: false,
+        },
+        tooltip: {
+            enabled: true,
+        },
+        series: [{
+            name: 'Availability of ARS',
+            type: 'column',
+            color:"#b64926",
+            events: {
+                legendItemClick: function (e) {
+                    e.preventDefault();
+                }
+            },
+            data: data.totalArs,
+            dataLabels: {
+                enabled: true,
+                rotation: -90,
+                color: '#FFFFFF',
+                inside: true,
+                verticalAlign: 'top',
+                format: '{point.y:.1f}', // one decimal
+                y: 10, // 10 pixels down from the top
+                style: {
+                    fontSize: '12px',
+                    fontFamily: 'Verdana, sans-serif',
+                    textShadow: "none",
+                    color:"red"
+                },  
+                textShadow: "none"
+            }
+        }]
+    });
+
+    // program wise expenditure state filter highchart
+    let stateMarginTop = 0;
+    let stateTitleY = 0;
+    let stateSubTitleY = 0;
+    let stateHeight = window.innerWidth < 1360 ? 130  : 150;
+    
+    data.statePatientReport.forEach((statePatientReport, index) => {
+        const chartContainerId = `integrated-dashboard-state${index+1}`;
+        Highcharts.chart(chartContainerId, {
+            chart: {
+            type: 'pie',
+            height: stateHeight,
+            plotBackgroundColor: null,
+            plotBorderWidth: null,
+            plotShadow: false,
+            spacingTop: 0,
+            spacingBottom: 0,
+            spacingLeft: 0,
+            spacingRight: 0,
+            marginTop: stateMarginTop,
+            //  marginBottom: 0,
+        },
+            title: {
+            useHTML: true,
+            text: `${statePatientReport.total_patient_precentage}%`,
+            floating: true,
+            verticalAlign: 'middle',
+            y: stateTitleY,
+            style: {
+                fontSize:'16px'
+            }
             },  
-            textShadow: "none"
-        }
-    }]
-});
+            subtitle: {
+            useHTML: true,
+            text: `<div style="text-align:center;">${statePatientReport.state_name}</div>`, // Add the name at the bottom here
+            align: 'center',
+            fontSize:'16px',
+            verticalAlign: 'bottom', // Align the subtitle to the bottom
+            y: stateSubTitleY, // Adjust the vertical position as needed
+            style: {
+                fontSize: '16px',
+                color:'#000' // Increase the font size as needed
+            }
+            },
+        
+            legend: {
+                enabled: false,
+            },
+            tooltip: {
+                enabled: true,
+                formatter: function() {
+                    return 'Value: ' + this.y; // Customize this according to your needs
+                }
+            },
+        
+            plotOptions: {
+                series: {
+                    borderWidth: 0,
+                    colorByPoint: true,
+                    type: 'pie',
+                    size: '100%',
+                    innerSize: '60%',
+                    dataLabels: {
+                        enabled: true,
+                        crop: false,
+                        distance: '-10%',
+                        style: {
+                            fontWeight: 'bold',
+                            fontSize: '16px'
+                        },
+                        connectorWidth: 0
+                    }
+                }
+            },
+            colors: ['#b64926', '#eeece1',],
+            series: [
+                {
+                    type: 'pie',
+                    
+        data: [
+            
+            ['', statePatientReport.total_patient_precentage],
+            ['', statePatientReport.total_patient_precentage_not],
+            
+        ]
+                }
+            ],
+            credits: {
+                enabled: false
+            },
+            exporting: {
+            enabled: false
+        },
+        });
+    });
+
+    // State wise Patient Report Map 
+    (async () => {
+        const topology = await fetch(
+            'https://code.highcharts.com/mapdata/countries/in/custom/in-all-disputed.topo.json'
+        ).then(response => response.json()); 
+        Highcharts.mapChart('state-wise-patient-report-india-map', {
+            chart: {
+                map: topology,
+                height: window.innerWidth <1360 ? 450 : 508
+            },
+            title: {
+                text: ''
+            },
+            credits: {
+              enabled: false
+          },
+            subtitle: {
+                text: ''
+            },
+            mapNavigation: {
+                enabled: true,
+                buttonOptions: {
+                    verticalAlign: 'bottom'
+                }
+            },
+            colorAxis: {
+                min: 0,
+                max: 100,
+                minColor: '#fcad95',
+                maxColor: '#ab4024',
+                labels: {
+                    format: '{value}',
+                },
+            },
+            
+            series: [{
+                data: data.statePatientReportMap,
+                name: '',
+                allowPointSelect: false,
+                cursor: 'pointer',
+                color: "#fff",
+                states: {
+                    select: {
+                        color: '#ab4024'
+                    }
+                }
+            }],
+            exporting: {
+                enabled: false,
+                buttons: {
+                    contextButton: {
+                        menuItems: ['printChart', 'separator', 'downloadPNG', 'downloadJPEG', 'downloadPDF', 'downloadSVG']
+                    }
+                }
+            }
+        });
+     
+     })();
+}
+
+

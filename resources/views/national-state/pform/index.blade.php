@@ -2,8 +2,9 @@
 @section('title') {{ 'P Form' }} 
 @endsection 
 @section('content') 
-<div class="container-fluid">
-    <table id="general_profiles_TABLE2" class="w-100 p-form-table table-responsive">
+<div class="container-fluid dashboard">
+  <div class="table-responsive dashboard-filter">
+  <table id="general_profiles_TABLE2" class="w-100 p-form-table">
         <thead>
           <tr>
             <th>Sl#</th>
@@ -40,6 +41,8 @@
           @endforeach
           @endif
         </tbody>
-    </table>        
+    </table>  
+  </div>
+         
 </div>     
 @endsection

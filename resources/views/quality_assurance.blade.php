@@ -6,11 +6,11 @@
 <div class="container-fluid">
 
     <div class="dashboard">
-        <div class="dashboard-filter mb-4">
+        <div class="dashboard-filter quality-form mb-4">
             <form action="{{ route('quality-add') }}" method="post" class="" id="quality_assurance">
                 @csrf
                 <div class="row">
-                    <div class="col-xl-2 col-lg-2 col-md-2 col-6">
+                    <div class="col">
                         <div class="form-group">
                             <label for="state">PTILCPR<span class="star" tooltip>*</span></label>
                             <select class="form-select" aria-label="Default select example" name="pt" id="pt">
@@ -23,7 +23,7 @@
                             @enderror
                         </div>
                     </div>
-                    <div class="col-xl-3 col-lg-4 col-md-3 col-6">
+                    <div class="col">
                         <div class="form-group">
                             <label for="district">PTPNABL(ISO 17043)<span class="star">*</span></label>
                             <select class="form-select" aria-label="Default select example" name="accredited_pt"
@@ -37,7 +37,7 @@
                             @enderror
                         </div>
                     </div>
-                    <div class="col-xl-3 col-lg-4 col-md-3 col-6">
+                    <div class="col">
                         <div class="form-group">
                             <label for="fromYear">LSPTISO 15189/ISO17025</label>
                             <select class="form-select" aria-label="Default select example" name="supervisors_trained"
@@ -49,7 +49,7 @@
                             <small id="supervisors_trained-error" class="form-text text-muted"></small>
                         </div>
                     </div>
-                    <div class="col-xl-2 col-lg-2 col-md-2 col-6">
+                    <div class="col">
                         <div class="form-group">
                             <label for="diseasesSyndromes">LIMS available</label>
                             <select class="form-select" name="lims" id="lims">
@@ -60,7 +60,7 @@
                             <small id="lims-error" class="form-text text-muted"></small>
                         </div>
                     </div>
-                    <div class="col-xl-2 col-lg-12 col-md-2 col-6 search-reset">
+                    <div class="col search-reset">
                         <div class="apply-filter mt-xl-4 mt-lg-3 pt-1">
                             <button type="submit" class="btn bg-primary search-patient-btn mt-0 mr-1">Save</button>
                             <button type="reset" class="btn bg-danger">Reset</button>

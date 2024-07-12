@@ -51,7 +51,7 @@
 
                                             <div class="dashboard-filter mb-4" id="dashboard-filter">
                                                 <div class="row">
-                                                    <div class="col-lg-2 col-md-2 col-4">
+                                                    <div class="col">
                                                         <div class="form-group">
                                                             <label for="state">Institute Name</label>
                                                             <select class="form-select month click-function"
@@ -72,7 +72,7 @@
                                                             </small>
                                                         </div>
                                                     </div>
-                                                    <div class="col-lg-2 col-md-2 col-4">
+                                                    <div class="col">
                                                         <div class="form-group">
                                                             <label for="state">Month</label>
                                                             <select class="form-select month click-function"
@@ -92,7 +92,7 @@
                                                             </small>
                                                         </div>
                                                     </div>
-                                                    <div class="col-lg-2 col-md-2 col-4">
+                                                    <div class="col">
                                                         <div class="form-group">
                                                             <label for="fromYear">Year</label>
                                                             <select class="form-select p-1 year click-function"
@@ -114,7 +114,7 @@
                                                             </small>
                                                         </div>
                                                     </div>
-                                                    <div class="col-lg-4 col-md-3 col-4 pt-5">
+                                                    <div class="col-md-12 d-flex justify-content-center pt-3">
                                                         <button id="laboratory_apply_filter"
                                                             class="btn bg-primary text-light laboratory_apply_filter button border-0 mr-2">Search</button>
                                                         <button id="laboratory_reset_button"
@@ -126,7 +126,7 @@
 
                                             </div>
                                     </div>
-                                    <div class="presumptive-cases dashboard-filter mb-4 laboratory-card">
+                                    <div class="presumptive-cases  mb-4 laboratory-card">
                                         <div class="row defaultform justify-content-center">
                                             <div class="col-md-3">
                                                 <div class="box box1">
@@ -264,7 +264,7 @@
                                         </div>
                                     </div>
                                     <!-- graph start-->
-                                    <div class="card-body p-3 mb-4 dashboard-filter">
+                                    <div class=" mb-4 ">
                                         <div id="graphical_view" class="">
                                             <div class="row">
                                                 {{-- <div
@@ -288,7 +288,7 @@
                                             <div class="row">
 
                                                 <div class="col-md-3">
-                                                    <div class="white_card card_height_100 mb_30">
+                                                    <div class="white_card dashboard-card card_height_100 mb_30">
                                                         <div class="box_header m-0">
                                                             <div class="highchart-title">
                                                                 <h3 class="m-0">Number of Sample Received</h3>
@@ -303,99 +303,109 @@
 
                                                 </div>
                                                 <div class="col-md-3">
-                                                    <div class="white_card card_height_100 mb_30">
+                                                    <div class="white_card card_height_100 mb_30 dashboard-card">
                                                         <div class="box_header m-0">
                                                             <div class="highchart-title">
                                                                 <h3 class="m-0">Number of Test Conducted</h3>
                                                             </div>
                                                         </div>
                                                         <div class="white_card_body p-0">
-                                                        <div id="container-rpm" class="chart-container"></div>
+                                                            <div id="container-rpm" class="chart-container"></div>
 
                                                         </div>
                                                     </div>
 
-                                                   
+
                                                 </div>
                                                 <div class="col-md-3">
-                                                    <div class="white_card card_height_100 mb_30">
+                                                    <div class="white_card card_height_100 mb_30 dashboard-card">
                                                         <div class="box_header m-0">
                                                             <div class="highchart-title">
                                                                 <h3 class="m-0">Total Number of Positives</h3>
                                                             </div>
                                                         </div>
                                                         <div class="white_card_body p-0">
-                                                        <div id="container-rpm-first" class="chart-container"></div>
+                                                            <div id="container-rpm-first" class="chart-container"></div>
 
                                                         </div>
                                                     </div>
 
-                                                   
+
                                                 </div>
                                                 <div class="col-md-3">
-                                                    <div class="white_card card_height_100 mb_30">
+                                                    <div class="white_card card_height_100 mb_30 dashboard-card">
                                                         <div class="box_header m-0">
                                                             <div class="highchart-title">
                                                                 <h3 class="m-0">Number Entered into IHIP</h3>
                                                             </div>
                                                         </div>
                                                         <div class="white_card_body p-0">
-                                                        <div id="container-rpm-second" class="chart-container"></div>
+                                                            <div id="container-rpm-second" class="chart-container">
+                                                            </div>
 
                                                         </div>
                                                     </div>
 
-                                                    
+
                                                 </div>
                                             </div>
                                         </div>
 
                                     </div>
 
-                                    <div id="graphical_view " class="dashboard-filter">
+                                    <div id="graphical_view " class="">
 
                                         <div class="row">
 
-                                            <div class="col-md-6 pr-3 institute_year_filter border">
-                                                <div class="row align-items-center my-3">
-                                                    <div class="col-md-7">
-                                                        <h3 class="title">
-                                                            Institute wise Monthly data
-                                                        </h3>
+                                            <div class="col-md-6 pr-3 institute_year_filter  ">
+                                                <div class="dashboard-card p-3">
+                                                    <div class="row align-items-center my-3">
+                                                        <div class="col-md-7">
+                                                            <h3 class="title">
+                                                                Institute wise Monthly data
+                                                            </h3>
+                                                        </div>
+                                                        <div class="col-md-5">
+                                                            <div
+                                                                class="institute_year_filter mb-2 d-flex justify-content-end">
+                                                                <select class="form-control w-auto"
+                                                                    name="institute_year" id="institute_year_filter">
+                                                                    <option value="Select">Select</option>
+                                                                    <option value="numbers_of_sample_recieved">No. of
+                                                                        Sample
+                                                                        Received</option>
+                                                                    <option value="numbers_of_positives">Total numbers
+                                                                        of
+                                                                        Positives</option>
+                                                                    <option value="numbers_of_test">Number of Test
+                                                                        Conducted
+                                                                    </option>
+                                                                    <option value="numbers_of_intered_ihip">No. of
+                                                                        Entered
+                                                                        into IHIP</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+
                                                     </div>
-                                                    <div class="col-md-5">
-                                                        <div
-                                                            class="institute_year_filter mb-2 d-flex justify-content-end">
-                                                            <select class="form-control w-auto" name="institute_year"
-                                                                id="institute_year_filter">
-                                                                <option value="Select">Select</option>
-                                                                <option value="numbers_of_sample_recieved">No. of Sample
-                                                                    Received</option>
-                                                                <option value="numbers_of_positives">Total numbers of
-                                                                    Positives</option>
-                                                                <option value="numbers_of_test">Number of Test Conducted
-                                                                </option>
-                                                                <option value="numbers_of_intered_ihip">No. of Entered
-                                                                    into IHIP</option>
-                                                            </select>
+                                                    <div id="yearReport" class=" "></div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-6 pl-2 ">
+                                                <div class="dashboard-card p-3">
+                                                    <div class="row my-3">
+                                                        <div class="col-md-12">
+                                                            <h3 class="title">
+                                                                Institute wise Yearly data
+                                                            </h3>
                                                         </div>
                                                     </div>
-
-                                                </div>
-
-                                                <div id="yearReport" class=" "></div>
-                                            </div>
-                                            <div class="col-md-6 pl-2 border">
-                                                <div class="row my-3">
-                                                    <div class="col-md-12">
-                                                        <h3 class="title">
-                                                            Institute wise Yearly data
-                                                        </h3>
+                                                    <div class=" ">
+                                                        <div id="monthlyReport"></div>
                                                     </div>
                                                 </div>
-                                                <div class=" ">
-                                                    <div id="monthlyReport"></div>
-                                                </div>
+
                                             </div>
                                         </div>
                                     </div>

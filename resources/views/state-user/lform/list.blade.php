@@ -2,8 +2,9 @@
 @section('title') {{ 'NRCP State Dashboard | L Form' }} 
 @endsection 
 @section('content') 
-<div class="container-fluid">
-    <table id="general_profiles_TABLE2" class="w-100">
+<div class="container-fluid dashboard">
+  <div class="dashboard-filter">
+  <table id="general_profiles_TABLE2" class="w-100">
         <thead>
           <tr>
             <th>Sl#</th>
@@ -28,6 +29,8 @@
           @endforeach
           @endif
         </tbody>
-    </table>        
+    </table>  
+  </div>
+         
 </div>     
 @endsection

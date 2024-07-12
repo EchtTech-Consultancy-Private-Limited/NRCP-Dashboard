@@ -14,7 +14,7 @@
             <th>Designation</th>
             <th>Contact number</th>
             <th>Gender</th>
-            <th>Age</th>
+            {{-- <th>Age</th> --}}
           </tr>
         </thead>
         <tbody> 
@@ -26,7 +26,7 @@
             <td> {{date('d-m-Y',strtotime($investigateReport->interview_date))}}</td>
             <td>{{$investigateReport->interviewer_designation}}</td>
             <td>{{$investigateReport->interviewer_contact_number}}</td>
-            <td>{{$investigateReport->suspect_age}}</td>
+            {{-- <td>{{$investigateReport->suspect_age}}</td> --}}
             <td>{{$investigateReport->suspected_gender}}</td>
           </tr>
           @endforeach

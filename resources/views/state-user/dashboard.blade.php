@@ -8,47 +8,38 @@
     <div class="dashboard-filter mb-4">
         <div class="row mb-4">
             <div class="col-md-4">
-                <div class="form-group d-flex align-items-center">
-                    <label for="state" class="mr-3 text-nowrap mb-0">State <span class="star">*</span></label>
-                    <select name="state" id="state" class="form-control">
+                <div class="form-group">
+                    <label for="state" class="mr-3 text-nowrap ">State <span class="star">*</span></label>
+                    <select name="state-id" id="state-id" class="form-control state_dashboard_filter">
                         <option value="">Select State</option>
-                        <option value="">State 1</option>
-                        <option value="">State 2</option>
-                        <option value="">State 3</option>
+                        @foreach ($states as $state)
+                            <option value="{{$state->id}}">{{$state->state_name}}</option>
+                        @endforeach
                     </select>
                 </div>
             </div>
 
             <div class="col-md-4">
-                <div class="form-group d-flex align-items-center">
-                    <label for="district" class="mr-3 text-nowrap mb-0">Month <span class="star">*</span></label>
-                    <select name="month" id="month" class="form-control">
+                <div class="form-group">
+                    <label for="district" class="mr-3 text-nowrap ">Month <span class="star">*</span></label>
+                    <select name="state-month" id="state-month" class="form-control state_dashboard_filter">
                         <option value="">Select Month</option>
-                        <option value="">January</option>
-                        <option value="">February</option>
-                        <option value="">March</option>
-                        <option value="">April</option>
-                        <option value="">May</option>
-                        <option value="">June</option>
-                        <option value="">July</option>
-                        <option value="">August</option>
-                        <option value="">September</option>
-                        <option value="">October</option>
-                        <option value="">November</option>
-                        <option value="">December</option>
+                        @foreach ($months as $key => $month)
+                            <option value="{{ $key+1 }}">
+                                {{ $month }}
+                            </option>
+                        @endforeach
                     </select>
                 </div>
             </div>
             <div class="col-md-4">
-                <div class="form-group d-flex align-items-center">
-                    <label for="formType" class="mr-3 text-nowrap mb-0">Year <span class="star">*</span></label>
-                    <select name="year" id="year" class="form-control">
+                <div class="form-group">
+                    <label for="formType" class="mr-3 text-nowrap ">Year <span class="star">*</span></label>
+                    <select name="state-year" id="state-year" class="form-control state_dashboard_filter">
                         <option value="">Select Year</option>
-                        <option value="">2019-2020</option>
-                        <option value="">2020-2021</option>
-                        <option value="">2021-2022</option>
-                        <option value="">2022-2023</option>
-                        <option value="">2023-2024</option>
+                        @for ($i = date("Y")-10; $i <= date("Y")+10; $i++)
+                            <option value="{{$i}}">{{$i}} - {{$i+1}}</option>
+                        @endfor
                     </select>
 
                 </div>
@@ -59,7 +50,7 @@
             <div class="col-md-2 col-md-n">
                 <div class="single_crm border-line-1 p-0">
                     <div class="crm_body">
-                        <h4 id="national-giaReceivedTotal">0</h4>
+                        <h4 id="sum_total_health_animal">{{$total->sum_total_health_animal}}</h4>
                         <p>Total No. of Health Facilities Providing Animal Bite Management in The State </p>
                     </div>
                 </div>
@@ -67,7 +58,7 @@
             <div class="col-md-2 col-md-n">
                 <div class="single_crm border-line-2 p-0">
                     <div class="crm_body">
-                        <h4 id="national-committedLiabilitiesTotal">0
+                        <h4 id="total_health_facilities_submitted">{{$total->total_health_facilities_submitted}}
                         </h4>
                         <p>Total Number of Facilities Submitted Monthly Report Under NRCP </p>
                     </div>
@@ -76,7 +67,7 @@
             <div class="col-md-2 col-md-n">
                 <div class="single_crm border-line-3 p-0">
                     <div class="crm_body">
-                        <h4 id="national-totalBalanceTotal">0</h4>
+                        <h4 id="total_patients">{{$total->total_patients}}</h4>
                         <p>Total No. of Patients</p>
                     </div>
                 </div>
@@ -84,7 +75,7 @@
             <div class="col-md-2 col-md-n">
                 <div class="single_crm border-line-4 p-0">
                     <div class="crm_body">
-                        <h4 id="national-actualExpenditureTotal">0</h4>
+                        <h4 id="suspected_death_reports">{{$total->suspected_death_reports}}</h4>
                         <p>Suspected / Probable / Confirmed Rabies Cases / Deaths Reported </p>
                     </div>
                 </div>
@@ -92,15 +83,15 @@
             <div class="col-md-2 col-md-n">
                 <div class="single_crm border-line-5 p-0">
                     <div class="crm_body">
-                        <h4 id="national-unspentBalance31stTotal">0</h4>
-                        <p>Availability of ARV </p>
+                        <h4 id="availability_arv">{{$total->availability_arv}}</h4>
+                        <p>Availability of ARV</p>
                     </div>
                 </div>
             </div>
             <div class="col-md-2 col-md-n">
                 <div class="single_crm border-line-6 p-0">
                     <div class="crm_body">
-                        <h4 id="national-unspentBalance31stTotal">0</h4>
+                        <h4 id="availability_ars">{{$total->availability_ars}}</h4>
                         <p>Availability of ARS</p>
                     </div>
                 </div>
@@ -116,11 +107,9 @@
                     <h1 class="main-heading">Yearly wise Monthly Report</h1>
                     <select name="year" id="year" class="form-control">
                         <option value="">Select Year</option>
-                        <option value="">2019-2020</option>
-                        <option value="">2020-2021</option>
-                        <option value="">2021-2022</option>
-                        <option value="">2022-2023</option>
-                        <option value="">2023-2024</option>
+                        @for ($i = date("Y")-10; $i <= date("Y")+10; $i++)
+                            <option value="{{$i}}">{{$i}} - {{$i+1}}</option>
+                        @endfor
                     </select>
                 </div>
             </div>
@@ -142,40 +131,32 @@
             </div>
 
             <div class="col-md-12">
-                <form action="">
+                <form action="{{ route('national-mis-report-export') }}" method="post">
+                    @csrf
                     <div class="row align-items-center">
                         <div class="col-md-4">
-                            <div class="form-group d-flex align-items-center">
-                                <label for="district" class="mr-3 text-nowrap mb-0">Month <span
+                            <div class="form-group =">
+                                <label for="district" class="mr-3 text-nowrap ">Month <span
                                         class="star">*</span></label>
                                 <select name="month" id="month" class="form-control">
                                     <option value="">Select Month</option>
-                                    <option value="">January</option>
-                                    <option value="">February</option>
-                                    <option value="">March</option>
-                                    <option value="">April</option>
-                                    <option value="">May</option>
-                                    <option value="">June</option>
-                                    <option value="">July</option>
-                                    <option value="">August</option>
-                                    <option value="">September</option>
-                                    <option value="">October</option>
-                                    <option value="">November</option>
-                                    <option value="">December</option>
+                                    @foreach ($months as $key => $month)
+                                        <option value="{{ $key+1 }}">
+                                            {{ $month }}
+                                        </option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
                         <div class="col-md-4">
-                            <div class="form-group d-flex align-items-center">
-                                <label for="formType" class="mr-3 text-nowrap mb-0">Year <span
+                            <div class="form-group =">
+                                <label for="formType" class="mr-3 text-nowrap ">Year <span
                                         class="star">*</span></label>
                                 <select name="year" id="year" class="form-control">
                                     <option value="">Select Year</option>
-                                    <option value="">2019-2020</option>
-                                    <option value="">2020-2021</option>
-                                    <option value="">2021-2022</option>
-                                    <option value="">2022-2023</option>
-                                    <option value="">2023-2024</option>
+                                    @for ($i = date("Y")-10; $i <= date("Y")+10; $i++)
+                                        <option value="{{$i}}">{{$i}} - {{$i+1}}</option>
+                                    @endfor
                                 </select>
                             </div>
                         </div>

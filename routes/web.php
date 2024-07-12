@@ -40,11 +40,15 @@ Route::middleware(['Admin','device'])->group(function () {
         Route::get('/logout',[authController::class,'logout'])->name('logout');
         /** Form Routes */
         Route::get('dashboard', [MainController::class, 'dashboard'])->name('dashboard');
+        Route::get('mis-report-generate', [MainController::class, 'misReportGenerate'])->name('mis-report-generate');
         Route::get('laboratory-dashboard', [LaboratoryDashboardController::class, 'index'])->name('laboratory-dashboard');
         Route::get('get-filter-laboratory-data',[LaboratoryDashboardController::class,'getFilterLaboratoryData'])->name('get-filter-laboratory-data');
         Route::get('national-report', [LaboratoryDashboardController::class, 'nationalReport'])->name('national-report');
         Route::post('national-report-export', [LaboratoryDashboardController::class, 'nationalExport'])->name('national-report-export');
         Route::get('/get-city', [PFormController::class,'getCityByStateId'])->name('get-city');
+        Route::get('/national-highchart', [MainController::class,'nationalHighchart'])->name('national-highchart');
+        Route::get('/filter-national-highchart', [MainController::class,'filterNationalHighchart'])->name('filter-national-highchart');
+        Route::post('national-mis-report-export', [MainController::class, 'nationalMisExport'])->name('national-mis-report-export');
 
         // National dashboard monthly report list
         Route::group(['prefix' => 'national', 'as' => 'national.'], function () {
@@ -177,6 +181,8 @@ Route::middleware(['Admin','device'])->group(function () {
                 Route::get('lform-list',[FormController::class,'lFormList'])->name('lform-list');
                 Route::get('lform-create',[FormController::class,'lFormCreate'])->name('lform-create');
                 Route::post('lform-store',[FormController::class,'lFormstore'])->name('lform-store');
+                //  Yearly wise Monthly Report filter graph
+                Route::get('/state-highchart', [StateController::class,'stateHighchart'])->name('state-highchart');
             });
         });
     });

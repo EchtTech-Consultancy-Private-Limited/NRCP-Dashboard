@@ -41,13 +41,14 @@ $(document).ready(function() {
 
 let selectBox = $('select');
 selectBox.each(function () {
-    let valueArr = $(this).find(':selected').text().trim().split(' ');
+    let valueArr = $(this).find(':selected').text().trim();
+    console.log(valueArr)
     if (valueArr.includes('select') || valueArr.includes('Select')) {
         $(this).css('color', 'grey');
     } else {
         $(this).css('color', '#000');
     }
-    
+   
 });
 
 let selectBoxes = $("select");
@@ -58,7 +59,7 @@ selectBoxes.each((index, element) => {
     let selectWords = selectedText.split(' ');
 
     select.on('change', function () {
-        let selectedValue = $(this).find(':selected').text();
+        let selectedValue = $(this).find(':selected').text().trim();
         let selectedWords = selectedValue.split(' ');
         if (selectedWords.includes('select') || selectedWords.includes('Select')) {
             $(this).css('color', 'grey');
@@ -105,7 +106,7 @@ function srNo1() {
 
 function srNo1(){
 let updateCount = table_4_5_2.children();
-updateCount.each((index, element)=>{
+updateCount.each((index, element)=>{   
     let updateCountBOld =  $(element).find('td:first-child').text(index);
     updateCountBOld.css("font-weight", "bold");
 })
@@ -435,13 +436,7 @@ $(document).ready(function(){
     //   'responsive': true
     // });
     var table = $('#general_profiles_TABLE2').DataTable({
-        // 'responsive': true,
-        // 'columnDefs': [
-        //     {
-        //         'targets': '.none', // Target the columns with the "none" class
-        //         'visible': false // Hide the targeted columns
-        //     }
-        // ]
+       
     });
         // Handle click on "Expand All" button
      
