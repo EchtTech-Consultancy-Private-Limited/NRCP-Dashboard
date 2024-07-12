@@ -181,6 +181,8 @@ Route::middleware(['Admin','device'])->group(function () {
                 Route::get('lform-list',[FormController::class,'lFormList'])->name('lform-list');
                 Route::get('lform-create',[FormController::class,'lFormCreate'])->name('lform-create');
                 Route::post('lform-store',[FormController::class,'lFormstore'])->name('lform-store');
+                //  Yearly wise Monthly Report filter graph
+                Route::get('/state-highchart', [StateController::class,'stateHighchart'])->name('state-highchart');
             });
         });
     });

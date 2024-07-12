@@ -20,6 +20,7 @@ use App\Models\InvestigateReport;
 use App\Models\StateUserLForm;
 use App\Models\LineSuspectedCalculate;
 use App\Models\State;
+use DateTime;
 
 class StateController extends Controller
 {    
@@ -33,7 +34,76 @@ class StateController extends Controller
         $stateMonthlyReport = StateMonthlyReport::count();
         $lineSuspected = LineSuspected::count();
         $investigateReport = InvestigateReport::count();
-        return view('state-user.dashboard',compact('stateMonthlyReport','lineSuspected','investigateReport'));
+        $states = State::get();
+        $months = [];
+        $currentYear = date('Y');
+        for ($m = 0; $m < 12; $m++) {
+            $month = new DateTime("$currentYear-01-01");
+            $month->modify("+$m months");
+            $months[] = $month->format('F');
+        }
+        $total = StateMonthlyReport::toBase()
+                ->select([
+                    DB::raw('SUM(total_health_facilities_anaimal_bite) as sum_total_health_animal'),
+                    DB::raw('SUM(total_health_facilities_submitted_monthly) as total_health_facilities_submitted'),
+                    DB::raw('SUM(total_patients_animal_biting + total_stray_dog_bite + total_pet_dog_bite + total_cat_bite + total_monkey_bite + total_others_bite) as total_patients'),
+                    DB::raw('SUM(confirmed_suspected_rabies_deaths + suspected_rabies_cases_opd + suspected_rabies_cases_admitted + suspected_rabies_cases_left_against_medical + suspected_rabies_deaths) as suspected_death_reports'),
+                    DB::raw('SUM(dh_of_arv + sdh_of_arv + chc_of_arv + phc_of_arv) as availability_arv'),
+                    DB::raw('SUM(dh_of_ars + sdh_of_ars + chc_of_ars + phc_of_ars) as availability_ars')
+                ])
+                ->first();
+        return view('state-user.dashboard',compact('stateMonthlyReport','lineSuspected','investigateReport','states','months','total'));
+    }
+    
+    /**
+     * stateHighchart
+     *
+     * @param  mixed $request
+     * @return void
+     */
+    public function stateHighchart(Request $request)
+    {
+        $months = [];
+        $currentYear = date('Y');
+        for ($m = 0; $m < 12; $m++) {
+            $month = new DateTime("$currentYear-01-01");
+            $month->modify("+$m months");
+            $months[] = [
+                'month_name' => $month->format('M'),
+                'month_num' => $month->format('n'),
+            ];
+        }
+        $query = StateMonthlyReport::query();
+        if ($request->has('state_year') && $request->state_year) {
+            $query->whereYear('reporting_month_year', $request->state_year);
+        }
+        if ($request->has('state_month') && $request->state_month) {
+            $query->whereMonth('reporting_month_year', $request->state_month);
+        }
+        if ($request->has('state_id') && $request->state_id) {
+            $query->where('state_id', $request->state_id);
+        }
+
+        $totalCard =  $query->clone()->toBase()
+                ->select([
+                    DB::raw('SUM(total_health_facilities_anaimal_bite) as sum_total_health_animal'),
+                    DB::raw('SUM(total_health_facilities_submitted_monthly) as total_health_facilities_submitted'),
+                    DB::raw('SUM(total_patients_animal_biting + total_stray_dog_bite + total_pet_dog_bite + total_cat_bite + total_monkey_bite + total_others_bite) as total_patients'),
+                    DB::raw('SUM(confirmed_suspected_rabies_deaths + suspected_rabies_cases_opd + suspected_rabies_cases_admitted + suspected_rabies_cases_left_against_medical + suspected_rabies_deaths) as suspected_death_reports'),
+                    DB::raw('SUM(dh_of_arv + sdh_of_arv + chc_of_arv + phc_of_arv) as availability_arv'),
+                    DB::raw('SUM(dh_of_ars + sdh_of_ars + chc_of_ars + phc_of_ars) as availability_ars')
+                ])
+                ->first();
+
+        foreach($months as $key => $month)
+        {
+            $monthFormCount = $query->clone()->whereMonth('reporting_month_year', $month['month_num'])->count();
+            $yearlyMonthReport[] = [$month['month_name'], $monthFormCount];
+        }
+        return response()->json([
+            'yearlyMonthReport' => $yearlyMonthReport,
+            'totalCard' => $totalCard,
+        ], 200);
     }
     
     /**
