@@ -5,7 +5,7 @@
 <div class="container-fluid dashboard dashnoard">
   <div class="form-tab">
     <div class="dashboard-filter table-responsive">
-    <table id="general_profiles_TABLE2" class="w-100">
+    <table id="general_profiles_TABLE2" class="datatable w-100">
         <thead>
           <tr>
             <th>Sl#</th>
@@ -25,7 +25,7 @@
             <td>{{$stateMonthlyReport->state_nodal_office}}</td>
             <td>{{$stateMonthlyReport->office_address}}</td>
             <td> {{date('d-m-Y',strtotime($stateMonthlyReport->reporting_month_year))}}</td>
-            <td>
+            <td class="text-nowrap">
               <a href= "{{route('national.state-monthly-edit',$stateMonthlyReport->id)}}" id="edit_2" class="btn bg-success action-btn pformEdit" data-id="2" title="Edit">
                 <i class="fa fa-edit"></i>
               </a>

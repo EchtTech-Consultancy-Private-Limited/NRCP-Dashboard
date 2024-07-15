@@ -4,7 +4,7 @@
 @section('content') 
 <div class="container-fluid dashboard">
   <div class="dashboard-filter table-responsive">
-  <table id="general_profiles_TABLE2 table-responsive" class="w-100">
+  <table id="general_profiles_TABLE2" class="datatable w-100">
         <thead>
           <tr>
             <th>Sl#</th>

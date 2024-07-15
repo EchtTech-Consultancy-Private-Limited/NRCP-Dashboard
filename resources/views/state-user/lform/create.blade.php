@@ -32,8 +32,8 @@
                     <div class="row">
                         <div class="col-md-12">
                             <p class="float-right">
-                                <strong>Date:</strong>
-                                <input type="text" data-date="date" placeholder="dd-mm-yyyy" name="current_date">
+                                <strong class="d-block">Date:</strong>
+                                <input type="text" data-date="date" placeholder="DD-MM-YYYY" name="current_date">
                             </p>
                         </div>
                     </div>
