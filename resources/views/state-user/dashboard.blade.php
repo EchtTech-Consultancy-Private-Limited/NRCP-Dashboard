@@ -125,7 +125,7 @@
     <div class="dashboard-filter mb-4">
         <div class="row">
             <div class="col-md-12">
-                <div class="box-heading pb-1">
+                <div class="box-heading pb-1 justify-content-center">
                     <h1 class="main-heading">Monthly Report Generate</h1>
                 </div>
             </div>
@@ -162,7 +162,7 @@
                         </div>
 
                         <div class="col-md-4">
-                            <div class="">
+                            <div class="mt-4">
                                 <button type="submit" class="btn bg-primary button">Export Excel</button>
                                 <button type="reset" class="btn bg-danger me-3">Reset</button>
                             </div>

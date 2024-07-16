@@ -92,7 +92,8 @@
             <div class="" id="nav-add-patient-record" role="tabpanel" aria-labelledby="home-tab">
                 <div id="general_profile_success"></div>
 
-                <table id="general_profiles_TABLE" class="display general table-responsive">
+                <div class="table-responsive">
+                <table id="general_profiles_TABLE" class="display general ">
                     <thead>
                         <tr>
                             <th>Sr.No.</th>
@@ -127,6 +128,8 @@
                         @endforeach
                     </tbody>
                 </table>
+                </div>
+                
             </div>
         </div>
     </div>
