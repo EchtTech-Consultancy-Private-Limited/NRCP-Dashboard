@@ -800,7 +800,7 @@ section.content.sform .table div {
   width: 25%;
   border: 1px solid #dadada;
   padding: 12px;
-  background: rgba(237, 251, 255, 0.6392156863);
+  background: rgba(255, 255, 255, 0.64);
   font-size: 14px;
   font-weight: 500;
   display: flex;
@@ -1101,7 +1101,7 @@ table {
 }
 
 input:focus-visible {
-  outline-color: #607D8B;
+  outline-color: #607D8B !important;
   box-shadow: 0px 0px 13px #ddd;
 }
 
@@ -1117,4 +1117,8 @@ select option {
   font-weight: 500 !important;
   line-height: 1.7;
   font-size: 16px !important;
+}
+
+table {
+  width: 99.99% !important;
 }/*# sourceMappingURL=dashboard.css.map */

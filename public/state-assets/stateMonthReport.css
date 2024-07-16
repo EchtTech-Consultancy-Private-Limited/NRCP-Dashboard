@@ -179,7 +179,7 @@ p {
 }
 
 table {
-  width: 100% !important;
+  width: 100%;
 }
 table li, table p {
   font-size: 14px !important;

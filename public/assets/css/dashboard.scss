@@ -794,7 +794,7 @@ section.content.sform{
 			width: 25%;
 			border: 1px solid #dadada;
 			padding: 12px;
-			background: #edfbffa3;
+			background: rgb(255 255 255 / 64%);
 			font-size: 14px;
 		    font-weight: 500;
 			display: flex;
@@ -1131,7 +1131,7 @@ input[name="aadhar_number"], input[type="email"] {
 // }
 
 input:focus-visible {
-    outline-color: #607D8B;
+    outline-color: #607D8B !important;
     box-shadow: 0px 0px 13px #ddd;
 }
 
@@ -1156,4 +1156,7 @@ select{
     font-weight: 500 !important;
     line-height: 1.7;
     font-size: 16px !important;
+}
+table{
+	width: 99.99% !important;
 }
