@@ -19,3 +19,6 @@ input#user_type1 + label.error {
     left: 0;
     margin-bottom: 17px;
 }
+.input-group-append .input-group-text i {
+    cursor: pointer;
+}

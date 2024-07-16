@@ -25,17 +25,17 @@
                             <div class="dashboard-filter mb-4">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <div class="box-heading pb-1">
+                                        <div class="box-heading pb-1 justify-content-center">
                                             <h1 class="main-heading">Report Generate</h1>
                                         </div>
                                     </div>
                                     <div class="col-md-12">
                                         <form action="{{url('national-mis-report-export')}}" method="post">
                                             @csrf
-                                            <div class="row align-items-center">
+                                            <div class="row align-items-center report-generate justify-content-center">
                                                 <div class="col-md-3">
                                                     <div class="form-group">
-                                                        <label for="district" class="mr-3 text-nowrap mb-0">State
+                                                        <label for="district" class="mr-3 text-nowrap ">State
                                                             <span class="star">*</span></label>
                                                         <select name="state" id="month" class="form-control"
                                                             style="color: grey;">
@@ -48,7 +48,7 @@
                                                 </div>
                                                 <div class="col-md-3">
                                                     <div class="form-group">
-                                                        <label for="district" class="mr-3 text-nowrap mb-0">Month
+                                                        <label for="district" class="mr-3 text-nowrap ">Month
                                                             <span class="star">*</span></label>
                                                         <select name="month" id="month" class="form-control"
                                                             style="color: grey;">
@@ -63,7 +63,7 @@
                                                 </div>
                                                 <div class="col-md-3">
                                                     <div class="form-group">
-                                                        <label for="formType" class="mr-3 text-nowrap mb-0">Year
+                                                        <label for="formType" class="mr-3 text-nowrap ">Year
                                                             <span class="star">*</span></label>
                                                         <select name="year" id="year" class="form-control"
                                                             style="color: grey;">
@@ -83,7 +83,8 @@
                                                             class="btn bg-danger me-3">Reset</button>
                                                     </div>
                                                 </div>
-
+                                            </div>
+                                            <div class="row align-items-center">
                                                 <div class="col-md-12 mt-4">
                                                     <table id="general_profiles_TABLE2" class="w-100 ">
                                                         <thead>

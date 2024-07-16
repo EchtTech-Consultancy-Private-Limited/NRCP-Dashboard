@@ -7,11 +7,11 @@
 <div class="container-fluid">
 
     <div class="dashboard">
-        <div class="dashboard-filter mb-4">
+        <div class="dashboard-filter finance-form mb-4">
             <form action="{{ route('expenditure-add') }}" method="post" class="" id="rabies_detail_test">
                 @csrf
                 <div class="row">
-                    <div class="col-lg-2 col-md-2 col-6">
+                    <div class="col">
                         <div class="form-group">
                             <label for="state">Financial Year<span class="star">*</span></label>
                             <!-- <select class="form-select" aria-label="Default select example" name="financial_year" id="financial_year">
@@ -27,7 +27,7 @@
                             @enderror
                         </div>
                     </div>
-                    <div class="col-lg-2 col-md-2 col-6">
+                    <div class="col">
                         <div class="form-group">
                             <label for="district">Fund Received<span class="star">*</span></label>
                             <select class="form-select" aria-label="Default select example" name="fund_recieved"
@@ -45,7 +45,7 @@
                             @enderror
                         </div>
                     </div>
-                    <div class="col-lg-4 col-md-4 col-6">
+                    <div class="col">
                         <div class="form-group">
                             <label for="fromYear">Equipment Purchase(Financial Year Wise)<span
                                     class="star">*</span></label>
@@ -63,7 +63,7 @@
                             @enderror
                         </div>
                     </div>
-                    <div class="col-lg-3 col-md-3 col-6 search-reset">
+                    <div class="col search-reset">
                         <div class="apply-filter mt-4 pt-1">
                             <button type="submit" class="btn bg-primary search-patient-btn mt-0 mr-3">Save</button>
                             <button type="reset" class="btn bg-danger">Reset</button>

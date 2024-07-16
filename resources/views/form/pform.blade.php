@@ -333,7 +333,7 @@
                     </div>
                     <div class="col-md-12">
                       <div class="" id="nav-add-patient-record" role="tabpanel" aria-labelledby="home-tab">
-                        <table id="general_profiles_TABLE2" class=" table-responsive">
+                        <table id="general_profiles_TABLE2" class="">
                           <thead>
                             <tr>
                               <th>Sl#</th>

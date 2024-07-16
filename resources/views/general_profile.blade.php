@@ -5,11 +5,11 @@
 @section('content')
 <div class="container-fluid">
     <div class='dashboard'>
-        <div class="dashboard-filter mb-4">
+        <div class="dashboard-filter mb-4 general-profile-filter">
             <form action="{{ route('general-save') }}" method="post" class="" id="general_profile">
                 @csrf
-                <div class="row">
-                    <div class="col-lg-3 col-md-3 col-6">
+                <div class="row ">
+                    <div class="col">
                         <div class="form-group">
                             <label for="state">State<span class="star">*</span></label>
                             <select class="form-select state click-function" aria-label="Default select example"
@@ -29,37 +29,36 @@
                             @enderror
                         </div>
                     </div>
-                    <div class="col-lg-3 col-md-3 col-6">
+                    <div class="col">
                         <div class="form-group">
                             <label for="district">Hospital<span class="star">*</span></label>
                             <input type="text" name="hospital" value="{{ old('hospital') }}" id="hospital"
-                                maxlength="45" class="form-control" />
+                                maxlength="45" class="form-control" placeholder="Enter Hospital Name"/>
                             @error('hospital')
                             <span class="form-text text-muted">{{ $message }}</span>
                             @enderror
                         </div>
                     </div>
-                    <div class="col-lg-3 col-md-3 col-6">
+                    <div class="col">
                         <div class="form-group">
                             <label for="fromYear">Nodal Officer</label>
                             <input type="text" name="designation" value="{{ old('designation') }}" id="designation"
-                                maxlength="45" class="form-control" />
+                                maxlength="45" class="form-control" placeholder="Enter Nodal Officer Name"/>
                             <small id="designation-error" class="form-text text-muted"> </small>
                         </div>
                     </div>
-                    <div class="col-lg-3 col-md-3 col-6">
+                    <div class="col">
                         <div class="form-group">
                             <label for="toYear">Contact Number</label>
                             <input type="text" name="contact_number" value="{{ old('contact_number') }}"
-                                id="contact_number" minlength="10" maxlength="10" oninput="validateInput(this)"
-                                class="form-control" />
+                                id="contact_number" minlength="10" maxlength="10" oninput="validateInput(this)"   class="form-control" placeholder="Enter Contact Number"/>
                             <small id="contact_number-error" class="form-text text-muted"> </small>
                             @error('contact_number')
                             <span class="form-text text-muted">{{ $message }}</span>
                             @enderror
                         </div>
                     </div>
-                    {{-- <div class="col-lg-3 col-md-3 col-6">
+                    {{-- <div class="col">
                                         <div class="form-group">
                                             <label for="diseasesSyndromes">Mou</label>
                                             <select class="form-control" aria-label="Default select example" name="mou" id="mou" onChange="handleFilterValue()">
@@ -70,7 +69,7 @@
                                             <small id="mou-error" class="form-text text-muted"></small>
                                         </div>
                                     </div> --}}
-                    <div class="col-lg-3 col-md-3 col-6">
+                    <div class="col">
                         <div class="form-group">
                             <label for="formType">Joining Date of NRCP</label>
                             <input type="text" name="date_of_joining" value="{{ old('date_of_joining') }}"
@@ -78,7 +77,7 @@
                             <small id="date_of_joining-error" class="form-text text-muted"> </small>
                         </div>
                     </div>
-                    <div class="col-lg-3 col-md-3 col-6 search-reset">
+                    <div class="col  search-reset">
                         <div class="apply-filter mt-4 pt-1">
                             <button type="submit" class="btn bg-primary search-patient-btn mr-3 mt-0">Save</button>
                             <button type="reset" class="btn bg-danger">Reset</button>
@@ -93,7 +92,8 @@
             <div class="" id="nav-add-patient-record" role="tabpanel" aria-labelledby="home-tab">
                 <div id="general_profile_success"></div>
 
-                <table id="general_profiles_TABLE" class="display general table-responsive">
+                <div class="table-responsive">
+                <table id="general_profiles_TABLE" class="display general ">
                     <thead>
                         <tr>
                             <th>Sr.No.</th>
@@ -128,6 +128,8 @@
                         @endforeach
                     </tbody>
                 </table>
+                </div>
+                
             </div>
         </div>
     </div>

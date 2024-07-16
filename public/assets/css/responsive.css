@@ -115,7 +115,7 @@
 @media(max-width:1599px) {
 
     .state-user-dashboard .box {
-        padding: 7px !important;
+        padding: 10px 7px 7px 7px !important;
     }
 
     .state-user-dashboard .box .cases {
@@ -128,6 +128,7 @@
         width: 25% !important;
         flex-basis: auto;
         max-width: none;
+        margin-bottom: 20px;
     }
 
 }
@@ -181,7 +182,112 @@
     table#general_profiles_TABLE {
         display: table !important;
     }
+    
+}
+@media(min-width:1501px) {
+    .rabies-test .row .col{
+        flex: 0 1 20%;
+    }
+    .rabies-test .row .col.search-reset{
+        flex: 0 1 100% !important;
+        justify-content: center;
+    }
 
+    .finance-form .row .col{
+        flex: 0 1 27%;
+        padding-right: 0;
+    }
+    .finance-form .row .col.search-reset{
+        flex: 0 1 17% !important;
+        justify-content: end;
+    }
+
+    .line-suspected-form .col-md-4:nth-child(n+4):nth-child(-n+7) {
+        flex: 0 1 25%;
+    }
+    .line-suspected-form .col-md-4{
+
+    }
+}
+@media(max-width:1550px) {
+    .state-graph-filter .col {
+        flex: 0 1 16.5% !important;
+        padding: 0 0 10px 10px;
+    }
+}
+@media(max-width:1500px) {
+    .quality-form .col {
+        flex: 0 1 25%;
+    }
+    .quality-form .col.search-reset {
+        flex: 0 1 100% !important;
+        justify-content: center;
+    }
+    .finance-form .row .col{
+        flex: 0 1 28%;
+        padding-right: 0;
+    }
+    .finance-form .row .col:nth-child(3){
+        flex: 0 1 44%;
+        padding-right: 0;
+    }
+    .finance-form .row .col.search-reset{
+        flex: 0 1 100% !important;
+        justify-content: center;
+    }
+}
+@media(max-width:1340px) {
+    .rabies-test .row .col{
+        flex: 0 1 25%;
+    }
+    .rabies-test .row .col.search-reset{
+        flex: 0 1 50% !important;
+        justify-content: end;
+    }
+
+    .line-suspected-form .col-md-4:nth-child(1), .line-suspected-form .col-md-4:nth-child(2){
+        flex: 0 1 50%;
+        max-width: 50%;
+    }
+   
+}
+@media(max-width:1250px) {
+    .rabies-test .row .col{
+        flex: 0 1 33%;
+    }
+    .rabies-test .row .col.search-reset{
+        flex: 0 1 27% !important;
+        justify-content: end;
+    }
+    .row .report-generate .col-md-3 {
+        flex: 0 1 33%;
+        max-width: 33%;
+    }
+   
+}
+@media(max-width:1180px) {
+    .quality-form .col {
+        flex: 0 1 33%;
+    }
+    .quality-form .col.search-reset {
+        flex: 0 1 67% !important;
+        justify-content: end;
+    }
+}
+@media(max-width:1100px) {
+    .general-profile-filter .row .col.search-reset {
+    justify-content: end;
+}
+.general-profile-filter .row .col {
+    flex: 0 1 33%;
+}
+}
+@media(min-width:1200px) {
+    .general-profile-filter .row .col.search-reset {
+    width: 100%;
+    flex: 0 1 100% !important;
+    justify-content: center;
+}
 }
 
 

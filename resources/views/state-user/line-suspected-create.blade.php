@@ -37,75 +37,88 @@
                             </p>
                         </div>
                     </div>
-                    <div class="row" class="justify-content-between">
-                        <div class="col-md-5">
-                            <div class="addressBlock">
-
-                                <p>
-                                    Name of the Health Facility/Block/District/State <span class="text-danger">*</span>
-                                    <input type="text" name="name_of_health" value="{{ old('name_of_health') }}">
-                                    @if ($errors->has('name_of_health'))
-                                    <span class="form-text text-muted">{{ $errors->first('name_of_health') }}</span>
-                                    @endif
-                                </p>
-                                <p>
-                                    Address of the Hospital  <span class="text-danger">*</span>
-                                    <input type="text" name="address_hospital" value="{{ old('address_hospital') }}">
-                                    @if ($errors->has('address_hospital'))
-                                    <span class="form-text text-muted">{{ $errors->first('address_hospital') }}</span>
-                                    @endif
-                                </p>
-                                <p>
-                                    Name &amp; Designation of Nodal Person  <span class="text-danger">*</span>
-                                    <input type="text" name="designation_name" value="{{ old('designation_name') }}">
-                                </p>
+                    <div class="row line-suspected-form mb-3" class="justify-content-between">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="name_of_health">Name of the Health Facility/Block/District/State <span
+                                        class="text-danger">*</span></label>
+                                <input type="text" name="name_of_health" class="form-control"
+                                    value="{{ old('name_of_health') }}">
+                                @if ($errors->has('name_of_health'))
+                                <span class="form-text text-muted">{{ $errors->first('name_of_health') }}</span>
+                                @endif
                             </div>
 
                         </div>
-                        <div class="col-md-5">
-                            <div class="emailBlock">
-                                <p>
-                                    Type of Health Facility/Block/District/State <span class="text-danger">*</span> <br>
-                                    <select name="type_of_health" id="type_of_health">
-                                        <option value=""> Select state</option>
-                                        @foreach ($states as $key => $state)
-                                        <option value="{{ ucwords($state->name) }}"
-                                            {{ $state->name == old('type_of_health') ? 'selected' : '' }}>
-                                            {{ ucwords($state->name) }}
-                                        </option>
-                                        @endforeach
-                                    </select>
-                                    @if ($errors->has('type_of_health'))
-                                    <span class="form-text text-muted">{{ $errors->first('type_of_health') }}</span>
-                                    @endif
-                                </p>
-                                <p>
-                                    Email ID<span class="text-danger">*</span><br>
-                                    <input type="email" name="email" value="{{ old('email') }}">
-                                    @if ($errors->has('email'))
-                                    <span class="form-text text-muted">{{ $errors->first('email') }}</span>
-                                    @endif
-                                </p>
-                                <p>
-                                    Aadhar Number<span class="text-danger">*</span> <br>
-                                    <input type="text" name="aadhar_number" value="{{ old('aadhar_number') }}"
-                                        maxlength="12" oninput="validateInput(this)">
-                                    @if ($errors->has('aadhar_number'))
-                                    <span class="form-text text-muted">{{ $errors->first('aadhar_number') }}</span>
-                                    @endif
-                                </p>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="type_of_health"> Type of Health Facility/Block/District/State <span
+                                        class="text-danger">*</span> </label>
+                                <select name="type_of_health" class="form-control" id="type_of_health">
+                                    <option value=""> Select state</option>
+                                    @foreach ($states as $key => $state)
+                                    <option value="{{ ucwords($state->name) }}"
+                                        {{ $state->name == old('type_of_health') ? 'selected' : '' }}>
+                                        {{ ucwords($state->name) }}
+                                    </option>
+                                    @endforeach
+                                </select>
+                                @if ($errors->has('type_of_health'))
+                                <span class="form-text text-muted">{{ $errors->first('type_of_health') }}</span>
+                                @endif
                             </div>
 
                         </div>
-                        <div class="col-md-2">
-                            <div class="addressBlock">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="address_hospital"> Address of the Hospital <span
+                                        class="text-danger">*</span>
+                                </label>
+                                <input type="text" name="address_hospital" class="form-control"
+                                    value="{{ old('address_hospital') }}">
+                                @if ($errors->has('address_hospital'))
+                                <span class="form-text text-muted">{{ $errors->first('address_hospital') }}</span>
+                                @endif
+                            </div>
 
-                                <p>
-                                    Contact Number<span class="text-danger">*</span>
-                                    <input type="text" name="designation_name" value="">
-                                </p>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="designation_name">Name Designation of Nodal Person <span
+                                        class="text-danger">*</span></label>
+                                <input type="text" name="designation_name" class="form-control"
+                                    value="{{ old('designation_name') }}">
+                            </div>
+
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="designation_name">Contact Number<span class="text-danger">*</span></label>
+                                <input type="text" name="designation_name" class="form-control" value="">
                             </div>
                         </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="email">Email ID<span class="text-danger">*</span></label>
+                                <input type="email" name="email" class="form-control" value="{{ old('email') }}">
+                                @if ($errors->has('email'))
+                                <span class="form-text text-muted">{{ $errors->first('email') }}</span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="aadhar_number">Aadhar Number<span class="text-danger">*</span></label>
+                                <input type="text" name="aadhar_number" value="{{ old('aadhar_number') }}"
+                                    maxlength="12" oninput="validateInput(this)">
+                                @if ($errors->has('aadhar_number'))
+                                <span class="form-text text-muted">{{ $errors->first('aadhar_number') }}</span>
+                                @endif
+                            </div>
+                        </div>
+
+
 
                     </div>
 

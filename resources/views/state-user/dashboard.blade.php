@@ -8,8 +8,8 @@
     <div class="dashboard-filter mb-4">
         <div class="row mb-4">
             <div class="col-md-4">
-                <div class="form-group d-flex align-items-center">
-                    <label for="state" class="mr-3 text-nowrap mb-0">State <span class="star">*</span></label>
+                <div class="form-group">
+                    <label for="state" class="mr-3 text-nowrap ">State <span class="star">*</span></label>
                     <select name="state-id" id="state-id" class="form-control state_dashboard_filter">
                         <option value="">Select State</option>
                         @foreach ($states as $state)
@@ -20,8 +20,8 @@
             </div>
 
             <div class="col-md-4">
-                <div class="form-group d-flex align-items-center">
-                    <label for="district" class="mr-3 text-nowrap mb-0">Month <span class="star">*</span></label>
+                <div class="form-group">
+                    <label for="district" class="mr-3 text-nowrap ">Month <span class="star">*</span></label>
                     <select name="state-month" id="state-month" class="form-control state_dashboard_filter">
                         <option value="">Select Month</option>
                         @foreach ($months as $key => $month)
@@ -33,8 +33,8 @@
                 </div>
             </div>
             <div class="col-md-4">
-                <div class="form-group d-flex align-items-center">
-                    <label for="formType" class="mr-3 text-nowrap mb-0">Year <span class="star">*</span></label>
+                <div class="form-group">
+                    <label for="formType" class="mr-3 text-nowrap ">Year <span class="star">*</span></label>
                     <select name="state-year" id="state-year" class="form-control state_dashboard_filter">
                         <option value="">Select Year</option>
                         @for ($i = date("Y")-10; $i <= date("Y")+10; $i++)
@@ -125,7 +125,7 @@
     <div class="dashboard-filter mb-4">
         <div class="row">
             <div class="col-md-12">
-                <div class="box-heading pb-1">
+                <div class="box-heading pb-1 justify-content-center">
                     <h1 class="main-heading">Monthly Report Generate</h1>
                 </div>
             </div>
@@ -135,8 +135,8 @@
                     @csrf
                     <div class="row align-items-center">
                         <div class="col-md-4">
-                            <div class="form-group d-flex align-items-center">
-                                <label for="district" class="mr-3 text-nowrap mb-0">Month <span
+                            <div class="form-group =">
+                                <label for="district" class="mr-3 text-nowrap ">Month <span
                                         class="star">*</span></label>
                                 <select name="month" id="month" class="form-control">
                                     <option value="">Select Month</option>
@@ -149,8 +149,8 @@
                             </div>
                         </div>
                         <div class="col-md-4">
-                            <div class="form-group d-flex align-items-center">
-                                <label for="formType" class="mr-3 text-nowrap mb-0">Year <span
+                            <div class="form-group =">
+                                <label for="formType" class="mr-3 text-nowrap ">Year <span
                                         class="star">*</span></label>
                                 <select name="year" id="year" class="form-control">
                                     <option value="">Select Year</option>
@@ -162,7 +162,7 @@
                         </div>
 
                         <div class="col-md-4">
-                            <div class="">
+                            <div class="mt-4">
                                 <button type="submit" class="btn bg-primary button">Export Excel</button>
                                 <button type="reset" class="btn bg-danger me-3">Reset</button>
                             </div>
