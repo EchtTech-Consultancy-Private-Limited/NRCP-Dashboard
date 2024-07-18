@@ -3094,7 +3094,7 @@ function nationalHighchart(data)
             },
             colorAxis: {
                 min: 0,
-                max: 100,
+                max: 2,
                 minColor: '#fcad95',
                 maxColor: '#ab4024',
                 labels: {
