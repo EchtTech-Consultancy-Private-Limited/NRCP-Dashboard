@@ -20,6 +20,7 @@ class StateMonthlyReport extends Model
         'total_patients_animal_biting',
         'total_stray_dog_bite',
         'total_pet_dog_bite',
+        'total_dog_bite',
         'total_cat_bite',
         'total_monkey_bite',
         'total_others_bite',

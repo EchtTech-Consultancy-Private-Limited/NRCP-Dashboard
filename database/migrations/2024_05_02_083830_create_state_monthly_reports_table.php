@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('total_patients_animal_biting', 255)->nullable();
             $table->string('total_stray_dog_bite', 255)->nullable();
             $table->string('total_pet_dog_bite', 255)->nullable();
+            $table->string('total_dog_bite', 255)->nullable();
             $table->string('total_cat_bite', 255)->nullable();
             $table->string('total_monkey_bite', 255)->nullable();
             $table->string('total_others_bite', 255)->nullable();

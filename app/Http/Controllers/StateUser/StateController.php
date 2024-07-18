@@ -21,6 +21,7 @@ use App\Models\StateUserLForm;
 use App\Models\LineSuspectedCalculate;
 use App\Models\State;
 use DateTime;
+use Illuminate\Support\Facades\Auth;
 
 class StateController extends Controller
 {    
@@ -125,7 +126,8 @@ class StateController extends Controller
     public function stateMonthlyCreate()
     {
         $states = State::get();
-        return view('state-user.state-monthly-report',compact('states'));
+        $userState = $states->firstWhere('id', Auth::user()->state_id);
+        return view('state-user.state-monthly-report',compact('userState'));
     }
     
     /**
@@ -146,9 +148,8 @@ class StateController extends Controller
                 if($checkExist){
                     return back()->with('message', 'A report for this state and month has already been created');
                 }
-
                 $stateMonthlyReport = StateMonthlyReport::create([
-                    'state_id' => $request->state_id,
+                    'state_id' => $request->state_id, 
                     'state_nodal_office' => $request->state_nodal_office,
                     'office_address' => $request->office_address,
                     'reporting_month_year' => $request->reporting_month_year,
@@ -158,6 +159,7 @@ class StateController extends Controller
                     'total_patients_animal_biting' => $request->total_patients_animal_biting,
                     'total_stray_dog_bite' => $request->total_stray_dog_bite,
                     'total_pet_dog_bite' => $request->total_pet_dog_bite,
+                    'total_dog_bite' => $request->total_dog_bite,
                     'total_cat_bite' => $request->total_cat_bite,
                     'total_monkey_bite' => $request->total_monkey_bite,
                     'total_others_bite' => $request->total_others_bite,

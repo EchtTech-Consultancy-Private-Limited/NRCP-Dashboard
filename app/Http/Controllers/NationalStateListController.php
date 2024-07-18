@@ -15,6 +15,7 @@ use App\Models\StateUserLFormCountCase;
 use App\Models\LineSuspected;
 use App\Models\LineSuspectedCalculate;
 use App\Models\InvestigateReport;
+use Illuminate\Support\Facades\Auth;
 
 class NationalStateListController extends Controller
 {    
@@ -38,9 +39,11 @@ class NationalStateListController extends Controller
     public function stateMonthlyEdit($id){
         try{
             DB::beginTransaction();
-            $stateMonthlyReport = StateMonthlyReport::where('id',$id)->first();
-            DB::commit();
-            return view('national-state.state-monthly-report.edit', compact('stateMonthlyReport'));
+            $states = State::get();
+            $stateMonthlyReport = StateMonthlyReport::with('states')->where('id',$id)->first();
+            $userState = $states->firstWhere('id', $stateMonthlyReport->state_id);
+            DB::commit(); 
+            return view('national-state.state-monthly-report.edit', compact('stateMonthlyReport','userState'));
         }catch (Exception $e) {
             DB::rollBack();
             throw new Exception($e->getMessage());
@@ -57,7 +60,7 @@ class NationalStateListController extends Controller
         try{
             DB::beginTransaction();
             StateMonthlyReport::where('id', $id)->Update([
-                'state_name' => $request->state_name,
+                'state_id' => $request->state_id,
                 'state_nodal_office' => $request->state_nodal_office,
                 'office_address' => $request->office_address,
                 'reporting_month_year' => $request->reporting_month_year,
@@ -67,6 +70,7 @@ class NationalStateListController extends Controller
                 'total_patients_animal_biting' => $request->total_patients_animal_biting,
                 'total_stray_dog_bite' => $request->total_stray_dog_bite,
                 'total_pet_dog_bite' => $request->total_pet_dog_bite,
+                'total_dog_bite' => $request->total_dog_bite,
                 'total_cat_bite' => $request->total_cat_bite,
                 'total_monkey_bite' => $request->total_monkey_bite,
                 'total_others_bite' => $request->total_others_bite,
@@ -125,7 +129,7 @@ class NationalStateListController extends Controller
     public function stateMonthlyView($id){
         try{
             DB::beginTransaction();
-            $stateMonthlyReport = StateMonthlyReport::where('id',$id)->first();
+            $stateMonthlyReport = StateMonthlyReport::with('states')->where('id',$id)->first();
             DB::commit();
             return view('national-state.state-monthly-report.view', compact('stateMonthlyReport'));
         }catch (Exception $e) {

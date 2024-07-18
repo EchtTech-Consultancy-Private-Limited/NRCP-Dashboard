@@ -26,7 +26,7 @@
                             </p>
                         </td>
                         <td>
-                            {{ old('state_name', $stateMonthlyReport->state_name) }}
+                            {{ old('state_name', $stateMonthlyReport->states->state_name) }}
                         </td>
                     </tr>
                     <tr class="">
@@ -97,7 +97,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td rowspan="2">
+                        <td rowspan="3">
                             <ul>
                                 <li>Dog</li>
                             </ul>
@@ -114,6 +114,13 @@
                         </td>
                         <td colspan="3">{{ old('total_pet_dog_bite', $stateMonthlyReport->total_pet_dog_bite) }}</td>
                     </tr>
+                    <tr>
+                        <td>
+                          <p>Total Dogs Bite</p>
+                        </td>
+                        <td colspan="3">{{ old('total_dog_bite',$stateMonthlyReport->total_dog_bite) }}
+                        </td>
+                      </tr>
                     <tr>
                         <td colspan="2">
                             <ul>
