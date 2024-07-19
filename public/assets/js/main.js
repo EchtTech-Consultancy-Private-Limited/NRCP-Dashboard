@@ -156,7 +156,7 @@ function addMore3() {
         <td></td>
         <td><input type="text" name="laboratory_specific_test[test_performed][]"></td>
         <td><input type="text" name="laboratory_specific_test[Hospital_lab][]"></td>
-        <td><input type="text" name="laboratory_specific_test[specific_test_date][]"></td>
+        <td><input type="date" name="laboratory_specific_test[specific_test_date][]"></td>
         <td><input type="text" name="laboratory_specific_test[result][]"></td>
         <td><input type="text" name="laboratory_specific_test[comment][]"></td>
         <td>
