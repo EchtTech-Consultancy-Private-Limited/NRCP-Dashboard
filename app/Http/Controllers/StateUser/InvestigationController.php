@@ -33,7 +33,7 @@ class InvestigationController extends Controller
             
             $investigateReport = new InvestigateReport();
             $investigateReport->fill($request->all());
-            $investigateReport->save();            
+            $investigateReport->save();
             DB::commit();
             return redirect()->route('state.investigate-report-list')->with('message', 'Investigate report created successfully');
         } catch (\Exception $e) {
