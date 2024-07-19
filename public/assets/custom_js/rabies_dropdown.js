@@ -84,3 +84,16 @@ $(document).on("input", ".animalbite", function() {
     });
     $(".total_no_of_patients_bited").val(sum || "");
 });
+
+// 6.8 MRI Done field
+$(document).ready(function() {
+    $('.inputFields').hide();
+    $("input[name='MRI_brain_done']").change(function() {
+         var selected = $(this).val();
+         if(selected == 'yes'){
+            $('.inputFields').show();
+         }else{
+            $('.inputFields').hide();
+         }
+    });
+});

@@ -451,7 +451,7 @@ class NationalStateListController extends Controller
     public function investigateReportEdit($id)
     {
         try{
-            DB::beginTransaction();
+            DB::beginTransaction(); 
             $investigateReport = InvestigateReport::where('id', $id)->first();
             return view('national-state.investigate-report.edit', compact('investigateReport'));
         }catch (Exception $e) {

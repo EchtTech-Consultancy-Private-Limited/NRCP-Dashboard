@@ -89,11 +89,15 @@ class CreateInvestigateReportsTable extends Migration
             $table->string('deceased_die_health_facility_input')->nullable();
             $table->string('deceased_die_other_input')->nullable();
             $table->string('medical_help')->nullable();
+            $table->string('name_of_hf_1')->nullable();
+            $table->string('name_of_hf_2')->nullable();
+            $table->string('name_of_hf_3')->nullable();
             $table->date('hf_1date')->nullable();
             $table->date('hf_2date')->nullable();
             $table->date('hf_3date')->nullable();
             $table->json('laboratory_specific_test')->nullable()->comment(' Laboratory specific test (ELISA/PCR/FAT) performed');
             $table->string('MRI_brain_done')->nullable();
+            $table->string('MRI_brain_done_text')->nullable();
             $table->string('postmortem')->nullable();
             $table->string('copy_of_report')->nullable();
             $table->string('evidence_of_recent_wounds')->nullable();

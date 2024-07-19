@@ -27,7 +27,7 @@ class InvestigationController extends Controller
      * @return void
      */
     public function store(InvestigartionReportRequest $request)
-    {
+    {  
         try {
             DB::beginTransaction();
             
