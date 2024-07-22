@@ -16,6 +16,7 @@ class LineSuspected extends Model
         'designation_name',
         'type_of_health',
         'email',
+        'contact_number',
         'aadhar_number',
     ];
 

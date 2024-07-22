@@ -16,6 +16,7 @@ class StateUserLFormCountCase extends Model
         'fname',
         'mname',
         'lname',
+        'aadhar_number',
         'age',
         'sex',
         'contact_number',

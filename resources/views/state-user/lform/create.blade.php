@@ -90,18 +90,17 @@
                             </div>
 
                         </div>
-                        <div class="col-md-3">
+                        {{-- <div class="col-md-3">
                             <div class="emailBlock">
-                                <p >
+                                <p>
                                     Aadhar Number<span class="text-danger">*</span> <br>
                                     <input type="text" name="aadhar_number" value="{{ old('aadhar_number') }}" maxlength="12" oninput="validateInput(this)">
                                     @if ($errors->has('aadhar_number')) 
                                         <span class="form-text text-muted">{{ $errors->first('aadhar_number') }}</span> 
                                     @endif
-                                </p>
-                              
+                                </p>                              
                             </div>
-                        </div>
+                        </div> --}}
                         <div class="col-md-3">
                             <div class="emailBlock">
                                 <p>
@@ -125,6 +124,11 @@
                                 <td rowspan="2" class="border-left-0">
                                     <p>
                                         <strong>S.No</strong>
+                                    </p>
+                                </td>
+                                <td rowspan="2">
+                                    <p>
+                                        <strong>Aadhar Number</strong>
                                     </p>
                                 </td>
                                 <td colspan="3">
@@ -240,6 +244,9 @@
                                     <input type="hidden" name="row_count[]">
                                 </td>
                                 <td>
+                                    <input type="text" name="aadhar_no[]" value="{{ old('aadhar_no')[$index] ?? '' ?? '' }}" maxlength="12" oninput="validateInput(this)">
+                                </td>
+                                <td>
                                     <input type="text" name="fname[]" value="{{ $oldValue }}">
                                 </td>
                                 <td>
@@ -298,8 +305,10 @@
                                 <td>
                                     <select class="form-select" aria-label="Default select" name="lform_biting_animal[]" id="lform_biting_animal">
                                         <option value="">Please Select</option>
-                                        <option value="Suspected" @if((old('lform_biting_animal')[$index] ?? '') == 'Suspected') selected @endif>Dog</option>
-                                        <option value="Confirmed" @if((old('lform_biting_animal')[$index] ?? '') == 'Confirmed') selected @endif>Other(input)</option>
+                                        <option value="Stary Dog" @if((old('lform_biting_animal')[$index] ?? '') == 'Stary Dog') selected @endif>Stary Dog</option>
+                                        <option value="Pet Dog" @if((old('lform_biting_animal')[$index] ?? '') == 'Pet Dog') selected @endif>Pet Dog</option>
+                                        <option value="Cat" @if((old('lform_biting_animal')[$index] ?? '') == 'Cat') selected @endif>Cat</option>
+                                        <option value="Other" @if((old('lform_biting_animal')[$index] ?? '') == 'Other') selected @endif>Other</option>
                                     </select>
                                 </td>
                                 <td>
@@ -331,7 +340,11 @@
                                     </select>
                                 </td>
                                 <td>
-                                    <input type="text" name="lform_result[]" value="{{ old('lform_result')[$index] ?? '' }}" id="lform_result">
+                                    <select class="form-select" aria-label="Default select" name="lform_result[]" id="lform_result">
+                                        <option value="">Please Select</option>
+                                        <option value="Positive" @if((old('lform_result')[$index] ?? '') == 'Positive') selected @endif>Positive</option>
+                                        <option value="Negative" @if((old('lform_result')[$index] ?? '') == 'Negative') selected @endif>Negative</option>                                        
+                                    </select>
                                 </td>
                                 <td>
                                     <input type="text" data-date="date" placeholder="dd-mm-yyyy" name="lform_result_declaration_date[]" value="{{ old('lform_result_declaration_date')[$index] ?? '' }}" id="lform_result_declaration_date">
@@ -374,6 +387,7 @@
 
             var rowHtml =
         '<tr id="row' + i + '"><td>' + i + '<input type="hidden" name="row_count[]"></td>' +
+        '<td><input type="text" name="aadhar_no[]" value="{{ old('aadhar_no')[$index] ?? '' ?? '' }}" maxlength="12" oninput="validateInput(this)">' +
         '<td><input type="text" name="fname[]" value="{{ old('fname')[$index] ?? '' }}"></td>' +
         '<td><input type="text" name="mname[]" value="{{ old('mname')[$index] ?? '' }}"></td>' +
         '<td><input type="text" name="lname[]" value="{{ old('lname')[$index] ?? '' }}"></td>' +
@@ -391,8 +405,10 @@
         '<option value="Mandal" @if(old('suspected_probable')[$index] ?? '' == "Confirmed") selected @endif>Mandal</option></select></td>' +
         '<td><input type="text" name="lform_village[]" value="{{ old('lform_village')[$index] ?? '' }}"></td>' +
         '<td><select class="form-select" aria-label="Default select " name="lform_biting_animal[]" id="lform_biting_animal"><option value="">Please Select</option>' +
-        '<option value="Dog" @if(old('suspected_probable')[$index] ?? '' == "Suspected") selected @endif>Dog</option>' +
-        '<option value="Other(input)" @if(old('suspected_probable')[$index] ?? '' == "Confirmed") selected @endif>Other(input)</option></select></td>' +
+        '<option value="Stary Dog" @if((old('lform_biting_animal')[$index] ?? '') == 'Stary Dog') selected @endif>Stary Dog</option>' +
+        '<option value="Pet Dog" @if((old('lform_biting_animal')[$index] ?? '') == 'Pet Dog') selected @endif>Pet Dog</option>' +
+        '<option value="Cat" @if((old('lform_biting_animal')[$index] ?? '') == 'Cat') selected @endif>Cat</option>' +
+        '<option value="Other" @if((old('lform_biting_animal')[$index] ?? '') == 'Other') selected @endif>Other</option></select></td>' +
         '<td><select class="form-select" aria-label="Default select " name="lform_speciman_type[]" id="lform_speciman_detail"><option value="">Please Select</option>' +
         '<option value="Antemortem" @if(old('suspected_probable')[$index] ?? '' == "Suspected") selected @endif>Antemortem</option>' +
         '<option value="Postmortem" @if(old('suspected_probable')[$index] ?? '' == "Confirmed") selected @endif>Postmortem</option></select></td>' +
@@ -401,14 +417,18 @@
         '<option value="CSF" @if(old('suspected_probable')[$index] ?? '' == "Confirmed") selected @endif>CSF</option>' +
         '<option value="Nuchal skin" @if(old('suspected_probable')[$index] ?? '' == "Confirmed") selected @endif>Nuchal skin</option>' +
         '<option value="Skin" @if(old('suspected_probable')[$index] ?? '' == "Confirmed") selected @endif>Skin</option></select></td>' +
-        '<td><input type="text" data-date="date" placeholder="dd-mm-yyyy" name="lform_sample_collection_date[]" value="" id="lform_sample_collection_date"></td>' +
+        '<td><input type="date" data-date="date" placeholder="dd-mm-yyyy" name="lform_sample_collection_date[]" value="" id="lform_sample_collection_date"></td>' +
         '<td><select class="form-select" aria-label="Default select " name="number_of_test_performed[]" id="number_of_test_performed"><option value="">Please Select</option>' +
         '<option value="RFFIT (CSF,Serum)">RFFIT (CSF,Serum)</option>' +
         '<option value="Real-time PCR (CSF,Saliva, Nuchal skin)">Real-time PCR (CSF,Saliva, Nuchal skin)</option>' +
         '<option value="Rabies Immunohistochemistry">Rabies Immunohistochemistry</option>' +
         '<option value="Other(insert)">Other(insert)</option></select></td>' +
-        '<td><input type="text" name="lform_result[]" value="" id="lform_result"></td>' +
-        '<td><input type="text" data-date="date" placeholder="dd-mm-yyyy" name="lform_result_declaration_date[]" value="" id="lform_result_declaration_date"></td>' +
+        '<td><select class="form-select" aria-label="Default select" name="lform_result[]" id="lform_result">' +
+        '<option value="">Please Select</option>' +
+        '<option value="Positive" @if((old('lform_result')[$index] ?? '') == 'Positive') selected @endif>Positive</option>' +
+        '<option value="Negative" @if((old('lform_result')[$index] ?? '') == 'Negative') selected @endif>Negative</option>' +                                       
+        '</select></td>' +
+        '<td><input type="date" data-date="date" placeholder="dd-mm-yyyy" name="lform_result_declaration_date[]" value="" id="lform_result_declaration_date"></td>' +
         '<td><input type="text" name="lform_remark[]" value="" id="lform_remark"></td>' +
         '<td class="text-nowrap">' +
         '<button type="button" name="add" id="add" class="btn btn-success add_more mr-1"><i class="fa fa-plus" style="font-size:16px"></i></button>' +

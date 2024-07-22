@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('line_suspected_form_id');
             $table->string('name')->nullable();
+            $table->string('aadhar_number')->nullable();
             $table->string('age')->nullable();
             $table->string('sex')->nullable();
             $table->string('contact_number')->nullable();

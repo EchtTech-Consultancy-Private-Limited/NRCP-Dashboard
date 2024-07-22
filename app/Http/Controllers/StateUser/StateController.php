@@ -250,20 +250,23 @@ class StateController extends Controller
                     'address_hospital' => $request->address_hospital,
                     'designation_name' => $request->designation_name,
                     'type_of_health' => $request->type_of_health,
+                    'type_of_health' => $request->type_of_health,
                     'email' => $request->email,
-                    'aadhar_number' => $request->aadhar_number,
+                    'contact_number' => $request->main_contact_number,
+                    // 'aadhar_number' => $request->aadhar_number,
                 ])->id;
                 foreach($request->row_count as $index => $value){
                     LineSuspectedCalculate::Create([
                         'line_suspected_form_id' => $lineSuspectedId,
                         'name' => $request->name[$index],
+                        'aadhar_number' => $request->aadhar_no[$index],
                         'age' => $request->age[$index],
                         'sex' => $request->sex[$index],
                         'contact_number' => $request->contact_number[$index],
                         'village' => $request->village[$index],
                         'sub_district_mandal' => $request->sub_district_mandal[$index],
                         'district' => $request->district[$index],
-                        'biting_animal' => $request->biting_animal[$index],
+                        // 'biting_animal' => $request->biting_animal[$index],
                         'suspected_probable' => $request->suspected_probable[$index],
                         'bit_incidence_village' => $request->bit_incidence_village[$index],
                         'bit_incidence_sub_district' => $request->bit_incidence_sub_district[$index],
@@ -280,7 +283,6 @@ class StateController extends Controller
                 }
             DB::commit();
             return redirect()->route('state.line-suspected-list')->with('message', 'Line Suspected create successfull');
-
         }catch (Exception $e) {
             DB::rollBack();
             throw new Exception($e->getMessage());

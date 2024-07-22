@@ -169,7 +169,8 @@ class NationalStateListController extends Controller
      * @param  mixed $id
      * @return void
      */
-    public function lFormEdit($id){
+    public function lFormEdit($id)
+    {
         try{
             DB::beginTransaction();
             $stateUserLForm = StateUserLForm::with(['stateUserLFormCountCase.states', 'stateUserLFormCountCase.city'])->where('id', $id)->first();
@@ -191,7 +192,7 @@ class NationalStateListController extends Controller
             'phone_number' => 'required|numeric|digits:10',
             'email' => 'required', 
             'institute_name' => 'required',
-            'aadhar_number' => 'required|numeric|digits:12',
+            // 'aadhar_number' => 'required|numeric|digits:12',
         ]);
 
         try {
@@ -205,7 +206,7 @@ class NationalStateListController extends Controller
                 'phone_number' => $request->phone_number,
                 'email' => $request->email,
                 'institute_name' => $request->institute_name,
-                'aadhar_number' => $request->aadhar_number,
+                // 'aadhar_number' => $request->aadhar_number,
             ]);
 
             $existingCountCases = $LForm->stateUserLFormCountCase()->get()->keyBy('id')->toArray();
@@ -217,6 +218,7 @@ class NationalStateListController extends Controller
                     'fname' => $request->fname[$key],
                     'mname' => $request->mname[$key],
                     'lname' => $request->lname[$key],
+                    'aadhar_number' => $request->aadhar_no[$key],
                     'age' => $request->age[$key],
                     'sex' => $request->sex[$key],
                     'contact_number' => $request->contact_number[$key],
@@ -335,7 +337,7 @@ class NationalStateListController extends Controller
             'name_of_health' => 'required',
             'address_hospital' => 'required',
             'email' => 'required',
-            'aadhar_number' => 'required|numeric|min_digits:12|max_digits:12',
+            // 'aadhar_number' => 'required|numeric|min_digits:12|max_digits:12',
             'type_of_health' => 'required',
         ]);
 
@@ -350,7 +352,8 @@ class NationalStateListController extends Controller
                 'designation_name' => $request->designation_name,
                 'type_of_health' => $request->type_of_health,
                 'email' => $request->email,
-                'aadhar_number' => $request->aadhar_number,
+                'contact_number' => $request->main_contact_number,
+                // 'aadhar_number' => $request->aadhar_number,
             ]);
 
             $existingCountCases = $PForm->lineSuspectedCalculate()->get()->keyBy('id')->toArray();
@@ -360,13 +363,14 @@ class NationalStateListController extends Controller
                     'id' => $request->p_form_count_id[$index] ?? null,
                     'line_suspected_form_id' => $PForm->id,
                     'name' => $request->name[$index],
+                    'aadhar_number' => $request->aadhar_no[$index],
                     'age' => $request->age[$index],
                     'sex' => $request->sex[$index],
                     'contact_number' => $request->contact_number[$index],
                     'village' => $request->village[$index],
                     'sub_district_mandal' => $request->sub_district_mandal[$index],
                     'district' => $request->district[$index],
-                    'biting_animal' => $request->biting_animal[$index],
+                    // 'biting_animal' => $request->biting_animal[$index],
                     'suspected_probable' => $request->suspected_probable[$index],
                     'bit_incidence_village' => $request->bit_incidence_village[$index],
                     'bit_incidence_sub_district' => $request->bit_incidence_sub_district[$index],

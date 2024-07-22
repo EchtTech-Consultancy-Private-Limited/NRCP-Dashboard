@@ -12,6 +12,7 @@ class LineSuspectedCalculate extends Model
     protected $fillable = [
         'line_suspected_form_id',
         'name',
+        'aadhar_number',
         'age',
         'sex',
         'contact_number',
