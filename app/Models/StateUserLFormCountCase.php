@@ -51,6 +51,16 @@ class StateUserLFormCountCase extends Model
     {
         return $this->belongsTo(City::class, 'lform_district_id');
     }
+    
+    /**
+     * subCity
+     *
+     * @return void
+     */
+    public function subCity()
+    {
+        return $this->belongsTo(SubCity::class, 'lform_subdistrict');
+    }
 
     public function lform()
     {

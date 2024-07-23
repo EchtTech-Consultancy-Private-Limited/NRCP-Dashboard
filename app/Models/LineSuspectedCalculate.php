@@ -33,9 +33,34 @@ class LineSuspectedCalculate extends Model
         'mobile_number',
         'date'
     ];
-
+    
+    /**
+     * pform
+     *
+     * @return void
+     */
     public function pform()
     {
         return $this->belongsTo(LineSuspected::class, 'line_suspected_form_id');
+    }
+
+    /**
+     * @City
+     *
+     * @return void
+     */
+    public function city()
+    {
+        return $this->belongsTo(City::class, 'district');
+    }
+    
+    /**
+     * subCity
+     *
+     * @return void
+     */
+    public function subCity()
+    {
+        return $this->belongsTo(SubCity::class, 'sub_district_mandal');
     }
 }

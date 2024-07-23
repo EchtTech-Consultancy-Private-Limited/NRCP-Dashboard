@@ -33,7 +33,7 @@ class FormController extends Controller
      */
     public function lFormCreate()
     {
-        $states = CountryState::get();
+        $states = CountryState::orderBy('name','asc')->get();
         $cities = City::get();
         return view('state-user.lform.create',compact('states','cities'));
     }

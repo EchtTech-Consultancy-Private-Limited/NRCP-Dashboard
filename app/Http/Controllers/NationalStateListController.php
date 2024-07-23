@@ -15,6 +15,7 @@ use App\Models\StateUserLFormCountCase;
 use App\Models\LineSuspected;
 use App\Models\LineSuspectedCalculate;
 use App\Models\InvestigateReport;
+use App\Models\SubCity;
 use Illuminate\Support\Facades\Auth;
 
 class NationalStateListController extends Controller
@@ -26,7 +27,7 @@ class NationalStateListController extends Controller
      */
     public function stateMonthlyReport()
     {
-        $stateMonthlyReports = StateMonthlyReport::orderBy('id', 'desc')->get();
+        $stateMonthlyReports = StateMonthlyReport::with('states')->orderBy('id', 'desc')->get();
         return view('national-state.state-monthly-report.index',compact('stateMonthlyReports'));
     }
 
@@ -173,8 +174,8 @@ class NationalStateListController extends Controller
     {
         try{
             DB::beginTransaction();
-            $stateUserLForm = StateUserLForm::with(['stateUserLFormCountCase.states', 'stateUserLFormCountCase.city'])->where('id', $id)->first();
-            $states = CountryState::get();
+            $stateUserLForm = StateUserLForm::with(['stateUserLFormCountCase.states', 'stateUserLFormCountCase.city','stateUserLFormCountCase.subCity'])->where('id', $id)->first();
+            $states = CountryState::orderBy('name','asc')->get();
             $cities = City::get();
             DB::commit();
             return view('national-state.lform.edit', compact('stateUserLForm','states','cities'));
@@ -269,8 +270,8 @@ class NationalStateListController extends Controller
     {
         try{
             DB::beginTransaction();
-            $stateUserLForm = StateUserLForm::with(['stateUserLFormCountCase.states', 'stateUserLFormCountCase.city'])->where('id', $id)->first();
-            $states = CountryState::get();
+            $stateUserLForm = StateUserLForm::with(['stateUserLFormCountCase.states', 'stateUserLFormCountCase.city','stateUserLFormCountCase.subCity'])->where('id', $id)->first();
+            $states = CountryState::orderBy('name','asc')->get();
             $cities = City::get();
             DB::commit();
             // dd($stateUserLForm);
@@ -314,10 +315,12 @@ class NationalStateListController extends Controller
     public function pFormEdit($id){
         try{
             DB::beginTransaction();
-            $stateUserpForm = LineSuspected::with('lineSuspectedCalculate')->where('id', $id)->first();
-            $states = CountryState::get();
+            $stateUserpForm = LineSuspected::with('lineSuspectedCalculate','lineSuspectedCalculate.city','lineSuspectedCalculate.subCity')->where('id', $id)->first();
+            $states = CountryState::orderBy('name','asc')->get();
+            $cities = City::orderBy('name','asc')->get();
+            $subCities = SubCity::orderBy('name','asc')->get();
             DB::commit();
-            return view('national-state.pform.edit', compact('stateUserpForm','states'));
+            return view('national-state.pform.edit', compact('stateUserpForm','states','cities','subCities'));
         }catch (Exception $e) {
             DB::rollBack();
             throw new Exception($e->getMessage());
@@ -413,7 +416,7 @@ class NationalStateListController extends Controller
         try{
             DB::beginTransaction();
             $stateUserpForm = LineSuspected::with('lineSuspectedCalculate')->where('id', $id)->first();
-            $states = CountryState::get();
+            $states = CountryState::orderBy('name','asc')->get();
             DB::commit();
             return view('national-state.pform.view', compact('stateUserpForm','states'));
         }catch (Exception $e) {

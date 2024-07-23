@@ -268,25 +268,25 @@
                     <tr>
                         <td colspan="4">
                             <p>
-                                <input readonly name="relationship_with_suspect" type="radio" id="Parent1" value="Parent" {{ old('relationship_with_suspect',$investigateReport->relationship_with_suspect) == 'Parent' ? 'checked' : '' }}>
+                                <input disabled name="relationship_with_suspect" type="radio" id="Parent1" value="Parent" {{ old('relationship_with_suspect',$investigateReport->relationship_with_suspect) == 'Parent' ? 'checked' : '' }}>
                                 <label for="Parent1">Parent</label>
                             </p>
                         </td>
                         <td colspan="10">
                             <p>
-                                <input readonly name="relationship_with_suspect" type="radio" id="Sibling1" value="Sibling" {{ old('relationship_with_suspect',$investigateReport->relationship_with_suspect) == 'Sibling' ? 'checked' : '' }}>
+                                <input disabled name="relationship_with_suspect" type="radio" id="Sibling1" value="Sibling" {{ old('relationship_with_suspect',$investigateReport->relationship_with_suspect) == 'Sibling' ? 'checked' : '' }}>
                                 <label for="Sibling1">Sibling</label>
                             </p>
                         </td>
                         <td colspan="13">
                             <p>
-                                <input readonly name="relationship_with_suspect" type="radio" id="Parent-in-law1" value="Parent-in-law" {{ old('relationship_with_suspect',$investigateReport->relationship_with_suspect) == 'Parent-in-law' ? 'checked' : '' }} >
+                                <input disabled name="relationship_with_suspect" type="radio" id="Parent-in-law1" value="Parent-in-law" {{ old('relationship_with_suspect',$investigateReport->relationship_with_suspect) == 'Parent-in-law' ? 'checked' : '' }} >
                                 <label for="Parent-in-law1">Parent-in-law</label>
                             </p>
                         </td>
                         <td colspan="11">
                             <p>
-                                <input readonly name="relationship_with_suspect" type="radio" id="Community-leader1" value="Community-leader" {{ old('relationship_with_suspect',$investigateReport->relationship_with_suspect) == 'Community-leader' ? 'checked' : '' }}>
+                                <input disabled name="relationship_with_suspect" type="radio" id="Community-leader1" value="Community-leader" {{ old('relationship_with_suspect',$investigateReport->relationship_with_suspect) == 'Community-leader' ? 'checked' : '' }}>
                                 <label for="Community-leader1">Community leader</label>
                             </p>
                         </td>
@@ -294,19 +294,19 @@
                     <tr>
                         <td colspan="4">
                             <p>
-                                <input readonly name="relationship_with_suspect" type="radio" id="Husband-wife1" value="Husband-wife" {{ old('relationship_with_suspect',$investigateReport->relationship_with_suspect) == 'Husband-wife' ? 'checked' : '' }}>
+                                <input disabled name="relationship_with_suspect" type="radio" id="Husband-wife1" value="Husband-wife" {{ old('relationship_with_suspect',$investigateReport->relationship_with_suspect) == 'Husband-wife' ? 'checked' : '' }}>
                                 <label for="Husband-wife1">Husband/wife</label>
                             </p>
                         </td>
                         <td colspan="10">
                             <p>
-                                <input readonly name="relationship_with_suspect" type="radio" id="Child1" value="Child" {{ old('relationship_with_suspect',$investigateReport->relationship_with_suspect) == 'Child' ? 'checked' : '' }}>
+                                <input disabled name="relationship_with_suspect" type="radio" id="Child1" value="Child" {{ old('relationship_with_suspect',$investigateReport->relationship_with_suspect) == 'Child' ? 'checked' : '' }}>
                                 <label for="Child1">Child</label>
                             </p>
                         </td>
                         <td colspan="13">
                             <p>
-                                <input readonly name="relationship_with_suspect" type="radio" id="Friend-neighbour1" value="Friend-neighbour" {{ old('relationship_with_suspect',$investigateReport->relationship_with_suspect) == 'Friend-neighbour' ? 'checked' : '' }}>
+                                <input disabled name="relationship_with_suspect" type="radio" id="Friend-neighbour1" value="Friend-neighbour" {{ old('relationship_with_suspect',$investigateReport->relationship_with_suspect) == 'Friend-neighbour' ? 'checked' : '' }}>
                                 <label for="Friend-neighbour1">Friend or neighbour</label>
                             </p>
                         </td>

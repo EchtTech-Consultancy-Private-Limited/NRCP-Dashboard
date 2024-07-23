@@ -16,6 +16,7 @@ use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\LineSuspectedExport;
 use App\Exports\StateMonthlyReportExport;
 use App\Exports\StateLformExport;
+use App\Models\City;
 use App\Models\InvestigateReport;
 use App\Models\StateUserLForm;
 use App\Models\LineSuspectedCalculate;
@@ -230,8 +231,9 @@ class StateController extends Controller
      */
     public function lineSuspectedCreate()
     {
-        $states = CountryState::get();
-        return view('state-user.line-suspected-create',compact('states'));
+        $states = CountryState::orderBy('name','asc')->get();
+        $cities = City::orderBy('name','asc')->get();
+        return view('state-user.line-suspected-create',compact('states','cities'));
     }
     
     /**

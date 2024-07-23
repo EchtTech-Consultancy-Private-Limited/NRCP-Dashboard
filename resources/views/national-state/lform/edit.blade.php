@@ -269,7 +269,7 @@
                                         value="{{ @$statelFormCase->contact_number }}" maxlength="10" oninput="validateInput(this)">
                                 </td>
                                 <td>
-                                    <select class="form-select lform_state" aria-label="Default select" name="lform_state[]" id="lform_state">
+                                    <select class="form-select form_state" aria-label="Default select" name="lform_state[]" id="form_state">
                                         <option value="">Please Select</option>
                                         @foreach ($states as $state)
                                             <option value="{{ @$state->id }}" @if(@$statelFormCase->states->id == $state->id) selected @endif>
@@ -279,8 +279,8 @@
                                     </select>
                                 </td>
                                 <td>
-                                    <select class="form-select lform_district" aria-label="Default select "
-                                        name="lform_district[]" id="lform_district">
+                                    <select class="form-select form_district" aria-label="Default select "
+                                        name="lform_district[]" id="form_district" subId="lform_subdistrict">
                                         @if(@$statelFormCase->city->id)
                                             <option value="{{ @$statelFormCase->city->id }}">
                                                 {{ ucwords(@$statelFormCase->city->name) }}
@@ -289,12 +289,12 @@
                                     </select>
                                 </td>
                                 <td>
-                                    <select class="form-select" aria-label="Default select" name="lform_subdistrict[]" id="lform_subdistrict">
-                                        <option value="">Please Select</option>
-                                        <option value="Sub District" @if($statelFormCase->lform_subdistrict == 'Sub District') selected @endif>Sub District</option>
-                                        <option value="Taluk" @if($statelFormCase->lform_subdistrict == 'Taluk') selected @endif>Taluk</option>
-                                        <option value="Block" @if($statelFormCase->lform_subdistrict == 'Block') selected @endif>Block</option>
-                                        <option value="Mandal" @if($statelFormCase->lform_subdistrict == 'Mandal') selected @endif>Mandal</option>
+                                    <select class="form-select lform_subdistrict" aria-label="Default select" name="lform_subdistrict[]" id="lform_subdistrict">
+                                         @if(@$statelFormCase->subCity->id)
+                                            <option value="{{ @$statelFormCase->subCity->id }}">
+                                                {{ ucwords(@$statelFormCase->subCity->name) }}
+                                            </option>
+                                        @endif
                                     </select>
                                 </td>
                                 <td>
@@ -393,15 +393,12 @@
         '<td><input type="text" name="age[]" value="{{ old('age')[$index] ?? '' }}"></td>' +
         '<td><input type="text" name="sex[]" value="{{ old('sex')[$index] ?? '' }}"></td>' +
         '<td><input type="text" name="contact_number[]" value="{{ old('contact_number')[$index] ?? '' }}" maxlength="10" oninput="validateInput(this)"></td>' +
-        '<td><select class="form-select lform_state" aria-label="Default select " name="lform_state[]" id="lform_state"><option value="">Please Select</option>' +
+        '<td><select class="form-select form_state" aria-label="Default select " name="lform_state[]" id="form_state"><option value="">Please Select</option>' +
         '@foreach ($states as $key => $state)<option value="{{ $state->id }}" {{ $state->id == old('lform_state') ? 'selected' : '' }}>{{ ucwords($state->name) }}</option>@endforeach</select></td>' +
-        '<td><select class="form-select lform_district" aria-label="Default select " name="lform_district[]" id="lform_district"><option value="">Please Select</option>' +
+        '<td><select class="form-select form_district" aria-label="Default select " name="lform_district[]" id="form_district" subId="lform_subdistrict"><option value="">Please Select</option>' +
         '<option value="district name" @if(old('suspected_probable')[$index] ?? '' == "Suspected") selected @endif>district name</option></select></td>' +
-        '<td><select class="form-select" aria-label="Default select " name="lform_subdistrict[]" id="lform_subdistrict"><option value="">Please Select</option>' +
-        '<option value="Sub District" @if(old('suspected_probable')[$index] ?? '' == "Suspected") selected @endif>Sub District</option>' +
-        '<option value="Taluk" @if(old('suspected_probable')[$index] ?? '' == "Probable") selected @endif>Taluk</option>' +
-        '<option value="Block" @if(old('suspected_probable')[$index] ?? '' == "Confirmed") selected @endif>Block</option>' +
-        '<option value="Mandal" @if(old('suspected_probable')[$index] ?? '' == "Confirmed") selected @endif>Mandal</option></select></td>' +
+        '<td><select class="form-select lform_subdistrict" aria-label="Default select " name="lform_subdistrict[]" id="lform_subdistrict"><option value="">Please Select</option>' +
+        '</select></td>' +
         '<td><input type="text" name="lform_village[]" value="{{ old('lform_village')[$index] ?? '' }}"></td>' +
         '<td><select class="form-select" aria-label="Default select " name="lform_biting_animal[]" id="lform_biting_animal"><option value="">Please Select</option>' +
        '<option value="Stary Dog" @if((old('lform_biting_animal')[$index] ?? '') == 'Stary Dog') selected @endif>Stary Dog</option>' +
@@ -449,7 +446,7 @@
                 }
             });
             $.ajax({
-                url: BASE_URL + "get-city",
+                url: BASE_URL + "CountryState::orderBy('name','asc')->get();",
                 type: "get",
                 data: {
                     state_id: state_id,

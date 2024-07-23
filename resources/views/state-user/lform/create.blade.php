@@ -267,7 +267,7 @@
                                         value="{{ old('contact_number')[$index] ?? '' }}" maxlength="10" oninput="validateInput(this)">
                                 </td>
                                 <td>
-                                    <select class="form-select lform_state" aria-label="Default select" name="lform_state[]" id="lform_state">
+                                    <select class="form-select form_state" aria-label="Default select" name="lform_state[]" id="form_state">
                                         <option value="">Please Select</option>
                                         @foreach ($states as $state)
                                             <option value="{{ $state->id }}" @if((old('lform_state')[$index] ?? '') == $state->id) selected @endif>
@@ -277,8 +277,8 @@
                                     </select>
                                 </td>
                                 <td>
-                                    <select class="form-select lform_district" aria-label="Default select "
-                                        name="lform_district[]" id="lform_district">
+                                    <select class="form-select form_district" aria-label="Default select "
+                                        name="lform_district[]" id="form_district" subId="lform_subdistrict">
                                         <option value="">Please Select</option>
                                         @if(isset(old('lform_district')[$index]))
                                         @foreach ($cities as $citie)
@@ -290,12 +290,8 @@
                                     </select>
                                 </td>
                                 <td>
-                                    <select class="form-select" aria-label="Default select" name="lform_subdistrict[]" id="lform_subdistrict">
+                                    <select class="form-select lform_subdistrict" aria-label="Default select" name="lform_subdistrict[]" id="lform_subdistrict">
                                         <option value="">Please Select</option>
-                                        <option value="Sub District" @if((old('lform_subdistrict')[$index] ?? '') == 'Sub District') selected @endif>Sub District</option>
-                                        <option value="Taluk" @if((old('lform_subdistrict')[$index] ?? '') == 'Taluk') selected @endif>Taluk</option>
-                                        <option value="Block" @if((old('lform_subdistrict')[$index] ?? '') == 'Block') selected @endif>Block</option>
-                                        <option value="Mandal" @if((old('lform_subdistrict')[$index] ?? '') == 'Mandal') selected @endif>Mandal</option>
                                     </select>
                                 </td>
                                 <td>
@@ -394,15 +390,12 @@
         '<td><input type="text" name="age[]" value="{{ old('age')[$index] ?? '' }}"></td>' +
         '<td><input type="text" name="sex[]" value="{{ old('sex')[$index] ?? '' }}"></td>' +
         '<td><input type="text" name="contact_number[]" value="{{ old('contact_number')[$index] ?? '' }}" maxlength="10" oninput="validateInput(this)"></td>' +
-        '<td><select class="form-select lform_state" aria-label="Default select " name="lform_state[]" id="lform_state"><option value="">Please Select</option>' +
+        '<td><select class="form-select form_state" aria-label="Default select " name="lform_state[]" id="form_state"><option value="">Please Select</option>' +
         '@foreach ($states as $key => $state)<option value="{{ $state->id }}" {{ $state->id == old('lform_state') ? 'selected' : '' }}>{{ ucwords($state->name) }}</option>@endforeach</select></td>' +
-        '<td><select class="form-select lform_district" aria-label="Default select " name="lform_district[]" id="lform_district"><option value="">Please Select</option>' +
+        '<td><select class="form-select form_district" aria-label="Default select " name="lform_district[]" id="form_district" subId="lform_subdistrict"><option value="">Please Select</option>' +
         '<option value="district name" @if(old('suspected_probable')[$index] ?? '' == "Suspected") selected @endif>district name</option></select></td>' +
-        '<td><select class="form-select" aria-label="Default select " name="lform_subdistrict[]" id="lform_subdistrict"><option value="">Please Select</option>' +
-        '<option value="Sub District" @if(old('suspected_probable')[$index] ?? '' == "Suspected") selected @endif>Sub District</option>' +
-        '<option value="Taluk" @if(old('suspected_probable')[$index] ?? '' == "Probable") selected @endif>Taluk</option>' +
-        '<option value="Block" @if(old('suspected_probable')[$index] ?? '' == "Confirmed") selected @endif>Block</option>' +
-        '<option value="Mandal" @if(old('suspected_probable')[$index] ?? '' == "Confirmed") selected @endif>Mandal</option></select></td>' +
+        '<td><select class="form-select lform_subdistrict" aria-label="Default select " name="lform_subdistrict[]" id="lform_subdistrict"><option value="">Please Select</option>' +
+        '</select></td>' +
         '<td><input type="text" name="lform_village[]" value="{{ old('lform_village')[$index] ?? '' }}"></td>' +
         '<td><select class="form-select" aria-label="Default select " name="lform_biting_animal[]" id="lform_biting_animal"><option value="">Please Select</option>' +
         '<option value="Stary Dog" @if((old('lform_biting_animal')[$index] ?? '') == 'Stary Dog') selected @endif>Stary Dog</option>' +
@@ -439,66 +432,36 @@
 
 
         
-let selectBox = $('select');
-selectBox.each(function () {
-    let valueArr = $(this).find(':selected').text().trim().split(' ');
-    if (valueArr.includes('select') || valueArr.includes('Select')) {
-        $(this).css('color', 'grey');
-    } else {
-        $(this).css('color', '#000');
-    }
-    
-});
-
-let selectBoxes = $("select");
-
-selectBoxes.each((index, element) => {
-    let select = $(element);
-    let selectedText = select.find(':selected').text();
-    let selectWords = selectedText.split(' ');
-
-    select.on('change', function () {
-        let selectedValue = $(this).find(':selected').text();
-        let selectedWords = selectedValue.split(' ');
-        if (selectedWords.includes('select') || selectedWords.includes('Select')) {
-            $(this).css('color', 'grey');
-        } else {
-            $(this).css('color', '#000');
-        }
-    });
-});
-            });
-        });
-
-        // get district
-        $(document).on('change', '.lform_state', function() {
-            const state_id = $(this).val();
-            let option = "<option value=''>Select district</option>";
-            
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
-            $.ajax({
-                url: BASE_URL + "get-city",
-                type: "get",
-                data: {
-                    state_id: state_id,
-                },
-                success: function(result) {
-                    if (result) {
-                        const districtDropdown = $(this).closest('tr').find('.lform_district');
-                        districtDropdown.html("");
-                        districtDropdown.append(result); // Append the new options
+            let selectBox = $('select');
+                selectBox.each(function () {
+                    let valueArr = $(this).find(':selected').text().trim().split(' ');
+                    if (valueArr.includes('select') || valueArr.includes('Select')) {
+                        $(this).css('color', 'grey');
                     } else {
-                        $(this).closest('tr').find('.lform_district').html(""); // Clear if no result
+                        $(this).css('color', '#000');
                     }
-                }.bind(this), // Bind 'this' to ensure the correct context in the success callback
-                error: function(xhr, status, error) {
-                    console.error('An error occurred:', error);
-                }
+                    
+                });
+
+                let selectBoxes = $("select");
+
+                selectBoxes.each((index, element) => {
+                    let select = $(element);
+                    let selectedText = select.find(':selected').text();
+                    let selectWords = selectedText.split(' ');
+
+                    select.on('change', function () {
+                        let selectedValue = $(this).find(':selected').text();
+                        let selectedWords = selectedValue.split(' ');
+                        if (selectedWords.includes('select') || selectedWords.includes('Select')) {
+                            $(this).css('color', 'grey');
+                        } else {
+                            $(this).css('color', '#000');
+                        }
+                    });
+                });
             });
         });
-    </script>
+        
+</script>
 @endsection
