@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('state_monthly_reports', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id',);
             $table->foreignId('state_id');
             $table->string('state_nodal_office', 255)->nullable();
             $table->string('office_address', 255)->nullable();

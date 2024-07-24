@@ -255,11 +255,11 @@ class MainController extends Controller
     
     public function labDashboard(Request $request)
     {
-        $EquipmentsTotal = Equipments::where('soft_delete',0)->count();
-        $ExpenditureTotal = Expenditure::where('soft_delete',0)->count();
-        $GeneralProfileTotal = GeneralProfile::where('soft_delete',0)->count();
-        $QualityAssuranceTotal = QualityAssurance::where('soft_delete',0)->count();
-        $RabiesTestTotal = RabiesTest::where(['soft_delete' => 0,'institute_id' => Auth::user()->lab_id])->count();
+        $EquipmentsTotal = Equipments::where('user_id', Auth::id())->where('soft_delete',0)->count();
+        $ExpenditureTotal = Expenditure::where('user_id', Auth::id())->where('soft_delete',0)->count();
+        $GeneralProfileTotal = GeneralProfile::where('user_id', Auth::id())->where('soft_delete',0)->count();
+        $QualityAssuranceTotal = QualityAssurance::where('user_id', Auth::id())->where('soft_delete',0)->count();
+        $RabiesTestTotal = RabiesTest::where('user_id', Auth::id())->where(['soft_delete' => 0,'institute_id' => Auth::user()->lab_id])->count();
         
         return view('lab-dashboard',['EquipmentsTotal'=>$EquipmentsTotal,'ExpenditureTotal'=>$ExpenditureTotal,
         'GeneralProfileTotal'=>$GeneralProfileTotal,

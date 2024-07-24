@@ -12,6 +12,7 @@ class InvestigateReport extends Model
     use SoftDeletes;
 
     protected $fillable = [
+        'user_id',
         'interviewer_name',
         'interview_date',
         'interviewer_designation',

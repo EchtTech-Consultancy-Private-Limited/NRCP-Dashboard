@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Equipments;
 use Illuminate\Support\Facades\Validator;
 use DB;
+use Illuminate\Support\Facades\Auth;
 
 class EquipmentsController extends Controller
 {
@@ -18,7 +19,7 @@ class EquipmentsController extends Controller
 
     public function create()
     {
-        $equipment = Equipments::where(['soft_delete' => 0])->orderBy('created_at','desc')->get();
+        $equipment = Equipments::where('user_id', Auth::id())->where(['soft_delete' => 0])->orderBy('created_at','desc')->get();
         $equipment_masters = DB::table('equipment_masters')->get();
         return view('equipment', compact('equipment','equipment_masters'));
     }
@@ -45,6 +46,7 @@ class EquipmentsController extends Controller
             ]);
         
             Equipments::insert([
+                'user_id' => Auth::id(),
                 'equipment' => $request->equipment,
                 'quantity' => $request->quantity,
                 'year_of_purchase' => $request->year_of_purchase
@@ -78,6 +80,7 @@ class EquipmentsController extends Controller
                 ]);
             
                 Equipments::where('id',$request->id)->update([
+                    'user_id' => Auth::id(),
                     'equipment' => $request->equipment,
                     'quantity' => $request->quantity,
                     'year_of_purchase' => $request->year_of_purchase

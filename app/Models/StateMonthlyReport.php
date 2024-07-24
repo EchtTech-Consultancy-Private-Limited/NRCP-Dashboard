@@ -10,6 +10,7 @@ class StateMonthlyReport extends Model
     use HasFactory;
 
     protected $fillable = [
+        'user_id',
         'state_id',
         'state_nodal_office',
         'office_address',

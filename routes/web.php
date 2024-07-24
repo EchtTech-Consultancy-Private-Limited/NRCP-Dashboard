@@ -18,6 +18,7 @@ use App\Http\Controllers\StateUser\InvestigationController;
 use App\Http\Controllers\StateUser\StateController;
 use App\Http\Controllers\StateUser\FormController;
 use App\Http\Controllers\NationalStateListController;
+use App\Http\Controllers\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,11 +34,24 @@ use App\Http\Controllers\NationalStateListController;
 //login
 Route::middleware(['preventBackHistory'])->group(function () {
 Route::get('/',[authController::class,'login']);
+Route::get('admin-login',[authController::class,'adminLogin']);
 Route::post('/login',[authController::class,'loginSubmit'])->middleware('device');
 Route::get('refresh_captcha',[authController::class, 'refreshCaptcha'])->name('refresh_captcha');
 
 Route::middleware(['Admin','device'])->group(function () {
         Route::get('/logout',[authController::class,'logout'])->name('logout');
+        // Admin Dashboard
+        Route::middleware(['preventBackHistory'])->group(function () {
+            Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
+                Route::get('dashboard', [AdminController::class, 'index'])->name('index');
+                Route::get('users', [AdminController::class, 'userList'])->name('user');
+                Route::post('save', [AdminController::class, 'userSave'])->name('save');
+                Route::get('edit/{id}', [AdminController::class, 'userEdit'])->name('edit');
+                Route::post('update/{id}', [AdminController::class, 'userUpdate'])->name('update');
+                Route::get('delete/{id}', [AdminController::class, 'userDelete'])->name('delete');
+            });
+        });
+        // End Admin Dasboard
         /** Form Routes */
         Route::get('dashboard', [MainController::class, 'dashboard'])->name('dashboard');
         Route::get('mis-report-generate', [MainController::class, 'misReportGenerate'])->name('mis-report-generate');

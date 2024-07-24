@@ -21,6 +21,7 @@ class FormController extends Controller
     public function lFormList()
     {
         $stateUserLForms = StateUserLForm::with(['stateUserLFormCountCase.states', 'stateUserLFormCountCase.city'])
+        ->where('user_id', Auth::id())
         ->orderBy('id', 'desc')
         ->get();
         return view('state-user.lform.list',compact('stateUserLForms'));
@@ -64,6 +65,7 @@ class FormController extends Controller
         try {
             DB::beginTransaction();
             $LFormId = StateUserLForm::Create([
+                'user_id' => Auth::id(),
                 'current_date' => $request->current_date,
                 'name_nodal_person' => $request->name_nodal_person,
                 'designation_nodal_person' => $request->designation_nodal_person,

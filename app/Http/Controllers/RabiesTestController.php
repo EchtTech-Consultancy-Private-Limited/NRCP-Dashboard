@@ -7,8 +7,9 @@ use App\Models\Institute;
 use Illuminate\Http\Request;
 use App\Models\RabiesTest;
 use App\Models\State;
-use Auth;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
+
 
 class RabiesTestController extends Controller
 {
@@ -20,7 +21,7 @@ class RabiesTestController extends Controller
 
     public function create()
     {
-        $rabies_test = RabiesTest::with('state')->where(['soft_delete' => 0,'institute_id' => Auth::user()->lab_id])->orderBy('created_at','desc')->get();
+        $rabies_test = RabiesTest::with('state')->where('user_id', Auth::id())->where(['soft_delete' => 0,'institute_id' => Auth::user()->lab_id])->orderBy('created_at','desc')->get();
         return view('rabies_test', compact('rabies_test'));
     }
 
@@ -76,6 +77,7 @@ class RabiesTestController extends Controller
             ]);
         
             RabiesTest::insert([
+                'user_id' => Auth::id(),
                 'date' => $request->date,
                 'number_of_patients' => $request->number_of_patients,
                 'numbers_of_sample_recieved' => $request->numbers_of_sample_recieved,
@@ -118,6 +120,7 @@ class RabiesTestController extends Controller
                 ]);
             
                 RabiesTest::where('id',$request->id)->update([
+                    'user_id' => Auth::id(),
                     'date' => $request->date,
                     'number_of_patients' => $request->number_of_patients,
                     'numbers_of_sample_recieved' => $request->numbers_of_sample_recieved,
@@ -129,7 +132,7 @@ class RabiesTestController extends Controller
                     'numbers_of_positives' => $request->numbers_of_positives,
                     'numbers_of_intered_ihip' => $request->numbers_of_intered_ihip,
                     'institute_id' => Auth::user()->lab_id ?? '',
-                'state_id' => Auth::user()->state_id ?? '',
+                    'state_id' => Auth::user()->state_id ?? '',
                 ]);
             
                     $notification = array(

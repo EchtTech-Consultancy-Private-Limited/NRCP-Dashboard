@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\GeneralProfile;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
 
 class GeneralProfileController extends Controller
 {
@@ -19,7 +20,7 @@ class GeneralProfileController extends Controller
 
     public function create()
     {
-        $general_profile = GeneralProfile::where(['soft_delete' => 0])->orderBy('created_at','desc')->get();
+        $general_profile = GeneralProfile::where('user_id', Auth::id())->where(['soft_delete' => 0])->orderBy('created_at','desc')->get();
         return view('general_profile', compact('general_profile'));
     }
 
@@ -44,6 +45,7 @@ class GeneralProfileController extends Controller
             ]);           
         
             GeneralProfile::insert([
+                'user_id' => Auth::id(),
                 'state' => $request->state,
                 'hospital' => $request->hospital,
                 'designation' => $request->designation,
@@ -80,6 +82,7 @@ class GeneralProfileController extends Controller
                 ]); 
             
                 GeneralProfile::where('id',$request->id)->update([
+                    'user_id' => Auth::id(),
                     'state' => $request->state,
                     'hospital' => $request->hospital,
                     'designation' => $request->designation,
