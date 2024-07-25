@@ -21,7 +21,7 @@ class RabiesTestController extends Controller
 
     public function create()
     {
-        $rabies_test = RabiesTest::with('state')->where('user_id', Auth::id())->where(['soft_delete' => 0,'institute_id' => Auth::user()->lab_id])->orderBy('created_at','desc')->get();
+        $rabies_test = RabiesTest::with('state')->where('user_id', Auth::id())->where(['soft_delete' => 0])->orderBy('created_at','desc')->get();
         return view('rabies_test', compact('rabies_test'));
     }
 
