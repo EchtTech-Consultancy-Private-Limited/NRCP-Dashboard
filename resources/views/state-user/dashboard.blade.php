@@ -231,8 +231,7 @@
                     <div class="d-inline-block ml-2">
                         <span id="rabiestext3" class="">Total No. of L Form </span>
                         <br><span id="rabiesbox3" class="case-title">
-                            <!-- {{ @$LForm }} -->
-                            5
+                            {{ @$lForm }}
                         </span>
                     </div>
                 </div>

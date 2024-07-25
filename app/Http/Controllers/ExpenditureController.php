@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Expenditure;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
 use DB;
 
 class ExpenditureController extends Controller
@@ -18,7 +19,7 @@ class ExpenditureController extends Controller
 
     public function create()
     {
-        $expenditure = Expenditure::where(['soft_delete' => 0])->orderBy('created_at','desc')->get();
+        $expenditure = Expenditure::where('user_id', Auth::id())->where(['soft_delete' => 0])->orderBy('created_at','desc')->get();
         $equipment_purchase_masters = DB::table('equipment_purchase_masters')->get();
         return view('expenditure', compact('expenditure','equipment_purchase_masters'));
     }
@@ -45,6 +46,7 @@ class ExpenditureController extends Controller
             ]);
         
             Expenditure::insert([
+                'user_id' => Auth::id(),
                 'financial_year' => $request->financial_year,
                 'fund_recieved' => $request->fund_recieved,
                 'equipment_purchase' => $request->equipment_purchase
@@ -78,6 +80,7 @@ class ExpenditureController extends Controller
                 ]);
             
                 Expenditure::where('id',$request->id)->update([
+                    'user_id' => Auth::id(),
                     'financial_year' => $request->financial_year,
                     'fund_recieved' => $request->fund_recieved,
                     'equipment_purchase' => $request->equipment_purchase

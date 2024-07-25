@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\QualityAssurance;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
 
 class QualityAssuranceController extends Controller
 {
@@ -18,7 +19,7 @@ class QualityAssuranceController extends Controller
     
     public function create()
     {   
-        $quality_assurances = QualityAssurance::where(['soft_delete'=>0])->orderBy('created_at','desc')->get();
+        $quality_assurances = QualityAssurance::where('user_id', Auth::id())->where(['soft_delete'=>0])->orderBy('created_at','desc')->get();
         return view('quality_assurance', compact('quality_assurances'));
     }
 
@@ -42,6 +43,7 @@ class QualityAssuranceController extends Controller
             ]);
         
             QualityAssurance::insert([
+                'user_id' => Auth::id(),
                 'pt' => $request->pt,
                 'accredited_pt' => $request->accredited_pt,
                 'supervisors_trained' => $request->supervisors_trained??'NULL',
@@ -75,6 +77,7 @@ class QualityAssuranceController extends Controller
                 ]);
             
                 QualityAssurance::where('id',$request->id)->update([
+                    'user_id' => Auth::id(),
                     'pt' => $request->pt,
                     'accredited_pt' => $request->accredited_pt,
                     'supervisors_trained' => $request->supervisors_trained??'NULL',

@@ -1,5 +1,17 @@
 <ul class="accordion side-link laboratory-sidebar">
     <li>
+        @if (Auth::user()->user_type == 4)
+            <div
+                class="arrow arrow-right link bg-primary text-white dashboard-title {{ Request::segment(1) == 'lab-dashboard' ? 'active' : '' }}">
+                <a href="{{ url('/admin/dashboard') }}"> <i class="fa fa-dashboard iconmargin-set" aria-hidden="true"></i>
+                    Dashboard</a>
+            </div>
+            <div
+                class="arrow arrow-right link bg-primary text-white dashboard-title {{ Request::segment(1) == 'general-laboratory' ? 'active' : '' }}">
+                <a href="{{ url('/admin/users') }}"> <i class="fa fa-list iconmargin-set" aria-hidden="true"></i>
+                    User</a>
+            </div>            
+        @endif
         @if (Auth::user()->user_type == 2)
             <div
                 class="arrow arrow-right link bg-primary text-white dashboard-title {{ Request::segment(1) == 'lab-dashboard' ? 'active' : '' }}">

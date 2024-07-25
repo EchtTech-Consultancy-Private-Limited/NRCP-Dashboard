@@ -93,8 +93,8 @@
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label for="designation_name">Contact Number<span class="text-danger">*</span></label>
-                                <input type="text" name="designation_name" class="form-control" value="">
+                                <label for="contact_number">Contact Number<span class="text-danger">*</span></label>
+                                <input type="text" name="main_contact_number" class="form-control" value="{{ old('main_contact_number') }}" maxlength="12" oninput="validateInput(this)">
                             </div>
                         </div>
                         <div class="col-md-4">
@@ -107,7 +107,7 @@
                             </div>
                         </div>
 
-                        <div class="col-md-4">
+                        {{-- <div class="col-md-4">
                             <div class="form-group">
                                 <label for="aadhar_number">Aadhar Number<span class="text-danger">*</span></label>
                                 <input type="text" name="aadhar_number" value="{{ old('aadhar_number') }}"
@@ -116,7 +116,7 @@
                                 <span class="form-text text-muted">{{ $errors->first('aadhar_number') }}</span>
                                 @endif
                             </div>
-                        </div>
+                        </div> --}}
 
 
 
@@ -131,6 +131,11 @@
                                 <td rowspan="2" class="border-left-0">
                                     <p>
                                         <strong>S.No</strong>
+                                    </p>
+                                </td>
+                                <td rowspan="2">
+                                    <p>
+                                        <strong>Aadhar Number</strong>
                                     </p>
                                 </td>
                                 <td rowspan="2">
@@ -155,7 +160,7 @@
                                 </td>
                                 <td rowspan="2">
                                     <p>
-                                        <strong>Village</strong>
+                                        <strong>District</strong>
                                     </p>
                                 </td>
                                 <td rowspan="2">
@@ -165,14 +170,15 @@
                                 </td>
                                 <td rowspan="2">
                                     <p>
-                                        <strong>District</strong>
+                                        <strong>Village</strong>
                                     </p>
                                 </td>
-                                <td rowspan="2">
+                               
+                                {{-- <td rowspan="2">
                                     <p>
                                         <strong>Biting Animal</strong>
                                     </p>
-                                </td>
+                                </td> --}}
                                 <td rowspan="2">
                                     <p>
                                         <strong>Suspected / probable/ Confirmed</strong>
@@ -227,7 +233,7 @@
                             <tr>
                                 <td>
                                     <p>
-                                        <strong>Village</strong>
+                                        <strong>District</strong>
                                     </p>
                                 </td>
                                 <td>
@@ -237,9 +243,9 @@
                                 </td>
                                 <td>
                                     <p>
-                                        <strong>District</strong>
+                                        <strong>Village</strong>
                                     </p>
-                                </td>
+                                </td>                                
                                 <td>
                                     <p>
                                         <strong>Name of Institute</strong>
@@ -258,6 +264,9 @@
                                     <input type="hidden" name="row_count[]">
                                 </td>
                                 <td>
+                                    <input type="text" name="aadhar_no[]" value="{{ old('aadhar_no')[$index] ?? '' ?? '' }}" maxlength="12" oninput="validateInput(this)">
+                                </td>
+                                <td>
                                     <input type="text" name="name[]" value="{{ $oldValue }}">
                                 </td>
                                 <td>
@@ -272,19 +281,31 @@
                                         oninput="validateInput(this)">
                                 </td>
                                 <td>
+                                    {{-- <input type="text" name="district[]" value="{{ old('district')[$index] ?? '' }}"> --}}
+                                    <select class="form-select form_district" aria-label="Default select "
+                                        name="district[]" id="form_district" subId="pform_subdistrict">
+                                        <option value="">Please Select</option>
+                                        @foreach ($cities as $citie)
+                                            <option value="{{ $citie->id }}" @if((old('district')[$index] ?? '') == $citie->id) selected @endif>
+                                                {{ ucwords($citie->name) }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                </td>
+                                <td>
+                                    {{-- <input type="text" name="sub_district_mandal[]" value="{{ old('sub_district_mandal')[$index] ?? '' }}"> --}}
+                                    <select class="form-select pform_subdistrict" aria-label="Default select" name="sub_district_mandal[]" id="pform_subdistrict">
+                                        <option value="">Please Select</option>
+                                    </select>
+                                </td>
+                                <td>
                                     <input type="text" name="village[]" value="{{ old('village')[$index] ?? '' }}">
-                                </td>
-                                <td>
-                                    <input type="text" name="sub_district_mandal[]"
-                                        value="{{ old('sub_district_mandal')[$index] ?? '' }}">
-                                </td>
-                                <td>
-                                    <input type="text" name="district[]" value="{{ old('district')[$index] ?? '' }}">
-                                </td>
-                                <td>
+                                </td>                               
+                                
+                                {{-- <td>
                                     <input type="text" name="biting_animal[]"
                                         value="{{ old('biting_animal')[$index] ?? '' }}">
-                                </td>
+                                </td> --}}
                                 <td>
                                     <select class="form-select" aria-label="Default select example"
                                         name="suspected_probable[]" id="suspected_probable">
@@ -298,16 +319,25 @@
                                     </select>
                                 </td>
                                 <td>
+                                    {{-- <input type="text" name="district[]" value="{{ old('district')[$index] ?? '' }}"> --}}
+                                    <select class="form-select form_district" aria-label="Default select"
+                                        name="bit_incidence_district[]" id="form_district" subId="bit_incidence_subdistrict">
+                                        <option value="">Please Select</option>
+                                        @foreach ($cities as $citie)
+                                            <option value="{{ $citie->id }}" @if((old('bit_incidence_district')[$index] ?? '') == $citie->id) selected @endif>
+                                                {{ ucwords($citie->name) }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                </td>
+                                <td>
+                                    <select class="form-select bit_incidence_subdistrict" aria-label="Default select" name="bit_incidence_sub_district[]" id="bit_incidence_subdistrict">
+                                        <option value="">Please Select</option>
+                                    </select>
+                                </td>
+                                <td>
                                     <input type="text" name="bit_incidence_village[]"
                                         value="{{ old('bit_incidence_village')[$index] ?? '' }}">
-                                </td>
-                                <td>
-                                    <input type="text" name="bit_incidence_sub_district[]"
-                                        value="{{ old('bit_incidence_sub_district')[$index] ?? '' }}">
-                                </td>
-                                <td>
-                                    <input type="text" name="bit_incidence_district[]"
-                                        value="{{ old('bit_incidence_district')[$index] ?? '' }}">
                                 </td>
                                 <td>
                                     <select class="form-select" aria-label="Default select example"
@@ -340,8 +370,15 @@
                                         value="{{ old('health_facility_name_institute')[$index] ?? '' }}">
                                 </td>
                                 <td>
-                                    <input type="text" name="health_facility_district[]"
-                                        value="{{ old('health_facility_district')[$index] ?? '' }}">
+                                    <select class="form-select health_facility_district" aria-label="Default select "
+                                        name="health_facility_district[]" id="health_facility_district">
+                                        <option value="">Please Select</option>
+                                        @foreach ($cities as $citie)
+                                            <option value="{{ $citie->id }}" @if((old('health_facility_district')[$index] ?? '') == $citie->id) selected @endif>
+                                                {{ ucwords($citie->name) }}
+                                            </option>
+                                        @endforeach
+                                    </select>
                                 </td>
                                 <td>
                                     <select class="form-select" aria-label="Default select example"
@@ -357,10 +394,10 @@
                                     <select class="form-select" aria-label="Default select example"
                                         name="bite_from_stray[]" id="bite_from_stray">
                                         <option value="">Please Select</option>
-                                        <option value="Bite from Stray Dog" @if(old('bite_from_stray')[$index]
-                                            ?? ''=='Bite from Stray Dog' ) selected @endif>Bite from Stray Dog</option>
-                                        <option value="Pet Dog" @if(old('bite_from_stray')[$index] ?? ''=='Pet Dog' )
-                                            selected @endif>Pet Dog</option>
+                                        <option value="Stary Dog" @if((old('bite_from_stray')[$index] ?? '') == 'Stary Dog') selected @endif>Stary Dog</option>
+                                        <option value="Pet Dog" @if((old('bite_from_stray')[$index] ?? '') == 'Pet Dog') selected @endif>Pet Dog</option>
+                                        <option value="Cat" @if((old('bite_from_stray')[$index] ?? '') == 'Cat') selected @endif>Cat</option>
+                                        <option value="Other" @if((old('bite_from_stray')[$index] ?? '') == 'Other') selected @endif>Other</option>
                                     </select>
                                 </td>
                                 <td>
@@ -412,17 +449,31 @@
                 i +
                 '"><td><input type="hidden" name="row_count[]">' +
                 i +
-                '</td><td><input type="text" name="name[]" class="name_list"></td><td><input type="text" name="age[]" class="name_list"></td><td><input type="text" name="sex[]" class="name_list"></td><td><input type="text" name="contact_number[]"  class="name_list" maxlength="10" oninput="validateInput(this)"></td><td><input type="text" name="village[]" class="name_list"></td><td><input type="text" name="sub_district_mandal[]" class="name_list"></td><td><input type="text" name="district[]" class="name_list"></td><td><input type="text" name="biting_animal[]" class="name_list"></td><td><select class="form-select" aria-label="Default select example" name="suspected_probable[]" id="suspected_probable' +
+                '</td><td><input type="text" name="aadhar_no[]" class="name_list" maxlength="12" oninput="validateInput(this)"></td><td><input type="text" name="name[]" class="name_list"></td><td><input type="text" name="age[]" class="name_list"></td><td><input type="text" name="sex[]" class="name_list"></td><td><input type="text" name="contact_number[]"  class="name_list" maxlength="10" oninput="validateInput(this)"></td>' +
+                '<td><select class="form-select form_district" aria-label="Default select" name="district[]" id="form_district" subId="pform_subdistrict"><option value="">Please Select</option>' +
+                '@foreach ($cities as $key => $citie)<option value="{{ $citie->id }}">{{ $citie->name }}</option>@endforeach</select></td>' +
+                '<td><select class="form-select pform_subdistrict" aria-label="Default select" name="sub_district_mandal[]" id="pform_subdistrict"><option value="">Please Select</option></select></td>' +
+                '<td><input type="text" name="village[]" class="name_list"></td></td><td><select class="form-select" aria-label="Default select example" name="suspected_probable[]" id="suspected_probable' +
                 i +
-                '"><option value="">Please Select</option><option value="Suspected">Suspected</option><option value="Probable">Probable</option><option value="Confirmed">Confirmed</option></select></td><td><input type="text" name="bit_incidence_village[]" class="name_list"></td><td><input type="text" name="bit_incidence_sub_district[]" class="name_list"></td><td><input type="text" name="bit_incidence_district[]" class="name_list"></td><td><select class="form-select" aria-label="Default select example" name="category_of_bite[]" id="category_of_bite' +
+                '"><option value="">Please Select</option><option value="Suspected">Suspected</option><option value="Probable">Probable</option><option value="Confirmed">Confirmed</option></select></td>' +
+                '<td><select class="form-select form_district" aria-label="Default select" name="bit_incidence_district[]" id="form_district" subId="bit_incidence_subdistrict"><option value="">Please Select</option>' +
+                '@foreach ($cities as $key => $citie)<option value="{{ $citie->id }}">{{ $citie->name }}</option>@endforeach</select></td>' +
+                '<td><select class="form-select bit_incidence_subdistrict" aria-label="Default select" name="bit_incidence_sub_district[]" id="bit_incidence_subdistrict"><option value="">Please Select</option></select></td>' +
+                '<td><input type="text" name="bit_incidence_village[]" class="name_list"></td><td><select class="form-select" aria-label="Default select example" name="category_of_bite[]" id="category_of_bite' +
                 i +
                 '"><option value="">Please Select</option><option value="First">First</option><option value="Second">Second</option><option value="Third">Third</option></select></td><td><select class="form-select" aria-label="Default select example" name="status_of_pep[]" id="status_of_pep' +
                 i +
-                '"><option value="">Please Select</option><option value="Complete">Complete</option><option value="Partial">Partial</option><option value="Nil">Nil</option><option value="NA">NA</option></select></td><td><input type="text" name="health_facility_name_institute[]" class="name_list"></td><td><input type="text" name="health_facility_district[]" class="name_list"></td><td><select class="form-select" aria-label="Default select example" name="outcome_of_patient[]" id="outcome_of_patient' +
+                '"><option value="">Please Select</option><option value="Complete">Complete</option><option value="Partial">Partial</option><option value="Nil">Nil</option><option value="NA">NA</option></select></td><td><input type="text" name="health_facility_name_institute[]" class="name_list"></td>' +
+                '<td><select class="form-select health_facility_district" aria-label="Default select " name="health_facility_district[]" id="health_facility_district"><option value="">Please Select</option>' +
+                '@foreach ($cities as $key => $citie)<option value="{{ $citie->id }}">{{ $citie->name }}</option>@endforeach</select></td>' +
+                '<td><select class="form-select" aria-label="Default select example" name="outcome_of_patient[]" id="outcome_of_patient' +
                 i +
                 '"><option value="">Please Select</option><option value="Death in Hospital">Death in Hospital</option><option value="LAMA">LAMA</option></select></td><td><select class="form-select" aria-label="Default select example" name="bite_from_stray[]" id="bite_from_stray' +
                 i +
-                '"><option value="">Please Select</option><option value="Bite from Stray Dog">Bite from Stray Dog</option><option value="Pet Dog">Pet Dog</option></select></td><td><input type="text" name="mobile_number[]" class="name_list" maxlength="10" oninput="validateInput(this)"></td><td><input type="date" name="date[]" class="name_list"></td><td><button type="button" name="add" id="add' +
+                '"><option value="">Please Select</option><option value="Stary Dog" @if((old('bite_from_stray')[$index] ?? '') == 'Stary Dog') selected @endif>Stary Dog</option>' +
+                '<option value="Pet Dog" @if((old('bite_from_stray')[$index] ?? '') == 'Pet Dog') selected @endif>Pet Dog</option>' +
+                '<option value="Cat" @if((old('bite_from_stray')[$index] ?? '') == 'Cat') selected @endif>Cat</option>' +
+                '<option value="Other" @if((old('bite_from_stray')[$index] ?? '') == 'Other') selected @endif>Other</option></select></td><td><input type="text" name="mobile_number[]" class="name_list" maxlength="10" oninput="validateInput(this)"></td><td><input type="date" name="date[]" class="name_list"></td><td><button type="button" name="add" id="add' +
                 i +
                 '" class="btn btn-success add_more"><i class="fa fa-plus" style="font-size:16px"></i></button><button type="button" name="remove" id="' +
                 i +

@@ -10,6 +10,7 @@ class StateUserLForm extends Model
 {
     use HasFactory, SoftDeletes;
     protected $fillable = [
+        'user_id',
         'current_date',
         'name_nodal_person',
         'designation_nodal_person',

@@ -27,10 +27,15 @@
                 <strong>State Name </strong>
               </p>
             </td>
-            <td>
-              <input type="text" name="state_name" value="{{ old('state_name',$stateMonthlyReport->state_name) }}">
-              @if ($errors->has('state_name')) 
-                <span class="form-text text-muted">{{ $errors->first('state_name') }}</span>
+            <td> 
+              <select class="form-select" aria-label="Default select example"
+                  name="state_id" id="state_id"> 
+                    <option value="{{ $userState->id }}" {{ $userState->id == $stateMonthlyReport->state_id ? 'selected' : '' }} readonly>
+                        {{ $userState->state_name }}
+                    </option>
+              </select>
+              @if ($errors->has('state_id')) 
+                <span class="form-text text-muted">{{ $errors->first('state_id') }}</span>
               @endif
             </td>
           </tr>
@@ -67,7 +72,7 @@
               </p>
             </td>
             <td>
-                <input type="date" name="reporting_month_year" value="{{ old('reporting_month_year',$stateMonthlyReport->reporting_month_year) }}">
+                <input type="date" name="reporting_month_year" value="{{ old('reporting_month_year',$stateMonthlyReport->reporting_month_year) }}" readonly>
                 @if ($errors->has('reporting_month_year')) 
                     <span class="form-text text-muted">{{ $errors->first('reporting_month_year') }}</span>
                 @endif
@@ -114,11 +119,11 @@
               </p>
             </td>
             <td colspan="3">
-                <input type="text" name="total_patients_animal_biting" value="{{ old('total_patients_animal_biting',$stateMonthlyReport->total_patients_animal_biting) }}">
+                <input type="text" name="total_patients_animal_biting" class="total_no_of_patients_bited" value="{{ old('total_patients_animal_biting',$stateMonthlyReport->total_patients_animal_biting) }}" readonly>
             </td>
           </tr>
           <tr>
-            <td rowspan="2">
+            <td rowspan="3">
               <ul>
                 <li>Dog</li>
               </ul>
@@ -127,7 +132,7 @@
               <p>Bite by Stray dog</p>
             </td>
             <td colspan="3">
-                <input type="text" name="total_stray_dog_bite" value="{{ old('total_stray_dog_bite',$stateMonthlyReport->total_stray_dog_bite) }}">
+                <input type="text" class="dogbite animalbite" name="total_stray_dog_bite" value="{{ old('total_stray_dog_bite',$stateMonthlyReport->total_stray_dog_bite) }}">
             </td>
           </tr>
           <tr>
@@ -135,7 +140,15 @@
               <p>Bite by Pet Dogs</p>
             </td>
             <td colspan="3">
-                <input type="text" name="total_pet_dog_bite" value="{{ old('total_pet_dog_bite',$stateMonthlyReport->total_pet_dog_bite) }}">
+                <input type="text" class="dogbite animalbite" name="total_pet_dog_bite" value="{{ old('total_pet_dog_bite',$stateMonthlyReport->total_pet_dog_bite) }}">
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>Total Dogs Bite</p>
+            </td>
+            <td colspan="3">
+                <input type="text" name="total_dog_bite" class="total_dog_bite" value="{{ old('total_dog_bite',$stateMonthlyReport->total_dog_bite) }}" maxlength="10" oninput="validateInput(this)" readonly>
             </td>
           </tr>
           <tr>
@@ -145,7 +158,7 @@
               </ul>
             </td>
             <td colspan="3">
-                <input type="text" name="total_cat_bite" value="{{ old('total_cat_bite',$stateMonthlyReport->total_cat_bite) }}">
+                <input type="text" class="animalbite" name="total_cat_bite" value="{{ old('total_cat_bite',$stateMonthlyReport->total_cat_bite) }}">
             </td>
           </tr>
           <tr>
@@ -155,7 +168,7 @@
               </ul>
             </td>
             <td colspan="3">
-                <input type="text" name="total_monkey_bite" value="{{ old('total_monkey_bite',$stateMonthlyReport->total_monkey_bite) }}">
+                <input type="text" class="animalbite" name="total_monkey_bite" value="{{ old('total_monkey_bite',$stateMonthlyReport->total_monkey_bite) }}">
             </td>
           </tr>
           <tr>
@@ -165,7 +178,7 @@
               </ul>
             </td>
             <td colspan="3">
-                <input type="text" name="total_others_bite" value="{{ old('total_others_bite',$stateMonthlyReport->total_others_bite) }}">
+                <input type="text" class="animalbite" name="total_others_bite" value="{{ old('total_others_bite',$stateMonthlyReport->total_others_bite) }}">
             </td>
           </tr>
           <tr>

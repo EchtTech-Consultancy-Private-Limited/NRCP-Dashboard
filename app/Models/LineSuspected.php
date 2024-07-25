@@ -10,12 +10,14 @@ class LineSuspected extends Model
 {
     use HasFactory, SoftDeletes;
     protected $fillable = [
+        'user_id',
         'suspected_date',
         'name_of_health',
         'address_hospital',
         'designation_name',
         'type_of_health',
         'email',
+        'contact_number',
         'aadhar_number',
     ];
 

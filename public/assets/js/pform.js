@@ -278,7 +278,7 @@ $(document).ready(function() {
         let state_id = $(this).val();
         $.ajax({
         type: "GET",
-        url: BASE_URL + "get-city",
+        url: BASE_URL + "CountryState::orderBy('name','asc')->get();",
         data: {
             'state_id': state_id
         },
@@ -292,7 +292,7 @@ $(document).ready(function() {
         let state_id = $(this).val();
         $.ajax({
         type: "GET",
-        url: BASE_URL + "get-city",
+        url: BASE_URL + "CountryState::orderBy('name','asc')->get();",
         data: {
             'state_id': state_id
         },
@@ -301,4 +301,97 @@ $(document).ready(function() {
         }
         });
     });
+
+    // Filter State , District, Sub-District ajax
+    // get district
+    $(document).on('change', '.form_state', function() {
+        const state_id = $(this).val();
+        let option = "<option value=''>Select district</option>";
+        
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        $.ajax({
+            url: BASE_URL + "get-city",
+            type: "get",
+            data: {
+                state_id: state_id,
+            },
+            success: function(result) {
+                if (result) {
+                    const districtDropdown = $(this).closest('tr').find('.form_district');
+                    districtDropdown.html("");
+                    districtDropdown.append(result); // Append the new options
+                } else {
+                    $(this).closest('tr').find('.form_district').html(""); // Clear if no result
+                }
+            }.bind(this), // Bind 'this' to ensure the correct context in the success callback
+            error: function(xhr, status, error) {
+                console.error('An error occurred:', error);
+            }
+        });
+    });
+
+    // get district
+    $(document).on('change', '.form_district', function() {
+        const district_id = $(this).val();
+        const idName = $(this).attr('subId');
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        $.ajax({
+            url: BASE_URL + "get-sub-district",
+            type: "get",
+            data: {
+                district_id: district_id,
+            },
+            success: function(result) {
+                if (result) {
+                    const districtDropdown = $(this).closest('tr').find('.'+idName);
+                    districtDropdown.html("");
+                    districtDropdown.append(result); // Append the new options
+                } else {
+                    $(this).closest('tr').find('.'+idName).html(""); // Clear if no result
+                }
+            }.bind(this), // Bind 'this' to ensure the correct context in the success callback
+            error: function(xhr, status, error) {
+                console.error('An error occurred:', error);
+            }
+        });
+    });
+
+    // get institute
+    $(document).ready(function() {
+        $(document).on('change', '#state_name', function() {
+            const state_id = $(this).val();
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+    
+            $.ajax({
+                url: BASE_URL + "get-institute-name",
+                type: "get",
+                data: {
+                    state_id: state_id,
+                },
+                success: function(result) {
+                    const instituteDropdown = $('#institute_name');
+                    instituteDropdown.html(result); 
+                },
+                error: function(xhr, status, error) {
+                    console.error('An error occurred:', error);
+                }
+            });
+        });
+    });
+
+    
+       
+
 });

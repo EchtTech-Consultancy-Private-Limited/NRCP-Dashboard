@@ -16,11 +16,13 @@ use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\LineSuspectedExport;
 use App\Exports\StateMonthlyReportExport;
 use App\Exports\StateLformExport;
+use App\Models\City;
 use App\Models\InvestigateReport;
 use App\Models\StateUserLForm;
 use App\Models\LineSuspectedCalculate;
 use App\Models\State;
 use DateTime;
+use Illuminate\Support\Facades\Auth;
 
 class StateController extends Controller
 {    
@@ -31,9 +33,10 @@ class StateController extends Controller
      */
     public function index()
     {
-        $stateMonthlyReport = StateMonthlyReport::count();
-        $lineSuspected = LineSuspected::count();
-        $investigateReport = InvestigateReport::count();
+        $stateMonthlyReport = StateMonthlyReport::where('user_id',Auth::id())->count();
+        $lineSuspected = LineSuspected::where('user_id',Auth::id())->count();
+        $investigateReport = InvestigateReport::where('user_id',Auth::id())->count();
+        $lForm = StateUserLForm::where('user_id',Auth::id())->count();
         $states = State::get();
         $months = [];
         $currentYear = date('Y');
@@ -43,6 +46,7 @@ class StateController extends Controller
             $months[] = $month->format('F');
         }
         $total = StateMonthlyReport::toBase()
+                ->where('user_id',Auth::id())
                 ->select([
                     DB::raw('SUM(total_health_facilities_anaimal_bite) as sum_total_health_animal'),
                     DB::raw('SUM(total_health_facilities_submitted_monthly) as total_health_facilities_submitted'),
@@ -52,7 +56,7 @@ class StateController extends Controller
                     DB::raw('SUM(dh_of_ars + sdh_of_ars + chc_of_ars + phc_of_ars) as availability_ars')
                 ])
                 ->first();
-        return view('state-user.dashboard',compact('stateMonthlyReport','lineSuspected','investigateReport','states','months','total'));
+        return view('state-user.dashboard',compact('stateMonthlyReport','lineSuspected','lForm','investigateReport','states','months','total'));
     }
     
     /**
@@ -73,7 +77,7 @@ class StateController extends Controller
                 'month_num' => $month->format('n'),
             ];
         }
-        $query = StateMonthlyReport::query();
+        $query = StateMonthlyReport::where('user_id',Auth::id());
         if ($request->has('state_year') && $request->state_year) {
             $query->whereYear('reporting_month_year', $request->state_year);
         }
@@ -113,7 +117,7 @@ class StateController extends Controller
      */
     public function stateMonthlyList()
     {
-        $stateMonthlyReports = StateMonthlyReport::with('states')->orderBy('id', 'desc')->get();
+        $stateMonthlyReports = StateMonthlyReport::with('states')->where('user_id', Auth::id())->orderBy('id', 'desc')->get();
         return view('state-user.state-monthly-report-list',compact('stateMonthlyReports'));
     }
     
@@ -125,7 +129,8 @@ class StateController extends Controller
     public function stateMonthlyCreate()
     {
         $states = State::get();
-        return view('state-user.state-monthly-report',compact('states'));
+        $userState = $states->firstWhere('id', Auth::user()->state_id);
+        return view('state-user.state-monthly-report',compact('userState'));
     }
     
     /**
@@ -146,9 +151,9 @@ class StateController extends Controller
                 if($checkExist){
                     return back()->with('message', 'A report for this state and month has already been created');
                 }
-
                 $stateMonthlyReport = StateMonthlyReport::create([
-                    'state_id' => $request->state_id,
+                    'user_id' => Auth::id(),
+                    'state_id' => $request->state_id, 
                     'state_nodal_office' => $request->state_nodal_office,
                     'office_address' => $request->office_address,
                     'reporting_month_year' => $request->reporting_month_year,
@@ -158,6 +163,7 @@ class StateController extends Controller
                     'total_patients_animal_biting' => $request->total_patients_animal_biting,
                     'total_stray_dog_bite' => $request->total_stray_dog_bite,
                     'total_pet_dog_bite' => $request->total_pet_dog_bite,
+                    'total_dog_bite' => $request->total_dog_bite,
                     'total_cat_bite' => $request->total_cat_bite,
                     'total_monkey_bite' => $request->total_monkey_bite,
                     'total_others_bite' => $request->total_others_bite,
@@ -217,7 +223,7 @@ class StateController extends Controller
      */
     public function lineSuspectedList()
     {
-        $lineSuspecteds = LineSuspected::with('lineSuspectedCalculate')->orderBy('id', 'desc')->get();
+        $lineSuspecteds = LineSuspected::with('lineSuspectedCalculate')->where('user_id', Auth::id())->orderBy('id', 'desc')->get();
         return view('state-user.line-suspected-list',compact('lineSuspecteds'));
     }
     
@@ -228,8 +234,9 @@ class StateController extends Controller
      */
     public function lineSuspectedCreate()
     {
-        $states = CountryState::get();
-        return view('state-user.line-suspected-create',compact('states'));
+        $states = CountryState::orderBy('name','asc')->get();
+        $cities = City::orderBy('name','asc')->get();
+        return view('state-user.line-suspected-create',compact('states','cities'));
     }
     
     /**
@@ -243,25 +250,29 @@ class StateController extends Controller
         try {
             DB::beginTransaction();
                 $lineSuspectedId = LineSuspected::create([
+                    'user_id' => Auth::id(),
                     'suspected_date' => $request->suspected_date,
                     'name_of_health' => $request->name_of_health,
                     'address_hospital' => $request->address_hospital,
                     'designation_name' => $request->designation_name,
                     'type_of_health' => $request->type_of_health,
+                    'type_of_health' => $request->type_of_health,
                     'email' => $request->email,
-                    'aadhar_number' => $request->aadhar_number,
+                    'contact_number' => $request->main_contact_number,
+                    // 'aadhar_number' => $request->aadhar_number,
                 ])->id;
                 foreach($request->row_count as $index => $value){
                     LineSuspectedCalculate::Create([
                         'line_suspected_form_id' => $lineSuspectedId,
                         'name' => $request->name[$index],
+                        'aadhar_number' => $request->aadhar_no[$index],
                         'age' => $request->age[$index],
                         'sex' => $request->sex[$index],
                         'contact_number' => $request->contact_number[$index],
                         'village' => $request->village[$index],
                         'sub_district_mandal' => $request->sub_district_mandal[$index],
                         'district' => $request->district[$index],
-                        'biting_animal' => $request->biting_animal[$index],
+                        // 'biting_animal' => $request->biting_animal[$index],
                         'suspected_probable' => $request->suspected_probable[$index],
                         'bit_incidence_village' => $request->bit_incidence_village[$index],
                         'bit_incidence_sub_district' => $request->bit_incidence_sub_district[$index],
@@ -278,7 +289,6 @@ class StateController extends Controller
                 }
             DB::commit();
             return redirect()->route('state.line-suspected-list')->with('message', 'Line Suspected create successfull');
-
         }catch (Exception $e) {
             DB::rollBack();
             throw new Exception($e->getMessage());
@@ -320,22 +330,22 @@ class StateController extends Controller
         switch ($request->modulename) {
             case '1':
                 $fileName = 'InvestigateReport';
-                $query = InvestigateReport::query();
+                $query = InvestigateReport::where('user_id', Auth::id());
                 break;
             case '2':
                 $fileName = 'StateMonthlyReport';
-                $query = StateMonthlyReport::query();
+                $query = StateMonthlyReport::where('user_id', Auth::id());
                 break;
             case '3':
                 $fileName = 'LineSuspected';
-                $query = LineSuspected::with('lineSuspectedCalculate');
+                $query = LineSuspected::with('lineSuspectedCalculate')->where('user_id', Auth::id());
                 break;
             case 'lform':
                 $fileName = 'StateUserlform';
                 $query = StateUserLForm::with([
                     'stateUserLFormCountCase.states',
                     'stateUserLFormCountCase.city'
-                ]);
+                ])->where('user_id', Auth::id());
                 break;
             default:
                 return response()->json(['error' => 'Invalid module name'], 400);

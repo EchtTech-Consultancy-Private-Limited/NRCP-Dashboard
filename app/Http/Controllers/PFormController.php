@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Country;
 use App\Models\CountryState;
 use App\Models\City;
+use App\Models\SubCity;
 use Illuminate\Http\Request;
 use Exception;
 use Illuminate\Support\Facades\DB;
@@ -12,6 +13,7 @@ use App\Models\PFormPatientRecord;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Imports\PFormPatientRecordImport;
 use App\Http\Requests\PFormPatientRecordRequest;
+use App\Models\Institute;
 
 class PFormController extends Controller
 {
@@ -21,7 +23,7 @@ class PFormController extends Controller
     public function index()
     {
         $countryes = Country::get();
-        $states = CountryState::get();
+        $states = CountryState::orderBy('name','asc')->get();
         $pForms = PFormPatientRecord::with('city')
                 ->where('form_type', 'p_form')
                 ->orderBy('created_at', 'desc')
@@ -148,4 +150,34 @@ class PFormController extends Controller
         }
         return response()->json($cityOption);
     }
+        
+    /**
+     * getSubDistrict
+     *
+     * @param  mixed $request
+     * @return void
+     */
+    public function getSubDistrict(Request $request)
+    {
+        $subCityOption = '';
+        $subCities = SubCity::where('district_id', $request->district_id)->get();
+        $subCityOption .= '<option value="">Please Select</option>';
+        foreach ($subCities as $subCitie) {
+            $subCityOption .= '<option value="' . $subCitie->id . '">' . ucwords($subCitie->name) . '</option>';
+        }
+        return response()->json($subCityOption);
+    }
+      
+    //get institute
+    public function getInstitute(Request $request)
+    {
+        $institutes = Institute::where('state_id', $request->state_id)->get();
+        $institutesOption = '<option value="">Please Select</option>';
+        foreach ($institutes as $institute) {
+            $institutesOption .= '<option value="' . $institute->id . '">' . ucwords($institute->name) . '</option>';
+        }
+        return response()->json($institutesOption);
+    }
+    
+    
 }

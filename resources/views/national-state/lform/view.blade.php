@@ -208,7 +208,7 @@
                             <td>{{ @$statelFormCase->contact_number }}</td>
                             <td>{{ @$statelFormCase->states->name }}</td>
                             <td>{{ @$statelFormCase->city->name }}</td>
-                            <td>{{@$statelFormCase->lform_subdistrict}}  </td>
+                            <td>{{ ucwords(@$statelFormCase->subCity->name) }}</td>
                             <td>{{ @$statelFormCase->lform_village }}</td>
                             <td>{{@$statelFormCase->lform_biting_animal}}  </td>
                             <td>{{@$statelFormCase->lform_speciman_type}} </td>

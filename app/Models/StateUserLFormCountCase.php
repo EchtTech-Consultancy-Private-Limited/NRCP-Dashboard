@@ -16,6 +16,7 @@ class StateUserLFormCountCase extends Model
         'fname',
         'mname',
         'lname',
+        'aadhar_number',
         'age',
         'sex',
         'contact_number',
@@ -49,6 +50,16 @@ class StateUserLFormCountCase extends Model
     public function city()
     {
         return $this->belongsTo(City::class, 'lform_district_id');
+    }
+    
+    /**
+     * subCity
+     *
+     * @return void
+     */
+    public function subCity()
+    {
+        return $this->belongsTo(SubCity::class, 'lform_subdistrict');
     }
 
     public function lform()

@@ -90,7 +90,7 @@
                             </div>
 
                         </div>
-                        <div class="col-md-3">
+                        {{-- <div class="col-md-3">
                             <div class="emailBlock">
                                 <p >
                                     Aadhar Number: <br>
@@ -101,7 +101,7 @@
                                 </p>
                               
                             </div>
-                        </div>
+                        </div> --}}
                         <div class="col-md-3">
                             <div class="emailBlock">
                                 <p>
@@ -125,6 +125,11 @@
                                 <td rowspan="2" class="border-left-0">
                                     <p>
                                         <strong>S.No</strong>
+                                    </p>
+                                </td>
+                                <td rowspan="2">
+                                    <p>
+                                        <strong>Aadhar Number</strong>
                                     </p>
                                 </td>
                                 <td colspan="3">
@@ -241,6 +246,9 @@
                                     <input type="hidden" name="l_form_count_id[]" value="{{ $statelFormCase->id }}">
                                 </td>
                                 <td>
+                                    <input type="text" name="aadhar_no[]" value="{{ @$statelFormCase->aadhar_number }}" maxlength="12" oninput="validateInput(this)">
+                                </td>
+                                <td>
                                     <input type="text" name="fname[]" value="{{ @$statelFormCase->fname }}">
                                 </td>
                                 <td>
@@ -261,7 +269,7 @@
                                         value="{{ @$statelFormCase->contact_number }}" maxlength="10" oninput="validateInput(this)">
                                 </td>
                                 <td>
-                                    <select class="form-select lform_state" aria-label="Default select" name="lform_state[]" id="lform_state">
+                                    <select class="form-select form_state" aria-label="Default select" name="lform_state[]" id="form_state">
                                         <option value="">Please Select</option>
                                         @foreach ($states as $state)
                                             <option value="{{ @$state->id }}" @if(@$statelFormCase->states->id == $state->id) selected @endif>
@@ -271,8 +279,9 @@
                                     </select>
                                 </td>
                                 <td>
-                                    <select class="form-select lform_district" aria-label="Default select "
-                                        name="lform_district[]" id="lform_district">
+                                    <select class="form-select form_district" aria-label="Default select "
+                                        name="lform_district[]" id="form_district" subId="lform_subdistrict">
+                                        <option value="">Please Select</option>
                                         @if(@$statelFormCase->city->id)
                                             <option value="{{ @$statelFormCase->city->id }}">
                                                 {{ ucwords(@$statelFormCase->city->name) }}
@@ -281,12 +290,13 @@
                                     </select>
                                 </td>
                                 <td>
-                                    <select class="form-select" aria-label="Default select" name="lform_subdistrict[]" id="lform_subdistrict">
-                                        <option value="">Please Select</option>
-                                        <option value="Sub District" @if($statelFormCase->lform_subdistrict == 'Sub District') selected @endif>Sub District</option>
-                                        <option value="Taluk" @if($statelFormCase->lform_subdistrict == 'Taluk') selected @endif>Taluk</option>
-                                        <option value="Block" @if($statelFormCase->lform_subdistrict == 'Block') selected @endif>Block</option>
-                                        <option value="Mandal" @if($statelFormCase->lform_subdistrict == 'Mandal') selected @endif>Mandal</option>
+                                    <select class="form-select lform_subdistrict" aria-label="Default select" name="lform_subdistrict[]" id="lform_subdistrict">
+                                        <option value="">Please Select</option> 
+                                        @if(@$statelFormCase->subCity->id)
+                                            <option value="{{ @$statelFormCase->subCity->id }}">
+                                                {{ ucwords(@$statelFormCase->subCity->name) }}
+                                            </option>
+                                        @endif
                                     </select>
                                 </td>
                                 <td>
@@ -296,8 +306,10 @@
                                 <td>
                                     <select class="form-select" aria-label="Default select" name="lform_biting_animal[]" id="lform_biting_animal">
                                         <option value="">Please Select</option>
-                                        <option value="Suspected" @if($statelFormCase->lform_biting_animal == 'Suspected') selected @endif>Dog</option>
-                                        <option value="Confirmed" @if($statelFormCase->lform_biting_animal == 'Confirmed') selected @endif>Other(input)</option>
+                                        <option value="Stary Dog" @if($statelFormCase->lform_biting_animal == 'Stary Dog') selected @endif>Stary Dog</option>
+                                        <option value="Pet Dog" @if($statelFormCase->lform_biting_animal == 'Pet Dog') selected @endif>Pet Dog</option>
+                                        <option value="Cat" @if($statelFormCase->lform_biting_animal == 'Cat') selected @endif>Cat</option>
+                                        <option value="Other" @if($statelFormCase->lform_biting_animal == 'Other') selected @endif>Other</option>
                                     </select>
                                 </td>
                                 <td>
@@ -329,7 +341,11 @@
                                     </select>
                                 </td>
                                 <td>
-                                    <input type="text" name="lform_result[]" value="{{ @$statelFormCase->lform_result }}" id="lform_result">
+                                    <select class="form-select" aria-label="Default select" name="lform_result[]" id="lform_result">
+                                        <option value="">Please Select</option>
+                                        <option value="Positive" @if(@$statelFormCase->lform_result == 'Positive') selected @endif>Positive</option>
+                                        <option value="Negative" @if(@$statelFormCase->lform_result == 'Negative') selected @endif>Negative</option>                                        
+                                    </select>
                                 </td>
                                 <td>
                                     <input type="date" name="lform_result_declaration_date[]" value="{{ @$statelFormCase->lform_result_declaration_date }}" id="lform_result_declaration_date">
@@ -372,25 +388,25 @@
 
             var rowHtml =
         '<tr id="row' + i + '"><td>' + i + '<input type="hidden" name="row_count[]"></td>' +
+            '<td><input type="text" name="aadhar_no[]" value="{{ old('aadhar_no')[$index] ?? '' ?? '' }}" maxlength="12" oninput="validateInput(this)">' +
         '<td><input type="text" name="fname[]" value="{{ old('fname')[$index] ?? '' }}"></td>' +
         '<td><input type="text" name="mname[]" value="{{ old('mname')[$index] ?? '' }}"></td>' +
         '<td><input type="text" name="lname[]" value="{{ old('lname')[$index] ?? '' }}"></td>' +
         '<td><input type="text" name="age[]" value="{{ old('age')[$index] ?? '' }}"></td>' +
         '<td><input type="text" name="sex[]" value="{{ old('sex')[$index] ?? '' }}"></td>' +
         '<td><input type="text" name="contact_number[]" value="{{ old('contact_number')[$index] ?? '' }}" maxlength="10" oninput="validateInput(this)"></td>' +
-        '<td><select class="form-select lform_state" aria-label="Default select " name="lform_state[]" id="lform_state"><option value="">Please Select</option>' +
+        '<td><select class="form-select form_state" aria-label="Default select " name="lform_state[]" id="form_state"><option value="">Please Select</option>' +
         '@foreach ($states as $key => $state)<option value="{{ $state->id }}" {{ $state->id == old('lform_state') ? 'selected' : '' }}>{{ ucwords($state->name) }}</option>@endforeach</select></td>' +
-        '<td><select class="form-select lform_district" aria-label="Default select " name="lform_district[]" id="lform_district"><option value="">Please Select</option>' +
+        '<td><select class="form-select form_district" aria-label="Default select " name="lform_district[]" id="form_district" subId="lform_subdistrict"><option value="">Please Select</option>' +
         '<option value="district name" @if(old('suspected_probable')[$index] ?? '' == "Suspected") selected @endif>district name</option></select></td>' +
-        '<td><select class="form-select" aria-label="Default select " name="lform_subdistrict[]" id="lform_subdistrict"><option value="">Please Select</option>' +
-        '<option value="Sub District" @if(old('suspected_probable')[$index] ?? '' == "Suspected") selected @endif>Sub District</option>' +
-        '<option value="Taluk" @if(old('suspected_probable')[$index] ?? '' == "Probable") selected @endif>Taluk</option>' +
-        '<option value="Block" @if(old('suspected_probable')[$index] ?? '' == "Confirmed") selected @endif>Block</option>' +
-        '<option value="Mandal" @if(old('suspected_probable')[$index] ?? '' == "Confirmed") selected @endif>Mandal</option></select></td>' +
+        '<td><select class="form-select lform_subdistrict" aria-label="Default select " name="lform_subdistrict[]" id="lform_subdistrict"><option value="">Please Select</option>' +
+        '</select></td>' +
         '<td><input type="text" name="lform_village[]" value="{{ old('lform_village')[$index] ?? '' }}"></td>' +
         '<td><select class="form-select" aria-label="Default select " name="lform_biting_animal[]" id="lform_biting_animal"><option value="">Please Select</option>' +
-        '<option value="Dog" @if(old('suspected_probable')[$index] ?? '' == "Suspected") selected @endif>Dog</option>' +
-        '<option value="Other(input)" @if(old('suspected_probable')[$index] ?? '' == "Confirmed") selected @endif>Other(input)</option></select></td>' +
+       '<option value="Stary Dog" @if((old('lform_biting_animal')[$index] ?? '') == 'Stary Dog') selected @endif>Stary Dog</option>' +
+        '<option value="Pet Dog" @if((old('lform_biting_animal')[$index] ?? '') == 'Pet Dog') selected @endif>Pet Dog</option>' +
+        '<option value="Cat" @if((old('lform_biting_animal')[$index] ?? '') == 'Cat') selected @endif>Cat</option>' +
+        '<option value="Other" @if((old('lform_biting_animal')[$index] ?? '') == 'Other') selected @endif>Other</option></select></td>' +
         '<td><select class="form-select" aria-label="Default select " name="lform_speciman_type[]" id="lform_speciman_detail"><option value="">Please Select</option>' +
         '<option value="Antemortem" @if(old('suspected_probable')[$index] ?? '' == "Suspected") selected @endif>Antemortem</option>' +
         '<option value="Postmortem" @if(old('suspected_probable')[$index] ?? '' == "Confirmed") selected @endif>Postmortem</option></select></td>' +
@@ -405,7 +421,11 @@
         '<option value="Real-time PCR (CSF,Saliva, Nuchal skin)">Real-time PCR (CSF,Saliva, Nuchal skin)</option>' +
         '<option value="Rabies Immunohistochemistry">Rabies Immunohistochemistry</option>' +
         '<option value="Other(insert)">Other(insert)</option></select></td>' +
-        '<td><input type="text" name="lform_result[]" value="" id="lform_result"></td>' +
+        '<td><select class="form-select" aria-label="Default select" name="lform_result[]" id="lform_result">' +
+        '<option value="">Please Select</option>' +
+        '<option value="Positive" @if((old('lform_result')[$index] ?? '') == 'Positive') selected @endif>Positive</option>' +
+        '<option value="Negative" @if((old('lform_result')[$index] ?? '') == 'Negative') selected @endif>Negative</option>' +                                       
+        '</select></td>' +
         '<td><input type="date" name="lform_result_declaration_date[]" value="" id="lform_result_declaration_date"></td>' +
         '<td><input type="text" name="lform_remark[]" value="" id="lform_remark"></td>' +
         '<td class="text-nowrap">' +
@@ -428,7 +448,7 @@
                 }
             });
             $.ajax({
-                url: BASE_URL + "get-city",
+                url: BASE_URL + "CountryState::orderBy('name','asc')->get();",
                 type: "get",
                 data: {
                     state_id: state_id,

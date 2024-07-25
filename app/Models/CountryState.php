@@ -12,6 +12,9 @@ class CountryState extends Model
     use SoftDeletes;
 
     protected $fillable = [
-        'country_id', 'name', 'abbreviation',
+        'country_id',
+        'code',
+        'name',
+        'abbreviation',
     ];
 }
