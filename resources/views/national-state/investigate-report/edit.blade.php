@@ -57,7 +57,7 @@
                         <td colspan="5">
                             <p>Name of interviewer</p>
                         </td>
-                        <td colspan="18" class="bggrey">
+                        <td colspan="18" class="">
                             <input type="text" name="interviewer_name" value="{{ old('interviewer_name', $investigateReport->interviewer_name) }}">
                             @if ($errors->has('interviewer_name'))
                                 <span class="form-text text-muted">{{ $errors->first('interviewer_name') }}</span>
@@ -66,7 +66,7 @@
                         <td colspan="10">
                             <p>Date of Interview</p>
                         </td>
-                        <td colspan="5" class="bggrey">
+                        <td colspan="5" class="">
                             <input name="interview_date" value="{{ old('interview_date', $investigateReport->interview_date) }}" type="date">
                             @if ($errors->has('interview_date'))
                                 <span class="form-text text-muted">{{ $errors->first('interview_date') }}</span>
@@ -77,7 +77,7 @@
                         <td colspan="5">
                             <p>Designation</p>
                         </td>
-                        <td colspan="18" class="bggrey">
+                        <td colspan="18" class="">
                             <input name="interviewer_designation" value="{{ old('interviewer_designation', $investigateReport->interviewer_designation) }}" type="text">
                             @if ($errors->has('interviewer_designation'))
                                 <span class="form-text text-muted">{{ $errors->first('interviewer_designation') }}</span>
@@ -86,7 +86,7 @@
                         <td colspan="10">
                             <p>Contact number</p>
                         </td>
-                        <td colspan="5" class="bggrey">
+                        <td colspan="5" class="">
                             <input name="interviewer_contact_number" value="{{ old('interviewer_contact_number', $investigateReport->interviewer_contact_number) }}" type="text" oninput="validateInput(this)" maxlength="12">
                             @if ($errors->has('interviewer_contact_number'))
                                 <span class="form-text text-muted">{{ $errors->first('interviewer_contact_number') }}</span>
@@ -104,13 +104,13 @@
                         <td colspan="2">
                             <p>&nbsp;Name</p>
                         </td>
-                        <td colspan="15" class="bggrey">
+                        <td colspan="15" class="">
                             <input name="suspected_name" type="text" value="{{ old('suspected_name', $investigateReport->suspected_name) }}">
                         </td>
                         <td colspan="4">
                             <p>&nbsp;Sex</p>
                         </td>
-                        <td colspan="9" class="bggrey">
+                        <td colspan="9" class="">
                             <select class="form-select" name="suspected_gender" aria-label="Default select example" id="gender">
                                 <option value=""> Select Gender</option> 
                                 @if(old('suspected_gender')) 
@@ -125,7 +125,7 @@
                         <td colspan="7">
                             <p>&nbsp;Age</p>
                         </td>
-                        <td class="bggrey">
+                        <td class="">
                             <input type="text" name="suspect_age" value="{{ old('suspect_age', $investigateReport->suspect_age) }}" maxlength="2" oninput="validateInput(this)">
                         </td>
                     </tr>
@@ -133,13 +133,13 @@
                         <td colspan="2">
                             <p>Occupation</p>
                         </td>
-                        <td colspan="11" class="bggrey">
+                        <td colspan="11" class="">
                             <input type="text" name="suspect_occupation" value="{{ old('suspect_occupation', $investigateReport->suspect_occupation) }}">
                         </td>
                         <td colspan="4">
                             <p>Address</p>
                         </td>
-                        <td colspan="21" class="bggrey">
+                        <td colspan="21" class="">
                             <input name="suspect_address" type="text" value="{{ old('suspect_address', $investigateReport->suspect_address) }}">
                         </td>
                     </tr>
@@ -216,7 +216,7 @@
                                 <label for="Other(Specify)">Other (Specify)</label>
                             </p>
                         </td>
-                        <td colspan="31" class="bggrey">
+                        <td colspan="31" class="">
                             <input type="text" name="suspect_education[other_specify_text]" value="{{ old('suspect_education.other_specify_text', @$investigateReport->suspect_education['other_specify_text']) }}">
                         </td>
                     </tr>
@@ -446,7 +446,7 @@
                                 <label for="Other1">Other (Specify)</label>
                             </p>
                         </td>
-                        <td colspan="8" class="bggrey">
+                        <td colspan="8" class="">
                             <p><input type="text" name="animal_species[other_text]" value="{{ old('animal_species.other_text') }}"></p>
                         </td>
                     </tr>
@@ -674,7 +674,7 @@
                                 <label for="Other1">Other</label>
                             </p>
                         </td>
-                        <td colspan="2" class="bggrey">
+                        <td colspan="2" class="">
                             <input type="text" name="sign_of_disease[other_text]" value="{{ old('sign_of_disease.other_text', $investigateReport->sign_of_disease['other_text']) }}">
                         </td>
                     </tr>
@@ -708,7 +708,7 @@
                                 <label for="DiedLater1">No, but died later</label>
                             </p>
                         </td>
-                        <td class="bggrey">
+                        <td class="">
                             <input type="date" name="animal_die_date" value="{{ old('animal_die_date', $investigateReport->animal_die_date) }}">
 
                         </td>
@@ -966,7 +966,7 @@
                         <td colspan="2">
                             <p><input type="checkbox" name="incomplete_pep[victim_refused]" {{ old('incomplete_pep.victim_refused',$investigateReport->incomplete_pep['victim_refused'] ?? false) ? 'checked' : '' }}> Victim refused further doses</p>
                         </td>
-                        <td colspan="2" class="bggrey" rowspan="2" class="bggrey">
+                        <td colspan="2" class="" rowspan="2" class="">
                             <input type="text" name="incomplete_pep[text]" value="{{ old('incomplete_pep.text',$investigateReport->incomplete_pep['text']) }}">
                         </td>
                     </tr>
@@ -1014,10 +1014,10 @@
                         </td>
                     </tr>
                     <tr>
-                        <td colspan="1" class="bggrey">
+                        <td colspan="1" class="">
                             <input type="text" name="brand_name" value="{{ old('brand_name',$investigateReport->brand_name) }}">
                         </td>
-                        <td colspan="2" class="bggrey">
+                        <td colspan="2" class="">
                             <input type="text" name="rig_administration" value="{{ old('rig_administration',$investigateReport->rig_administration) }}">
                         </td>
                     </tr>
@@ -1031,7 +1031,7 @@
                                 <label for="vaccinated_against_rabies_yes">Yes</label> Year & number of doses:
                             </p>
                         </td>
-                        <td colspan="2" class="bggrey" class="bggrey">
+                        <td colspan="2" class="" class="">
                             <input type="text" name="year_no_of_dose" value="{{ old('year_no_of_dose',$investigateReport->year_no_of_dose) }}">
                         </td>
                         <td colspan="1">
@@ -1481,7 +1481,7 @@
                         <td colspan="1">
                             <p>6.2 Date of onset of symptoms or approximate length of illness:</p>
                         </td>
-                        <td colspan="3" class="bggrey">
+                        <td colspan="3" class="">
                             <input type="date" name="symptoms_onset_date" value="{{ old('symptoms_onset_date',$investigateReport->symptoms_onset_date) }}">
                         </td>
                     </tr>
@@ -1489,7 +1489,7 @@
                         <td colspan="2">
                             <p>6.3 Date of death</p>
                         </td>
-                        <td colspan="1" class="bggrey">
+                        <td colspan="1" class="">
                             <input type="date" name="date_of_birth" value="{{ old('date_of_birth',$investigateReport->date_of_birth) }}">
                         </td>
                         <td colspan="1">
@@ -1548,13 +1548,13 @@
                         <td colspan="1">
                             <p>Name of Hospital/ Health facility (City/Village)</p>
                         </td>
-                        <td colspan="1" class="bggrey w-25">
+                        <td colspan="1" class=" w-25">
                             <input type="text" name="name_of_hf_1" value="{{old('name_of_hf_1', $investigateReport->name_of_hf_1)}}" id="name_of_hf_1" placeholder="HF-1">
                         </td>
-                        <td colspan="1" class="bggrey w-25">
+                        <td colspan="1" class=" w-25">
                             <input type="text" name="name_of_hf_2" value="{{old('name_of_hf_2', $investigateReport->name_of_hf_2)}}" id="name_of_hf_2" placeholder="HF-2">
                         </td>
-                        <td colspan="1" class="bggrey w-25">
+                        <td colspan="1" class=" w-25">
                             <input type="text" name="name_of_hf_3" value="{{old('name_of_hf_3', $investigateReport->name_of_hf_3)}}" id="name_of_hf_3" placeholder="HF-3">
                         </td>
                     </tr>
@@ -1562,13 +1562,13 @@
                         <td colspan="1">
                             <p>Date of consultation</p>
                         </td>
-                        <td colspan="1" class="bggrey">
+                        <td colspan="1" class="">
                             <input type="date" name="hf_1date" value="{{ old('hf_1date',$investigateReport->hf_1date) }}">
                         </td>
-                        <td colspan="1" class="bggrey">
+                        <td colspan="1" class="">
                             <input type="date" name="hf_2date" value="{{ old('hf_2date',$investigateReport->hf_2date) }}">
                         </td>
-                        <td colspan="1" class="bggrey">
+                        <td colspan="1" class="">
                             <input type="date" name="hf_3date" value="{{ old('hf_3date',$investigateReport->hf_3date) }}">
                         </td>
                     </tr>
@@ -1746,7 +1746,7 @@
                         <td colspan="1">
                             <p>If yes, cause of death mentioned:</p>
                         </td>
-                        <td colspan="3" class="bggrey">
+                        <td colspan="3" class="">
                             <input type="text" name="death_mentioned" value="{{ old('death_mentioned',$investigateReport->death_mentioned) }}">
                         </td>
                     </tr>
@@ -1785,7 +1785,7 @@
                                 , Details of person to initiate verbal autopsy of additional cases:
                             </p>
                         </td>
-                        <td colspan="2" class="bggrey">
+                        <td colspan="2" class="">
                             <input type="text" name="autopsy_of_additional_cases" value="{{ old('autopsy_of_additional_cases',$investigateReport->autopsy_of_additional_cases) }}">
                         </td>
                     </tr>

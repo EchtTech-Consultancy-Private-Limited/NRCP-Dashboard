@@ -1445,6 +1445,7 @@ const defaultLaboratoryMapData = () => {
                         // Specify points using lat/lon
                         type: 'mappoint',
                         name: 'Cities',
+                        color:'#ff0000',
                         accessibility: {
                             point: {
                                 valueDescriptionFormat: '{xDescription}. Lat: {point.lat:.2f}, lon: {point.lon:.2f}.'
