@@ -202,12 +202,12 @@
         justify-content: end;
     }
 
-    .line-suspected-form .col-md-4:nth-child(n+4):nth-child(-n+7) {
+    /* .line-suspected-form .col-md-4:nth-child(n+4):nth-child(-n+7) {
         flex: 0 1 25%;
     }
     .line-suspected-form .col-md-4{
 
-    }
+    } */
 }
 @media(max-width:1550px) {
     .state-graph-filter .col {

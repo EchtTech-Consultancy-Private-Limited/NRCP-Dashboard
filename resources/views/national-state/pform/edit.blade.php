@@ -30,7 +30,7 @@
                 <div class="signature">
                     <div class="row">
                         <div class="col-md-12">
-                            <p style="text-align: right; margin-right: 15%; font-size: 14px; margin-top: 5px;">
+                            <p style="text-align: right; font-size: 14px; margin-top: 5px;">
                                 <input type="date" name="suspected_date" value="{{ old('suspected_date', $stateUserpForm->suspected_date) }}">
                             </p>
                         </div>
