@@ -34,7 +34,7 @@
                 <div class="row mb-3">
                     
                     <div class="col-md-4">
-                        <label class="form-label" for="inputAddress2">State Name<span class="text-danger">*</span></label>
+                        <label class="form-label" for="state_name">State Name <span class="text-danger">*</span></label>
                         <select id="state_name" class="form-control" name="state_id">
                             <option value="">Select State Name</option>
                             @foreach($states as $statelist)
@@ -47,6 +47,17 @@
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
                     </div>
+                    
+                    <div class="col-md-4">
+                        <label class="form-label" for="institute_name">Institute Name <span class="text-danger">*</span></label>
+                        <select id="institute_name" class="form-control" name="institute_id">
+                            <option value="">Select Institute Name</option>
+                        </select>
+                        @error('institute_id')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
+                    </div>
+                    
                     <div class="col-md-4 pe-1">
                         <label class="form-label" for="inputAddress2">Assign Role<span class="text-danger">*</span></label>
                         <select id="inputState" class="form-control" name="user_type">

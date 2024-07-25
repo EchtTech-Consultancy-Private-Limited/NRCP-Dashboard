@@ -363,4 +363,35 @@ $(document).ready(function() {
             }
         });
     });
+
+    // get institute
+    $(document).ready(function() {
+        $(document).on('change', '#state_name', function() {
+            const state_id = $(this).val();
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+    
+            $.ajax({
+                url: BASE_URL + "get-institute-name",
+                type: "get",
+                data: {
+                    state_id: state_id,
+                },
+                success: function(result) {
+                    const instituteDropdown = $('#institute_name');
+                    instituteDropdown.html(result); 
+                },
+                error: function(xhr, status, error) {
+                    console.error('An error occurred:', error);
+                }
+            });
+        });
+    });
+
+    
+       
+
 });

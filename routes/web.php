@@ -61,6 +61,7 @@ Route::middleware(['Admin','device'])->group(function () {
         Route::post('national-report-export', [LaboratoryDashboardController::class, 'nationalExport'])->name('national-report-export');
         Route::get('/get-city', [PFormController::class,'getCityByStateId'])->name('get-city');
         Route::get('/get-sub-district', [PFormController::class,'getSubDistrict'])->name('get-sub-district');
+        Route::get('/get-institute-name', [PFormController::class,'getInstitute'])->name('get-get-institute');
         Route::get('/national-highchart', [MainController::class,'nationalHighchart'])->name('national-highchart');
         Route::get('/filter-national-highchart', [MainController::class,'filterNationalHighchart'])->name('filter-national-highchart');
         Route::post('national-mis-report-export', [MainController::class, 'nationalMisExport'])->name('national-mis-report-export');

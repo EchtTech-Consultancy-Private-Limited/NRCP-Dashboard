@@ -47,6 +47,20 @@
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
                     </div>
+                    <div class="col-md-4">
+                        <label class="form-label" for="institute_name">Institute Name <span class="text-danger">*</span></label>
+                        <select id="institute_name" class="form-control" name="institute_id">
+                            <option>Select Institute Name</option>
+                            @foreach ($institutes as $institute)
+                                @if ($institute->id == $user->lab_id)
+                                  <option value="{{ $institute->id }}" {{ $institute->id == $user->lab_id ? 'selected' : '' }} >{{ $institute->name }}</option> 
+                                @endif
+                            @endforeach
+                        </select>
+                        @error('institute_id')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
+                    </div>
                     <div class="col-md-4 pe-1">
                         <label class="form-label" for="inputAddress2">Assign Role<span class="text-danger">*</span></label>
                         <select id="inputState" class="form-control" name="user_type">

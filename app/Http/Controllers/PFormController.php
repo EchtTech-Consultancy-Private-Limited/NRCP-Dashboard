@@ -13,6 +13,7 @@ use App\Models\PFormPatientRecord;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Imports\PFormPatientRecordImport;
 use App\Http\Requests\PFormPatientRecordRequest;
+use App\Models\Institute;
 
 class PFormController extends Controller
 {
@@ -166,4 +167,17 @@ class PFormController extends Controller
         }
         return response()->json($subCityOption);
     }
+      
+    //get institute
+    public function getInstitute(Request $request)
+    {
+        $institutes = Institute::where('state_id', $request->state_id)->get();
+        $institutesOption = '<option value="">Please Select</option>';
+        foreach ($institutes as $institute) {
+            $institutesOption .= '<option value="' . $institute->id . '">' . ucwords($institute->name) . '</option>';
+        }
+        return response()->json($institutesOption);
+    }
+    
+    
 }

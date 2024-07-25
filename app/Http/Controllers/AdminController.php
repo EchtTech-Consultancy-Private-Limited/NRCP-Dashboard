@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Institute;
 use App\Models\State;
 use Exception;
 use Illuminate\Http\Request;
@@ -55,6 +56,7 @@ class AdminController extends Controller
                 'email' => $request->email,
                 'password' => Hash::make($request->password),
                 'state_id' => $request->state_id,
+                'lab_id' => $request->institute_id,
                 'user_type' => $request->user_type,
                 'status' => $request->status,
             ]);
@@ -77,8 +79,9 @@ class AdminController extends Controller
     public function userEdit($id ='')
     {
         $states = State::get();
+        $institutes = Institute::get();
         $user = DB::table('dashboard_login')->where('id', $id)->first();
-        return view('admin.user_edit',compact('user','states'));
+        return view('admin.user_edit',compact('user','states','institutes'));
     }
 
     public function userUpdate(Request $request, $id = '')
@@ -96,6 +99,7 @@ class AdminController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'state_id' => $request->state_id,
+            'lab_id' => $request->institute_id,
             'user_type' => $request->user_type,
             'status' => $request->status,
         ];
