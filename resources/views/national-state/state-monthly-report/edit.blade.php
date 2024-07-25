@@ -90,7 +90,7 @@
               </p>
             </td>
             <td colspan="3">
-                <input type="text" name="total_districts" value="{{ old('total_districts',$stateMonthlyReport->total_districts) }}">
+                <input type="text" oninput="validateInput(this)" name="total_districts" value="{{ old('total_districts',$stateMonthlyReport->total_districts) }}">
             </td>
           </tr>
           <tr>
@@ -100,7 +100,7 @@
               </p>
             </td>
             <td colspan="3">
-                <input type="text" name="total_health_facilities_anaimal_bite" value="{{ old('total_health_facilities_anaimal_bite',$stateMonthlyReport->total_health_facilities_anaimal_bite) }}">
+                <input type="text" oninput="validateInput(this)" name="total_health_facilities_anaimal_bite" value="{{ old('total_health_facilities_anaimal_bite',$stateMonthlyReport->total_health_facilities_anaimal_bite) }}">
             </td>
           </tr>
           <tr>
@@ -110,7 +110,7 @@
               </p>
             </td>
             <td colspan="3">
-                <input type="text" name="total_health_facilities_submitted_monthly" value="{{ old('total_health_facilities_submitted_monthly',$stateMonthlyReport->total_health_facilities_submitted_monthly) }}">            </td>
+                <input type="text" oninput="validateInput(this)" name="total_health_facilities_submitted_monthly" value="{{ old('total_health_facilities_submitted_monthly',$stateMonthlyReport->total_health_facilities_submitted_monthly) }}">            </td>
           </tr>
           <tr>
             <td colspan="2" class="bglightBlue">
@@ -119,7 +119,7 @@
               </p>
             </td>
             <td colspan="3">
-                <input type="text" name="total_patients_animal_biting" class="total_no_of_patients_bited" value="{{ old('total_patients_animal_biting',$stateMonthlyReport->total_patients_animal_biting) }}" readonly>
+                <input type="text" oninput="validateInput(this)" name="total_patients_animal_biting" class="total_no_of_patients_bited" value="{{ old('total_patients_animal_biting',$stateMonthlyReport->total_patients_animal_biting) }}" readonly>
             </td>
           </tr>
           <tr>
@@ -132,7 +132,7 @@
               <p>Bite by Stray dog</p>
             </td>
             <td colspan="3">
-                <input type="text" class="dogbite animalbite" name="total_stray_dog_bite" value="{{ old('total_stray_dog_bite',$stateMonthlyReport->total_stray_dog_bite) }}">
+                <input type="text" oninput="validateInput(this)"  class="dogbite animalbite" name="total_stray_dog_bite" value="{{ old('total_stray_dog_bite',$stateMonthlyReport->total_stray_dog_bite) }}">
             </td>
           </tr>
           <tr>
@@ -140,7 +140,7 @@
               <p>Bite by Pet Dogs</p>
             </td>
             <td colspan="3">
-                <input type="text" class="dogbite animalbite" name="total_pet_dog_bite" value="{{ old('total_pet_dog_bite',$stateMonthlyReport->total_pet_dog_bite) }}">
+                <input type="text" oninput="validateInput(this)"  class="dogbite animalbite" name="total_pet_dog_bite" value="{{ old('total_pet_dog_bite',$stateMonthlyReport->total_pet_dog_bite) }}">
             </td>
           </tr>
           <tr>
@@ -148,7 +148,7 @@
               <p>Total Dogs Bite</p>
             </td>
             <td colspan="3">
-                <input type="text" name="total_dog_bite" class="total_dog_bite" value="{{ old('total_dog_bite',$stateMonthlyReport->total_dog_bite) }}" maxlength="10" oninput="validateInput(this)" readonly>
+                <input type="text" oninput="validateInput(this)"  name="total_dog_bite" class="total_dog_bite" value="{{ old('total_dog_bite',$stateMonthlyReport->total_dog_bite) }}" maxlength="10" oninput="validateInput(this)"" readonly>
             </td>
           </tr>
           <tr>
@@ -158,7 +158,7 @@
               </ul>
             </td>
             <td colspan="3">
-                <input type="text" class="animalbite" name="total_cat_bite" value="{{ old('total_cat_bite',$stateMonthlyReport->total_cat_bite) }}">
+                <input type="text" oninput="validateInput(this)"  class="animalbite" name="total_cat_bite" value="{{ old('total_cat_bite',$stateMonthlyReport->total_cat_bite) }}">
             </td>
           </tr>
           <tr>
@@ -168,7 +168,7 @@
               </ul>
             </td>
             <td colspan="3">
-                <input type="text" class="animalbite" name="total_monkey_bite" value="{{ old('total_monkey_bite',$stateMonthlyReport->total_monkey_bite) }}">
+                <input type="text" oninput="validateInput(this)"  class="animalbite" name="total_monkey_bite" value="{{ old('total_monkey_bite',$stateMonthlyReport->total_monkey_bite) }}">
             </td>
           </tr>
           <tr>
@@ -178,7 +178,7 @@
               </ul>
             </td>
             <td colspan="3">
-                <input type="text" class="animalbite" name="total_others_bite" value="{{ old('total_others_bite',$stateMonthlyReport->total_others_bite) }}">
+                <input type="text" oninput="validateInput(this)"  class="animalbite" name="total_others_bite" value="{{ old('total_others_bite',$stateMonthlyReport->total_others_bite) }}">
             </td>
           </tr>
           <tr>
@@ -198,7 +198,7 @@
               </ul>
             </td>
             <td colspan="3">
-                <input type="text" name="mention_patient_cateogry_I" value="{{ old('mention_patient_cateogry_I',$stateMonthlyReport->mention_patient_cateogry_I) }}">
+                <input type="text" oninput="validateInput(this)"  name="mention_patient_cateogry_I" value="{{ old('mention_patient_cateogry_I',$stateMonthlyReport->mention_patient_cateogry_I) }}">
             </td>
           </tr>
           <tr>
@@ -210,7 +210,7 @@
               </ul>
             </td>
             <td colspan="3">
-                <input type="text" name="mention_patient_cateogry_II" value="{{ old('mention_patient_cateogry_II',$stateMonthlyReport->mention_patient_cateogry_II) }}">
+                <input type="text" oninput="validateInput(this)"  name="mention_patient_cateogry_II" value="{{ old('mention_patient_cateogry_II',$stateMonthlyReport->mention_patient_cateogry_II) }}">
             </td>
           </tr>
           <tr>
@@ -222,7 +222,7 @@
               </ul>
             </td>
             <td colspan="3">
-                <input type="text" name="mention_patient_cateogry_III" value="{{ old('mention_patient_cateogry_III',$stateMonthlyReport->mention_patient_cateogry_III) }}">
+                <input type="text" oninput="validateInput(this)"  name="mention_patient_cateogry_III" value="{{ old('mention_patient_cateogry_III',$stateMonthlyReport->mention_patient_cateogry_III) }}">
             </td>
           </tr>
           <tr>
@@ -241,7 +241,7 @@
               <p></p>
             </td>
             <td colspan="3">
-                <input type="text" name="rabies_vaccination_im_route" value="{{ old('rabies_vaccination_im_route',$stateMonthlyReport->rabies_vaccination_im_route) }}">
+                <input type="text" oninput="validateInput(this)"  name="rabies_vaccination_im_route" value="{{ old('rabies_vaccination_im_route',$stateMonthlyReport->rabies_vaccination_im_route) }}">
             </td>
           </tr>
           <tr>
@@ -251,7 +251,7 @@
               </ul>
             </td>
             <td colspan="3">
-                <input type="text" name="rabies_vaccination_id_route" value="{{ old('rabies_vaccination_id_route',$stateMonthlyReport->rabies_vaccination_id_route) }}">
+                <input type="text" oninput="validateInput(this)"  name="rabies_vaccination_id_route" value="{{ old('rabies_vaccination_id_route',$stateMonthlyReport->rabies_vaccination_id_route) }}">
             </td>
           </tr>
           <tr>
@@ -262,7 +262,7 @@
               <p>&nbsp;</p>
             </td>
             <td colspan="3">
-                <input type="text" name="rabies_vaccination_III_victim_ars" value="{{ old('rabies_vaccination_III_victim_ars',$stateMonthlyReport->rabies_vaccination_III_victim_ars) }}">
+                <input type="text" oninput="validateInput(this)"  name="rabies_vaccination_III_victim_ars" value="{{ old('rabies_vaccination_III_victim_ars',$stateMonthlyReport->rabies_vaccination_III_victim_ars) }}">
             </td>
           </tr>
           <tr>
@@ -273,7 +273,7 @@
               <p>&nbsp;</p>
             </td>
             <td colspan="3">
-                <input type="text" name="rabies_vaccination_completed_pep" value="{{ old('rabies_vaccination_completed_pep',$stateMonthlyReport->rabies_vaccination_completed_pep) }}">
+                <input type="text" oninput="validateInput(this)"  name="rabies_vaccination_completed_pep" value="{{ old('rabies_vaccination_completed_pep',$stateMonthlyReport->rabies_vaccination_completed_pep) }}">
             </td>
           </tr>
         </tbody>
@@ -299,7 +299,7 @@
               </ul>
             </td>
             <td colspan="3">
-                <input type="text" name="confirmed_suspected_rabies_deaths" value="{{ old('confirmed_suspected_rabies_deaths',$stateMonthlyReport->confirmed_suspected_rabies_deaths) }}">
+                <input type="text" oninput="validateInput(this)"  name="confirmed_suspected_rabies_deaths" value="{{ old('confirmed_suspected_rabies_deaths',$stateMonthlyReport->confirmed_suspected_rabies_deaths) }}">
             </td>
           </tr>
           <tr>
@@ -309,7 +309,7 @@
               </ul>
             </td>
             <td colspan="3">
-                <input type="text" name="suspected_rabies_cases_opd" value="{{ old('suspected_rabies_cases_opd',$stateMonthlyReport->suspected_rabies_cases_opd) }}">
+                <input type="text" oninput="validateInput(this)"  name="suspected_rabies_cases_opd" value="{{ old('suspected_rabies_cases_opd',$stateMonthlyReport->suspected_rabies_cases_opd) }}">
             </td>
           </tr>
           <tr>
@@ -319,7 +319,7 @@
               </ul>
             </td>
             <td colspan="3">
-                <input type="text" name="suspected_rabies_cases_admitted" value="{{ old('suspected_rabies_cases_admitted',$stateMonthlyReport->suspected_rabies_cases_admitted) }}">
+                <input type="text" oninput="validateInput(this)"  name="suspected_rabies_cases_admitted" value="{{ old('suspected_rabies_cases_admitted',$stateMonthlyReport->suspected_rabies_cases_admitted) }}">
             </td>
           </tr>
           <tr>
@@ -329,7 +329,7 @@
               </ul>
             </td>
             <td colspan="3">
-                <input type="text" name="suspected_rabies_cases_left_against_medical" value="{{ old('suspected_rabies_cases_left_against_medical',$stateMonthlyReport->suspected_rabies_cases_left_against_medical) }}">
+                <input type="text" oninput="validateInput(this)"  name="suspected_rabies_cases_left_against_medical" value="{{ old('suspected_rabies_cases_left_against_medical',$stateMonthlyReport->suspected_rabies_cases_left_against_medical) }}">
             </td>
           </tr>
           <tr>
@@ -339,7 +339,7 @@
               </ul>
             </td>
             <td colspan="3">
-                <input type="text" name="suspected_rabies_deaths" value="{{ old('suspected_rabies_deaths',$stateMonthlyReport->suspected_rabies_deaths) }}">
+                <input type="text" oninput="validateInput(this)"  name="suspected_rabies_deaths" value="{{ old('suspected_rabies_deaths',$stateMonthlyReport->suspected_rabies_deaths) }}">
             </td>
           </tr>
           <tr>
@@ -488,9 +488,9 @@
                 <li>DH</li>
               </ul>
             </td>
-            <td><input type="text" name="dh_health_of_health_facilties" value="{{ old('dh_health_of_health_facilties',$stateMonthlyReport->dh_health_of_health_facilties) }}"></td>
-            <td><input type="text" name="dh_of_arv" value="{{ old('dh_of_arv',$stateMonthlyReport->dh_of_arv) }}"></td>
-            <td><input type="text" name="dh_of_ars" value="{{ old('dh_of_ars',$stateMonthlyReport->dh_of_ars) }}"></td>
+            <td><input type="text" oninput="validateInput(this)" name="dh_health_of_health_facilties" value="{{ old('dh_health_of_health_facilties',$stateMonthlyReport->dh_health_of_health_facilties) }}"></td>
+            <td><input type="text" oninput="validateInput(this)" name="dh_of_arv" value="{{ old('dh_of_arv',$stateMonthlyReport->dh_of_arv) }}"></td>
+            <td><input type="text" oninput="validateInput(this)" name="dh_of_ars" value="{{ old('dh_of_ars',$stateMonthlyReport->dh_of_ars) }}"></td>
           </tr>
           <tr>
             <td colspan="2">
@@ -498,9 +498,9 @@
                 <li>SDH</li>
               </ul>
             </td>
-            <td><input type="text" name="sdh_health_of_health_facilties" value="{{ old('sdh_health_of_health_facilties',$stateMonthlyReport->sdh_health_of_health_facilties) }}"></td>
-            <td><input type="text" name="sdh_of_arv" value="{{ old('sdh_of_arv',$stateMonthlyReport->sdh_of_arv) }}"></td>
-            <td><input type="text" name="sdh_of_ars" value="{{ old('sdh_of_ars',$stateMonthlyReport->sdh_of_ars) }}"></td>
+            <td><input type="text" oninput="validateInput(this)" name="sdh_health_of_health_facilties" value="{{ old('sdh_health_of_health_facilties',$stateMonthlyReport->sdh_health_of_health_facilties) }}"></td>
+            <td><input type="text" oninput="validateInput(this)" name="sdh_of_arv" value="{{ old('sdh_of_arv',$stateMonthlyReport->sdh_of_arv) }}"></td>
+            <td><input type="text" oninput="validateInput(this)" name="sdh_of_ars" value="{{ old('sdh_of_ars',$stateMonthlyReport->sdh_of_ars) }}"></td>
           </tr>
           <tr>
             <td colspan="2">
@@ -508,9 +508,9 @@
                 <li>CHC</li>
               </ul>
             </td>
-            <td><input type="text" name="chc_health_of_health_facilties" value="{{ old('chc_health_of_health_facilties',$stateMonthlyReport->chc_health_of_health_facilties) }}"></td>
-            <td><input type="text" name="chc_of_arv" value="{{ old('chc_of_arv',$stateMonthlyReport->chc_of_arv) }}"></td>
-            <td><input type="text" name="chc_of_ars" value="{{ old('chc_of_ars',$stateMonthlyReport->chc_of_ars) }}"></td>
+            <td><input type="text" oninput="validateInput(this)" name="chc_health_of_health_facilties" value="{{ old('chc_health_of_health_facilties',$stateMonthlyReport->chc_health_of_health_facilties) }}"></td>
+            <td><input type="text" oninput="validateInput(this)" name="chc_of_arv" value="{{ old('chc_of_arv',$stateMonthlyReport->chc_of_arv) }}"></td>
+            <td><input type="text" oninput="validateInput(this)" name="chc_of_ars" value="{{ old('chc_of_ars',$stateMonthlyReport->chc_of_ars) }}"></td>
           </tr>
           <tr>
             <td colspan="2">
@@ -518,9 +518,9 @@
                 <li>PHC</li>
               </ul>
             </td>
-            <td><input type="text" name="phc_health_of_health_facilties" value="{{ old('phc_health_of_health_facilties',$stateMonthlyReport->phc_health_of_health_facilties) }}"></td>
-            <td><input type="text" name="phc_of_arv" value="{{ old('phc_of_arv',$stateMonthlyReport->phc_of_arv) }}"></td>
-            <td><input type="text" name="phc_of_ars" value="{{ old('phc_of_ars',$stateMonthlyReport->phc_of_ars) }}"></td>
+            <td><input type="text" oninput="validateInput(this)" name="phc_health_of_health_facilties" value="{{ old('phc_health_of_health_facilties',$stateMonthlyReport->phc_health_of_health_facilties) }}"></td>
+            <td><input type="text" oninput="validateInput(this)" name="phc_of_arv" value="{{ old('phc_of_arv',$stateMonthlyReport->phc_of_arv) }}"></td>
+            <td><input type="text" oninput="validateInput(this)" name="phc_of_ars" value="{{ old('phc_of_ars',$stateMonthlyReport->phc_of_ars) }}"></td>
           </tr>
           <tr>
             <td colspan="2" class="bglightBlue">
