@@ -160,6 +160,7 @@ class PFormController extends Controller
     {
         $subCityOption = '';
         $subCities = SubCity::where('district_id', $request->district_id)->get();
+        $subCityOption .= '<option value="">Please Select</option>';
         foreach ($subCities as $subCitie) {
             $subCityOption .= '<option value="' . $subCitie->id . '">' . ucwords($subCitie->name) . '</option>';
         }

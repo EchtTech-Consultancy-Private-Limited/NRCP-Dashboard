@@ -281,6 +281,7 @@
                                 <td>
                                     <select class="form-select form_district" aria-label="Default select "
                                         name="lform_district[]" id="form_district" subId="lform_subdistrict">
+                                        <option value="">Please Select</option>
                                         @if(@$statelFormCase->city->id)
                                             <option value="{{ @$statelFormCase->city->id }}">
                                                 {{ ucwords(@$statelFormCase->city->name) }}
@@ -290,7 +291,8 @@
                                 </td>
                                 <td>
                                     <select class="form-select lform_subdistrict" aria-label="Default select" name="lform_subdistrict[]" id="lform_subdistrict">
-                                         @if(@$statelFormCase->subCity->id)
+                                        <option value="">Please Select</option> 
+                                        @if(@$statelFormCase->subCity->id)
                                             <option value="{{ @$statelFormCase->subCity->id }}">
                                                 {{ ucwords(@$statelFormCase->subCity->name) }}
                                             </option>

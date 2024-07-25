@@ -273,6 +273,7 @@
                                 <td>
                                     {{-- <input type="text" name="sub_district_mandal[]" value="{{ $lineSuspectedCount->sub_district_mandal }}"> --}}
                                     <select class="form-select pform_subdistrict" aria-label="Default select" name="sub_district_mandal[]" id="pform_subdistrict">
+                                        <option value="">Please Select</option>
                                         @if(@$lineSuspectedCount->subCity->id)
                                             <option value="{{ @$lineSuspectedCount->subCity->id }}">
                                                 {{ ucwords(@$lineSuspectedCount->subCity->name) }}
@@ -306,6 +307,7 @@
                                 </td>
                                 <td>
                                     <select class="form-select bit_incidence_subdistrict" aria-label="Default select" name="bit_incidence_sub_district[]" id="bit_incidence_subdistrict">
+                                        <option value="">Please Select</option>
                                         @if(@$lineSuspectedCount->bit_incidence_sub_district)
                                             <option value="{{ @$lineSuspectedCount->subCity->id }}">
                                                 {{ ucwords(@$lineSuspectedCount->subCity->name) }}
