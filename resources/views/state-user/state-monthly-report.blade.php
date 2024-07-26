@@ -28,7 +28,7 @@
               </p>
             </td>
             <td>
-              <select class="form-select" aria-label="Default select example"
+              <select class="form-select w-100" aria-label="Default select example"
                   name="state_id" id="state_id">
                     <option value="{{ $userState->id }}" {{ $userState->id == Auth::user()->state_id ? 'selected' : '' }} readonly >
                         {{ $userState->state_name }}
@@ -75,7 +75,7 @@
               </p>
             </td>
             <td>
-                <input type="date" name="reporting_month_year" value="{{ date('Y-m-d') }}" readonly>
+                <input type="date" name="reporting_month_year" value="{{ date('Y-m-d') }}" readonly class="w-100">
                 @if ($errors->has('reporting_month_year')) 
                     <span class="form-text text-muted">{{ $errors->first('reporting_month_year') }}</span>
                 @endif

@@ -33,7 +33,8 @@
                     <div class="row">
                         <div class="col-md-12">
                             <p class="float-right mr-2">
-                                <input type="date" name="suspected_date" value="{{ old('suspected_date') }}">
+                                <span class="d-block">Date:</span>
+                                <input type="date" name="suspected_date" value="{{ old('suspected_date') }}" class="form-control">
                             </p>
                         </div>
                     </div>

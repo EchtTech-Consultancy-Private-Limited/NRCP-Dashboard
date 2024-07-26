@@ -33,11 +33,11 @@
                         <div class="col-md-12">
                             <p class="float-right">
                                 <strong class="d-block">Date:</strong>
-                                <input type="text" data-date="date" placeholder="DD-MM-YYYY" name="current_date">
+                                <input type="date" placeholder="DD-MM-YYYY" name="current_date" class="form-control">
                             </p>
                         </div>
                     </div>
-                    <div class="row" >
+                    <div class="row mb-3">
                         <div class="col-md-3">
                             <div class="emailBlock">
                                 <p>
@@ -80,8 +80,9 @@
                         <div class="col-md-3">
                             <div class="emailBlock">
                                 <p>
-                                    Email ID<span class="text-danger">*</span> <br>
-                                    <input type="email" name="email" value="{{ old('email') }}">
+                                    Email ID <span class="text-danger">*</span> 
+
+                                    <input type="email" name="email" value="{{ old('email') }}" class="w-100">
                                     @if ($errors->has('email'))
                                     <span class="form-text text-muted">{{ $errors->first('email') }}</span>
                                     @endif
@@ -90,7 +91,7 @@
                             </div>
 
                         </div>
-                        {{-- <div class="col-md-3">
+                        <!-- <div class="col-md-3">
                             <div class="emailBlock">
                                 <p>
                                     Aadhar Number<span class="text-danger">*</span> <br>
@@ -100,7 +101,7 @@
                                     @endif
                                 </p>                              
                             </div>
-                        </div> --}}
+                        </div>  -->
                         <div class="col-md-3">
                             <div class="emailBlock">
                                 <p>
