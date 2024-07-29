@@ -97,3 +97,17 @@ $(document).ready(function() {
          }
     });
 });
+
+
+// 6.6 Health Facility
+$(document).ready(function() {
+    $('.healthFacility').hide();
+    $("input[name='medical_help']").change(function() {
+         var selected = $(this).val();
+         if(selected == 'yes'){
+            $('.healthFacility').show();
+         }else{
+            $('.healthFacility').hide();
+         }
+    });
+});

@@ -90,7 +90,7 @@
               </p>
             </td>
             <td colspan="3">
-                <input type="text" oninput="validateInput(this)" name="total_districts" value="{{ old('total_districts',$stateMonthlyReport->total_districts) }}">
+                <input type="text" oninput="validateInput(this)"b n   f name="total_districts" value="{{ old('total_districts',$stateMonthlyReport->total_districts) }}">
             </td>
           </tr>
           <tr>
@@ -100,7 +100,7 @@
               </p>
             </td>
             <td colspan="3">
-                <input type="text" oninput="validateInput(this)" name="total_health_facilities_anaimal_bite" value="{{ old('total_health_facilities_anaimal_bite',$stateMonthlyReport->total_health_facilities_anaimal_bite) }}">
+                <input type="text" oninput="validateInput(this)"b n   f name="total_health_facilities_anaimal_bite" value="{{ old('total_health_facilities_anaimal_bite',$stateMonthlyReport->total_health_facilities_anaimal_bite) }}">
             </td>
           </tr>
           <tr>
@@ -110,7 +110,7 @@
               </p>
             </td>
             <td colspan="3">
-                <input type="text" oninput="validateInput(this)" name="total_health_facilities_submitted_monthly" value="{{ old('total_health_facilities_submitted_monthly',$stateMonthlyReport->total_health_facilities_submitted_monthly) }}">            </td>
+                <input type="text" oninput="validateInput(this)"b n   f name="total_health_facilities_submitted_monthly" value="{{ old('total_health_facilities_submitted_monthly',$stateMonthlyReport->total_health_facilities_submitted_monthly) }}">            </td>
           </tr>
           <tr>
             <td colspan="2" class="bglightBlue">
@@ -119,7 +119,7 @@
               </p>
             </td>
             <td colspan="3">
-                <input type="text" oninput="validateInput(this)" name="total_patients_animal_biting" class="total_no_of_patients_bited" value="{{ old('total_patients_animal_biting',$stateMonthlyReport->total_patients_animal_biting) }}" readonly>
+                <input type="text" oninput="validateInput(this)"b n   f name="total_patients_animal_biting" class="total_no_of_patients_bited" value="{{ old('total_patients_animal_biting',$stateMonthlyReport->total_patients_animal_biting) }}" readonly>
             </td>
           </tr>
           <tr>
