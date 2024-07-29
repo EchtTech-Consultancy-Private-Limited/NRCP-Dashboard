@@ -1538,7 +1538,7 @@
                     <tr>
                         <td colspan="4">
                             <p>
-                                6.6
+                                6.6 
                                 <strong>If Yes,</strong>
                                 please share details of health facilities
                             </p>
@@ -1550,13 +1550,13 @@
                         </td>
                         @if ($investigateReport->medical_help == 'yes')
                             <td colspan="1" class=" w-25">
-                                <input type="text" name="name_of_hf_1" value="{{old('name_of_hf_1', $investigateReport->name_of_hf_1)}}" id="name_of_hf_1" placeholder="HF-1">
+                                <input type="text" name="name_of_hf_1" class="healthFacilityEdit" value="{{old('name_of_hf_1', $investigateReport->name_of_hf_1)}}" id="name_of_hf_1" placeholder="HF-1">
                             </td>
                             <td colspan="1" class=" w-25">
-                                <input type="text" name="name_of_hf_2" value="{{old('name_of_hf_2', $investigateReport->name_of_hf_2)}}" id="name_of_hf_2" placeholder="HF-2">
+                                <input type="text" name="name_of_hf_2" class="healthFacilityEdit" value="{{old('name_of_hf_2', $investigateReport->name_of_hf_2)}}" id="name_of_hf_2" placeholder="HF-2">
                             </td>
                             <td colspan="1" class=" w-25">
-                                <input type="text" name="name_of_hf_3" value="{{old('name_of_hf_3', $investigateReport->name_of_hf_3)}}" id="name_of_hf_3" placeholder="HF-3">
+                                <input type="text" name="name_of_hf_3" class="healthFacilityEdit" value="{{old('name_of_hf_3', $investigateReport->name_of_hf_3)}}" id="name_of_hf_3" placeholder="HF-3">
                             </td>  
                         @else
                             <td colspan="1" class=" w-25">
@@ -1671,10 +1671,10 @@
                             </p>
                         </td>
                         <td colspan="4">
-                            @if ($investigateReport->MRI_brain_done_text)
-                              <input type="text" name="MRI_brain_done_text" value="{{ old('MRI_brain_done_text', $investigateReport->MRI_brain_done_text)}}" class="input_field_edit">
+                            @if ($investigateReport->MRI_brain_done == "yes")
+                              <input type="text" name="MRI_brain_done_text" value="{{ old('MRI_brain_done_text', $investigateReport->MRI_brain_done_text)}}" class="inputFieldsEdit">
                             @else
-                              <input type="text" name="MRI_brain_done_text" value="{{ old('MRI_brain_done_text', $investigateReport->MRI_brain_done_text)}}" class="inputFields">
+                              <input type="text" name="MRI_brain_done_text" value="{{ old('MRI_brain_done_text')}}" class="inputFields">
                             @endif
                         </td>
                     </tr>

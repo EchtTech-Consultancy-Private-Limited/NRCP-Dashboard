@@ -1549,16 +1549,6 @@
                             <td colspan="1" class=" w-25">
                                 <input readonly type="text" name="name_of_hf_3" value="{{old('name_of_hf_3', $investigateReport->name_of_hf_3)}}" id="name_of_hf_3" placeholder="HF-3">
                             </td>  
-                        @else
-                            <td colspan="1" class=" w-25">
-                                <input readonly type="text" name="name_of_hf_1" class="healthFacility" value="{{old('name_of_hf_1')}}" id="name_of_hf_1" placeholder="HF-1">
-                            </td>
-                            <td colspan="1" class=" w-25">
-                                <input readonly type="text" name="name_of_hf_2" class="healthFacility" value="{{old('name_of_hf_2')}}" id="name_of_hf_2" placeholder="HF-2">
-                            </td>
-                            <td colspan="1" class=" w-25">
-                                <input readonly type="text" name="name_of_hf_3" class="healthFacility" value="{{old('name_of_hf_3')}}" id="name_of_hf_3" placeholder="HF-3">
-                            </td>
                         @endif
                     </tr>
                     <tr>
