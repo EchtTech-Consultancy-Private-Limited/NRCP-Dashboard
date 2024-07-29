@@ -114,7 +114,7 @@
                                                             </small>
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-12 d-flex justify-content-center pt-3">
+                                                    <div class="col-md-12 d-flex justify-content-center pt-2 pb-2">
                                                         <button id="laboratory_apply_filter"
                                                             class="btn bg-primary text-light laboratory_apply_filter button border-0 mr-2">Search</button>
                                                         <button id="laboratory_reset_button"

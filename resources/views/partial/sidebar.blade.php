@@ -188,11 +188,11 @@
                             <div class="card card-body">
                                 <div
                                     class="link bg-primary text-white dashboard-title {{ request()->routeIs('state.monthly-report') ? 'active' : '' }}">
-                                    <a href="{{ route('state.monthly-report') }}"> Create</a>
+                                    <a href="{{ route('state.monthly-report') }}"> Entry Form</a>
                                 </div>
                                 <div
                                     class="link bg-primary text-white dashboard-title {{ request()->routeIs('state.monthly-report-list') ? 'active' : '' }}">
-                                    <a href="{{ route('state.monthly-report-list') }}"> List</a>
+                                    <a href="{{ route('state.monthly-report-list') }}">Entry Database</a>
                                 </div>
                             </div>
                         </div>
@@ -214,11 +214,11 @@
                             <div class="card card-body">
                                 <div
                                     class="link bg-primary text-white dashboard-title {{ request()->routeIs('state.lform-create') ? 'active' : '' }}">
-                                    <a href="{{ route('state.lform-create') }}"> Create</a>
+                                    <a href="{{ route('state.lform-create') }}"> Entry Form</a>
                                 </div>
                                 <div
                                     class="link bg-primary text-white dashboard-title {{ request()->routeIs('state.lform-list') ? 'active' : '' }}">
-                                    <a href="{{ route('state.lform-list') }}">List</a>
+                                    <a href="{{ route('state.lform-list') }}">Entry Database</a>
                                 </div>
                             </div>
                         </div>
@@ -240,11 +240,11 @@
                             <div class="card card-body">
                                 <div
                                     class="link bg-primary text-white dashboard-title {{ request()->routeIs('state.line-suspected-create') ? 'active' : '' }}">
-                                    <a href="{{ route('state.line-suspected-create') }}"> Create</a>
+                                    <a href="{{ route('state.line-suspected-create') }}"> Entry Form</a>
                                 </div>
                                 <div
                                     class="link bg-primary text-white dashboard-title {{ request()->routeIs('state.line-suspected-list') ? 'active' : '' }}">
-                                    <a href="{{ route('state.line-suspected-list') }}">List</a>
+                                    <a href="{{ route('state.line-suspected-list') }}">Entry Database</a>
                                 </div>
                             </div>
                         </div>
@@ -264,11 +264,11 @@
                             <div class="card card-body">
                                 <div
                                     class="link bg-primary text-white dashboard-title {{ request()->routeIs('state.investigate-create') ? 'active' : '' }}">
-                                    <a href="{{ route('state.investigate-create') }}"> Create</a>
+                                    <a href="{{ route('state.investigate-create') }}"> Entry Form</a>
                                 </div>
                                 <div
                                     class="link bg-primary text-white dashboard-title {{ request()->routeIs('state.investigate-report-list') ? 'active' : '' }}">
-                                    <a href="{{ route('state.investigate-report-list') }}"> List</a>
+                                    <a href="{{ route('state.investigate-report-list') }}"> Entry Database</a>
                                 </div>
                             </div>
                         </div>

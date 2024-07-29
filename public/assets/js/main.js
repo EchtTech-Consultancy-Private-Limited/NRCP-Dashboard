@@ -263,6 +263,12 @@ $("input[type='radio']").change(function() {
     }
 });
 
+
+$("#notification-card").click(function(){
+    $(this).toggleClass("active");    
+  });
+
+
 // 8.2 add more button 
 let contact_with_patient_checkbox = $('.contact_with_patient_checkbox');
 
@@ -473,5 +479,3 @@ $(document).ready(function(){
 function confirmDelete() {
     return confirm('Are you sure you want to delete this report?');
 }
-
-

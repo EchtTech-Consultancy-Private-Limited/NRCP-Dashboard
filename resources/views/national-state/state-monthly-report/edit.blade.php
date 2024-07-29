@@ -28,7 +28,7 @@
               </p>
             </td>
             <td> 
-              <select class="form-select" aria-label="Default select example"
+              <select class="form-control" aria-label="Default select example"
                   name="state_id" id="state_id"> 
                     <option value="{{ $userState->id }}" {{ $userState->id == $stateMonthlyReport->state_id ? 'selected' : '' }} readonly>
                         {{ $userState->state_name }}
@@ -46,7 +46,7 @@
               </p>
             </td>
             <td>
-              <input type="text" name="state_nodal_office" value="{{ old('state_nodal_office',$stateMonthlyReport->state_nodal_office) }}">
+              <input type="text" name="state_nodal_office" class="form-control" value="{{ old('state_nodal_office',$stateMonthlyReport->state_nodal_office) }}">
               @if ($errors->has('state_nodal_office')) 
                 <span class="form-text text-muted">{{ $errors->first('state_nodal_office') }}</span>
               @endif
@@ -59,7 +59,7 @@
               </p>
             </td>
             <td>
-                <input type="text" name="office_address" value="{{ old('office_address',$stateMonthlyReport->office_address) }}">
+                <input type="text" name="office_address" class="form-control" value="{{ old('office_address',$stateMonthlyReport->office_address) }}">
                 @if ($errors->has('office_address')) 
                     <span class="form-text text-muted">{{ $errors->first('office_address') }}</span>
                 @endif
@@ -72,7 +72,7 @@
               </p>
             </td>
             <td>
-                <input type="date" name="reporting_month_year" value="{{ old('reporting_month_year',$stateMonthlyReport->reporting_month_year) }}" readonly>
+                <input type="date" name="reporting_month_year" class="form-control" value="{{ old('reporting_month_year',$stateMonthlyReport->reporting_month_year) }}" readonly>
                 @if ($errors->has('reporting_month_year')) 
                     <span class="form-text text-muted">{{ $errors->first('reporting_month_year') }}</span>
                 @endif

@@ -2536,7 +2536,7 @@ function nationalHighchart(data)
                 }
             }
         },
-        colors: ['#a5a5a5', '#e7e6e6'],
+        colors: ['#f57336', '#9e9e9edb'],
         series: [
             {
                 type: 'pie',            
@@ -2605,7 +2605,7 @@ function nationalHighchart(data)
                 }
             }
         },
-        colors: ['#a5a5a5', '#e7e6e6'],
+        colors: ['#f57336', '#9e9e9edb'],
         series: [
             {
                 type: 'pie',            
@@ -2674,7 +2674,7 @@ function nationalHighchart(data)
                 }
             }
         },
-        colors: ['#a5a5a5', '#e7e6e6'],
+        colors: ['#f57336', '#9e9e9edb'],
         series: [
             {
                 type: 'pie',            
@@ -2743,7 +2743,7 @@ function nationalHighchart(data)
                 }
             }
         },
-        colors: ['#a5a5a5', '#e7e6e6'],
+        colors: ['#f57336', '#9e9e9edb'],
         series: [
             {
                 type: 'pie',            
