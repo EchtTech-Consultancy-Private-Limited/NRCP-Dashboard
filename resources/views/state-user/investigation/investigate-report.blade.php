@@ -938,7 +938,7 @@
                     <tr>
                         <td colspan="6">
                             <p>
-                                5.4  <b> If Incomplete PEP,</b> reason:
+                                5.4  &nbsp; <b> If Incomplete PEP,</b> reason:
                             </p>
                         </td>
                     </tr>
