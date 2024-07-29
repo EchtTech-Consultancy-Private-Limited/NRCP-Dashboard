@@ -473,7 +473,7 @@
             </td>
             <td>
               <p>
-                <strong>Availability of ARV</strong>
+                <strong>Availability of ARV (Vials or Doses)</strong>
               </p>
             </td>
             <td>
