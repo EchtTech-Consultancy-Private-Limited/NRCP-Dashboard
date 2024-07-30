@@ -993,7 +993,7 @@
                     <tr>
                         <td colspan="1" rowspan="2">
                             <p>
-                                If yes,
+                              If yes,
                             </p>
                         </td>
                         <td colspan="1">
