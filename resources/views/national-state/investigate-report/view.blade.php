@@ -859,7 +859,7 @@
                             </p>
                             <p>&nbsp;</p>
                             <p>
-                                <strong>If Yes,</strong>
+                                If Yes,
                                 Number of doses received
                             </p>
                             <p> <label for="RabiesVaccineReceivedYes1"  >1</label>
@@ -935,7 +935,7 @@
                     <tr>
                         <td colspan="6">
                             <p>
-                                5.4  <b> If Incomplete PEP,</b> reason:
+                                5.4  If Incomplete PEP, reason:
                             </p>
                         </td>
                     </tr>
@@ -1490,8 +1490,8 @@
                     <tr>
                         <td colspan="1">
                             <p>
-                                6.4
-                                <strong>If deceased,</strong>
+
+                                6.4 If deceased,
                                 where did deceased die
                             </p>
                         </td>
@@ -1530,7 +1530,7 @@
                         <td colspan="4">
                             <p>
                                 6.6
-                                <strong>If Yes,</strong>
+                                If Yes,
                                 please share details of health facilities
                             </p>
                         </td>
@@ -1691,7 +1691,7 @@
                     <tr>
                         <td colspan="4">
                             <p>
-                                <strong>If Yes,</strong>
+                                If Yes,
                                 Copy of report
                                 available ? &nbsp;
                                 <label for="copy_of_report_yes">Yes</label>
@@ -1767,7 +1767,7 @@
                     <tr>
                         <td colspan="1">
                             <p>
-                                <strong>If yes</strong>
+                                If yes
                                 , Details of person to initiate verbal autopsy of additional cases:
                             </p>
                         </td>
