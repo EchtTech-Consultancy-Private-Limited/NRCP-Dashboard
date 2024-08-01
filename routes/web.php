@@ -68,7 +68,7 @@ Route::middleware(['Admin','device'])->group(function () {
 
         // National dashboard monthly report list
         Route::group(['prefix' => 'national', 'as' => 'national.'], function () {
-            Route::get('/state-monthly-report', [NationalStateListController::class, 'stateMonthlyReport'])->name('state-monthly-report');
+            Route::get('/state-monthly-report', [NationalStateListController::class, 'stateMonthlyRline-suspected-createeport'])->name('state-monthly-report');
             Route::get('/state-monthly-view/{id}', [NationalStateListController::class, 'stateMonthlyView'])->name('state-monthly-view');
             Route::get('/state-monthly-edit/{id}', [NationalStateListController::class, 'stateMonthlyEdit'])->name('state-monthly-edit');
             Route::post('/state-monthly-update/{id}', [NationalStateListController::class, 'stateMonthlyUpdate'])->name('state-monthly-update');
