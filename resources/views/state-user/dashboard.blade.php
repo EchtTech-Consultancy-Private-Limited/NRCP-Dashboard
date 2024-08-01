@@ -6,7 +6,7 @@
 <div class="container-fluid state-user-dashboard dashboard mt-4">
 
     <div class="dashboard-filter mb-4">
-        <div class="row mb-4">
+        <div class="row mb-3">
             <div class="col-md-4">
                 <div class="form-group">
                     <label for="state" class="mr-3 text-nowrap ">State <span class="star">*</span></label>

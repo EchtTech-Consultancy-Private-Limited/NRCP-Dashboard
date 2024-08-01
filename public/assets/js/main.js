@@ -268,6 +268,10 @@ $("#notification-card").click(function(){
     $(this).toggleClass("active");    
   });
 
+$(".content-wrapper").click(function(){
+    $("#notification-card.active").removeClass("active");    
+  });
+
 
 // 8.2 add more button 
 let contact_with_patient_checkbox = $('.contact_with_patient_checkbox');
