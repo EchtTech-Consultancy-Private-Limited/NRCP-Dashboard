@@ -149,8 +149,8 @@
                         <div class="dropdown-menu" aria-labelledby="profile">
                             <ul>
                                 <li class="text-center">{{ Auth::user()->email }}</li>
-                                <li> <a class="dropdown-item" href="#"><i class="fa fa-user" aria-hidden="true"></i>My Profile</a> </li>
-                                <li> <a class="dropdown-item" href="#"><i class="fa fa-lock" aria-hidden="true"></i>Change Password</a> </li>
+                                <li> <a class="dropdown-item" href="{{route('profile.edit')}}"><i class="fa fa-user" aria-hidden="true"></i>My Profile</a> </li>
+                                <li> <a class="dropdown-item" href="{{route('password.update')}}"><i class="fa fa-lock" aria-hidden="true"></i>Change Password</a> </li>
                                 <li> <a class="dropdown-item" onclick="return confirm('Are you sure you want to logout?')"
                                 href="{{ url('logout') }}" role="button">   <i class="fa fa-power-off"></i> Logout </a> </li>
                             </ul>
