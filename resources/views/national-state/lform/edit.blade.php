@@ -81,7 +81,7 @@
                             <div class="emailBlock">
                                 <p>
                                     Email ID: <br>
-                                    <input type="email" name="email" class="w-100" value="{{ old('email',$stateUserLForm->email) }}">
+                                    <input readonly type="email" name="email" class="w-100" value="{{ old('email',$stateUserLForm->email) }}">
                                     @if ($errors->has('email'))
                                     <span class="form-text text-muted">{{ $errors->first('email') }}</span>
                                     @endif

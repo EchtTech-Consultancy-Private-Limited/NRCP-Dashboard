@@ -101,7 +101,7 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="email">Email ID<span class="text-danger">*</span></label>
-                                <input type="email" name="email" class="form-control" value="{{ old('email') }}">
+                                <input readonly type="email" name="email" class="form-control" value="{{ Auth::user()->email }}">
                                 @if ($errors->has('email'))
                                 <span class="form-text text-muted">{{ $errors->first('email') }}</span>
                                 @endif

@@ -21,7 +21,7 @@
           @foreach($stateMonthlyReports as $stateMonthlyReport) 
           <tr>
             <td>{{$loop->iteration}}</td>
-            <td>{{$stateMonthlyReport->states->state_name}}</td>
+            <td>{{ucfirst($stateMonthlyReport->states->state_name)}}</td>
             <td>{{$stateMonthlyReport->state_nodal_office}}</td>
             <td>{{$stateMonthlyReport->office_address}}</td>
             <td> {{date('d-m-Y',strtotime($stateMonthlyReport->reporting_month_year))}}</td>

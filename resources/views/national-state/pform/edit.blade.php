@@ -77,7 +77,7 @@
                                 </p>
                                 <p>
                                     Email ID: <br>
-                                    <input type="email" name="email" class="form-control" value="{{ old('email', $stateUserpForm->email) }}">
+                                    <input readonly type="email" name="email" class="form-control" value="{{ old('email', $stateUserpForm->email) }}">
                                     @if ($errors->has('email'))
                                     <span class="form-text text-muted">{{ $errors->first('email') }}</span>
                                     @endif
