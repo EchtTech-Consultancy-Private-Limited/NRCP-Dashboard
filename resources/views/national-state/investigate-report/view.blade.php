@@ -1539,15 +1539,17 @@
                         <td colspan="1">
                             <p>Name of Hospital/ Health facility (City/Village)</p>
                         </td>
-                        <td colspan="1" class=" w-25">
-                            <input readonly type="text" name="name_of_hf_1" value="{{old('name_of_hf_1', $investigateReport->name_of_hf_1)}}" id="name_of_hf_1" placeholder="HF-1">
-                        </td>
-                        <td colspan="1" class=" w-25">
-                            <input readonly type="text" name="name_of_hf_2" value="{{old('name_of_hf_2', $investigateReport->name_of_hf_2)}}" id="name_of_hf_2" placeholder="HF-2">
-                        </td>
-                        <td colspan="1" class=" w-25">
-                            <input readonly type="text" name="name_of_hf_3" value="{{old('name_of_hf_3', $investigateReport->name_of_hf_3)}}" id="name_of_hf_3" placeholder="HF-3">
-                        </td>
+                        @if ($investigateReport->medical_help == 'yes')
+                            <td colspan="1" class=" w-25">
+                                <input readonly type="text" name="name_of_hf_1" value="{{old('name_of_hf_1', $investigateReport->name_of_hf_1)}}" id="name_of_hf_1" placeholder="HF-1">
+                            </td>
+                            <td colspan="1" class=" w-25">
+                                <input readonly type="text" name="name_of_hf_2" value="{{old('name_of_hf_2', $investigateReport->name_of_hf_2)}}" id="name_of_hf_2" placeholder="HF-2">
+                            </td>
+                            <td colspan="1" class=" w-25">
+                                <input readonly type="text" name="name_of_hf_3" value="{{old('name_of_hf_3', $investigateReport->name_of_hf_3)}}" id="name_of_hf_3" placeholder="HF-3">
+                            </td>  
+                        @endif
                     </tr>
                     <tr>
                         <td colspan="1">
@@ -1712,7 +1714,7 @@
                             <p>7.1.2 Did deceased have any evidence of healed wounds? &nbsp;&nbsp;
                                 <input disabled type="radio" name="evidence_of_healed_wounds" value="yes" {{ old('evidence_of_healed_wounds',$investigateReport->evidence_of_healed_wounds) == 'yes' ? 'checked' : '' }}>
                                 Yes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                <input disabled type="radio" name="evidence_of_healed_wounds" value="no" {{ old('evidence_of_healed_wounds',$investigateReport->evidence_of_healed_wounds) == 'no' ? 'checked' : '' }}>
+                                <input disabled type="radio" name="evidence_of_healed_wounds" value="no" {{ old('evidence_of_healed_wounds',$investigateReport->evidence_of_healed_wounds) == 'no' ? 'checked' : '' }}>No
                         </td>
                     </tr>
                     <tr>

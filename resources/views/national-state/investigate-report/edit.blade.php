@@ -868,7 +868,7 @@
                             </p>
                             <p>&nbsp;</p>
                             <p>
-                                <strong>If Yes,</strong>
+                              If Yes,
                                 Number of doses received
                             </p>
                             <p> <label for="RabiesVaccineReceivedYes1"  >1</label>
@@ -944,7 +944,7 @@
                     <tr>
                         <td colspan="6">
                             <p>
-                                5.4  <b> If Incomplete PEP,</b> reason:
+                                5.4 If Incomplete PEP, reason:
                             </p>
                         </td>
                     </tr>
@@ -993,7 +993,7 @@
                     <tr>
                         <td colspan="1" rowspan="2">
                             <p>
-                                <strong>If yes</strong>,
+                              If yes,
                             </p>
                         </td>
                         <td colspan="1">
@@ -1499,8 +1499,7 @@
                     <tr>
                         <td colspan="1">
                             <p>
-                                6.4
-                                <strong>If deceased,</strong>
+                                6.4 If deceased,
                                 where did deceased die
                             </p>
                         </td>
@@ -1538,25 +1537,36 @@
                     <tr>
                         <td colspan="4">
                             <p>
-                                6.6
-                                <strong>If Yes,</strong>
+                                6.6  If Yes,
                                 please share details of health facilities
                             </p>
                         </td>
                     </tr>
-                    <tr>
+                    <tr> 
                         <td colspan="1">
                             <p>Name of Hospital/ Health facility (City/Village)</p>
                         </td>
-                        <td colspan="1" class=" w-25">
-                            <input type="text" name="name_of_hf_1" value="{{old('name_of_hf_1', $investigateReport->name_of_hf_1)}}" id="name_of_hf_1" placeholder="HF-1">
-                        </td>
-                        <td colspan="1" class=" w-25">
-                            <input type="text" name="name_of_hf_2" value="{{old('name_of_hf_2', $investigateReport->name_of_hf_2)}}" id="name_of_hf_2" placeholder="HF-2">
-                        </td>
-                        <td colspan="1" class=" w-25">
-                            <input type="text" name="name_of_hf_3" value="{{old('name_of_hf_3', $investigateReport->name_of_hf_3)}}" id="name_of_hf_3" placeholder="HF-3">
-                        </td>
+                        @if ($investigateReport->medical_help == 'yes')
+                            <td colspan="1" class=" w-25">
+                                <input type="text" name="name_of_hf_1" class="healthFacilityEdit" value="{{old('name_of_hf_1', $investigateReport->name_of_hf_1)}}" id="name_of_hf_1" placeholder="HF-1">
+                            </td>
+                            <td colspan="1" class=" w-25">
+                                <input type="text" name="name_of_hf_2" class="healthFacilityEdit" value="{{old('name_of_hf_2', $investigateReport->name_of_hf_2)}}" id="name_of_hf_2" placeholder="HF-2">
+                            </td>
+                            <td colspan="1" class=" w-25">
+                                <input type="text" name="name_of_hf_3" class="healthFacilityEdit" value="{{old('name_of_hf_3', $investigateReport->name_of_hf_3)}}" id="name_of_hf_3" placeholder="HF-3">
+                            </td>  
+                        @else
+                            <td colspan="1" class=" w-25">
+                                <input type="text" name="name_of_hf_1" class="healthFacility" value="{{old('name_of_hf_1')}}" id="name_of_hf_1" placeholder="HF-1">
+                            </td>
+                            <td colspan="1" class=" w-25">
+                                <input type="text" name="name_of_hf_2" class="healthFacility" value="{{old('name_of_hf_2')}}" id="name_of_hf_2" placeholder="HF-2">
+                            </td>
+                            <td colspan="1" class=" w-25">
+                                <input type="text" name="name_of_hf_3" class="healthFacility" value="{{old('name_of_hf_3')}}" id="name_of_hf_3" placeholder="HF-3">
+                            </td>
+                        @endif
                     </tr>
                     <tr>
                         <td colspan="1">
@@ -1659,10 +1669,10 @@
                             </p>
                         </td>
                         <td colspan="4">
-                            @if ($investigateReport->MRI_brain_done_text)
-                              <input type="text" name="MRI_brain_done_text" value="{{ old('MRI_brain_done_text', $investigateReport->MRI_brain_done_text)}}" class="input_field_edit">
+                            @if ($investigateReport->MRI_brain_done == "yes")
+                              <input type="text" name="MRI_brain_done_text" value="{{ old('MRI_brain_done_text', $investigateReport->MRI_brain_done_text)}}" class="inputFieldsEdit">
                             @else
-                              <input type="text" name="MRI_brain_done_text" value="{{ old('MRI_brain_done_text', $investigateReport->MRI_brain_done_text)}}" class="inputFields">
+                              <input type="text" name="MRI_brain_done_text" value="{{ old('MRI_brain_done_text')}}" class="inputFields">
                             @endif
                         </td>
                     </tr>
@@ -1705,7 +1715,7 @@
                     <tr>
                         <td colspan="4">
                             <p>
-                                <strong>If Yes,</strong>
+                                If Yes,
                                 Copy of report
                                 available ? &nbsp;
                                 <label for="copy_of_report_yes">Yes</label>
@@ -1728,7 +1738,7 @@
                             <p>7.1.2 Did deceased have any evidence of healed wounds? &nbsp;&nbsp;
                                 <input type="radio" name="evidence_of_healed_wounds" value="yes" {{ old('evidence_of_healed_wounds',$investigateReport->evidence_of_healed_wounds) == 'yes' ? 'checked' : '' }}>
                                 Yes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                <input type="radio" name="evidence_of_healed_wounds" value="no" {{ old('evidence_of_healed_wounds',$investigateReport->evidence_of_healed_wounds) == 'no' ? 'checked' : '' }}>
+                                <input type="radio" name="evidence_of_healed_wounds" value="no" {{ old('evidence_of_healed_wounds',$investigateReport->evidence_of_healed_wounds) == 'no' ? 'checked' : '' }}>No
                         </td>
                     </tr>
                     <tr>
@@ -1781,7 +1791,7 @@
                     <tr>
                         <td colspan="1">
                             <p>
-                                <strong>If yes</strong>
+                                If yes
                                 , Details of person to initiate verbal autopsy of additional cases:
                             </p>
                         </td>

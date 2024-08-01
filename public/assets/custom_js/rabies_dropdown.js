@@ -97,3 +97,42 @@ $(document).ready(function() {
          }
     });
 });
+
+// 6.8 MRI Done field
+$(document).ready(function() {
+    // $('.inputFields').hide();
+    $("input[name='MRI_brain_done']").change(function() {
+         var selected = $(this).val();
+         if(selected == 'yes'){
+            $('.inputFieldsEdit').show();
+         }else{
+            $('.inputFieldsEdit').hide();
+         }
+    });
+});
+
+
+// 6.6 Health Facility
+$(document).ready(function() {
+    $('.healthFacility').hide();
+    $("input[name='medical_help']").change(function() {
+         var selected = $(this).val();
+         if(selected == 'yes'){
+            $('.healthFacility').show();
+         }else{
+            $('.healthFacility').hide();
+         }
+    });
+});
+
+// 6.6 Health Facility Edit
+$(document).ready(function() {
+    $("input[name='medical_help']").change(function() {
+         var selected = $(this).val();
+         if(selected == 'yes'){
+            $('.healthFacilityEdit').show();
+         }else{
+            $('.healthFacilityEdit').hide();
+         }
+    });
+});
