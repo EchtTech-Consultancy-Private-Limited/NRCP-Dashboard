@@ -73,7 +73,7 @@ class MainController extends Controller
         foreach($states as $key => $state)
         {
             $totalCount = StateMonthlyReport::where('state_id',$state->id)->count();
-            $stateBarGraph[] = [$state->state_name,$totalCount];
+            $stateBarGraph[] = [ucwords($state->state_name),$totalCount];
         }
         // End State wise Bar Graph
 
@@ -85,7 +85,7 @@ class MainController extends Controller
             $totalQuantityUtilized = StateMonthlyReport::where('state_id', $state->id)->sum('chc_of_arv');
             $totalClosingBalance = StateMonthlyReport::where('state_id', $state->id)->sum('phc_of_arv');
             $totalCount = $totalOpeningBalance + $totalQuantityReceived + $totalQuantityUtilized + $totalClosingBalance;
-            $totalArv[] = [$state->state_name, $totalCount];
+            $totalArv[] = [ucwords($state->state_name), $totalCount];
         }
 
         // Availability of ARS
@@ -96,7 +96,7 @@ class MainController extends Controller
             $totalQuantityUtilized = StateMonthlyReport::where('state_id', $state->id)->sum('chc_of_ars');
             $totalClosingBalance = StateMonthlyReport::where('state_id', $state->id)->sum('phc_of_ars');
             $totalCount = $totalOpeningBalance + $totalQuantityReceived + $totalQuantityUtilized + $totalClosingBalance;
-            $totalArs[] = [$state->state_name, $totalCount];
+            $totalArs[] = [ucwords($state->state_name), $totalCount];
         }
         // End State wise Bar Graph
 

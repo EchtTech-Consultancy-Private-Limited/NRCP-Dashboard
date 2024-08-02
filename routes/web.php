@@ -19,6 +19,7 @@ use App\Http\Controllers\StateUser\StateController;
 use App\Http\Controllers\StateUser\FormController;
 use App\Http\Controllers\NationalStateListController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,6 +40,10 @@ Route::post('/login',[authController::class,'loginSubmit'])->middleware('device'
 Route::get('refresh_captcha',[authController::class, 'refreshCaptcha'])->name('refresh_captcha');
 
 Route::middleware(['Admin','device'])->group(function () {
+        //Profile Edit 
+        Route::get('/profile/view/', [ProfileController::class, 'getUserProfile'])->name('profile.edit');
+        Route::get('password/update/', [ProfileController::class, 'getUserPassword'])->name('password.update');
+        Route::post('change-password/{id}', [ProfileController::class, 'changePassword'])->name('change-password');
         Route::get('/logout',[authController::class,'logout'])->name('logout');
         // Admin Dashboard
         Route::middleware(['preventBackHistory'])->group(function () {

@@ -82,7 +82,7 @@
                                 <p>
                                     Email ID <span class="text-danger">*</span> 
 
-                                    <input type="email" name="email" value="{{ old('email') }}" class="w-100">
+                                    <input readonly type="email" name="email" value="{{ Auth::user()->email }}" class="w-100">
                                     @if ($errors->has('email'))
                                     <span class="form-text text-muted">{{ $errors->first('email') }}</span>
                                     @endif
