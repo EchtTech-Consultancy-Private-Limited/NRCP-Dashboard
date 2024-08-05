@@ -19,7 +19,7 @@
                     Dashboard</a>
             </div>
             <div
-                class="arrow arrow-right link bg-primary text-white dashboard-title {{ Request::segment(1) == 'general-laboratory' ? 'active' : '' }}">
+            class="arrow arrow-right link bg-primary text-white dashboard-title {{ Request::segment(1) == 'general-laboratory' || Request::segment(1) == 'general-edit' ? 'active' : '' }}">
                 <a href="{{ url('/general-laboratory') }}"> <i class="fa fa-list iconmargin-set" aria-hidden="true"></i>
                     General</a>
             </div>

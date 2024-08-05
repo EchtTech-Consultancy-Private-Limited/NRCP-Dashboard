@@ -80,7 +80,7 @@
                     <div class="col  search-reset">
                         <div class="apply-filter mt-4 pt-1">
                             <button type="submit" class="btn bg-primary search-patient-btn mr-3 mt-0">Save</button>
-                            <button type="reset" class="btn bg-danger">Reset</button>
+                            <button type="reset" class="btn bg-danger" onClick="window.location.reload();">Reset</button>
                         </div>
                     </div>
                 </div>

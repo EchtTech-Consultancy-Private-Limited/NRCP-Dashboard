@@ -17,8 +17,8 @@
                                 <option value="">Select Module</option>
                                 <option value='1'>General</option>
                                 <option value='2'>Quality</option>
-                                <option value='3'>Equipment</option>
-                                <option value='4'>Rabies</option>
+                                <option value='3'>Equipment's</option>
+                                <option value='4'>Rabies Test</option>
                                 <option value='5'>Finance</option>
                             </select>
                             @error('modulename')
