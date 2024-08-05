@@ -1123,4 +1123,14 @@ input[type=date]::placeholder {
 }
 .notifications .notification_dd li.show_all p:hover {
   text-decoration: underline;
+}
+
+.highcharts-label.highcharts-tooltip.highcharts-color-1 {
+  position: relative !important;
+  z-index: 9999999 !important;
+  background: white !important;
+}
+
+.highcharts-title {
+  z-index: 1 !important;
 }/*# sourceMappingURL=style.css.map */

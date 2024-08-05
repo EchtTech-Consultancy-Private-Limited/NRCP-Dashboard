@@ -1268,3 +1268,14 @@ input[type="date"]::placeholder {
   }
 
 }
+
+
+.highcharts-label.highcharts-tooltip.highcharts-color-1 {
+  position: relative !important;
+  z-index: 9999999 !important;
+  background: #ffff !important;
+}
+
+.highcharts-title {
+  z-index: 1 !important;
+}

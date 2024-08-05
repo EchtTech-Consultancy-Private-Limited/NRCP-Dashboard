@@ -48,8 +48,8 @@
                         @enderror
                     </div>
                     
-                    <div class="col-md-4">
-                        <label class="form-label" for="institute_name">Institute Name <span class="text-danger">*</span></label>
+                    <div class="col-md-4 mb-3">
+                        <label class="form-label" for="institute_name">Institute Name </label>
                         <select id="institute_name" class="form-control" name="institute_id">
                             <option value="">Select Institute Name</option>
                         </select>
@@ -81,8 +81,11 @@
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
                     </div>
+                    <div class="col-md-12 d-flex justify-content-center">
+
+                        <button type="submit" class="btn btn-primary w-auto">Save</button>
+                    </div>
                 </div>
-                <button type="submit" class="btn btn-primary">Save</button>
             </form>
         </div>
     </div>

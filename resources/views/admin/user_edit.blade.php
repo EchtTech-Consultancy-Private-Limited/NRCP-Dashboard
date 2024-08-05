@@ -48,7 +48,7 @@
                         @enderror
                     </div>
                     <div class="col-md-4">
-                        <label class="form-label" for="institute_name">Institute Name <span class="text-danger">*</span></label>
+                        <label class="form-label" for="institute_name">Institute Name </label>
                         <select id="institute_name" class="form-control" name="institute_id">
                             <option>Select Institute Name</option>
                             @foreach ($institutes as $institute)
