@@ -64,14 +64,7 @@
                                 Email ID:  <span class="td-value"> {{  @$stateUserLForm->email}}</span>
                             </p>
                         </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="emailBlock">
-                            <p>
-                                Aadhar Number:  <span class="td-value">  {{ @$stateUserLForm->aadhar_number }}</span>
-                            </p>
-                        </div>
-                    </div>
+                    </div>                   
                     <div class="col-md-3">
                         <div class="emailBlock">
                             <p>
@@ -90,6 +83,11 @@
                             <td rowspan="2" class="border-left-0">
                                 <p>
                                     <strong>S.No</strong>
+                                </p>
+                            </td>
+                            <td rowspan="2" class="border-left-0">
+                                <p>
+                                    <strong>Aadhar Number</strong>
                                 </p>
                             </td>
                             <td colspan="3">
@@ -200,6 +198,7 @@
                                 <input readonly type="hidden" name="l_form_count_id[]"
                                     value="{{ $statelFormCase->id }}">
                             </td>
+                            <td>{{ @$statelFormCase->aadhar_number }}</td>
                             <td>{{ @$statelFormCase->fname }}</td>
                             <td>{{ @$statelFormCase->mname }}</td>
                             <td>{{ @$statelFormCase->lname }}</td>
@@ -208,7 +207,7 @@
                             <td>{{ @$statelFormCase->contact_number }}</td>
                             <td>{{ @$statelFormCase->states->name }}</td>
                             <td>{{ @$statelFormCase->city->name }}</td>
-                            <td>{{@$statelFormCase->lform_subdistrict}}  </td>
+                            <td>{{ ucwords(@$statelFormCase->subCity->name) }}</td>
                             <td>{{ @$statelFormCase->lform_village }}</td>
                             <td>{{@$statelFormCase->lform_biting_animal}}  </td>
                             <td>{{@$statelFormCase->lform_speciman_type}} </td>

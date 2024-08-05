@@ -12,4 +12,5 @@ class State extends Model
     protected $fillable = [
         'state_name',
     ];
+
 }

@@ -67,3 +67,72 @@ $(".arrow-l1").click(function(){
     $(".hide-th1").toggleClass('d-none');
 });
 
+//For the monthly reports dog bite total
+$(document).on("input", ".dogbite", function() {
+    var sum = 0;
+    $(".dogbite").each(function(){
+        sum += +$(this).val();
+    });
+    $(".total_dog_bite").val(sum || "");
+});
+
+//For the monthly reports dog bite total
+$(document).on("input", ".animalbite", function() {
+    var sum = 0;
+    $(".animalbite").each(function(){
+        sum += +$(this).val();
+    });
+    $(".total_no_of_patients_bited").val(sum || "");
+});
+
+// 6.8 MRI Done field
+$(document).ready(function() {
+    $('.inputFields').hide();
+    $("input[name='MRI_brain_done']").change(function() {
+         var selected = $(this).val();
+         if(selected == 'yes'){
+            $('.inputFields').show();
+         }else{
+            $('.inputFields').hide();
+         }
+    });
+});
+
+// 6.8 MRI Done field
+$(document).ready(function() {
+    // $('.inputFields').hide();
+    $("input[name='MRI_brain_done']").change(function() {
+         var selected = $(this).val();
+         if(selected == 'yes'){
+            $('.inputFieldsEdit').show();
+         }else{
+            $('.inputFieldsEdit').hide();
+         }
+    });
+});
+
+
+// 6.6 Health Facility
+$(document).ready(function() {
+    $('.healthFacility').hide();
+    $("input[name='medical_help']").change(function() {
+         var selected = $(this).val();
+         if(selected == 'yes'){
+            $('.healthFacility').show();
+         }else{
+            $('.healthFacility').hide();
+         }
+    });
+});
+
+// 6.6 Health Facility Edit
+$(document).ready(function() {
+    $("input[name='medical_help']").change(function() {
+         var selected = $(this).val();
+         if(selected == 'yes'){
+            $('.healthFacilityEdit').show();
+         }else{
+            $('.healthFacilityEdit').hide();
+         }
+    });
+});

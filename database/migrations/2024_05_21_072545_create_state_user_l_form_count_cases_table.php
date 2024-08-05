@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('fname')->nullable();
             $table->string('mname')->nullable();
             $table->string('lname')->nullable();
+            $table->string('aadhar_number')->nullable();
             $table->string('age')->nullable();
             $table->string('sex')->nullable();
             $table->string('contact_number')->nullable();

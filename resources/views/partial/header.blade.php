@@ -55,8 +55,87 @@
                     </div>
                 </div> --}}
                 <li class="nav-item">
-                    <a class="nav-link" data-widget="fullscreen" href="#" role="button">
-                        <i class="fas fa-expand-arrows-alt"></i>
+                <div class="notifications" id="notification-card">
+                    <div class="icon_wrap"><i class="fa fa-bell text-white"></i></div>
+                    
+                    <div class="notification_dd">
+                        <ul class="notification_ul">
+                            <li class="starbucks success">                               
+                                <div class="notify_data">
+                                    <div class="title">
+                                        Lorem, ipsum dolor.
+                                    </div>
+                                    <div class="sub_title">
+                                    Lorem ipsum dolor sit amet consectetur.
+                                </div>
+                                </div>
+                                <div class="notify_status">
+                                    <p>Success</p>  
+                                </div>
+                            </li>  
+                            <li class="baskin_robbins failed">                                
+                                <div class="notify_data">
+                                    <div class="title">
+                                        Lorem, ipsum dolor.  
+                                    </div>
+                                    <div class="sub_title">
+                                    Lorem ipsum dolor sit amet consectetur.
+                                </div>
+                                </div>
+                                <div class="notify_status">
+                                    <p>Failed</p>  
+                                </div>
+                            </li> 
+                            <li class="mcd success">                               
+                                <div class="notify_data">
+                                    <div class="title">
+                                        Lorem, ipsum dolor.  
+                                    </div>
+                                    <div class="sub_title">
+                                    Lorem ipsum dolor sit amet consectetur.
+                                </div>
+                                </div>
+                                <div class="notify_status">
+                                    <p>Success</p>  
+                                </div>
+                            </li>  
+                            <li class="pizzahut failed">                               
+                                <div class="notify_data">
+                                    <div class="title">
+                                        Lorem, ipsum dolor.  
+                                    </div>
+                                    <div class="sub_title">
+                                    Lorem ipsum dolor sit amet consectetur.
+                                </div>
+                                </div>
+                                <div class="notify_status">
+                                    <p>Failed</p>  
+                                </div>
+                            </li> 
+                            <li class="kfc success">                                
+                                <div class="notify_data">
+                                    <div class="title">
+                                        Lorem, ipsum dolor.  
+                                    </div>
+                                    <div class="sub_title">
+                                    Lorem ipsum dolor sit amet consectetur.
+                                </div>
+                                </div>
+                                <div class="notify_status">
+                                    <p>Success</p>  
+                                </div>
+                            </li> 
+                            <li class="show_all">
+                                <p class="link">Show All Notification</p>
+                            </li> 
+                        </ul>
+                    </div>
+                    
+                </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" data-widget="fullscreen" href="#" role="button">
+                        <i class="fa fa-arrows-alt"></i>
                     </a>
                 </li>
 
@@ -69,10 +148,11 @@
 
                         <div class="dropdown-menu" aria-labelledby="profile">
                             <ul>
-                            <li> <a class="dropdown-item" href="#"><i class="fa fa-cog" aria-hidden="true"></i> Account Setting</a> </li>
-                            <li> <a class="dropdown-item" href="#"><i class="fa fa-lock"></i> Change Password</a> </li>
-                            <li> <a class="dropdown-item" onclick="return confirm('Are you sure you want to logout?')"
-                             href="{{ url('logout') }}" role="button">   <i class="fa fa-power-off"></i> Logout </a> </li>
+                                <li class="text-center">{{ Auth::user()->email }}</li>
+                                <li> <a class="dropdown-item" href="{{route('profile.edit')}}"><i class="fa fa-user" aria-hidden="true"></i>My Profile</a> </li>
+                                <li> <a class="dropdown-item" href="{{route('password.update')}}"><i class="fa fa-lock" aria-hidden="true"></i>Change Password</a> </li>
+                                <li> <a class="dropdown-item" onclick="return confirm('Are you sure you want to logout?')"
+                                href="{{ url('logout') }}" role="button">   <i class="fa fa-power-off"></i> Logout </a> </li>
                             </ul>
                            
                         </div>

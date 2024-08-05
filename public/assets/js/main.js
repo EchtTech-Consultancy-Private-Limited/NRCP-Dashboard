@@ -156,7 +156,7 @@ function addMore3() {
         <td></td>
         <td><input type="text" name="laboratory_specific_test[test_performed][]"></td>
         <td><input type="text" name="laboratory_specific_test[Hospital_lab][]"></td>
-        <td><input type="text" name="laboratory_specific_test[specific_test_date][]"></td>
+        <td><input type="date" name="laboratory_specific_test[specific_test_date][]"></td>
         <td><input type="text" name="laboratory_specific_test[result][]"></td>
         <td><input type="text" name="laboratory_specific_test[comment][]"></td>
         <td>
@@ -192,8 +192,8 @@ function addMore4() {
     // Create a table row
     let create_tr = $('<tr>').append(`
         <td></td>
-        <td class="bggrey"><input type="text" name="animal_suspected_transmitting[transmitting_rabies_name_address][]"></td>
-        <td class="bggrey"><input type="text" name="animal_suspected_transmitting[transmitting_rabies_relation][]"></td>
+        <td><input type="text" name="animal_suspected_transmitting[transmitting_rabies_name_address][]"></td>
+        <td><input type="text" name="animal_suspected_transmitting[transmitting_rabies_relation][]"></td>
         <td class="">
             <a role="button" class="btn btn-danger remove-table-row float-right">
                 <i class="fa fa-trash" aria-hidden="true"></i>
@@ -263,6 +263,16 @@ $("input[type='radio']").change(function() {
     }
 });
 
+
+$("#notification-card").click(function(){
+    $(this).toggleClass("active");    
+  });
+
+$(".content-wrapper").click(function(){
+    $("#notification-card.active").removeClass("active");    
+  });
+
+
 // 8.2 add more button 
 let contact_with_patient_checkbox = $('.contact_with_patient_checkbox');
 
@@ -277,9 +287,9 @@ contact_with_patient_checkbox.on("change", function() {
         // Create a table row with a unique identifier
         let create_tr = $('<tr>').addClass(`row-${id}`).append(`
             <td>${contact_with_patient_value}</td>
-            <td class="bggrey"><input type="text" name="${contact_with_patient_value}[relation_with_${contact_with_patient_value}_name]"></td>
-            <td class="bggrey"><input type="text" name="${contact_with_patient_value}[relation_with_${contact_with_patient_value}_address]"></td>
-            <td class="bggrey"><input type="text" name="${contact_with_patient_value}[relation_with_${contact_with_patient_value}_contact_number]"></td>
+            <td><input type="text" name="${contact_with_patient_value}[relation_with_${contact_with_patient_value}_name]"></td>
+            <td><input type="text" name="${contact_with_patient_value}[relation_with_${contact_with_patient_value}_address]"></td>
+            <td><input type="text" name="${contact_with_patient_value}[relation_with_${contact_with_patient_value}_contact_number]"></td>
         `);
 
         // Append the table row to the table
@@ -473,5 +483,3 @@ $(document).ready(function(){
 function confirmDelete() {
     return confirm('Are you sure you want to delete this report?');
 }
-
-

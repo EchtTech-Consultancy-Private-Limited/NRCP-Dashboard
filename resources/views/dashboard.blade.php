@@ -26,162 +26,6 @@
                                 <!-- <form action="#" method="post" class="myForm"> -->
                                 <!-- @csrf -->
 
-                                <div class="dashboard-filter mb-4" id="dashboard-filter">
-                                    <div class="row">
-                                        <div class="dashboard-col">
-                                            <div class="form-group">
-                                                <label for="state">State<span class="star"></span></label>
-                                                <select class="form-select state click-function"
-                                                    aria-label="Default select example" id="state" name="state_name"
-                                                    onChange="handleFilterValue();handleDistrict()">
-                                                    <option selected state-name=""> Select
-                                                        State
-                                                    </option>
-                                                    @foreach (state_list() as $state)
-                                                    <option value="{{ $state->state_name }}"
-                                                        state-name="{{ ucfirst($state->state_name) }}"
-                                                        state-id="{{ $state->id }}">
-                                                        {{ ucfirst($state->state_name) ?? '' }}
-                                                    </option>
-                                                    @endforeach
-                                                </select>
-                                                <small id="state-error" class="form-text text-muted">
-                                                </small>
-                                            </div>
-                                        </div>
-                                        <div class="dashboard-col">
-                                            <div class="form-group">
-                                                <label for="district">District<span class="star"></span></label>
-                                                <select class="form-select click-function"
-                                                    aria-label="Default select example" id="district"
-                                                    name="district_name" onChange="handleFilterValue()">
-                                                    <option dist-name="">Select District </option>
-                                                </select>
-                                                <small id="district-error" class="form-text text-muted">
-                                                </small>
-                                            </div>
-                                        </div>
-                                        <div class=" dashboard-col">
-                                            <div class="form-group">
-                                                <label for="fromYear">From Year<span class="star"></span></label>
-                                                <select class="form-select p-1 year click-function" name="year"
-                                                    aria-label="Default select example" id="year" required=""
-                                                    onChange="handleFilterValue()">
-                                                    <option>Select Year</option>
-                                                    <?php
-                                                        $currentYear = date('Y');
-                                                        for ($year = 2015; $year <= $currentYear; $year++) {
-                                                            echo "<option value='$year'>$year</option>";
-                                                        }
-                                                        ?>
-                                                </select>
-                                                <!-- <span class="calender"><i class="fa fa-calendar" aria-hidden="true"></i>
-                                                    </span> -->
-                                                <small id="fromYear-error" class="form-text text-muted">
-                                                </small>
-                                            </div>
-                                        </div>
-
-                                        <div class=" dashboard-col">
-                                            <div class="form-group">
-                                                <label for="toYear">To Year<span class="star"></span></label>
-                                                <select class="form-select p-1 year click-function" name="toYear"
-                                                    aria-label="To Year" id="yearto" onChange="handleFilterValue()">
-                                                    <option>Select Year</option>
-                                                </select>
-                                                <!-- <span class="calender"><i class="fa fa-calendar" aria-hidden="true"></i>
-                                                    </span> -->
-                                                <small id="toYear-error" class="form-text text-muted"></small>
-                                            </div>
-                                        </div>
-                                        <div class="dashboard-col">
-                                            <div class="form-group">
-                                                <label for="formType">Form Type<span class="star"></span></label>
-                                                <select class="form-select " aria-label="Default select example"
-                                                    id="formType" onChange="handleFormType()">
-                                                    <option value=""> Select Form Type
-                                                    </option>
-                                                    <option value="1" form-type="l-form">L Form</option>
-                                                    <option value="2" form-type="p-form">P Form</option>
-                                                    {{-- <option value="3" form-type="s-form">S Form</option> --}}
-                                                </select>
-                                                <small id="formType-error" class="form-text text-muted">
-                                                </small>
-                                            </div>
-                                        </div>
-                                        <div class="dashboard-col">
-                                            <div class="form-group mb-0">
-                                                <label for="diseasesSyndromes">Diseases Syndromes<span
-                                                        class="star"></span></label>
-                                                <select class="form-select" aria-label="Default select example"
-                                                    id="diseasesSyndromes" onChange="handleFilterValue()">
-                                                    <option value="selected"> Select Diseases Syndromes
-                                                    </option>
-                                                    <option value='human_rabies'>Human Rabies</option>
-                                                    <option value='animal_bite'>Animal Bite - Dog Bite</option>
-                                                </select>
-                                                <small id="diseasesSyndromes-error" class="form-text text-muted">
-                                                </small>
-                                            </div>
-                                        </div>
-                                        <div class="col search-reset justify-content-center">
-                                            <div class=" apply-filter text-center">
-                                                <button id="apply_filter"
-                                                    class="btn  bg-primary text-light apply-filter button border-0 mr-2">Search</button>
-
-                                            </div>
-
-                                            <input type="hidden" value="" id="filter_state">
-                                            <input type="hidden" value="" id="filter_district">
-                                            <input type="hidden" value="2022" id="filter_from_year">
-                                            <input type="hidden" value="" id="filter_to_year">
-                                            <input type="hidden" value="2" id="filter_form_type">
-                                            <input type="hidden" value="" id="filter_diseases">
-                                            <input type="hidden" value="0" id="session_value">
-                                            <input type="hidden" value="" id="is_graph_data_available">
-                                            <!-- </form> -->
-                                            <div class=" apply-filter">
-                                                <!-- <label for=""><span class="star"></span></label> -->
-                                                <button id="reset_button"
-                                                    class="btn bg-danger border-0 text-light apply-filter text-white ">Reset</button>
-
-                                            </div>
-                                        </div>
-
-                                        <div class="col-lg-12 col-md-2 col-4" id="test_performed">
-                                            <div class="form-group">
-                                                <label for="testPerformed" class="d-block">Test Performed<span
-                                                        class="star">*</span></label>
-                                                <select class="form-control" name="test_performed" id="mySelect2"
-                                                    multiple="multiple" aria-label="Default select"
-                                                    onKeyPress="handleTest(event)">
-                                                    <!-- <option value="" selected>--All--</option> -->
-                                                    <option name="test-performed" value="direct_fat_post">Direct
-                                                        FAT
-                                                        (Postmortem)</option>
-                                                    <option name="test-performed" value="direct_fat_skin">Direct
-                                                        FAT
-                                                        (Skin Biopsy- Antemortem)</option>
-                                                    <option name="test-performed" value="virus_isolation">Virus
-                                                        Isolation by Cell Culture</option>
-                                                    <option name="test-performed" value="ag_capture">Ag Capture
-                                                        ELISA
-                                                        (Post Mortem)</option>
-                                                    <option name="test-performed" value="rabies_rt">Rabies RT-PCR
-                                                    </option>
-                                                    <option name="test-performed" value="rffit">RFFIT- rabies
-                                                        virus
-                                                        neutralising antibody (RVNA) titres</option>
-                                                </select>
-                                                <small id="testPerformed-error" class="form-text text-muted">
-                                                </small>
-                                            </div>
-                                        </div>
-
-
-                                    </div>
-                                </div>
-
                                 <div class="">
                                     <div class="row card-mm mt-3">
                                         <div class="col-md-2 col-md-n">
@@ -189,7 +33,7 @@
                                                 <div class="crm_body">
                                                     <h4 id="national-giaReceivedTotal">{{$total->sum_total_health_animal}}</h4>
                                                     <p>Total No. of Health Facilities Providing Animal Bite Management
-                                                        in The State </p>
+                                                        in The State</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -206,8 +50,8 @@
                                         <div class="col-md-2 col-md-n">
                                             <div class="single_crm border-line-3 p-0 dashboard-card mb-4">
                                                 <div class="crm_body">
-                                                    <h4 id="national-totalBalanceTotal">{{$total->total_patients}}</h4>
-                                                    <p>Total No. of Patients</p>
+                                                    <h4 id="national-totalBalanceTotal">{{$total->total_patients}} / {{@$total->total_dog_bite}}</h4>
+                                                    <p>Total No. of Patients / Total No. of Dog Bite</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -237,9 +81,7 @@
                                             </div>
                                         </div>
                                     </div>
-
                                 </div>
-
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="dashboard-filter mb-4 bg-yellow-color">
@@ -464,7 +306,161 @@
                                 </div>
                                 <!-- State wise availability of ARV / ARS end -->   
                                 <!-- National Dashboard: Report Generate end -->
-                                
+                                <div class="dashboard-filter mb-4" id="dashboard-filter">
+                                    <div class="row">
+                                        <div class="dashboard-col">
+                                            <div class="form-group">
+                                                <label for="state">State<span class="star"></span></label>
+                                                <select class="form-select state click-function"
+                                                    aria-label="Default select example" id="state" name="state_name"
+                                                    onChange="handleFilterValue();handleDistrict()">
+                                                    <option selected state-name=""> Select
+                                                        State
+                                                    </option>
+                                                    @foreach (state_list() as $state)
+                                                    <option value="{{ $state->state_name }}"
+                                                        state-name="{{ ucfirst($state->state_name) }}"
+                                                        state-id="{{ $state->id }}">
+                                                        {{ ucfirst($state->state_name) ?? '' }}
+                                                    </option>
+                                                    @endforeach
+                                                </select>
+                                                <small id="state-error" class="form-text text-muted">
+                                                </small>
+                                            </div>
+                                        </div>
+                                        <div class="dashboard-col">
+                                            <div class="form-group">
+                                                <label for="district">District<span class="star"></span></label>
+                                                <select class="form-select click-function"
+                                                    aria-label="Default select example" id="district"
+                                                    name="district_name" onChange="handleFilterValue()">
+                                                    <option dist-name="">Select District </option>
+                                                </select>
+                                                <small id="district-error" class="form-text text-muted">
+                                                </small>
+                                            </div>
+                                        </div>
+                                        <div class=" dashboard-col">
+                                            <div class="form-group">
+                                                <label for="fromYear">From Year<span class="star"></span></label>
+                                                <select class="form-select p-1 year click-function" name="year"
+                                                    aria-label="Default select example" id="year" required=""
+                                                    onChange="handleFilterValue()">
+                                                    <option>Select Year</option>
+                                                    <?php
+                                                        $currentYear = date('Y');
+                                                        for ($year = 2015; $year <= $currentYear; $year++) {
+                                                            echo "<option value='$year'>$year</option>";
+                                                        }
+                                                        ?>
+                                                </select>
+                                                <!-- <span class="calender"><i class="fa fa-calendar" aria-hidden="true"></i>
+                                                    </span> -->
+                                                <small id="fromYear-error" class="form-text text-muted">
+                                                </small>
+                                            </div>
+                                        </div>
+
+                                        <div class=" dashboard-col">
+                                            <div class="form-group">
+                                                <label for="toYear">To Year<span class="star"></span></label>
+                                                <select class="form-select p-1 year click-function" name="toYear"
+                                                    aria-label="To Year" id="yearto" onChange="handleFilterValue()">
+                                                    <option>Select Year</option>
+                                                </select>
+                                                <!-- <span class="calender"><i class="fa fa-calendar" aria-hidden="true"></i>
+                                                    </span> -->
+                                                <small id="toYear-error" class="form-text text-muted"></small>
+                                            </div>
+                                        </div>
+                                        <div class="dashboard-col">
+                                            <div class="form-group">
+                                                <label for="formType">Form Type<span class="star"></span></label>
+                                                <select class="form-select " aria-label="Default select example"
+                                                    id="formType" onChange="handleFormType()">
+                                                    <option value=""> Select Form Type
+                                                    </option>
+                                                    <option value="1" form-type="l-form">L Form</option>
+                                                    <option value="2" form-type="p-form">P Form</option>
+                                                    {{-- <option value="3" form-type="s-form">S Form</option> --}}
+                                                </select>
+                                                <small id="formType-error" class="form-text text-muted">
+                                                </small>
+                                            </div>
+                                        </div>
+                                        <div class="dashboard-col">
+                                            <div class="form-group mb-0">
+                                                <label for="diseasesSyndromes">Diseases Syndromes<span
+                                                        class="star"></span></label>
+                                                <select class="form-select" aria-label="Default select example"
+                                                    id="diseasesSyndromes" onChange="handleFilterValue()">
+                                                    <option value="selected"> Select Diseases Syndromes
+                                                    </option>
+                                                    <option value='human_rabies'>Human Rabies</option>
+                                                    <option value='animal_bite'>Animal Bite - Dog Bite</option>
+                                                </select>
+                                                <small id="diseasesSyndromes-error" class="form-text text-muted">
+                                                </small>
+                                            </div>
+                                        </div>
+                                        <div class="col search-reset justify-content-center">
+                                            <div class=" apply-filter text-center">
+                                                <button id="apply_filter"
+                                                    class="btn  bg-primary text-light apply-filter button border-0 mr-2">Search</button>
+
+                                            </div>
+
+                                            <input type="hidden" value="" id="filter_state">
+                                            <input type="hidden" value="" id="filter_district">
+                                            <input type="hidden" value="2022" id="filter_from_year">
+                                            <input type="hidden" value="" id="filter_to_year">
+                                            <input type="hidden" value="2" id="filter_form_type">
+                                            <input type="hidden" value="" id="filter_diseases">
+                                            <input type="hidden" value="0" id="session_value">
+                                            <input type="hidden" value="" id="is_graph_data_available">
+                                            <!-- </form> -->
+                                            <div class=" apply-filter">
+                                                <!-- <label for=""><span class="star"></span></label> -->
+                                                <button id="reset_button"
+                                                    class="btn bg-danger border-0 text-light apply-filter text-white ">Reset</button>
+
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-12 col-md-2 col-4" id="test_performed">
+                                            <div class="form-group">
+                                                <label for="testPerformed" class="d-block">Test Performed<span
+                                                        class="star">*</span></label>
+                                                <select class="form-control" name="test_performed" id="mySelect2"
+                                                    multiple="multiple" aria-label="Default select"
+                                                    onKeyPress="handleTest(event)">
+                                                    <!-- <option value="" selected>--All--</option> -->
+                                                    <option name="test-performed" value="direct_fat_post">Direct
+                                                        FAT
+                                                        (Postmortem)</option>
+                                                    <option name="test-performed" value="direct_fat_skin">Direct
+                                                        FAT
+                                                        (Skin Biopsy- Antemortem)</option>
+                                                    <option name="test-performed" value="virus_isolation">Virus
+                                                        Isolation by Cell Culture</option>
+                                                    <option name="test-performed" value="ag_capture">Ag Capture
+                                                        ELISA
+                                                        (Post Mortem)</option>
+                                                    <option name="test-performed" value="rabies_rt">Rabies RT-PCR
+                                                    </option>
+                                                    <option name="test-performed" value="rffit">RFFIT- rabies
+                                                        virus
+                                                        neutralising antibody (RVNA) titres</option>
+                                                </select>
+                                                <small id="testPerformed-error" class="form-text text-muted">
+                                                </small>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                </div>
 
 
                                 <!-- /.row -->

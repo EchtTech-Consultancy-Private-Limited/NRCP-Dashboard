@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\InvestigartionReportRequest;
 use App\Models\InvestigateReport;
+use Illuminate\Support\Facades\Auth;
 
 class InvestigationController extends Controller
 {    
@@ -27,13 +28,14 @@ class InvestigationController extends Controller
      * @return void
      */
     public function store(InvestigartionReportRequest $request)
-    {
+    {  
         try {
             DB::beginTransaction();
             
             $investigateReport = new InvestigateReport();
             $investigateReport->fill($request->all());
-            $investigateReport->save();            
+            $investigateReport->user_id = Auth::id();
+            $investigateReport->save();
             DB::commit();
             return redirect()->route('state.investigate-report-list')->with('message', 'Investigate report created successfully');
         } catch (\Exception $e) {
@@ -49,7 +51,7 @@ class InvestigationController extends Controller
      */
     public function list()
     {
-        $investigateReports = InvestigateReport::orderBy('id', 'desc')->get();
+        $investigateReports = InvestigateReport::where('user_id',Auth::id())->orderBy('id', 'desc')->get();
         return view('state-user.investigation.investigate-report-list',compact('investigateReports'));
     }
 }

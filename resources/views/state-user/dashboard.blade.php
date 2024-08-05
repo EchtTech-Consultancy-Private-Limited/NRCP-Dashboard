@@ -6,7 +6,7 @@
 <div class="container-fluid state-user-dashboard dashboard mt-4">
 
     <div class="dashboard-filter mb-4">
-        <div class="row mb-4">
+        <div class="row mb-3">
             <div class="col-md-4">
                 <div class="form-group">
                     <label for="state" class="mr-3 text-nowrap ">State <span class="star">*</span></label>
@@ -231,8 +231,7 @@
                     <div class="d-inline-block ml-2">
                         <span id="rabiestext3" class="">Total No. of L Form </span>
                         <br><span id="rabiesbox3" class="case-title">
-                            <!-- {{ @$LForm }} -->
-                            5
+                            {{ @$lForm }}
                         </span>
                     </div>
                 </div>

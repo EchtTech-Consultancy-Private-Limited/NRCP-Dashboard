@@ -57,7 +57,7 @@
                         <td colspan="5">
                             <p>Name of interviewer</p>
                         </td>
-                        <td colspan="18" class="bggrey">
+                        <td colspan="18" class="">
                             <input type="text" name="interviewer_name" value="{{ old('interviewer_name', $investigateReport->interviewer_name) }}">
                             @if ($errors->has('interviewer_name'))
                                 <span class="form-text text-muted">{{ $errors->first('interviewer_name') }}</span>
@@ -66,7 +66,7 @@
                         <td colspan="10">
                             <p>Date of Interview</p>
                         </td>
-                        <td colspan="5" class="bggrey">
+                        <td colspan="5" class="">
                             <input name="interview_date" value="{{ old('interview_date', $investigateReport->interview_date) }}" type="date">
                             @if ($errors->has('interview_date'))
                                 <span class="form-text text-muted">{{ $errors->first('interview_date') }}</span>
@@ -77,7 +77,7 @@
                         <td colspan="5">
                             <p>Designation</p>
                         </td>
-                        <td colspan="18" class="bggrey">
+                        <td colspan="18" class="">
                             <input name="interviewer_designation" value="{{ old('interviewer_designation', $investigateReport->interviewer_designation) }}" type="text">
                             @if ($errors->has('interviewer_designation'))
                                 <span class="form-text text-muted">{{ $errors->first('interviewer_designation') }}</span>
@@ -86,7 +86,7 @@
                         <td colspan="10">
                             <p>Contact number</p>
                         </td>
-                        <td colspan="5" class="bggrey">
+                        <td colspan="5" class="">
                             <input name="interviewer_contact_number" value="{{ old('interviewer_contact_number', $investigateReport->interviewer_contact_number) }}" type="text" oninput="validateInput(this)" maxlength="12">
                             @if ($errors->has('interviewer_contact_number'))
                                 <span class="form-text text-muted">{{ $errors->first('interviewer_contact_number') }}</span>
@@ -104,13 +104,13 @@
                         <td colspan="2">
                             <p>&nbsp;Name</p>
                         </td>
-                        <td colspan="15" class="bggrey">
+                        <td colspan="15" class="">
                             <input name="suspected_name" type="text" value="{{ old('suspected_name', $investigateReport->suspected_name) }}">
                         </td>
                         <td colspan="4">
                             <p>&nbsp;Sex</p>
                         </td>
-                        <td colspan="9" class="bggrey">
+                        <td colspan="9" class="">
                             <select class="form-select" name="suspected_gender" aria-label="Default select example" id="gender">
                                 <option value=""> Select Gender</option> 
                                 @if(old('suspected_gender')) 
@@ -125,7 +125,7 @@
                         <td colspan="7">
                             <p>&nbsp;Age</p>
                         </td>
-                        <td class="bggrey">
+                        <td class="">
                             <input type="text" name="suspect_age" value="{{ old('suspect_age', $investigateReport->suspect_age) }}" maxlength="2" oninput="validateInput(this)">
                         </td>
                     </tr>
@@ -133,13 +133,13 @@
                         <td colspan="2">
                             <p>Occupation</p>
                         </td>
-                        <td colspan="11" class="bggrey">
+                        <td colspan="11" class="">
                             <input type="text" name="suspect_occupation" value="{{ old('suspect_occupation', $investigateReport->suspect_occupation) }}">
                         </td>
                         <td colspan="4">
                             <p>Address</p>
                         </td>
-                        <td colspan="21" class="bggrey">
+                        <td colspan="21" class="">
                             <input name="suspect_address" type="text" value="{{ old('suspect_address', $investigateReport->suspect_address) }}">
                         </td>
                     </tr>
@@ -147,38 +147,38 @@
                         <td colspan="7">
                             <p>Level of education</p>
                         </td>
-                        <td colspan="10">
-                            <input type="text" name="suspect_education[level1]" value="{{ old('suspect_education',$investigateReport->suspect_education)['level1'] ?? '' ?? '' }}">
+                        {{-- <td colspan="10">
+                            <input type="text" name="suspect_education[level1]" value="{{ old('suspect_education')['level1'] ?? '' ?? '' }}">
                         </td>
                         <td colspan="13">
-                            <input type="text" name="suspect_education[level2]" value="{{ old('suspect_education',$investigateReport->suspect_education)['level2'] ?? '' ?? '' }}">
-                        </td>
-                        <td colspan="8">
-                            <input type="text" name="suspect_education[level3]" value="{{ old('suspect_education',$investigateReport->suspect_education)['level3'] ?? '' ?? '' }}">
+                            <input type="text" name="suspect_education[level2]" value="{{ old('suspect_education')['level2'] ?? '' ?? '' }}">
+                        </td> --}}
+                        <td colspan="40">
+                            {{-- <input type="text" name="suspect_education[level3]" value="{{ old('suspect_education')['level3'] ?? '' ?? '' }}"> --}}
                         </td>
                     </tr>
-                    <tr>
+                    <tr> 
                         <td colspan="7">
-                            <p>
-                                <input type="checkbox" id="Illiterate" name="suspect_education[Illiterate]" value="Illiterate" {{ old('suspect_education.Illiterate',$investigateReport->suspect_education) ? 'checked' : '' }}>
+                            <p> 
+                                <input type="radio" id="Illiterate" name="suspect_education[education]" value="Illiterate" {{ old('suspect_education.education', old('suspect_education.education', @$investigateReport->suspect_education['education'])) == 'Illiterate' ? 'checked' : '' }}>
                                 <label for="Illiterate">Illiterate</label>
                             </p>
                         </td>
                         <td colspan="15">
                             <p>
-                                <input type="checkbox" id="PrimarySchool" name="suspect_education[primary_school]" value="Primary School" {{ old('suspect_education.primary_school',$investigateReport->suspect_education) ? 'checked' : '' }}>
+                                <input type="radio" id="PrimarySchool" name="suspect_education[education]" value="Primary School" {{ old('suspect_education.education', @$investigateReport->suspect_education['education']) == 'Primary School' ? 'checked' : '' }}>
                                 <label for="PrimarySchool">Primary School</label>
                             </p>
                         </td>
                         <td colspan="9">
                             <p>
-                                <input type="checkbox" id="Graduate" name="suspect_education[graduate]" value="Graduate" {{ old('suspect_education.graduate',$investigateReport->suspect_education) ? 'checked' : '' }}>
+                                <input type="radio" id="Graduate" name="suspect_education[education]" value="Graduate" {{ old('suspect_education.education', @$investigateReport->suspect_education['education']) == 'Graduate' ? 'checked' : '' }}>
                                 <label for="Graduate">Graduate</label>
                             </p>
                         </td>
                         <td colspan="7">
                             <p>
-                                <input type="checkbox" id="ProfessionalDegree" name="suspect_education[professional_dgree]" value="Professional Degree" {{ old('suspect_education.professional_dgree',$investigateReport->suspect_education) ? 'checked' : '' }}>
+                                <input type="radio" id="ProfessionalDegree" name="suspect_education[education]" value="Professional Degree" {{ old('suspect_education.education', @$investigateReport->suspect_education['education']) == 'Professional Degree' ? 'checked' : '' }}>
                                 <label for="ProfessionalDegree">Professional Degree</label>
                             </p>
                         </td>
@@ -186,44 +186,44 @@
                     <tr>
                         <td colspan="7">
                             <p>
-                                <input type="checkbox" id="BelowPrimary" value="Below Primary" name="suspect_education[below_primary]" aria-valuemax="Below Primary" {{ old('suspect_education.below_primary',$investigateReport->suspect_education) ? 'checked' : '' }}>
-                                <label for="BelowPrimary"> Below Primary</label>
+                                <input type="radio" id="BelowPrimary" name="suspect_education[education]" value="Below Primary" {{ old('suspect_education.education', @$investigateReport->suspect_education['education']) == 'Below Primary' ? 'checked' : '' }}>
+                                <label for="BelowPrimary">Below Primary</label>
                             </p>
                         </td>
                         <td colspan="15">
                             <p>
-                                <input type="checkbox" id="SecondarySchool" name="suspect_education[secondary_school]" value="Secondary School" {{ old('suspect_education.secondary_school',$investigateReport->suspect_education) ? 'checked' : '' }}>
-                                <label for="SecondarySchool"> Secondary School</label>
+                                <input type="radio" id="SecondarySchool" name="suspect_education[education]" value="Secondary School" {{ old('suspect_education.education', @$investigateReport->suspect_education['education']) == 'Secondary School' ? 'checked' : '' }}>
+                                <label for="SecondarySchool">Secondary School</label>
                             </p>
                         </td>
                         <td colspan="9">
                             <p>
-                                <input type="checkbox" name="suspect_education[postgraduate]" value="Postgraduate" {{ old('suspect_education.postgraduate',$investigateReport->suspect_education) ? 'checked' : '' }}>
-                                <label for="Postgraduate"> Postgraduate</label>
+                                <input type="radio" id="Postgraduate" name="suspect_education[education]" value="Postgraduate" {{ old('suspect_education.education', @$investigateReport->suspect_education['education']) == 'Postgraduate' ? 'checked' : '' }}>
+                                <label for="Postgraduate">Postgraduate</label>
                             </p>
                         </td>
                         <td colspan="7">
                             <p>
-                                <input type="checkbox" id="Unknown" name="suspect_education[unknown]" value="Unknown" {{ old('suspect_education.unknown',$investigateReport->suspect_education) ? 'checked' : '' }}>
-                                <label for="Unknown">    Unknown</label>
+                                <input type="radio" id="Unknown" name="suspect_education[education]" value="Unknown" {{ old('suspect_education.education', @$investigateReport->suspect_education['education']) == 'Unknown' ? 'checked' : '' }}>
+                                <label for="Unknown">Unknown</label>
                             </p>
                         </td>
                     </tr>
                     <tr>
                         <td colspan="7">
                             <p>
-                                <input type="checkbox" name="suspect_education[other]" value="Other(Specify)" {{ old('suspect_education.other',$investigateReport->suspect_education) ? 'checked' : '' }}>
+                                <input type="radio" name="suspect_education[education]" value="Other(Specify)" {{ old('suspect_education.education', @$investigateReport->suspect_education['education']) == 'Other(Specify)' ? 'checked' : '' }}>
                                 <label for="Other(Specify)">Other (Specify)</label>
                             </p>
                         </td>
-                        <td colspan="31" class="bggrey">
-                            <input type="text" name="suspect_education[other_specify_text]" value="{{ old('suspect_education.other_specify_text',$investigateReport->suspect_education['other_specify_text']) }}">
+                        <td colspan="31" class="">
+                            <input type="text" name="suspect_education[other_specify_text]" value="{{ old('suspect_education.other_specify_text', @$investigateReport->suspect_education['other_specify_text']) }}">
                         </td>
                     </tr>
                     <tr>
                         <td colspan="38">
                             <p>Is/was patient immunocompromised? (if yes, provide details) 
-                                <input type="text" name="suspect_education[details]" value="{{ old('suspect_education.details',$investigateReport->suspect_education['details']) }}"></p>
+                                <input type="text" name="suspect_education[details]" value="{{ old('suspect_education.details', @$investigateReport->suspect_education['details']) }}"></p>
                             </p>
                         </td>
                     </tr>
@@ -411,79 +411,79 @@
                     </tr>
                     <tr>
                         <td colspan="38">
-                            <p>4.1 What was the species of animal</p>
-                            <input type="text" name="animal_species[text]" value="{{ old('animal_species.text',$investigateReport->animal_species['text']) }}">
+                            <p>4.1 What was the species of animal</p> 
+                            <input type="text" name="animal_species[text]" value="{{ old('animal_species.text', $investigateReport->animal_species['text']) }}">
                         </td>
                     </tr>
                     <tr>
                         <td>
                             <p>
-                                <input type="checkbox" name="animal_species[dog]" {{ old('animal_species.dog',$investigateReport->animal_species) ? 'checked' : '' }}>
+                                <input type="radio" class="animalsingleselect" value="Dog" name="animal_species[animals]" {{ old('animal_species.animals', @$investigateReport->animal_species['animals']) == 'Dog' ? 'checked' : '' }}>
                                 <label for="Dog1">Dog</label>
                             </p>
                         </td>
                         <td colspan="5">
                             <p>
-                                <input type="checkbox" name="animal_species[cat]" {{ old('animal_species.cat',$investigateReport->animal_species) ? 'checked' : '' }}>
+                                <input type="radio" class="animalsingleselect" value="Cat" name="animal_species[animals]" {{ old('animal_species.animals', @$investigateReport->animal_species['animals']) == 'Cat' ? 'checked' : '' }}>
                                 <label for="Cat1">Cat</label>
                             </p>
                         </td>
                         <td colspan="5">
                             <p>
-                                <input type="checkbox" name="animal_species[cattle]" {{ old('animal_species.cattle',$investigateReport->animal_species) ? 'checked' : '' }}>
+                                <input type="radio" class="animalsingleselect" value="Cattle" name="animal_species[animals]" {{ old('animal_species.animals', @$investigateReport->animal_species['animals']) == 'Cattle' ? 'checked' : '' }}>
                                 <label for="Cattle1">Cattle</label>
                             </p>
                         </td>
                         <td colspan="11">
                             <p>
-                                <input type="checkbox" name="animal_species[buffalo]" {{ old('animal_species.buffalo',$investigateReport->animal_species) ? 'checked' : '' }}>
+                                <input type="radio" class="animalsingleselect" value="Buffalo" name="animal_species[animals]" {{ old('animal_species.animals', @$investigateReport->animal_species['animals']) == 'Buffalo' ? 'checked' : '' }}>
                                 <label for="Buffalo1">Buffalo</label>
                             </p>
                         </td>
                         <td colspan="8">
                             <p>
-                                <input type="checkbox" name="animal_species[other]" {{ old('animal_species.other',$investigateReport->animal_species) ? 'checked' : '' }}>
+                                <input type="radio" class="animalsingleselect" value="Other (Specify)" name="animal_species[animals]" {{ old('animal_species.animals', @$investigateReport->animal_species['animals']) =='Other (Specify)' ? 'checked' : '' }}>
                                 <label for="Other1">Other (Specify)</label>
                             </p>
                         </td>
-                        <td colspan="8">
-                            <p><input type="text" name="animal_species[other_text]" value="{{ old('animal_species.other_text',$investigateReport->animal_species['other_text']) }}"></p>
+                        <td colspan="8" class="">
+                            <p><input type="text" name="animal_species[other_text]" value="{{ old('animal_species.other_text') }}"></p>
                         </td>
                     </tr>
                     <tr>
                         <td colspan="38">
-                            <p>4.2 Type of animal</p>
-                            <input type="text" name="type_of_animal[text]" value="{{ old('type_of_animal.text',$investigateReport->type_of_animal['text']) }}">
+                            <p>4.2 Type of Animal</p>
+                            <input type="text" name="type_of_animal[text]" value="{{ old('type_of_animal.text' , @$investigateReport->type_of_animal['text']) }}">
                         </td>
                     </tr>
                     <tr>
                         <td colspan="2">
-                            <p>
-                                <input type="checkbox" name="type_of_animal[owned_by_deceased]" id="Owned-by-deceased1" {{ old('type_of_animal.owned_by_deceased',$investigateReport->type_of_animal) ? 'checked' : '' }}>
-                                <label for="Owned-by-deceased1">Owned by deceased</label>
+                            <p> 
+                                <input type="radio" name="type_of_animal[animaltype]" id="Owned-by-deceased1" value="Owned by Deceased" {{ old('type_of_animal.animaltype', @$investigateReport->type_of_animal['animaltype']) == 'Owned by Deceased' ? 'checked' : '' }}>
+                                <label for="Owned-by-deceased1">Owned by Deceased</label>
                             </p>
                         </td>
                         <td colspan="10">
                             <p>
-                                <input type="checkbox" name="type_of_animal[owned_by_neighbours]" id="Owned-by-Neighbours1" {{ old('type_of_animal.owned_by_neighbours',$investigateReport->type_of_animal) ? 'checked' : '' }}>
+                                <input type="radio" name="type_of_animal[animaltype]" id="Owned-by-Neighbours1" value="Owned by Neighbours" {{ old('type_of_animal.animaltype', @$investigateReport->type_of_animal['animaltype']) == 'Owned by Neighbours' ? 'checked' : '' }}>
                                 <label for="Owned-by-Neighbours1">Owned by Neighbours</label>
                             </p>
                         </td>
                         <td colspan="10">
                             <p>
-                                <input type="checkbox" name="type_of_animal[street_animal]" id="Street-Animal1" {{ old('type_of_animal.street_animal',$investigateReport->type_of_animal) ? 'checked' : '' }}>
+                                <input type="radio" name="type_of_animal[animaltype]" id="Street-Animal1" value="Street Animal" {{ old('type_of_animal.animaltype', @$investigateReport->type_of_animal['animaltype']) == 'Street Animal' ? 'checked' : '' }}>
                                 <label for="Street-Animal1">Street Animal</label>
                             </p>
                         </td>
                         <td colspan="8">
                             <p>
-                                <input type="checkbox" name="type_of_animal[wild_animal]" id="Wild-animal1" {{ old('type_of_animal.wild_animal',$investigateReport->type_of_animal) ? 'checked' : '' }}>
-                                <label for="Wild-animal1">Wild animal</label>
+                                <input type="radio" name="type_of_animal[animaltype]" id="Wild-animal1" value="Wild Animal" {{ old('type_of_animal.animaltype', @$investigateReport->type_of_animal['animaltype']) == 'Wild Animal' ? 'checked' : '' }}>
+                                <label for="Wild-animal1">Wild Animal</label>
                             </p>
                         </td>
                         <td colspan="8">
                             <p>
-                                <input type="checkbox" name="type_of_animal[unknown]" id="Unknown2" {{ old('type_of_animal.unknown',$investigateReport->type_of_animal) ? 'checked' : '' }}>
+                                <input type="radio" name="type_of_animal[animaltype]" id="Unknown2" value="Unknown" {{ old('type_of_animal.animaltype', @$investigateReport->type_of_animal['animaltype']) == 'Unknown' ? 'checked' : '' }}>
                                 <label for="Unknown2">Unknown</label>
                             </p>
                         </td>
@@ -513,40 +513,47 @@
                     <tr>
                         <td colspan="3">
                             <p>
-                                <input type="checkbox" name="location_of_bite[head_neck]" id="HeadNeck1" {{ old('location_of_bite.head_neck',$investigateReport->location_of_bite) ? 'checked' : '' }}>
+                                <input type="checkbox" name="location_of_bite[head_neck]" id="HeadNeck1"
+                                    {{ old('location_of_bite.head_neck', $investigateReport->location_of_bite['head_neck'] ?? false) ? 'checked' : '' }}>
                                 <label for="HeadNeck1">Head/Neck</label>
                             </p>
                         </td>
                         <td colspan="7">
                             <p>
-                                <input type="checkbox" name="location_of_bite[trunk]" id="Trunk1" {{ old('location_of_bite.trunk',$investigateReport->location_of_bite) ? 'checked' : '' }}>
+                                <input type="checkbox" name="location_of_bite[trunk]" id="Trunk1"
+                                    {{ old('location_of_bite.trunk', $investigateReport->location_of_bite['trunk'] ?? false) ? 'checked' : '' }}>
                                 <label for="Trunk1">Trunk</label>
                             </p>
-                        </td>
+                        </td>                        
                         <td colspan="8">
                             <p>
-                                <input type="checkbox" name="location_of_bite[upper_limb]" id="UpperLimb1" {{ old('location_of_bite.upper_limb',$investigateReport->location_of_bite) ? 'checked' : '' }}>
+                                <input type="checkbox" name="location_of_bite[upper_limb]" id="UpperLimb1"
+                                       {{ old('location_of_bite.upper_limb', $investigateReport->location_of_bite['upper_limb'] ?? false) ? 'checked' : '' }}>
                                 <label for="UpperLimb1">Upper Limb</label>
                             </p>
                         </td>
                         <td colspan="8">
                             <p>
-                                <input type="checkbox" name="location_of_bite[hands]" id="Hands1" {{ old('location_of_bite.hands',$investigateReport->location_of_bite) ? 'checked' : '' }}>
+                                <input type="checkbox" name="location_of_bite[hands]" id="Hands1"
+                                       {{ old('location_of_bite.hands', $investigateReport->location_of_bite['hands'] ?? false) ? 'checked' : '' }}>
                                 <label for="Hands1">Hands</label>
                             </p>
                         </td>
                         <td colspan="10">
                             <p>
-                                <input type="checkbox" name="location_of_bite[lower_limb]" id="LowerLimb1" {{ old('location_of_bite.lower_limb',$investigateReport->location_of_bite) ? 'checked' : '' }}>
+                                <input type="checkbox" name="location_of_bite[lower_limb]" id="LowerLimb1"
+                                       {{ old('location_of_bite.lower_limb', $investigateReport->location_of_bite['lower_limb'] ?? false) ? 'checked' : '' }}>
                                 <label for="LowerLimb1">Lower Limb</label>
                             </p>
                         </td>
                         <td colspan="2">
                             <p>
-                                <input type="checkbox" name="location_of_bite[genitalia]" id="Genitalia1" {{ old('location_of_bite.genitalia',$investigateReport->location_of_bite) ? 'checked' : '' }}>
+                                <input type="checkbox" name="location_of_bite[genitalia]" id="Genitalia1"
+                                       {{ old('location_of_bite.genitalia', $investigateReport->location_of_bite['genitalia'] ?? false) ? 'checked' : '' }}>
                                 <label for="Genitalia1">Genitalia</label>
                             </p>
                         </td>
+                        
                     </tr>
                 </tbody>
             </table>
@@ -631,25 +638,25 @@
                     <tr>
                         <td colspan="2">
                             <p>
-                                <input type="checkbox" name="sign_of_disease[aggression_biting]" id="AggressionBiting1" {{ old('sign_of_disease.aggression_biting', $investigateReport->sign_of_disease) ? 'checked' : '' }}>
+                                <input type="checkbox" name="sign_of_disease[aggression_biting]" id="AggressionBiting1" {{ old('sign_of_disease.aggression_biting', $investigateReport->sign_of_disease['aggression_biting'] ?? false) ? 'checked' : '' }}>
                                 <label for="AggressionBiting1">Aggression/Biting</label>
                             </p>
                         </td>
                         <td colspan="1">
                             <p>
-                                <input type="checkbox" name="sign_of_disease[paralysis]" id="Paralysis1" {{ old('sign_of_disease.paralysis', $investigateReport->sign_of_disease) ? 'checked' : '' }}>
+                                <input type="checkbox" name="sign_of_disease[paralysis]" id="Paralysis1" {{ old('sign_of_disease.paralysis', $investigateReport->sign_of_disease['paralysis'] ?? false) ? 'checked' : '' }}>
                                 <label for="Paralysis1">Paralysis</label>
                             </p>
                         </td>
                         <td colspan="2">
                             <p>
-                                <input type="checkbox" name="sign_of_disease[abnormal_vocalization]" id="AbnormalVocalization1" {{ old('sign_of_disease.abnormal_vocalization', $investigateReport->sign_of_disease) ? 'checked' : '' }}>
+                                <input type="checkbox" name="sign_of_disease[abnormal_vocalization]" id="AbnormalVocalization1" {{ old('sign_of_disease.abnormal_vocalization', $investigateReport->sign_of_disease['abnormal_vocalization'] ?? false) ? 'checked' : '' }}>
                                 <label for="AbnormalVocalization1">Abnormal Vocalization</label>
                             </p>
                         </td>
                         <td colspan="1">
                             <p>
-                                <input type="checkbox" name="sign_of_disease[hypersalivation]" id="Hypersalivation1" {{ old('sign_of_disease.hypersalivation', $investigateReport->sign_of_disease) ? 'checked' : '' }}>
+                                <input type="checkbox" name="sign_of_disease[hypersalivation]" id="Hypersalivation1" {{ old('sign_of_disease.hypersalivation', $investigateReport->sign_of_disease['hypersalivation'] ?? false) ? 'checked' : '' }}>
                                 <label for="Hypersalivation1">Hypersalivation</label>
                             </p>
                         </td>
@@ -657,17 +664,17 @@
                     <tr>
                         <td colspan="2">
                             <p>
-                                <input type="checkbox" name="sign_of_disease[lethargy]" id="Lethargy1" {{ old('sign_of_disease.lethargy', $investigateReport->sign_of_disease) ? 'checked' : '' }}>
+                                <input type="checkbox" name="sign_of_disease[lethargy]" id="Lethargy1" {{ old('sign_of_disease.lethargy', $investigateReport->sign_of_disease['lethargy'] ?? false) ? 'checked' : '' }}>
                                 <label for="Lethargy1">Lethargy</label>
                             </p>
                         </td>
                         <td colspan="2">
                             <p>
-                                <input type="checkbox" name="sign_of_disease[other]" id="Other1" {{ old('sign_of_disease.other', $investigateReport->sign_of_disease) ? 'checked' : '' }}>
+                                <input type="checkbox" name="sign_of_disease[other]" id="Other1" {{ old('sign_of_disease.other', $investigateReport->sign_of_disease['other'] ?? false) ? 'checked' : '' }}>
                                 <label for="Other1">Other</label>
                             </p>
                         </td>
-                        <td colspan="2" class="bggrey">
+                        <td colspan="2" class="">
                             <input type="text" name="sign_of_disease[other_text]" value="{{ old('sign_of_disease.other_text', $investigateReport->sign_of_disease['other_text']) }}">
                         </td>
                     </tr>
@@ -701,7 +708,7 @@
                                 <label for="DiedLater1">No, but died later</label>
                             </p>
                         </td>
-                        <td class="bggrey">
+                        <td class="">
                             <input type="date" name="animal_die_date" value="{{ old('animal_die_date', $investigateReport->animal_die_date) }}">
 
                         </td>
@@ -788,19 +795,19 @@
                     <tr>
                         <td colspan="2">
                             <p>
-                                <input type="checkbox" name="treatment_applied[washing_with_water]" id="WoundWashingWater1" {{ old('treatment_applied.washing_with_water', $investigateReport->treatment_applied) ? 'checked' : '' }}>
+                                <input type="checkbox" name="treatment_applied[washing_with_water]" id="WoundWashingWater1" {{ old('treatment_applied.washing_with_water', $investigateReport->treatment_applied['washing_with_water'] ?? false) ? 'checked' : '' }}>
                                 <label for="WoundWashingWater1">Wound washing with water</label>
                             </p>
                         </td>
                         <td colspan="2">
                             <p>
-                                <input type="checkbox" name="treatment_applied[washing_with_shap]" id="WoundWashingSoapWater1" {{ old('treatment_applied.washing_with_shap', $investigateReport->treatment_applied) ? 'checked' : '' }}>
+                                <input type="checkbox" name="treatment_applied[washing_with_shap]" id="WoundWashingSoapWater1" {{ old('treatment_applied.washing_with_shap', $investigateReport->treatment_applied['washing_with_shap'] ?? false) ? 'checked' : '' }}>
                                 <label for="WoundWashingSoapWater1">Wound washing with soap and water</label>
                             </p>
                         </td>
                         <td colspan="2">
                             <p>
-                                <input type="checkbox" name="treatment_applied[cleaning_with_antiseptic]" id="WoundCleaningAntiseptic1" {{ old('treatment_applied.cleaning_with_antiseptic', $investigateReport->treatment_applied) ? 'checked' : '' }}>
+                                <input type="checkbox" name="treatment_applied[cleaning_with_antiseptic]" id="WoundCleaningAntiseptic1" {{ old('treatment_applied.cleaning_with_antiseptic', $investigateReport->treatment_applied['cleaning_with_antiseptic'] ?? false) ? 'checked' : '' }}>
                                 <label for="WoundCleaningAntiseptic1">Wound cleaning with antiseptic lotion</label>
                             </p>
                         </td>
@@ -808,19 +815,19 @@
                     <tr>
                         <td colspan="2">
                             <p>
-                                <input type="checkbox" name="treatment_applied[bandaging]" id="Bandaging1" {{ old('treatment_applied.bandaging', $investigateReport->treatment_applied) ? 'checked' : '' }}>
+                                <input type="checkbox" name="treatment_applied[bandaging]" id="Bandaging1" {{ old('treatment_applied.bandaging', $investigateReport->treatment_applied['bandaging'] ?? false) ? 'checked' : '' }}>
                                 <label for="Bandaging1">Bandaging</label>
                             </p>
                         </td>
                         <td colspan="2">
                             <p>
-                                <input type="checkbox" name="treatment_applied[not_known]" id="NotKnown1" {{ old('treatment_applied.not_known', $investigateReport->treatment_applied) ? 'checked' : '' }}>
+                                <input type="checkbox" name="treatment_applied[not_known]" id="NotKnown1" {{ old('treatment_applied.not_known', $investigateReport->treatment_applied['not_known'] ?? false) ? 'checked' : '' }}>
                                 <label for="NotKnown1">Not known</label>
                             </p>
                         </td>
                         <td colspan="2">
                             <p>
-                                <input type="checkbox" name="treatment_applied[any_other]" id="OtherTreatment1" {{ old('treatment_applied.any_other', $investigateReport->treatment_applied) ? 'checked' : '' }}>
+                                <input type="checkbox" name="treatment_applied[any_other]" id="OtherTreatment1" {{ old('treatment_applied.any_other', $investigateReport->treatment_applied['any_other'] ?? false) ? 'checked' : '' }}>
                                 <label for="OtherTreatment1">Any other treatment</label> 
                                 <input type="text" name="treatment_applied[any_other_text]" value="{{ old('treatment_applied.any_other_text', $investigateReport->treatment_applied['any_other_text']) }}">
                             </p>
@@ -861,7 +868,7 @@
                             </p>
                             <p>&nbsp;</p>
                             <p>
-                                <strong>If Yes,</strong>
+                              If Yes,
                                 Number of doses received
                             </p>
                             <p> <label for="RabiesVaccineReceivedYes1"  >1</label>
@@ -937,38 +944,38 @@
                     <tr>
                         <td colspan="6">
                             <p>
-                                5.4  <b> If Incomplete PEP,</b> reason:
+                                5.4 If Incomplete PEP, reason:
                             </p>
                         </td>
                     </tr>
                     <tr>
                         <td colspan="2">
-                            <p><input type="checkbox" name="incomplete_pep[observation_period]" {{ old('incomplete_pep.observation_period',$investigateReport->incomplete_pep) ? 'checked' : '' }}> Animal well after observation period</p>
+                            <p><input type="checkbox" name="incomplete_pep[observation_period]" {{ old('incomplete_pep.observation_period',$investigateReport->incomplete_pep['observation_period'] ?? false) ? 'checked' : '' }}> Animal well after observation period</p>
                         </td>
                         <td colspan="2">
-                            <p><input type="checkbox" name="incomplete_pep[animal_result_negative]" {{ old('incomplete_pep.animal_result_negative',$investigateReport->incomplete_pep) ? 'checked' : '' }}> Animal results negative</p>
+                            <p><input type="checkbox" name="incomplete_pep[animal_result_negative]" {{ old('incomplete_pep.animal_result_negative',$investigateReport->incomplete_pep['animal_result_negative'] ?? false) ? 'checked' : '' }}> Animal results negative</p>
                         </td>
                         <td colspan="2">
-                            <p><input type="checkbox" name="incomplete_pep[specify_other]" {{ old('incomplete_pep.specify_other',$investigateReport->incomplete_pep) ? 'checked' : '' }}> Specify if other:</p>
+                            <p><input type="checkbox" name="incomplete_pep[specify_other]" {{ old('incomplete_pep.specify_other',$investigateReport->incomplete_pep['specify_other'] ?? false) ? 'checked' : '' }}> Specify if other:</p>
                         </td>
                     </tr>
                     <tr>
                         <td colspan="2">
-                            <p><input type="checkbox" name="incomplete_pep[victim_previously]" {{ old('incomplete_pep.victim_previously',$investigateReport->incomplete_pep) ? 'checked' : '' }}> Victim previously immunized</p>
+                            <p><input type="checkbox" name="incomplete_pep[victim_previously]" {{ old('incomplete_pep.victim_previously',$investigateReport->incomplete_pep['victim_previously'] ?? false) ? 'checked' : '' }}> Victim previously immunized</p>
                         </td>
                         <td colspan="2">
-                            <p><input type="checkbox" name="incomplete_pep[victim_refused]" {{ old('incomplete_pep.victim_refused',$investigateReport->incomplete_pep) ? 'checked' : '' }}> Victim refused further doses</p>
+                            <p><input type="checkbox" name="incomplete_pep[victim_refused]" {{ old('incomplete_pep.victim_refused',$investigateReport->incomplete_pep['victim_refused'] ?? false) ? 'checked' : '' }}> Victim refused further doses</p>
                         </td>
-                        <td colspan="2" class="bggrey" rowspan="2" class="bggrey">
+                        <td colspan="2" class="" rowspan="2" class="">
                             <input type="text" name="incomplete_pep[text]" value="{{ old('incomplete_pep.text',$investigateReport->incomplete_pep['text']) }}">
                         </td>
                     </tr>
                     <tr>
                         <td colspan="2">
-                            <p><input type="checkbox" name="incomplete_pep[loss_follow_up]" {{ old('incomplete_pep.loss_follow_up',$investigateReport->incomplete_pep) ? 'checked' : '' }}> Lost to follow-up</p>
+                            <p><input type="checkbox" name="incomplete_pep[loss_follow_up]" {{ old('incomplete_pep.loss_follow_up',$investigateReport->incomplete_pep['loss_follow_up'] ?? false) ? 'checked' : '' }}> Lost to follow-up</p>
                         </td>
                         <td colspan="4">
-                            <p><input type="checkbox" name="incomplete_pep[referred_out_jurisdiction]" {{ old('incomplete_pep.referred_out_jurisdiction',$investigateReport->incomplete_pep) ? 'checked' : '' }}> Referred out of jurisdiction</p>
+                            <p><input type="checkbox" name="incomplete_pep[referred_out_jurisdiction]" {{ old('incomplete_pep.referred_out_jurisdiction',$investigateReport->incomplete_pep['referred_out_jurisdiction'] ?? false) ? 'checked' : '' }}> Referred out of jurisdiction</p>
                         </td>
                     </tr>
                     <tr>
@@ -986,7 +993,7 @@
                     <tr>
                         <td colspan="1" rowspan="2">
                             <p>
-                                <strong>If yes</strong>,
+                              If yes,
                             </p>
                         </td>
                         <td colspan="1">
@@ -1007,10 +1014,10 @@
                         </td>
                     </tr>
                     <tr>
-                        <td colspan="1" class="bggrey">
+                        <td colspan="1" class="">
                             <input type="text" name="brand_name" value="{{ old('brand_name',$investigateReport->brand_name) }}">
                         </td>
-                        <td colspan="2" class="bggrey">
+                        <td colspan="2" class="">
                             <input type="text" name="rig_administration" value="{{ old('rig_administration',$investigateReport->rig_administration) }}">
                         </td>
                     </tr>
@@ -1024,7 +1031,7 @@
                                 <label for="vaccinated_against_rabies_yes">Yes</label> Year & number of doses:
                             </p>
                         </td>
-                        <td colspan="2" class="bggrey" class="bggrey">
+                        <td colspan="2" class="" class="">
                             <input type="text" name="year_no_of_dose" value="{{ old('year_no_of_dose',$investigateReport->year_no_of_dose) }}">
                         </td>
                         <td colspan="1">
@@ -1474,7 +1481,7 @@
                         <td colspan="1">
                             <p>6.2 Date of onset of symptoms or approximate length of illness:</p>
                         </td>
-                        <td colspan="3" class="bggrey">
+                        <td colspan="3" class="">
                             <input type="date" name="symptoms_onset_date" value="{{ old('symptoms_onset_date',$investigateReport->symptoms_onset_date) }}">
                         </td>
                     </tr>
@@ -1482,7 +1489,7 @@
                         <td colspan="2">
                             <p>6.3 Date of death</p>
                         </td>
-                        <td colspan="1" class="bggrey">
+                        <td colspan="1" class="">
                             <input type="date" name="date_of_birth" value="{{ old('date_of_birth',$investigateReport->date_of_birth) }}">
                         </td>
                         <td colspan="1">
@@ -1492,8 +1499,7 @@
                     <tr>
                         <td colspan="1">
                             <p>
-                                6.4
-                                <strong>If deceased,</strong>
+                                6.4 If deceased,
                                 where did deceased die
                             </p>
                         </td>
@@ -1531,37 +1537,48 @@
                     <tr>
                         <td colspan="4">
                             <p>
-                                6.6
-                                <strong>If Yes,</strong>
+                                6.6  If Yes,
                                 please share details of health facilities
                             </p>
                         </td>
                     </tr>
-                    <tr>
+                    <tr> 
                         <td colspan="1">
                             <p>Name of Hospital/ Health facility (City/Village)</p>
                         </td>
-                        <td colspan="1" class="bggrey">
-                            <p>HF 1</p>
-                        </td>
-                        <td colspan="1" class="bggrey">
-                            <p>HF2</p>
-                        </td>
-                        <td colspan="1" class="bggrey">
-                            <p>HF3</p>
-                        </td>
+                        @if ($investigateReport->medical_help == 'yes')
+                            <td colspan="1" class=" w-25">
+                                <input type="text" name="name_of_hf_1" class="healthFacilityEdit" value="{{old('name_of_hf_1', $investigateReport->name_of_hf_1)}}" id="name_of_hf_1" placeholder="HF-1">
+                            </td>
+                            <td colspan="1" class=" w-25">
+                                <input type="text" name="name_of_hf_2" class="healthFacilityEdit" value="{{old('name_of_hf_2', $investigateReport->name_of_hf_2)}}" id="name_of_hf_2" placeholder="HF-2">
+                            </td>
+                            <td colspan="1" class=" w-25">
+                                <input type="text" name="name_of_hf_3" class="healthFacilityEdit" value="{{old('name_of_hf_3', $investigateReport->name_of_hf_3)}}" id="name_of_hf_3" placeholder="HF-3">
+                            </td>  
+                        @else
+                            <td colspan="1" class=" w-25">
+                                <input type="text" name="name_of_hf_1" class="healthFacility" value="{{old('name_of_hf_1')}}" id="name_of_hf_1" placeholder="HF-1">
+                            </td>
+                            <td colspan="1" class=" w-25">
+                                <input type="text" name="name_of_hf_2" class="healthFacility" value="{{old('name_of_hf_2')}}" id="name_of_hf_2" placeholder="HF-2">
+                            </td>
+                            <td colspan="1" class=" w-25">
+                                <input type="text" name="name_of_hf_3" class="healthFacility" value="{{old('name_of_hf_3')}}" id="name_of_hf_3" placeholder="HF-3">
+                            </td>
+                        @endif
                     </tr>
                     <tr>
                         <td colspan="1">
                             <p>Date of consultation</p>
                         </td>
-                        <td colspan="1" class="bggrey">
+                        <td colspan="1" class="">
                             <input type="date" name="hf_1date" value="{{ old('hf_1date',$investigateReport->hf_1date) }}">
                         </td>
-                        <td colspan="1" class="bggrey">
+                        <td colspan="1" class="">
                             <input type="date" name="hf_2date" value="{{ old('hf_2date',$investigateReport->hf_2date) }}">
                         </td>
-                        <td colspan="1" class="bggrey">
+                        <td colspan="1" class="">
                             <input type="date" name="hf_3date" value="{{ old('hf_3date',$investigateReport->hf_3date) }}">
                         </td>
                     </tr>
@@ -1615,7 +1632,7 @@
                                             <input type="text" name="laboratory_specific_test[Hospital_lab][]" value="{{ $investigateReport->laboratory_specific_test['Hospital_lab'][$index] ?? old('laboratory_specific_test.Hospital_lab.'.$index) ?? '' ?? '' }}">
                                         </td>
                                         <td >
-                                            <input type="text" name="laboratory_specific_test[specific_test_date][]" value="{{ $investigateReport->laboratory_specific_test['specific_test_date'][$index] ?? old('laboratory_specific_test.specific_test_date.'.$index) ?? '' ?? '' }}">
+                                            <input type="date" name="laboratory_specific_test[specific_test_date][]" value="{{ $investigateReport->laboratory_specific_test['specific_test_date'][$index] ?? old('laboratory_specific_test.specific_test_date.'.$index) ?? '' ?? '' }}">
                                         </td>
                                         <td >
                                             <input type="text" name="laboratory_specific_test[result][]" value="{{ $investigateReport->laboratory_specific_test['result'][$index] ?? old('laboratory_specific_test.result.'.$index) ?? '' ?? '' }}">
@@ -1641,7 +1658,7 @@
 
 
                     <tr>
-                        <td colspan="4">
+                        <td colspan="2">
                             <p>
                                 6.8 MRI brain done? &nbsp;
                                 <label for="MRI_brain_done_yes">Yes</label>
@@ -1650,6 +1667,13 @@
                                 <label for="MRI_brain_done_no">No</label>
                                 <input type="radio" name="MRI_brain_done" value="no" id="MRI_brain_done_no" {{ old('MRI_brain_done',$investigateReport->MRI_brain_done) == 'no' ? 'checked' : '' }}> &nbsp;if yes write significant finding
                             </p>
+                        </td>
+                        <td colspan="4">
+                            @if ($investigateReport->MRI_brain_done == "yes")
+                              <input type="text" name="MRI_brain_done_text" value="{{ old('MRI_brain_done_text', $investigateReport->MRI_brain_done_text)}}" class="inputFieldsEdit">
+                            @else
+                              <input type="text" name="MRI_brain_done_text" value="{{ old('MRI_brain_done_text')}}" class="inputFields">
+                            @endif
                         </td>
                     </tr>
                     <tr>
@@ -1691,7 +1715,7 @@
                     <tr>
                         <td colspan="4">
                             <p>
-                                <strong>If Yes,</strong>
+                                If Yes,
                                 Copy of report
                                 available ? &nbsp;
                                 <label for="copy_of_report_yes">Yes</label>
@@ -1714,7 +1738,7 @@
                             <p>7.1.2 Did deceased have any evidence of healed wounds? &nbsp;&nbsp;
                                 <input type="radio" name="evidence_of_healed_wounds" value="yes" {{ old('evidence_of_healed_wounds',$investigateReport->evidence_of_healed_wounds) == 'yes' ? 'checked' : '' }}>
                                 Yes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                <input type="radio" name="evidence_of_healed_wounds" value="no" {{ old('evidence_of_healed_wounds',$investigateReport->evidence_of_healed_wounds) == 'no' ? 'checked' : '' }}>
+                                <input type="radio" name="evidence_of_healed_wounds" value="no" {{ old('evidence_of_healed_wounds',$investigateReport->evidence_of_healed_wounds) == 'no' ? 'checked' : '' }}>No
                         </td>
                     </tr>
                     <tr>
@@ -1732,7 +1756,7 @@
                         <td colspan="1">
                             <p>If yes, cause of death mentioned:</p>
                         </td>
-                        <td colspan="3" class="bggrey">
+                        <td colspan="3" class="">
                             <input type="text" name="death_mentioned" value="{{ old('death_mentioned',$investigateReport->death_mentioned) }}">
                         </td>
                     </tr>
@@ -1767,11 +1791,11 @@
                     <tr>
                         <td colspan="1">
                             <p>
-                                <strong>If yes</strong>
+                                If yes
                                 , Details of person to initiate verbal autopsy of additional cases:
                             </p>
                         </td>
-                        <td colspan="2" class="bggrey">
+                        <td colspan="2" class="">
                             <input type="text" name="autopsy_of_additional_cases" value="{{ old('autopsy_of_additional_cases',$investigateReport->autopsy_of_additional_cases) }}">
                         </td>
                     </tr>

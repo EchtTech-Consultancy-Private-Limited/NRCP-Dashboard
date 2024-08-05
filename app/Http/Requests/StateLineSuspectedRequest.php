@@ -25,7 +25,7 @@ class StateLineSuspectedRequest extends FormRequest
             'name_of_health' => 'required',
             'address_hospital' => 'required',
             'email' => 'required|unique:line_suspecteds,email',
-            'aadhar_number' => 'required|unique:line_suspecteds,aadhar_number|numeric|digits:12',
+            // 'aadhar_number' => 'required|unique:line_suspecteds,aadhar_number|numeric|digits:12',
             'type_of_health' => 'required',
         ];
     }

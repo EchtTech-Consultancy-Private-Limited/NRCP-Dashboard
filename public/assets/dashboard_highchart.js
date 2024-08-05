@@ -1445,6 +1445,7 @@ const defaultLaboratoryMapData = () => {
                         // Specify points using lat/lon
                         type: 'mappoint',
                         name: 'Cities',
+                        color:'#ff0000',
                         accessibility: {
                             point: {
                                 valueDescriptionFormat: '{xDescription}. Lat: {point.lat:.2f}, lon: {point.lon:.2f}.'
@@ -2535,7 +2536,7 @@ function nationalHighchart(data)
                 }
             }
         },
-        colors: ['#a5a5a5', '#e7e6e6'],
+        colors: ['#f57336', '#9e9e9edb'],
         series: [
             {
                 type: 'pie',            
@@ -2604,7 +2605,7 @@ function nationalHighchart(data)
                 }
             }
         },
-        colors: ['#a5a5a5', '#e7e6e6'],
+        colors: ['#f57336', '#9e9e9edb'],
         series: [
             {
                 type: 'pie',            
@@ -2673,7 +2674,7 @@ function nationalHighchart(data)
                 }
             }
         },
-        colors: ['#a5a5a5', '#e7e6e6'],
+        colors: ['#f57336', '#9e9e9edb'],
         series: [
             {
                 type: 'pie',            
@@ -2742,7 +2743,7 @@ function nationalHighchart(data)
                 }
             }
         },
-        colors: ['#a5a5a5', '#e7e6e6'],
+        colors: ['#f57336', '#9e9e9edb'],
         series: [
             {
                 type: 'pie',            
@@ -3094,7 +3095,7 @@ function nationalHighchart(data)
             },
             colorAxis: {
                 min: 0,
-                max: 100,
+                max: 2,
                 minColor: '#fcad95',
                 maxColor: '#ab4024',
                 labels: {

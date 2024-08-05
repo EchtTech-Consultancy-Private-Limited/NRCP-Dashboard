@@ -38,20 +38,14 @@
                         <div class="addressBlock">
 
                             <p>
-                                Name of the Health Facility/Block/District/State:
+                                <strong>Name of the Health Facility/Block/District/State:</strong>
                                 <span class="td-value">
                                     {{ @$stateUserpForm->name_of_health }}
                                 </span>
 
-                            </p>
+                            </p>                           
                             <p>
-                                Address of the Hospital :
-                                <span class="td-value">{{@$stateUserpForm->address_hospital}}</span>
-                                <span class="td-value"></span>
-
-                            </p>
-                            <p>
-                                Name &amp; Designation of Nodal Person : <span
+                               <strong> Name &amp; Designation of Nodal Person :</strong> <span
                                     class="td-value">{{@$stateUserpForm->designation_name}}</span>
 
                             </p>
@@ -61,7 +55,7 @@
                     <div class="col-md-4">
                         <div class="emailBlock">
                             <p>
-                                Type of Health Facility/Block/District/State: <span class="td-value">
+                                <strong>Type of Health Facility/Block/District/State:</strong> <span class="td-value">
                                     {{@$stateUserpForm->type_of_health}}</span>
 
                                 @if ($errors->has('type_of_health'))
@@ -69,18 +63,27 @@
                                 @endif
                             </p>
                             <p>
-                                Email ID: <br> <span class="td-value">{{@$stateUserpForm->email}}</span>
+                                <strong>Email ID:</strong> <br> <span class="td-value">{{@$stateUserpForm->email}}</span>
 
                             </p>
-                            <p>
-                                Aadhar Number: <br> <span class="td-value"> {{@$stateUserpForm->aadhar_number}}</span>
-
-                            </p>
+                           
                         </div>
 
                     </div>
                     <div class="col-md-4">
+                        <div class="addressBlock">
+                            <p>
+                                <strong>Address of the Hospital :</strong>
+                                <span class="td-value">{{@$stateUserpForm->address_hospital}}</span>
+                                <span class="td-value"></span>
 
+                            </p>
+                            <p>
+                                <strong>Contact Number:</strong> <br> <span class="td-value"> {{@$stateUserpForm->contact_number}}</span>
+
+                            </p>
+                           
+                        </div>
                     </div>
                 </div>
 
@@ -93,6 +96,11 @@
                             <td rowspan="2" class="border-left-0">
                                 <p>
                                     <strong>S.No</strong>
+                                </p>
+                            </td>
+                            <td rowspan="2" class="border-left-0">
+                                <p>
+                                    <strong>Aadhar</strong>
                                 </p>
                             </td>
                             <td rowspan="2">
@@ -179,12 +187,7 @@
                                 <p>
                                     <strong>Date Of Bite</strong>
                                 </p>
-                            </td>
-                            <td rowspan="2">
-                                <p>
-                                    <strong>Action</strong>
-                                </p>
-                            </td>
+                            </td>                           
                         </tr>
                         <tr>
                             <td>
@@ -218,6 +221,7 @@
                             <td>
                                 {{ $index + 1 }}
                             </td>
+                            <td>{{ $lineSuspectedCount->aadhar_number }}</td>
                             <td>{{ $lineSuspectedCount->name }}</td>
                             <td>{{ $lineSuspectedCount->age }}</td>
                             <td>{{ $lineSuspectedCount->sex }}</td>
@@ -239,13 +243,7 @@
                             <td>{{@$lineSuspectedCount->bite_from_stray}}    </td>
                             <td>{{ $lineSuspectedCount->mobile_number }}</td>
                             <td>{{ $lineSuspectedCount->date }}</td>
-                            <td class="text-nowrap">
-                                <button type="button" name="add" id="add" class="btn btn-success add_more">
-                                    <i class="fa fa-plus" style="font-size:16px"></i>
-                                </button>
-                                <button type="button" name="remove" id="{{ $index + 1 }}"
-                                    class="btn btn-danger btn_remove">X</button>
-                            </td>
+                           
                         </tr>
                         @endforeach
                     </tbody>

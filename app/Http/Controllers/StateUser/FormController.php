@@ -21,6 +21,7 @@ class FormController extends Controller
     public function lFormList()
     {
         $stateUserLForms = StateUserLForm::with(['stateUserLFormCountCase.states', 'stateUserLFormCountCase.city'])
+        ->where('user_id', Auth::id())
         ->orderBy('id', 'desc')
         ->get();
         return view('state-user.lform.list',compact('stateUserLForms'));
@@ -33,7 +34,7 @@ class FormController extends Controller
      */
     public function lFormCreate()
     {
-        $states = CountryState::get();
+        $states = CountryState::orderBy('name','asc')->get();
         $cities = City::get();
         return view('state-user.lform.create',compact('states','cities'));
     }
@@ -52,7 +53,6 @@ class FormController extends Controller
             'phone_number' => 'required|unique:state_user_l_forms,phone_number|numeric|digits:10',
             'email' => 'required|unique:state_user_l_forms,email', 
             'institute_name' => 'required',
-            'aadhar_number' => 'required|unique:state_user_l_forms,aadhar_number|numeric|digits:12',
         ],
         [
             'name_nodal_person.required' => 'Name of the nodal person is required',
@@ -61,21 +61,18 @@ class FormController extends Controller
             'email.required' => 'Email address is required',
             'email.email' => 'Email address must be a valid email format',
             'institute_name.required' => 'Institute name is required',
-            'aadhar_number.required' => 'Aadhar number is required',
-            'aadhar_number.numeric' => 'Aadhar number must be a numeric value',
-            'aadhar_number.min_digits' => 'Aadhar number must be exactly 12 digits',
-            'aadhar_number.max_digits' => 'Aadhar number must be exactly 12 digits',
         ]);
         try {
             DB::beginTransaction();
             $LFormId = StateUserLForm::Create([
+                'user_id' => Auth::id(),
                 'current_date' => $request->current_date,
                 'name_nodal_person' => $request->name_nodal_person,
                 'designation_nodal_person' => $request->designation_nodal_person,
                 'phone_number' => $request->phone_number,
                 'email' => $request->email,
                 'institute_name' => $request->institute_name,
-                'aadhar_number' =>$request->aadhar_number,
+                // 'aadhar_number' =>$request->aadhar_number,
             ])->id;
             foreach($request->row_count as $key => $value){
                 StateUserLFormCountCase::Create([
@@ -83,6 +80,7 @@ class FormController extends Controller
                     'fname' => $request->fname[$key],
                     'mname' => $request->mname[$key],
                     'lname' => $request->lname[$key],
+                    'aadhar_number' =>$request->aadhar_no[$key],
                     'age' => $request->age[$key],
                     'sex' => $request->sex[$key],
                     'contact_number' => $request->contact_number[$key],

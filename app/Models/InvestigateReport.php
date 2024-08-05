@@ -12,6 +12,7 @@ class InvestigateReport extends Model
     use SoftDeletes;
 
     protected $fillable = [
+        'user_id',
         'interviewer_name',
         'interview_date',
         'interviewer_designation',
@@ -88,11 +89,15 @@ class InvestigateReport extends Model
         'deceased_die_health_facility_input',
         'deceased_die_other_input',
         'medical_help',
+        'name_of_hf_1',
+        'name_of_hf_2',
+        'name_of_hf_3',
         'hf_1date',
         'hf_2date',
         'hf_3date',
         'laboratory_specific_test',
         'MRI_brain_done',
+        'MRI_brain_done_text',
         'postmortem',
         'copy_of_report',
         'evidence_of_recent_wounds',

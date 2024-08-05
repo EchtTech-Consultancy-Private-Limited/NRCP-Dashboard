@@ -8,12 +8,26 @@ use Auth,DB;
 use app\Models\User;
 
 class authController extends Controller
-{
+{    
+    /**
+     * login
+     *
+     * @return void
+     */
     public function login()
     {
         return view('login');
     }
-
+    
+    /**
+     * adminLogin
+     *
+     * @return void
+     */
+    public function adminLogin()
+    {
+        return view('admin.auth.login');
+    }
 
     public function loginSubmit(Request $request)
     {
@@ -37,6 +51,8 @@ class authController extends Controller
                 $redirect = 'lab-dashboard';
             }elseif($request->user_type == 3){
                 $redirect = 'states/dashboard';
+            }elseif($request->user_type == 4){
+                $redirect = 'admin/dashboard';
             }
             else{
                 $redirect = 'dashboard';
