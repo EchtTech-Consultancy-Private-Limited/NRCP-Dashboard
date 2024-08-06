@@ -51,16 +51,16 @@
                         </select>
 
                     </div> --}}
-                    <div class="input-group mb-3 space-between" >
-                        <div class="w-45">
+                    <div class="input-group mb-3 justify-content-between gap-2" >
+                        <div class="">
                             <input id="user_type1" type="radio" name="user_type" value='1' class="mr-2" {{ (old('user_type') == 1) ? 'checked' : ''}}>
                             <label for="user_type1">National User</label>
                         </div>
-                        <div class="ml-4">
+                        <div class="">
                             <input id="user_type2" type="radio" name="user_type" value='2' class="mr-2"  {{ (old('user_type') == 2) ? 'checked' : ''}}>
                             <label for="user_type2">Laboratory User</label>
                         </div>
-                        <div class="ml-4">
+                        <div class="">
                             <input id="user_type3" type="radio" name="user_type" value='3' class="mr-2"  {{ (old('user_type') == 2) ? 'checked' : ''}}>
                             <label for="user_type3">State User</label>
                         </div>
@@ -132,8 +132,8 @@
                             </div>
                         </div>
                         <!-- /.col -->
-                        <div class="col-4">
-                            <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+                        <div class="col-md-12 d-flex justify-content-center">
+                            <button type="submit" class="btn btn-primary btn-block w-auto">Sign In</button>
                         </div>
                         <!-- /.col -->
                     </div>

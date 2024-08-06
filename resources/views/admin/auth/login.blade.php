@@ -104,8 +104,8 @@
                             </div>
                         </div>
                         <!-- /.col -->
-                        <div class="col-4">
-                            <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+                        <div class="col-md-12 justify-content-center">
+                            <button type="submit" class="btn btn-primary btn-block w-auto">Sign In</button>
                         </div>
                         <!-- /.col -->
                     </div>

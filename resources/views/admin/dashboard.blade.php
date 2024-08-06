@@ -13,7 +13,7 @@
                     <b><p class="card-text">{{ $users->where('user_type','1')->count() }}</p></b>
                 </div>
                 <div class="card-link">
-                    <a href="{{ route('admin.user') }}" title="Read Full"><span>Read Full <i
+                    <a href="{{ route('admin.user') }}" title="View All"><span>View All <i
                                 class="fa fa-arrow-circle-o-right" aria-hidden="true"></i></span></a>
                 </div>
             </div>
@@ -25,7 +25,7 @@
                     <b><p class="card-text">{{ $users->where('user_type','2')->count() }}</p></b>
                 </div>
                 <div class="card-link">
-                    <a href="{{ route('admin.user') }}" title="Read Full"><span>Read Full <i
+                    <a href="{{ route('admin.user') }}" title="View All"><span>View All <i
                                 class="fa fa-arrow-circle-o-right" aria-hidden="true"></i></span></a>
                 </div>
             </div>
@@ -37,7 +37,7 @@
                     <b><p class="card-text">{{ $users->where('user_type','3')->count() }}</p></b>
                 </div>
                 <div class="card-link">
-                    <a href="{{ route('admin.user') }}" title="Read Full"><span>Read Full <i
+                    <a href="{{ route('admin.user') }}" title="View All"><span>View All <i
                                 class="fa fa-arrow-circle-o-right" aria-hidden="true"></i></span></a>
                 </div>
             </div>
