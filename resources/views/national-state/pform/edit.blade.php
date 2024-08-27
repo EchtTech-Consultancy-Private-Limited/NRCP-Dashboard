@@ -424,10 +424,10 @@
                                     <input type="date" name="date[]" value="{{ $lineSuspectedCount->date }}">
                                 </td>
                                 <td class="text-nowrap">
-                                    <button type="button" name="add" id="add" class="btn btn-success add_more"><i
+                                    <button type="button" name="add" id="add" class="btn btn-success add_more" title="Add"><i
                                             class="fa fa-plus" style="font-size:16px"></i></button>
                                     </button><button type="button" name="remove" id="{{ $index + 1 }}"
-                                        class="btn btn-danger btn_remove">X</button>
+                                        class="btn btn-danger btn_remove" title="Delete"><i class="fa fa-trash" aria-hidden="true"></i></button>
                                 </td>
                             </tr>
                             @endforeach
