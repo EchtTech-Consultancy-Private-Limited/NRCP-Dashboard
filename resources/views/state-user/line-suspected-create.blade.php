@@ -85,7 +85,7 @@
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label for="designation_name">Name Designation of Nodal Person <span
+                                <label for="designation_name">Name & Designation of Nodal Person <span
                                         class="text-danger">*</span></label>
                                 <input type="text" name="designation_name" class="form-control"
                                     value="{{ old('designation_name') }}">
