@@ -2517,6 +2517,7 @@ function nationalHighchart(data)
         },
         tooltip: {
             enabled: true,
+            outside: true, 
             formatter: function() {
                 return '<b>' + this.point.name + '</b>: ' + this.y + '%';
             }
@@ -2586,6 +2587,7 @@ function nationalHighchart(data)
         },
         tooltip: {
             enabled: true,
+            outside: true, 
             formatter: function() {
                 return '<b>' + this.point.name + '</b>: ' + this.y + '%';
             }
@@ -2655,6 +2657,7 @@ function nationalHighchart(data)
         },
         tooltip: {
             enabled: true,
+            outside: true, 
             formatter: function() {
                 return '<b>' + this.point.name + '</b>: ' + this.y;
             }
@@ -2724,6 +2727,7 @@ function nationalHighchart(data)
         },
         tooltip: {
             enabled: true,
+            outside: true, 
             formatter: function() {
                 return '<b>' + this.point.name + '</b>: ' + this.y;
             }
