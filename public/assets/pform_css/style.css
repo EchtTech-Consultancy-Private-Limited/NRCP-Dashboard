@@ -1134,3 +1134,31 @@ input[type=date]::placeholder {
 .highcharts-title {
   z-index: 1 !important;
 }/*# sourceMappingURL=style.css.map */
+
+.dashboard .dashboard-table {
+	max-height: 614px;  
+	overflow-y: auto;
+  }
+
+  .table-bordered{
+	margin-bottom: 0;
+  }
+
+  .display.dataTable th:last-child, table.dataTable th:last-child {
+    max-width: max-content;
+    width: fit-content !important;
+}
+table tr td:last-child {
+  text-align: center;
+}
+
+.btn-success {
+  color: #fff;
+  background-color: #28a745;
+  border-color: #28a745;
+  box-shadow: none;
+  border-radius: 50% !important;
+  padding: 8px 9px 4px 11px;
+  text-align: center;
+}
+  

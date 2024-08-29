@@ -38,8 +38,8 @@
                     <div class="col">
                         <div class="form-group">
                             <label for="fromYear">Year of purchase<span class="star">*</span></label>
-                            <input type="text" t class="form-control" aria-label="Default select example"
-                                name="year_of_purchase" id="year_of_purchase" data-date="date" placeholder="DD/MM/YYYY">
+                            <input type="date" t class="form-control" aria-label="Default select example"
+                                name="year_of_purchase" id="year_of_purchase" placeholder="DD/MM/YYYY">
                             @error('year_of_purchase')
                             <span class="form-text text-muted">{{ $message }}</span>
                             @enderror

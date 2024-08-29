@@ -30,7 +30,7 @@
                 <a href= "{{route('national.p-form-edit',$stateUserpForm->id)}}" id="edit_2" class="btn bg-success action-btn pformEdit" data-id="2" title="Edit">
                   <i class="fa fa-edit"></i>
                 </a>
-                <a href="{{route('national.p-form-view',$stateUserpForm->id)}}" class="btn bg-danger action-btn" title="Delete">
+                <a href="{{route('national.p-form-view',$stateUserpForm->id)}}" class="btn bg-primary action-btn" title="View">
                     <i class="fa fa-eye"></i>
                   </a>
                 <a href="{{route('national.p-form-delete',$stateUserpForm->id)}}" class="btn bg-danger action-btn" title="Delete" onclick="return confirmDelete()">
