@@ -115,8 +115,8 @@
                             <td>{{(@$user->user_type == '1') ? 'National User' : ((@$user->user_type == '2') ? 'Laboratory User' : 'State User') }}</td>
                             <td>@php if($user->status ==1){ echo 'Active'; }else{ echo 'Deactive'; } @endphp</td>
                             <td>
-                                <a href="{{route('admin.edit',$user->id)}}" class="btn btn-success"><i class="fa fa-edit"></i></a>
-                                <a href="{{route('admin.delete',$user->id)}}" class="btn btn-danger"><i class="fa fa-trash"></i></a>
+                                <a href="{{route('admin.edit',$user->id)}}" class="btn btn-success" title="Edit"><i class="fa fa-edit"></i></a>
+                                <a href="{{route('admin.delete',$user->id)}}" class="btn btn-danger" title="Delete"><i class="fa fa-trash"></i></a>
                             </td>
                         </tr>
                         @endforeach
