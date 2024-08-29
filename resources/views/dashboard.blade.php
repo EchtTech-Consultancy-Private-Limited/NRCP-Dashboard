@@ -13,19 +13,16 @@
             <button class="float-right generate-report" onclick="printDiv('report_national')">Generate Report </button>
         </div> --}}
         <div class="col-md-12">
-
             <!-- general form elements -->
             <div class="card-primary dashboard" id="report_national">
                 @if (Auth::user()->user_type == 1)
                 <div class="form-tab m-0">
                     <div class="bootstrap-tab">
                         <div class="tab-content" id="myTabContent">
-
                             <div class="" id="nav-add-patient-record" role="tabpanel" aria-labelledby="home-tab">
                                 <!-- <form action="{{ url('/record-filter') }}" method="post" class="myForm"> -->
                                 <!-- <form action="#" method="post" class="myForm"> -->
                                 <!-- @csrf -->
-
                                 <div class="">
                                     <div class="row card-mm mt-3">
                                         <div class="col-md-2 col-md-n">
@@ -194,7 +191,6 @@
                                                             <h1 class="main-heading text-center">State wise Patient
                                                                 Report</h1>
                                                         </div>
-
                                                     </div>
                                                     <div class="col-md-12">
                                                         <div class="row d-flex align-items-center justify-content-between">
@@ -314,7 +310,7 @@
                                                 <select class="form-select state click-function"
                                                     aria-label="Default select example" id="state" name="state_name"
                                                     onChange="handleFilterValue();handleDistrict()">
-                                                    <option selected state-name=""> Select
+                                                    <option state-name=""> Select
                                                         State
                                                     </option>
                                                     @foreach (state_list() as $state)
@@ -345,7 +341,7 @@
                                             <div class="form-group">
                                                 <label for="fromYear">From Year<span class="star"></span></label>
                                                 <select class="form-select p-1 year click-function" name="year"
-                                                    aria-label="Default select example" id="year" required=""
+                                                    aria-label="Default select" id="year" required=""
                                                     onChange="handleFilterValue()">
                                                     <option>Select Year</option>
                                                     <?php
@@ -377,7 +373,7 @@
                                         <div class="dashboard-col">
                                             <div class="form-group">
                                                 <label for="formType">Form Type<span class="star"></span></label>
-                                                <select class="form-select " aria-label="Default select example"
+                                                <select class="form-select" aria-label="Default select example"
                                                     id="formType" onChange="handleFormType()">
                                                     <option value=""> Select Form Type
                                                     </option>
@@ -457,12 +453,8 @@
                                                 </small>
                                             </div>
                                         </div>
-
-
                                     </div>
                                 </div>
-
-
                                 <!-- /.row -->
                                 <div class="card-body p-3 my-3 dashboard-filter">
                                     <div class="row bg-white">
@@ -493,17 +485,14 @@
                                                             </select> --}}
                                                     </div>
                                                     <div class="total-cases">
-                                                        <p > Total cases - <span class="value" id="box1"> 0</span> </p>
+                                                        <p>Total cases - <span class="value" id="box1">0</span></p>
                                                     </div>
                                                     <div class="year-selector p-3"> </div>
                                                     <div id="container" class="map"></div>
                                                     <div id="stateMap"><img class="stateImage" src="">
                                                     </div>
                                                 </div>
-
-
                                             </div>
-
                                             <div class="col-md-6 pl-2">
                                                 <div class="">
                                                     <div style="padding:15px; border: 1px solid grey; border-radius:5px; background: white; color: black; height: 100%"
@@ -582,10 +571,8 @@
                                                 </div>
                                                 <div id="chart" class=" mt-3"></div>
                                             </div>
-                                           
                                         </div>
                                     </div>
-
                                     <div class="row">
                                         <div class="col-md-12 pr-2 mb-3">
                                         <div class="highchart-wrapper dashboard-filter position-relative">
@@ -599,7 +586,6 @@
                                     </div>
                                 </div>
                                 <!-- end here -->
-
                             </div>
                         </div>
                     </div>
@@ -609,5 +595,4 @@
             @endif
         </div>
     </div>
-
     @endsection
