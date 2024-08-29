@@ -1152,5 +1152,31 @@ table tr td:last-child {
   text-align: center;
 }
 
+ul.notification_ul{
+  height: 294px;
+  overflow: auto;
+}
+
+ul.notification_ul::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+ul.notification_ul::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
  
+/* Handle */
+ul.notification_ul::-webkit-scrollbar-thumb {
+  background: #888; 
+}
+
+ul.notification_ul .notify_status a {
+  color: #ab4024;
+}
+
+.notifications .notification_dd li .notify_data a {
+  color: #1e48a1;
+  font-size: 14px;
+}
   

@@ -23,9 +23,16 @@ use App\Models\LineSuspectedCalculate;
 use App\Models\State;
 use DateTime;
 use Illuminate\Support\Facades\Auth;
+use App\Services\SendNotificationServices;
 
 class StateController extends Controller
 {    
+    public $SendNotificationServices;
+
+    function __construct()
+    {
+        $this->SendNotificationServices = new SendNotificationServices;
+    }
     /**
      *  @index state user dashboard
      *
@@ -51,6 +58,7 @@ class StateController extends Controller
                     DB::raw('SUM(total_health_facilities_anaimal_bite) as sum_total_health_animal'),
                     DB::raw('SUM(total_health_facilities_submitted_monthly) as total_health_facilities_submitted'),
                     DB::raw('SUM(total_patients_animal_biting + total_stray_dog_bite + total_pet_dog_bite + total_cat_bite + total_monkey_bite + total_others_bite) as total_patients'),
+                    DB::raw('SUM(total_stray_dog_bite + total_pet_dog_bite) as total_dog_bite'),
                     DB::raw('SUM(confirmed_suspected_rabies_deaths + suspected_rabies_cases_opd + suspected_rabies_cases_admitted + suspected_rabies_cases_left_against_medical + suspected_rabies_deaths) as suspected_death_reports'),
                     DB::raw('SUM(dh_of_arv + sdh_of_arv + chc_of_arv + phc_of_arv) as availability_arv'),
                     DB::raw('SUM(dh_of_ars + sdh_of_ars + chc_of_ars + phc_of_ars) as availability_ars')
@@ -205,6 +213,8 @@ class StateController extends Controller
                     'bite_cases_observed' => $request->bite_cases_observed,
                     'other_remarks' => $request->other_remarks,
                 ]);
+            $formType = '1'; //Soe Uc Form
+            $this->SendNotificationServices->sendNotification($stateMonthlyReport->id, $formType, '2', $request->status);
             DB::commit();
             if($stateMonthlyReport){
                 return redirect()->route('state.monthly-report-list')->with('message', 'State monthly report create successfull');
@@ -287,6 +297,8 @@ class StateController extends Controller
                         'date' => $request->date[$index],
                     ]);
                 }
+                $formType = '3'; //Soe Uc Form
+                $this->SendNotificationServices->sendNotification($lineSuspectedId, $formType, '2', $request->status);
             DB::commit();
             return redirect()->route('state.line-suspected-list')->with('message', 'Line Suspected create successfull');
         }catch (Exception $e) {

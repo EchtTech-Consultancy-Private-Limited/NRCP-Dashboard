@@ -56,78 +56,79 @@
                 </div> --}}
                 <li class="nav-item">
                 <div class="notifications" id="notification-card">
-                    <div class="icon_wrap"><i class="fa fa-bell text-white"></i></div>
-                    
+                    @if(Auth::user()->user_type == 1)
+                    <div class="icon_wrap"><i class="fa fa-bell text-white"></i> <div class="number-noti notification-total">0</div> </div>
+                    @endif
                     <div class="notification_dd">
                         <ul class="notification_ul">
-                            <li class="starbucks success">                               
-                                <div class="notify_data">
-                                    <div class="title">
-                                        Lorem, ipsum dolor.
-                                    </div>
-                                    <div class="sub_title">
-                                    Lorem ipsum dolor sit amet consectetur.
-                                </div>
-                                </div>
-                                <div class="notify_status">
-                                    <p>Success</p>  
-                                </div>
-                            </li>  
-                            <li class="baskin_robbins failed">                                
-                                <div class="notify_data">
-                                    <div class="title">
-                                        Lorem, ipsum dolor.  
-                                    </div>
-                                    <div class="sub_title">
-                                    Lorem ipsum dolor sit amet consectetur.
-                                </div>
-                                </div>
-                                <div class="notify_status">
-                                    <p>Failed</p>  
-                                </div>
-                            </li> 
-                            <li class="mcd success">                               
-                                <div class="notify_data">
-                                    <div class="title">
-                                        Lorem, ipsum dolor.  
-                                    </div>
-                                    <div class="sub_title">
-                                    Lorem ipsum dolor sit amet consectetur.
-                                </div>
-                                </div>
-                                <div class="notify_status">
-                                    <p>Success</p>  
-                                </div>
-                            </li>  
-                            <li class="pizzahut failed">                               
-                                <div class="notify_data">
-                                    <div class="title">
-                                        Lorem, ipsum dolor.  
-                                    </div>
-                                    <div class="sub_title">
-                                    Lorem ipsum dolor sit amet consectetur.
-                                </div>
-                                </div>
-                                <div class="notify_status">
-                                    <p>Failed</p>  
-                                </div>
-                            </li> 
-                            <li class="kfc success">                                
-                                <div class="notify_data">
-                                    <div class="title">
-                                        Lorem, ipsum dolor.  
-                                    </div>
-                                    <div class="sub_title">
-                                    Lorem ipsum dolor sit amet consectetur.
-                                </div>
-                                </div>
-                                <div class="notify_status">
-                                    <p>Success</p>  
-                                </div>
-                            </li> 
-                            <li class="show_all">
+                            @if(notifications())
+                                @foreach(notifications() as $key => $notification)
+                                    @if(Auth::user()->user_type == 1)
+                                        <li class="starbucks success">                               
+                                        <div class="notify_data">
+                                            @if($notification->form_type ==1)                                               
+                                                <div class="title">
+                                                    <a href="{{ route('national.state-monthly-view', $notification->form_id) }}" target="_blank">State User(State Monthly Report)
+                                                    </a>                                                    
+                                                </div>
+                                                <div class="sub_title">
+                                                    {{ senderName($notification->sender_id)->name }}
+                                                </div>
+                                            </div>
+                                            <div class="notify_status">
+                                                <p><a href="{{ route('national.state-monthly-report', $notification->form_id) }}" target="_blank">View All
+                                                </a></p>  
+                                            </div>
+                                            @endif
+                                            @if($notification->form_type ==2)                                               
+                                                <div class="title">
+                                                    <a href="{{ route('national.l-form-view', $notification->form_id) }}" target="_blank">State user (L Form)
+                                                    </a>                                                    
+                                                </div>
+                                                <div class="sub_title">
+                                                    {{ senderName($notification->sender_id)->name }}
+                                                </div>
+                                            </div>
+                                            <div class="notify_status">
+                                                <p><a href="{{ route('national.l-form', $notification->form_id) }}" target="_blank">View All
+                                                </a></p>  
+                                            </div>
+                                            @endif
+                                            @if($notification->form_type ==3)
+                                                <div class="title">
+                                                    <a href="{{ route('national.p-form-view', $notification->form_id) }}" target="_blank"> State user (P Form)
+                                                    </a>                                                   
+                                                </div>
+                                                <div class="sub_title">
+                                                    {{ senderName($notification->sender_id)->name }}
+                                                </div>
+                                            </div>
+                                            <div class="notify_status">
+                                                <p><a href="{{ route('national.p-form', $notification->form_id) }}" target="_blank">View All
+                                                </a></p>  
+                                            </div>
+                                            @endif
+                                            @if($notification->form_type ==4)
+                                                <div class="title">
+                                                    <a href="{{ route('national.investigate-report-view', $notification->form_id) }}" target="_blank">State user (Investigate Report)
+                                                    </a>
+                                                </div>
+                                                <div class="sub_title">
+                                                    {{ senderName($notification->sender_id)->name }}
+                                                </div>
+                                            </div>
+                                            <div class="notify_status">
+                                                <p><a href="{{ route('national.investigate-report', $notification->form_id) }}" target="_blank">View All
+                                                </a></p>  
+                                            </div>
+                                            @endif
+                                        </li>
+                                    @endif
+                                 @endforeach
+                            @endif
+                            {{-- <li class="show_all">
                                 <p class="link">Show All Notification</p>
-                            </li> 
+                            </li>  --}}
                         </ul>
                     </div>
                     

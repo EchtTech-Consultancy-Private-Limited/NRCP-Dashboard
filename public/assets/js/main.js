@@ -42,7 +42,6 @@ $(document).ready(function() {
 let selectBox = $('select');
 selectBox.each(function () {
     let valueArr = $(this).find(':selected').text().trim();
-    console.log(valueArr)
     if (valueArr.includes('select') || valueArr.includes('Select')) {
         $(this).css('color', 'grey');
     } else {
@@ -411,6 +410,28 @@ jQuery( document ).ready(function() {
     $('select').focus(function(){
         $(this).siblings(".text-muted").hide();
     });
+});
+
+// notification code
+$(document).ready(function() {
+    function fetchNotifications() {
+        $.ajax({
+            url: BASE_URL + 'notifications',
+            method: 'GET',
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            success: function(data) {
+                $("#bell_notification_clicker").text(data.totalNew);
+                $('.notification-total').text(data.totalNew);
+                $('.total-resolved h2').text(data.totalReported);
+                $('.status span').eq(0).text(data.confirmed);
+                $('.status span').eq(1).text(data.returned);
+            }
+        });
+    }
+    setInterval(fetchNotifications, 30000);
+    fetchNotifications();
 });
 
 $(document).ready(function(){
