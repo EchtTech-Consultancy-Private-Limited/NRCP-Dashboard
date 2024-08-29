@@ -1179,4 +1179,14 @@ ul.notification_ul .notify_status a {
   color: #1e48a1;
   font-size: 14px;
 }
+
+.btn-success {
+  color: #fff;
+  background-color: #28a745;
+  border-color: #28a745;
+  box-shadow: none;
+  border-radius: 50% !important;
+  padding: 8px 9px 4px 11px;
+  text-align: center;
+}
   

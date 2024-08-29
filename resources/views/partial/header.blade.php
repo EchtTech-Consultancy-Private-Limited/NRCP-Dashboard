@@ -64,48 +64,48 @@
                             @if(notifications())
                                 @foreach(notifications() as $key => $notification)
                                     @if(Auth::user()->user_type == 1)
-                                        <li class="starbucks success">                               
+                                        <li class="starbucks success">
                                         <div class="notify_data">
-                                            @if($notification->form_type ==1)                                               
+                                            @if($notification->form_type ==1)
                                                 <div class="title">
                                                     <a href="{{ route('national.state-monthly-view', $notification->form_id) }}" target="_blank">State User(State Monthly Report)
-                                                    </a>                                                    
+                                                    </a>
                                                 </div>
                                                 <div class="sub_title">
                                                     {{ senderName($notification->sender_id)->name }}
                                                 </div>
                                             </div>
                                             <div class="notify_status">
-                                                <p><a href="{{ route('national.state-monthly-report', $notification->form_id) }}" target="_blank">View All
-                                                </a></p>  
+                                                <p><a href="{{ route('national.state-monthly-report') }}" target="_blank">View All
+                                                </a></p>
                                             </div>
                                             @endif
-                                            @if($notification->form_type ==2)                                               
+                                            @if($notification->form_type ==2)
                                                 <div class="title">
                                                     <a href="{{ route('national.l-form-view', $notification->form_id) }}" target="_blank">State user (L Form)
-                                                    </a>                                                    
+                                                    </a>
                                                 </div>
                                                 <div class="sub_title">
                                                     {{ senderName($notification->sender_id)->name }}
                                                 </div>
                                             </div>
                                             <div class="notify_status">
-                                                <p><a href="{{ route('national.l-form', $notification->form_id) }}" target="_blank">View All
+                                                <p><a href="{{ route('national.l-form') }}" target="_blank">View All
                                                 </a></p>  
                                             </div>
                                             @endif
                                             @if($notification->form_type ==3)
                                                 <div class="title">
                                                     <a href="{{ route('national.p-form-view', $notification->form_id) }}" target="_blank"> State user (P Form)
-                                                    </a>                                                   
+                                                    </a>
                                                 </div>
                                                 <div class="sub_title">
                                                     {{ senderName($notification->sender_id)->name }}
                                                 </div>
                                             </div>
                                             <div class="notify_status">
-                                                <p><a href="{{ route('national.p-form', $notification->form_id) }}" target="_blank">View All
-                                                </a></p>  
+                                                <p><a href="{{ route('national.p-form') }}" target="_blank">View All
+                                                </a></p>
                                             </div>
                                             @endif
                                             @if($notification->form_type ==4)
@@ -118,8 +118,8 @@
                                                 </div>
                                             </div>
                                             <div class="notify_status">
-                                                <p><a href="{{ route('national.investigate-report', $notification->form_id) }}" target="_blank">View All
-                                                </a></p>  
+                                                <p><a href="{{ route('national.investigate-report') }}" target="_blank">View All
+                                                </a></p>
                                             </div>
                                             @endif
                                         </li>
@@ -146,7 +146,6 @@
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="fa fa-user-circle-o" aria-hidden="true"></i>
                         </a>
-
                         <div class="dropdown-menu" aria-labelledby="profile">
                             <ul>
                                 <li class="text-center">{{ Auth::user()->email }}</li>
@@ -155,7 +154,6 @@
                                 <li> <a class="dropdown-item" onclick="return confirm('Are you sure you want to logout?')"
                                 href="{{ url('logout') }}" role="button">   <i class="fa fa-power-off"></i> Logout </a> </li>
                             </ul>
-                           
                         </div>
                     </div>
                    
