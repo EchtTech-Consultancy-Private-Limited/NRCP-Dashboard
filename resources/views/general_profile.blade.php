@@ -72,8 +72,8 @@
                     <div class="col">
                         <div class="form-group">
                             <label for="formType">Joining Date of NRCP</label>
-                            <input type="text" name="date_of_joining" value="{{ old('date_of_joining') }}"
-                                id="date_of_joining" class="form-control" data-date="date" placeholder="DD-MM-YYYY" />
+                            <input type="date" name="date_of_joining" value="{{ old('date_of_joining') }}"
+                                id="date_of_joining" class="form-control" placeholder="DD-MM-YYYY" />
                             <small id="date_of_joining-error" class="form-text text-muted"> </small>
                         </div>
                     </div>

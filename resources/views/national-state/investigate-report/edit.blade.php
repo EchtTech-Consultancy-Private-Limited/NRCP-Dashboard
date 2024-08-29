@@ -1802,8 +1802,8 @@
                     <tr>
                         <td colspan="3">
                             <p style="display: block;">
-                                8.2 Collect the names and contact information for any person below who had <b>close contact
-                                    with the suspected rabies case in the last 14 days of onset of symptoms</b>. ( <em>Close
+                                8.2 Collect the names and contact information for any person below who had close contact
+                                    with the suspected rabies case in the last 14 days of onset of symptoms. ( <em>Close
                                     contacts were likely to have had their hands or open cuts, wounds, or mucous membranes
                                     in contact with a patient&#39;s saliva,respiratory secretions, autopsy material, or
                                     other potentially infectious material</em>)
@@ -1871,8 +1871,8 @@
                     <tr>
                         <td colspan="3">
                             <p style="display: block;">
-                                8.3 Collect the names and contact information for any people who<b>had contact with the
-                                    animal suspected of transmitting rabies to the case</b> . Including details of animal
+                                8.3 Collect the names and contact information for any people who had contact with the
+                                    animal suspected of transmitting rabies to the case. Including details of animal
                                 owners.
                             </p>
                             <p>Risk assessments should be conducted with these people to rule out potential exposure.</p>

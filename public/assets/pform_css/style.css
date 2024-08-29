@@ -1134,3 +1134,23 @@ input[type=date]::placeholder {
 .highcharts-title {
   z-index: 1 !important;
 }/*# sourceMappingURL=style.css.map */
+
+.dashboard .dashboard-table {
+	max-height: 614px;  
+	overflow-y: auto;
+  }
+
+  .table-bordered{
+	margin-bottom: 0;
+  }
+
+  .display.dataTable th:last-child, table.dataTable th:last-child {
+    max-width: max-content;
+    width: fit-content !important;
+}
+table tr td:last-child {
+  text-align: center;
+}
+
+ 
+  
