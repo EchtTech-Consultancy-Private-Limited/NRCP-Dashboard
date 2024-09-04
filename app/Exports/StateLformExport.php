@@ -24,14 +24,12 @@ class StateLformExport implements FromCollection, WithStyles
             if (!empty($array) && isset($array[0])) {
                 foreach ($array as $row) {
                     unset($row['created_at'], $row['deleted_at'], $row['updated_at']);
-
                     if (!$headerAdded) {
                         $formattedKeys = array_map([$this, 'formatHeader'], array_keys($row));
                         $output[] = $formattedKeys; // Add main header row only if not already added
                         $this->headerIndexes[] = count($output); // Track header row index
                         $headerAdded = true;
                     }
-
                     $outputRow = [];
                     foreach ($row as $key => $value) {
                         if ($key === 'state_user_l_form_count_case' && is_array($value)) {
@@ -66,7 +64,6 @@ class StateLformExport implements FromCollection, WithStyles
                             $outputRow[$key] = $value;
                         }
                     }
-
                     $output[] = $outputRow;
                     $output[] = array_fill(0, count($outputRow), ''); // Add an empty row for separation if needed
                 }

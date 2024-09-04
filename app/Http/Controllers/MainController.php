@@ -49,7 +49,7 @@ class MainController extends Controller
                 ->first();
         $states = State::count();
         return view("dashboard", compact('total','months','states'));
-    }    
+    }
     /**
      * nationalHighchart
      *

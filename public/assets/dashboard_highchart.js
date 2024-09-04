@@ -142,22 +142,35 @@ $(document).ready(function () {
 });
 
 function resetButton() {
-    $('.state_filter_district').html('State')
-    $('#filter_state').val('')
-    $('#state option[value=""]').prop('selected', 'selected').change();
-    $('#district option[value=""]').prop('selected', 'selected').change();
-    $('#year option[value="yyyy"]').prop('selected', 'selected').change();
-    $('#yearto option[value=""]').prop('selected', 'selected').change();
-    $('#formType option[value=""]').prop('selected', 'selected').change();
-    $('#diseasesSyndromes option[value="selected"]').prop('selected', 'selected').change();
+    // Reset the text in dropdowns
+    $('.state_filter_district').html('State');
+
+    // Reset the hidden input fields
+    $('#filter_state').val('');
+    $('#filter_district').val('');
+    $('#filter_from_year').val('');
+    $('#filter_to_year').val('');
+    $('#filter_form_type').val('');
+    $('#filter_diseases').val('');
+    $('#session_value').val('0');
+    $('#is_graph_data_available').val('');
+
+    // Reset the select fields
+    $('#state').val('').change();
+    $('#district').html('<option dist-name="">Select District </option>').val('').change(); // Reset the district options
+    $('#year').val('').change();
+    $('#yearto').val('').change();
+    $('#formType').val('').change();
+    $('#diseasesSyndromes').val('selected').change();
+    $('#mySelect2').val([]).trigger('change');
     const search_btn = $("#apply_filter");
     search_btn.attr("disabled", false);
-    let loading_content = 'Search';
-    search_btn.html(loading_content);
+    search_btn.html('Search');
     $("#stateMap").hide();
     $("#container").show();
     defaultLoadMapData();
 }
+
 
 const apply_filter = () => {
     // const filter_state = $('#state').find(":selected").val();
@@ -749,7 +762,15 @@ const googlePieChart = (result) => {
         mapFilterTypeText = "Death";
     }
 
-
+    const stateText = filter_state !== undefined ? filter_state : '';
+    const districtText = filter_district !== undefined ? filter_district : '';
+    const fromYearText = filter_from_year !== "" ? filter_from_year : '';
+    const toYearText = filter_to_year !== "" ? filter_to_year : '';
+    
+    const yearRangeText = fromYearText && toYearText ? `${fromYearText} to ${toYearText}` : (fromYearText || toYearText);
+    
+    const text = `Cases by Gender in India ${stateText ? stateText + ' from ' : ''}${districtText ? districtText + ' from ' : ''}${yearRangeText} n=(${result.total})`;
+    
     Highcharts.chart('containerPie', {
         chart: {
             type: 'pie',
@@ -759,7 +780,7 @@ const googlePieChart = (result) => {
             }
         },
         title: {
-            text: `Cases by Gender in India ${filter_state !== undefined ? filter_state + ' from' : ''} ${filter_district !== undefined ? filter_district + ' from' : ''} ${filter_from_year !== "" ? filter_from_year + '  to' : ''} ${filter_to_year !== "" ? filter_to_year + ' ' : ''}    n=(${result.total})`,
+            text: text,
             align: 'left',
             style: {
                 fontSize: innerWidth<=1350 ? '15px' : (innerWidth>=1350 ? '18px': '15px') // Set the font size here
@@ -2517,6 +2538,7 @@ function nationalHighchart(data)
         },
         tooltip: {
             enabled: true,
+            outside: true, 
             formatter: function() {
                 return '<b>' + this.point.name + '</b>: ' + this.y + '%';
             }
@@ -2586,6 +2608,7 @@ function nationalHighchart(data)
         },
         tooltip: {
             enabled: true,
+            outside: true, 
             formatter: function() {
                 return '<b>' + this.point.name + '</b>: ' + this.y + '%';
             }
@@ -2655,6 +2678,7 @@ function nationalHighchart(data)
         },
         tooltip: {
             enabled: true,
+            outside: true, 
             formatter: function() {
                 return '<b>' + this.point.name + '</b>: ' + this.y;
             }
@@ -2724,6 +2748,7 @@ function nationalHighchart(data)
         },
         tooltip: {
             enabled: true,
+            outside: true, 
             formatter: function() {
                 return '<b>' + this.point.name + '</b>: ' + this.y;
             }

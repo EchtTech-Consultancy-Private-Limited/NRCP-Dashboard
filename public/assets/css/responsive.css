@@ -260,6 +260,9 @@
         flex: 0 0 28%;
         max-width: 28%;
     }
+    .highchart-title h3 {
+        min-height: 63px;
+    }
    
 }
 @media(max-width:1250px) {

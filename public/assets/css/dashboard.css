@@ -1119,6 +1119,22 @@ select option {
   font-size: 16px !important;
 }
 
+.number-noti {
+  color: #ffffff;
+  position: absolute;
+  top: 0px;
+  right: -7px;
+  font-size: 10px;
+  font-weight: 600;
+  height: 14px;
+  width: 14px;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  background: #ab4024;
+  border-radius: 100px;
+}
+
 table {
   width: 99.99% !important;
 }/*# sourceMappingURL=dashboard.css.map */
