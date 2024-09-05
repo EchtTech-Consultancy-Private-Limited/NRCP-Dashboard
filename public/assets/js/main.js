@@ -390,6 +390,10 @@ jQuery( document ).ready(function() {
     $('form input[type=text]').focus(function(){
         $(this).siblings(".text-muted").hide();
     });
+
+    $('form input[type=password]').focus(function(){
+        $(this).siblings(".text-muted").hide();
+    });
     
     $('form input[type=number]').focus(function(){
         $(this).siblings(".text-muted").hide();

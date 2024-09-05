@@ -43,7 +43,7 @@ class AdminController extends Controller
     public function userSave(Request $request)
     {
         $request->validate([
-            'name' => 'required',
+            'name' => 'regex:/^[a-zA-Z ]+$/',
             'email' => 'required|email',
             'password' => 'required',
             'state_id' => 'required',
@@ -87,7 +87,7 @@ class AdminController extends Controller
     public function userUpdate(Request $request, $id = '')
     {
         $request->validate([
-            'name' => 'required',
+            'name' => 'regex:/^[a-zA-Z ]+$/',
             'email' => 'required|email',
             'state_id' => 'required',
             'user_type' => 'required',

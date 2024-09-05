@@ -11,16 +11,16 @@
                 <div class="row mb-3">
                     <div class="col-md-4">
                         <label class="form-label" for="inputAddress2">Old Password<span class="text-danger">*</span></label>
-                        <input type="password" class="form-control @error('oldpassword') is-invalid @enderror" name="oldpassword" id="oldpassword" placeholder="Old Password">
+                        <input type="password" class="form-control" name="oldpassword" id="oldpassword" placeholder="Old Password">
                         @error('oldpassword')
-                            <span class="text-danger">{{ $message }}</span>
+                            <span class="form-text text-muted">{{ $message }}</span>
                         @enderror
                     </div>
                     <div class="col-md-4">
                         <label class="form-label" for="inputAddress2">New Password<span class="text-danger">*</span></label>
-                        <input type="password" class="form-control @error('newpassword') is-invalid @enderror" name="newpassword" id="newpassword" placeholder="New Password">
+                        <input type="password" class="form-control" name="newpassword" id="newpassword" placeholder="New Password">
                         @error('newpassword')
-                            <span class="text-danger">{{ $message }}</span>
+                            <span class="form-text text-muted">{{ $message }}</span>
                         @enderror
                     </div>
                 </div>
