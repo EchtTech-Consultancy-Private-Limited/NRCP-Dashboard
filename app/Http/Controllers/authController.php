@@ -43,9 +43,9 @@ class authController extends Controller
 
                 ]
         );
-        $exitUser = DB::table('dashboard_login')->where('email',$request->email)->where('user_type',$request->user_type)->first();
+        $exitUser = DB::table('dashboard_login')->where('email',$request->email)->where('user_type',$request->user_type)->where('status','1')->first();
         if($exitUser == null){
-            return redirect()->back()->with('error', 'User do not match for this user type');
+            return redirect()->back()->with('error', 'User do not match for this user type and status');
         }else{
             if($request->user_type == '2'){
                 $redirect = 'lab-dashboard';
