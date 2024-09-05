@@ -11,23 +11,23 @@
                 <div class="row mb-3">
                     <div class="col-md-4">
                         <label class="form-label" for="inputAddress">Name<span class="text-danger">*</span></label>
-                        <input type="text" name="name" value="{{ old('name', $user->name ?? '') }}" class="form-control" placeholder="Enter Name">
+                        <input type="text" name="name" value="{{ old('name', $user->name ?? '') }}" maxlength="200" class="form-control" placeholder="Enter Name">
                         @error('name')
-                            <span class="text-danger">{{ $message }}</span>
+                            <span class="form-text text-muted">{{ $message }}</span>
                         @enderror
                     </div>
                     <div class="col-md-4">
                         <label class="form-label" for="inputAddress">Email<span class="text-danger">*</span></label>
-                        <input type="text" name="email" value="{{ old('email', $user->email ?? '') }}" class="form-control" placeholder="Enter Email">
+                        <input type="text" name="email" value="{{ old('email', $user->email ?? '') }}" maxlength="200" class="form-control" placeholder="Enter Email">
                         @error('email')
-                            <span class="text-danger">{{ $message }}</span>
+                            <span class="form-text text-muted">{{ $message }}</span>
                         @enderror
                     </div> 
                     <div class="col-md-4">
                         <label class="form-label" for="inputAddress2">Password<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control" name="password" value="{{ old('password') }}" id="password" placeholder="Enter Password">
+                        <input type="text" class="form-control" name="password" value="{{ old('password') }}" maxlength="10" id="password" placeholder="Enter Password">
                         @error('password')
-                            <span class="text-danger">{{ $message }}</span>
+                            <span class="form-text text-muted">{{ $message }}</span>
                         @enderror
                     </div>
                 </div>
@@ -44,7 +44,7 @@
                             @endforeach
                         </select>
                         @error('state_id')
-                            <span class="text-danger">{{ $message }}</span>
+                            <span class="form-text text-muted">{{ $message }}</span>
                         @enderror
                     </div>
                     <div class="col-md-4">
@@ -58,7 +58,7 @@
                             @endforeach
                         </select>
                         @error('institute_id')
-                            <span class="text-danger">{{ $message }}</span>
+                            <span class="form-text text-muted">{{ $message }}</span>
                         @enderror
                     </div>
                     <div class="col-md-4 pe-1">
@@ -70,7 +70,7 @@
                             <option value="3" {{ old('user_type', $user->user_type ?? '') == 3 ? 'selected' : '' }}>State user</option>
                         </select>
                         @error('user_type')
-                            <span class="text-danger">{{ $message }}</span>
+                            <span class="form-text text-muted">{{ $message }}</span>
                         @enderror
                     </div>
                     <div class="col-md-4 pe-1">
@@ -81,7 +81,7 @@
                             <option value="0" {{ old('status', $user->status ?? '') == 0 ? 'selected' : '' }}>Disable</option>
                         </select>
                         @error('status')
-                            <span class="text-danger">{{ $message }}</span>
+                            <span class="form-text text-muted">{{ $message }}</span>
                         @enderror
                     </div>
                 </div>

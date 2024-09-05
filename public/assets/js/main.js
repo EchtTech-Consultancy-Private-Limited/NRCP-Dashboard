@@ -390,6 +390,10 @@ jQuery( document ).ready(function() {
     $('form input[type=text]').focus(function(){
         $(this).siblings(".text-muted").hide();
     });
+
+    $('form input[type=password]').focus(function(){
+        $(this).siblings(".text-muted").hide();
+    });
     
     $('form input[type=number]').focus(function(){
         $(this).siblings(".text-muted").hide();
@@ -499,8 +503,23 @@ $(document).ready(function(){
   // Get the width of the container
 
 
+  $("#toggle-pass").click(function() {
+
+    alert("hii");
+
+    $(this).toggleClass("fa-eye fa-eye-slash");
+    input = $(this).parent().find("input");
+    if (input.attr("type") == "password") {
+        input.attr("type", "text");
+    } else {
+        input.attr("type", "password");
+    }
+});
+
 });
 
 function confirmDelete() {
     return confirm('Are you sure you want to delete this report?');
 }
+
+
