@@ -67,8 +67,8 @@
             <div class="col-md-2 col-md-n">
                 <div class="single_crm border-line-3 p-0">
                     <div class="crm_body">
-                        <h4 id="total_patients">{{$total->total_patients}}</h4>
-                        <p>Total No. of Patients</p>
+                        <h4 id="total_patients">{{$total->total_patients}} / {{@$total->total_dog_bite}}</h4>
+                        <p>Total No. of Patients / Total No. of Dog Bite</p>
                     </div>
                 </div>
             </div>

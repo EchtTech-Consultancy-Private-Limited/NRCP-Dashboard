@@ -10,9 +10,16 @@ use App\Models\CountryState;
 use App\Models\City;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use App\Services\SendNotificationServices;
 
 class FormController extends Controller
 {
+    public $SendNotificationServices;
+
+    function __construct()
+    {
+        $this->SendNotificationServices = new SendNotificationServices;
+    }
     /**
      * lFormList
      *
@@ -51,15 +58,15 @@ class FormController extends Controller
             'name_nodal_person' => 'required',
             'designation_nodal_person' => 'required',
             'phone_number' => 'required|unique:state_user_l_forms,phone_number|numeric|digits:10',
-            'email' => 'required|unique:state_user_l_forms,email', 
+            // 'email' => 'required|unique:state_user_l_forms,email',
             'institute_name' => 'required',
         ],
         [
             'name_nodal_person.required' => 'Name of the nodal person is required',
             'designation_nodal_person.required' => 'Designation of the nodal person is required',
             'phone_number.required' => 'Phone number is required',
-            'email.required' => 'Email address is required',
-            'email.email' => 'Email address must be a valid email format',
+            // 'email.required' => 'Email address is required',
+            // 'email.email' => 'Email address must be a valid email format',
             'institute_name.required' => 'Institute name is required',
         ]);
         try {
@@ -98,6 +105,8 @@ class FormController extends Controller
                     'lform_remark' => $request->lform_remark[$key],
                 ]);
             }
+            $formType = '2'; //Soe Uc Form
+            $this->SendNotificationServices->sendNotification($LFormId, $formType, '2', $request->status);
             DB::commit();
             return redirect()->route('state.lform-list')->with('message', 'L Form created successfully');
         } catch (\Exception $e) {

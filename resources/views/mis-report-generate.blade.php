@@ -13,7 +13,6 @@
         <button class="float-right generate-report" onclick="printDiv('report_national')">Generate Report </button>
     </div> --}}
     <div class="col-md-12">
-
         <!-- general form elements -->
         <div class="card-primary dashboard" id="report_national">
             @if (Auth::user()->user_type == 1)
@@ -99,7 +98,7 @@
                                                         <tbody>
                                                              @foreach ($stateMonthlyReports as $stateMonthlyReport)
                                                                 <tr>
-                                                                    <td>{{@$stateMonthlyReport->states->state_name}}</td>
+                                                                    <td>{{ucwords(@$stateMonthlyReport->states->state_name)}}</td>
                                                                     <td>{{date('F Y', strtotime(@$stateMonthlyReport->reporting_month_year))}}</td>
                                                                     <td>{{@$stateMonthlyReport->state_nodal_office}}</td>
                                                                     <td>{{@$stateMonthlyReport->office_address}}</td>
@@ -109,11 +108,11 @@
                                                                         </a> --}}
                                                                         <a href="{{route('national.state-monthly-view',$stateMonthlyReport->id)}}" class="btn bg-primary action-btn" title="View">
                                                                             <i class="fa fa-eye"></i>
-                                                                          </a>
+                                                                        </a>
                                                                         {{-- <a href="{{route('national.state-monthly-delete',$stateMonthlyReport->id)}}" class="btn bg-danger action-btn" title="Delete" onclick="return confirmDelete()">
                                                                           <i class="fa fa-trash-o"></i>
                                                                         </a> --}}
-                                                                      </td>
+                                                                    </td>
                                                                 </tr>
                                                              @endforeach
                                                         </tbody>
@@ -122,7 +121,6 @@
                                             </div>
                                         </form>
                                     </div>
-
                                 </div>
                             </div>
                         </div>

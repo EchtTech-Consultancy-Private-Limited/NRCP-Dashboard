@@ -8,9 +8,16 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Requests\InvestigartionReportRequest;
 use App\Models\InvestigateReport;
 use Illuminate\Support\Facades\Auth;
+use App\Services\SendNotificationServices;
 
 class InvestigationController extends Controller
 {    
+    public $SendNotificationServices;
+
+    function __construct()
+    {
+        $this->SendNotificationServices = new SendNotificationServices;
+    }
     /**
      * create
      *
@@ -36,6 +43,8 @@ class InvestigationController extends Controller
             $investigateReport->fill($request->all());
             $investigateReport->user_id = Auth::id();
             $investigateReport->save();
+            $formType = '4'; //Soe Uc Form
+            $this->SendNotificationServices->sendNotification($investigateReport->id, $formType, '2', $request->status);
             DB::commit();
             return redirect()->route('state.investigate-report-list')->with('message', 'Investigate report created successfully');
         } catch (\Exception $e) {

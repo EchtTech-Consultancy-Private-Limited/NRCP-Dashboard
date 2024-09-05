@@ -20,6 +20,7 @@ use App\Http\Controllers\StateUser\FormController;
 use App\Http\Controllers\NationalStateListController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\NotificationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -45,6 +46,7 @@ Route::middleware(['Admin','device'])->group(function () {
         Route::get('password/update/', [ProfileController::class, 'getUserPassword'])->name('password.update');
         Route::post('change-password/{id}', [ProfileController::class, 'changePassword'])->name('change-password');
         Route::get('/logout',[authController::class,'logout'])->name('logout');
+        Route::get('/notifications', [NotificationController::class, 'getNotifications']);
         // Admin Dashboard
         Route::middleware(['preventBackHistory'])->group(function () {
             Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
