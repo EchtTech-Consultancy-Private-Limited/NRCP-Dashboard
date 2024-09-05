@@ -35,6 +35,10 @@ class ProfileController extends Controller
         $request->validate([
             'oldpassword' => 'required',
             'newpassword' => 'required|min:8',
+        ],
+        [
+            'oldpassword.required' => 'The old password field is required.',
+            'newpassword.required' => 'The new password field is required.',
         ]);
     
         try {

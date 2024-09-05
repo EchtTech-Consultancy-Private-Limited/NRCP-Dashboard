@@ -1043,7 +1043,7 @@ input[type=date]::placeholder {
 }
 .notifications .notification_dd li {
   border-bottom: 1px solid #f1f2f4;
-  padding: 8px 20px;
+  padding: 7px 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -1133,60 +1133,12 @@ input[type=date]::placeholder {
 
 .highcharts-title {
   z-index: 1 !important;
+}
+
+.toggle-password.btn-psw {
+  position: absolute;
+  top: 11px;
+  right: 10px;
+  cursor: pointer;
+  z-index: 9;
 }/*# sourceMappingURL=style.css.map */
-
-.dashboard .dashboard-table {
-	max-height: 614px;  
-	overflow-y: auto;
-  }
-
-  .table-bordered{
-	margin-bottom: 0;
-  }
-
-  .display.dataTable th:last-child, table.dataTable th:last-child {
-    max-width: max-content;
-    width: fit-content !important;
-}
-table tr td:last-child {
-  text-align: center;
-}
-
-ul.notification_ul{
-  height: 294px;
-  overflow: auto;
-}
-
-ul.notification_ul::-webkit-scrollbar {
-  width: 5px;
-}
-
-/* Track */
-ul.notification_ul::-webkit-scrollbar-track {
-  background: #f1f1f1; 
-}
- 
-/* Handle */
-ul.notification_ul::-webkit-scrollbar-thumb {
-  background: #888; 
-}
-
-ul.notification_ul .notify_status a {
-  color: #ab4024;
-}
-
-.notifications .notification_dd li .notify_data a {
-  color: #1e48a1;
-  font-size: 14px;
-}
-
-.btn-success {
-  color: #fff;
-  background-color: #28a745;
-  border-color: #28a745;
-  box-shadow: none;
-  border-radius: 50% !important;
-  padding: 8px 9px 4px 11px;
-  text-align: center;
-}
-  

@@ -1278,3 +1278,11 @@ input[type="date"]::placeholder {
 .highcharts-title {
   z-index: 1 !important;
 }
+
+.toggle-password.btn-psw {
+  position: absolute;
+  top: 11px;
+  right: 10px;
+  cursor: pointer;
+  z-index: 9;
+}
