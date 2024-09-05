@@ -503,8 +503,23 @@ $(document).ready(function(){
   // Get the width of the container
 
 
+  $("#toggle-pass").click(function() {
+
+    alert("hii");
+
+    $(this).toggleClass("fa-eye fa-eye-slash");
+    input = $(this).parent().find("input");
+    if (input.attr("type") == "password") {
+        input.attr("type", "text");
+    } else {
+        input.attr("type", "password");
+    }
+});
+
 });
 
 function confirmDelete() {
     return confirm('Are you sure you want to delete this report?');
 }
+
+
