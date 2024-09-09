@@ -1203,7 +1203,7 @@
                             <table class="table table-bordered">
                                 <thead>
                                     <tr>
-                                        <th>Sl#</th>
+                                        <th>S.No.</th>
                                         <th>Person Name
                                             <span>
                                                 <a class="btn-arrow">
