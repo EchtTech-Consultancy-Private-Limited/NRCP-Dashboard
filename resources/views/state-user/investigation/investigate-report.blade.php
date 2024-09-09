@@ -1918,7 +1918,10 @@
             </table>
         </div>
         <!-- ****************************************************** -->
-        <div class="d-flex justify-content-center">  <button class="btn btn-primary">Save</button> </div>
+        <div class="d-flex justify-content-center">  
+            <button class="btn search-patient-btn mr-3 bg-primary text-light">Save</button>
+            <button type="reset" class="btn search-patient-btn bg-danger text-light">Reset</button>
+        </div>
         </div>
        
     </div>
