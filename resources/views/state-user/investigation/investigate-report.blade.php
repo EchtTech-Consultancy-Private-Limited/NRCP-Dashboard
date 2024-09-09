@@ -55,7 +55,7 @@
                     </tr>
                     <tr>
                         <td colspan="5">
-                            <p>Name of Interviewer <span style="color: red;">*</span></p>
+                            <p>Name of Interviewer &nbsp;<span style="color: red;">*</span></p>
                         </td>
                         <td colspan="18" class="">
                             <input type="text" name="interviewer_name" value="{{ old('interviewer_name') }}" placeholder="Enter Name of Interviewer">
@@ -64,7 +64,7 @@
                             @endif
                         </td>
                         <td colspan="10">
-                            <p>Date of Interview <span style="color: red;">*</span></p>
+                            <p>Date of Interview &nbsp;<span style="color: red;">*</span></p>
                         </td>
                         <td colspan="5" class="">
                             <input name="interview_date" value="{{ old('interview_date') }}" type="date"  pattern="\d{2}/\d{2}/\d{4}">
@@ -75,7 +75,7 @@
                     </tr>
                     <tr>
                         <td colspan="5">
-                            <p>Designation <span style="color: red;">*</span></p>
+                            <p>Designation &nbsp;<span style="color: red;">*</span></p>
                         </td>
                         <td colspan="18" class="">
                             <input name="interviewer_designation" value="{{ old('interviewer_designation') }}" type="text">
@@ -84,7 +84,7 @@
                             @endif
                         </td>
                         <td colspan="10">
-                            <p>Contact Number <span style="color: red;">*</span></p>
+                            <p>Contact Number &nbsp;<span style="color: red;">*</span></p>
                         </td>
                         <td colspan="5" class="">
                             <input name="interviewer_contact_number" value="{{ old('interviewer_contact_number') }}" type="text" oninput="validateInput(this)" maxlength="12">

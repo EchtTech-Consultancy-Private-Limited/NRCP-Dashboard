@@ -1002,6 +1002,7 @@ input[type=date]::placeholder {
 }
 .box-heading .form-control {
   width: 300px;
+  font-size: 14px;
 }
 .box-heading .dt-button.buttons-print {
   background: #0c72ad !important;
@@ -1172,4 +1173,17 @@ input[type=date]::placeholder {
   float: right;
   position: sticky;
   right: 3px;
+}
+
+.apply-filter.mt-4.pt-1 {
+  margin-top: 0 !important;
+}
+
+#myTabContent .search-reset {
+  position: relative;
+}
+
+#myTabContent .search-reset .apply-filter {
+  position: absolute;
+  top: 32px;
 }/*# sourceMappingURL=style.css.map */

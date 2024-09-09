@@ -1108,6 +1108,7 @@ input[type="date"]::placeholder {
 
   .form-control {
     width: 300px;
+    font-size: 14px;
   }
 
   .dt-button.buttons-print {
@@ -1313,4 +1314,14 @@ input[type="date"]::placeholder {
   float: right;
   position: sticky;
   right: 3px;
+}
+.apply-filter.mt-4.pt-1 {
+  margin-top: 0 !important;
+}
+#myTabContent .search-reset {
+  position: relative;
+}
+#myTabContent .search-reset .apply-filter {
+  position: absolute;
+  top: 32px;
 }
