@@ -1129,4 +1129,25 @@ table {
     width: -moz-fit-content !important;
     width: fit-content !important;
   }
+}
+.main-header ul.navbar-nav.ml-auto {
+  align-items: center;
+}
+
+.main-header .nav-item .notifications {
+  position: relative;
+}
+
+.main-header .nav-item .notifications .icon_wrap {
+  font-size: 20px;
+  cursor: pointer;
+  position: relative;
+}
+
+.main-header .nav-item .notifications .number-noti.notification-total {
+  color: #fff;
+  position: absolute;
+  top: -8px;
+  right: -6px;
+  font-size: 14px;
 }/*# sourceMappingURL=dashboard.css.map */
