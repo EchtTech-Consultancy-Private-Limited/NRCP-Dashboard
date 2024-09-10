@@ -510,6 +510,7 @@ h1.text-dark.text-left.main-title {
 .table-responsive {
   overflow-y: auto;
   scrollbar-width: thin;
+  position: relative;
 }
 
 .table-responsive::-webkit-scrollbar {
@@ -1116,9 +1117,16 @@ select option {
 .emailBlock p, .signature p {
   font-weight: 500 !important;
   line-height: 1.7;
-  font-size: 15px !important;
+  font-size: 14px !important;
 }
 
 table {
   width: 99.99% !important;
+}
+
+@media (min-width: 641px) and (max-width: 767px) {
+  .dataTables_wrapper {
+    width: -moz-fit-content !important;
+    width: fit-content !important;
+  }
 }/*# sourceMappingURL=dashboard.css.map */

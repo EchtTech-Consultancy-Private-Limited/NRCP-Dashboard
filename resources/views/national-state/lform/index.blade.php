@@ -7,7 +7,7 @@
   <table id="general_profiles_TABLE2" class="datatable w-100">
         <thead>
           <tr>
-            <th>Sl#</th>
+            <th>S.No.</th>
             <th>Name of Nodal Person</th>
             <th>Designation of Nodal Person</th>
             <th>Email ID</th>

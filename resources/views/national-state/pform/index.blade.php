@@ -7,7 +7,7 @@
   <table id="general_profiles_TABLE2" class="w-100 p-form-table">
         <thead>
           <tr>
-            <th>Sl#</th>
+            <th>S.No.</th>
             <th>Name of the Health Facility</th>
             <th>Address of the Hospital</th>
             <th>Email ID</th>

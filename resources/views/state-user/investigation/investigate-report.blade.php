@@ -55,7 +55,7 @@
                     </tr>
                     <tr>
                         <td colspan="5">
-                            <p>Name of Interviewer</p>
+                            <p>Name of Interviewer &nbsp;<span style="color: red;">*</span></p>
                         </td>
                         <td colspan="18" class="">
                             <input type="text" name="interviewer_name" value="{{ old('interviewer_name') }}" placeholder="Enter Name of Interviewer">
@@ -64,7 +64,7 @@
                             @endif
                         </td>
                         <td colspan="10">
-                            <p>Date of Interview</p>
+                            <p>Date of Interview &nbsp;<span style="color: red;">*</span></p>
                         </td>
                         <td colspan="5" class="">
                             <input name="interview_date" value="{{ old('interview_date') }}" type="date"  pattern="\d{2}/\d{2}/\d{4}">
@@ -75,7 +75,7 @@
                     </tr>
                     <tr>
                         <td colspan="5">
-                            <p>Designation</p>
+                            <p>Designation &nbsp;<span style="color: red;">*</span></p>
                         </td>
                         <td colspan="18" class="">
                             <input name="interviewer_designation" value="{{ old('interviewer_designation') }}" type="text">
@@ -84,7 +84,7 @@
                             @endif
                         </td>
                         <td colspan="10">
-                            <p>Contact Number</p>
+                            <p>Contact Number &nbsp;<span style="color: red;">*</span></p>
                         </td>
                         <td colspan="5" class="">
                             <input name="interviewer_contact_number" value="{{ old('interviewer_contact_number') }}" type="text" oninput="validateInput(this)" maxlength="12">
@@ -861,12 +861,12 @@
                                 <input type="radio" name="rabiesVaccineRecieved" value="unknown" id="RabiesVaccineReceivedUnknown1" {{ old('rabiesVaccineRecieved') == 'unknown' ? 'checked' : '' }}>
                                 <label for="RabiesVaccineReceivedUnknown1">Unknown</label>
                             </p>
-                            <p>&nbsp;</p>
+                            
                             <p>
                                 If Yes,
                                 Number of doses received
-                            </p>
-                            <p> <label for="RabiesVaccineReceivedYes1"  >1</label>
+                            
+                             <label for="RabiesVaccineReceivedYes1"  >1</label>
                                 <input type="radio" name="RabiesVaccineReceivedYes" value="1" class = "ml-2" id="RabiesVaccineReceivedYes1" {{ old('RabiesVaccineReceivedYes') == '1' ? 'checked' : '' }}>  
                                 <label for="RabiesVaccineReceivedYes2" > 2</label>
                                 <input type="radio" name="RabiesVaccineReceivedYes" value="2" class = "ml-2" id="RabiesVaccineReceivedYes2" {{ old('RabiesVaccineReceivedYes') == '2' ? 'checked' : '' }}> 
@@ -879,7 +879,7 @@
                                 <label for="RabiesVaccineReceivedUnknown2">Unknown</label>
                                 <input type="radio" name="RabiesVaccineReceivedYes" value="unknown" class = "ml-2" id="RabiesVaccineReceivedUnknown2" {{ old('RabiesVaccineReceivedYes') == 'unknown' ? 'checked' : '' }}> 
                             </p>
-                            <p>&nbsp;</p>
+                            
                             <p>Details of Rabies vaccine received</p>
                         </td>
                     </tr>
@@ -1003,7 +1003,7 @@
                                 <input type="radio" name="rabies_immunoglobulin_site" value="IM (not recommended)" id="IM1" {{ old('rabies_immunoglobulin_site') == 'IM (not recommended)' ? 'checked' : '' }}>
                                 <label for="IM1">IM (not recommended)</label>
                                 <input type="radio" name="rabies_immunoglobulin_site" value="both" id="Both1" {{ old('rabies_immunoglobulin_site') == 'both' ? 'checked' : '' }}>
-                                <label for="Both1">both</label>
+                                <label for="Both1">Both</label>
                             </p>
                         </td>
                     </tr>
@@ -1648,7 +1648,7 @@
                             <input type="text" name="MRI_brain_done_text" class="inputFields">
                         </td>
                     </tr>
-                    <tr>
+                    <!-- <tr>
                         <td colspan="4">
                             <p>&nbsp;</p>
                             <p>&nbsp;</p>
@@ -1663,7 +1663,7 @@
                             <p>&nbsp;</p>
                             <p>&nbsp;</p>
                         </td>
-                    </tr>
+                    </tr> -->
                     <tr>
                         <td colspan="4" class="bglightBlue">
                             <p>
@@ -1699,7 +1699,7 @@
                     </tr>
                     <tr>
                         <td colspan="4">
-                            <p>7.1.1 Did deceased have any evidence of recent wounds? &nbsp;
+                            <p>7.1.1 Did deceased have any evidence of recent wounds? &nbsp;&nbsp;
                                 <input type="radio" name="evidence_of_recent_wounds" value="yes" {{ old('evidence_of_recent_wounds') == 'yes' ? 'checked' : '' }}>
                                 Yes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                 <input type="radio" name="evidence_of_recent_wounds" value="no" {{ old('evidence_of_recent_wounds') == 'no' ? 'checked' : '' }}> No</p>
@@ -1707,7 +1707,7 @@
                     </tr>
                     <tr>
                         <td colspan="4">
-                            <p>7.1.2 Did deceased have any evidence of healed wounds? &nbsp;&nbsp;
+                            <p>7.1.2 Did deceased have any evidence of healed wounds? &nbsp;
                                 <input type="radio" name="evidence_of_healed_wounds" value="yes" {{ old('evidence_of_healed_wounds') == 'yes' ? 'checked' : '' }}>
                                 Yes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                 <input type="radio" name="evidence_of_healed_wounds" value="no" {{ old('evidence_of_healed_wounds') == 'no' ? 'checked' : '' }}>No
@@ -1908,9 +1908,9 @@
                                     <label for="probable_rabies_no">No</label>
                                     <input type="radio" name="probable_rabies" value="no" id="probable_rabies_no" {{ old('probable_rabies') == 'no' ? 'checked' : '' }}>
                                 </p>
+                                <!-- <p>&nbsp;</p>
                                 <p>&nbsp;</p>
-                                <p>&nbsp;</p>
-                                <p>&nbsp;</p>
+                                <p>&nbsp;</p> -->
                             </div>
                         </td>
                     </tr>
@@ -1918,7 +1918,10 @@
             </table>
         </div>
         <!-- ****************************************************** -->
-        <div class="d-flex justify-content-center">  <button class="btn btn-primary">Save</button> </div>
+        <div class="d-flex justify-content-center">  
+            <button class="btn search-patient-btn mr-3 bg-primary text-light">Save</button>
+            <button type="reset" class="btn search-patient-btn bg-danger text-light">Reset</button>
+        </div>
         </div>
        
     </div>

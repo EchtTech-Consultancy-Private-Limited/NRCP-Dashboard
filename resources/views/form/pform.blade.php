@@ -336,7 +336,7 @@
                         <table id="general_profiles_TABLE2" class="">
                           <thead>
                             <tr>
-                              <th>Sl#</th>
+                              <th>S.No.</th>
                               <th>Action</th>
                               <th>Person Name <span>
                                   <a class="btn-arrow">
@@ -710,7 +710,7 @@
                     <table class="table table-bordered">
                       <thead>
                         <tr>
-                          <th>Sl#</th>
+                          <th>S.No.</th>
                           <th>Person Name <span>
                               <a class="btn-arrow3">
                                 <span class="fa fa-long-arrow-right printhide arrow-r1"></span>

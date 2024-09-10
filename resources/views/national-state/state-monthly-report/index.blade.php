@@ -8,7 +8,7 @@
     <table id="general_profiles_TABLE2" class="datatable w-100">
         <thead>
           <tr>
-            <th>Sl#</th>
+            <th>S.No.</th>
             <th>State Name</th>
             <th>Name of State Nodal Office</th>
             <th>Office Address</th>
