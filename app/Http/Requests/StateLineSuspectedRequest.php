@@ -22,7 +22,7 @@ class StateLineSuspectedRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name_of_health' => ['required', 'regex:/^[a-zA-Z. \'\'-]+$/', 'min:2', 'max:100'],
+            'name_of_health' => ['required', 'regex:/^[a-zA-Z. \'\'-]+$/', 'min:2', 'max:150'],
             'address_hospital' => 'required',
             'email' => 'required',
             'designation_name' => 'regex:/^[a-zA-Z. \'\'-]+$/','min:2', 'max:150',

@@ -44,7 +44,7 @@
             <div class="container">
                 <div class="alert alert-danger float-end" id="success-alert">
                     <button type="button" class="close" data-dismiss="alert">x</button>
-                    <strong>Success! </strong> {{ session('error') }}
+                    {{ session('error') }}
                 </div>
             </div>
             @endif

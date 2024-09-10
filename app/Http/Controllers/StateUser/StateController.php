@@ -327,6 +327,9 @@ class StateController extends Controller
     {
         $request->validate([
             'modulename' => 'required',
+        ],
+        [
+            'modulename.required' => 'The module name field is required.'
         ]);
 
         if (!empty($request->startdate) && !empty($request->enddate)) {
@@ -365,6 +368,12 @@ class StateController extends Controller
 
         if (!empty($request->startdate) && !empty($request->enddate)) {
             $query->whereBetween('created_at', [$start_date, $end_date]);
+        }
+        $data = $query->get();
+
+        // Check if data is empty
+        if ($data->isEmpty()) {
+            return redirect()->back()->with(['error' => 'No data available for export'], 404);
         }
         $arrays = [$query->get()->toArray()];
         if($request->modulename == 'lform' || $request->modulename == '3'){
