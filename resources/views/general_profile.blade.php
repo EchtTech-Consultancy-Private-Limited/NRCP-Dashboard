@@ -44,6 +44,9 @@
                             <label for="fromYear">Nodal Officer</label>
                             <input type="text" name="designation" value="{{ old('designation') }}" id="designation"
                                 maxlength="45" class="form-control" placeholder="Enter Nodal Officer Name"/>
+                                @error('designation')
+                                <span class="form-text text-muted">{{ $message }}</span>
+                                @enderror
                             <small id="designation-error" class="form-text text-muted"> </small>
                         </div>
                     </div>

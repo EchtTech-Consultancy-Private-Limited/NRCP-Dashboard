@@ -36,10 +36,12 @@ class GeneralProfileController extends Controller
             $request->validate([
                 'state' => 'required',
                 'hospital' => 'required',
+                'designation' => 'required',
                 'contact_number' => 'nullable|numeric|digits:10', // Make the field nullable
             ],[
                 'state.required' => 'State Name Required',
                 'hospital.required' => 'Hospital Name Required',
+                'designation.required' => 'Nodal Officer Name Required',
                 'contact_number.numeric' => 'Contact Number must be numeric',
                 'contact_number.digits' => 'Contact Number must be 10 digits',
             ]);           
@@ -73,10 +75,12 @@ class GeneralProfileController extends Controller
                 $request->validate([
                     'state' => 'required',
                     'hospital' => 'required',
+                    'designation' => 'required',
                     'contact_number' => 'nullable|numeric|digits:10', // Make the field nullable
                 ],[
                     'state.required' => 'State Name Required',
                     'hospital.required' => 'Hospital Name Required',
+                    'designation.required' => 'Nodal Officer Name Required',
                     'contact_number.numeric' => 'Contact Number must be numeric',
                     'contact_number.digits' => 'Contact Number must be 10 digits',
                 ]); 
