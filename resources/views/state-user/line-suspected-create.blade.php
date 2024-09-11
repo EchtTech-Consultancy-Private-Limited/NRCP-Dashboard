@@ -89,6 +89,9 @@
                                         class="text-danger">*</span></label>
                                 <input type="text" name="designation_name" class="form-control"
                                     value="{{ old('designation_name') }}">
+                                @if ($errors->has('designation_name'))
+                                <span class="form-text text-muted">{{ $errors->first('designation_name') }}</span>
+                                @endif
                             </div>
 
                         </div>
