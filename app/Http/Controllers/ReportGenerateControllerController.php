@@ -77,6 +77,11 @@ class ReportGenerateControllerController extends Controller
             $query->whereBetween('created_at', [$start_date, $end_date]);
         }
 
+        $data = $query->get();
+        if($data->isEmpty()){
+            return redirect()->back()->with('error','The Data is not available');
+        }
+
         $arrays = [$query->get()->toArray()];
         return Excel::download(new ReportGeneralExport($arrays), Carbon::now()->format('d-m-Y') . '-' . $fileName . '.xlsx');
     }

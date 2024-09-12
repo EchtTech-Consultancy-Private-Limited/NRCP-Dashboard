@@ -44,6 +44,9 @@
                             <label for="fromYear">Nodal Officer</label>
                             <input type="text" name="designation" value="{{ old('designation') }}" id="designation"
                                 maxlength="45" class="form-control" placeholder="Enter Nodal Officer Name"/>
+                                @error('designation')
+                                <span class="form-text text-muted">{{ $message }}</span>
+                                @enderror
                             <small id="designation-error" class="form-text text-muted"> </small>
                         </div>
                     </div>
@@ -80,7 +83,7 @@
                     <div class="col  search-reset">
                         <div class="apply-filter mt-4 pt-1">
                             <button type="submit" class="btn bg-primary search-patient-btn mr-3 mt-0">Save</button>
-                            <button type="reset" class="btn bg-danger" onClick="window.location.reload();">Reset</button>
+                            <button type="reset" class="btn bg-danger">Reset</button>
                         </div>
                     </div>
                 </div>
