@@ -31,7 +31,7 @@
               <select class="form-select w-100" aria-label="Default select example"
                   name="state_id" id="state_id">
                     <option value="{{ $userState->id }}" {{ $userState->id == Auth::user()->state_id ? 'selected' : '' }} readonly >
-                        {{ $userState->state_name }}
+                        {{ ucwords($userState->state_name) }}
                     </option>
               </select>
               @if ($errors->has('state_id'))
