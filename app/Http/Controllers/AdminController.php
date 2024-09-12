@@ -126,6 +126,7 @@ class AdminController extends Controller
                 'alert-type' => 'success'
             );
         }
+        
         return redirect()->route('admin.user')->with($notification);
     }
     

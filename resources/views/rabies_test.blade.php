@@ -12,7 +12,7 @@
                     <div class="col">
                         <div class="form-group">
                             <label for="state">Date<span class="star">*</span></label>
-                            <input type="date" class="form-control" aria-label="Default select example" name="date"
+                            <input type="date" class="form-control" value="{{old('date')}}" aria-label="Default select example" name="date"
                                 id="date">
                             @error('date')
                             <span class="form-text text-muted">{{ $message }}</span>
@@ -22,7 +22,7 @@
                     <div class="col">
                         <div class="form-group">
                             <label for="district">Number of Patients<span class="star">*</span></label>
-                            <input type="text" maxlength="5" oninput="validateInput(this)" class="form-control"
+                            <input type="text" maxlength="5" value="{{old('number_of_patients')}}" oninput="validateInput(this)" class="form-control"
                                 aria-label="Default select example" name="number_of_patients" id="number_of_patients">
                             @error('number_of_patients')
                             <span class="form-text text-muted">{{ $message }}</span>
@@ -32,7 +32,7 @@
                     <div class="col">
                         <div class="form-group">
                             <label for="fromYear">Number of Sample Recieves</label>
-                            <input type="text" maxlength="5" oninput="validateInput(this)" class="form-control"
+                            <input type="text" maxlength="5" value="{{old('numbers_of_sample_recieved')}}" oninput="validateInput(this)" class="form-control"
                                 aria-label="Default select example" name="numbers_of_sample_recieved"
                                 id="numbers_of_sample_recieved">
                             @error('numbers_of_sample_recieved')
@@ -47,8 +47,8 @@
                             <label for="diseasesSyndromes">Type of Sample<span class="star">*</span></label>
                             <select class="form-control" name="typefdte" id="typefdte">
                                 <option value=""> Select</option>
-                                <option value='For diagnosis'>For diagnosis</option>
-                                <option value='Titre estimation'>Titre estimation</option>
+                                <option value='For diagnosis' {{old('typefdte') == 'For diagnosis' ? 'selected' : ''}}>For diagnosis</option>
+                                <option value='Titre estimation' {{old('typefdte') == 'Titre estimation' ? 'selected' : ''}}>Titre estimation</option>
                             </select>
                             @error('typefdte')
                             <span class="form-text text-muted">{{ $message }}</span>
@@ -81,11 +81,11 @@
                             <select class="form-control" name="method_of_diagnosis" id="method_of_diagnosis">
                                 <option value=""> Select
                                 </option>
-                                <option value='NAAT'>NAAT</option>
-                                <option value='ELISA'>ELISA</option>
-                                <option value='PFFIT'>PFFIT</option>
-                                <option value='DFAT'>DFAT</option>
-                                <option value='OTHERS'>Others</option>
+                                <option value='NAAT' {{old('method_of_diagnosis') == 'NAAT' ? 'selected' : ''}}>NAAT</option>
+                                <option value='ELISA' {{old('method_of_diagnosis') == 'ELISA' ? 'selected' : ''}}>ELISA</option>
+                                <option value='PFFIT' {{old('method_of_diagnosis') == 'PFFIT' ? 'selected' : ''}}>PFFIT</option>
+                                <option value='DFAT' {{old('method_of_diagnosis') == 'DFAT' ? 'selected' : ''}}>DFAT</option>
+                                <option value='OTHERS' {{old('method_of_diagnosis') == 'OTHERS' ? 'selected' : ''}}>Others</option>
                             </select>
                             <small id="lims-error" class="form-text text-muted">
                             </small>
@@ -94,7 +94,7 @@
                     <div class="col">
                         <div class="form-group">
                             <label for="diseasesSyndromes">Number of Test Conducted</label>
-                            <input type="text" maxlength="5" oninput="validateInput(this)" class="form-control"
+                            <input type="text" maxlength="5" value="{{old('numbers_of_test')}}" oninput="validateInput(this)" class="form-control"
                                 aria-label="Default select example" name="numbers_of_test" id="numbers_of_test">
                             @error('numbers_of_test')
                             <span class="form-text text-muted">{{ $message }}</span>
@@ -105,7 +105,7 @@
                     <div class="col">
                         <div class="form-group">
                             <label for="diseasesSyndromes">Total Number of Positive</label>
-                            <input type="text" maxlength="5" oninput="validateInput(this)" class="form-control"
+                            <input type="text" maxlength="5" value="{{old('numbers_of_positives')}}" oninput="validateInput(this)" class="form-control"
                                 aria-label="Default select example" name="numbers_of_positives"
                                 id="numbers_of_positives">
                             @error('numbers_of_positives')
@@ -119,7 +119,7 @@
                         <div class="form-group">
                             <label for="diseasesSyndromes">Number Entered into the IHIP</label>
                             <input type="text" maxlength="5" oninput="validateInput(this)" class="form-control"
-                                aria-label="Default select example" name="numbers_of_intered_ihip"
+                                aria-label="Default select example" value="{{old('numbers_of_intered_ihip')}}" name="numbers_of_intered_ihip"
                                 id="numbers_of_intered_ihip">
                             @error('numbers_of_intered_ihip')
                             <span class="form-text text-muted">{{ $message }}</span>
