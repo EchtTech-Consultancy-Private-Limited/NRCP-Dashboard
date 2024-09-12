@@ -1982,7 +1982,7 @@
                                 <table class="table table-sm table-bordered" id="tableId">
                                     <thead>
                                         <tr style="background: #D3D3D3">
-                                            <th>Sl#</th>
+                                            <th>S.No.</th>
                                             <th class="printhide">Action</th>
                                             <th>2.2. Person Name<span><a ng-click="showCols = !showCols"
                                                         style="cursor: pointer"> <span

@@ -105,12 +105,12 @@
             <div class="col-md-12">
                 <div class="box-heading">
                     <h1 class="main-heading">Yearly wise Monthly Report</h1>
-                    <select name="year" id="year" class="form-control">
+                    {{-- <select name="year" id="year" class="form-control state_dashboard_data">
                         <option value="">Select Year</option>
                         @for ($i = date("Y")-10; $i <= date("Y")+10; $i++)
                             <option value="{{$i}}">{{$i}} - {{$i+1}}</option>
                         @endfor
-                    </select>
+                    </select> --}}
                 </div>
             </div>
             <div class="col-md-12">

@@ -494,7 +494,8 @@
   
   .table-responsive {
 	overflow-y: auto;
-	scrollbar-width: thin;
+    scrollbar-width: thin;
+    position: relative;
 	// scrollbar-color: #ddd #999;
   }
   .table-responsive::-webkit-scrollbar {
@@ -1101,6 +1102,7 @@ input[name="aadhar_number"], input[type="email"] {
 
 .dataTables_wrapper {
     width: 99.9% !important;
+	// min-width: fit-content !important;
 }
 
 .general-profile-filter{
@@ -1155,8 +1157,32 @@ select{
 .emailBlock p, .signature p {
     font-weight: 500 !important;
     line-height: 1.7;
-    font-size: 15px !important;
+    font-size: 14px !important;
 }
 table{
 	width: 99.99% !important;
+}
+
+@media(min-width:641px) and (max-width:767px){
+    .dataTables_wrapper {
+        width: fit-content !important;
+    }
+}
+.main-header ul.navbar-nav.ml-auto {
+    align-items: center;
+}
+.main-header .nav-item .notifications {
+    position: relative;
+}
+.main-header .nav-item .notifications .icon_wrap {
+    font-size: 20px;
+    cursor: pointer;
+    position: relative;
+}
+.main-header .nav-item .notifications .number-noti.notification-total {
+    color: #fff;
+    position: absolute;
+    top: -8px;
+    right: -6px;
+    font-size: 14px;
 }

@@ -136,3 +136,44 @@ $(document).ready(function() {
          }
     });
 });
+
+
+// L Form Input Field Validation first middle and last name
+function validateName(inputElement) {
+    // Define the regex pattern for allowed characters
+    const allowedCharacters = /[^a-zA-Z.'\- ]+/g;
+    // Replace disallowed characters and limit the length to 50
+    inputElement.value = inputElement.value.replace(allowedCharacters, '').slice(0, 150);
+}
+
+// L Form Input Field Validation age
+function validateAge(inputElement) {
+    // Define the regex pattern for allowed characters
+    const allowedCharacters =/[^0-9]/g;
+    // Replace disallowed characters and limit the length to 50
+    inputElement.value = inputElement.value.replace(allowedCharacters, '').slice(0, 2);
+}
+
+// L Form Input Field Validation Sex
+function validateSex(inputElement) {
+    // Define the regex pattern for allowed characters
+    const allowedCharacters = /[^a-zA-Z.'\- ]+/g;
+    // Replace disallowed characters and limit the length to 50
+    inputElement.value = inputElement.value.replace(allowedCharacters, '').slice(0, 15);
+}
+
+// L Form Input Field Validation Address
+function validateAddress(inputElement) {
+    // Define the regex pattern for allowed characters
+    const allowedCharacters = /^\d{1,5}\s[A-Za-z]+\s[A-Za-z]+(,\s[A-Za-z]+)?(\s\d{5})?$/;
+    // Replace disallowed characters and limit the length to 50
+    inputElement.value = inputElement.value.replace(allowedCharacters, '').slice(0, 250);
+}
+
+// L Form Input Field Special characters
+function validateChars(inputElement) {
+    // Define the regex pattern for allowed characters
+    const allowedCharacters = /[^a-zA-Z0-9.'\- ]+/g;
+    // Replace disallowed characters and limit the length to 50
+    inputElement.value = inputElement.value.replace(allowedCharacters, '').slice(0, 250);
+}

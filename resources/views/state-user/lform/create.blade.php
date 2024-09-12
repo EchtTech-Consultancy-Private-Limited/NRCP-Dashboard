@@ -248,20 +248,20 @@
                                     <input type="text" name="aadhar_no[]" value="{{ old('aadhar_no')[$index] ?? '' ?? '' }}" maxlength="12" oninput="validateInput(this)">
                                 </td>
                                 <td>
-                                    <input type="text" name="fname[]" value="{{ $oldValue }}">
+                                    <input type="text"  oninput="validateName(this);" name="fname[]" value="{{ $oldValue }}">
                                 </td>
                                 <td>
-                                    <input type="text" name="mname[]" value="{{ $oldValue }}">
+                                    <input type="text" name="mname[]"  oninput="validateName(this);" value="{{ $oldValue }}">
                                 </td>
                                 <td>
-                                    <input type="text" name="lname[]" value="{{ $oldValue }}">
+                                    <input type="text" name="lname[]"  oninput="validateName(this);" value="{{ $oldValue }}">
                                 </td>
                                
                                 <td>
-                                    <input type="text" name="age[]" value="{{ old('age')[$index] ?? '' ?? '' }}">
+                                    <input type="text" name="age[]"  oninput="validateAge(this);" value="{{ old('age')[$index] ?? '' ?? '' }}">
                                 </td>
                                 <td>
-                                    <input type="text" name="sex[]" value="{{ old('sex')[$index] ?? '' ?? '' }}">
+                                    <input type="text" name="sex[]" oninput="validateSex(this);" value="{{ old('sex')[$index] ?? '' ?? '' }}">
                                 </td>
                                 <td>
                                     <input type="text" name="contact_number[]"

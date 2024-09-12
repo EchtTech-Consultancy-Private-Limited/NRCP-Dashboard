@@ -49,7 +49,7 @@
               </p>
             </td>
             <td>
-              <input type="text" name="state_nodal_office" value="{{ old('state_nodal_office') }}">
+              <input type="text" name="state_nodal_office" oninput="validateName(this);" value="{{ old('state_nodal_office') }}">
               @if ($errors->has('state_nodal_office')) 
                 <span class="form-text text-muted">{{ $errors->first('state_nodal_office') }}</span>
               @endif
@@ -203,7 +203,7 @@
               </ul>
             </td>
             <td colspan="3">
-                <input type="text" name="mention_patient_cateogry_I" value="{{ old('mention_patient_cateogry_I') }}">
+                <input type="text" oninput="validateInput(this);" name="mention_patient_cateogry_I" value="{{ old('mention_patient_cateogry_I') }}">
             </td>
           </tr>
           <tr>
@@ -215,7 +215,7 @@
               </ul>
             </td>
             <td colspan="3">
-                <input type="text" name="mention_patient_cateogry_II" value="{{ old('mention_patient_cateogry_II') }}">
+                <input type="text" oninput="validateInput(this);" name="mention_patient_cateogry_II" value="{{ old('mention_patient_cateogry_II') }}">
             </td>
           </tr>
           <tr>
@@ -227,7 +227,7 @@
               </ul>
             </td>
             <td colspan="3">
-                <input type="text" name="mention_patient_cateogry_III" value="{{ old('mention_patient_cateogry_III') }}">
+                <input type="text" oninput="validateInput(this);" name="mention_patient_cateogry_III" value="{{ old('mention_patient_cateogry_III') }}">
             </td>
           </tr>
           <tr>
@@ -368,7 +368,7 @@
               </ul>
             </td>
             <td colspan="3">
-                <input type="text" name="arv_opening_balance" value="{{ old('arv_opening_balance') }}">
+                <input type="text" oninput="validateChars(this);" maxlength="200" name="arv_opening_balance" value="{{ old('arv_opening_balance') }}">
             </td>
           </tr>
           <tr>
@@ -378,7 +378,7 @@
               </ul>
             </td>
             <td colspan="3">
-              <input type="text" name="arv_quantity_received" value="{{ old('arv_quantity_received') }}">
+              <input type="text" oninput="validateChars(this);" maxlength="200" name="arv_quantity_received" value="{{ old('arv_quantity_received') }}">
             </td>
           </tr>
           <tr>
@@ -388,7 +388,7 @@
               </ul>
             </td>
             <td colspan="3">
-              <input type="text" name="arv_quantity_utilized" value="{{ old('arv_quantity_utilized') }}">
+              <input type="text" oninput="validateChars(this);" maxlength="200" name="arv_quantity_utilized" value="{{ old('arv_quantity_utilized') }}">
             </td>
           </tr>
           <tr>
@@ -398,7 +398,7 @@
               </ul>
             </td>
             <td colspan="3">
-              <input type="text" name="arv_closing_balance" value="{{ old('arv_closing_balance') }}">
+              <input type="text" oninput="validateChars(this);" maxlength="200" name="arv_closing_balance" value="{{ old('arv_closing_balance') }}">
             </td>
           </tr>
           <tr>
@@ -409,7 +409,7 @@
               <p>(If Yes, please mention in Vials or Doses)</p>
             </td>
             <td colspan="3">
-              <input type="text" name="shortage_of_arv" value="{{ old('shortage_of_arv') }}">
+              <input type="text" oninput="validateChars(this);" name="shortage_of_arv" value="{{ old('shortage_of_arv') }}">
             </td>
           </tr>
           <tr>
@@ -429,7 +429,7 @@
               </ul>
             </td>
             <td colspan="3">
-              <input type="text" name="ars_opening_balance" value="{{ old('ars_opening_balance') }}">
+              <input type="text" oninput="validateChars(this);" maxlength="200" name="ars_opening_balance" value="{{ old('ars_opening_balance') }}">
             </td>
           </tr>
           <tr>
@@ -439,7 +439,7 @@
               </ul>
             </td>
             <td colspan="3">
-              <input type="text" name="ars_quantity_recieved" value="{{ old('ars_quantity_recieved') }}">
+              <input type="text" oninput="validateChars(this);" maxlength="200" name="ars_quantity_recieved" value="{{ old('ars_quantity_recieved') }}">
             </td>
           </tr>
           <tr>
@@ -449,7 +449,7 @@
               </ul>
             </td>
             <td colspan="3">
-              <input type="text" name="ars_quantity_utilized" value="{{ old('ars_quantity_utilized') }}">
+              <input type="text" oninput="validateChars(this);" maxlength="200" name="ars_quantity_utilized" value="{{ old('ars_quantity_utilized') }}">
             </td>
           </tr>
           <tr>
@@ -459,7 +459,7 @@
               </ul>
             </td>
             <td colspan="3">
-              <input type="text" name="ars_closing_balance" value="{{ old('ars_closing_balance') }}">
+              <input type="text" oninput="validateChars(this);" maxlength="200" name="ars_closing_balance" value="{{ old('ars_closing_balance') }}">
             </td>
           </tr>
           <tr>
@@ -470,7 +470,7 @@
               <p>&nbsp;(If Yes, please mention in Vials or Doses)</p>
             </td>
             <td colspan="3">
-              <input type="text" name="shortage_of_ars" value="{{ old('shortage_of_ars') }}" >
+              <input type="text" oninput="validateChars(this);" maxlength="200" name="shortage_of_ars" value="{{ old('shortage_of_ars') }}" >
             </td>
           </tr>
           <tr class="bglightBlue">
@@ -542,7 +542,7 @@
               </p>
             </td>
             <td colspan="3">
-              <input type="text" name="bite_cases_shared_department" value="{{ old('bite_cases_shared_department') }}">
+              <input type="text" oninput="validateChars(this);" maxlength="200" name="bite_cases_shared_department" value="{{ old('bite_cases_shared_department') }}">
             </td>
           </tr>
           <tr>
@@ -553,7 +553,7 @@
               <p>If yes write the details including locality</p>
             </td>
             <td colspan="3">
-              <input type="text" name="bite_cases_observed" value="{{ old('bite_cases_observed') }}">
+              <input type="text" oninput="validateChars(this);" maxlength="200" name="bite_cases_observed" value="{{ old('bite_cases_observed') }}">
             </td>
           </tr>
           <tr>
@@ -563,7 +563,7 @@
               </p>
             </td>
             <td colspan="3">
-              <input type="text" name="other_remarks" value="{{ old('other_remarks') }}">
+              <input type="text" oninput="validateChars(this);" maxlength="200" name="other_remarks" value="{{ old('other_remarks') }}">
             </td>
           </tr>
         </tbody>
