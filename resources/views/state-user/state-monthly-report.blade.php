@@ -28,12 +28,8 @@
               </p>
             </td>
             <td>
-              <select class="form-select w-100" aria-label="Default select example"
-                  name="state_id" id="state_id">
-                    <option value="{{ $userState->id }}" {{ $userState->id == Auth::user()->state_id ? 'selected' : '' }} readonly >
-                        {{ $userState->state_name }}
-                    </option>
-              </select>
+                <input type="text" value="{{ ucFirst($userState->state_name) }}" readonly>
+                <input type="hidden" name="state_id" value="{{ $userState->id }}" {{ $userState->id == Auth::user()->state_id ? 'checked' : '' }}>
               @if ($errors->has('state_id'))
               <span class="form-text text-muted">{{ $errors->first('state_id') }}</span>
               @endif

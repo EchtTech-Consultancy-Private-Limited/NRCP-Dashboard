@@ -7,7 +7,7 @@
                     Dashboard</a>
             </div>
             <div
-                class="arrow arrow-right link bg-primary text-white dashboard-title {{ Request::segment(2) == 'users' ? 'active' : '' }}">
+                class="arrow arrow-right link bg-primary text-white dashboard-title {{ Request::segment(2) == 'users' || Request::segment(2) == 'edit' ? 'active' : '' }}">
                 <a href="{{ url('/admin/users') }}"> <i class="fa fa-list iconmargin-set" aria-hidden="true"></i>
                     User</a>
             </div>
@@ -23,7 +23,7 @@
                 <a href="{{ url('/general-laboratory') }}"> <i class="fa fa-list iconmargin-set" aria-hidden="true"></i>
                     General</a>
             </div>
-            <div class="link bg-primary text-white dashboard-title {{ Request::segment(1) == 'quality' ? 'active' : '' }}">
+            <div class="link bg-primary text-white dashboard-title {{ Request::segment(1) == 'quality' || Request::segment(1) == 'quality-edit' ? 'active' : '' }}">
                 <a href="{{ url('/quality') }}"> <i class="fa fa-check iconmargin-set" aria-hidden="true"></i>
                     Quality</a>
             </div>
