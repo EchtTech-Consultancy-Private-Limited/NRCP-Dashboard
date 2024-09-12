@@ -45,7 +45,7 @@ class AdminController extends Controller
         $request->validate([
             'name' => 'regex:/^[a-zA-Z ]+$/',
             'email' => 'required|email',
-            'password' => 'required',
+            'password' => 'required|min:8',
             'state_id' => 'required',
             'user_type' => 'required',
             'status' => 'required',
@@ -106,9 +106,11 @@ class AdminController extends Controller
 
         // Hash and include password only if provided
         if ($request->filled('password')) {
+            $request->validate([
+                'password' => 'required|min:8'
+            ]);
             $data['password'] = Hash::make($request->password);
         }
-
         if ($id) {
             // Update existing user
             DB::table('dashboard_login')->where('id', $id)->update($data);
@@ -124,6 +126,7 @@ class AdminController extends Controller
                 'alert-type' => 'success'
             );
         }
+        
         return redirect()->route('admin.user')->with($notification);
     }
     
