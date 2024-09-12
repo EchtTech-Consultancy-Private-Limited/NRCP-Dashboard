@@ -145,6 +145,7 @@ class PFormController extends Controller
     {
         $cityOption = '';
         $cities = City::where('state_id', $request->state_id)->get();
+        $cityOption .= '<option value="">Please Select</option>';
         foreach ($cities as $city) {
             $cityOption .= '<option value="' . $city->id . '">' . ucwords($city->name) . '</option>';
         }

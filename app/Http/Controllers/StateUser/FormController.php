@@ -55,11 +55,11 @@ class FormController extends Controller
     public function lFormstore(Request $request)
     {
         $request->validate([
-            'name_nodal_person' => 'required',
-            'designation_nodal_person' => 'required',
+            'name_nodal_person' => ['required', 'regex:/^[a-zA-Z. \'\'-]+$/','min:2', 'max:100'],
+            'designation_nodal_person' => 'required','min:2', 'max:150',
             'phone_number' => 'required|unique:state_user_l_forms,phone_number|numeric|digits:10',
             // 'email' => 'required|unique:state_user_l_forms,email',
-            'institute_name' => 'required',
+            'institute_name' => 'required','min:2', 'max:150',
         ],
         [
             'name_nodal_person.required' => 'Name of the nodal person is required',
@@ -108,7 +108,7 @@ class FormController extends Controller
             $formType = '2'; //Soe Uc Form
             $this->SendNotificationServices->sendNotification($LFormId, $formType, '2', $request->status);
             DB::commit();
-            return redirect()->route('state.lform-list')->with('message', 'L Form created successfully');
+            return redirect()->back()->with('message', 'L Form created successfully');
         } catch (\Exception $e) {
             DB::rollBack();
             return response()->json(['message' => 'Error: ' . $e->getMessage()], 500);
