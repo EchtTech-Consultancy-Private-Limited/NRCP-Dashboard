@@ -1000,7 +1000,7 @@
                                 <input disabled type="radio" name="rabies_immunoglobulin_site" value="IM (not recommended)" id="IM1" {{ old('rabies_immunoglobulin_site',$investigateReport->rabies_immunoglobulin_site) == 'IM (not recommended)' ? 'checked' : '' }}>
                                 <label for="IM1">IM (not recommended)</label>
                                 <input disabled type="radio" name="rabies_immunoglobulin_site" value="both" id="Both1" {{ old('rabies_immunoglobulin_site',$investigateReport->rabies_immunoglobulin_site) == 'both' ? 'checked' : '' }}>
-                                <label for="Both1">both</label>
+                                <label for="Both1">Both</label>
                             </p>
                         </td>
                     </tr>

@@ -55,16 +55,16 @@
                     </tr>
                     <tr>
                         <td colspan="5">
-                            <p>Name of Interviewer</p>
+                            <p>Name of Interviewer &nbsp;<span style="color: red;">*</span></p>
                         </td>
                         <td colspan="18" class="">
-                            <input type="text" name="interviewer_name" value="{{ old('interviewer_name') }}" placeholder="Enter Name of Interviewer">
+                            <input type="text" name="interviewer_name"  oninput="validateName(this);" value="{{ old('interviewer_name') }}" placeholder="Enter Name of Interviewer">
                             @if ($errors->has('interviewer_name'))
                                 <span class="form-text text-muted">{{ $errors->first('interviewer_name') }}</span>
                             @endif
                         </td>
                         <td colspan="10">
-                            <p>Date of Interview</p>
+                            <p>Date of Interview &nbsp;<span style="color: red;">*</span></p>
                         </td>
                         <td colspan="5" class="">
                             <input name="interview_date" value="{{ old('interview_date') }}" type="date"  pattern="\d{2}/\d{2}/\d{4}">
@@ -75,16 +75,16 @@
                     </tr>
                     <tr>
                         <td colspan="5">
-                            <p>Designation</p>
+                            <p>Designation &nbsp;<span style="color: red;">*</span></p>
                         </td>
                         <td colspan="18" class="">
-                            <input name="interviewer_designation" value="{{ old('interviewer_designation') }}" type="text">
+                            <input name="interviewer_designation"  oninput="validateName(this);" value="{{ old('interviewer_designation') }}" type="text">
                             @if ($errors->has('interviewer_designation'))
                                 <span class="form-text text-muted">{{ $errors->first('interviewer_designation') }}</span>
                             @endif
                         </td>
                         <td colspan="10">
-                            <p>Contact Number</p>
+                            <p>Contact Number &nbsp;<span style="color: red;">*</span></p>
                         </td>
                         <td colspan="5" class="">
                             <input name="interviewer_contact_number" value="{{ old('interviewer_contact_number') }}" type="text" oninput="validateInput(this)" maxlength="12">
@@ -105,7 +105,7 @@
                             <p>&nbsp;Name</p>
                         </td>
                         <td colspan="15" class="">
-                            <input name="suspected_name" type="text" value="{{ old('suspected_name') }}">
+                            <input name="suspected_name"  oninput="validateName(this);" type="text" value="{{ old('suspected_name') }}">
                         </td>
                         <td colspan="4">
                             <p>&nbsp;Sex</p>
@@ -126,7 +126,7 @@
                             <p>&nbsp;Age</p>
                         </td>
                         <td class="">
-                            <input type="text" name="suspect_age" value="{{ old('suspect_age') }}" maxlength="2" oninput="validateInput(this)">
+                            <input type="text" name="suspect_age" value="{{ old('suspect_age') }}" maxlength="3" oninput="validateAge(this)">
                         </td>
                     </tr>
                     <tr>
@@ -134,13 +134,13 @@
                             <p>Occupation</p>
                         </td>
                         <td colspan="11" class="">
-                            <input type="text" name="suspect_occupation" value="{{ old('suspect_occupation') }}">
+                            <input type="text" name="suspect_occupation" oninput="validateName(this);" value="{{ old('suspect_occupation') }}">
                         </td>
                         <td colspan="4">
                             <p>Address</p>
                         </td>
                         <td colspan="21" class="">
-                            <input name="suspect_address" type="text" value="{{ old('suspect_address') }}">
+                            <input name="suspect_address" maxlength="200" type="text" value="{{ old('suspect_address') }}">
                         </td>
                     </tr>
                     <tr>
@@ -239,13 +239,13 @@
                             <p>Name of Respondent</p>
                         </td>
                         <td colspan="12" class="">
-                            <input type="text" name="respondent_name" value="{{ old('respondent_name') }}">
+                            <input type="text" name="respondent_name" oninput="validateName(this);" value="{{ old('respondent_name') }}">
                         </td>
                         <td colspan="10">
                             <p>Age of Respondent</p>
                         </td>
                         <td colspan="11" class="">
-                            <input type="text" name="respondent_age" value="{{ old('respondent_age') }}">
+                            <input type="text" name="respondent_age" oninput="validateAge(this)" value="{{ old('respondent_age') }}">
                         </td>
                     </tr>
                     <tr>
@@ -253,13 +253,13 @@
                             <p>Contact Number</p>
                         </td>
                         <td colspan="12" class="">
-                            <input type="text" name="respondent_contact" value="{{ old('respondent_contact') }}">
+                            <input type="text" oninput="validateInput(this)" maxlength="10" name="respondent_contact" value="{{ old('respondent_contact') }}">
                         </td>
                         <td colspan="10">
                             <p>Address (If Different From Patient)</p>
                         </td>
                         <td colspan="11" class="">
-                            <input type="text" name="respondent_address" value="{{ old('respondent_address') }}">
+                            <input type="text" name="respondent_address" maxlength="150" value="{{ old('respondent_address') }}">
                         </td>
                     </tr>
                     <tr>
@@ -502,7 +502,7 @@
                             <input type="text" name="place_of_exposure" value="{{ old('place_of_exposure') }}">
                         </td>
                         <td colspan="28" class="">
-                            <input type="text" name="place_of_exposure_address" value="{{ old('place_of_exposure_address') }}" placeholder="Address">
+                            <input type="text" name="place_of_exposure_address" maxlength="150" value="{{ old('place_of_exposure_address') }}" placeholder="Address">
                         </td>
                     </tr>
                     <tr>
@@ -861,12 +861,12 @@
                                 <input type="radio" name="rabiesVaccineRecieved" value="unknown" id="RabiesVaccineReceivedUnknown1" {{ old('rabiesVaccineRecieved') == 'unknown' ? 'checked' : '' }}>
                                 <label for="RabiesVaccineReceivedUnknown1">Unknown</label>
                             </p>
-                            <p>&nbsp;</p>
+                            
                             <p>
                                 If Yes,
                                 Number of doses received
-                            </p>
-                            <p> <label for="RabiesVaccineReceivedYes1"  >1</label>
+                            
+                             <label for="RabiesVaccineReceivedYes1"  >1</label>
                                 <input type="radio" name="RabiesVaccineReceivedYes" value="1" class = "ml-2" id="RabiesVaccineReceivedYes1" {{ old('RabiesVaccineReceivedYes') == '1' ? 'checked' : '' }}>  
                                 <label for="RabiesVaccineReceivedYes2" > 2</label>
                                 <input type="radio" name="RabiesVaccineReceivedYes" value="2" class = "ml-2" id="RabiesVaccineReceivedYes2" {{ old('RabiesVaccineReceivedYes') == '2' ? 'checked' : '' }}> 
@@ -879,7 +879,7 @@
                                 <label for="RabiesVaccineReceivedUnknown2">Unknown</label>
                                 <input type="radio" name="RabiesVaccineReceivedYes" value="unknown" class = "ml-2" id="RabiesVaccineReceivedUnknown2" {{ old('RabiesVaccineReceivedYes') == 'unknown' ? 'checked' : '' }}> 
                             </p>
-                            <p>&nbsp;</p>
+                            
                             <p>Details of Rabies vaccine received</p>
                         </td>
                     </tr>
@@ -1003,7 +1003,7 @@
                                 <input type="radio" name="rabies_immunoglobulin_site" value="IM (not recommended)" id="IM1" {{ old('rabies_immunoglobulin_site') == 'IM (not recommended)' ? 'checked' : '' }}>
                                 <label for="IM1">IM (not recommended)</label>
                                 <input type="radio" name="rabies_immunoglobulin_site" value="both" id="Both1" {{ old('rabies_immunoglobulin_site') == 'both' ? 'checked' : '' }}>
-                                <label for="Both1">both</label>
+                                <label for="Both1">Both</label>
                             </p>
                         </td>
                     </tr>
@@ -1648,7 +1648,7 @@
                             <input type="text" name="MRI_brain_done_text" class="inputFields">
                         </td>
                     </tr>
-                    <tr>
+                    <!-- <tr>
                         <td colspan="4">
                             <p>&nbsp;</p>
                             <p>&nbsp;</p>
@@ -1663,7 +1663,7 @@
                             <p>&nbsp;</p>
                             <p>&nbsp;</p>
                         </td>
-                    </tr>
+                    </tr> -->
                     <tr>
                         <td colspan="4" class="bglightBlue">
                             <p>
@@ -1699,7 +1699,7 @@
                     </tr>
                     <tr>
                         <td colspan="4">
-                            <p>7.1.1 Did deceased have any evidence of recent wounds? &nbsp;
+                            <p>7.1.1 Did deceased have any evidence of recent wounds? &nbsp;&nbsp;
                                 <input type="radio" name="evidence_of_recent_wounds" value="yes" {{ old('evidence_of_recent_wounds') == 'yes' ? 'checked' : '' }}>
                                 Yes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                 <input type="radio" name="evidence_of_recent_wounds" value="no" {{ old('evidence_of_recent_wounds') == 'no' ? 'checked' : '' }}> No</p>
@@ -1707,7 +1707,7 @@
                     </tr>
                     <tr>
                         <td colspan="4">
-                            <p>7.1.2 Did deceased have any evidence of healed wounds? &nbsp;&nbsp;
+                            <p>7.1.2 Did deceased have any evidence of healed wounds? &nbsp;
                                 <input type="radio" name="evidence_of_healed_wounds" value="yes" {{ old('evidence_of_healed_wounds') == 'yes' ? 'checked' : '' }}>
                                 Yes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                 <input type="radio" name="evidence_of_healed_wounds" value="no" {{ old('evidence_of_healed_wounds') == 'no' ? 'checked' : '' }}>No
@@ -1807,9 +1807,9 @@
                                     @if(old('family.relation_with_family_name'))
                                     <tr>
                                         <td>Family</td>
-                                        <td class=""><input type="text" name="family[relation_with_family_name]" value="{{ old('family.relation_with_family_name') }}"></td>
-                                        <td class=""><input type="text" name="family[relation_with_family_address]" value="{{ old('family.relation_with_family_address') }}"></td>
-                                        <td class=""><input type="text" name="family[relation_with_family_contact_number]" value="{{ old('family.relation_with_family_contact_number') }}"></td>
+                                        <td class=""><input type="text" name="family[relation_with_family_name]" oninput="validateName(this);" value="{{ old('family.relation_with_family_name') }}"></td>
+                                        <td class=""><input type="text" name="family[relation_with_family_address]" maxlength="150" value="{{ old('family.relation_with_family_address') }}"></td>
+                                        <td class=""><input type="text" name="family[relation_with_family_contact_number]" oninput="validateInput(this);" value="{{ old('family.relation_with_family_contact_number') }}"></td>
                                     </tr>
                                     @endif
                                     @if(old('community.relation_with_community_name'))
@@ -1874,10 +1874,10 @@
                                     <tr id="row{{ $index + 1 }}">
                                         <td>{{ $index + 1 }}</td>
                                         <td class="" >
-                                            <input type="text" name="animal_suspected_transmitting[transmitting_rabies_name_address][]" value="{{ $oldValue }}">
+                                            <input type="text" maxlength="200" name="animal_suspected_transmitting[transmitting_rabies_name_address][]" value="{{ $oldValue }}">
                                         </td>
                                         <td class="" >
-                                            <input type="text" name="animal_suspected_transmitting[transmitting_rabies_relation][]" value="{{ old('animal_suspected_transmitting.transmitting_rabies_relation.'.$index) ?? '' ?? '' }}">
+                                            <input type="text" maxlength="150" name="animal_suspected_transmitting[transmitting_rabies_relation][]" value="{{ old('animal_suspected_transmitting.transmitting_rabies_relation.'.$index) ?? '' ?? '' }}">
                                         </td>
                                         <td>
                                             @if($oldValue)
@@ -1908,9 +1908,9 @@
                                     <label for="probable_rabies_no">No</label>
                                     <input type="radio" name="probable_rabies" value="no" id="probable_rabies_no" {{ old('probable_rabies') == 'no' ? 'checked' : '' }}>
                                 </p>
+                                <!-- <p>&nbsp;</p>
                                 <p>&nbsp;</p>
-                                <p>&nbsp;</p>
-                                <p>&nbsp;</p>
+                                <p>&nbsp;</p> -->
                             </div>
                         </td>
                     </tr>
@@ -1918,7 +1918,10 @@
             </table>
         </div>
         <!-- ****************************************************** -->
-        <div class="d-flex justify-content-center">  <button class="btn btn-primary">Save</button> </div>
+        <div class="d-flex justify-content-center">  
+            <button class="btn search-patient-btn mr-3 bg-primary text-light">Save</button>
+            <button type="reset" class="btn search-patient-btn bg-danger text-light">Reset</button>
+        </div>
         </div>
        
     </div>

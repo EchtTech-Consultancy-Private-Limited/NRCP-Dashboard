@@ -25,7 +25,7 @@
                     </div> 
                     <div class="col-md-4">
                         <label class="form-label" for="inputAddress2">Password<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control" name="password" value="{{ old('password', $user->password ?? '') }}" maxlength="10" id="password" placeholder="Enter Password">
+                        <input type="text" class="form-control" name="password" value="{{ old('password', $user->password ?? '') }}" maxlength="12" id="password" placeholder="Enter Password">
                         @error('password')
                             <span class="form-text text-muted">{{ $message }}</span>
                         @enderror
@@ -85,6 +85,7 @@
                     <div class="col-md-12 d-flex justify-content-center">
 
                         <button type="submit" class="btn btn-primary w-auto">Save</button>
+                        <button type="reset" class="btn btn-danger w-auto ml-2">Reset</button>
                     </div>
                 </div>
             </form>

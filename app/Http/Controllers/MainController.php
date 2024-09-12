@@ -249,6 +249,10 @@ class MainController extends Controller
         if (!empty($request->month)) {
             $query->whereMonth('reporting_month_year', $request->month);
         }
+        $data = $query->get();
+        if ($data->isEmpty()) {
+            return redirect()->back()->with('error','No data available for export');
+        }
         $arrays = [$query->get()->toArray()];
         return Excel::download(new StateMonthlyReportExport($arrays), Carbon::now()->format('d-m-Y') . '-' . $fileName . '.xlsx');
     }

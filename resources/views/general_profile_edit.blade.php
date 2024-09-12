@@ -74,7 +74,7 @@
         </div> --}}
         <div class="col-lg-3 col-md-3 col-6">
             <div class="form-group">
-                <label for="formType">Joining Date of NRCP</label>
+                <label for="formType">Date of Joining NRCP</label>
                 <input type="date" name="date_of_joining" id="date_of_joining"
                     value="{{$general_profile->date_of_joining}}" class="form-control" />
                 <small id="date_of_joining-error" class="form-text text-muted"> </small>
@@ -83,6 +83,7 @@
         <div class="col-lg-3 col-md-3 col-6 search-reset">
             <div class="apply-filter mt-4 pt-1">
                 <button type="submit" class="btn bg-primary mr-3">Update</button>
+                <button type="reset" class="btn btn-danger w-auto">Reset</button>
             </div>
         </div>
     </div>

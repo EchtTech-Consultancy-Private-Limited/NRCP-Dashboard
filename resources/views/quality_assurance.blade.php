@@ -15,8 +15,8 @@
                             <label for="state">PTILCPR<span class="star" tooltip>*</span></label>
                             <select class="form-select" aria-label="Default select example" name="pt" id="pt">
                                 <option value=""> Select </option>
-                                <option value='yes'>Yes</option>
-                                <option value='no'>No</option>
+                                <option value='yes' {{old('pt') == 'yes' ? 'selected' : ''}}>Yes</option>
+                                <option value='no' {{old('pt') == 'no' ? 'selected' : ''}}>No</option>
                             </select>
                             @error('pt')
                             <span class="form-text text-muted">{{ $message }}</span>
@@ -29,8 +29,8 @@
                             <select class="form-select" aria-label="Default select example" name="accredited_pt"
                                 id="accredited_pt">
                                 <option value=""> Select</option>
-                                <option value='yes'>Yes</option>
-                                <option value='no'>No</option>
+                                <option value='yes' {{old('accredited_pt') == 'yes' ? 'selected' : ''}}>Yes</option>
+                                <option value='no' {{old('accredited_pt') == 'no' ? 'selected' : ''}}>No</option>
                             </select>
                             @error('accredited_pt')
                             <span class="form-text text-muted">{{ $message }}</span>
@@ -43,8 +43,8 @@
                             <select class="form-select" aria-label="Default select example" name="supervisors_trained"
                                 id="supervisors_trained">
                                 <option value=""> Select</option>
-                                <option value='yes'>Yes</option>
-                                <option value='no'>No</option>
+                                <option value='yes' {{old('supervisors_trained') == 'no' ? 'selected' : ''}}>Yes</option>
+                                <option value='no' {{old('supervisors_trained') == 'no' ? 'selected' : ''}}>No</option>
                             </select>
                             <small id="supervisors_trained-error" class="form-text text-muted"></small>
                         </div>
@@ -54,8 +54,8 @@
                             <label for="diseasesSyndromes">LIMS available</label>
                             <select class="form-select" name="lims" id="lims">
                                 <option value=""> Select</option>
-                                <option value='yes'>Yes</option>
-                                <option value='no'>No</option>
+                                <option value='yes' {{old('lims') == 'no' ? 'selected' : ''}}>Yes</option>
+                                <option value='no' {{old('lims') == 'no' ? 'selected' : ''}}>No</option>
                             </select>
                             <small id="lims-error" class="form-text text-muted"></small>
                         </div>

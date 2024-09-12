@@ -16,7 +16,7 @@
                                 id="equipment">
                                 <option value=""> Select</option>
                                 @foreach($equipment_masters as $data)
-                                <option value='{{$data->name}}'>{{$data->name}}</option>
+                                <option value='{{$data->name}}' {{old('equipment') == $data->name ? 'selected' : ''}}>{{$data->name}}</option>
                                 @endforeach
                             </select>
                             @error('equipment')
@@ -27,7 +27,7 @@
                     <div class="col">
                         <div class="form-group">
                             <label for="district">Quantity<span class="star">*</span></label>
-                            <input type="text" class="form-control" maxlength="5" oninput="validateInput(this)"
+                            <input type="text" class="form-control" value="{{old('quantity')}}" maxlength="5" oninput="validateInput(this)"
                                 aria-label="Default select example" name="quantity" id="quantity" placeholder="Quantity">
                             </select>
                             @error('quantity')
@@ -38,7 +38,7 @@
                     <div class="col">
                         <div class="form-group">
                             <label for="fromYear">Year of purchase<span class="star">*</span></label>
-                            <input type="date" t class="form-control" aria-label="Default select example"
+                            <input type="date" t class="form-control" value="{{old('year_of_purchase')}}" aria-label="Default select example"
                                 name="year_of_purchase" id="year_of_purchase" placeholder="DD/MM/YYYY">
                             @error('year_of_purchase')
                             <span class="form-text text-muted">{{ $message }}</span>

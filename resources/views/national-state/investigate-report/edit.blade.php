@@ -1009,7 +1009,7 @@
                                 <input type="radio" name="rabies_immunoglobulin_site" value="IM (not recommended)" id="IM1" {{ old('rabies_immunoglobulin_site',$investigateReport->rabies_immunoglobulin_site) == 'IM (not recommended)' ? 'checked' : '' }}>
                                 <label for="IM1">IM (not recommended)</label>
                                 <input type="radio" name="rabies_immunoglobulin_site" value="both" id="Both1" {{ old('rabies_immunoglobulin_site',$investigateReport->rabies_immunoglobulin_site) == 'both' ? 'checked' : '' }}>
-                                <label for="Both1">both</label>
+                                <label for="Both1">Both</label>
                             </p>
                         </td>
                     </tr>
@@ -1946,7 +1946,10 @@
             </table>
         </div>
         <!-- ****************************************************** -->
-        <div class="d-flex justify-content-center">  <button class="btn btn-primary">Save</button> </div>
+        <div class="d-flex justify-content-center">  
+            <button class="btn btn-primary">Save</button>
+            <button type="reset" class="btn btn-danger w-auto ml-2">Reset</button>
+        </div>
         </div>
        
     </div>

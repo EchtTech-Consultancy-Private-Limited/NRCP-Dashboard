@@ -510,6 +510,7 @@ h1.text-dark.text-left.main-title {
 .table-responsive {
   overflow-y: auto;
   scrollbar-width: thin;
+  position: relative;
 }
 
 .table-responsive::-webkit-scrollbar {
@@ -1116,9 +1117,37 @@ select option {
 .emailBlock p, .signature p {
   font-weight: 500 !important;
   line-height: 1.7;
-  font-size: 15px !important;
+  font-size: 14px !important;
 }
 
 table {
   width: 99.99% !important;
+}
+
+@media (min-width: 641px) and (max-width: 767px) {
+  .dataTables_wrapper {
+    width: -moz-fit-content !important;
+    width: fit-content !important;
+  }
+}
+.main-header ul.navbar-nav.ml-auto {
+  align-items: center;
+}
+
+.main-header .nav-item .notifications {
+  position: relative;
+}
+
+.main-header .nav-item .notifications .icon_wrap {
+  font-size: 20px;
+  cursor: pointer;
+  position: relative;
+}
+
+.main-header .nav-item .notifications .number-noti.notification-total {
+  color: #fff;
+  position: absolute;
+  top: -8px;
+  right: -6px;
+  font-size: 14px;
 }/*# sourceMappingURL=dashboard.css.map */
