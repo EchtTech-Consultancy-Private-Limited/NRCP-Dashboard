@@ -242,7 +242,10 @@ class LaboratoryDashboardController extends Controller
         if (!empty($request->startdate) && !empty($request->enddate)) {
             $query->whereBetween('created_at', [$start_date, $end_date]);
         }
-
+        $data = $query->get();
+        if($data->isEmpty()){
+            return redirect()->back()->with('error','The Data is not available');
+        }
         $arrays = [$query->get()->toArray()];
         // dd($arrays);
         return Excel::download(new NationalReportExport($arrays), Carbon::now()->format('d-m-Y') . '-' . $fileName . '.xlsx');
