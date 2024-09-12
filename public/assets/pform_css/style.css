@@ -236,7 +236,6 @@ textarea.valid {
 .form-text {
   color: #ff0000 !important;
   font-size: 11px;
-  text-transform: capitalize;
 }
 
 .panel-body {
@@ -1175,15 +1174,22 @@ input[type=date]::placeholder {
   right: 3px;
 }
 
-.apply-filter.mt-4.pt-1 {
-  margin-top: 0 !important;
-}
-
 #myTabContent .search-reset {
   position: relative;
+  align-items: end;
 }
 
 #myTabContent .search-reset .apply-filter {
   position: absolute;
-  top: 32px;
+  bottom: 5px;
+}
+
+#myTabContent #nav-add-patient-record .dashboard-filter.mb-4 .search-reset .apply-filter {
+  position: unset;
+  top: 5px;
+}
+
+#myTabContent #nav-add-patient-record .dashboard-filter.mb-4 .search-reset {
+  position: relative;
+  margin: 20px 0;
 }/*# sourceMappingURL=style.css.map */

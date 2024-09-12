@@ -85,6 +85,7 @@
                     <div class="col-md-12 d-flex justify-content-center">
 
                         <button type="submit" class="btn btn-primary w-auto">Save</button>
+                        <button type="reset" class="btn btn-danger w-auto ml-2">Reset</button>
                     </div>
                 </div>
             </form>

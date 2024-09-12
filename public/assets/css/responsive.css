@@ -7,6 +7,9 @@
         border-radius: 100%;
         padding: 8px;
     }
+    table td, table th {
+        font-size: 11px !important;
+    }
 
     tspan.highChartTitle {
         font-size: 15px;
@@ -136,6 +139,9 @@
 @media(max-width:1399px) {
     .chart-container {
         height: 200px !important;
+    }
+    table td, table th {
+        font-size: 11px !important;
     }
 
     .title {

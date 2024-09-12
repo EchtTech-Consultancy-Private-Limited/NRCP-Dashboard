@@ -1946,7 +1946,10 @@
             </table>
         </div>
         <!-- ****************************************************** -->
-        <div class="d-flex justify-content-center">  <button class="btn btn-primary">Save</button> </div>
+        <div class="d-flex justify-content-center">  
+            <button class="btn btn-primary">Save</button>
+            <button type="reset" class="btn btn-danger w-auto ml-2">Reset</button>
+        </div>
         </div>
        
     </div>

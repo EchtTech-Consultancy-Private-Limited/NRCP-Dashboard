@@ -1102,6 +1102,7 @@ input[name="aadhar_number"], input[type="email"] {
 
 .dataTables_wrapper {
     width: 99.9% !important;
+	// min-width: fit-content !important;
 }
 
 .general-profile-filter{
@@ -1181,7 +1182,7 @@ table{
 .main-header .nav-item .notifications .number-noti.notification-total {
     color: #fff;
     position: absolute;
-    top: -3px;
+    top: -8px;
     right: -6px;
     font-size: 14px;
 }
