@@ -31,7 +31,8 @@
                         @enderror
                     </div>
                 </div>
-                <button type="submit" class="btn btn-primary">Update</button>   
+                <button type="submit" class="btn btn-primary">Update</button>
+                <button type="reset" class="btn btn-danger w-auto ml-2">Reset</button>
             </form>
         </div>
     </div>
