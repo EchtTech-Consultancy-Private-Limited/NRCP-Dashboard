@@ -44,7 +44,7 @@ class AdminController extends Controller
     {
         $request->validate([
             'name' => 'regex:/^[a-zA-Z ]+$/',
-            'email' => 'required|email',
+            'email' => 'required|email|unique:dashboard_login,email',
             'password' => 'required|min:8',
             'state_id' => 'required',
             'user_type' => 'required',
