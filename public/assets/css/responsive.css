@@ -333,6 +333,10 @@
         padding: 5px 16px;
         overflow-y: auto;
     }
+    .card.card-primary.dashboard .dashboard-filter {
+        padding: 16px 16px;
+        overflow-y: auto;
+    }
     .nrcp-main-title{
         padding: 5px 16px !important;
     }
