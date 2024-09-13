@@ -331,6 +331,7 @@
     }
     .dashboard .dashboard-filter {
         padding: 5px 16px;
+        overflow-y: auto;
     }
     .nrcp-main-title{
         padding: 5px 16px !important;

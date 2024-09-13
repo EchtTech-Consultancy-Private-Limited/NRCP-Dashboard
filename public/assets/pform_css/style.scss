@@ -1337,3 +1337,6 @@ input[type="date"]::placeholder {
   position: relative;
   margin: 20px 0;
 }
+.dashboard .dashboard-filter{
+  overflow-y: auto;
+}

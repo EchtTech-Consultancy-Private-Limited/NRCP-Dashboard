@@ -1192,4 +1192,8 @@ input[type=date]::placeholder {
 #myTabContent #nav-add-patient-record .dashboard-filter.mb-4 .search-reset {
   position: relative;
   margin: 20px 0;
+}
+
+.dashboard .dashboard-filter {
+  overflow-y: auto;
 }/*# sourceMappingURL=style.css.map */
