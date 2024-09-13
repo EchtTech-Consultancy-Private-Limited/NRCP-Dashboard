@@ -15,7 +15,6 @@
                         <input type="password" class="form-control" name="oldpassword" id="oldpassword" placeholder="Old Password">
                         <i class="toggle-password btn-psw fa fa-fw fa-eye-slash"></i>
                       </div>
-
                         @error('oldpassword')
                             <span class="form-text text-muted">{{ $message }}</span>
                         @enderror
