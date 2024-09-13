@@ -7,7 +7,7 @@
                     Dashboard</a>
             </div>
             <div
-                class="arrow arrow-right link bg-primary text-white dashboard-title {{ Request::segment(2) == 'users' ? 'active' : '' }}">
+                class="arrow arrow-right link bg-primary text-white dashboard-title {{ Request::segment(2) == 'users' || Request::segment(2) == 'edit' ? 'active' : '' }}">
                 <a href="{{ url('/admin/users') }}"> <i class="fa fa-list iconmargin-set" aria-hidden="true"></i>
                     User</a>
             </div>

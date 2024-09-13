@@ -38,8 +38,8 @@ class QualityAssuranceController extends Controller
                 'pt' => 'required',
                 'accredited_pt' => 'required',
             ],[
-                'pt.required' => 'PTILCPR Required',
-                'accredited_pt.required' => 'PTPNABL Required',
+                'pt.required' => 'PTILCPR Field is Required',
+                'accredited_pt.required' => 'PTPNABL Field is Required',
             ]);
         
             QualityAssurance::insert([
@@ -51,7 +51,7 @@ class QualityAssuranceController extends Controller
             ]);
         
                 $notification = array(
-                    'message' => 'Quality Added successfully',
+                    'message' => 'Record saved successfully',
                     'alert-type' => 'success'
                 );
             } 
@@ -72,8 +72,8 @@ class QualityAssuranceController extends Controller
                     'pt' => 'required',
                     'accredited_pt' => 'required',
                 ],[
-                    'pt.required' => 'PTILCPR Required',
-                    'accredited_pt.required' => 'PTPNABL Required',
+                    'pt.required' => 'PTILCPR Field is Required',
+                    'accredited_pt.required' => 'PTPNABL Field is Required',
                 ]);
             
                 QualityAssurance::where('id',$request->id)->update([
@@ -85,7 +85,7 @@ class QualityAssuranceController extends Controller
                 ]);
             
                     $notification = array(
-                        'message' => 'Quality Update successfully',
+                        'message' => 'Record updated successfully',
                         'alert-type' => 'success'
                     );
                 } 
@@ -104,7 +104,7 @@ class QualityAssuranceController extends Controller
                 $quality_assurance= QualityAssurance::where('id',$id)->update(['soft_delete'=>1]);
         }
         $notification = array(
-            'message' => 'Quality Delete successfully',
+            'message' => 'Record deleted successfully',
             'alert-type' => 'success'
         );
         return back()->with($notification);
