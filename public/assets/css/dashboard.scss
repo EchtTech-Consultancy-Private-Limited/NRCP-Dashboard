@@ -532,6 +532,9 @@
 	h1.text-dark.text-left.main-title {
 	  font-size: 22px !important;
 	}
+	.highchart-title h3 {
+        font-size: 18px !important;
+    }
   }
   @media (max-width: 1300px) {
 	.sticky {
@@ -1059,11 +1062,9 @@ td.bggrey input {
 table{
 	overflow-x: auto;
 }
-input[name="aadhar_number"], input[type="email"] {
-    // width: 200px !important;
-}
+
 .highchart-title h3 {
-    font-size: 19px;
+    font-size: 18px;
     text-align: center;
     background: #0c72ad;
     color: #fff;

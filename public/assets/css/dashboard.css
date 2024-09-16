@@ -551,6 +551,9 @@ h1.text-dark.text-left.main-title {
   h1.text-dark.text-left.main-title {
     font-size: 22px !important;
   }
+  .highchart-title h3 {
+    font-size: 18px !important;
+  }
 }
 @media (max-width: 1300px) {
   .sticky {
@@ -1039,7 +1042,7 @@ table {
 }
 
 .highchart-title h3 {
-  font-size: 19px;
+  font-size: 18px;
   text-align: center;
   background: #0c72ad;
   color: #fff;
