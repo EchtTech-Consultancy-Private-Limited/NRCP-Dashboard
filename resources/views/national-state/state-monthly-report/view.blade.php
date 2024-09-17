@@ -17,7 +17,7 @@
                 <p>State Monthly Report (NRCP-M02) <strong> *</strong>
                 </p>
             </div>
-            <table class="w-auto">
+            <table class="">
                 <tbody>
                     <tr class="">
                         <td>
@@ -62,7 +62,7 @@
                 </tbody>
 
             </table>
-            <h3 class="title ml-0"> Detailed Monthly Report: - </h3>
+            <h3 class="title ml-0 mt-4"> Detailed Monthly Report: - </h3>
             <table class="">
                 <tbody>
                     <tr>

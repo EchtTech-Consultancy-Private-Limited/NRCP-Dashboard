@@ -153,7 +153,7 @@
 	padding: 1px 0 !important;
   }
   .dashboard .dashboard-filter {
-	padding:15px 20px 5px;
+	padding:15px 20px 15px;
 	border-radius: 5px;
 	// box-shadow: 0px 0px 25px #cdcdcd;
 	background-color: #fff;
@@ -532,6 +532,9 @@
 	h1.text-dark.text-left.main-title {
 	  font-size: 22px !important;
 	}
+	.highchart-title h3 {
+        font-size: 18px !important;
+    }
   }
   @media (max-width: 1300px) {
 	.sticky {
@@ -1059,11 +1062,9 @@ td.bggrey input {
 table{
 	overflow-x: auto;
 }
-input[name="aadhar_number"], input[type="email"] {
-    // width: 200px !important;
-}
+
 .highchart-title h3 {
-    font-size: 19px;
+    font-size: 18px;
     text-align: center;
     background: #0c72ad;
     color: #fff;
@@ -1101,8 +1102,9 @@ input[name="aadhar_number"], input[type="email"] {
 }
 
 .dataTables_wrapper {
-    width: 99.9% !important;
+    width: 99.8% !important;
 	// min-width: fit-content !important;
+	
 }
 
 .general-profile-filter{
@@ -1180,9 +1182,15 @@ table{
     position: relative;
 }
 .main-header .nav-item .notifications .number-noti.notification-total {
-    color: #fff;
+	color: #fff;
     position: absolute;
-    top: -8px;
-    right: -6px;
+    top: -3px;
+    left: 12px;
+    height: 22px;
+    border-radius: 50%;
+    width: 22px;
+    background: #ab4024;
     font-size: 14px;
+    line-height: 22px;
+    text-align: center;
 }

@@ -161,7 +161,7 @@ body {
 }
 
 .dashboard .dashboard-filter {
-  padding: 15px 20px 5px;
+  padding: 15px 20px 15px;
   border-radius: 5px;
   background-color: #fff;
   box-shadow: 0 0 5px 0 rgba(43, 43, 43, 0.1), 0 11px 6px -7px rgba(43, 43, 43, 0.1);
@@ -550,6 +550,9 @@ h1.text-dark.text-left.main-title {
   }
   h1.text-dark.text-left.main-title {
     font-size: 22px !important;
+  }
+  .highchart-title h3 {
+    font-size: 18px !important;
   }
 }
 @media (max-width: 1300px) {
@@ -1039,7 +1042,7 @@ table {
 }
 
 .highchart-title h3 {
-  font-size: 19px;
+  font-size: 18px;
   text-align: center;
   background: #0c72ad;
   color: #fff;
@@ -1082,7 +1085,7 @@ table {
 }
 
 .dataTables_wrapper {
-  width: 99.9% !important;
+  width: 99.8% !important;
 }
 
 .general-profile-filter .row .col {
@@ -1147,7 +1150,13 @@ table {
 .main-header .nav-item .notifications .number-noti.notification-total {
   color: #fff;
   position: absolute;
-  top: -8px;
-  right: -6px;
+  top: -3px;
+  left: 12px;
+  height: 22px;
+  border-radius: 50%;
+  width: 22px;
+  background: #ab4024;
   font-size: 14px;
+  line-height: 22px;
+  text-align: center;
 }/*# sourceMappingURL=dashboard.css.map */
