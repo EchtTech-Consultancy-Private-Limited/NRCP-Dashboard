@@ -31,9 +31,9 @@
                         @enderror
                     </div>
                 </div>
-                <div class="row mb-3">
+                <div class="row">
                     
-                    <div class="col-md-4">
+                    <div class="col-md-4  mb-3">
                         <label class="form-label" for="inputAddress2">State Name<span class="text-danger">*</span></label>
                         <select id="state_name" class="form-control" name="state_id">
                             <option value="">Select State Name</option>
@@ -47,7 +47,7 @@
                             <span class="form-text text-muted">{{ $message }}</span>
                         @enderror
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-4  mb-3">
                         <label class="form-label" for="institute_name">Institute Name </label>
                         <select id="institute_name" class="form-control" name="institute_id">
                             <option>Select Institute Name</option>
@@ -61,7 +61,7 @@
                             <span class="form-text text-muted">{{ $message }}</span>
                         @enderror
                     </div>
-                    <div class="col-md-4 pe-1">
+                    <div class="col-md-4 pe-1  mb-3">
                         <label class="form-label" for="inputAddress2">Assign Role<span class="text-danger">*</span></label>
                         <select id="inputState" class="form-control" name="user_type">
                             <option value="">Select Assign Role</option>
@@ -73,7 +73,7 @@
                             <span class="form-text text-muted">{{ $message }}</span>
                         @enderror
                     </div>
-                    <div class="col-md-4 pe-1">
+                    <div class="col-md-4 pe-1  mb-3">
                         <label class="form-label" for="inputAddress2">Status<span class="text-danger">*</span></label>
                         <select id="inputState" class="form-control" name="status">
                             <option value="">Select status</option>

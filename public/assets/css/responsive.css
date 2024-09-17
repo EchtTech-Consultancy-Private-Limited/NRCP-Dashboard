@@ -149,6 +149,9 @@
         margin-left: 16px;
         font-weight: 600;
     }
+    .signature p {
+        font-size: 12px !important;
+    }
 
     .layout-footer-fixed .wrapper .content-wrapper {
         padding: 15px 5px;
