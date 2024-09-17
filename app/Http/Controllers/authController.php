@@ -73,7 +73,7 @@ class authController extends Controller
     {
         Auth::logout();
         session()->forget('loggedIn');
-        return redirect('/')->with('success', 'Logout successfull!!');
+        return redirect('/')->with('success', 'Logout successful');
     }
     public function refreshCaptcha()
     {
