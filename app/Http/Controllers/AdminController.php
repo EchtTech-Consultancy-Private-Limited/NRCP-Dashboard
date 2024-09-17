@@ -61,7 +61,7 @@ class AdminController extends Controller
                 'status' => $request->status,
             ]);
             $notification = array(
-                'message' => 'User Add successfully',
+                'message' => 'User Added successfully',
                 'alert-type' => 'success'
             );
         }catch(Exception $e){report($e);

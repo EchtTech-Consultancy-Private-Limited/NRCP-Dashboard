@@ -300,7 +300,7 @@ class StateController extends Controller
                 $formType = '3'; //Soe Uc Form
                 $this->SendNotificationServices->sendNotification($lineSuspectedId, $formType, '2', $request->status);
             DB::commit();
-            return redirect()->back()->with('message', 'Line Suspected create successfull');
+            return redirect()->back()->with('message', 'Line suspected form created successfully');
         }catch (Exception $e) {
             DB::rollBack();
             throw new Exception($e->getMessage());
