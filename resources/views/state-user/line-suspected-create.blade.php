@@ -98,7 +98,7 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="contact_number">Contact Number<span class="text-danger">*</span></label>
-                                <input type="text" name="main_contact_number" class="form-control" value="{{ old('main_contact_number') }}" maxlength="12" oninput="validateInput(this)">
+                                <input type="text" name="main_contact_number" class="form-control" value="{{ old('main_contact_number') }}" maxlength="10" oninput="validateInput(this)">
                             </div>
                         </div>
                         <div class="col-md-4">
