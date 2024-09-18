@@ -75,7 +75,7 @@
                                 <label for="address_hospital"> Address of the Hospital <span
                                         class="text-danger">*</span>
                                 </label>
-                                <input type="text" name="address_hospital" class="form-control"
+                                <input type="text" name="address_hospital" oninput="validateName(this);" class="form-control"
                                     value="{{ old('address_hospital') }}">
                                 @if ($errors->has('address_hospital'))
                                 <span class="form-text text-muted">{{ $errors->first('address_hospital') }}</span>
@@ -99,6 +99,9 @@
                             <div class="form-group">
                                 <label for="contact_number">Contact Number<span class="text-danger">*</span></label>
                                 <input type="text" name="main_contact_number" class="form-control" value="{{ old('main_contact_number') }}" maxlength="10" oninput="validateInput(this)">
+                                @if ($errors->has('main_contact_number'))
+                                <span class="form-text text-muted">{{ $errors->first('main_contact_number') }}</span>
+                                @endif
                             </div>
                         </div>
                         <div class="col-md-4">

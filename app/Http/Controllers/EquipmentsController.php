@@ -42,7 +42,7 @@ class EquipmentsController extends Controller
             ],[
                 'equipment.required' => 'Equipment field is Required',
                 'quantity.required' => 'Quantity field is Required',
-                'year_of_purchase.required' => 'Year of purchase Required',
+                'year_of_purchase.required' => 'Year of purchase field is Required',
             ]);
         
             Equipments::insert([
