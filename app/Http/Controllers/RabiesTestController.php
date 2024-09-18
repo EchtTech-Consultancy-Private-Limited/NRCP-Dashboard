@@ -71,9 +71,9 @@ class RabiesTestController extends Controller
                 'numbers_of_intered_ihip' => 'nullable|numeric|max_digits:5',
                 'typefdte' => 'required',
             ],[
-                'date.required' => 'Date Required',
-                'number_of_patients.required' => 'Number of Patients Required',
-                'typefdte.required' => 'Type of Sample Required',
+                'date.required' => 'Date field is Required',
+                'number_of_patients.required' => 'Number of Patients field is Required',
+                'typefdte.required' => 'Type of Sample field is Required',
             ]);
         
             RabiesTest::insert([
@@ -93,7 +93,7 @@ class RabiesTestController extends Controller
             ]);
         
                 $notification = array(
-                    'message' => 'RabiesTest Added successfully',
+                    'message' => 'Rabies Test Added successfully',
                     'alert-type' => 'success'
                 );
             } 

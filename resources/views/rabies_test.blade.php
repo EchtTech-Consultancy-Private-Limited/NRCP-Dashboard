@@ -176,9 +176,9 @@
                             {{-- <td>{{@$data->state->state_name}}</td> --}}
                             <td class="text-nowrap">
                                 <a href="{{ url('rabies-test-edit',$data->id) }}" class="btn btn-primary editbtn btn-sm"
-                                    title="Edit Data"><i class="fa fa-pencil"></i> </a>
+                                    title="Edit"><i class="fa fa-pencil"></i> </a>
                                 <a href="javascript:void(0)" data-url="{{ route('rabies-test-destroy', $data->id) }}"
-                                    class="btn btn-danger deletebtn btn-sm delete-user" title="Delete Data" id="delete">
+                                    class="btn btn-danger deletebtn btn-sm delete-user" title="Delete" id="delete">
                                     <i class="fa fa-trash"></i>
                                 </a>
                             </td>
