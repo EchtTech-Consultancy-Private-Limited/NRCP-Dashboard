@@ -93,7 +93,7 @@ class RabiesTestController extends Controller
             ]);
         
                 $notification = array(
-                    'message' => 'Rabies Test Added successfully',
+                    'message' => 'The record has been created successfully!',
                     'alert-type' => 'success'
                 );
             } 
@@ -136,7 +136,7 @@ class RabiesTestController extends Controller
                 ]);
             
                     $notification = array(
-                        'message' => 'RabiesTest Update successfully',
+                        'message' => 'The record has been updated successfully',
                         'alert-type' => 'success'
                     );
                 } 

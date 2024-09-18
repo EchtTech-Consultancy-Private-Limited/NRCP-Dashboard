@@ -53,7 +53,7 @@ class ExpenditureController extends Controller
             ]);
         
                 $notification = array(
-                    'message' => 'Finance Added successfully',
+                    'message' => 'The record has been created successfully!',
                     'alert-type' => 'success'
                 );
             } 
@@ -87,7 +87,7 @@ class ExpenditureController extends Controller
                 ]);
             
                     $notification = array(
-                        'message' => 'Finance Update successfully',
+                        'message' => 'The record has been updated successfully',
                         'alert-type' => 'success'
                     );
                 } 

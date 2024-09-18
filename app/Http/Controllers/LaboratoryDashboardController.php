@@ -218,6 +218,8 @@ class LaboratoryDashboardController extends Controller
         // Validate the incoming request data
         $request->validate([
             'modulename' => 'required',
+        ],[
+            'modulename.required' => 'Module name field is required.'
         ]);
 
         // Parse the start and end date if provided

@@ -98,23 +98,23 @@
 
                 <div class="row">
                     <div class="col">
-                        <div class="collapse multi-collapse {{ in_array(Request::segment(2), ['state-monthly-report','l-form', 'p-form', 'investigate-report','state-monthly-edit', 'l-form-edit', 'p-form-edit' , 'investigate-report-edit']) ? 'show' : '' }}"
+                        <div class="collapse multi-collapse {{ in_array(Request::segment(2), ['state-monthly-report','l-form', 'p-form', 'investigate-report','state-monthly-edit', 'l-form-edit', 'p-form-edit' , 'investigate-report-edit' ,'state-monthly-view', 'l-form-view', 'p-form-view', 'investigate-report-view']) ? 'show' : '' }}"
                             id="multiCollapseExample2">
                             <div class="card card-body">
                                 <div
-                                    class="link bg-primary text-white dashboard-title {{ Request::segment(2) == 'state-monthly-report' || Request::segment(2) == 'state-monthly-edit' ? 'active' : '' }}">
+                                    class="link bg-primary text-white dashboard-title {{ Request::segment(2) == 'state-monthly-report' || Request::segment(2) == 'state-monthly-edit' || Request::segment(2) == 'state-monthly-view' ? 'active' : '' }}">
                                     <a href="{{ route('national.state-monthly-report') }}">State Monthly Report</a> </i>
                                 </div>
                                 <div
-                                    class="link bg-primary text-white dashboard-title {{ Request::segment(2) == 'l-form' || Request::segment(2) == 'l-form-edit' ? 'active' : '' }}">
+                                    class="link bg-primary text-white dashboard-title {{ Request::segment(2) == 'l-form' || Request::segment(2) == 'l-form-edit' || Request::segment(2) == 'l-form-view' ? 'active' : '' }}">
                                     <a href="{{ route('national.l-form') }}">L Form</a> </i>
                                 </div>
                                 <div
-                                    class="link bg-primary text-white dashboard-title {{  Request::segment(2) == 'p-form' || Request::segment(2) == 'p-form-edit' ? 'active':'' }}">
+                                    class="link bg-primary text-white dashboard-title {{  Request::segment(2) == 'p-form' || Request::segment(2) == 'p-form-edit' || Request::segment(2) == 'p-form-view' ? 'active':'' }}">
                                     <a href="{{ route('national.p-form') }}">P Form</a> </i>
                                 </div>
                                 <div
-                                    class="link bg-primary text-white dashboard-title {{ Request::segment(2) == 'investigate-report' || Request::segment(2) == 'investigate-report-edit'  ? 'active' : '' }}">
+                                    class="link bg-primary text-white dashboard-title {{ Request::segment(2) == 'investigate-report' || Request::segment(2) == 'investigate-report-edit' || Request::segment(2) == 'investigate-report-view' ? 'active' : '' }}">
                                     <a href="{{ route('national.investigate-report') }}">Investigate Report</a> </i>
                                 </div>
 

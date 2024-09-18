@@ -15,6 +15,7 @@ use App\Models\StateUserLFormCountCase;
 use App\Models\LineSuspected;
 use App\Models\LineSuspectedCalculate;
 use App\Models\InvestigateReport;
+use App\Models\Notification;
 use App\Models\SubCity;
 use Illuminate\Support\Facades\Auth;
 
@@ -38,17 +39,42 @@ class NationalStateListController extends Controller
      * @return void
      */
     public function stateMonthlyEdit($id){
-        try{
+        try {
             DB::beginTransaction();
-            $states = State::get();
-            $stateMonthlyReport = StateMonthlyReport::with('states')->where('id',$id)->first();
-            $userState = $states->firstWhere('id', $stateMonthlyReport->state_id);
-            DB::commit(); 
-            return view('national-state.state-monthly-report.edit', compact('stateMonthlyReport','userState'));
-        }catch (Exception $e) {
+        
+            $stateMonthlyReport = StateMonthlyReport::with('states')->find($id);
+        
+            // Check if the report exists
+            if ($stateMonthlyReport) {
+                $states = State::get();
+                $userState = $states->firstWhere('id', $stateMonthlyReport->state_id);
+                
+                if ($userState) {
+                    DB::commit(); 
+                    return view('national-state.state-monthly-report.edit', compact('stateMonthlyReport', 'userState'));
+                } else {
+                    $notification = [
+                        'message' => 'The state associated with this report does not exist',
+                        'alert-type' => 'warning'
+                    ];
+                    return redirect()->route('national.state-monthly-report')->with($notification);
+                }
+            } else {
+                $notification = [
+                    'message' => 'The record does not exist',
+                    'alert-type' => 'warning'
+                ];
+                return redirect()->route('national.state-monthly-report')->with($notification);
+            }
+        } catch (Exception $e) {
             DB::rollBack();
-            throw new Exception($e->getMessage());
+            $notification = [
+                'message' => 'An error occurred: ' . $e->getMessage(),
+                'alert-type' => 'error'
+            ];
+            return redirect()->route('national.state-monthly-report')->with($notification);
         }
+        
     }
 
     /**
@@ -114,7 +140,7 @@ class NationalStateListController extends Controller
                 'other_remarks' => $request->other_remarks,
             ]);
             DB::commit();
-            return redirect()->route('national.state-monthly-report')->with('message', 'State Ronthly Report Update SuccessFull !');
+            return redirect()->route('national.state-monthly-report')->with('message', 'The record has been created successfully!');
         }catch (Exception $e) {
             DB::rollBack();
             throw new Exception($e->getMessage());
@@ -131,11 +157,22 @@ class NationalStateListController extends Controller
         try{
             DB::beginTransaction();
             $stateMonthlyReport = StateMonthlyReport::with('states')->where('id',$id)->first();
+            if(!$stateMonthlyReport){
+                $notification = [
+                    'message' => 'The record does not exist',
+                    'alert-type' => 'warning'
+                ];
+                return redirect()->route('national.state-monthly-report')->with($notification);
+            }
             DB::commit();
             return view('national-state.state-monthly-report.view', compact('stateMonthlyReport'));
         }catch (Exception $e) {
             DB::rollBack();
-            throw new Exception($e->getMessage());
+            $notification = [
+                'message' => 'An error occurred: ' . $e->getMessage(),
+                'alert-type' => 'error'
+            ];
+            return redirect()->route('national.state-monthly-report')->with($notification);
         }
     }
 
@@ -148,7 +185,9 @@ class NationalStateListController extends Controller
     public function stateMonthlyDestroy($id)
     {
         StateMonthlyReport::where('id', $id)->delete();
-        return back()->with(['error'=>"Deleted successfully.",'alert-type' => 'success','success'=>'1', 'tr'=>'tr_'.$id]);
+        Notification::where('form_id',$id)->where('form_type',1)->delete();
+        return response()->json(['message'=>"The record has been deleted successfully!",'alert-type' => 'success','success'=>'1', 'tr'=>'tr_'.$id]);
+
     }
 
     /**
@@ -175,13 +214,25 @@ class NationalStateListController extends Controller
         try{
             DB::beginTransaction();
             $stateUserLForm = StateUserLForm::with(['stateUserLFormCountCase.states', 'stateUserLFormCountCase.city','stateUserLFormCountCase.subCity'])->where('id', $id)->first();
+            if (!$stateUserLForm) {
+                $notification = [
+                    'message' => 'The record does not exist',
+                    'alert-type' => 'warning'
+                ];
+                return redirect()->route('national.l-form')->with($notification);
+            }
             $states = CountryState::orderBy('name','asc')->get();
             $cities = City::get();
             DB::commit();
             return view('national-state.lform.edit', compact('stateUserLForm','states','cities'));
         }catch (Exception $e) {
+            // Handle exception and provide user feedback
+            $notification = [
+                'message' => 'An error occurred: ' . $e->getMessage(),
+                'alert-type' => 'error'
+            ];
             DB::rollBack();
-            throw new Exception($e->getMessage());
+            return redirect()->route('national.l-form')->with($notification);
         }
     }
 
@@ -253,7 +304,7 @@ class NationalStateListController extends Controller
                 }
             }
             DB::commit();
-            return redirect()->route('national.l-form')->with('message', 'L Form updated successfully');
+            return redirect()->route('national.l-form')->with('message', 'The record has been updated successfully');
         } catch (\Exception $e) {
             DB::rollBack();
             return response()->json(['message' => 'Error: ' . $e->getMessage()], 500);
@@ -271,6 +322,13 @@ class NationalStateListController extends Controller
         try{
             DB::beginTransaction();
             $stateUserLForm = StateUserLForm::with(['stateUserLFormCountCase.states', 'stateUserLFormCountCase.city','stateUserLFormCountCase.subCity'])->where('id', $id)->first();
+            if (!$stateUserLForm) {
+                $notification = [
+                    'message' => 'The record does not exist',
+                    'alert-type' => 'warning'
+                ];
+                return redirect()->route('national.l-form')->with($notification);
+            }
             $states = CountryState::orderBy('name','asc')->get();
             $cities = City::get();
             DB::commit();
@@ -278,7 +336,13 @@ class NationalStateListController extends Controller
             return view('national-state.lform.view', compact('stateUserLForm','states','cities'));
         }catch (Exception $e) {
             DB::rollBack();
-            throw new Exception($e->getMessage());
+            // Handle exception and provide user feedback
+            $notification = [
+                'message' => 'An error occurred: ' . $e->getMessage(),
+                'alert-type' => 'error'
+            ];
+            DB::rollBack();
+            return redirect()->route('national.l-form')->with($notification);
         }
     }
 
@@ -292,7 +356,9 @@ class NationalStateListController extends Controller
     {
         StateUserLForm::where('id', $id)->delete();
         StateUserLFormCountCase::where('state_user_l_forms_id', $id)->delete();
-        return back()->with(['error'=>"Deleted successfully.",'alert-type' => 'success','success'=>'1', 'tr'=>'tr_'.$id]);
+        Notification::where('form_id',$id)->where('form_type',2)->delete();
+        return response()->json(['message'=>"The record has been deleted successfully!",'alert-type' => 'success','success'=>'1', 'tr'=>'tr_'.$id]);
+
     }
     
     /**
@@ -316,6 +382,13 @@ class NationalStateListController extends Controller
         try{
             DB::beginTransaction();
             $stateUserpForm = LineSuspected::with('lineSuspectedCalculate','lineSuspectedCalculate.city','lineSuspectedCalculate.subCity')->where('id', $id)->first();
+            if (!$stateUserpForm) {
+                $notification = [
+                    'message' => 'The record does not exist',
+                    'alert-type' => 'warning'
+                ];
+                return redirect()->route('national.p-form')->with($notification);
+            }
             $states = CountryState::orderBy('name','asc')->get();
             $cities = City::orderBy('name','asc')->get();
             $subCities = SubCity::orderBy('name','asc')->get();
@@ -323,7 +396,11 @@ class NationalStateListController extends Controller
             return view('national-state.pform.edit', compact('stateUserpForm','states','cities','subCities'));
         }catch (Exception $e) {
             DB::rollBack();
-            throw new Exception($e->getMessage());
+            $notification = [
+                'message' => 'An error occurred: ' . $e->getMessage(),
+                'alert-type' => 'warning'
+            ];
+            return redirect()->route('national.p-form')->with($notification);
         }
     }
     
@@ -404,7 +481,7 @@ class NationalStateListController extends Controller
                 }
             }
             DB::commit();
-            return redirect()->route('national.p-form')->with('message', 'P Form updated successfully');
+            return redirect()->route('national.p-form')->with('message', 'The record has been updated successfully');
         } catch (\Exception $e) {
             DB::rollBack();
             return response()->json(['message' => 'Error: ' . $e->getMessage()], 500);
@@ -416,12 +493,23 @@ class NationalStateListController extends Controller
         try{
             DB::beginTransaction();
             $stateUserpForm = LineSuspected::with('lineSuspectedCalculate')->where('id', $id)->first();
+            if (!$stateUserpForm) {
+                $notification = [
+                    'message' => 'The record does not exist',
+                    'alert-type' => 'warning'
+                ];
+                return redirect()->route('national.p-form')->with($notification);
+            }
             $states = CountryState::orderBy('name','asc')->get();
             DB::commit();
             return view('national-state.pform.view', compact('stateUserpForm','states'));
         }catch (Exception $e) {
             DB::rollBack();
-            throw new Exception($e->getMessage());
+            $notification = [
+                'message' => 'An error occurred: ' . $e->getMessage(),
+                'alert-type' => 'warning'
+            ];
+            return redirect()->route('national.p-form')->with($notification);
         }
     }
 
@@ -435,7 +523,9 @@ class NationalStateListController extends Controller
     {
         LineSuspected::where('id', $id)->delete();
         LineSuspectedCalculate::where('line_suspected_form_id', $id)->delete();
-        return back()->with(['error'=>"Deleted successfully.",'alert-type' => 'success','success'=>'1', 'tr'=>'tr_'.$id]);
+        Notification::where('form_id',$id)->where('form_type',3)->delete();
+        return response()->json(['message'=>"The record has been deleted successfully!",'alert-type' => 'success','success'=>'1', 'tr'=>'tr_'.$id]);
+
     }
     
     /**
@@ -460,10 +550,21 @@ class NationalStateListController extends Controller
         try{
             DB::beginTransaction(); 
             $investigateReport = InvestigateReport::where('id', $id)->first();
+            if(!$investigateReport){
+                $notification = [
+                    'message' => 'The record does not exist',
+                    'alert-type' => 'warning'
+                ];
+                return redirect()->route('national.investigate-report')->with($notification);
+            }
             return view('national-state.investigate-report.edit', compact('investigateReport'));
         }catch (Exception $e) {
             DB::rollBack();
-            throw new Exception($e->getMessage());
+            $notification = [
+                'message' => 'An error occurred: ' . $e->getMessage(),
+                'alert-type' => 'error'
+            ];
+            return redirect()->route('national.investigate-report')->with($notification);
         }
     }
     
@@ -489,7 +590,7 @@ class NationalStateListController extends Controller
             $investigateReport->fill($request->all());
             $investigateReport->save();
             DB::commit();
-            return redirect()->route('national.investigate-report')->with('message', 'Investigate report updated successfully');
+            return redirect()->route('national.investigate-report')->with('message', 'The record has been updated successfully');
         } catch (\Exception $e) {
             DB::rollBack();
             return response()->json(['message' => 'Error: ' . $e->getMessage()], 500);
@@ -507,10 +608,21 @@ class NationalStateListController extends Controller
         try{
             DB::beginTransaction();
             $investigateReport = InvestigateReport::where('id', $id)->first();
+            if(!$investigateReport){
+                $notification = [
+                    'message' => 'The record does not exist',
+                    'alert-type' => 'warning'
+                ];
+                return redirect()->route('national.investigate-report')->with($notification);
+            }
             return view('national-state.investigate-report.view', compact('investigateReport'));
         }catch (Exception $e) {
             DB::rollBack();
-            throw new Exception($e->getMessage());
+            $notification = [
+                'message' => 'An error occurred: ' . $e->getMessage(),
+                'alert-type' => 'error'
+            ];
+            return redirect()->route('national.investigate-report')->with($notification);
         }
     }
     
@@ -523,6 +635,8 @@ class NationalStateListController extends Controller
     public function investigateReportDestroy($id)
     {
         InvestigateReport::where('id', $id)->delete();
-        return back()->with(['error'=>"Deleted successfully.",'alert-type' => 'success','success'=>'1', 'tr'=>'tr_'.$id]);
+        Notification::where('form_id',$id)->where('form_type',4)->delete();
+        return response()->json(['message'=>"The record has been deleted successfully!",'alert-type' => 'success','success'=>'1', 'tr'=>'tr_'.$id]);
+
     }
 }

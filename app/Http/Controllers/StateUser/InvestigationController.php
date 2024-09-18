@@ -46,7 +46,7 @@ class InvestigationController extends Controller
             $formType = '4'; //Soe Uc Form
             $this->SendNotificationServices->sendNotification($investigateReport->id, $formType, '2', $request->status);
             DB::commit();
-            return redirect()->back()->with('message', 'Investigate report created successfully');
+            return redirect()->back()->with('message', 'The record has been created successfully!');
         } catch (\Exception $e) {
             DB::rollBack();
             return response()->json(['message' => 'Error: ' . $e->getMessage()], 500);
