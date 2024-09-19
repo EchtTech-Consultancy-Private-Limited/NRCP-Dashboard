@@ -44,7 +44,8 @@ class InvestigationController extends Controller
             $investigateReport->user_id = Auth::id();
             $investigateReport->save();
             $formType = '4'; //Soe Uc Form
-            $this->SendNotificationServices->sendNotification($investigateReport->id, $formType, '2', $request->status);
+            $nationaluser = DB::table('dashboard_login')->where(['user_type' => 1, 'status' => 1])->first();
+            $this->SendNotificationServices->sendNotification($investigateReport->id, $formType, $nationaluser->id, $request->status);
             DB::commit();
             return redirect()->back()->with('message', 'The record has been created successfully!');
         } catch (\Exception $e) {

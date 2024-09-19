@@ -60,8 +60,8 @@
                     <div class="icon_wrap"><i class="fa fa-bell text-white"></i> <div class="number-noti notification-total">0</div> </div>
                     @endif
                     <div class="notification_dd">
-                        <ul class="notification_ul">
-                            @if(notifications())
+                        <ul class="notification_ul"> 
+                            @if(notifications()) 
                                 @foreach(notifications() as $key => $notification)
                                     @if(Auth::user()->user_type == 1)
                                         <li class="starbucks success">

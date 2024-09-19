@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\DB;
 class SendNotificationServices
 {
     function sendNotification($formId = '', $formType = '', $receiverId ='', $status = '')
-    {    
+    {
         try {
             DB::beginTransaction();
             $notification = Notification::updateOrCreate(

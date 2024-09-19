@@ -106,7 +106,8 @@ class FormController extends Controller
                 ]);
             }
             $formType = '2'; //Soe Uc Form
-            $this->SendNotificationServices->sendNotification($LFormId, $formType, '2', $request->status);
+            $nationaluser = DB::table('dashboard_login')->where(['user_type' => 1, 'status' => 1])->first();
+            $this->SendNotificationServices->sendNotification($LFormId, $formType, $nationaluser->id, $request->status);
             DB::commit();
             return redirect()->back()->with('message', 'The record has been created successfully!');
         } catch (\Exception $e) {
