@@ -51,7 +51,7 @@ class QualityAssuranceController extends Controller
             ]);
         
                 $notification = array(
-                    'message' => 'Record saved successfully',
+                    'message' => 'The record has been created successfully!',
                     'alert-type' => 'success'
                 );
             } 
@@ -85,7 +85,7 @@ class QualityAssuranceController extends Controller
                 ]);
             
                     $notification = array(
-                        'message' => 'Record updated successfully',
+                        'message' => 'The record has been updated successfully',
                         'alert-type' => 'success'
                     );
                 } 
@@ -103,10 +103,7 @@ class QualityAssuranceController extends Controller
             {
                 $quality_assurance= QualityAssurance::where('id',$id)->update(['soft_delete'=>1]);
         }
-        $notification = array(
-            'message' => 'Record deleted successfully',
-            'alert-type' => 'success'
-        );
-        return back()->with($notification);
+    	return response()->json(['message'=>"The record has been deleted successfully!",'alert-type' => 'success','success'=>'1', 'tr'=>'tr_'.$id]);
+
     }
 }

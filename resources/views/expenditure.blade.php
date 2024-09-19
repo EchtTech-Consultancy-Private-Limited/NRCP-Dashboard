@@ -99,12 +99,12 @@
                                             @endforeach
                                             <td class="text-nowrap">
                                                 <a href="{{ url('expenditure-edit',$data->id) }}"
-                                                    class="btn btn-primary editbtn btn-sm" title="Edit Data"><i
+                                                    class="btn btn-primary editbtn btn-sm" title="Edit"><i
                                                         class="fa fa-pencil"></i> </a>
                                                 <a href="javascript:void(0)"
                                                     data-url="{{ route('expenditure-destroy', $data->id) }}"
                                                     class="btn btn-danger deletebtn btn-sm delete-user"
-                                                    title="Delete Data" id="delete">
+                                                    title="Delete" id="delete">
                                                     <i class="fa fa-trash"></i>
                                                 </a>
                                             </td>

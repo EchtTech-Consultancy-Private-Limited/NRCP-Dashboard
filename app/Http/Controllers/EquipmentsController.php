@@ -42,7 +42,7 @@ class EquipmentsController extends Controller
             ],[
                 'equipment.required' => 'Equipment field is Required',
                 'quantity.required' => 'Quantity field is Required',
-                'year_of_purchase.required' => 'Year of purchase Required',
+                'year_of_purchase.required' => 'Year of purchase field is Required',
             ]);
         
             Equipments::insert([
@@ -53,7 +53,7 @@ class EquipmentsController extends Controller
             ]);
         
                 $notification = array(
-                    'message' => 'Equipment form saved  Added successfully',
+                    'message' => 'The record has been created successfully!',
                     'alert-type' => 'success'
                 );
             } 
@@ -86,7 +86,7 @@ class EquipmentsController extends Controller
                     'year_of_purchase' => $request->year_of_purchase
                 ]);
                     $notification = array(
-                        'message' => 'Equipment form updated successfully',
+                        'message' => 'The record has been updated successfully',
                         'alert-type' => 'success'
                     );
                 }

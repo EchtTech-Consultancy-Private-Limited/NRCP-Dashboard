@@ -39,10 +39,10 @@ class GeneralProfileController extends Controller
                 'designation' => 'required',
                 'contact_number' => 'nullable|numeric|digits:10', // Make the field nullable
             ],[
-                'state.required' => 'State Name Required',
-                'hospital.required' => 'Hospital Name Required',
-                'designation.required' => 'Nodal Officer Name Required',
-                'contact_number.numeric' => 'Contact Number must be numeric',
+                'state.required' => 'State Name field is Required',
+                'hospital.required' => 'Hospital Name field is Required',
+                'designation.required' => 'Nodal Officer Name field is Required',
+                'contact_number' => 'required|numeric|regex:/^(\+?[0-9]{1,5})?([7-9][0-9]{9})$/',
                 'contact_number.digits' => 'Contact Number must be 10 digits',
             ]);           
         
@@ -57,7 +57,7 @@ class GeneralProfileController extends Controller
             ]);
         
                 $notification = array(
-                    'message' => 'Recorded Added successfully',
+                    'message' => 'The record has been created successfully!',
                     'alert-type' => 'success'
                 );
             } 
@@ -96,7 +96,7 @@ class GeneralProfileController extends Controller
                 ]);
             
                     $notification = array(
-                        'message' => ' Record Update successfully',
+                        'message' => 'The record has been updated successfully!',
                         'alert-type' => 'success'
                     );
                 } 
@@ -114,7 +114,7 @@ class GeneralProfileController extends Controller
             $general_profile = GeneralProfile::where('id', $id)->update(['soft_delete' => 1]);
         }
         
-    	return response()->json(['message'=>"Record Deleted successfully.",'alert-type' => 'success','success'=>'1', 'tr'=>'tr_'.$id]);
+    	return response()->json(['message'=>"The record has been deleted successfully!",'alert-type' => 'success','success'=>'1', 'tr'=>'tr_'.$id]);
         //return response()->json('success', 'Deleted successfully.');
     }
 }

@@ -36,6 +36,9 @@ class ReportGenerateControllerController extends Controller
         // Validate the incoming request data
         $request->validate([
             'modulename' => 'required',
+        ],
+        ['modulename.required'  => 'Module Name field is required'
+
         ]);
 
         // Parse the start and end date if provided

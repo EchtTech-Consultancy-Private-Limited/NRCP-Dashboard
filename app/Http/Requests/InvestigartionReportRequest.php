@@ -25,7 +25,7 @@ class InvestigartionReportRequest extends FormRequest
             'interviewer_name' => ['required'],
             'interview_date' => ['required'],
             'interviewer_designation' => ['required'],
-            'interviewer_contact_number' => ['required'],            
+            'interviewer_contact_number' => ['required', 'numeric', 'digits:10'],            
         ];
     }
 }

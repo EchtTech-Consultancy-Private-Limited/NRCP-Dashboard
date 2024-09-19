@@ -34,7 +34,7 @@
                 <a href="{{route('national.investigate-report-view',$investigateReport->id)}}" class="btn bg-primary action-btn" title="View">
                     <i class="fa fa-eye"></i>
                   </a>
-                  <a href="{{route('national.investigate-report-delete',$investigateReport->id)}}" class="btn bg-danger action-btn" title="Delete" onclick="return confirmDelete()">
+                  <a href="javascript:void(0)" data-url="{{route('national.investigate-report-delete',$investigateReport->id)}}" class="btn bg-danger delete-user action-btn" title="Delete">
                     <i class="fa fa-trash-o"></i>
                 </a>
               </td>

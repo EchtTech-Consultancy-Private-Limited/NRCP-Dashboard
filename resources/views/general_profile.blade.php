@@ -120,7 +120,7 @@
                             </td>
                             <td class="text-nowrap">
                                 <a href="{{ url('general-edit',$general_profiles->id) }}" class="btn btn-primary btn-sm"
-                                    title="Edit Data"><i class="fa fa-pencil"></i> </a>
+                                    title="Edit"><i class="fa fa-pencil"></i> </a>
                                 <a href="javascript:void(0)"
                                     data-url="{{ route('general-laboratory-destroy', $general_profiles->id) }}"
                                     class="btn btn-danger deletebtn btn-sm delete-user" title="Delete Data" id="delete">

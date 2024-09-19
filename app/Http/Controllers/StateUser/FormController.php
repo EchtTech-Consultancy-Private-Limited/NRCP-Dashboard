@@ -62,12 +62,12 @@ class FormController extends Controller
             'institute_name' => 'required','min:2', 'max:150',
         ],
         [
-            'name_nodal_person.required' => 'Name of the nodal person is required',
-            'designation_nodal_person.required' => 'Designation of the nodal person is required',
+            'name_nodal_person.required' => 'Name of the nodal person field is required',
+            'designation_nodal_person.required' => 'Designation of the nodal person field is required',
             'phone_number.required' => 'Phone number is required',
             // 'email.required' => 'Email address is required',
             // 'email.email' => 'Email address must be a valid email format',
-            'institute_name.required' => 'Institute name is required',
+            'institute_name.required' => 'Institute name field is required',
         ]);
         try {
             DB::beginTransaction();
@@ -106,9 +106,10 @@ class FormController extends Controller
                 ]);
             }
             $formType = '2'; //Soe Uc Form
-            $this->SendNotificationServices->sendNotification($LFormId, $formType, '2', $request->status);
+            $nationaluser = DB::table('dashboard_login')->where(['user_type' => 1, 'status' => 1])->first();
+            $this->SendNotificationServices->sendNotification($LFormId, $formType, $nationaluser->id, $request->status);
             DB::commit();
-            return redirect()->back()->with('message', 'L Form created successfully');
+            return redirect()->back()->with('message', 'The record has been created successfully!');
         } catch (\Exception $e) {
             DB::rollBack();
             return response()->json(['message' => 'Error: ' . $e->getMessage()], 500);

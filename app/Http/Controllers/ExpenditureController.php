@@ -40,9 +40,9 @@ class ExpenditureController extends Controller
                 'fund_recieved' => 'required',
                 'equipment_purchase' => 'required',
             ],[
-                'financial_year.required' => 'Financial year Required',
-                'fund_recieved.required' => 'Fund Received Required',
-                'equipment_purchase.required' => 'Equipment Purchase Required',
+                'financial_year.required' => 'Financial year field is Required',
+                'fund_recieved.required' => 'Fund Received field is Required',
+                'equipment_purchase.required' => 'Equipment Purchase field is Required',
             ]);
         
             Expenditure::insert([
@@ -53,7 +53,7 @@ class ExpenditureController extends Controller
             ]);
         
                 $notification = array(
-                    'message' => 'Finance Added successfully',
+                    'message' => 'The record has been created successfully!',
                     'alert-type' => 'success'
                 );
             } 
@@ -87,7 +87,7 @@ class ExpenditureController extends Controller
                 ]);
             
                     $notification = array(
-                        'message' => 'Finance Update successfully',
+                        'message' => 'The record has been updated successfully',
                         'alert-type' => 'success'
                     );
                 } 

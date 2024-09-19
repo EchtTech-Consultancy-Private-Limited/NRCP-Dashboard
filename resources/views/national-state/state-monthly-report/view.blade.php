@@ -56,7 +56,7 @@
                             </p>
                         </td>
                         <td>
-                            {{ old('reporting_month_year', $stateMonthlyReport->reporting_month_year) }}
+                            {{ old('reporting_month_year', date('d-m-Y', strtotime($stateMonthlyReport->reporting_month_year))) }}
                         </td>
                     </tr>
                 </tbody>
