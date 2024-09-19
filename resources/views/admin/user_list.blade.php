@@ -62,7 +62,7 @@
                         <label class="form-label" for="inputAddress2">Assign Role<span class="text-danger">*</span></label>
                         <select id="inputState" class="form-control" name="user_type">
                             <option value="">Select Assign Role</option>
-                            <option value="1" {{ old('user_type', $user->user_type ?? '') == 1 ? 'selected' : '' }}>National User</option>
+                            {{-- <option value="1" {{ old('user_type', $user->user_type ?? '') == 1 ? 'selected' : '' }}>National User</option> --}}
                             <option value="2" {{ old('user_type', $user->user_type ?? '') == 2 ? 'selected' : '' }}>Laboratory user</option>
                             <option value="3" {{ old('user_type', $user->user_type ?? '') == 3 ? 'selected' : '' }}>State user</option>
                         </select>

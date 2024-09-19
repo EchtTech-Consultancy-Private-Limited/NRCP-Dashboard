@@ -214,7 +214,8 @@ class StateController extends Controller
                     'other_remarks' => $request->other_remarks,
                 ]);
             $formType = '1'; //Soe Uc Form
-            $this->SendNotificationServices->sendNotification($stateMonthlyReport->id, $formType, '2', $request->status);
+            $nationaluser = DB::table('dashboard_login')->where(['user_type' => 1, 'status' => 1])->first();
+            $this->SendNotificationServices->sendNotification($stateMonthlyReport->id, $formType, $nationaluser->id , $request->status);
             DB::commit();
             if($stateMonthlyReport){
                 return redirect()->back()->with('message', 'The record has been created successfully!');
@@ -298,7 +299,8 @@ class StateController extends Controller
                     ]);
                 }
                 $formType = '3'; //Soe Uc Form
-                $this->SendNotificationServices->sendNotification($lineSuspectedId, $formType, '2', $request->status);
+                $nationaluser = DB::table('dashboard_login')->where(['user_type' => 1, 'status' => 1])->first();
+                $this->SendNotificationServices->sendNotification($lineSuspectedId, $formType, $nationaluser->id, $request->status);
             DB::commit();
             return redirect()->back()->with('message', 'The record has been created successfully!');
         }catch (Exception $e) {

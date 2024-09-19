@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Institute;
+use App\Models\Notification;
 use App\Models\State;
 use Exception;
 use Illuminate\Http\Request;
@@ -29,7 +30,7 @@ class AdminController extends Controller
      */
     public function userList()
     {
-        $users = DB::table('dashboard_login')->whereNotIn('user_type', ['4'])->get();
+        $users = DB::table('dashboard_login')->whereNotIn('user_type', ['4','1'])->get();
         $states = State::orderBy('state_name','asc')->get();
         return view('admin.user_list', compact('users','states'));
     }
@@ -139,6 +140,7 @@ class AdminController extends Controller
     public function userDelete($id = '')
     {
         $user = DB::table('dashboard_login')->where('id', $id)->delete();
+        Notification::where('sender_id',$id)->delete();
         $notification = array(
             'message' => 'User has been delete successfully',
             'alert-type' => 'success'
