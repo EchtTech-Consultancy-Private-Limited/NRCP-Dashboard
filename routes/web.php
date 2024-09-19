@@ -79,25 +79,25 @@ Route::middleware(['Admin','device'])->group(function () {
             Route::get('/state-monthly-view/{id}', [NationalStateListController::class, 'stateMonthlyView'])->name('state-monthly-view');
             Route::get('/state-monthly-edit/{id}', [NationalStateListController::class, 'stateMonthlyEdit'])->name('state-monthly-edit');
             Route::post('/state-monthly-update/{id}', [NationalStateListController::class, 'stateMonthlyUpdate'])->name('state-monthly-update');
-            Route::get('state-monthly-delete/{id}',[NationalStateListController::class, 'stateMonthlyDestroy'])->name('state-monthly-delete');
+            Route::delete('state-monthly-delete/{id}',[NationalStateListController::class, 'stateMonthlyDestroy'])->name('state-monthly-delete');
             // state user L Form
             Route::get('/l-form', [NationalStateListController::class, 'lForm'])->name('l-form');
             Route::get('/l-form-view/{id}', [NationalStateListController::class, 'lFormView'])->name('l-form-view');
             Route::get('/l-form-edit/{id}', [NationalStateListController::class, 'lFormEdit'])->name('l-form-edit');
             Route::post('/l-form-update/{id}', [NationalStateListController::class, 'lFormUpdate'])->name('l-form-update');
-            Route::get('l-form-delete/{id}',[NationalStateListController::class, 'lFormDestroy'])->name('l-form-delete');
+            Route::delete('l-form-delete/{id}',[NationalStateListController::class, 'lFormDestroy'])->name('l-form-delete');
             // state user P Form
             Route::get('/p-form', [NationalStateListController::class, 'pForm'])->name('p-form');
             Route::get('/p-form-view/{id}', [NationalStateListController::class, 'pFormView'])->name('p-form-view');
             Route::get('/p-form-edit/{id}', [NationalStateListController::class, 'pFormEdit'])->name('p-form-edit');
             Route::post('/p-form-update/{id}', [NationalStateListController::class, 'pFormUpdate'])->name('p-form-update');
-            Route::get('/p-form-delete/{id}',[NationalStateListController::class, 'pFormDestroy'])->name('p-form-delete');
+            Route::delete('/p-form-delete/{id}',[NationalStateListController::class, 'pFormDestroy'])->name('p-form-delete');
             // Investigate Report
             Route::get('/investigate-report', [NationalStateListController::class, 'investigateReport'])->name('investigate-report');
             Route::get('/investigate-report-view/{id}', [NationalStateListController::class, 'investigateReportView'])->name('investigate-report-view');
             Route::get('/investigate-report-edit/{id}', [NationalStateListController::class, 'investigateReportEdit'])->name('investigate-report-edit');
             Route::post('/investigate-report-update/{id}', [NationalStateListController::class, 'investigateReportUpdate'])->name('investigate-report-update');
-            Route::get('/investigate-report-delete/{id}',[NationalStateListController::class, 'investigateReportDestroy'])->name('investigate-report-delete');
+            Route::delete('/investigate-report-delete/{id}',[NationalStateListController::class, 'investigateReportDestroy'])->name('investigate-report-delete');
         });
         // End national dashboard monthly report list
 
@@ -159,7 +159,7 @@ Route::middleware(['Admin','device'])->group(function () {
             Route::get('quality-assurance-profile/{id}', [QualityAssuranceController::class, 'edit']);
             Route::get('quality-edit/{id}', [QualityAssuranceController::class, 'edit'])->name('quality-edit');
             Route::post('quality-update', [QualityAssuranceController::class, 'update'])->name('quality-update');
-            Route::get('quality-destroy/{id}', [QualityAssuranceController::class, 'destroy'])->name('quality-destroy');
+            Route::delete('quality-destroy/{id}', [QualityAssuranceController::class, 'destroy'])->name('quality-destroy');
 
             Route::get('equipments',[EquipmentsController::class,'create'])->name('equipments');
             Route::post('equipment-add', [EquipmentsController::class, 'store'])->name('equipment-add');

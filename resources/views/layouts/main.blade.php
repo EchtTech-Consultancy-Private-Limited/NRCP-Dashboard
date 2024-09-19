@@ -37,14 +37,14 @@
             @if (session()->has('message'))
             <div class="alert alert-success float-end" id="success-alert">
                     <button type="button" class="close" data-dismiss="alert">x</button>
-                    <strong> </strong> {{ session('message') }}
+                    {{ session('message') }} &nbsp;
                 </div>
             @endif
             @if (session()->has('error'))
             <div class="container">
                 <div class="alert alert-danger float-end" id="success-alert">
                     <button type="button" class="close" data-dismiss="alert">x</button>
-                    {{ session('error') }}
+                    {{ session('error') }} &nbsp;
                 </div>
             </div>
             @endif

@@ -57,7 +57,7 @@ class GeneralProfileController extends Controller
             ]);
         
                 $notification = array(
-                    'message' => 'Record Added successfully',
+                    'message' => 'The record has been created successfully!',
                     'alert-type' => 'success'
                 );
             } 
@@ -96,7 +96,7 @@ class GeneralProfileController extends Controller
                 ]);
             
                     $notification = array(
-                        'message' => ' Record Updated successfully',
+                        'message' => 'The record has been updated successfully!',
                         'alert-type' => 'success'
                     );
                 } 
@@ -114,7 +114,7 @@ class GeneralProfileController extends Controller
             $general_profile = GeneralProfile::where('id', $id)->update(['soft_delete' => 1]);
         }
         
-    	return response()->json(['message'=>"Record Deleted successfully.",'alert-type' => 'success','success'=>'1', 'tr'=>'tr_'.$id]);
+    	return response()->json(['message'=>"The record has been deleted successfully!",'alert-type' => 'success','success'=>'1', 'tr'=>'tr_'.$id]);
         //return response()->json('success', 'Deleted successfully.');
     }
 }

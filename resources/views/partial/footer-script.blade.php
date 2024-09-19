@@ -60,7 +60,7 @@
 
 <script>
    let cars = $('#mySelect2').filterMultiSelect();
- @if(Session::has('message'))
+ @if(Session::has('messages'))
  var type = "{{ Session::get('alert-type','info') }}"
  switch(type){
     case 'info':
@@ -80,6 +80,9 @@
     break; 
  }
  @endif 
+ @if (Session::has('loggedsuccess'))
+ toastr.success(" {{ Session::get('loggedsuccess') }} ");
+ @endif
 </script>
 
 <script src="{{ asset('assets/js/sweetalert2@10.js') }}"></script>

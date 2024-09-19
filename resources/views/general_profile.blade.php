@@ -123,7 +123,7 @@
                                     title="Edit"><i class="fa fa-pencil"></i> </a>
                                 <a href="javascript:void(0)"
                                     data-url="{{ route('general-laboratory-destroy', $general_profiles->id) }}"
-                                    class="btn btn-danger deletebtn btn-sm delete-user" title="Delete" id="delete">
+                                    class="btn btn-danger deletebtn btn-sm delete-user" title="Delete Data" id="delete">
                                     <i class="fa fa-trash"></i>
                                 </a>
                             </td>
