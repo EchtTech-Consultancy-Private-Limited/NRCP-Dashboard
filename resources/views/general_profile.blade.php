@@ -33,7 +33,7 @@
                         <div class="form-group">
                             <label for="district">Hospital<span class="star">*</span></label>
                             <input type="text" name="hospital" value="{{ old('hospital') }}" id="hospital"
-                                maxlength="45" class="form-control" placeholder="Enter Hospital Name"/>
+                                maxlength="45" class="form-control" oninput="validateName(this);" placeholder="Enter Hospital Name"/>
                             @error('hospital')
                             <span class="form-text text-muted">{{ $message }}</span>
                             @enderror
@@ -43,7 +43,7 @@
                         <div class="form-group">
                             <label for="fromYear">Nodal Officer</label>
                             <input type="text" name="designation" value="{{ old('designation') }}" id="designation"
-                                maxlength="45" class="form-control" placeholder="Enter Nodal Officer Name"/>
+                                maxlength="45" class="form-control" oninput="validateName(this);" placeholder="Enter Nodal Officer Name"/>
                                 @error('designation')
                                 <span class="form-text text-muted">{{ $message }}</span>
                                 @enderror
@@ -120,7 +120,7 @@
                             </td>
                             <td class="text-nowrap">
                                 <a href="{{ url('general-edit',$general_profiles->id) }}" class="btn btn-primary btn-sm"
-                                    title="Edit Data"><i class="fa fa-pencil"></i> </a>
+                                    title="Edit"><i class="fa fa-pencil"></i> </a>
                                 <a href="javascript:void(0)"
                                     data-url="{{ route('general-laboratory-destroy', $general_profiles->id) }}"
                                     class="btn btn-danger deletebtn btn-sm delete-user" title="Delete Data" id="delete">

@@ -44,7 +44,7 @@ class AdminController extends Controller
     {
         $request->validate([
             'name' => 'regex:/^[a-zA-Z ]+$/',
-            'email' => 'required|email',
+            'email' => 'required|email|unique:dashboard_login,email',
             'password' => 'required|min:8',
             'state_id' => 'required',
             'user_type' => 'required',
@@ -61,7 +61,7 @@ class AdminController extends Controller
                 'status' => $request->status,
             ]);
             $notification = array(
-                'message' => 'User Add successfully',
+                'message' => 'User Added successfully',
                 'alert-type' => 'success'
             );
         }catch(Exception $e){report($e);

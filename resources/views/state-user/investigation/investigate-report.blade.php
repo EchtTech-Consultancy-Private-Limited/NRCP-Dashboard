@@ -87,7 +87,7 @@
                             <p>Contact Number &nbsp;<span style="color: red;">*</span></p>
                         </td>
                         <td colspan="5" class="">
-                            <input name="interviewer_contact_number" value="{{ old('interviewer_contact_number') }}" type="text" oninput="validateInput(this)" maxlength="12">
+                            <input name="interviewer_contact_number" value="{{ old('interviewer_contact_number') }}" type="text" oninput="validateInput(this)" maxlength="10">
                             @if ($errors->has('interviewer_contact_number'))
                                 <span class="form-text text-muted">{{ $errors->first('interviewer_contact_number') }}</span>
                             @endif

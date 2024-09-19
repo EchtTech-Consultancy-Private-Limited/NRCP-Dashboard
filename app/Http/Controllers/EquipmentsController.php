@@ -40,9 +40,9 @@ class EquipmentsController extends Controller
                 'quantity' => 'required',
                 'year_of_purchase' => 'required',
             ],[
-                'equipment.required' => 'Equipment Required',
-                'quantity.required' => 'Quantity Required',
-                'year_of_purchase.required' => 'Year of purchase Required',
+                'equipment.required' => 'Equipment field is Required',
+                'quantity.required' => 'Quantity field is Required',
+                'year_of_purchase.required' => 'Year of purchase field is Required',
             ]);
         
             Equipments::insert([
@@ -53,7 +53,7 @@ class EquipmentsController extends Controller
             ]);
         
                 $notification = array(
-                    'message' => 'Equipment Added successfully',
+                    'message' => 'The record has been created successfully!',
                     'alert-type' => 'success'
                 );
             } 
@@ -74,8 +74,8 @@ class EquipmentsController extends Controller
                     'quantity' => 'required',
                     'year_of_purchase' => 'required',
                 ],[
-                    'equipment.required' => 'Equipment Required',
-                    'quantity.required' => 'Quantity Required',
+                    'equipment.required' => 'Equipment field is Required',
+                    'quantity.required' => 'Quantity field is Required',
                     'year_of_purchase.required' => 'Year of purchase Required',
                 ]);
             
@@ -86,7 +86,7 @@ class EquipmentsController extends Controller
                     'year_of_purchase' => $request->year_of_purchase
                 ]);
                     $notification = array(
-                        'message' => 'Equipment Update successfully',
+                        'message' => 'The record has been updated successfully',
                         'alert-type' => 'success'
                     );
                 }
@@ -103,6 +103,6 @@ class EquipmentsController extends Controller
         if ($equipment->soft_delete == 0) {
             $equipment = Equipments::where('id', $id)->update(['soft_delete' => 1]);
         }
-        return response()->json(['message'=>"Deleted successfully.",'alert-type' => 'success','success'=>'1', 'tr'=>'tr_'.$id]);
+        return response()->json(['message'=>"Equipment form deleted successfully.",'alert-type' => 'success','success'=>'1', 'tr'=>'tr_'.$id]);
     }
 }

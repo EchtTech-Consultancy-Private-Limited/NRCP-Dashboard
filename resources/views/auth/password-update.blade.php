@@ -14,21 +14,20 @@
                       <div class="position-relative">
                         <input type="password" class="form-control" name="oldpassword" id="oldpassword" placeholder="Old Password">
                         <i class="toggle-password btn-psw fa fa-fw fa-eye-slash"></i>
-                      </div>
-
                         @error('oldpassword')
                             <span class="form-text text-muted">{{ $message }}</span>
                         @enderror
+                      </div>
                     </div>
                     <div class="col-md-4">
                         <label class="form-label" for="inputAddress2">New Password<span class="text-danger">*</span></label>
                         <div class="position-relative">
                             <input type="password" class="form-control" name="newpassword" id="newpassword" placeholder="New Password">
                             <i class="toggle-password btn-psw fa fa-fw fa-eye-slash"></i>
+                            @error('newpassword')
+                                <span class="form-text text-muted">{{ $message }}</span>
+                            @enderror
                         </div>
-                        @error('newpassword')
-                            <span class="form-text text-muted">{{ $message }}</span>
-                        @enderror
                     </div>
                 </div>
                 <button type="submit" class="btn btn-primary">Update</button>

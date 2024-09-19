@@ -19,7 +19,7 @@
       </div>
       <form method="POST" action="{{route('national.state-monthly-update', $stateMonthlyReport->id)}}" id="monthly_report_store">
         @csrf
-      <table class="w-auto">
+      <table class="">
         <tbody>
           <tr class="">
             <td>
@@ -80,7 +80,7 @@
           </tr>
         </tbody>
       </table>
-      <h3 class="title ml-0"> Detailed Monthly Report: - </h3>
+      <h3 class="title ml-0 mt-4"> Detailed Monthly Report: - </h3>
       <table class="">
         <tbody>
           <tr>

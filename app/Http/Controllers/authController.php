@@ -60,7 +60,7 @@ class authController extends Controller
             if (Auth::attempt($request->only('email','password'))) {
                 session(['loggedIn' => true]);
                 if (session('loggedIn')) {
-                    return redirect()->intended($redirect)->with('success', 'Login successfull!!');
+                    return redirect()->intended($redirect)->with('loggedsuccess', 'You have successfully logged into your dashboard.');
                 }
             } else {
                 return redirect()->back()->with('error', 'Email and/or password invalid.');
@@ -73,7 +73,7 @@ class authController extends Controller
     {
         Auth::logout();
         session()->forget('loggedIn');
-        return redirect('/')->with('success', 'Logout successfull!!');
+        return redirect('/')->with('success', 'Logout successful');
     }
     public function refreshCaptcha()
     {

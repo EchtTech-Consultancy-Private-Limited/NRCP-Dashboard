@@ -217,7 +217,7 @@ class StateController extends Controller
             $this->SendNotificationServices->sendNotification($stateMonthlyReport->id, $formType, '2', $request->status);
             DB::commit();
             if($stateMonthlyReport){
-                return redirect()->route('state.monthly-report-list')->with('message', 'State monthly report create successfull');
+                return redirect()->back()->with('message', 'The record has been created successfully!');
             }
         }catch (Exception $e) {
             DB::rollBack();
@@ -300,7 +300,7 @@ class StateController extends Controller
                 $formType = '3'; //Soe Uc Form
                 $this->SendNotificationServices->sendNotification($lineSuspectedId, $formType, '2', $request->status);
             DB::commit();
-            return redirect()->back()->with('message', 'Line Suspected create successfull');
+            return redirect()->back()->with('message', 'The record has been created successfully!');
         }catch (Exception $e) {
             DB::rollBack();
             throw new Exception($e->getMessage());
@@ -329,7 +329,7 @@ class StateController extends Controller
             'modulename' => 'required',
         ],
         [
-            'modulename.required' => 'The module name field is required.'
+            'modulename.required' => 'Module Name field is required'
         ]);
 
         if (!empty($request->startdate) && !empty($request->enddate)) {

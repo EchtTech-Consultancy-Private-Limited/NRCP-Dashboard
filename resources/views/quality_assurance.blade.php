@@ -43,7 +43,7 @@
                             <select class="form-select" aria-label="Default select example" name="supervisors_trained"
                                 id="supervisors_trained">
                                 <option value=""> Select</option>
-                                <option value='yes' {{old('supervisors_trained') == 'no' ? 'selected' : ''}}>Yes</option>
+                                <option value='yes' {{old('supervisors_trained') == 'yes' ? 'selected' : ''}}>Yes</option>
                                 <option value='no' {{old('supervisors_trained') == 'no' ? 'selected' : ''}}>No</option>
                             </select>
                             <small id="supervisors_trained-error" class="form-text text-muted"></small>
@@ -54,7 +54,7 @@
                             <label for="diseasesSyndromes">LIMS available</label>
                             <select class="form-select" name="lims" id="lims">
                                 <option value=""> Select</option>
-                                <option value='yes' {{old('lims') == 'no' ? 'selected' : ''}}>Yes</option>
+                                <option value='yes' {{old('lims') == 'yes' ? 'selected' : ''}}>Yes</option>
                                 <option value='no' {{old('lims') == 'no' ? 'selected' : ''}}>No</option>
                             </select>
                             <small id="lims-error" class="form-text text-muted"></small>
@@ -97,7 +97,7 @@
                             <td>
                                 <a href="{{ url('quality-edit',$data->id) }}" class="btn btn-primary editbtn btn-sm"
                                     title="Edit Data"><i class="fa fa-pencil"></i> </a>
-                                <a href="{{ route('quality-destroy', $data->id) }}"
+                                <a href="javascript:void(0)" data-url="{{ route('quality-destroy', $data->id) }}"
                                     class="btn btn-danger deletebtn btn-sm delete-user mt-xl-0 mt-lg-2"
                                     title="Delete Data" id="delete">
                                     <i class="fa fa-trash"></i>

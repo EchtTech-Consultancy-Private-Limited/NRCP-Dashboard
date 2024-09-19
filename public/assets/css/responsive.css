@@ -149,6 +149,9 @@
         margin-left: 16px;
         font-weight: 600;
     }
+    .signature p {
+        font-size: 12px !important;
+    }
 
     .layout-footer-fixed .wrapper .content-wrapper {
         padding: 15px 5px;
@@ -323,14 +326,19 @@
 
 @media(min-width:1341px) and (max-width:1469px){
     .form-group label{
-        font-size: 15px;
+        font-size: 14px;
     }
     .container-fluid{
         padding-right: 3.5px;
         padding-left: 3.5px;
     }
     .dashboard .dashboard-filter {
-        padding: 5px 16px;
+        padding: 15px 16px;
+        overflow-y: auto;
+    }
+    .card.card-primary.dashboard .dashboard-filter {
+        padding: 16px 16px;
+        overflow-y: auto;
     }
     .nrcp-main-title{
         padding: 5px 16px !important;

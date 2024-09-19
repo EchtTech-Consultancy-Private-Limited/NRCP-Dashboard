@@ -57,6 +57,7 @@ body {
 .form-group {
   margin: 10px 0;
   width: 100%;
+  position: relative;
 }
 
 .form-group input,
@@ -236,6 +237,8 @@ textarea.valid {
 .form-text {
   color: #ff0000 !important;
   font-size: 11px;
+  position: absolute;
+  margin-top: 1px;
 }
 
 .panel-body {
@@ -1192,4 +1195,22 @@ input[type=date]::placeholder {
 #myTabContent #nav-add-patient-record .dashboard-filter.mb-4 .search-reset {
   position: relative;
   margin: 20px 0;
+}
+
+.dashboard .dashboard-filter {
+  overflow-y: auto;
+}
+
+button.btn.btn-primary, button.btn.btn-danger {
+  margin-top: 10px;
+}
+
+.btn.btn-danger.btn_remove {
+  margin-top: 0;
+}
+
+#general_profiles_TABLE2 th.sorting:last-child {
+  width: -moz-fit-content;
+  width: fit-content;
+  min-width: 75px;
 }/*# sourceMappingURL=style.css.map */
