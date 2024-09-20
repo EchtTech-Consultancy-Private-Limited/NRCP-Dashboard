@@ -117,7 +117,7 @@
                                 <option value="{{ old('suspected_gender') }}" selected>{{ old('suspected_gender') }}</option> 
                                 @endif 
                                 <option value="Male"> Male</option>
-                                <option value="Famale"> Famale</option>
+                                <option value="Famale"> Female</option>
                                 <option value="Other"> Other</option>
                               </select>
                             @if ($errors->has('suspected_gender')) <span class="form-text text-muted">{{ $errors->first('suspected_gender') }}</span> @endif
@@ -140,7 +140,7 @@
                             <p>Address</p>
                         </td>
                         <td colspan="21" class="">
-                            <input name="suspect_address" maxlength="200" type="text" value="{{ old('suspect_address') }}">
+                            <input name="suspect_address" maxlength="200" type="text" oninput="validateName(this);" value="{{ old('suspect_address') }}">
                         </td>
                     </tr>
                     <tr>
