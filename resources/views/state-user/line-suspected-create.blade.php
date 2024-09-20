@@ -33,8 +33,12 @@
                     <div class="row">
                         <div class="col-md-12">
                             <p class="float-right mr-2">
-                                <span class="d-block">Date:</span>
-                                <input type="date" name="suspected_date" value="{{ old('suspected_date') }}" class="form-control">
+                                <span class="d-block">Date:<span
+                                    class="text-danger">*</span></span>
+                                <input type="date" name="suspected_date" value="{{ old('suspected_date') }}" class="form-control" >
+                                @if ($errors->has('suspected_date'))
+                                   <span class="form-text text-muted">{{ $errors->first('suspected_date') }}</span>
+                                @endif
                             </p>
                         </div>
                     </div>
@@ -43,7 +47,7 @@
                             <div class="form-group">
                                 <label for="name_of_health">Name of the Health Facility/Block/District/State <span
                                         class="text-danger">*</span></label>
-                                <input type="text" name="name_of_health" class="form-control"
+                                <input type="text" name="name_of_health" oninput="validateName(this);" class="form-control"
                                     value="{{ old('name_of_health') }}">
                                 @if ($errors->has('name_of_health'))
                                 <span class="form-text text-muted">{{ $errors->first('name_of_health') }}</span>
@@ -87,7 +91,7 @@
                             <div class="form-group">
                                 <label for="designation_name">Name & Designation of Nodal Person <span
                                         class="text-danger">*</span></label>
-                                <input type="text" name="designation_name" class="form-control"
+                                <input type="text" name="designation_name" oninput="validateName(this);" class="form-control"
                                     value="{{ old('designation_name') }}">
                                 @if ($errors->has('designation_name'))
                                 <span class="form-text text-muted">{{ $errors->first('designation_name') }}</span>

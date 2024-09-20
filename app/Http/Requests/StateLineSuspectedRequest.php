@@ -26,7 +26,9 @@ class StateLineSuspectedRequest extends FormRequest
             'address_hospital' => 'required',
             'email' => 'required',
             'main_contact_number' => 'required',
+            'suspected_date' => 'required',
             'designation_name' => 'required','regex:/^[a-zA-Z. \'\'-]+$/','min:2', 'max:150',
+            'main_contact_number' => 'required|unique:line_suspecteds,contact_number|numeric|digits:10',
             // 'aadhar_number' => 'required|unique:line_suspecteds,aadhar_number|numeric|digits:12',
             'type_of_health' => 'required',
         ];
@@ -34,8 +36,10 @@ class StateLineSuspectedRequest extends FormRequest
 
     public function messages()
     {
-        return ['main_contact_number.required' => 'The contact number field is required.
-'];
+        return [
+            'designation_name.required' => 'Name & Designation field is required.',
+            'main_contact_number.required' => 'The contact number field is required.'
+        ];
     }
 
 }

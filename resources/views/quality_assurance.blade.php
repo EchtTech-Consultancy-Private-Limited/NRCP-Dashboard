@@ -96,10 +96,10 @@
                             <td>{{ucfirst($data->lims)}}</td>
                             <td>
                                 <a href="{{ url('quality-edit',$data->id) }}" class="btn btn-primary editbtn btn-sm"
-                                    title="Edit Data"><i class="fa fa-pencil"></i> </a>
+                                    title="Edit"><i class="fa fa-pencil"></i> </a>
                                 <a href="javascript:void(0)" data-url="{{ route('quality-destroy', $data->id) }}"
                                     class="btn btn-danger deletebtn btn-sm delete-user mt-xl-0 mt-lg-2"
-                                    title="Delete Data" id="delete">
+                                    title="Delete" id="delete">
                                     <i class="fa fa-trash"></i>
                                 </a>
                             </td>
