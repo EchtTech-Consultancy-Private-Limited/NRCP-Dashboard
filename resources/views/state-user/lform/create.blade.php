@@ -54,7 +54,7 @@
                             <div class="emailBlock">
                                 <p>
                                     Designation of Nodal Person<span class="text-danger">*</span> 
-                                    <input type="text" name="designation_nodal_person"  value="{{ old('designation_nodal_person') }}">
+                                    <input type="text" name="designation_nodal_person" oninput="validateName(this);"  value="{{ old('designation_nodal_person') }}">
                                     @if ($errors->has('designation_nodal_person'))
                                     <span class="form-text text-muted">{{ $errors->first('designation_nodal_person') }}</span>
                                     @endif
@@ -106,7 +106,7 @@
                             <div class="emailBlock">
                                 <p>
                                 Institute Name<span class="text-danger">*</span> <br>
-                                    <input type="text" name="institute_name" value="{{ old('institute_name') }}">
+                                    <input type="text" name="institute_name" oninput="validateName(this);" value="{{ old('institute_name') }}">
                                     @if ($errors->has('institute_name'))
                                     <span class="form-text text-muted">{{ $errors->first('institute_name') }}</span>
                                     @endif

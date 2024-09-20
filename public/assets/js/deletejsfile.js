@@ -17,7 +17,7 @@ $(document).ready(function() {
                 success: function(data) {
                     //alert(data.success);
                     if(data.success ==1){
-                        toastr.success("The record has been created successfully!");
+                        toastr.success("The record has been deleted successfully!");
                         location.reload();
                     }
                     //trObj.parents("tr").remove();
