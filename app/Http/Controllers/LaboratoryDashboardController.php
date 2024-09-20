@@ -58,6 +58,7 @@ class LaboratoryDashboardController extends Controller
                 $rabiesTestData->where('institute_id', $filter_institute);
             }
         }
+        $rabiesTestData->where('soft_delete', 0);
         // yearly Filter graph
         $attributes = ['numbers_of_sample_recieved','numbers_of_positives', 'number_of_patients', 'numbers_of_test'];
         $yearGraphFilterData = [
