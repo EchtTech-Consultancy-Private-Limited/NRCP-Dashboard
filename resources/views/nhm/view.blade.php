@@ -58,7 +58,7 @@
                               <a href= "{{route('nhm.edit',$nhm->id)}}" id="edit_2" class="btn bg-success action-btn pformEdit" data-id="2" title="Edit">
                                 <i class="fa fa-edit"></i>
                               </a>
-                              <a href="{{route('nhm.delete',$nhm->id)}}" class="btn bg-danger action-btn" title="Delete">
+                              <a data-url="{{route('nhm.delete',$nhm->id)}}" class="btn btn-danger deletebtn btn-sm delete-user" title="Delete">
                                 <i class="fa fa-trash-o"></i>
                               </a>
                             </td>  

@@ -78,6 +78,9 @@
                             <input type="date" name="date_of_joining" value="{{ old('date_of_joining') }}"
                                 id="date_of_joining" class="form-control" placeholder="DD-MM-YYYY" />
                             <small id="date_of_joining-error" class="form-text text-muted"> </small>
+                            @error('date_of_joining')
+                            <span class="form-text text-muted">{{ $message }}</span>
+                            @enderror
                         </div>
                     </div>
                     <div class="col  search-reset">

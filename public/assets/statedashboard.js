@@ -72,7 +72,7 @@ function stateHighchart(data)
             enabled: false
         },
         tooltip: {
-            enabled: false,
+            enabled: true,
             pointFormat: ''
         },
         series: [{

@@ -118,7 +118,7 @@
                             <td>@php if($user->status ==1){ echo 'Active'; }else{ echo 'Deactive'; } @endphp</td>
                             <td>
                                 <a href="{{route('admin.edit',$user->id)}}" class="btn btn-success" title="Edit"><i class="fa fa-edit"></i></a>
-                                <a href="{{route('admin.delete',$user->id)}}" class="btn btn-danger" onclick="return confirm('Are you sure you want to Are you sure you want to delete this report?')" title="Delete"><i class="fa fa-trash"></i></a>
+                                <a href="{{route('admin.delete',$user->id)}}" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this report?')" title="Delete"><i class="fa fa-trash"></i></a>
                             </td>
                         </tr>
                         @endforeach

@@ -825,7 +825,7 @@ const pyramidChart = (result) => {
     let is_graph_data_available = $("#is_graph_data_available").val();
     is_graph_data_available = is_graph_data_available !== "" ? is_graph_data_available : "";
     var options_val = {
-        text: `Case by age group in India  ${filter_state !== undefined ? filter_state + ' from' : ''} ${filter_district !== undefined ? filter_district + ' from' : ''} ${filter_from_year !== "" ? filter_from_year + ' to' : ''} ${filter_to_year !== "" ? filter_to_year + ' ' : ''}`,
+        text: `Case by age group in India  ${filter_state !== undefined ? filter_state + '' : ''} ${filter_district !== undefined ? filter_district + ' from' : ''} ${filter_from_year !== "" ? filter_from_year + ' to' : ''} ${filter_to_year !== "" ? filter_to_year + ' ' : ''}`,
     };
 
 

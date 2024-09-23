@@ -81,7 +81,7 @@ class NhmDashboardController extends Controller
                 'supplementary_rops_size' => $supplementarySize ?? '',
             ]);
             DB::commit();
-            return redirect()->route('nhm.index')->with('message', 'NHM Add SuccessFull !');
+            return redirect()->route('nhm.index')->with('message', 'The record has been created successfully!');
         }catch (Exception $e) {
             DB::rollBack();
             throw new Exception($e->getMessage());
@@ -166,7 +166,7 @@ class NhmDashboardController extends Controller
                 'supplementary_rops_size' => $supplementarySize ?? '',
             ]);
             DB::commit();
-            return redirect()->route('nhm.index')->with('message', 'NHM Update SuccessFull !');
+            return redirect()->route('nhm.index')->with('message', 'The record has been updated successfully!');
         }catch (Exception $e) {
             DB::rollBack();
             throw new Exception($e->getMessage());
@@ -182,6 +182,6 @@ class NhmDashboardController extends Controller
     public function destroy($id)
     {
         NhmDashboard::where('id', $id)->delete();
-        return redirect()->route('nhm.index')->with(['error'=>"NHM Deleted successfully.",'alert-type' => 'success','success'=>'1', 'tr'=>'tr_'.$id]);
+        return response()->json(['message'=>"The record has been deleted successfully!",'alert-type' => 'success','success'=>'1', 'tr'=>'tr_'.$id]);
     }
 }

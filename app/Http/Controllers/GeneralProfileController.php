@@ -37,13 +37,15 @@ class GeneralProfileController extends Controller
                 'state' => 'required',
                 'hospital' => 'required',
                 'designation' => 'required',
-                'contact_number' => 'nullable|numeric|digits:10', // Make the field nullable
+                'contact_number' => 'required', 'nullable|numeric|digits:10', // Make the field nullable
+                'date_of_joining' => 'required',
             ],[
                 'state.required' => 'State Name field is Required',
                 'hospital.required' => 'Hospital Name field is Required',
                 'designation.required' => 'Nodal Officer Name field is Required',
-                'contact_number' => 'required|numeric|regex:/^(\+?[0-9]{1,5})?([7-9][0-9]{9})$/',
+                'contact_number.required' => 'Contact Number field is Required',
                 'contact_number.digits' => 'Contact Number must be 10 digits',
+                'date_of_joining.digits' => 'Date of Joining field required',
             ]);           
         
             GeneralProfile::insert([
