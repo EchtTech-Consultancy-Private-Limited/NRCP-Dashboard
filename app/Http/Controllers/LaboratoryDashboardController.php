@@ -24,7 +24,7 @@ class LaboratoryDashboardController extends Controller
         for ($m=1; $m<=12; $m++) {
             $months[] = date('F', mktime(0,0,0,$m, 1, date('Y')));
         }
-        $rabiesData = RabiesTest::get();
+        $rabiesData = RabiesTest::where('soft_delete' ,0)->get();
         $institutes = Institute::with('state')->get();
         $numberOfPatient = $rabiesData->sum('number_of_patients');
         $numberOfSampleReceived = $rabiesData->sum('numbers_of_sample_recieved');
