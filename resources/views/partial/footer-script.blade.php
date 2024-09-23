@@ -8,7 +8,7 @@
 <script src="{{ asset('assets/js/filter-multi-select-bundle.min.js') }}"></script>
 <script src="{{ asset('assets/js/toastr.min.js') }}"></script>
 <script src="{{ asset('assets/login/plugins/jquery/jquery.min.js') }}"></script>
-<script src="{{ asset('assets/js/jquery.min.js') }}"></script>
+<script src="{{ asset('assets/js/jquery.min.js') }}"></script>`
 <script src="{{ asset('assets/custom_js/rabies_dropdown.js') }}"></script>
 <script src="{{ asset('assets/js/pform.js') }}"></script>
 <script src="{{ asset('assets/js/main.js') }}"></script>
@@ -79,9 +79,6 @@
     toastr.error(" {{ Session::get('message') }} ");
     break; 
  }
- @endif 
- @if (Session::has('loggedsuccess'))
- toastr.success(" {{ Session::get('loggedsuccess') }} ");
  @endif
 </script>
 

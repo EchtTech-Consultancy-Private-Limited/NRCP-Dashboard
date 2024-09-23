@@ -415,6 +415,20 @@ jQuery( document ).ready(function() {
         $(this).siblings(".text-muted").hide();
     });
 });
+// one time form submit
+let forms = document.getElementsByClassName('one_time_submit_form');
+for (let i = 0; i < forms.length; i++) {
+    forms[i].addEventListener('submit', function() {
+        // Get all submit buttons in the form
+        let submitButtons = forms[i].getElementsByClassName('search-patient-btn');
+
+        // Loop through all submit buttons in the form and disable them
+        for (let j = 0; j < submitButtons.length; j++) {
+            submitButtons[j].disabled = true;
+            submitButtons[j].innerText = 'Submitting...';
+        }
+    });
+}
 
 // notification code
 $(document).ready(function() {
@@ -504,9 +518,6 @@ $(document).ready(function(){
 
 
   $("#toggle-pass").click(function() {
-
-    alert("hii");
-
     $(this).toggleClass("fa-eye fa-eye-slash");
     input = $(this).parent().find("input");
     if (input.attr("type") == "password") {
@@ -521,5 +532,4 @@ $(document).ready(function(){
 function confirmDelete() {
     return confirm('Are you sure you want to delete this report?');
 }
-
 

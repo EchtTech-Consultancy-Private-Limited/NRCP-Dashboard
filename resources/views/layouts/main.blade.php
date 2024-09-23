@@ -1,5 +1,11 @@
 @include('partial.header')
 <div class="content-wrapper">
+    @if(session('loggedsuccess'))
+        <div class="alert alert-success">
+            {{ session('loggedsuccess') }}
+        </div>
+    @endif
+
     <div class="container-fluid">
         <div class="main-title nrcp-main-title">
         <div class="row mb-0 d-flex align-items-center">

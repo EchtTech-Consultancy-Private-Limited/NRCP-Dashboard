@@ -5,7 +5,7 @@
 <div class="container-fluid dashboard investigate-report">
     <div class="ncdc-container form-tab">
         <div class="dashboard-filter">
-            <form action="{{ route('state.line-suspected-store') }}" method="post" id="line-suspected-store">
+            <form action="{{ route('state.line-suspected-store') }}" class="one_time_submit_form" method="post" id="line-suspected-store">
                 @csrf
                 <div class="header d-flex align-items-center justify-content-between">
                     <div>

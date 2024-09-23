@@ -9,7 +9,7 @@
             <div class="form-tab">
                 <div class="bootstrap-tab">
                     <div class="tab-content" id="myTabContent">
-                        <form action="{{ route('expenditure-update') }}" method="post" class="" id="rabies_detail_test">
+                        <form action="{{ route('expenditure-update') }}" method="post" class="one_time_submit_form" id="rabies_detail_test">
                             @csrf
                             <div class="row">
                                 <input type="hidden" name="id" value="{{$expenditure->id}}">
