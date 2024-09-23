@@ -17,7 +17,7 @@
         <p>State Monthly Report (NRCP-M02) <strong> *</strong>
         </p>
       </div>
-      <form method="POST" action="{{route('state.monthly-report-store')}}" id="monthly_report_store">
+      <form method="POST" action="{{route('state.monthly-report-store')}}" class="one_time_submit_form" id="monthly_report_store">
         @csrf
       <table class="">
         <tbody>

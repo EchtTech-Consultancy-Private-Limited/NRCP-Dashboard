@@ -6,7 +6,7 @@
 <div class="container-fluid">
     <div class="dashboard">
         <div class="dashboard-filter mb-4">
-            <form action="{{ route('quality-update') }}" method="post" class="" id="quality_assurance_submit">
+            <form action="{{ route('quality-update') }}" method="post" class="one_time_submit_form" id="quality_assurance_submit">
                 @csrf
                 <div class="row">
                     <input type="hidden" name="id" value="{{$quality_assurance->id}}">

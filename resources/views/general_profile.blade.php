@@ -6,7 +6,7 @@
 <div class="container-fluid">
     <div class='dashboard'>
         <div class="dashboard-filter mb-4 general-profile-filter">
-            <form action="{{ route('general-save') }}" method="post" class="" id="general_profile">
+            <form action="{{ route('general-save') }}" method="post" class="one_time_submit_form" id="general_profile">
                 @csrf
                 <div class="row ">
                     <div class="col">

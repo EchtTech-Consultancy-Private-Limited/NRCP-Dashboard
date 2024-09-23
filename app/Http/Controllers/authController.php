@@ -60,7 +60,7 @@ class authController extends Controller
             if (Auth::attempt($request->only('email','password'))) {
                 session(['loggedIn' => true]);
                 if (session('loggedIn')) {
-                    return redirect()->intended($redirect)->with('loggedsuccess', 'You have successfully logged into your dashboard.');
+                    return redirect($redirect)->with('loggedsuccess', 'You have successfully logged into your dashboard.');
                 }
             } else {
                 return redirect()->back()->with('error', 'Email and/or password invalid.');

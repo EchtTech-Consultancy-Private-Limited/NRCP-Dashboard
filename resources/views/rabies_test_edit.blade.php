@@ -6,7 +6,7 @@
 <div class="container-fluid">
     <div class="dashboard">
         <div class="dashboard-filter mb-4">
-            <form action="{{ route('rabies-update') }}" method="post" class="" id="rabies_detail_test">
+            <form action="{{ route('rabies-update') }}" method="post" class="one_time_submit_form" id="rabies_detail_test">
                 @csrf
                 <div class="row">
                     <input type="hidden" name="id" value="{{$rabiestest->id}}">

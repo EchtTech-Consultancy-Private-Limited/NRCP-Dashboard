@@ -7,7 +7,7 @@
 
     <div class="dashboard">
         <div class="dashboard-filter quality-form mb-4">
-            <form action="{{ route('quality-add') }}" method="post" class="" id="quality_assurance">
+            <form action="{{ route('quality-add') }}" method="post" class="one_time_submit_form" id="quality_assurance">
                 @csrf
                 <div class="row">
                     <div class="col">

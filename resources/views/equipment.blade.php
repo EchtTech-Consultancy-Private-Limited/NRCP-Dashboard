@@ -6,7 +6,7 @@
 <div class="container-fluid">
     <div class="dashboard">
         <div class="dashboard-filter mb-4">
-            <form action="{{ route('equipment-add') }}" method="post" class="" id="general_equipment">
+            <form action="{{ route('equipment-add') }}" method="post" class="one_time_submit_form" id="general_equipment">
                 @csrf
                 <div class="row">
                     <div class="col">
