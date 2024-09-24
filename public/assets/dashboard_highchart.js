@@ -1015,7 +1015,8 @@ const highchartMapcase = (total_records) => {
         },
         series: [{
             data: filteredRecords.map(record => parseInt(record["case"])),
-            colorByPoint: true
+            colorByPoint: true,
+            maxPointWidth: 50
         }]
     });
 }
@@ -1295,7 +1296,8 @@ const defaultLaboratoryMapData = () => {
                         name: 'Rabies data',
                         borderRadius: 5,
                         data: result.monthGraphFilterData.MonthRecord,
-                        showInLegend: true
+                        showInLegend: true,
+                        maxPointWidth: 50
                     }]
                 });
                 // yearlyReport graph
@@ -1349,16 +1351,20 @@ const defaultLaboratoryMapData = () => {
                     },
                     series: [{
                         name: "<span class='series'> Patients </span>",
-                        data: result.yearGraphFilterData.sumNumbernumber_of_patients
+                        data: result.yearGraphFilterData.sumNumbernumber_of_patients,
+                        maxPointWidth: 50
                     }, {
                         name:  "<span class='series'> Sample Received </span>",
-                        data: result.yearGraphFilterData.sumNumbernumbers_of_sample_recieved
+                        data: result.yearGraphFilterData.sumNumbernumbers_of_sample_recieved,
+                        maxPointWidth: 50
                     }, {
                         name:  "<span class='series'>Test Conducted </span>",
-                        data: result.yearGraphFilterData.sumNumbernumbers_of_test
+                        data: result.yearGraphFilterData.sumNumbernumbers_of_test,
+                        maxPointWidth: 50
                     }, {
                         name: "<span class='series'> Numbers of Positives </span>",
-                        data: result.yearGraphFilterData.sumNumbernumbers_of_positives
+                        data: result.yearGraphFilterData.sumNumbernumbers_of_positives,
+                        maxPointWidth: 50
                     }]
                 });            
                 
@@ -1392,19 +1398,23 @@ const defaultLaboratoryMapData = () => {
                     },
                     series: [{
                         name: 'Patients',
-                        data: result.graphFilterData.sumNumbernumber_of_patients
+                        data: result.graphFilterData.sumNumbernumber_of_patients,
+                        maxPointWidth: 50
                         }, 
                         {
                             name: 'Test Conducted',
-                            data: result.graphFilterData.sumNumbernumbers_of_test
+                            data: result.graphFilterData.sumNumbernumbers_of_test,
+                            maxPointWidth: 50
                         },
                         {
                             name: 'Sample Received',
-                            data: result.graphFilterData.sumNumbernumbers_of_sample_recieved
+                            data: result.graphFilterData.sumNumbernumbers_of_sample_recieved,
+                            maxPointWidth: 50
                         },
                         {
                             name: 'Numbers Of Positives',
-                            data: result.graphFilterData.sumNumbernumbers_of_positives
+                            data: result.graphFilterData.sumNumbernumbers_of_positives,
+                            maxPointWidth: 50
                         }
                     ]
                 });
@@ -1788,7 +1798,8 @@ const laboratory_apply_filter = (rabiesfilter = '',stateName = '') => {
                         borderRadius: 5,
                         colorByPoint: true,
                         data: result.monthGraphFilterData.MonthRecord,
-                        showInLegend: false
+                        showInLegend: false,
+                        maxPointWidth: 50
                     }]
                 });
 
@@ -1833,16 +1844,20 @@ const laboratory_apply_filter = (rabiesfilter = '',stateName = '') => {
                     },
                     series: [{
                         name: 'Patients',
-                        data: result.yearGraphFilterData.sumNumbernumber_of_patients
+                        data: result.yearGraphFilterData.sumNumbernumber_of_patients,
+                        maxPointWidth: 50
                     }, {
                         name: 'Sample Received',
-                        data: result.yearGraphFilterData.sumNumbernumbers_of_sample_recieved
+                        data: result.yearGraphFilterData.sumNumbernumbers_of_sample_recieved,
+                        maxPointWidth: 50
                     }, {
                         name: 'Test Conducted',
-                        data: result.yearGraphFilterData.sumNumbernumbers_of_test
+                        data: result.yearGraphFilterData.sumNumbernumbers_of_test,
+                        maxPointWidth: 50
                     }, {
                         name: 'Numbers of Positives',
-                        data: result.yearGraphFilterData.sumNumbernumbers_of_positives
+                        data: result.yearGraphFilterData.sumNumbernumbers_of_positives,
+                        maxPointWidth: 50
                     }]
                 });
 
@@ -1876,19 +1891,23 @@ const laboratory_apply_filter = (rabiesfilter = '',stateName = '') => {
                     },
                     series: [{
                         name: 'Patients',
-                        data: result.graphFilterData.sumNumbernumber_of_patients
+                        data: result.graphFilterData.sumNumbernumber_of_patients,
+                        maxPointWidth: 50
                         }, 
                         {
                             name: 'Test Conducted',
-                            data: result.graphFilterData.sumNumbernumbers_of_test
+                            data: result.graphFilterData.sumNumbernumbers_of_test,
+                            maxPointWidth: 50
                         },
                         {
                             name: 'Sample Received',
-                            data: result.graphFilterData.sumNumbernumbers_of_sample_recieved
+                            data: result.graphFilterData.sumNumbernumbers_of_sample_recieved,
+                            maxPointWidth: 50
                         },
                         {
                             name: 'Numbers Of Positives',
-                            data: result.graphFilterData.sumNumbernumbers_of_positives
+                            data: result.graphFilterData.sumNumbernumbers_of_positives,
+                            maxPointWidth: 50
                         }
                     ]
                 });
