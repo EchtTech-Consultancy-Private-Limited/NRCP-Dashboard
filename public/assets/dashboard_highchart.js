@@ -2195,6 +2195,9 @@ function nationalFilterHighChartPatient(data)
             },
             tooltip: {
                 enabled: true,
+                outside: true, 
+
+
             },
         
             plotOptions: {
@@ -3066,6 +3069,7 @@ function nationalHighchart(data)
             },
             tooltip: {
                 enabled: true,
+                outside: true, 
                 formatter: function() {
                     return 'Value: ' + this.y; // Customize this according to your needs
                 }
