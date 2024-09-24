@@ -12,7 +12,7 @@
                     <div class="form-tab">
                         <div class="bootstrap-tab">
                             <div class="tab-content" id="myTabContent">
-                                <form action="{{ route('state.report-export') }}" method="post" class="" id="rabies_detail_test">
+                                <form action="{{ route('state.report-export') }}" method="post" class="one_time_submit_form" id="rabies_detail_test">
                                     @csrf
                                     <div class="row">
                                         <div class="col-lg-3 col-md-3 col-6">

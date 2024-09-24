@@ -67,7 +67,7 @@ body {
   /* box-shadow: inset 0 0px 8px 0px #e3e0e0; */
   box-shadow: inset 0 0px 8px 0px #fff !important;
   width: 100%;
-  padding: 8px 1rem 7px 0.75rem !important;
+  padding: 10px 1rem 7px 0.75rem !important;
   height: 44px;
 }
 
@@ -93,6 +93,7 @@ body {
   border: 1px solid #ddd;
   border-radius: 0.25rem;
   width: 100%;
+  background-color: #fff;
 }
 
 .form-group select option:not(:first-of-type) {
@@ -277,7 +278,6 @@ textarea.valid {
 
 .sform .form-control {
   border: 1px solid #ced4da;
-  height: 35px;
 }
 
 .error {
@@ -1213,4 +1213,16 @@ button.btn.btn-primary, button.btn.btn-danger {
   width: -moz-fit-content;
   width: fit-content;
   min-width: 75px;
+}
+
+#report_laboratory .highcharts-label.highcharts-data-label span {
+  top: -32px !important;
+}
+
+#report_laboratory .highcharts-axis-labels.highcharts-yaxis-labels text {
+  transform: translate(0px, 15px);
+}
+
+#report_laboratory .highcharts-axis.highcharts-yaxis.highcharts-radial-axis .highcharts-axis-title {
+  transform: translate(0, -55px);
 }/*# sourceMappingURL=style.css.map */

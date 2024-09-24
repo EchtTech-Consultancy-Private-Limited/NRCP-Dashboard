@@ -8,7 +8,7 @@
 
     <div class="dashboard">
         <div class="dashboard-filter finance-form mb-4">
-            <form action="{{ route('expenditure-add') }}" method="post" class="" id="rabies_detail_test">
+            <form action="{{ route('expenditure-add') }}" method="post" class="one_time_submit_form" id="rabies_detail_test">
                 @csrf
                 <div class="row">
                     <div class="col">

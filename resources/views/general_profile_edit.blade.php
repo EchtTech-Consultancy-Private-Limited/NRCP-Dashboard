@@ -6,7 +6,7 @@
 <div class="container-fluid">
     <div class="dashboard">
         <div class="dashboard-filter mb-4">
-            <form action="{{ route('general-update') }}" method="post" class="" id="general_profile_submit">
+            <form action="{{ route('general-update') }}" method="post" class="one_time_submit_form" id="general_profile_submit">
                 @csrf
                 <div class="row">
                     <input type="hidden" name="id" value="{{$general_profile->id}}">

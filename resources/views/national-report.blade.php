@@ -10,7 +10,7 @@
                     <div class="dashboard-filter">
                         <div class="bootstrap-tab">
                             <div class="tab-content" id="myTabContent">
-                                <form action="{{ route('national-report-export') }}" method="post" class="">
+                                <form action="{{ route('national-report-export') }}" method="post" class="one_time_submit_form">
                                     @csrf
                                     <div class="row">
                                         <div class="col-lg-3 col-md-3 col-6">

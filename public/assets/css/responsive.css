@@ -358,3 +358,12 @@
         width: fit-content !important;
     }
 }
+@media (min-width: 1199px) and (max-width: 1725px) {
+    .lform_create #lform-store .emailBlock:last-child {
+      margin-top: 25px !important;
+    }
+    #report_laboratory .highcharts-axis.highcharts-yaxis.highcharts-radial-axis .highcharts-axis-title {
+        transform: translate(0,-10px);
+      }
+  }
+

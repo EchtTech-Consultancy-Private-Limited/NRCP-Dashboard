@@ -3,7 +3,7 @@
     {{ 'NRCP State Dashboard | Investigate Report' }}
 @endsection
 @section('content')
-  <form action="{{ route('state.investigate-store') }}" method="post">
+  <form action="{{ route('state.investigate-store') }}" class="one_time_submit_form" method="post">
     @csrf
     <div class="dashboard investigate-report">
         <div class="form-tab">
