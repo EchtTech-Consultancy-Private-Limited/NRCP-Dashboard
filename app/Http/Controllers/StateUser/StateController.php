@@ -57,7 +57,7 @@ class StateController extends Controller
                 ->select([
                     DB::raw('SUM(total_health_facilities_anaimal_bite) as sum_total_health_animal'),
                     DB::raw('SUM(total_health_facilities_submitted_monthly) as total_health_facilities_submitted'),
-                    DB::raw('SUM(total_patients_animal_biting + total_stray_dog_bite + total_pet_dog_bite + total_cat_bite + total_monkey_bite + total_others_bite) as total_patients'),
+                    DB::raw('SUM(total_patients_animal_biting) as total_patients'),
                     DB::raw('SUM(total_stray_dog_bite + total_pet_dog_bite) as total_dog_bite'),
                     DB::raw('SUM(confirmed_suspected_rabies_deaths + suspected_rabies_cases_opd + suspected_rabies_cases_admitted + suspected_rabies_cases_left_against_medical + suspected_rabies_deaths) as suspected_death_reports'),
                     DB::raw('SUM(dh_of_arv + sdh_of_arv + chc_of_arv + phc_of_arv) as availability_arv'),
