@@ -37,7 +37,7 @@ class GeneralProfileController extends Controller
                 'state' => 'required',
                 'hospital' => 'required',
                 'designation' => 'required',
-                'contact_number' => 'required', 'nullable|numeric|digits:10', // Make the field nullable
+                'contact_number' => 'required|unique:line_suspecteds,contact_number|numeric|digits:10', // Make the field nullable
                 'date_of_joining' => 'required',
             ],[
                 'state.required' => 'State Name field is Required',

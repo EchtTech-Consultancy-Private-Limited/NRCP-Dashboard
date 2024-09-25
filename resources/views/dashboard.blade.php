@@ -400,30 +400,6 @@
                                                 </small>
                                             </div>
                                         </div>
-                                        <div class="col search-reset justify-content-center">
-                                            <div class=" apply-filter text-center">
-                                                <button id="apply_filter"
-                                                    class="btn  bg-primary text-light apply-filter button border-0 mr-2">Search</button>
-
-                                            </div>
-
-                                            <input type="hidden" value="" id="filter_state">
-                                            <input type="hidden" value="" id="filter_district">
-                                            <input type="hidden" value="2022" id="filter_from_year">
-                                            <input type="hidden" value="" id="filter_to_year">
-                                            <input type="hidden" value="2" id="filter_form_type">
-                                            <input type="hidden" value="" id="filter_diseases">
-                                            <input type="hidden" value="0" id="session_value">
-                                            <input type="hidden" value="" id="is_graph_data_available">
-                                            <!-- </form> -->
-                                            <div class=" apply-filter">
-                                                <!-- <label for=""><span class="star"></span></label> -->
-                                                <button id="reset_button"
-                                                    class="btn bg-danger border-0 text-light apply-filter text-white ">Reset</button>
-
-                                            </div>
-                                        </div>
-
                                         <div class="col-lg-12 col-md-2 col-4" id="test_performed">
                                             <div class="form-group">
                                                 <label for="testPerformed" class="d-block">Test Performed<span
@@ -451,6 +427,29 @@
                                                 </select>
                                                 <small id="testPerformed-error" class="form-text text-muted">
                                                 </small>
+                                            </div>
+                                        </div>
+                                        <div class="col search-reset justify-content-center">
+                                            <div class=" apply-filter text-center">
+                                                <button id="apply_filter"
+                                                    class="btn  bg-primary text-light apply-filter button border-0 mr-2">Search</button>
+
+                                            </div>
+
+                                            <input type="hidden" value="" id="filter_state">
+                                            <input type="hidden" value="" id="filter_district">
+                                            <input type="hidden" value="2022" id="filter_from_year">
+                                            <input type="hidden" value="" id="filter_to_year">
+                                            <input type="hidden" value="2" id="filter_form_type">
+                                            <input type="hidden" value="" id="filter_diseases">
+                                            <input type="hidden" value="0" id="session_value">
+                                            <input type="hidden" value="" id="is_graph_data_available">
+                                            <!-- </form> -->
+                                            <div class=" apply-filter">
+                                                <!-- <label for=""><span class="star"></span></label> -->
+                                                <button id="reset_button"
+                                                    class="btn bg-danger border-0 text-light apply-filter text-white ">Reset</button>
+
                                             </div>
                                         </div>
                                     </div>
