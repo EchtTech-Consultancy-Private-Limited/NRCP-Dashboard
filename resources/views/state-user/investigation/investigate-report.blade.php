@@ -217,13 +217,13 @@
                             </p>
                         </td>
                         <td colspan="31" class="">
-                            <input type="text" name="suspect_education[other_specify_text]" value="{{ old('suspect_education.other_specify_text') }}">
+                            <input type="text" maxlength="200" name="suspect_education[other_specify_text]" value="{{ old('suspect_education.other_specify_text') }}">
                         </td>
                     </tr>
                     <tr>
                         <td colspan="38">
                             <p>Is/was Patient Immunocompromised? (If yes, provide details) 
-                                <input type="text" name="suspect_education[details]" value="{{ old('suspect_education.details') }}"></p>
+                                <input type="text" maxlength="200" name="suspect_education[details]" value="{{ old('suspect_education.details') }}"></p>
                             </p>
                         </td>
                     </tr>
@@ -239,13 +239,13 @@
                             <p>Name of Respondent</p>
                         </td>
                         <td colspan="12" class="">
-                            <input type="text" name="respondent_name" oninput="validateName(this);" value="{{ old('respondent_name') }}">
+                            <input type="text" maxlength="200" name="respondent_name" oninput="validateName(this);" value="{{ old('respondent_name') }}">
                         </td>
                         <td colspan="10">
                             <p>Age of Respondent</p>
                         </td>
                         <td colspan="11" class="">
-                            <input type="text" name="respondent_age" oninput="validateAge(this)" value="{{ old('respondent_age') }}">
+                            <input type="text" maxlength="200" name="respondent_age" oninput="validateAge(this)" value="{{ old('respondent_age') }}">
                         </td>
                     </tr>
                     <tr>
@@ -253,13 +253,13 @@
                             <p>Contact Number</p>
                         </td>
                         <td colspan="12" class="">
-                            <input type="text" oninput="validateInput(this)" maxlength="10" name="respondent_contact" value="{{ old('respondent_contact') }}">
+                            <input type="text" maxlength="200" oninput="validateInput(this)" maxlength="10" name="respondent_contact" value="{{ old('respondent_contact') }}">
                         </td>
                         <td colspan="10">
                             <p>Address (If Different From Patient)</p>
                         </td>
                         <td colspan="11" class="">
-                            <input type="text" name="respondent_address" maxlength="150" value="{{ old('respondent_address') }}">
+                            <input type="text" maxlength="200" name="respondent_address" maxlength="150" value="{{ old('respondent_address') }}">
                         </td>
                     </tr>
                     <tr>
@@ -327,7 +327,7 @@
                             </p>
                         </td>
                         <td colspan="8" class="">
-                            <input type="text" name="healthcare_worker_facility_name" value="{{ old('healthcare_worker_facility_name') }}" {{ old('relationship_with_suspect') == 'Health care worker (facility name)' ? 'style=display:block' : '' }}>
+                            <input type="text" maxlength="200" name="healthcare_worker_facility_name" value="{{ old('healthcare_worker_facility_name') }}" {{ old('relationship_with_suspect') == 'Health care worker (facility name)' ? 'style=display:block' : '' }}>
                         </td>
                         <td colspan="11">
                             <p>
@@ -336,7 +336,7 @@
                             </p>
                         </td>
                         <td colspan="5" class="">
-                            <input type="text" name="specify_other_name" value="{{ old('specify_other_name') }}" {{ old('relationship_with_suspect') == 'Other(specify)' ? 'style=display:block' : '' }}>
+                            <input type="text" maxlength="200" name="specify_other_name" value="{{ old('specify_other_name') }}" {{ old('relationship_with_suspect') == 'Other(specify)' ? 'style=display:block' : '' }}>
                         </td>
                     </tr>
                     <tr>
@@ -412,7 +412,7 @@
                     <tr>
                         <td colspan="38">
                             <p>4.1 What was the species of animal</p>
-                            <input type="text" name="animal_species[text]" value="{{ old('animal_species.text') }}">
+                            <input type="text" maxlength="200" name="animal_species[text]" value="{{ old('animal_species.text') }}">
                         </td>
                     </tr>
                     <tr>
@@ -447,13 +447,13 @@
                             </p>
                         </td>
                         <td colspan="8" class="">
-                            <p><input type="text" name="animal_species[other_text]" value="{{ old('animal_species.other_text') }}"></p>
+                            <p><input type="text" maxlength="200" name="animal_species[other_text]" value="{{ old('animal_species.other_text') }}"></p>
                         </td>
                     </tr>
                     <tr>
                         <td colspan="38">
                             <p>4.2 Type of Animal</p>
-                            <input type="text" name="type_of_animal[text]" value="{{ old('type_of_animal.text') }}">
+                            <input type="text" maxlength="200" name="type_of_animal[text]" value="{{ old('type_of_animal.text') }}">
                         </td>
                     </tr>
                     <tr>
@@ -499,10 +499,10 @@
                     <tr>
                         <td colspan="10">
                             <p>4.4 Place of Exposure?</p>
-                            <input type="text" name="place_of_exposure" value="{{ old('place_of_exposure') }}">
+                            <input type="text" maxlength="200" name="place_of_exposure" value="{{ old('place_of_exposure') }}">
                         </td>
                         <td colspan="28" class="">
-                            <input type="text" name="place_of_exposure_address" maxlength="150" value="{{ old('place_of_exposure_address') }}" placeholder="Address">
+                            <input type="text" maxlength="200" name="place_of_exposure_address" maxlength="150" value="{{ old('place_of_exposure_address') }}" placeholder="Address">
                         </td>
                     </tr>
                     <tr>
@@ -602,13 +602,13 @@
                                             </p>
                                         </td>
                                         <td>
-                                            <input type="text" name="number_of_wounds[anatomical_location][]" value="{{ $oldValue }}">
+                                            <input type="text" maxlength="200" name="number_of_wounds[anatomical_location][]" value="{{ $oldValue }}">
                                         </td>
                                         <td>
-                                            <input type="text" name="number_of_wounds[shape][]" value="{{ old('number_of_wounds.shape.'.$index) ?? '' }}">
+                                            <input type="text" maxlength="200" name="number_of_wounds[shape][]" value="{{ old('number_of_wounds.shape.'.$index) ?? '' }}">
                                         </td>
                                         <td>
-                                            <input type="text" name="number_of_wounds[dimensions_in_cm][]" value="{{ old('number_of_wounds.dimensions_in_cm.'.$index) ?? '' }}">
+                                            <input type="text" maxlength="200" name="number_of_wounds[dimensions_in_cm][]" value="{{ old('number_of_wounds.dimensions_in_cm.'.$index) ?? '' }}">
                                         </td>
                                         <td>
                                             @if($oldValue)
@@ -670,7 +670,7 @@
                             </p>
                         </td>
                         <td colspan="2" class="">
-                            <input type="text" name="sign_of_disease[other_text]" value="{{ old('sign_of_disease.other_text') }}">
+                            <input type="text" maxlength="200" name="sign_of_disease[other_text]" value="{{ old('sign_of_disease.other_text') }}">
                         </td>
                     </tr>
                     <tr>
@@ -824,7 +824,7 @@
                             <p>
                                 <input type="checkbox" name="treatment_applied[any_other]" id="OtherTreatment1" {{ old('treatment_applied.any_other') ? 'checked' : '' }}>
                                 <label for="OtherTreatment1">Any other treatment</label> 
-                                <input type="text" name="treatment_applied[any_other_text]" value="{{ old('treatment_applied.any_other_text') }}">
+                                <input type="text" maxlength="200" name="treatment_applied[any_other_text]" value="{{ old('treatment_applied.any_other_text') }}">
                             </p>
                         </td>
                     </tr>
@@ -842,13 +842,13 @@
                         </td>
                         <td colspan="2">
                             <p>Reason for Suturing</p>
-                            <input type="text" name="reason_for_suturing" value="{{ old('reason_for_suturing') }}">
+                            <input type="text" maxlength="200" name="reason_for_suturing" value="{{ old('reason_for_suturing') }}">
                         </td>
                     </tr>
                     <tr>
                         <td colspan="6">
                             <p>5.2.2 If yes when sutures were applied? With 72 Hrs of RIG Infiltration</p>
-                            <input type="text" name="rig_infiltration" value="{{ old('rig_infiltration') }}">
+                            <input type="text" maxlength="200" name="rig_infiltration" value="{{ old('rig_infiltration') }}">
                         </td>
                     </tr>
                     <tr>
@@ -911,16 +911,16 @@
                                     <tr id="row{{ $index + 1 }}">
                                         <td>{{ $index + 1 }}</td>
                                         <td>
-                                            <input type="text" name="rabies_vaccine_received[date_of_vaccine_administration][]" value="{{ $oldValue }}">
+                                            <input type="text" maxlength="200" name="rabies_vaccine_received[date_of_vaccine_administration][]" value="{{ $oldValue }}">
                                         </td>
                                         <td>
-                                            <input type="text" name="rabies_vaccine_received[route_of_vaccine_administration][]" value="{{ old('rabies_vaccine_received.route_of_vaccine_administration.'.$index) ?? '' }}">
+                                            <input type="text" maxlength="200" name="rabies_vaccine_received[route_of_vaccine_administration][]" value="{{ old('rabies_vaccine_received.route_of_vaccine_administration.'.$index) ?? '' }}">
                                         </td>
                                         <td>
-                                            <input type="text" name="rabies_vaccine_received[site_of_vaccine_administration][]" value="{{ old('rabies_vaccine_received.site_of_vaccine_administration.'.$index) ?? '' ?? '' }}">
+                                            <input type="text" maxlength="200" name="rabies_vaccine_received[site_of_vaccine_administration][]" value="{{ old('rabies_vaccine_received.site_of_vaccine_administration.'.$index) ?? '' ?? '' }}">
                                         </td>
                                         <td>
-                                            <input type="text" name="rabies_vaccine_received[brand_vaccine][]" value="{{ old('rabies_vaccine_received.brand_vaccine.'.$index) ?? '' ?? '' }}">
+                                            <input type="text" maxlength="200" name="rabies_vaccine_received[brand_vaccine][]" value="{{ old('rabies_vaccine_received.brand_vaccine.'.$index) ?? '' ?? '' }}">
                                         </td>
                                         <td>
                                             @if($oldValue)
@@ -961,7 +961,7 @@
                             <p><input type="checkbox" name="incomplete_pep[victim_refused]" {{ old('incomplete_pep.victim_refused') ? 'checked' : '' }}> Victim refused further doses</p>
                         </td>
                         <td colspan="2" class="" rowspan="2" class="">
-                            <input type="text" name="incomplete_pep[text]" value="{{ old('incomplete_pep.text') }}">
+                            <input type="text" maxlength="200" name="incomplete_pep[text]" value="{{ old('incomplete_pep.text') }}">
                         </td>
                     </tr>
                     <tr>
@@ -1009,10 +1009,10 @@
                     </tr>
                     <tr>
                         <td colspan="1" class="">
-                            <input type="text" name="brand_name" value="{{ old('brand_name') }}">
+                            <input type="text" maxlength="200" name="brand_name" value="{{ old('brand_name') }}">
                         </td>
                         <td colspan="2" class="">
-                            <input type="text" name="rig_administration" value="{{ old('rig_administration') }}">
+                            <input type="text" maxlength="200" name="rig_administration" value="{{ old('rig_administration') }}">
                         </td>
                     </tr>
                     <tr>
@@ -1026,7 +1026,7 @@
                             </p>
                         </td>
                         <td colspan="2" class="" class="">
-                            <input type="text" name="year_no_of_dose" value="{{ old('year_no_of_dose') }}">
+                            <input type="text" maxlength="200" name="year_no_of_dose" value="{{ old('year_no_of_dose') }}">
                         </td>
                         <td colspan="1">
                             <p>
@@ -1502,11 +1502,11 @@
                                  <label for="deceased_die_health_facility">Health facility</label>
                                 <input type="radio" name="deceased_die" value="Health facility" id="deceased_die_health_facility" {{ old('deceased_die') == 'Health facility' ? 'checked' : '' }}>
                                 
-                                <input type="text" class="mr-2" name="deceased_die_health_facility_input" value="{{ old('deceased_die_health_facility_input') }}" id="deceased_die_health_facility_input" {{ old('deceased_die_health_facility_input') ? 'style=display:block' : '' }}>
+                                <input type="text" maxlength="200" class="mr-2" name="deceased_die_health_facility_input" value="{{ old('deceased_die_health_facility_input') }}" id="deceased_die_health_facility_input" {{ old('deceased_die_health_facility_input') ? 'style=display:block' : '' }}>
 
                                  <label for="deceased_die_other">Other</label>
                                  <input type="radio" name="deceased_die" value="Other" id="deceased_die_other" {{ old('deceased_die') == 'Other' ? 'checked' : '' }}> 
-                                 <input type="text" name="deceased_die_other_input" value="{{ old('deceased_die_other_input') }}" id="deceased_die_other_input" {{ old('deceased_die_other_input') ? 'style=display:block' : '' }}></p>
+                                 <input type="text" maxlength="200" name="deceased_die_other_input" value="{{ old('deceased_die_other_input') }}" id="deceased_die_other_input" {{ old('deceased_die_other_input') ? 'style=display:block' : '' }}></p>
                         </td>
                     </tr>
                     <tr>
@@ -1535,13 +1535,13 @@
                             <p>Name of Hospital/ Health facility (City/Village)</p>
                         </td>
                         <td colspan="1" class=" w-25">
-                            <input type="text" name="name_of_hf_1" class="healthFacility" value="{{old('name_of_hf_1')}}" id="name_of_hf_1" placeholder="HF-1">
+                            <input type="text" maxlength="200" name="name_of_hf_1" class="healthFacility" value="{{old('name_of_hf_1')}}" id="name_of_hf_1" placeholder="HF-1">
                         </td>
                         <td colspan="1" class=" w-25">
-                            <input type="text" name="name_of_hf_2" class="healthFacility" value="{{old('name_of_hf_2')}}" id="name_of_hf_2" placeholder="HF-2">
+                            <input type="text" maxlength="200" name="name_of_hf_2" class="healthFacility" value="{{old('name_of_hf_2')}}" id="name_of_hf_2" placeholder="HF-2">
                         </td>
                         <td colspan="1" class=" w-25">
-                            <input type="text" name="name_of_hf_3" class="healthFacility" value="{{old('name_of_hf_3')}}" id="name_of_hf_3" placeholder="HF-3">
+                            <input type="text" maxlength="200" name="name_of_hf_3" class="healthFacility" value="{{old('name_of_hf_3')}}" id="name_of_hf_3" placeholder="HF-3">
                         </td>
                     </tr>
                     <tr>
@@ -1602,19 +1602,19 @@
                                     <tr id="row{{ $index + 1 }}">
                                         <td>{{ $index + 1 }}</td>
                                         <td >
-                                            <input type="text" name="laboratory_specific_test[test_performed][]" value="{{ $oldValue }}">
+                                            <input type="text" maxlength="200" name="laboratory_specific_test[test_performed][]" value="{{ $oldValue }}">
                                         </td>
                                         <td >
-                                            <input type="text" name="laboratory_specific_test[Hospital_lab][]" value="{{ old('laboratory_specific_test.Hospital_lab.'.$index) ?? '' ?? '' }}">
+                                            <input type="text" maxlength="200" name="laboratory_specific_test[Hospital_lab][]" value="{{ old('laboratory_specific_test.Hospital_lab.'.$index) ?? '' ?? '' }}">
                                         </td>
                                         <td >
                                             <input type="date" name="laboratory_specific_test[specific_test_date][]" value="{{ old('laboratory_specific_test.specific_test_date.'.$index) ?? '' ?? '' }}">
                                         </td>
                                         <td >
-                                            <input type="text" name="laboratory_specific_test[result][]" value="{{ old('laboratory_specific_test.result.'.$index) ?? '' ?? '' }}">
+                                            <input type="text" maxlength="200" name="laboratory_specific_test[result][]" value="{{ old('laboratory_specific_test.result.'.$index) ?? '' ?? '' }}">
                                         </td>
                                         <td >
-                                            <input type="text" name="laboratory_specific_test[comment][]" value="{{ old('laboratory_specific_test.comment.'.$index) ?? '' ?? '' }}">
+                                            <input type="text" maxlength="200" name="laboratory_specific_test[comment][]" value="{{ old('laboratory_specific_test.comment.'.$index) ?? '' ?? '' }}">
                                         </td>
                                         <td>
                                             @if($oldValue)
@@ -1645,7 +1645,7 @@
                             </p>
                         </td>
                         <td colspan="4">
-                            <input type="text" name="MRI_brain_done_text" class="inputFields">
+                            <input type="text" maxlength="200" name="MRI_brain_done_text" class="inputFields">
                         </td>
                     </tr>
                     <!-- <tr>
@@ -1729,7 +1729,7 @@
                             <p>If yes, cause of death mentioned:</p>
                         </td>
                         <td colspan="3" class="">
-                            <input type="text" name="death_mentioned" value="{{ old('death_mentioned') }}">
+                            <input type="text" maxlength="200" name="death_mentioned" value="{{ old('death_mentioned') }}">
                         </td>
                     </tr>
 
@@ -1768,7 +1768,7 @@
                             </p>
                         </td>
                         <td colspan="2" class="">
-                            <input type="text" name="autopsy_of_additional_cases" value="{{ old('autopsy_of_additional_cases') }}">
+                            <input type="text" maxlength="200" name="autopsy_of_additional_cases" value="{{ old('autopsy_of_additional_cases') }}">
                         </td>
                     </tr>
                     <tr>
@@ -1807,33 +1807,33 @@
                                     @if(old('family.relation_with_family_name'))
                                     <tr>
                                         <td>Family</td>
-                                        <td class=""><input type="text" name="family[relation_with_family_name]" oninput="validateName(this);" value="{{ old('family.relation_with_family_name') }}"></td>
-                                        <td class=""><input type="text" name="family[relation_with_family_address]" maxlength="150" value="{{ old('family.relation_with_family_address') }}"></td>
-                                        <td class=""><input type="text" name="family[relation_with_family_contact_number]" oninput="validateInput(this);" value="{{ old('family.relation_with_family_contact_number') }}"></td>
+                                        <td class=""><input type="text" maxlength="200" name="family[relation_with_family_name]" oninput="validateName(this);" value="{{ old('family.relation_with_family_name') }}"></td>
+                                        <td class=""><input type="text" maxlength="200" name="family[relation_with_family_address]" maxlength="150" value="{{ old('family.relation_with_family_address') }}"></td>
+                                        <td class=""><input type="text" maxlength="200" name="family[relation_with_family_contact_number]" oninput="validateInput(this);" value="{{ old('family.relation_with_family_contact_number') }}"></td>
                                     </tr>
                                     @endif
                                     @if(old('community.relation_with_community_name'))
                                     <tr>
                                         <td>Community</td>
-                                        <td class=""><input type="text" name="community[relation_with_community_name]" value="{{ old('community.relation_with_community_name') }}"></td>
-                                        <td class=""><input type="text" name="community[relation_with_community_address]" value="{{ old('community.relation_with_community_address') }}"></td>
-                                        <td class=""><input type="text" name="community[relation_with_community_contact_number]" value="{{ old('community.relation_with_community_contact_number') }}"></td>
+                                        <td class=""><input type="text" maxlength="200" name="community[relation_with_community_name]" value="{{ old('community.relation_with_community_name') }}"></td>
+                                        <td class=""><input type="text" maxlength="200" name="community[relation_with_community_address]" value="{{ old('community.relation_with_community_address') }}"></td>
+                                        <td class=""><input type="text" maxlength="200" name="community[relation_with_community_contact_number]" value="{{ old('community.relation_with_community_contact_number') }}"></td>
                                     </tr>
                                     @endif
                                     @if(old('hospital_workers.relation_with_hospital_workers_name'))
                                     <tr>
                                         <td>Hospital workers</td>
-                                        <td class=""><input type="text" name="hospital_workers[relation_with_hospital_workers_name]" value="{{ old('hospital_workers.relation_with_hospital_workers_name') }}"></td>
-                                        <td class=""><input type="text" name="hospital_workers[relation_with_hospital_workers_address]" value="{{ old('hospital_workers.relation_with_hospital_workers_address') }}"></td>
-                                        <td class=""><input type="text" name="hospital_workers[relation_with_hospital_workers_contact_number]" value="{{ old('hospital_workers.relation_with_hospital_workers_contact_number') }}"></td>
+                                        <td class=""><input type="text" maxlength="200" name="hospital_workers[relation_with_hospital_workers_name]" value="{{ old('hospital_workers.relation_with_hospital_workers_name') }}"></td>
+                                        <td class=""><input type="text" maxlength="200" name="hospital_workers[relation_with_hospital_workers_address]" value="{{ old('hospital_workers.relation_with_hospital_workers_address') }}"></td>
+                                        <td class=""><input type="text" maxlength="200" name="hospital_workers[relation_with_hospital_workers_contact_number]" value="{{ old('hospital_workers.relation_with_hospital_workers_contact_number') }}"></td>
                                     </tr>
                                     @endif
                                     @if(old('any_other.relation_with_any_other_name'))
                                     <tr>
                                         <td>Any Other</td>
-                                        <td class=""><input type="text" name="any_other[relation_with_any_other_name]" value="{{ old('any_other.relation_with_any_other_name') }}"></td>
-                                        <td class=""><input type="text" name="any_other[relation_with_any_other_address]" value="{{ old('any_other.relation_with_any_other_address') }}"></td>
-                                        <td class=""><input type="text" name="any_other[relation_with_any_other_contact_number]" value="{{ old('any_other.relation_with_any_other_contact_number') }}"></td>
+                                        <td class=""><input type="text" maxlength="200" name="any_other[relation_with_any_other_name]" value="{{ old('any_other.relation_with_any_other_name') }}"></td>
+                                        <td class=""><input type="text" maxlength="200" name="any_other[relation_with_any_other_address]" value="{{ old('any_other.relation_with_any_other_address') }}"></td>
+                                        <td class=""><input type="text" maxlength="200" name="any_other[relation_with_any_other_contact_number]" value="{{ old('any_other.relation_with_any_other_contact_number') }}"></td>
                                     </tr>
                                     @endif
                                 </tbody>
@@ -1877,7 +1877,7 @@
                                             <input type="text" maxlength="200" name="animal_suspected_transmitting[transmitting_rabies_name_address][]" value="{{ $oldValue }}">
                                         </td>
                                         <td class="" >
-                                            <input type="text" maxlength="150" name="animal_suspected_transmitting[transmitting_rabies_relation][]" value="{{ old('animal_suspected_transmitting.transmitting_rabies_relation.'.$index) ?? '' ?? '' }}">
+                                            <input type="text"  maxlength="150" name="animal_suspected_transmitting[transmitting_rabies_relation][]" value="{{ old('animal_suspected_transmitting.transmitting_rabies_relation.'.$index) ?? '' ?? '' }}">
                                         </td>
                                         <td>
                                             @if($oldValue)
