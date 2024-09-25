@@ -259,7 +259,7 @@
                             <p>Address (If Different From Patient)</p>
                         </td>
                         <td colspan="11" class="">
-                            <input type="text" maxlength="200" name="respondent_address" maxlength="150" value="{{ old('respondent_address') }}">
+                            <input type="text" maxlength="200" name="respondent_address"  value="{{ old('respondent_address') }}">
                         </td>
                     </tr>
                     <tr>
@@ -502,7 +502,7 @@
                             <input type="text" maxlength="200" name="place_of_exposure" value="{{ old('place_of_exposure') }}">
                         </td>
                         <td colspan="28" class="">
-                            <input type="text" maxlength="200" name="place_of_exposure_address" maxlength="150" value="{{ old('place_of_exposure_address') }}" placeholder="Address">
+                            <input type="text" maxlength="200" name="place_of_exposure_address" value="{{ old('place_of_exposure_address') }}" placeholder="Address">
                         </td>
                     </tr>
                     <tr>
@@ -1808,7 +1808,7 @@
                                     <tr>
                                         <td>Family</td>
                                         <td class=""><input type="text" maxlength="200" name="family[relation_with_family_name]" oninput="validateName(this);" value="{{ old('family.relation_with_family_name') }}"></td>
-                                        <td class=""><input type="text" maxlength="200" name="family[relation_with_family_address]" maxlength="150" value="{{ old('family.relation_with_family_address') }}"></td>
+                                        <td class=""><input type="text" maxlength="200" name="family[relation_with_family_address]" value="{{ old('family.relation_with_family_address') }}"></td>
                                         <td class=""><input type="text" maxlength="200" name="family[relation_with_family_contact_number]" oninput="validateInput(this);" value="{{ old('family.relation_with_family_contact_number') }}"></td>
                                     </tr>
                                     @endif
