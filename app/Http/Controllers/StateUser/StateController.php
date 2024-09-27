@@ -375,7 +375,7 @@ class StateController extends Controller
 
         // Check if data is empty
         if ($data->isEmpty()) {
-            return redirect()->back()->with(['error' => 'No data available for export'], 404);
+            return redirect()->back()->with(['error' => 'No data is available for Export'], 404);
         }
         $arrays = [$query->get()->toArray()];
         if($request->modulename == 'lform' || $request->modulename == '3'){

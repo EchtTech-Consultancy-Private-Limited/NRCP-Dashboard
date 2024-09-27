@@ -251,7 +251,7 @@ class MainController extends Controller
         }
         $data = $query->get();
         if ($data->isEmpty()) {
-            return redirect()->back()->with('error','No data available for export');
+            return redirect()->back()->with('error','No data is available for Export');
         }
         $arrays = [$query->get()->toArray()];
         return Excel::download(new StateMonthlyReportExport($arrays), Carbon::now()->format('d-m-Y') . '-' . $fileName . '.xlsx');
