@@ -82,7 +82,7 @@ class ReportGenerateControllerController extends Controller
 
         $data = $query->get();
         if($data->isEmpty()){
-            return redirect()->back()->with('error','The Data is not available');
+            return redirect()->back()->with('error','No data is available for Export');
         }
 
         $arrays = [$query->get()->toArray()];
