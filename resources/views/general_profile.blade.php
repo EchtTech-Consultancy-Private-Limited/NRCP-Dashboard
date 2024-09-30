@@ -41,7 +41,7 @@
                     </div>
                     <div class="col">
                         <div class="form-group">
-                            <label for="fromYear">Nodal Officer</label>
+                            <label for="fromYear">Nodal Officer<span class="star">*</span></label>
                             <input type="text" name="designation" value="{{ old('designation') }}" id="designation"
                                 maxlength="45" class="form-control" oninput="validateName(this);" placeholder="Enter Nodal Officer Name"/>
                                 @error('designation')
@@ -52,7 +52,7 @@
                     </div>
                     <div class="col">
                         <div class="form-group">
-                            <label for="toYear">Contact Number</label>
+                            <label for="toYear">Contact Number<span class="star">*</span></label>
                             <input type="text" name="contact_number" value="{{ old('contact_number') }}"
                                 id="contact_number" minlength="10" maxlength="10" oninput="validateInput(this)"   class="form-control" placeholder="Enter Contact Number"/>
                             <small id="contact_number-error" class="form-text text-muted"> </small>
@@ -74,7 +74,7 @@
                                     </div> --}}
                     <div class="col">
                         <div class="form-group">
-                            <label for="formType">Date of Joining NRCP</label>
+                            <label for="formType">Date of Joining NRCP<span class="star">*</span></label>
                             <input type="date" name="date_of_joining" value="{{ old('date_of_joining') }}"
                                 id="date_of_joining" class="form-control" placeholder="DD-MM-YYYY" />
                             <small id="date_of_joining-error" class="form-text text-muted"> </small>
