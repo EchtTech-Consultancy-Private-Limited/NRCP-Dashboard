@@ -358,7 +358,7 @@
                     </table>
                     <div class="d-flex justify-content-center my-4">
                         <button type="submit" class="btn search-patient-btn mr-3 bg-primary text-light">save</button>
-                        <button type="reset" class="btn bg-danger text-light">Reset</button>
+                        <button type="reset" class="btn search-patient-btn bg-danger text-light">Reset</button>
                     </div>
                     <p>To be <strong>
                             reported by Health facilities to District Nodal Officer, State Nodal Officer &amp; National
