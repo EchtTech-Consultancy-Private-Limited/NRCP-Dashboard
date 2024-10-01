@@ -1234,3 +1234,6 @@ table thead tr th:nth-last-child(2) {
   height: 285px;
   overflow-y: auto;
 }
+.mandatory-field-active {
+  height: 65px;
+}

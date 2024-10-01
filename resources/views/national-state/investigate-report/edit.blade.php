@@ -57,7 +57,7 @@
                         <td colspan="5">
                             <p>Name of interviewer</p>
                         </td>
-                        <td colspan="18" class="">
+                        <td colspan="18" class="{{ $errors->has('interviewer_name') ? 'mandatory-field-active' : '' }}">
                             <input type="text" name="interviewer_name" value="{{ old('interviewer_name', $investigateReport->interviewer_name) }}">
                             @if ($errors->has('interviewer_name'))
                                 <span class="form-text text-muted">{{ $errors->first('interviewer_name') }}</span>
@@ -66,7 +66,7 @@
                         <td colspan="10">
                             <p>Date of Interview</p>
                         </td>
-                        <td colspan="5" class="">
+                        <td colspan="5" class="{{ $errors->has('interview_date') ? 'mandatory-field-active' : '' }}">
                             <input name="interview_date" value="{{ old('interview_date', $investigateReport->interview_date) }}" type="date">
                             @if ($errors->has('interview_date'))
                                 <span class="form-text text-muted">{{ $errors->first('interview_date') }}</span>
@@ -77,7 +77,7 @@
                         <td colspan="5">
                             <p>Designation</p>
                         </td>
-                        <td colspan="18" class="">
+                        <td colspan="18" class="{{ $errors->has('interviewer_designation') ? 'mandatory-field-active' : '' }}">
                             <input name="interviewer_designation" value="{{ old('interviewer_designation', $investigateReport->interviewer_designation) }}" type="text">
                             @if ($errors->has('interviewer_designation'))
                                 <span class="form-text text-muted">{{ $errors->first('interviewer_designation') }}</span>
@@ -86,7 +86,7 @@
                         <td colspan="10">
                             <p>Contact number</p>
                         </td>
-                        <td colspan="5" class="">
+                        <td colspan="5" class="{{ $errors->has('interviewer_contact_number') ? 'mandatory-field-active' : '' }}">
                             <input name="interviewer_contact_number" value="{{ old('interviewer_contact_number', $investigateReport->interviewer_contact_number) }}" type="text" oninput="validateInput(this)" maxlength="12">
                             @if ($errors->has('interviewer_contact_number'))
                                 <span class="form-text text-muted">{{ $errors->first('interviewer_contact_number') }}</span>
